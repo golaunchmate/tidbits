@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A2A Response Routing | Michael</title>
+    <meta name="tidbit-type" content="methodology">
+    <meta name="tidbit-subject" content="Michael">
+    <meta name="tidbit-company" content="Launchmate">
+    <meta name="tidbit-date" content="2026-01-27">
+    <meta name="tidbit-period" content="2026-W04">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; }
+        body { font-family: 'Inter', sans-serif; background: #0f0f0f; color: #e5e5e5; }
+        .page { min-height: 100vh; scroll-snap-align: start; display: flex; flex-direction: column; justify-content: center; padding: 3rem; max-width: 800px; margin: 0 auto; }
+        .page-num { font-family: 'JetBrains Mono', monospace; color: #6b7280; font-size: 0.875rem; margin-bottom: 2rem; }
+        h1 { font-size: 2.5rem; font-weight: 600; margin-bottom: 1rem; line-height: 1.2; }
+        h2 { font-size: 1.5rem; font-weight: 500; margin-bottom: 1.5rem; color: #a3a3a3; }
+        p { font-size: 1.125rem; line-height: 1.7; margin-bottom: 1rem; color: #d4d4d4; }
+        .highlight { color: #60a5fa; }
+        .tension { color: #f97316; }
+        .decision { color: #34d399; }
+        .label { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+        .scroll-hint { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%); color: #6b7280; font-size: 0.875rem; animation: bounce 2s infinite; }
+        @keyframes bounce { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(-10px); } }
+        .card { background: #1a1a1a; border-radius: 12px; padding: 1.5rem; margin: 1rem 0; }
+        .flow-step { display: flex; align-items: flex-start; gap: 1rem; margin: 0.75rem 0; }
+        .step-num { font-family: 'JetBrains Mono', monospace; color: #6b7280; min-width: 1.5rem; }
+        .check { color: #34d399; }
+        .x { color: #ef4444; }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="page-num">1/5</div>
+        <div class="label">Launchmate Infrastructure</div>
+        <h1>The A2A <span class="tension">Response Routing</span> Problem</h1>
+        <h2>Why native agent-to-agent messaging breaks multi-step flows</h2>
+        <p style="margin-top: 2rem; color: #6b7280;">January 27, 2026</p>
+        <div class="scroll-hint">↓ scroll</div>
+    </div>
+
+    <div class="page">
+        <div class="page-num">2/5</div>
+        <div class="label">The Setup</div>
+        <h2>Tidbits pipeline needs to talk to founder agents</h2>
+        <p>I have a shared <span class="highlight">tidbits agent</span> that creates weekly narratives. It needs to gather context from each founder's agent through a multi-step conversation.</p>
+        <div class="card">
+            <p class="label">The Flow</p>
+            <div class="flow-step"><span class="step-num">1.</span><span>Tidbits pipeline initiates → sends to founder agent</span></div>
+            <div class="flow-step"><span class="step-num">2.</span><span>Founder agent responds with context</span></div>
+            <div class="flow-step"><span class="step-num">3.</span><span>Back and forth until tidbit is ready</span></div>
+        </div>
+        <p>Letta has a <span class="highlight">conversations API</span> that lets you run parallel sessions. I figured: one conversation per founder on the tidbits agent. Problem solved?</p>
+    </div>
+
+    <div class="page">
+        <div class="page-num">3/5</div>
+        <div class="label">The Problem</div>
+        <h2><span class="tension">Response routing is broken</span></h2>
+        <p>Native a2a routes messages to an <em>agent</em>, not a <em>conversation</em>.</p>
+        <div class="card">
+            <p class="label">What Actually Happens</p>
+            <div class="flow-step"><span class="step-num check">✓</span><span>Tidbits sends to founder agent — works fine</span></div>
+            <div class="flow-step"><span class="step-num check">✓</span><span>Founder agent processes and responds</span></div>
+            <div class="flow-step"><span class="step-num x">✗</span><span>Response uses default a2a → goes to tidbits' <span class="tension">main conversation</span></span></div>
+        </div>
+        <p>The sub-conversations exist. But <span class="tension">founder responses don't route back to them</span>. All responses pile into the default conversation. Multi-step flows from different founders collide.</p>
+    </div>
+
+    <div class="page">
+        <div class="page-num">4/5</div>
+        <div class="label">The Solution</div>
+        <h2><span class="decision">Custom conversation-aware a2a tool</span></h2>
+        <p>Founder agents need a tool that routes responses to their specific sub-conversation on the tidbits agent.</p>
+        <div class="card">
+            <p class="label">Tool Design</p>
+            <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: #a3a3a3;">send_message_to_agent_conversation(</p>
+            <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: #a3a3a3; padding-left: 1rem;">recipient_agent_id,</p>
+            <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: #a3a3a3; padding-left: 1rem;">founder_id,</p>
+            <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: #a3a3a3; padding-left: 1rem;">message</p>
+            <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: #a3a3a3;">)</p>
+        </div>
+        <p>The tool looks up <span class="highlight">founder_id → conversation_id</span> mapping, then uses Letta's conversation API directly. Sender ID accessed internally.</p>
+    </div>
+
+    <div class="page">
+        <div class="page-num">5/5</div>
+        <div class="label">The Arc</div>
+        <h2>Where this lands</h2>
+        <div class="card">
+            <p>"I thought Letta's conversation API would handle a2a routing, but it only handles parallelism — <span class="tension">response routing still defaults</span>. So I need a custom tool that founder agents use to respond back to their specific sub-conversation on shared agents."</p>
+        </div>
+        <p style="margin-top: 2rem;"><span class="decision">Next:</span> Build the tool, add DB mapping for founder → conversation, deploy to founder agents.</p>
+    </div>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
