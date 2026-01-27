@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3 Weeks: Skills to Infrastructure | Michael</title>
+    <meta name="tidbit-type" content="team">
+    <meta name="tidbit-subject" content="Michael">
+    <meta name="tidbit-company" content="Launchmate">
+    <meta name="tidbit-date" content="2026-01-27">
+    <meta name="tidbit-period" content="2026-W02-W04">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; }
+        body { font-family: 'Inter', sans-serif; background: #0f0f0f; color: #e5e5e5; }
+        .page { min-height: 100vh; scroll-snap-align: start; display: flex; flex-direction: column; justify-content: center; padding: 3rem; max-width: 800px; margin: 0 auto; }
+        .page-num { font-family: 'JetBrains Mono', monospace; color: #6b7280; font-size: 0.875rem; margin-bottom: 2rem; }
+        h1 { font-size: 2.5rem; font-weight: 600; margin-bottom: 1rem; line-height: 1.2; }
+        h2 { font-size: 1.5rem; font-weight: 500; margin-bottom: 1.5rem; color: #a3a3a3; }
+        h3 { font-size: 1.25rem; font-weight: 500; margin-bottom: 1rem; color: #e5e5e5; }
+        p { font-size: 1.125rem; line-height: 1.7; margin-bottom: 1rem; color: #d4d4d4; }
+        .highlight { color: #60a5fa; }
+        .tension { color: #f97316; }
+        .decision { color: #34d399; }
+        .label { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+        .scroll-hint { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%); color: #6b7280; font-size: 0.875rem; animation: bounce 2s infinite; }
+        @keyframes bounce { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(-10px); } }
+        .card { background: #1a1a1a; border-radius: 12px; padding: 1.5rem; margin: 1rem 0; }
+        .week-label { font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: #60a5fa; margin-bottom: 0.5rem; }
+        .skill-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0; }
+        .skill-item { background: #1a1a1a; border-radius: 8px; padding: 1rem; }
+        .skill-name { font-weight: 500; margin-bottom: 0.25rem; }
+        .skill-desc { font-size: 0.875rem; color: #6b7280; }
+        .timeline { border-left: 2px solid #333; padding-left: 1.5rem; margin: 1rem 0; }
+        .timeline-item { margin-bottom: 1.5rem; position: relative; }
+        .timeline-item::before { content: ''; position: absolute; left: -1.75rem; top: 0.5rem; width: 0.5rem; height: 0.5rem; background: #60a5fa; border-radius: 50%; }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="page-num">1/6</div>
+        <div class="label">Launchmate · Jan 6-27, 2026</div>
+        <h1>From <span class="highlight">Skills R&D</span> to <span class="decision">Infrastructure</span></h1>
+        <h2>3 weeks of figuring out what Launchmate actually needs to ship</h2>
+        <p style="margin-top: 2rem; color: #6b7280;">The journey from "what could skills do?" to "how do we actually build the pipes?"</p>
+        <div class="scroll-hint">↓ scroll</div>
+    </div>
+
+    <div class="page">
+        <div class="page-num">2/6</div>
+        <div class="week-label">WEEK 1 · Jan 6-13</div>
+        <h2>Deep in the <span class="highlight">skills spike</span></h2>
+        <p>Started the year in R&D mode. The question: how can agent skills function for Launchpad-specific exercises?</p>
+        <p>Went deep on <span class="highlight">Neal test coaching</span> and <span class="highlight">semester goal-setting</span> — exploring how agents can grow with founders over time.</p>
+        <div class="card">
+            <p class="label">The Realization</p>
+            <p>Skills are a must. The tech spike validated this. But there's a <span class="tension">gap</span>: skills prove value over time, but Craig's friction analysis says founders need a "shockingly contextual" first impression in the <span class="tension">first 30 seconds</span>.</p>
+        </div>
+        <p><span class="decision">Decision:</span> Table agent messaging display (Craig had asked me to look into this) to stay focused on the skills architecture.</p>
+    </div>
+
+    <div class="page">
+        <div class="page-num">3/6</div>
+        <div class="week-label">WEEK 1 · Continued</div>
+        <h2>Narrowed to <span class="decision">4 core skills</span></h2>
+        <div class="skill-grid">
+            <div class="skill-item">
+                <div class="skill-name">Weekly Reflection</div>
+                <div class="skill-desc">Recurring orientation for founders</div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-name">Neal Test</div>
+                <div class="skill-desc">Structured founder exercise</div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-name">Tidbits</div>
+                <div class="skill-desc">Shareable narrative of agent chat</div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-name">Growth Boost</div>
+                <div class="skill-desc">Agent self-evolution capability</div>
+            </div>
+        </div>
+        <p>Originally wanted <span class="highlight">collaborative skills</span> — where cohort usage improves skills over time. Moved to background; requires infrastructure outside Letta.</p>
+        <p>Focus shifted to: aligning with Paige on a single agent where my skills prompts integrate with her onboarding flow.</p>
+    </div>
+
+    <div class="page">
+        <div class="page-num">4/6</div>
+        <div class="week-label">WEEK 2-3 · Jan 14-27</div>
+        <h2>From skills to <span class="tension">infrastructure</span></h2>
+        <p>Started building the tidbits pipeline. This is where it got interesting.</p>
+        <p>I have a shared <span class="highlight">tidbits agent</span> that creates weekly narratives by gathering context from each founder's agent. Multi-step back-and-forth conversations.</p>
+        <div class="card">
+            <p class="label">The Problem</p>
+            <p>Multiple founders triggering tidbits concurrently could cause flow interleaving. Letta has a conversations API — I figured: <span class="highlight">one conversation per founder</span> on the tidbits agent. Parallelism solved?</p>
+            <p style="margin-top: 1rem;"><span class="tension">Not quite.</span></p>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="page-num">5/6</div>
+        <div class="week-label">WEEK 3 · The Discovery</div>
+        <h2><span class="tension">A2A response routing is broken</span></h2>
+        <p>Native agent-to-agent messaging routes to an <em>agent</em>, not a <em>conversation</em>.</p>
+        <div class="card">
+            <p class="label">What Actually Happens</p>
+            <p>✓ Tidbits sends to founder agent — works fine</p>
+            <p>✓ Founder agent processes and responds</p>
+            <p style="color: #ef4444;">✗ Response uses default a2a → goes to tidbits' main conversation</p>
+        </div>
+        <p>The sub-conversations exist. But <span class="tension">founder responses don't route back to them</span>. All responses pile into the default conversation.</p>
+        <p><span class="decision">Solution:</span> Custom <code style="font-family: 'JetBrains Mono', monospace; background: #1a1a1a; padding: 0.2rem 0.4rem; border-radius: 4px;">send_message_to_agent_conversation</code> tool that founder agents use to route responses to their specific sub-conversation.</p>
+    </div>
+
+    <div class="page">
+        <div class="page-num">6/6</div>
+        <div class="label">The Arc</div>
+        <h2>Where this lands</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3>Started with: "What should skills do?"</h3>
+                <p style="font-size: 1rem;">R&D exploration, Neal test, semester goals</p>
+            </div>
+            <div class="timeline-item">
+                <h3>Narrowed to: "Ship 4 core skills"</h3>
+                <p style="font-size: 1rem;">Weekly reflection, Neal test, tidbits, growth boost</p>
+            </div>
+            <div class="timeline-item">
+                <h3>Hit: "How do we actually pipe this?"</h3>
+                <p style="font-size: 1rem;">Discovered a2a routing doesn't support multi-step flows</p>
+            </div>
+            <div class="timeline-item">
+                <h3 style="color: #34d399;">Building: Custom conversation-aware infrastructure</h3>
+                <p style="font-size: 1rem;">DB mapping + custom a2a tool for proper routing</p>
+            </div>
+        </div>
+        <p style="margin-top: 1.5rem; color: #6b7280;">The pattern: every feature question eventually becomes an infrastructure question.</p>
+    </div>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
