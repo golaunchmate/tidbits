@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billy Carter - Celebrity Concierge | Jan 28, 2026</title>
+    <meta name="tidbit-type" content="founder">
+    <meta name="tidbit-subject" content="Billy Carter">
+    <meta name="tidbit-company" content="Celebrity Concierge">
+    <meta name="tidbit-date" content="2026-01-28">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0f0f0f;
+            color: #e5e5e5;
+            line-height: 1.6;
+        }
+        .page {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+        }
+        .card {
+            background: #1a1a1a;
+            border-radius: 16px;
+            padding: 3rem;
+            max-width: 700px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        .page-number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+        }
+        .scroll-hint {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-5px); }
+        }
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #6b7280;
+            margin-bottom: 0.5rem;
+        }
+        h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+        h2 { font-size: 1.75rem; font-weight: 600; margin-bottom: 1rem; color: #fff; }
+        .subtitle { color: #9ca3af; font-size: 1.1rem; margin-bottom: 1.5rem; }
+        .date { font-family: 'JetBrains Mono', monospace; color: #6b7280; font-size: 0.9rem; }
+        .highlight { color: #60a5fa; }
+        .decision { color: #34d399; }
+        .tension { color: #f97316; }
+        .big-number { font-size: 3rem; font-weight: 700; color: #60a5fa; }
+        .stat-row { display: flex; gap: 2rem; margin: 1.5rem 0; flex-wrap: wrap; }
+        .stat { text-align: center; }
+        .stat-value { font-size: 2rem; font-weight: 700; color: #60a5fa; }
+        .stat-label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: #6b7280; text-transform: uppercase; }
+        ul { margin: 1rem 0; padding-left: 1.5rem; }
+        li { margin-bottom: 0.75rem; }
+        .quote {
+            border-left: 3px solid #f97316;
+            padding-left: 1rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: #d1d5db;
+        }
+        .next-steps {
+            background: #252525;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Page 1: Cover -->
+    <section class="page">
+        <div class="card" style="text-align: center;">
+            <div class="label">Founder Tidbit</div>
+            <h1>Billy Carter</h1>
+            <p class="subtitle">Celebrity Concierge</p>
+            <p class="date">January 28, 2026</p>
+        </div>
+        <div class="scroll-hint">↓ scroll</div>
+        <div class="page-number">1/5</div>
+    </section>
+
+    <!-- Page 2: The Realization -->
+    <section class="page">
+        <div class="card">
+            <div class="label">The Starting Point</div>
+            <h2>I thought I needed a website</h2>
+            <p>I've been running Celebrity Concierge as a hands-on, white-glove service. I personally curate nights out, work my promoter relationships, and stay involved end-to-end. It works — clients trust me, nights go well.</p>
+            <p style="margin-top: 1rem;">But I kept thinking: <span class="tension">"I need to build a website to scale this."</span></p>
+            <p style="margin-top: 1rem;">Turns out I was asking the wrong question.</p>
+        </div>
+        <div class="scroll-hint">↓ scroll</div>
+        <div class="page-number">2/5</div>
+    </section>
+
+    <!-- Page 3: The Numbers -->
+    <section class="page">
+        <div class="card">
+            <div class="label">The Real Picture</div>
+            <h2>I finally did the math</h2>
+            <div class="stat-row">
+                <div class="stat">
+                    <div class="stat-value">15-20</div>
+                    <div class="stat-label">Groups/Weekend</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">8-15</div>
+                    <div class="stat-label">People/Group</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">500-1,200</div>
+                    <div class="stat-label">People/Month</div>
+                </div>
+            </div>
+            <p style="margin-top: 1.5rem;">I'm not a concierge with a side hustle. <span class="highlight">I'm a distribution channel.</span> Venues should be paying me for access to this flow — not the other way around.</p>
+        </div>
+        <div class="scroll-hint">↓ scroll</div>
+        <div class="page-number">3/5</div>
+    </section>
+
+    <!-- Page 4: The Tension -->
+    <section class="page">
+        <div class="card">
+            <div class="label">The Trade-Off</div>
+            <h2>What scales vs. what's <span class="tension">me</span></h2>
+            <p>The real question isn't "how do I build a website." It's: <span class="tension">which parts of Billy can become a system?</span></p>
+            <ul style="margin-top: 1.5rem;">
+                <li><strong>Stays founder-led:</strong> Trust, discretion, real-time judgment, relationship quality</li>
+                <li><strong>Can be systematized:</strong> Booking flow, intake forms, partner deals, recurring events</li>
+            </ul>
+            <div class="quote">Scaling doesn't mean removing myself. It means figuring out what needs to stay me versus what can be standardized or delegated.</div>
+        </div>
+        <div class="scroll-hint">↓ scroll</div>
+        <div class="page-number">4/5</div>
+    </section>
+
+    <!-- Page 5: What's Next -->
+    <section class="page">
+        <div class="card">
+            <div class="label">Current Focus</div>
+            <h2><span class="decision">Three things I'm locking in</span></h2>
+            <div class="next-steps">
+                <ul style="padding-left: 1.25rem;">
+                    <li><strong>Partner Subscription Model:</strong> $500/month for venues to access my client flow. 3-month contracts. I'm the distribution, they pay for access.</li>
+                    <li><strong>Client Data Capture:</strong> Every booking goes through an intake form. Name, email, occasion, group size. The list is my real asset.</li>
+                    <li><strong>Monthly Event ("The List"):</strong> Invite-only party for past clients. Keeps them engaged, creates content, shows venues what I can deliver.</li>
+                </ul>
+            </div>
+            <p style="margin-top: 1.5rem; color: #9ca3af;">Once these are in place, everything else — website, interns, pricing tiers — gets way easier to build.</p>
+        </div>
+        <div class="page-number">5/5</div>
+    </section>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
