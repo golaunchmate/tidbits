@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="tidbit-type" content="founder">
+    <meta name="tidbit-subject" content="Robert Sanchez">
+    <meta name="tidbit-company" content="Turner.AI">
+    <meta name="tidbit-date" content="2026-01-29">
+    <meta name="tidbit-period" content="2026-W05">
+    <title>Robert Sanchez — Turner.AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: #0f0f0f;
+            color: #e5e5e5;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            min-height: 100vh;
+        }
+        .card {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 60px 40px;
+            border-bottom: 1px solid #2a2a2a;
+            position: relative;
+            scroll-snap-align: start;
+        }
+        .card.cover {
+            background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+            border: none;
+        }
+        .page-number {
+            position: absolute;
+            bottom: 20px;
+            right: 30px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 16px;
+        }
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            line-height: 1.1;
+        }
+        h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+        h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        p {
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+        .highlight { color: #60a5fa; }
+        .decision { color: #34d399; }
+        .tension { color: #f97316; }
+        .stat-row {
+            display: flex;
+            gap: 40px;
+            margin: 32px 0;
+        }
+        .stat {
+            flex: 1;
+        }
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #60a5fa;
+            margin-bottom: 8px;
+        }
+        .stat-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .quote {
+            font-size: 1.25rem;
+            font-style: italic;
+            color: #a0aec0;
+            border-left: 3px solid #60a5fa;
+            padding-left: 20px;
+            margin: 24px 0;
+        }
+        .arrow-list {
+            margin: 20px 0;
+        }
+        .arrow-list p {
+            margin-bottom: 12px;
+        }
+        .arrow-list p:before {
+            content: "→ ";
+            color: #60a5fa;
+            margin-right: 8px;
+        }
+        .scroll-indicator {
+            font-size: 1.25rem;
+            color: #60a5fa;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Slide 1: Cover -->
+        <div class="card cover">
+            <h1>Robert Sanchez</h1>
+            <h2 style="color: #a0aec0; font-size: 1.5rem;">Turner.AI</h2>
+            <p style="color: #a0aec0; margin-top: 40px;">Discovering what actually matters</p>
+            <div class="scroll-indicator">scroll ↓</div>
+            <div class="page-number">1 / 5</div>
+        </div>
+
+        <!-- Slide 2: Where I Started -->
+        <div class="card">
+            <div class="label">Where I Started</div>
+            <h2>I thought conversational flow and UI polish were the game.</h2>
+            <p>Built a chatbot advisor for SDSU students. Focused on making it feel natural, adding follow-up questions, building multi-semester roadmaps with "what-if" scenarios. Polished the interface. Optimized the conversation patterns.</p>
+            <p>I figured if students could have a natural conversation with an AI advisor who understood their degree requirements, that would be enough to win.</p>
+            <p style="margin-top: 32px; color: #a0aec0;">The assumption felt solid. But it wasn't what actually mattered.</p>
+            <div class="page-number">2 / 5</div>
+        </div>
+
+        <!-- Slide 3: What I Discovered -->
+        <div class="card">
+            <div class="label">What I Discovered</div>
+            <h2>Accuracy is the only thing that matters.</h2>
+            <p>When Tam (our partner at SDSU) tested the tool with real students in December, the signal was immediate: <span class="highlight">if the AI gets a student's degree requirements wrong, nothing else—not the tone, not the UX, not the cleverness of the conversation—matters</span>.</p>
+            <p>Students were skeptical until the tool got something right. Then they trusted it. Then they noticed when it was wrong.</p>
+            <div class="stat-row">
+                <div class="stat">
+                    <div class="stat-value">1 error</div>
+                    <div class="stat-label">Lost the student</div>
+                </div>
+            </div>
+            <p>The constraint was parsing—extracting accurate information from inconsistent degree audit formats across different schools. Not conversation flow. Not UI design.</p>
+            <p style="color: #a0aec0; margin-top: 32px;"><span class="tension">This is the moat.</span></p>
+            <div class="page-number">3 / 5</div>
+        </div>
+
+        <!-- Slide 4: The Real Opportunity -->
+        <div class="card">
+            <div class="label">The Real Opportunity</div>
+            <h2>Build parsing accuracy. Everything else follows.</h2>
+            <p>Once I knew this, everything shifted. Stopped optimizing conversation patterns. Started building a specialized backend team focused exclusively on parsing accuracy across degree audit formats.</p>
+            <div class="arrow-list">
+                <p><span class="decision">90% parsing accuracy</span> = Tam's official pilot endorsement for Fowler College</p>
+                <p><span class="decision">Fowler pilot proof</span> = CSU system expansion (4 million students)</p>
+                <p><span class="decision">Parsing expertise</span> = Defensible competitive advantage ($1M+ revenue model)</p>
+            </div>
+            <p style="margin-top: 32px;">Incorporated as C-Corp to position for institutional partnerships and venture capital. Made Top 50 in Baylor New Venture Competition (Round 2 results expected early March).</p>
+            <p style="margin-top: 24px;">Recruiting a specialized parsing-focused intern to accelerate. Merlyn committed as volunteer Interim CTO to guide the architecture.</p>
+            <div class="page-number">4 / 5</div>
+        </div>
+
+        <!-- Slide 5: Where I'm At -->
+        <div class="card">
+            <div class="label">Where I'm At</div>
+            <h2>Two months to hit 90% accuracy.</h2>
+            <p>Building toward a clear deadline: 90% parsing accuracy within 60 days, validated on real focus group conversations. That unlocks Tam's endorsement and the official SDSU/Fowler pilot.</p>
+            <p>Running parallel: finishing my final semester (7 classes), managing part-time work, leading the team. Not overwhelmed—actually energized. Multiple small wins (Baylor Top 50, incorporation, Merlyn's commitment) keeping momentum real.</p>
+            <p style="margin-top: 32px;">The path is clear now. Not building a feature-rich app. Building an accuracy engine with institutional credibility that becomes irreplaceable in degree advising.</p>
+            <div class="quote">I thought I needed beautiful conversation. I actually needed perfect parsing.</div>
+            <div class="page-number">5 / 5</div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
