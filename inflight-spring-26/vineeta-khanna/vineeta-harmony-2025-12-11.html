@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="tidbit-type" content="founder">
+  <meta name="tidbit-subject" content="Vineeta Khanna">
+  <meta name="tidbit-company" content="Harmony Health AI">
+  <meta name="tidbit-date" content="2025-12-11">
+  <meta name="tidbit-period" content="2025-W50">
+  <title>Vineeta Khanna | Harmony Health AI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, sans-serif; background: #0f0f0f; color: #e5e5e5; line-height: 1.6; }
+    
+    .slide {
+      min-height: 100vh;
+      scroll-snap-align: start;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      position: relative;
+    }
+    
+    .card {
+      max-width: 600px;
+      width: 100%;
+      padding: 2.5rem;
+      border: 1px solid #2a2a2a;
+      border-radius: 12px;
+      background: #1a1a1a;
+    }
+    
+    .page-num {
+      position: absolute;
+      bottom: 2rem;
+      right: 2rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: #6b7280;
+    }
+    
+    .label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: #6b7280;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+    }
+    
+    h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+    h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; color: #f5f5f5; }
+    h3 { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.75rem; }
+    
+    p { margin-bottom: 1rem; color: #d1d5db; }
+    
+    .highlight { color: #60a5fa; }
+    .decision { color: #34d399; }
+    .tension { color: #f97316; }
+    
+    .subtitle { font-size: 1.1rem; color: #9ca3af; margin-bottom: 2rem; }
+    .scroll-hint { font-size: 0.9rem; color: #6b7280; margin-top: 2rem; }
+    
+    .stat-row {
+      display: flex;
+      gap: 2rem;
+      margin: 1.5rem 0;
+    }
+    
+    .stat {
+      text-align: center;
+    }
+    
+    .stat-value {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #60a5fa;
+    }
+    
+    .stat-label {
+      font-size: 0.75rem;
+      color: #6b7280;
+      text-transform: uppercase;
+    }
+    
+    .quote {
+      border-left: 3px solid #60a5fa;
+      padding-left: 1.5rem;
+      font-style: italic;
+      color: #9ca3af;
+      margin-top: 1.5rem;
+    }
+    
+    ul {
+      list-style: none;
+      margin: 1rem 0;
+    }
+    
+    ul li {
+      padding-left: 1.5rem;
+      position: relative;
+      margin-bottom: 0.75rem;
+      color: #d1d5db;
+    }
+    
+    ul li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: #6b7280;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Slide 1: Cover -->
+  <section class="slide">
+    <div class="card" style="text-align: center;">
+      <h1>Vineeta Khanna</h1>
+      <p class="subtitle">Harmony Health AI</p>
+      <p style="color: #6b7280;">December 11, 2025</p>
+      <p class="scroll-hint">↓ scroll</p>
+    </div>
+    <div class="page-num">1/5</div>
+  </section>
+
+  <!-- Slide 2: Where I Started -->
+  <section class="slide">
+    <div class="card">
+      <p class="label">Where I Started</p>
+      <h2>Thesis First, Then Customers</h2>
+      <p>I had to pause everything for my thesis defense. <span class="highlight">20 days of radio silence</span> from November 21 to December 10.</p>
+      <p>Before that, I'd gotten my <span class="decision">first paying customer</span> on November 14 - just $1, but it was real money for real value. I was analyzing menstrual pad images to help women identify early PCOS indicators.</p>
+      <p>But then I got stuck at 1/10 customers. Reddit outreach wasn't working. I had <span class="tension">3 girls who said they'd pay if it was anonymous</span>, but I never tested if that was the real blocker.</p>
+    </div>
+    <div class="page-num">2/5</div>
+  </section>
+
+  <!-- Slide 3: What I Discovered -->
+  <section class="slide">
+    <div class="card">
+      <p class="label">What I Discovered</p>
+      <h2>Anonymity Might Be an Excuse</h2>
+      <div class="stat-row">
+        <div class="stat">
+          <div class="stat-value">2</div>
+          <div class="stat-label">paying customers</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">$1</div>
+          <div class="stat-label">each</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">0</div>
+          <div class="stat-label">anonymous systems built</div>
+        </div>
+      </div>
+      <p>The day after my thesis defense, I got <span class="decision">customer #2</span>. She's someone who already has PCOS and wants to monitor her symptoms.</p>
+      <p>Here's the thing: <span class="highlight">I got her without building any anonymous upload system.</span> She didn't need anonymity. She needed the service.</p>
+      <p style="color: #f97316;">So maybe those 3 girls saying "I'll pay if anonymous" is just an excuse? Or maybe it's real. I won't know until I test it.</p>
+    </div>
+    <div class="page-num">3/5</div>
+  </section>
+
+  <!-- Slide 4: The Real Opportunity -->
+  <section class="slide">
+    <div class="card">
+      <p class="label">The Real Opportunity</p>
+      <h2>Test the Blocker, Don't Build Around It</h2>
+      <p>I keep falling into the same pattern:</p>
+      <ul>
+        <li><span class="tension">October:</span> Wanted to build a website before getting customers</li>
+        <li><span class="tension">November:</span> Wanted to build anonymous upload before asking for payment</li>
+        <li><span class="tension">December:</span> Saying I need to "work on the anonymous part"</li>
+      </ul>
+      <p>But I can hack anonymity with existing tools:</p>
+      <ul>
+        <li><span class="decision">Google Form</span> with no email collection + code word</li>
+        <li><span class="decision">Venmo/CashApp</span> payment with just their code</li>
+        <li><span class="decision">Results delivered</span> via code word lookup</li>
+      </ul>
+      <p>No building required. Just testing.</p>
+    </div>
+    <div class="page-num">4/5</div>
+  </section>
+
+  <!-- Slide 5: Where I'm At -->
+  <section class="slide">
+    <div class="card">
+      <p class="label">Where I'm At</p>
+      <h2>8 Days to Prove Self-Generation Works</h2>
+      <p><span class="highlight">December 20:</span> Empathy lab partnerships kick in and they'll start connecting me with nurses and women.</p>
+      <p>But if I wait for institutional partnerships, that becomes my next excuse. I need to prove I can generate customers myself.</p>
+      <ul>
+        <li>Message those 3 girls TODAY with hacky anonymity solution</li>
+        <li>Get to 5/10 customers before Dec 20</li>
+        <li>Stop building, start testing</li>
+      </ul>
+      <div class="quote">
+        "I thought I needed to build an anonymous system. I actually need to test if anonymity even matters."
+      </div>
+    </div>
+    <div class="page-num">5/5</div>
+  </section>
+
+  <script>
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+        window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+      } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+        window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+      }
+    });
+  </script>
+</body>
+</html>
