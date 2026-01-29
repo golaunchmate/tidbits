@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="tidbit-type" content="team">
+    <meta name="tidbit-subject" content="LaunchMate Team">
+    <meta name="tidbit-date" content="2026-01-29">
+    <meta name="tidbit-period" content="2026-W05">
+    <title>LaunchMate Team | Week 5</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #0f0f0f; color: #e5e5e5; line-height: 1.6; }
+        .slide { min-height: 100vh; scroll-snap-align: start; display: flex; flex-direction: column; justify-content: center; padding: 2rem; max-width: 800px; margin: 0 auto; position: relative; }
+        .page-num { position: absolute; top: 2rem; right: 2rem; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #6b7280; }
+        h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+        h2 { font-size: 1.75rem; font-weight: 600; margin-bottom: 1rem; color: #60a5fa; }
+        h3 { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; }
+        p { margin-bottom: 1rem; }
+        .subtitle { font-size: 1.25rem; color: #9ca3af; margin-bottom: 2rem; }
+        .label { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+        .highlight { color: #60a5fa; }
+        .decision { color: #34d399; }
+        .tension { color: #f97316; }
+        .card { background: #1a1a1a; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; }
+        .stat-row { display: flex; gap: 2rem; margin: 1.5rem 0; }
+        .stat { text-align: center; }
+        .stat-value { font-size: 2.5rem; font-weight: 700; color: #60a5fa; }
+        .stat-label { font-size: 0.875rem; color: #9ca3af; }
+        .timeline { border-left: 2px solid #2a2a2a; padding-left: 1.5rem; margin: 1rem 0; }
+        .timeline-item { margin-bottom: 1.5rem; }
+        .timeline-item h3 { color: #60a5fa; }
+        .scroll-hint { text-align: center; color: #6b7280; font-size: 0.875rem; margin-top: 2rem; }
+        ul { margin-left: 1.5rem; margin-bottom: 1rem; }
+        li { margin-bottom: 0.5rem; }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <span class="page-num">1/5</span>
+        <h1>LaunchMate Team</h1>
+        <p class="subtitle">Week 5: Boot camp prep, IT demo, and the first founder wins</p>
+        <p class="scroll-hint">↓ scroll</p>
+    </div>
+
+    <div class="slide">
+        <span class="page-num">2/5</span>
+        <p class="label">The Challenge</p>
+        <h2>80 Students. One Friday.</h2>
+        <p>Boot camp is this week. We're giving every student their own Letta agent—not shared team agents, individual ones tagged by team number.</p>
+        <div class="card">
+            <p class="label">The Tension</p>
+            <p><span class="tension">Can we handle the load?</span> Vercel scaling and Letta concurrent connections are unknowns. Craig added his Claude API key to Letta to make sure we don't run out of funding mid-demo.</p>
+        </div>
+        <p><span class="decision">Decision:</span> Tidbits will be generated via a skill embedded in each agent, not the pipeline. Simpler, more reliable.</p>
+        <p>Michael is point person for boot camp readiness.</p>
+    </div>
+
+    <div class="slide">
+        <span class="page-num">3/5</span>
+        <p class="label">The Opportunity</p>
+        <h2>IT Demo: AWS Rep in the Room</h2>
+        <p>Friday 2:30-3:30pm—head of IT is bringing an AWS representative to see LaunchMate.</p>
+        <p>Cameron and Michael will run the demo. Craig might pop in briefly between boot camp sessions.</p>
+        <div class="card">
+            <p class="label">Why It Matters</p>
+            <p>This could open doors for <span class="highlight">infrastructure support</span> and campus-wide visibility. Two demos in one day—high stakes, high reward.</p>
+        </div>
+    </div>
+
+    <div class="slide">
+        <span class="page-num">4/5</span>
+        <p class="label">The Win</p>
+        <h2>Founders Are Actually Using It</h2>
+        <div class="stat-row">
+            <div class="stat">
+                <div class="stat-value">4</div>
+                <div class="stat-label">founders onboarded</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">1</div>
+                <div class="stat-label">week in</div>
+            </div>
+        </div>
+        <p>Billy received his first tidbit and <span class="decision">loved it</span>. Craig is manually creating tidbits for each founder to train them on the format.</p>
+        <div class="card">
+            <p class="label">Kavindi Update</p>
+            <p>Agents discovered Laura had already built an outreach agent for her. Now discussing a Reddit scraping tool for mom-and-pop restaurant discovery.</p>
+        </div>
+    </div>
+
+    <div class="slide">
+        <span class="page-num">5/5</span>
+        <p class="label">The Arc</p>
+        <h2>Where We're At</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3>Building for scale</h3>
+                <p>80 individual agents for boot camp, each with tidbit skill baked in</p>
+            </div>
+            <div class="timeline-item">
+                <h3>Proving value</h3>
+                <p>4 founders using LaunchMate daily, positive feedback on tidbits</p>
+            </div>
+            <div class="timeline-item">
+                <h3>Opening doors</h3>
+                <p>IT demo could unlock AWS support and campus visibility</p>
+            </div>
+        </div>
+        <div class="card">
+            <p style="font-style: italic; color: #9ca3af;">"We're past the 'will anyone use this?' phase. Now it's 'can we handle everyone using this?'"</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
