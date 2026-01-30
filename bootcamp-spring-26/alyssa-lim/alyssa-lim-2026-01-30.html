@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="tidbit-type" content="founder">
     <meta name="tidbit-subject" content="Alyssa Lim">
-    <meta name="tidbit-company" content="Bootcamp Team">
+    <meta name="tidbit-company" content="Visa Tax Help">
     <meta name="tidbit-date" content="2026-01-30">
     <meta name="tidbit-period" content="2026-W05">
-    <title>Alyssa Lim | Bootcamp Discovery</title>
+    <title>Alyssa Lim | Visa Tax Help</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -24,7 +24,7 @@
         .highlight { color: #60a5fa; }
         .decision { color: #34d399; }
         .tension { color: #f97316; }
-        .stat-row { display: flex; gap: 2rem; margin: 1.5rem 0; }
+        .stat-row { display: flex; gap: 2rem; margin: 1.5rem 0; flex-wrap: wrap; }
         .stat { text-align: center; }
         .stat-value { font-size: 2.5rem; font-weight: 700; color: #60a5fa; }
         .stat-label { font-size: 0.875rem; color: #6b7280; }
@@ -34,6 +34,9 @@
         .arrow { color: #6b7280; }
         .scroll-hint { color: #6b7280; font-size: 0.875rem; margin-top: 2rem; }
         .quote { border-left: 3px solid #60a5fa; padding-left: 1rem; font-style: italic; color: #9ca3af; margin: 1.5rem 0; }
+        .link { color: #60a5fa; text-decoration: none; }
+        .link:hover { text-decoration: underline; }
+        .check { color: #34d399; }
     </style>
 </head>
 <body>
@@ -42,8 +45,8 @@
     <div class="card">
         <p class="label">ZIP Launchpad Bootcamp</p>
         <h1>Alyssa Lim</h1>
-        <p class="subtitle">January 30, 2026</p>
-        <p style="font-size: 1.25rem; margin-top: 2rem;">The team that couldn't stop discovering problems</p>
+        <p class="subtitle">Visa Tax Help · January 30, 2026</p>
+        <p style="font-size: 1.25rem; margin-top: 2rem;">From 5 problems to 1 prototype in a single day</p>
         <p class="scroll-hint">↓ scroll</p>
     </div>
     <div class="page-num">1/5</div>
@@ -51,49 +54,51 @@
 
 <section class="slide">
     <div class="card">
-        <p class="label">Where We Started</p>
-        <h2>Go find <span class="highlight">one problem</span></h2>
-        <p>Simple assignment: interview people, find a real problem, build a solution.</p>
-        <p>We took "discovery" seriously.</p>
-        <div class="stat-row">
-            <div class="stat">
-                <div class="stat-value">5</div>
-                <div class="stat-label">interviews conducted</div>
-            </div>
-            <div class="stat">
-                <div class="stat-value">5</div>
-                <div class="stat-label">different problem spaces</div>
-            </div>
-        </div>
+        <p class="label">The Discovery</p>
+        <h2>We interviewed <span class="highlight">everyone</span></h2>
+        <p>5 interviews. 5 completely different problem spaces:</p>
+        <ul>
+            <li>Lonely journalism student wanting friends</li>
+            <li>Engineering students abandoned by professors</li>
+            <li>Nursing students who can't stand out</li>
+            <li>Fraternity members surviving through peer support</li>
+            <li>International professor paying <span class="highlight">$600/year</span> for tax help nobody understands</li>
+        </ul>
+        <p class="tension">We had to pick one.</p>
     </div>
     <div class="page-num">2/5</div>
 </section>
 
 <section class="slide">
     <div class="card">
-        <p class="label">What We Found</p>
-        <h2>Problems <span class="tension">everywhere</span></h2>
+        <p class="label">The Decision</p>
+        <h2>We found a <span class="decision">real business</span></h2>
+        <p>Amanda, an anthropology professor on an H1B visa, told us:</p>
+        <div class="quote">"Generally intelligent people with no tax comprehension" — describing her international faculty colleagues</div>
+        <p>The pain was clear:</p>
         <ul>
-            <li><span class="highlight">Journalism student:</span> "I want a dating app for friends"</li>
-            <li><span class="highlight">Engineering student:</span> "Professors are impatient, I rely on TAs"</li>
-            <li><span class="highlight">Nursing student:</span> "Can't stand out, system feels rigged"</li>
-            <li><span class="highlight">Fraternity member:</span> "Peer support is the only way to survive"</li>
-            <li><span class="highlight">International professor:</span> "I pay $600 for taxes nobody understands"</li>
+            <li><span class="tension">✗</span> Few CPAs understand H1B tax rules</li>
+            <li><span class="tension">✗</span> Contradictory info online</li>
+            <li><span class="tension">✗</span> Stakes are high (visa status)</li>
+            <li><span class="check">✓</span> Already paying $400-600/year</li>
         </ul>
-        <p class="tension">Pattern emerged: students without peer networks struggle academically.</p>
+        <p><span class="decision">Underserved market + willingness to pay = go.</span></p>
     </div>
     <div class="page-num">3/5</div>
 </section>
 
 <section class="slide">
     <div class="card">
-        <p class="label">The Tension</p>
-        <h2>Too many problems, <span class="tension">not enough time</span></h2>
-        <p>Three interviews pointed to the same insight:</p>
-        <div class="quote">"Professors don't care → students with peer networks survive → students without them struggle"</div>
-        <p>The fraternity already solved this — <span class="decision">but it's gatekept behind Greek life.</span></p>
-        <p>Meanwhile, the professor interview revealed a completely different business: <span class="highlight">international faculty tax services</span> — niche, underserved, high willingness to pay.</p>
-        <p class="tension">Decision fork: validated pattern vs. real business opportunity.</p>
+        <p class="label">What We Built</p>
+        <h2><span class="highlight">visa-tax-help.lovable.app</span></h2>
+        <p>A CPA matching platform for H-1B visa holders:</p>
+        <ul>
+            <li><span class="check">✓</span> Tax savings calculator (~$8,500 potential)</li>
+            <li><span class="check">✓</span> 3-step matching flow</li>
+            <li><span class="check">✓</span> CPA profiles with H-1B specialties</li>
+            <li><span class="check">✓</span> Trust signals and testimonials</li>
+        </ul>
+        <p style="margin-top: 1.5rem;"><a class="link" href="https://visa-tax-help.lovable.app" target="_blank">→ View the prototype</a></p>
     </div>
     <div class="page-num">4/5</div>
 </section>
@@ -101,14 +106,11 @@
 <section class="slide">
     <div class="card">
         <p class="label">Where We're At</p>
-        <h2>Choosing our lane</h2>
-        <p>Top contenders:</p>
-        <ul>
-            <li><span class="arrow">→</span> <strong>Peer Academic Support</strong> — most validated, buildable today</li>
-            <li><span class="arrow">→</span> <strong>International Faculty Taxes</strong> — real pain, clear revenue</li>
-        </ul>
-        <p>Next step: <span class="decision">Pick one and build.</span></p>
-        <div class="quote" style="margin-top: 2rem;">"We thought we needed one good interview. We actually needed to stop interviewing and start deciding."</div>
+        <h2>Ready to <span class="decision">validate</span></h2>
+        <p>Next step: Get this in front of Amanda and ask:</p>
+        <div class="quote">"If this existed, would you use it? What's missing?"</div>
+        <p>The real test: Will she switch from her current CPA?</p>
+        <div class="quote" style="margin-top: 2rem;">"We thought we needed to find the perfect problem. We actually needed to pick one and build."</div>
     </div>
     <div class="page-num">5/5</div>
 </section>
