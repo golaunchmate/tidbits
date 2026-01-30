@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="tidbit-type" content="founder">
+    <meta name="tidbit-subject" content="Brian Sussman">
+    <meta name="tidbit-company" content="Class Advisor App">
+    <meta name="tidbit-date" content="2026-01-30">
+    <meta name="tidbit-period" content="2026-W05">
+    <title>Brian Sussman - Bootcamp Tidbit</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #0f0f0f; color: #e5e5e5; line-height: 1.6; }
+        
+        .slide {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+        }
+        
+        .card {
+            max-width: 600px;
+            width: 100%;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            padding: 3rem;
+            background: #151515;
+        }
+        
+        .page-num {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #4a4a4a;
+        }
+        
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+        
+        h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+        h2 { font-size: 1.75rem; font-weight: 600; margin-bottom: 1.5rem; }
+        h3 { font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; }
+        
+        p { margin-bottom: 1rem; color: #b0b0b0; }
+        
+        .highlight { color: #60a5fa; }
+        .decision { color: #34d399; }
+        .tension { color: #f97316; }
+        
+        .subtitle { color: #6b7280; font-size: 1.1rem; }
+        .scroll-hint { color: #4a4a4a; margin-top: 2rem; font-size: 0.9rem; }
+        
+        .quote {
+            border-left: 3px solid #60a5fa;
+            padding-left: 1.5rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: #9ca3af;
+        }
+        
+        .stat-row {
+            display: flex;
+            gap: 2rem;
+            margin: 1.5rem 0;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #60a5fa;
+        }
+        
+        .stat-label {
+            font-size: 0.85rem;
+            color: #6b7280;
+        }
+        
+        ul {
+            list-style: none;
+            margin: 1rem 0;
+        }
+        
+        ul li {
+            padding-left: 1.5rem;
+            position: relative;
+            margin-bottom: 0.75rem;
+            color: #b0b0b0;
+        }
+        
+        ul li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #60a5fa;
+        }
+        
+        .closing-quote {
+            background: #1a1a2e;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            text-align: center;
+            font-size: 1.1rem;
+            color: #e5e5e5;
+        }
+    </style>
+</head>
+<body>
+    <!-- Slide 1: Cover -->
+    <section class="slide">
+        <div class="card" style="text-align: center;">
+            <p class="label">ZIP Launchpad Bootcamp</p>
+            <h1>Brian Sussman</h1>
+            <p class="subtitle">From 8-Feature App Dream → Focused Problem Discovery</p>
+            <p class="subtitle" style="margin-top: 0.5rem;">January 30, 2026</p>
+            <p class="scroll-hint">scroll ↓</p>
+        </div>
+        <div class="page-num">1/5</div>
+    </section>
+
+    <!-- Slide 2: Where I Started -->
+    <section class="slide">
+        <div class="card">
+            <p class="label">Where I Started</p>
+            <h2>The <span class="tension">Everything App</span></h2>
+            <p>Walked in with a vision: an app connected to my.SDSU that does <em>everything</em>.</p>
+            <ul>
+                <li>Builds ideal class schedules</li>
+                <li>Connects degree eval to RateMyProfessor</li>
+                <li>Links to Canvas and ARC app</li>
+                <li>Campus event updates</li>
+                <li>Social features beyond Greek life</li>
+            </ul>
+            <p style="color: #f97316;">Problem: 8 features, zero validated pain point.</p>
+        </div>
+        <div class="page-num">2/5</div>
+    </section>
+
+    <!-- Slide 3: What I Discovered -->
+    <section class="slide">
+        <div class="card">
+            <p class="label">What I Discovered</p>
+            <h2>Students Are <span class="highlight">Flying Blind</span></h2>
+            <p>Interviewed a pre-PA junior, music students, and a biology major. Same pattern emerged:</p>
+            <div class="quote">"Didn't know which route to take initially"</div>
+            <div class="quote">"Unprepared for first semester workload"</div>
+            <div class="quote">"Course difficulty is either really hard or really easy — no middle ground"</div>
+            <div class="stat-row">
+                <div>
+                    <div class="stat-value">PRE</div>
+                    <div class="stat-label">where the friction lives</div>
+                </div>
+                <div>
+                    <div class="stat-value">3+</div>
+                    <div class="stat-label">sites students juggle</div>
+                </div>
+            </div>
+            <p>The real problem: <span class="decision">students don't know what they're getting into until it's too late.</span></p>
+        </div>
+        <div class="page-num">3/5</div>
+    </section>
+
+    <!-- Slide 4: The Real Opportunity -->
+    <section class="slide">
+        <div class="card">
+            <p class="label">The Real Opportunity</p>
+            <h2><span class="highlight">Yik Yak</span> meets <span class="highlight">RateMyProfessor</span></h2>
+            <p>Anonymous, real-time class advice from students in the trenches right now.</p>
+            <ul>
+                <li><strong>Anonymous</strong> = brutally honest about workload</li>
+                <li><strong>Campus-specific</strong> = relevant to SDSU requirements</li>
+                <li><strong>Real-time</strong> = current students, not 3-year-old reviews</li>
+            </ul>
+            <p style="margin-top: 1.5rem;"><span class="decision">✓</span> Why it's different from RMP:</p>
+            <p style="color: #b0b0b0; font-size: 0.95rem;">"Prof just curved the midterm 🙌" beats a stale 2023 review.</p>
+        </div>
+        <div class="page-num">4/5</div>
+    </section>
+
+    <!-- Slide 5: Where I'm At -->
+    <section class="slide">
+        <div class="card">
+            <p class="label">Where I'm At</p>
+            <h2>Ready to <span class="decision">Prototype</span></h2>
+            <ul>
+                <li>Validated the problem with real interviews</li>
+                <li>Narrowed from 8 features to 1 core value prop</li>
+                <li>Clear pitch: "Find out what you're actually signing up for"</li>
+            </ul>
+            <p>Next: build simplest version and test with students today.</p>
+            <div class="closing-quote">
+                "I thought I needed to build everything.<br>I actually needed to solve one thing well."
+            </div>
+        </div>
+        <div class="page-num">5/5</div>
+    </section>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
