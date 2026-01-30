@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="tidbit-type" content="founder">
+    <meta name="tidbit-subject" content="Matt Levie">
+    <meta name="tidbit-company" content="TenantPath">
+    <meta name="tidbit-date" content="2026-01-30">
+    <meta name="tidbit-period" content="2026-W05">
+    <title>Matt Levie | TenantPath | Bootcamp</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #0f0f0f; color: #e5e5e5; line-height: 1.6; }
+        
+        .slide {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+        }
+        
+        .card {
+            max-width: 600px;
+            width: 100%;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            padding: 3rem;
+        }
+        
+        .page-num {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #4a4a4a;
+        }
+        
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+        
+        h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+        h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; color: #e5e5e5; }
+        h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; }
+        
+        p { margin-bottom: 1rem; color: #a1a1a1; }
+        
+        .highlight { color: #60a5fa; }
+        .decision { color: #34d399; }
+        .tension { color: #f97316; }
+        
+        .subtitle { color: #6b7280; font-size: 1.1rem; margin-bottom: 2rem; }
+        .scroll-hint { color: #4a4a4a; font-size: 0.9rem; margin-top: 2rem; }
+        
+        .quote-block {
+            border-left: 3px solid #f97316;
+            padding-left: 1.5rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: #e5e5e5;
+        }
+        
+        .stat-row {
+            display: flex;
+            gap: 2rem;
+            margin: 1.5rem 0;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #60a5fa;
+        }
+        
+        .stat-label {
+            font-size: 0.8rem;
+            color: #6b7280;
+            text-transform: uppercase;
+        }
+        
+        ul {
+            list-style: none;
+            margin: 1rem 0;
+        }
+        
+        ul li {
+            padding-left: 1.5rem;
+            position: relative;
+            margin-bottom: 0.75rem;
+            color: #a1a1a1;
+        }
+        
+        ul li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #4a4a4a;
+        }
+        
+        .closing-quote {
+            background: #1a1a1a;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            font-style: italic;
+            color: #e5e5e5;
+            text-align: center;
+        }
+        
+        .check { color: #34d399; }
+        .x { color: #ef4444; }
+    </style>
+</head>
+<body>
+    <!-- Slide 1: Cover -->
+    <section class="slide">
+        <div class="card" style="text-align: center;">
+            <p class="label">ZIP Launchpad Bootcamp</p>
+            <h1>Matt Levie</h1>
+            <p class="subtitle">TenantPath</p>
+            <p style="color: #4a4a4a;">January 30, 2026</p>
+            <p class="scroll-hint">↓ scroll</p>
+        </div>
+        <span class="page-num">1/5</span>
+    </section>
+
+    <!-- Slide 2: The Problem -->
+    <section class="slide">
+        <div class="card">
+            <p class="label">The Interview</p>
+            <h2>Nick's Elevator Problem</h2>
+            <p>Met Nick — kinesiology senior living on the <span class="highlight">5th floor</span>. Both elevators in his building have been broken since December.</p>
+            <p>He went door-to-door organizing neighbors. Found a lawyer. Did everything right.</p>
+            <div class="quote-block">
+                "All that work accumulated to nothing. They just see us as money."
+            </div>
+            <p>The lawyer told him: <span class="tension">lease doesn't guarantee elevator access</span>. No legal recourse. Dead end.</p>
+        </div>
+        <span class="page-num">2/5</span>
+    </section>
+
+    <!-- Slide 3: The Insight -->
+    <section class="slide">
+        <div class="card">
+            <p class="label">The Insight</p>
+            <h2>The Real Problem Isn't Elevators</h2>
+            <p>Nick's frustration wasn't really about stairs. It was about <span class="highlight">powerlessness</span>.</p>
+            <ul>
+                <li><span class="tension">Weeks spent</span> finding a lawyer</li>
+                <li>Only to learn he had <span class="tension">no legal standing</span></li>
+                <li>Community organized but <span class="tension">no way to apply pressure</span></li>
+            </ul>
+            <div class="quote-block">
+                "How do we take that community aspect and put that force towards making a message?"
+            </div>
+            <p style="margin-bottom: 0;"><strong>Tenants have no playbook for what to do when the law can't help.</strong></p>
+        </div>
+        <span class="page-num">3/5</span>
+    </section>
+
+    <!-- Slide 4: The Solution -->
+    <section class="slide">
+        <div class="card">
+            <p class="label">The Solution</p>
+            <h2>TenantPath</h2>
+            <p><span class="highlight">Legal triage that doesn't leave you empty-handed.</span></p>
+            <ul>
+                <li>Describe your issue, upload your lease</li>
+                <li>AI checks state + local housing codes in <span class="decision">minutes, not weeks</span></li>
+                <li>Legal standing? → Connect to tenant lawyers</li>
+                <li>No legal standing? → <span class="decision">Plan B playbook</span>: organize, escalate, apply pressure</li>
+            </ul>
+            <div class="stat-row">
+                <div>
+                    <div class="stat-value">5 min</div>
+                    <div class="stat-label">vs weeks to lawyer</div>
+                </div>
+                <div>
+                    <div class="stat-value">Plan B</div>
+                    <div class="stat-label">when law fails</div>
+                </div>
+            </div>
+        </div>
+        <span class="page-num">4/5</span>
+    </section>
+
+    <!-- Slide 5: Validation -->
+    <section class="slide">
+        <div class="card">
+            <p class="label">Where I'm At</p>
+            <h2>Prototype Built, Ready to Validate</h2>
+            <p>Built a GPT prompt that does the legal assessment. Tested with Nick's situation:</p>
+            <ul>
+                <li class="check">✓ Correctly identified no habitability claim</li>
+                <li class="check">✓ Cited real CA housing codes</li>
+                <li class="check">✓ Provided Plan B pressure tactics</li>
+            </ul>
+            <p><strong>Next step:</strong> Show Nick the output. Ask if getting this answer in 5 minutes would've been valuable.</p>
+            <div class="closing-quote">
+                "I thought tenants needed legal help.<br>They actually need a path forward — legal or not."
+            </div>
+        </div>
+        <span class="page-num">5/5</span>
+    </section>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
