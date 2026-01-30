@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="tidbit-type" content="team">
+    <meta name="tidbit-subject" content="Michael Hayes">
+    <meta name="tidbit-date" content="2026-01-30">
+    <meta name="tidbit-period" content="2026-W05">
+    <title>Michael Hayes · Week 5</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #0f0f0f; color: #e5e5e5; line-height: 1.6; }
+        
+        .slide {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 3rem 2rem;
+            position: relative;
+        }
+        
+        .content { max-width: 600px; margin: 0 auto; width: 100%; }
+        
+        .page-num {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #4b5563;
+        }
+        
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+        
+        h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+        h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; color: #f3f4f6; }
+        h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.75rem; }
+        
+        p { margin-bottom: 1rem; color: #d1d5db; }
+        
+        .highlight { color: #60a5fa; }
+        .decision { color: #34d399; }
+        .tension { color: #f97316; }
+        
+        .subtitle { font-size: 1.1rem; color: #9ca3af; margin-bottom: 2rem; }
+        .scroll-hint { font-size: 0.875rem; color: #6b7280; margin-top: 3rem; }
+        
+        .stat-row {
+            display: flex;
+            gap: 2rem;
+            margin: 1.5rem 0;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #60a5fa;
+        }
+        
+        .stat-label {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+        
+        .card {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin-bottom: 1rem;
+        }
+        
+        .list-item {
+            padding-left: 1.5rem;
+            position: relative;
+            margin-bottom: 0.75rem;
+            color: #d1d5db;
+        }
+        
+        .list-item::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #6b7280;
+        }
+        
+        .quote {
+            font-size: 1.25rem;
+            font-style: italic;
+            color: #9ca3af;
+            border-left: 3px solid #60a5fa;
+            padding-left: 1.5rem;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Slide 1: Cover -->
+    <section class="slide">
+        <div class="content">
+            <p class="label">Week 5 · Jan 27-30</p>
+            <h1>Michael Hayes</h1>
+            <p class="subtitle">Scaling LaunchMate for 80 students in one room</p>
+            <p class="scroll-hint">↓ scroll</p>
+        </div>
+        <span class="page-num">1/5</span>
+    </section>
+
+    <!-- Slide 2: The Challenge -->
+    <section class="slide">
+        <div class="content">
+            <p class="label">The Setup</p>
+            <h2>Bootcamp is Friday. <span class="tension">80 students. 20 teams.</span></h2>
+            <p>We've been running LaunchMate with a handful of founders. Now we're about to stress-test it with everyone in one room, all hitting the system at once.</p>
+            <div class="stat-row">
+                <div>
+                    <div class="stat-value">80</div>
+                    <div class="stat-label">individual accounts</div>
+                </div>
+                <div>
+                    <div class="stat-value">80</div>
+                    <div class="stat-label">Letta agents</div>
+                </div>
+                <div>
+                    <div class="stat-value">20</div>
+                    <div class="stat-label">teams</div>
+                </div>
+            </div>
+            <p>Question: Can our stack handle it?</p>
+        </div>
+        <span class="page-num">2/5</span>
+    </section>
+
+    <!-- Slide 3: The Decision -->
+    <section class="slide">
+        <div class="content">
+            <p class="label">The Decision</p>
+            <h2>One agent per student, tagged by team</h2>
+            <p>We considered shared team agents, but landed on <span class="highlight">individual agents with team tags</span>. Each student gets their own context, their own memory, their own conversation history.</p>
+            <div class="card">
+                <p class="label">Why it matters</p>
+                <p style="margin-bottom: 0;">When a student asks for help, the agent knows <em>their</em> problem, <em>their</em> interview notes, <em>their</em> solution approaches. Not mixed with 4 teammates.</p>
+            </div>
+            <p>The tidbit skill gets embedded in each agent too—so at the end of bootcamp, every student can generate their own progress summary.</p>
+        </div>
+        <span class="page-num">3/5</span>
+    </section>
+
+    <!-- Slide 4: The Risks -->
+    <section class="slide">
+        <div class="content">
+            <p class="label">The Risks</p>
+            <h2><span class="tension">Three systems that could buckle</span></h2>
+            <div class="list-item"><strong>Vercel</strong> — Can our serverless functions handle 80 concurrent users? Craig's funding the scaling.</div>
+            <div class="list-item"><strong>Letta API</strong> — 80 agents making calls simultaneously. Messaging their team about limits.</div>
+            <div class="list-item"><strong>Supabase</strong> — Database reads/writes with everyone logged in at once.</div>
+            <p style="margin-top: 1.5rem;">I'm point person on making sure none of these break during the event.</p>
+        </div>
+        <span class="page-num">4/5</span>
+    </section>
+
+    <!-- Slide 5: Where I'm At -->
+    <section class="slide">
+        <div class="content">
+            <p class="label">Where I'm At</p>
+            <h2><span class="decision">Building the team selection UI</span></h2>
+            <div class="list-item">Students create account → pick team 1-20 → get assigned agent</div>
+            <div class="list-item">Checking Vercel scaling options this week</div>
+            <div class="list-item">Reaching out to Letta about API headroom</div>
+            <div class="list-item">Demo Friday afternoon with head of IT + AWS rep</div>
+            <p class="quote">"We've proven it works with a few founders. Friday we find out if it works at scale."</p>
+        </div>
+        <span class="page-num">5/5</span>
+    </section>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
