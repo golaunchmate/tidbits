@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="tidbit-type" content="founder">
+    <meta name="tidbit-subject" content="Julrenza Robert Flores">
+    <meta name="tidbit-company" content="MedPath">
+    <meta name="tidbit-date" content="2026-01-30">
+    <meta name="tidbit-period" content="2026-W05">
+    <title>Julrenza | Startup Bootcamp | Jan 30, 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #0f0f0f; color: #e5e5e5; line-height: 1.6; }
+        
+        .slide {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+        }
+        
+        .card {
+            max-width: 600px;
+            width: 100%;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            padding: 2.5rem;
+            background: #0f0f0f;
+        }
+        
+        .page-num {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #4b5563;
+        }
+        
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+        
+        .highlight { color: #60a5fa; }
+        .decision { color: #34d399; }
+        .tension { color: #f97316; }
+        
+        h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+        h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; color: #e5e5e5; }
+        h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.75rem; }
+        
+        p { margin-bottom: 1rem; color: #d1d5db; }
+        
+        .subtitle { color: #9ca3af; font-size: 1.1rem; margin-bottom: 1.5rem; }
+        .scroll-hint { color: #4b5563; font-size: 0.9rem; margin-top: 2rem; }
+        
+        .stat-row {
+            display: flex;
+            gap: 2rem;
+            margin: 1.5rem 0;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #60a5fa;
+        }
+        
+        .stat-label {
+            font-size: 0.85rem;
+            color: #6b7280;
+        }
+        
+        .quote {
+            border-left: 3px solid #60a5fa;
+            padding-left: 1rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: #9ca3af;
+        }
+        
+        .closing-quote {
+            background: #1a1a2e;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            text-align: center;
+        }
+        
+        .closing-quote p {
+            font-size: 1.1rem;
+            color: #e5e5e5;
+            margin: 0;
+        }
+        
+        ul {
+            list-style: none;
+            margin: 1rem 0;
+        }
+        
+        ul li {
+            padding-left: 1.5rem;
+            position: relative;
+            margin-bottom: 0.5rem;
+            color: #d1d5db;
+        }
+        
+        ul li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #60a5fa;
+        }
+    </style>
+</head>
+<body>
+    <!-- Slide 1: Cover -->
+    <section class="slide">
+        <div class="card" style="text-align: center;">
+            <p class="label">ZIP Launchpad Startup Bootcamp</p>
+            <h1>Julrenza Robert Flores</h1>
+            <p class="subtitle">From Two Interviews to One Clear Problem</p>
+            <p style="color: #6b7280; margin-top: 2rem;">January 30, 2026</p>
+            <p class="scroll-hint">scroll ↓</p>
+        </div>
+        <span class="page-num">1/5</span>
+    </section>
+
+    <!-- Slide 2: Where I Started -->
+    <section class="slide">
+        <div class="card">
+            <p class="label">Where I Started</p>
+            <h2>Two interviews, two different problems</h2>
+            <p>I interviewed <span class="highlight">Mika</span>, a freshman commuter who hates paying for study apps, and <span class="highlight">Jenny</span>, a senior pre-med student drowning in requirements.</p>
+            <p>Mika's problem felt small — she just uses free tools instead. But Jenny's problem had <span class="tension">real stakes</span>.</p>
+            <div class="quote">
+                "It's kind of hard to just go to places and be like, hey, do you offer shadowing? Because most of the time they're like, no, we don't do it."
+            </div>
+            <p style="margin-bottom: 0;">Jenny needs <span class="highlight">200+ hours</span> just to apply to med school. And nobody tells her how to get them.</p>
+        </div>
+        <span class="page-num">2/5</span>
+    </section>
+
+    <!-- Slide 3: What I Discovered -->
+    <section class="slide">
+        <div class="card">
+            <p class="label">What I Discovered</p>
+            <h2>The shadowing system is broken</h2>
+            <div class="stat-row">
+                <div>
+                    <div class="stat-value">200+</div>
+                    <div class="stat-label">hours required for med school</div>
+                </div>
+                <div>
+                    <div class="stat-value">50/50</div>
+                    <div class="stat-label">success rate on cold outreach</div>
+                </div>
+            </div>
+            <p>Jenny's current approach:</p>
+            <ul>
+                <li>Browse billboards in the science building</li>
+                <li>Cold message on LinkedIn/Handshake</li>
+                <li>Wait 1-2 weeks for responses</li>
+                <li>Get rejected half the time</li>
+            </ul>
+            <p>The real insight: there's a <span class="tension">"leveling up" system</span> nobody explains. You need starter hours to get intermediate opportunities to get clinical access.</p>
+        </div>
+        <span class="page-num">3/5</span>
+    </section>
+
+    <!-- Slide 4: The Real Opportunity -->
+    <section class="slide">
+        <div class="card">
+            <p class="label">The Real Opportunity</p>
+            <h2>MedPath: Know What You Qualify For</h2>
+            <p>What if pre-med students could <span class="decision">plug in their hours</span> and instantly see what's next?</p>
+            <ul>
+                <li>Input: hours, experience type, skills gained</li>
+                <li>Output: "You qualify for X" + "Y more hours unlocks Z"</li>
+                <li>Bonus: auto-generate resume bullets</li>
+            </ul>
+            <p>The key insight: Jenny doesn't need <em>more</em> opportunities listed. She needs to know <span class="highlight">which ones she actually qualifies for</span> based on where she is right now.</p>
+            <p style="color: #9ca3af; font-size: 0.9rem;">No talking to people required — just plug in your experience and see your path.</p>
+        </div>
+        <span class="page-num">4/5</span>
+    </section>
+
+    <!-- Slide 5: Where I'm At -->
+    <section class="slide">
+        <div class="card">
+            <p class="label">Where I'm At</p>
+            <h2>Ready to build and test</h2>
+            <p>Next steps:</p>
+            <ul>
+                <li>Build input form (20 min)</li>
+                <li>Create tier logic: starter → intermediate → clinical</li>
+                <li>Design output that shows next qualified opportunity</li>
+                <li>Test with Jenny at 4pm</li>
+            </ul>
+            <p><strong>The validation question:</strong></p>
+            <div class="quote">
+                "If you could plug in all your Red Cross hours and shadowing, and it told you exactly what you qualify for next — would you use that?"
+            </div>
+            <div class="closing-quote">
+                <p>"I thought the problem was <span class="tension">finding opportunities</span>.<br>It's actually <span class="decision">knowing which ones you're ready for</span>."</p>
+            </div>
+        </div>
+        <span class="page-num">5/5</span>
+    </section>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
