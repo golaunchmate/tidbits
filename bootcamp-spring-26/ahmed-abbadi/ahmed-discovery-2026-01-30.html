@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="tidbit-type" content="founder">
+    <meta name="tidbit-subject" content="Ahmed Abbadi">
+    <meta name="tidbit-company" content="TBD">
+    <meta name="tidbit-date" content="2026-01-30">
+    <meta name="tidbit-period" content="2026-W05">
+    <title>Ahmed Abbadi | Discovery Phase</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #0f0f0f; color: #e5e5e5; line-height: 1.6; }
+        
+        .slide {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+        }
+        
+        .card {
+            max-width: 600px;
+            width: 100%;
+            padding: 3rem;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            background: #161616;
+        }
+        
+        .page-num {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #4a4a4a;
+        }
+        
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+        
+        h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+        h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1.5rem; color: #e5e5e5; }
+        h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 1rem; }
+        
+        .highlight { color: #60a5fa; }
+        .decision { color: #34d399; }
+        .tension { color: #f97316; }
+        
+        .subtitle { color: #9ca3af; font-size: 1.1rem; margin-bottom: 2rem; }
+        .scroll-hint { color: #4a4a4a; font-size: 0.9rem; margin-top: 2rem; }
+        
+        p { margin-bottom: 1rem; }
+        
+        .stat-row {
+            display: flex;
+            gap: 2rem;
+            margin: 1.5rem 0;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #60a5fa;
+        }
+        
+        .stat-label {
+            font-size: 0.85rem;
+            color: #6b7280;
+        }
+        
+        .theme-list {
+            margin: 1.5rem 0;
+        }
+        
+        .theme-list p {
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .theme-list p::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #6b7280;
+        }
+        
+        .quote-box {
+            border-left: 3px solid #60a5fa;
+            padding-left: 1.5rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: #9ca3af;
+        }
+        
+        .closing-quote {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #34d399;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #2a2a2a;
+        }
+    </style>
+</head>
+<body>
+    <!-- Slide 1: Cover -->
+    <section class="slide">
+        <div class="card" style="text-align: center;">
+            <h1>Ahmed Abbadi</h1>
+            <p class="subtitle">Discovery Phase | ZIP Launchpad Bootcamp</p>
+            <p style="color: #6b7280;">January 30, 2026</p>
+            <p class="scroll-hint">scroll ↓</p>
+        </div>
+        <span class="page-num">1/5</span>
+    </section>
+
+    <!-- Slide 2: Where I Started -->
+    <section class="slide">
+        <div class="card">
+            <p class="label">Where I Started</p>
+            <h2>I went wide on purpose</h2>
+            <p>Instead of assuming I knew the problem, I ran <span class="highlight">4 discovery calls</span> across completely different students:</p>
+            <div class="theme-list">
+                <p>Engineering fraternity member</p>
+                <p>Nursing student fighting for residency spots</p>
+                <p>Civil engineering sophomore at UCSD</p>
+                <p>Journalism/advertising student dealing with friend drama</p>
+            </div>
+            <p>I wanted to find patterns, not confirm assumptions.</p>
+        </div>
+        <span class="page-num">2/5</span>
+    </section>
+
+    <!-- Slide 3: What I Discovered -->
+    <section class="slide">
+        <div class="card">
+            <p class="label">What I Discovered</p>
+            <h2><span class="highlight">5 pain themes</span> emerged</h2>
+            <div class="theme-list">
+                <p><span class="tension">Professors don't teach</span> — research-focused, 50% pass rates, students rely on peers</p>
+                <p><span class="tension">Career competition feels rigged</span> — networking beats hard work</p>
+                <p><span class="tension">Going solo feels awkward</span> — attending events alone is discouraging</p>
+                <p><span class="tension">Making friends is harder than it should be</span> — loneliness, trust issues</p>
+                <p><span class="tension">Peer networks = unfair advantage</span> — fraternity vs no fraternity</p>
+            </div>
+            <div class="quote-box">
+                "Many people are lonely and don't know where to start."
+            </div>
+        </div>
+        <span class="page-num">3/5</span>
+    </section>
+
+    <!-- Slide 4: The Real Opportunity -->
+    <section class="slide">
+        <div class="card">
+            <p class="label">The Real Opportunity</p>
+            <h2>Social connection has the most <span class="decision">heat</span></h2>
+            <p>The journalism student didn't just describe the problem — she <span class="highlight">lit up</span> when I mentioned a potential solution.</p>
+            <div class="theme-list">
+                <p>✓ Explicit enthusiasm for "friend-finding" concept</p>
+                <p>✓ Emotional weight behind the pain</p>
+                <p>✓ Said she would actually use it</p>
+            </div>
+            <p style="margin-top: 1.5rem;">The other themes are real, but they're <span class="tension">structural</span> — hard to solve at the student level. Social connection is <span class="decision">solvable</span>.</p>
+        </div>
+        <span class="page-num">4/5</span>
+    </section>
+
+    <!-- Slide 5: Where I'm At -->
+    <section class="slide">
+        <div class="card">
+            <p class="label">Where I'm At</p>
+            <h2>Ready for solution ideation</h2>
+            <p>I've got a problem with signal. Now I need to:</p>
+            <div class="theme-list">
+                <p>Break down the friend-making journey (pre/post/consumption)</p>
+                <p>Generate 2-3 distinct solution approaches</p>
+                <p>Pick one to prototype</p>
+                <p>Go back to my interviewee and test willingness to pay</p>
+            </div>
+            <p class="closing-quote">"I thought I'd find an academic problem. I actually found a loneliness problem."</p>
+        </div>
+        <span class="page-num">5/5</span>
+    </section>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
