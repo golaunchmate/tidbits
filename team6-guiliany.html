@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="tidbit-type" content="founder">
+    <meta name="tidbit-subject" content="Guiliany Garcia">
+    <meta name="tidbit-company" content="Team 6">
+    <meta name="tidbit-date" content="2026-01-30">
+    <meta name="tidbit-period" content="2026-W05">
+    <title>Team 6 | Guiliany Garcia | Bootcamp Tidbit</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #0f0f0f; color: #e5e5e5; line-height: 1.6; }
+        
+        .slide {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+        }
+        
+        .card {
+            max-width: 600px;
+            width: 100%;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            padding: 3rem;
+            background: #161616;
+        }
+        
+        .page-num {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+        }
+        
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+        
+        h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+        h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; color: #e5e5e5; }
+        h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; }
+        
+        .subtitle { color: #9ca3af; font-size: 1.1rem; margin-bottom: 2rem; }
+        .scroll-hint { color: #6b7280; font-size: 0.9rem; margin-top: 2rem; }
+        
+        .highlight { color: #60a5fa; }
+        .decision { color: #34d399; }
+        .tension { color: #f97316; }
+        
+        p { margin-bottom: 1rem; }
+        
+        .quote {
+            border-left: 3px solid #f97316;
+            padding-left: 1rem;
+            font-style: italic;
+            color: #9ca3af;
+            margin: 1.5rem 0;
+        }
+        
+        .insight-box {
+            background: #1e1e1e;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .feature-list {
+            list-style: none;
+            margin: 1rem 0;
+        }
+        
+        .feature-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .feature-list li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #60a5fa;
+        }
+        
+        .closing-quote {
+            font-size: 1.2rem;
+            font-weight: 500;
+            text-align: center;
+            padding: 2rem;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Slide 1: Cover -->
+    <section class="slide">
+        <div class="card" style="text-align: center;">
+            <p class="label">SDSU ZIP Launchpad Bootcamp</p>
+            <h1>Team <span class="highlight">6</span></h1>
+            <p class="subtitle">Guiliany Garcia</p>
+            <p style="color: #6b7280;">January 30, 2026</p>
+            <p class="scroll-hint">↓ scroll</p>
+        </div>
+        <div class="page-num">1/5</div>
+    </section>
+
+    <!-- Slide 2: The Interview -->
+    <section class="slide">
+        <div class="card">
+            <p class="label">Where We Started</p>
+            <h2>We interviewed a <span class="highlight">signature collector</span></h2>
+            <p>Petition and voter registration work — standing on campuses trying to get people to sign. Gets paid per signature.</p>
+            <p>We asked: <span class="tension">How do you know where to be and when?</span></p>
+            <div class="quote">
+                "No schedule. It's kind of by word of mouth of knowing those veterans that have already done it for 10 years."
+            </div>
+            <p>He went to community colleges that were <span class="tension">completely dead</span>. Hollywood Boulevard? <span class="tension">99 no's, 1 yes</span> in two hours. All because he didn't know the patterns.</p>
+        </div>
+        <div class="page-num">2/5</div>
+    </section>
+
+    <!-- Slide 3: The Problem -->
+    <section class="slide">
+        <div class="card">
+            <p class="label">What We Discovered</p>
+            <h2>Campus traffic is <span class="tension">invisible</span></h2>
+            <div class="insight-box">
+                <h3>The Real Problem:</h3>
+                <p style="margin-bottom: 0;">Nobody knows when or where students will be — not collectors, not clubs, not event organizers. It's all tribal knowledge locked in veterans' heads.</p>
+            </div>
+            <p>✗ No public schedule of busy times</p>
+            <p>✗ No data on foot traffic patterns</p>
+            <p>✗ Events happen but students don't know</p>
+            <p>✗ Students miss clubs that match their interests</p>
+        </div>
+        <div class="page-num">3/5</div>
+    </section>
+
+    <!-- Slide 4: The Flip -->
+    <section class="slide">
+        <div class="card">
+            <p class="label">The Reframe</p>
+            <h2>We flipped the problem</h2>
+            <p>Original angle: <span class="tension">Help collectors find students</span></p>
+            <p>Our angle: <span class="decision">Help students find what's happening</span></p>
+            <div class="insight-box">
+                <h3>Key Insight:</h3>
+                <p style="margin-bottom: 0;">If students knew about events tailored to them — at times they're actually free — both sides win. Students discover, orgs get visibility.</p>
+            </div>
+        </div>
+        <div class="page-num">4/5</div>
+    </section>
+
+    <!-- Slide 5: The Solution -->
+    <section class="slide">
+        <div class="card">
+            <p class="label">What We're Building</p>
+            <h2><span class="highlight">Student-first</span> campus discovery</h2>
+            <ul class="feature-list">
+                <li>Student profile tied to <span class="highlight">school email</span></li>
+                <li>Pulls <span class="highlight">syllabus</span> to know availability</li>
+                <li>Tailored to <span class="highlight">major + interests</span></li>
+                <li>Shows all campus events, clubs, tabling</li>
+                <li>Only notifies when you're <span class="decision">actually free</span></li>
+            </ul>
+            <div class="closing-quote">
+                "We thought we needed to help collectors find students.<br>
+                We realized students need to <span class="decision">find what matters to them</span>."
+            </div>
+        </div>
+        <div class="page-num">5/5</div>
+    </section>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
