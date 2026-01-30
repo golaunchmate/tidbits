@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="tidbit-type" content="founder">
+    <meta name="tidbit-subject" content="Kiara Kuehl Mueller">
+    <meta name="tidbit-company" content="Bootcamp Discovery">
+    <meta name="tidbit-date" content="2026-01-30">
+    <meta name="tidbit-period" content="2026-W05">
+    <title>Kiara Kuehl Mueller | Bootcamp Discovery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #0f0f0f; color: #e5e5e5; line-height: 1.6; }
+        .slide { min-height: 100vh; scroll-snap-align: start; display: flex; align-items: center; justify-content: center; padding: 2rem; position: relative; }
+        .card { max-width: 600px; width: 100%; padding: 3rem; border: 1px solid #2a2a2a; border-radius: 12px; background: #0f0f0f; }
+        .page-num { position: absolute; bottom: 2rem; right: 2rem; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #4b5563; }
+        .label { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+        h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+        h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; color: #60a5fa; }
+        p { margin-bottom: 1rem; color: #a3a3a3; }
+        .highlight { color: #60a5fa; }
+        .tension { color: #f97316; }
+        .decision { color: #34d399; }
+        .subtitle { font-size: 1.1rem; color: #6b7280; margin-bottom: 2rem; }
+        .scroll-hint { font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: #4b5563; margin-top: 2rem; }
+        .stat-row { display: flex; gap: 2rem; margin: 1.5rem 0; }
+        .stat { text-align: center; }
+        .stat-value { font-size: 1.75rem; font-weight: 700; color: #60a5fa; }
+        .stat-label { font-size: 0.75rem; color: #6b7280; text-transform: uppercase; }
+        ul { list-style: none; margin: 1rem 0; }
+        ul li { padding-left: 1.5rem; position: relative; margin-bottom: 0.75rem; color: #a3a3a3; }
+        ul li::before { content: '→'; position: absolute; left: 0; color: #4b5563; }
+        .quote { font-size: 1.25rem; font-style: italic; color: #e5e5e5; border-left: 3px solid #60a5fa; padding-left: 1.5rem; margin: 1.5rem 0; }
+    </style>
+</head>
+<body>
+    <section class="slide">
+        <div class="card" style="text-align: center;">
+            <p class="label">ZIP Launchpad Bootcamp</p>
+            <h1>Kiara Kuehl Mueller</h1>
+            <p class="subtitle">Discovery Day · January 30, 2026</p>
+            <p class="scroll-hint">scroll ↓</p>
+        </div>
+        <div class="page-num">1/4</div>
+    </section>
+
+    <section class="slide">
+        <div class="card">
+            <p class="label">Where I Started</p>
+            <h2>Looking for real campus problems</h2>
+            <p>Went out to interview students about their daily friction. Talked to <span class="highlight">Jake Rodriguez</span> (freshman from the Bay Area) and <span class="highlight">Sophia & Charles</span> (German exchange students).</p>
+            <p>Expected to hear about classes, food, or dorm life.</p>
+            <p>Instead, <span class="tension">transportation kept coming up.</span></p>
+        </div>
+        <div class="page-num">2/4</div>
+    </section>
+
+    <section class="slide">
+        <div class="card">
+            <p class="label">What I Discovered</p>
+            <h2>Cars don't fit student life</h2>
+            <div class="stat-row">
+                <div class="stat">
+                    <div class="stat-value">$20</div>
+                    <div class="stat-label">Uber for 15 min</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">$500/mo</div>
+                    <div class="stat-label">rental cost</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">4 hrs</div>
+                    <div class="stat-label">Zipcar minimum for hiking</div>
+                </div>
+            </div>
+            <p>Students want <span class="highlight">spontaneous, short trips</span>—martial arts (45 min), quick hikes (20-min drive).</p>
+            <p><span class="tension">Current options force you to pay for time you don't need.</span></p>
+            <p>German students mentioned <span class="decision">"Miles"</span>—cars distributed like scooters, pay-per-mile. That model doesn't exist here.</p>
+        </div>
+        <div class="page-num">3/4</div>
+    </section>
+
+    <section class="slide">
+        <div class="card">
+            <p class="label">Where I'm At</p>
+            <h2>Breaking down the journey</h2>
+            <p>Now mapping the <span class="highlight">pre/post/consumption</span> framework to find where the real friction lives:</p>
+            <ul>
+                <li>What happens BEFORE Jake can leave campus?</li>
+                <li>What happens AFTER he's done with his activity?</li>
+                <li>Where does he sound most frustrated?</li>
+            </ul>
+            <p style="margin-top: 1.5rem;">Next: Generate 2-3 solution approaches that fit how students actually want to use cars.</p>
+            <div class="quote">"The gap isn't 'no cars'—it's that current options don't match how students actually move."</div>
+        </div>
+        <div class="page-num">4/4</div>
+    </section>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
