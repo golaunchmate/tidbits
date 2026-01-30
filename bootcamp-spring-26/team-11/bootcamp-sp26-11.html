@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="tidbit-type" content="team">
     <meta name="tidbit-subject" content="Team 11">
+    <meta name="tidbit-company" content="Plotz">
     <meta name="tidbit-date" content="2026-01-30">
     <meta name="tidbit-period" content="2026-bootcamp">
-    <title>Team 11 | Bootcamp Spring 2026</title>
+    <title>Team 11 - Plotz | Bootcamp Spring 2026</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -28,29 +29,29 @@
         .scroll-hint { color: #6b7280; font-size: 0.9rem; margin-top: 2rem; }
         .page-num { position: absolute; bottom: 2rem; right: 2rem; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #4b5563; }
         .quote { font-style: italic; font-size: 1.1rem; color: #e5e5e5; border-left: 3px solid #f97316; padding-left: 1rem; margin: 1.5rem 0; }
-        .stat-row { display: flex; gap: 2rem; margin: 1.5rem 0; }
+        .stat-row { display: flex; gap: 2rem; margin: 1.5rem 0; flex-wrap: wrap; }
         .stat { text-align: center; }
         .stat-value { font-size: 2rem; font-weight: 700; color: #60a5fa; }
         .stat-label { font-size: 0.8rem; color: #6b7280; }
-        .interview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0; }
-        .interview-card { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 8px; padding: 1rem; }
-        .interview-card h4 { font-size: 0.9rem; color: #e5e5e5; margin-bottom: 0.5rem; }
-        .interview-card p { font-size: 0.85rem; margin-bottom: 0; }
-        .cluster { display: flex; align-items: center; gap: 1rem; padding: 1rem; background: #1a1a1a; border-radius: 8px; margin-bottom: 0.75rem; }
-        .cluster-bar { height: 8px; background: #60a5fa; border-radius: 4px; }
-        .cluster-label { min-width: 140px; font-size: 0.9rem; }
-        .cluster-count { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: #6b7280; }
-        ul { margin-left: 1.5rem; margin-bottom: 1rem; color: #a3a3a3; }
-        li { margin-bottom: 0.5rem; font-size: 0.95rem; }
-        .top-pick { border: 2px solid #34d399; }
+        .journey-step { display: flex; gap: 1rem; margin-bottom: 1.5rem; }
+        .step-num { background: #2a2a2a; color: #60a5fa; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600; flex-shrink: 0; }
+        .step-content { flex: 1; }
+        .step-content h4 { color: #e5e5e5; margin-bottom: 0.25rem; }
+        .step-content p { margin-bottom: 0; font-size: 0.95rem; }
+        .product-link { display: inline-block; background: #34d399; color: #0f0f0f; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 600; margin-top: 1rem; }
+        .product-link:hover { background: #2dd491; }
+        .problem-list { list-style: none; margin: 0; padding: 0; }
+        .problem-list li { padding: 0.5rem 0; border-bottom: 1px solid #2a2a2a; color: #a3a3a3; }
+        .problem-list li:last-child { border-bottom: none; }
+        .crossed { text-decoration: line-through; color: #6b7280; }
     </style>
 </head>
 <body>
     <section class="slide" style="position: relative;">
         <div class="content">
             <p class="label">ZIP Launchpad Bootcamp · Spring 2026</p>
-            <h1>Team <span class="highlight">11</span></h1>
-            <p class="subtitle">Discovery Complete: From 7 interviews to real problems</p>
+            <h1>Team 11 → <span class="decision">Plotz</span></h1>
+            <p class="subtitle">From 7 interviews to a working product in one day</p>
             <div class="stat-row">
                 <div class="stat">
                     <div class="stat-value">7</div>
@@ -61,177 +62,116 @@
                     <div class="stat-label">Pain Points</div>
                 </div>
                 <div class="stat">
-                    <div class="stat-value">4</div>
-                    <div class="stat-label">Problem Clusters</div>
+                    <div class="stat-value">1</div>
+                    <div class="stat-label">App Built</div>
                 </div>
             </div>
             <p class="scroll-hint">↓ scroll</p>
         </div>
-        <span class="page-num">1/6</span>
+        <span class="page-num">1/5</span>
     </section>
 
     <section class="slide" style="position: relative;">
         <div class="content">
-            <p class="label">Discovery Phase</p>
-            <h2>Who We Talked To</h2>
+            <p class="label">The Discovery</p>
+            <h2>We Started With Everything</h2>
             
-            <div class="interview-grid">
-                <div class="interview-card">
-                    <h4>🔹 Matt</h4>
-                    <p>Barber + math senior. Runs business from garage. Grandmother was assaulted.</p>
+            <ul class="problem-list">
+                <li><span class="crossed">Elder safety</span> — Matt's grandmother story</li>
+                <li><span class="crossed">Pedestrian safety</span> — student hit at Trader Joe's intersection</li>
+                <li><span class="crossed">Traffic & parking</span> — 5+ interviews mentioned this</li>
+                <li><span class="crossed">Bowling availability</span> — no real-time checker</li>
+                <li><span class="crossed">Trolley safety + cost</span> — freshman struggles</li>
+                <li><span class="crossed">Campus jobs</span> — too competitive</li>
+            </ul>
+            
+            <div class="quote">
+                We had too many problems. We needed to pick one we could actually solve today.
+            </div>
+        </div>
+        <span class="page-num">2/5</span>
+    </section>
+
+    <section class="slide" style="position: relative;">
+        <div class="content">
+            <p class="label">The Pivot</p>
+            <h2>The Problem We Chose</h2>
+            
+            <div class="card">
+                <p class="label">The Insight</p>
+                <p style="color: #e5e5e5; font-size: 1.1rem; margin-bottom: 0;">New students and commuters miss campus events because flyers and A-frames don't reach them — and info stays siloed within interest groups.</p>
+            </div>
+            
+            <p><span class="tension">Current solutions fail:</span></p>
+            <p>✗ Flyers = limited physical reach</p>
+            <p>✗ Instagram = algorithm buries posts</p>
+            <p>✗ SDSU calendar = clunky, no one checks it</p>
+            <p>✗ Word of mouth = only reaches existing networks</p>
+            
+            <p style="color: #e5e5e5; margin-top: 1rem;"><strong>Who feels it most:</strong> New students + commuters</p>
+        </div>
+        <span class="page-num">3/5</span>
+    </section>
+
+    <section class="slide" style="position: relative;">
+        <div class="content">
+            <p class="label">The Solution</p>
+            <h2>Plotz: See What's Happening</h2>
+            
+            <div class="card" style="border-color: #34d399;">
+                <p class="label" style="color: #34d399;">What We Built</p>
+                <p style="color: #e5e5e5; font-size: 1.1rem;">A visual map dashboard showing campus event hotspots in real-time.</p>
+                <p style="margin-bottom: 0;">No more wandering. No more FOMO. Just open the map and see where to go.</p>
+            </div>
+            
+            <div class="journey-step">
+                <div class="step-num">1</div>
+                <div class="step-content">
+                    <h4>Open the app</h4>
+                    <p>See SDSU campus map</p>
                 </div>
-                <div class="interview-card">
-                    <h4>🔹 JW Volunteers</h4>
-                    <p>Commute from Julian & Ramona. Traffic unpredictability.</p>
+            </div>
+            
+            <div class="journey-step">
+                <div class="step-num">2</div>
+                <div class="step-content">
+                    <h4>View hotspots</h4>
+                    <p>Events appear as pins with details</p>
                 </div>
-                <div class="interview-card">
-                    <h4>🔹 Commuter Student</h4>
-                    <p>1.5hr trolley each way. 5 AM wake-ups for 8 AM class.</p>
-                </div>
-                <div class="interview-card">
-                    <h4>🔹 Freshman</h4>
-                    <p>No car, Uber too expensive, trolley feels unsafe. No income.</p>
-                </div>
-                <div class="interview-card">
-                    <h4>🔹 Zach (Petitioner)</h4>
-                    <p>Works campuses statewide. Traffic is #1 complaint he hears.</p>
-                </div>
-                <div class="interview-card">
-                    <h4>🔹 Pedestrian Student</h4>
-                    <p>Got hit by car at intersection. Trader Joe's = "people hit all the time."</p>
+            </div>
+            
+            <div class="journey-step">
+                <div class="step-num">3</div>
+                <div class="step-content">
+                    <h4>Go</h4>
+                    <p>Discover things you would've missed</p>
                 </div>
             </div>
         </div>
-        <span class="page-num">2/6</span>
+        <span class="page-num">4/5</span>
     </section>
 
     <section class="slide" style="position: relative;">
         <div class="content">
-            <p class="label">All Pain Points</p>
-            <h2>What We Heard</h2>
+            <p class="label">Ship It</p>
+            <h2>The Product</h2>
             
-            <div class="card">
-                <p class="label">Transportation & Safety</p>
-                <ul>
-                    <li>Traffic during peak hours (multiple mentions)</li>
-                    <li>Parking costs & availability</li>
-                    <li>1.5hr trolley commutes</li>
-                    <li>Trolley safety concerns</li>
-                    <li>Uber too expensive for students</li>
-                    <li><span class="tension">Pedestrian hit by car</span> — driver didn't stop</li>
-                    <li>Trader Joe's intersection = frequent accidents</li>
-                    <li>Basketball games = pedestrian chaos</li>
-                    <li>12 PM congestion, scooters don't use bells</li>
-                </ul>
+            <div class="card" style="text-align: center; padding: 2rem;">
+                <p class="label">Live Demo</p>
+                <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">plotz.lovable.app</h3>
+                <a href="https://plotz.lovable.app/dashboard" target="_blank" class="product-link">View Plotz →</a>
             </div>
             
-            <div class="card">
-                <p class="label">Money & Jobs</p>
-                <ul>
-                    <li>Campus jobs too competitive</li>
-                    <li>No income limits options</li>
-                    <li>Transportation limits off-campus work</li>
-                </ul>
-            </div>
-        </div>
-        <span class="page-num">3/6</span>
-    </section>
-
-    <section class="slide" style="position: relative;">
-        <div class="content">
-            <p class="label">More Pain Points</p>
-            <h2>What Else We Found</h2>
-            
-            <div class="card">
-                <p class="label">Elder Safety</p>
-                <ul>
-                    <li>Matt's grandmother had black eye — said she "fell"</li>
-                    <li>No bruises from catching herself</li>
-                    <li>No safe recourse for family</li>
-                </ul>
-            </div>
-            
-            <div class="card">
-                <p class="label">Booking & Availability</p>
-                <ul>
-                    <li>Bowling: unpredictable wait times, no availability checker</li>
-                    <li>Golf: hard to book tee times, multiple redundant apps</li>
-                    <li>Grocery: analysis paralysis, too many options</li>
-                </ul>
-            </div>
-            
-            <div class="card">
-                <p class="label">Other</p>
-                <ul>
-                    <li>Home-based business client trust/filtering</li>
-                    <li>Time management with packed schedules</li>
-                    <li>Younger generation lacks interpersonal skills</li>
-                </ul>
-            </div>
-        </div>
-        <span class="page-num">4/6</span>
-    </section>
-
-    <section class="slide" style="position: relative;">
-        <div class="content">
-            <p class="label">Pattern Analysis</p>
-            <h2>Problem Clusters</h2>
-            
-            <div class="cluster">
-                <span class="cluster-label">Traffic/Parking/Transit</span>
-                <div class="cluster-bar" style="width: 200px;"></div>
-                <span class="cluster-count">5+ mentions</span>
-            </div>
-            
-            <div class="cluster top-pick">
-                <span class="cluster-label"><span class="decision">Pedestrian Safety</span></span>
-                <div class="cluster-bar" style="width: 120px; background: #34d399;"></div>
-                <span class="cluster-count">Specific + emotional</span>
-            </div>
-            
-            <div class="cluster">
-                <span class="cluster-label">Money/Jobs</span>
-                <div class="cluster-bar" style="width: 80px;"></div>
-                <span class="cluster-count">2 mentions</span>
-            </div>
-            
-            <div class="cluster">
-                <span class="cluster-label">Booking/Availability</span>
-                <div class="cluster-bar" style="width: 60px;"></div>
-                <span class="cluster-count">Actionable</span>
-            </div>
-
             <div class="quote" style="margin-top: 2rem;">
-                "People get hit all the time" at Trader Joe's intersection
+                "We thought we'd solve traffic. We ended up solving FOMO."
             </div>
-        </div>
-        <span class="page-num">5/6</span>
-    </section>
-
-    <section class="slide" style="position: relative;">
-        <div class="content">
-            <p class="label">Current Status</p>
-            <h2>Where Team 11 Stands</h2>
-            
-            <p><span class="decision">✓</span> Completed 7 discovery interviews</p>
-            <p><span class="decision">✓</span> Identified 20+ pain points</p>
-            <p><span class="decision">✓</span> Mapped 4 problem clusters</p>
-            <p><span class="tension">→</span> Next: Pick ONE problem</p>
-            <p><span class="tension">→</span> Next: Run solution framework</p>
             
             <div class="card" style="margin-top: 1.5rem;">
-                <p class="label">Top Contenders</p>
-                <p style="margin-bottom: 0.5rem;"><span class="decision">1.</span> <strong>SDSU Pedestrian Safety</strong> — specific locations, real incident, high emotion</p>
-                <p style="margin-bottom: 0.5rem;"><span class="highlight">2.</span> <strong>Bowling Availability</strong> — SDSU-specific, fast to build</p>
-                <p style="margin-bottom: 0;"><span class="highlight">3.</span> <strong>Elder Safety</strong> — meaningful but harder to validate</p>
-            </div>
-            
-            <div class="card" style="margin-top: 1rem;">
-                <p class="label">Team Member</p>
-                <p style="color: #e5e5e5; margin-bottom: 0;">Juan Alcala</p>
+                <p class="label">Team 11</p>
+                <p style="color: #e5e5e5; margin-bottom: 0;">Juan Alcala + team</p>
             </div>
         </div>
-        <span class="page-num">6/6</span>
+        <span class="page-num">5/5</span>
     </section>
 
     <script>
