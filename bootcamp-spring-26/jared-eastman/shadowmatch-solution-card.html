@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="tidbit-type" content="solution-card">
+    <meta name="tidbit-subject" content="Jared Eastman">
+    <meta name="tidbit-company" content="Shadow Match">
+    <meta name="tidbit-date" content="2026-01-30">
+    <title>Shadow Match | Solution Card</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Inter', -apple-system, sans-serif; 
+            background: #0f0f0f; 
+            color: #e5e5e5; 
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        
+        .card {
+            max-width: 650px;
+            width: 100%;
+            padding: 2.5rem;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            background: #0f0f0f;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #2a2a2a;
+        }
+        
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        
+        h1 { 
+            font-size: 2rem; 
+            font-weight: 700; 
+            margin-top: 0.25rem;
+            color: #60a5fa;
+        }
+        
+        .highlight { color: #60a5fa; }
+        .decision { color: #34d399; }
+        .tension { color: #f97316; }
+        
+        .row {
+            display: flex;
+            padding: 1rem 0;
+            border-bottom: 1px solid #1a1a1a;
+        }
+        
+        .row:last-child {
+            border-bottom: none;
+        }
+        
+        .row-label {
+            width: 140px;
+            flex-shrink: 0;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding-top: 0.15rem;
+        }
+        
+        .row-value {
+            flex: 1;
+            font-size: 1rem;
+        }
+        
+        .tag {
+            display: inline-block;
+            background: #1e3a5f;
+            color: #60a5fa;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .assumption-box {
+            background: #1a1a1a;
+            border-left: 3px solid #f97316;
+            padding: 1rem 1.25rem;
+            margin-top: 0.5rem;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .team {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #2a2a2a;
+            font-size: 0.85rem;
+            color: #6b7280;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <div class="header">
+        <div>
+            <p class="label">Solution Approach</p>
+            <h1>Shadow Match</h1>
+        </div>
+        <span class="tag">PRE-FRICTION</span>
+    </div>
+    
+    <div class="row">
+        <div class="row-label">Target</div>
+        <div class="row-value"><span class="tension">PRE</span> — "not knowing who offers it"</div>
+    </div>
+    
+    <div class="row">
+        <div class="row-label">One-liner</div>
+        <div class="row-value">Verified database of <span class="decision">shadowing-friendly</span> doctors/clinics</div>
+    </div>
+    
+    <div class="row">
+        <div class="row-label">How it works</div>
+        <div class="row-value">Crowdsourced list from students who successfully shadowed somewhere. Includes contact info, requirements, and <span class="highlight">"starter-friendly"</span> tags</div>
+    </div>
+    
+    <div class="row">
+        <div class="row-label">Why different</div>
+        <div class="row-value">Current approach is cold outreach with <span class="tension">50/50 success</span>. This gives you places that already said yes to someone</div>
+    </div>
+    
+    <div class="row">
+        <div class="row-label">Assumption</div>
+        <div class="row-value">
+            <div class="assumption-box">
+                Students will share their connections
+            </div>
+        </div>
+    </div>
+    
+    <div class="team">
+        Jared Eastman · ZIP Launchpad Bootcamp · Jan 30, 2026
+    </div>
+</div>
+
+</body>
+</html>
