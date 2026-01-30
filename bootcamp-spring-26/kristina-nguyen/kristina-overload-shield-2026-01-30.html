@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="tidbit-type" content="founder">
+    <meta name="tidbit-subject" content="Kristina Nguyen">
+    <meta name="tidbit-company" content="Overload Shield">
+    <meta name="tidbit-date" content="2026-01-30">
+    <meta name="tidbit-period" content="2026-W05">
+    <title>Kristina Nguyen - Overload Shield</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #0f0f0f; color: #e5e5e5; line-height: 1.6; }
+        
+        .slide {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            position: relative;
+        }
+        
+        .card {
+            max-width: 600px;
+            width: 100%;
+            padding: 3rem;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            background: #161616;
+        }
+        
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+        
+        h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+        h2 { font-size: 1.75rem; font-weight: 600; margin-bottom: 1rem; color: #60a5fa; }
+        h3 { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.75rem; }
+        
+        p { margin-bottom: 1rem; color: #a3a3a3; }
+        
+        .highlight { color: #60a5fa; }
+        .decision { color: #34d399; }
+        .tension { color: #f97316; }
+        
+        .subtitle { color: #6b7280; font-size: 1.1rem; margin-bottom: 1.5rem; }
+        .scroll-hint { color: #4b5563; font-size: 0.9rem; margin-top: 2rem; }
+        
+        .page-num {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #4b5563;
+        }
+        
+        .stat-row {
+            display: flex;
+            gap: 2rem;
+            margin: 1.5rem 0;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #60a5fa;
+        }
+        
+        .stat-label {
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-transform: uppercase;
+        }
+        
+        ul {
+            list-style: none;
+            margin: 1rem 0;
+        }
+        
+        ul li {
+            padding-left: 1.5rem;
+            position: relative;
+            margin-bottom: 0.5rem;
+            color: #a3a3a3;
+        }
+        
+        ul li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #60a5fa;
+        }
+        
+        .quote {
+            border-left: 3px solid #60a5fa;
+            padding-left: 1.5rem;
+            font-style: italic;
+            color: #e5e5e5;
+            margin-top: 1.5rem;
+        }
+        
+        .interviewee {
+            background: #1e1e1e;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+        
+        .interviewee-name {
+            font-weight: 600;
+            color: #e5e5e5;
+        }
+        
+        .interviewee-details {
+            font-size: 0.85rem;
+            color: #6b7280;
+        }
+    </style>
+</head>
+<body>
+    <!-- Slide 1: Cover -->
+    <section class="slide">
+        <div class="card" style="text-align: center;">
+            <p class="label">ZIP Launchpad Bootcamp</p>
+            <h1>Kristina Nguyen</h1>
+            <p class="subtitle">Overload Shield</p>
+            <p style="color: #4b5563;">January 30, 2026</p>
+            <p class="scroll-hint">scroll ↓</p>
+        </div>
+        <span class="page-num">1/5</span>
+    </section>
+
+    <!-- Slide 2: Where I Started -->
+    <section class="slide">
+        <div class="card">
+            <p class="label">Where I Started</p>
+            <h2>Chasing the "busy student" problem</h2>
+            <p>Went out to find someone struggling with college life balance. Found Cesar.</p>
+            <div class="interviewee">
+                <p class="interviewee-name">Cesar Preciado</p>
+                <p class="interviewee-details">19 · Sophomore · Sociology · SDSU</p>
+            </div>
+            <p>His words: <span class="highlight">"Life of the party"</span> meets <span class="tension">"promises that be forgotten."</span></p>
+            <p>Juggles: classes, NAK fraternity, friends, volunteering, gym. Says yes to everything because of <span class="tension">FOMO</span>.</p>
+        </div>
+        <span class="page-num">2/5</span>
+    </section>
+
+    <!-- Slide 3: What I Discovered -->
+    <section class="slide">
+        <div class="card">
+            <p class="label">What I Discovered</p>
+            <h2>The problem isn't scheduling—it's <span class="tension">visibility</span></h2>
+            <p>Cesar uses Google Calendar. The tool isn't the issue.</p>
+            <p>The issue: <span class="highlight">he can't see how full he already is</span> when someone asks him to do something new.</p>
+            <div class="stat-row">
+                <div class="stat">
+                    <div class="stat-value">85%</div>
+                    <div class="stat-label">capacity</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">+1</div>
+                    <div class="stat-label">commitment</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value" style="color: #ef4444;">💥</div>
+                    <div class="stat-label">burnout</div>
+                </div>
+            </div>
+            <p>He doesn't need a better calendar. He needs a <span class="decision">capacity meter</span>.</p>
+        </div>
+        <span class="page-num">3/5</span>
+    </section>
+
+    <!-- Slide 4: The Real Opportunity -->
+    <section class="slide">
+        <div class="card">
+            <p class="label">The Real Opportunity</p>
+            <h2>Overload Shield</h2>
+            <p>A visual "gas tank" for your week that warns you before you overcommit.</p>
+            <ul>
+                <li><strong>Screen 1:</strong> Capacity meter showing % full this week</li>
+                <li><strong>Screen 2:</strong> Warning pop-up when adding new commitments</li>
+                <li><strong>Screen 3:</strong> Weekly view with color-coded load per day</li>
+            </ul>
+            <p style="margin-top: 1.5rem;">Key interaction:</p>
+            <p style="color: #e5e5e5; background: #1e1e1e; padding: 1rem; border-radius: 8px; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem;">
+                ⚠️ You're at 85%. Adding this puts you at 94%.<br>
+                <span style="color: #34d399;">[Add anyway]</span> <span style="color: #6b7280;">[Not now]</span>
+            </p>
+        </div>
+        <span class="page-num">4/5</span>
+    </section>
+
+    <!-- Slide 5: Where I'm At -->
+    <section class="slide">
+        <div class="card">
+            <p class="label">Where I'm At</p>
+            <h2>Ready to validate</h2>
+            <ul>
+                <li>3-screen prototype sketched</li>
+                <li>Demo script written</li>
+                <li>Cesar's contact saved—reaching out for feedback</li>
+            </ul>
+            <p style="margin-top: 1rem;"><strong>Next step:</strong> Show Cesar the prototype and ask: <span class="highlight">"Would you pay $3/month for this?"</span></p>
+            <div class="quote">
+                "I thought students needed better calendars. They actually need to see their limits before they say yes."
+            </div>
+        </div>
+        <span class="page-num">5/5</span>
+    </section>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
