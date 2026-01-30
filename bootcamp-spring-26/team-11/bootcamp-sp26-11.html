@@ -14,7 +14,7 @@
         html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
         body { font-family: 'Inter', -apple-system, sans-serif; background: #0f0f0f; color: #e5e5e5; line-height: 1.6; }
         .slide { min-height: 100vh; scroll-snap-align: start; display: flex; flex-direction: column; justify-content: center; padding: 2rem; }
-        .content { max-width: 600px; margin: 0 auto; width: 100%; }
+        .content { max-width: 650px; margin: 0 auto; width: 100%; }
         .label { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
         .highlight { color: #60a5fa; }
         .decision { color: #34d399; }
@@ -26,13 +26,23 @@
         .card { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; }
         .subtitle { color: #6b7280; font-size: 1.1rem; margin-bottom: 2rem; }
         .scroll-hint { color: #6b7280; font-size: 0.9rem; margin-top: 2rem; }
-        .interview-box { border-left: 3px solid #60a5fa; padding-left: 1rem; margin-bottom: 1.5rem; }
-        .interview-box.selected { border-left-color: #34d399; }
-        .vs { color: #6b7280; font-size: 0.9rem; margin: 1rem 0; text-align: center; }
-        ul { margin-left: 1.5rem; margin-bottom: 1rem; color: #a3a3a3; }
-        li { margin-bottom: 0.5rem; }
         .page-num { position: absolute; bottom: 2rem; right: 2rem; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #4b5563; }
-        .quote { font-style: italic; font-size: 1.2rem; color: #e5e5e5; border-left: 3px solid #f97316; padding-left: 1rem; margin: 1.5rem 0; }
+        .quote { font-style: italic; font-size: 1.1rem; color: #e5e5e5; border-left: 3px solid #f97316; padding-left: 1rem; margin: 1.5rem 0; }
+        .stat-row { display: flex; gap: 2rem; margin: 1.5rem 0; }
+        .stat { text-align: center; }
+        .stat-value { font-size: 2rem; font-weight: 700; color: #60a5fa; }
+        .stat-label { font-size: 0.8rem; color: #6b7280; }
+        .interview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0; }
+        .interview-card { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 8px; padding: 1rem; }
+        .interview-card h4 { font-size: 0.9rem; color: #e5e5e5; margin-bottom: 0.5rem; }
+        .interview-card p { font-size: 0.85rem; margin-bottom: 0; }
+        .cluster { display: flex; align-items: center; gap: 1rem; padding: 1rem; background: #1a1a1a; border-radius: 8px; margin-bottom: 0.75rem; }
+        .cluster-bar { height: 8px; background: #60a5fa; border-radius: 4px; }
+        .cluster-label { min-width: 140px; font-size: 0.9rem; }
+        .cluster-count { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: #6b7280; }
+        ul { margin-left: 1.5rem; margin-bottom: 1rem; color: #a3a3a3; }
+        li { margin-bottom: 0.5rem; font-size: 0.95rem; }
+        .top-pick { border: 2px solid #34d399; }
     </style>
 </head>
 <body>
@@ -40,91 +50,188 @@
         <div class="content">
             <p class="label">ZIP Launchpad Bootcamp · Spring 2026</p>
             <h1>Team <span class="highlight">11</span></h1>
-            <p class="subtitle">From campus interviews to elder safety</p>
+            <p class="subtitle">Discovery Complete: From 7 interviews to real problems</p>
+            <div class="stat-row">
+                <div class="stat">
+                    <div class="stat-value">7</div>
+                    <div class="stat-label">Interviews</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">20+</div>
+                    <div class="stat-label">Pain Points</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">4</div>
+                    <div class="stat-label">Problem Clusters</div>
+                </div>
+            </div>
             <p class="scroll-hint">↓ scroll</p>
         </div>
-        <span class="page-num">1/5</span>
+        <span class="page-num">1/6</span>
     </section>
 
     <section class="slide" style="position: relative;">
         <div class="content">
             <p class="label">Discovery Phase</p>
-            <h2>Two Interviews, Two Worlds</h2>
+            <h2>Who We Talked To</h2>
             
-            <div class="interview-box">
-                <h3>Interview 1: Matt</h3>
-                <p>Senior math major, 9-year barber, runs business from garage. Juggles 3 campus jobs + side hustle + hard major.</p>
-                <p><span class="tension">Key moment:</span> Story about grandmother's safety in SF</p>
-            </div>
-            
-            <div class="interview-box">
-                <h3>Interview 2: Jehovah's Witness Volunteers</h3>
-                <p>Two women who commute from Julian & Ramona to do outreach at SDSU.</p>
-                <p>Main friction: Traffic unpredictability on I-8</p>
+            <div class="interview-grid">
+                <div class="interview-card">
+                    <h4>🔹 Matt</h4>
+                    <p>Barber + math senior. Runs business from garage. Grandmother was assaulted.</p>
+                </div>
+                <div class="interview-card">
+                    <h4>🔹 JW Volunteers</h4>
+                    <p>Commute from Julian & Ramona. Traffic unpredictability.</p>
+                </div>
+                <div class="interview-card">
+                    <h4>🔹 Commuter Student</h4>
+                    <p>1.5hr trolley each way. 5 AM wake-ups for 8 AM class.</p>
+                </div>
+                <div class="interview-card">
+                    <h4>🔹 Freshman</h4>
+                    <p>No car, Uber too expensive, trolley feels unsafe. No income.</p>
+                </div>
+                <div class="interview-card">
+                    <h4>🔹 Zach (Petitioner)</h4>
+                    <p>Works campuses statewide. Traffic is #1 complaint he hears.</p>
+                </div>
+                <div class="interview-card">
+                    <h4>🔹 Pedestrian Student</h4>
+                    <p>Got hit by car at intersection. Trader Joe's = "people hit all the time."</p>
+                </div>
             </div>
         </div>
-        <span class="page-num">2/5</span>
+        <span class="page-num">2/6</span>
     </section>
 
     <section class="slide" style="position: relative;">
         <div class="content">
-            <p class="label">The Story That Stuck</p>
-            <h2>Matt's Grandmother</h2>
+            <p class="label">All Pain Points</p>
+            <h2>What We Heard</h2>
             
-            <div class="quote">"One time I came home, my grandmother had a black eye and she said she fell down the stairs."</div>
+            <div class="card">
+                <p class="label">Transportation & Safety</p>
+                <ul>
+                    <li>Traffic during peak hours (multiple mentions)</li>
+                    <li>Parking costs & availability</li>
+                    <li>1.5hr trolley commutes</li>
+                    <li>Trolley safety concerns</li>
+                    <li>Uber too expensive for students</li>
+                    <li><span class="tension">Pedestrian hit by car</span> — driver didn't stop</li>
+                    <li>Trader Joe's intersection = frequent accidents</li>
+                    <li>Basketball games = pedestrian chaos</li>
+                    <li>12 PM congestion, scooters don't use bells</li>
+                </ul>
+            </div>
             
-            <p>Matt checked for bruises on her arms and legs — signs you'd have if you caught yourself falling.</p>
-            <p><span class="tension">There were none.</span></p>
-            <p>He and his brother went to the bus station looking for the guy they suspected. He never showed.</p>
-            <p style="color: #e5e5e5;">"Thank God... I don't know where I'd be if I saw him."</p>
+            <div class="card">
+                <p class="label">Money & Jobs</p>
+                <ul>
+                    <li>Campus jobs too competitive</li>
+                    <li>No income limits options</li>
+                    <li>Transportation limits off-campus work</li>
+                </ul>
+            </div>
         </div>
-        <span class="page-num">3/5</span>
+        <span class="page-num">3/6</span>
     </section>
 
     <section class="slide" style="position: relative;">
         <div class="content">
-            <p class="label">Problem Angles</p>
-            <h2>What's Really Broken?</h2>
+            <p class="label">More Pain Points</p>
+            <h2>What Else We Found</h2>
             
             <div class="card">
-                <p class="label">Elder Vulnerability</p>
-                <p>Elderly people — especially in certain neighborhoods — are targets with no protection</p>
+                <p class="label">Elder Safety</p>
+                <ul>
+                    <li>Matt's grandmother had black eye — said she "fell"</li>
+                    <li>No bruises from catching herself</li>
+                    <li>No safe recourse for family</li>
+                </ul>
             </div>
             
             <div class="card">
-                <p class="label">No Visibility</p>
-                <p>Family members have no way to know something happened until after the fact</p>
+                <p class="label">Booking & Availability</p>
+                <ul>
+                    <li>Bowling: unpredictable wait times, no availability checker</li>
+                    <li>Golf: hard to book tee times, multiple redundant apps</li>
+                    <li>Grocery: analysis paralysis, too many options</li>
+                </ul>
             </div>
             
             <div class="card">
-                <p class="label">Communication Gap</p>
-                <p>Grandmother didn't tell the truth — <span class="tension">shame? fear? protection?</span></p>
-            </div>
-            
-            <div class="card">
-                <p class="label">No Safe Recourse</p>
-                <p>Only option was vigilante justice at a bus stop</p>
+                <p class="label">Other</p>
+                <ul>
+                    <li>Home-based business client trust/filtering</li>
+                    <li>Time management with packed schedules</li>
+                    <li>Younger generation lacks interpersonal skills</li>
+                </ul>
             </div>
         </div>
-        <span class="page-num">4/5</span>
+        <span class="page-num">4/6</span>
+    </section>
+
+    <section class="slide" style="position: relative;">
+        <div class="content">
+            <p class="label">Pattern Analysis</p>
+            <h2>Problem Clusters</h2>
+            
+            <div class="cluster">
+                <span class="cluster-label">Traffic/Parking/Transit</span>
+                <div class="cluster-bar" style="width: 200px;"></div>
+                <span class="cluster-count">5+ mentions</span>
+            </div>
+            
+            <div class="cluster top-pick">
+                <span class="cluster-label"><span class="decision">Pedestrian Safety</span></span>
+                <div class="cluster-bar" style="width: 120px; background: #34d399;"></div>
+                <span class="cluster-count">Specific + emotional</span>
+            </div>
+            
+            <div class="cluster">
+                <span class="cluster-label">Money/Jobs</span>
+                <div class="cluster-bar" style="width: 80px;"></div>
+                <span class="cluster-count">2 mentions</span>
+            </div>
+            
+            <div class="cluster">
+                <span class="cluster-label">Booking/Availability</span>
+                <div class="cluster-bar" style="width: 60px;"></div>
+                <span class="cluster-count">Actionable</span>
+            </div>
+
+            <div class="quote" style="margin-top: 2rem;">
+                "People get hit all the time" at Trader Joe's intersection
+            </div>
+        </div>
+        <span class="page-num">5/6</span>
     </section>
 
     <section class="slide" style="position: relative;">
         <div class="content">
             <p class="label">Current Status</p>
-            <h2>Where Team 11 Is Now</h2>
+            <h2>Where Team 11 Stands</h2>
             
-            <p><span class="decision">✓</span> Completed discovery interviews</p>
-            <p><span class="decision">✓</span> Identified compelling problem: elder safety</p>
-            <p><span class="tension">→</span> Next: Define the user (elder or family member?)</p>
-            <p><span class="tension">→</span> Next: Run solution ideation framework</p>
+            <p><span class="decision">✓</span> Completed 7 discovery interviews</p>
+            <p><span class="decision">✓</span> Identified 20+ pain points</p>
+            <p><span class="decision">✓</span> Mapped 4 problem clusters</p>
+            <p><span class="tension">→</span> Next: Pick ONE problem</p>
+            <p><span class="tension">→</span> Next: Run solution framework</p>
             
-            <div class="card" style="margin-top: 2rem;">
+            <div class="card" style="margin-top: 1.5rem;">
+                <p class="label">Top Contenders</p>
+                <p style="margin-bottom: 0.5rem;"><span class="decision">1.</span> <strong>SDSU Pedestrian Safety</strong> — specific locations, real incident, high emotion</p>
+                <p style="margin-bottom: 0.5rem;"><span class="highlight">2.</span> <strong>Bowling Availability</strong> — SDSU-specific, fast to build</p>
+                <p style="margin-bottom: 0;"><span class="highlight">3.</span> <strong>Elder Safety</strong> — meaningful but harder to validate</p>
+            </div>
+            
+            <div class="card" style="margin-top: 1rem;">
                 <p class="label">Team Member</p>
                 <p style="color: #e5e5e5; margin-bottom: 0;">Juan Alcala</p>
             </div>
         </div>
-        <span class="page-num">5/5</span>
+        <span class="page-num">6/6</span>
     </section>
 
     <script>
