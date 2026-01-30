@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="tidbit-type" content="founder">
+    <meta name="tidbit-subject" content="Paige Pucher">
+    <meta name="tidbit-company" content="Bootcamp Team">
+    <meta name="tidbit-date" content="2026-01-30">
+    <meta name="tidbit-period" content="2026-W05">
+    <title>Paige Pucher | Bootcamp Journey</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #0f0f0f; color: #e5e5e5; line-height: 1.6; }
+        
+        .slide {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+        }
+        
+        .card {
+            max-width: 600px;
+            width: 100%;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            padding: 3rem;
+        }
+        
+        .page-num {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            color: #4b5563;
+        }
+        
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+        
+        h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+        h2 { font-size: 1.75rem; font-weight: 600; margin-bottom: 1rem; color: #60a5fa; }
+        h3 { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.75rem; }
+        
+        p { margin-bottom: 1rem; color: #d1d5db; }
+        
+        .highlight { color: #60a5fa; }
+        .decision { color: #34d399; }
+        .tension { color: #f97316; }
+        
+        .subtitle { color: #9ca3af; font-size: 1.125rem; margin-bottom: 2rem; }
+        .scroll-hint { color: #4b5563; font-size: 0.875rem; margin-top: 2rem; }
+        
+        ul { list-style: none; margin-bottom: 1.5rem; }
+        ul li { padding-left: 1.5rem; position: relative; margin-bottom: 0.75rem; color: #d1d5db; }
+        ul li::before { content: "→"; position: absolute; left: 0; color: #60a5fa; }
+        
+        .quote {
+            border-left: 3px solid #60a5fa;
+            padding-left: 1.5rem;
+            font-style: italic;
+            color: #9ca3af;
+            margin-top: 1.5rem;
+        }
+        
+        .stat-row {
+            display: flex;
+            gap: 2rem;
+            margin: 1.5rem 0;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #60a5fa;
+        }
+        
+        .stat-label {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+    </style>
+</head>
+<body>
+    <!-- Slide 1: Cover -->
+    <section class="slide">
+        <div class="card" style="text-align: center;">
+            <p class="label">ZIP Launchpad Bootcamp</p>
+            <h1>Paige Pucher</h1>
+            <p class="subtitle">From 4 interviews to a bold math education concept</p>
+            <p style="color: #6b7280;">January 30, 2026</p>
+            <p class="scroll-hint">↓ scroll</p>
+        </div>
+        <div class="page-num">1/5</div>
+    </section>
+
+    <!-- Slide 2: The Interviews -->
+    <section class="slide">
+        <div class="card">
+            <p class="label">Discovery Phase</p>
+            <h2>4 Interviews, 2 Real Problems</h2>
+            <ul>
+                <li><strong>Alexander:</strong> Doom scrolling killing his reading time</li>
+                <li><strong>Math major:</strong> Students pushed into wrong classes, <span class="tension">math trauma</span> starting early</li>
+                <li><strong>Alumni:</strong> Career advice (no problem found)</li>
+                <li><strong>Eden:</strong> Thriving networker (no problem found)</li>
+            </ul>
+            <p class="label" style="margin-top: 2rem;">The Deciding Quote</p>
+            <p><em>"Math is a language — you use it or lose it. Counselors don't know what they're talking about."</em></p>
+        </div>
+        <div class="page-num">2/5</div>
+    </section>
+
+    <!-- Slide 3: The Reframe -->
+    <section class="slide">
+        <div class="card">
+            <p class="label">The Strategic Choice</p>
+            <h2>Go Upstream</h2>
+            <p>Instead of fixing math struggles in college, <span class="decision">prevent them in middle school</span>.</p>
+            <p class="label" style="margin-top: 2rem;">Problem Statement</p>
+            <p style="font-size: 1.25rem; color: #e5e5e5;"><strong>"Students check out of math when it stops feeling relevant."</strong></p>
+            <ul style="margin-top: 1.5rem;">
+                <li><span class="tension">Before class:</span> Cultural baggage, "math is hard" messaging</li>
+                <li><span class="tension">During:</span> Abstract, no connection to real life</li>
+                <li><span class="tension">After:</span> Bad grade = "I'm not a math person"</li>
+            </ul>
+        </div>
+        <div class="page-num">3/5</div>
+    </section>
+
+    <!-- Slide 4: The Solution -->
+    <section class="slide">
+        <div class="card">
+            <p class="label">The Concept</p>
+            <h2>Celebrity Math Videos</h2>
+            <p>AI-generated videos of <span class="highlight">celebrities kids actually care about</span> — Ariana Grande, Jake Paul — teaching math in contexts that matter to them.</p>
+            <ul>
+                <li>Algebra through gaming stats</li>
+                <li>Fractions through music production</li>
+                <li>Geometry through fashion design</li>
+            </ul>
+            <p class="label" style="margin-top: 1.5rem;">Target</p>
+            <p>Elementary through high school</p>
+            <p class="label" style="margin-top: 1rem;">Risks Identified</p>
+            <p><span class="tension">Legal (deepfake rights)</span> • Authenticity • Educational rigor</p>
+        </div>
+        <div class="page-num">4/5</div>
+    </section>
+
+    <!-- Slide 5: Close -->
+    <section class="slide">
+        <div class="card">
+            <p class="label">Where I'm At</p>
+            <h2>Ready to Validate</h2>
+            <ul>
+                <li>Need to test: Would kids actually watch?</li>
+                <li>Need to test: Would parents/teachers allow it?</li>
+                <li>Pivot option: Micro-influencers instead of deepfakes</li>
+            </ul>
+            <div class="quote">
+                "I thought we'd solve a college problem. We're actually trying to prevent it in middle school."
+            </div>
+        </div>
+        <div class="page-num">5/5</div>
+    </section>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
