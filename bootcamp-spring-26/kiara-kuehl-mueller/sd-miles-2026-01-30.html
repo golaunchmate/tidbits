@@ -26,7 +26,7 @@
         .decision { color: #34d399; }
         .subtitle { font-size: 1.1rem; color: #6b7280; margin-bottom: 2rem; }
         .scroll-hint { font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: #4b5563; margin-top: 2rem; }
-        .stat-row { display: flex; gap: 2rem; margin: 1.5rem 0; flex-wrap: wrap; }
+        .stat-row { display: flex; gap: 2rem; margin: 1.5rem 0; flex-wrap: wrap; justify-content: center; }
         .stat { text-align: center; }
         .stat-value { font-size: 1.75rem; font-weight: 700; color: #60a5fa; }
         .stat-label { font-size: 0.75rem; color: #6b7280; text-transform: uppercase; }
@@ -34,8 +34,13 @@
         ul li { padding-left: 1.5rem; position: relative; margin-bottom: 0.75rem; color: #a3a3a3; }
         ul li::before { content: '→'; position: absolute; left: 0; color: #4b5563; }
         .quote { font-size: 1.25rem; font-style: italic; color: #e5e5e5; border-left: 3px solid #34d399; padding-left: 1.5rem; margin: 1.5rem 0; }
-        .check { color: #34d399; }
         .x { color: #ef4444; }
+        .prototype-link { display: inline-block; margin-top: 1.5rem; padding: 0.75rem 1.5rem; background: #34d399; color: #0f0f0f; text-decoration: none; border-radius: 8px; font-weight: 600; transition: background 0.2s; }
+        .prototype-link:hover { background: #2dd48a; }
+        .timeline { margin: 1.5rem 0; }
+        .timeline-item { padding-left: 1.5rem; border-left: 2px solid #2a2a2a; margin-bottom: 1rem; }
+        .timeline-item h3 { font-size: 1rem; color: #60a5fa; margin-bottom: 0.25rem; }
+        .timeline-item p { margin-bottom: 0; font-size: 0.9rem; }
     </style>
 </head>
 <body>
@@ -43,7 +48,8 @@
         <div class="card" style="text-align: center;">
             <p class="label">ZIP Launchpad Bootcamp</p>
             <h1>Kiara Kuehl Mueller</h1>
-            <p class="subtitle">From Discovery to Solution · January 30, 2026</p>
+            <p class="subtitle">Discovery → Prototype in One Day</p>
+            <p style="color: #6b7280;">January 30, 2026</p>
             <p class="scroll-hint">scroll ↓</p>
         </div>
         <div class="page-num">1/5</div>
@@ -80,8 +86,8 @@
             </div>
             <p><span class="x">✗</span> Zipcar: hourly booking, doesn't fit 45-min class</p>
             <p><span class="x">✗</span> Uber: fast but expensive</p>
-            <p><span class="x">✗</span> Trolley: cheap but slow, requires leaving early</p>
-            <p><span class="x">✗</span> Buy a car: unrealistic for 1-2 semester stay</p>
+            <p><span class="x">✗</span> Trolley: cheap but slow</p>
+            <p style="margin-top: 1rem;">Then the German students said: <span class="highlight">"We have this back home. It's called Miles."</span></p>
         </div>
         <div class="page-num">3/5</div>
     </section>
@@ -89,31 +95,35 @@
     <section class="slide">
         <div class="card">
             <p class="label">The Insight</p>
-            <h2>This is already solved—in Germany</h2>
-            <p>Sophia & Charles mentioned <span class="highlight">"Miles"</span>—a car-sharing service where:</p>
-            <ul>
-                <li>Cars distributed throughout city like scooters</li>
-                <li><span class="decision">Pay per mile, not per hour</span></li>
-                <li>Unlock via app, drop off anywhere in zone</li>
-            </ul>
-            <p>The model fits exactly how people want to use cars: <span class="highlight">short, spontaneous, flexible.</span></p>
+            <h2>The model exists—just not here</h2>
+            <p><span class="highlight">Miles (Germany)</span> — cars distributed like scooters, pay-per-mile, drop off anywhere.</p>
+            <p>Fits exactly how students want to use cars: <span class="decision">short, spontaneous, flexible.</span></p>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>What we heard</h3>
+                    <p>"I need a car for 45 minutes, not 4 hours"</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>What exists</h3>
+                    <p>Time-based models that force overpaying</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>What's missing</h3>
+                    <p>Pay-per-mile in San Diego</p>
+                </div>
+            </div>
         </div>
         <div class="page-num">4/5</div>
     </section>
 
     <section class="slide">
-        <div class="card">
-            <p class="label">The Decision</p>
-            <h2 style="color: #34d399;">Building: SD Miles</h2>
-            <p>Pay-per-mile cars distributed across <span class="highlight">San Diego</span>.</p>
-            <ul>
-                <li>No hourly minimums</li>
-                <li>Unlock via app</li>
-                <li>Drop off anywhere in the city zone</li>
-                <li>Price that works for students and young professionals</li>
-            </ul>
-            <p style="margin-top: 1rem;"><span class="tension">Biggest risk:</span> Can the unit economics work at affordable price points?</p>
-            <div class="quote">"The model isn't broken. It just doesn't exist here yet."</div>
+        <div class="card" style="text-align: center;">
+            <p class="label">The Prototype</p>
+            <h2 style="color: #34d399;">We built SD Miles</h2>
+            <p>Pay-per-mile car sharing across San Diego. No hourly minimums. Unlock via app. Drop off anywhere in the zone.</p>
+            <a href="https://v0-car-sharing-app-xi.vercel.app" target="_blank" class="prototype-link">View Live Prototype →</a>
+            <div class="quote" style="margin-top: 2rem; text-align: left;">"Interview → Problem → Solution → Prototype. All in one day."</div>
+            <p style="margin-top: 1.5rem; color: #6b7280; font-size: 0.9rem;">Next: Validate with Jake, Sophia & Charles</p>
         </div>
         <div class="page-num">5/5</div>
     </section>
