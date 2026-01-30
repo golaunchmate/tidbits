@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SDSU Events Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container { max-width: 500px; margin: 0 auto; }
+        
+        header {
+            text-align: center;
+            padding: 30px 0;
+        }
+        h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fff;
+        }
+        .subtitle {
+            color: #a0aec0;
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+        .logo {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        /* Filter Tabs */
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            overflow-x: auto;
+        }
+        .tab {
+            padding: 10px 16px;
+            background: rgba(255,255,255,0.1);
+            border: none;
+            border-radius: 20px;
+            color: #a0aec0;
+            font-size: 0.85rem;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+        .tab.active, .tab:hover {
+            background: #c41e3a;
+            color: #fff;
+        }
+        
+        /* Event Cards */
+        .event-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 15px;
+            transition: transform 0.2s;
+        }
+        .event-card:hover {
+            transform: translateY(-2px);
+            border-color: #c41e3a;
+        }
+        
+        .event-date {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .date-box {
+            background: #c41e3a;
+            border-radius: 12px;
+            padding: 10px 14px;
+            text-align: center;
+            min-width: 60px;
+        }
+        .date-month {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: rgba(255,255,255,0.8);
+        }
+        .date-day {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .event-info { flex: 1; }
+        .event-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        .event-meta {
+            font-size: 0.8rem;
+            color: #a0aec0;
+        }
+        .event-meta span {
+            margin-right: 12px;
+        }
+        
+        .tag {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+        .tag-sports { background: #2d6a4f; color: #95d5b2; }
+        .tag-academic { background: #1d4ed8; color: #93c5fd; }
+        .tag-big { background: #b45309; color: #fcd34d; }
+        .tag-career { background: #6b21a8; color: #d8b4fe; }
+        
+        /* Traffic Indicator */
+        .traffic {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 10px;
+            font-size: 0.75rem;
+            color: #a0aec0;
+        }
+        .traffic-high { color: #34d399; }
+        .traffic-med { color: #fbbf24; }
+        .traffic-dots {
+            display: flex;
+            gap: 3px;
+        }
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #374151;
+        }
+        .dot.filled { background: #34d399; }
+        .dot.filled-med { background: #fbbf24; }
+        
+        /* CTA */
+        .cta {
+            background: linear-gradient(135deg, #c41e3a 0%, #a01830 100%);
+            border-radius: 16px;
+            padding: 25px;
+            text-align: center;
+            margin-top: 30px;
+        }
+        .cta h3 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+        .cta p {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 15px;
+        }
+        .cta-btn {
+            display: inline-block;
+            background: #fff;
+            color: #c41e3a;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #4a5568;
+            font-size: 0.75rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">🏟️</div>
+            <h1>SDSU Events Hub</h1>
+            <p class="subtitle">Never miss what's happening on campus</p>
+        </header>
+        
+        <div class="tabs">
+            <button class="tab active" onclick="filterEvents('all')">All Events</button>
+            <button class="tab" onclick="filterEvents('sports')">🏀 Sports</button>
+            <button class="tab" onclick="filterEvents('academic')">📚 Academic</button>
+            <button class="tab" onclick="filterEvents('big')">⭐ Big Events</button>
+        </div>
+        
+        <div id="events">
+            <div class="event-card" data-category="sports">
+                <div class="event-date">
+                    <div class="date-box">
+                        <div class="date-month">Feb</div>
+                        <div class="date-day">3</div>
+                    </div>
+                    <div class="event-info">
+                        <div class="event-title">Men's Basketball vs. Wyoming</div>
+                        <div class="event-meta">
+                            <span>🕐 8:00 PM</span>
+                            <span>📍 Viejas Arena</span>
+                        </div>
+                        <span class="tag tag-sports">Sports</span>
+                        <div class="traffic traffic-high">
+                            <div class="traffic-dots">
+                                <div class="dot filled"></div>
+                                <div class="dot filled"></div>
+                                <div class="dot filled"></div>
+                            </div>
+                            High foot traffic expected
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="event-card" data-category="sports">
+                <div class="event-date">
+                    <div class="date-box">
+                        <div class="date-month">Feb</div>
+                        <div class="date-day">10</div>
+                    </div>
+                    <div class="event-info">
+                        <div class="event-title">Women's Basketball vs. Cal State Northridge</div>
+                        <div class="event-meta">
+                            <span>🕐 6:00 PM</span>
+                            <span>📍 Viejas Arena</span>
+                        </div>
+                        <span class="tag tag-sports">Sports</span>
+                        <div class="traffic traffic-med">
+                            <div class="traffic-dots">
+                                <div class="dot filled-med"></div>
+                                <div class="dot filled-med"></div>
+                                <div class="dot"></div>
+                            </div>
+                            Medium foot traffic
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="event-card" data-category="sports">
+                <div class="event-date">
+                    <div class="date-box">
+                        <div class="date-month">Feb</div>
+                        <div class="date-day">11</div>
+                    </div>
+                    <div class="event-info">
+                        <div class="event-title">Women's Basketball vs. Colorado State</div>
+                        <div class="event-meta">
+                            <span>🕐 6:00 PM</span>
+                            <span>📍 Viejas Arena</span>
+                        </div>
+                        <span class="tag tag-sports">Sports</span>
+                        <div class="traffic traffic-med">
+                            <div class="traffic-dots">
+                                <div class="dot filled-med"></div>
+                                <div class="dot filled-med"></div>
+                                <div class="dot"></div>
+                            </div>
+                            Medium foot traffic
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="event-card" data-category="academic">
+                <div class="event-date">
+                    <div class="date-box">
+                        <div class="date-month">Feb</div>
+                        <div class="date-day">17</div>
+                    </div>
+                    <div class="event-info">
+                        <div class="event-title">Graduate Admissions Info Session</div>
+                        <div class="event-meta">
+                            <span>🕐 2:00 PM</span>
+                            <span>📍 Online</span>
+                        </div>
+                        <span class="tag tag-career">Career</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="event-card" data-category="big">
+                <div class="event-date">
+                    <div class="date-box">
+                        <div class="date-month">Feb</div>
+                        <div class="date-day">27</div>
+                    </div>
+                    <div class="event-info">
+                        <div class="event-title">SDSU Student Symposium (S3)</div>
+                        <div class="event-meta">
+                            <span>🕐 All Day</span>
+                            <span>📍 Student Union</span>
+                        </div>
+                        <span class="tag tag-big">⭐ Big Event</span>
+                        <div class="traffic traffic-high">
+                            <div class="traffic-dots">
+                                <div class="dot filled"></div>
+                                <div class="dot filled"></div>
+                                <div class="dot filled"></div>
+                            </div>
+                            High foot traffic expected
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="event-card" data-category="sports">
+                <div class="event-date">
+                    <div class="date-box">
+                        <div class="date-month">Feb</div>
+                        <div class="date-day">28</div>
+                    </div>
+                    <div class="event-info">
+                        <div class="event-title">Men's Basketball vs. Colorado State</div>
+                        <div class="event-meta">
+                            <span>🕐 7:30 PM</span>
+                            <span>📍 Viejas Arena</span>
+                        </div>
+                        <span class="tag tag-sports">Sports</span>
+                        <div class="traffic traffic-high">
+                            <div class="traffic-dots">
+                                <div class="dot filled"></div>
+                                <div class="dot filled"></div>
+                                <div class="dot filled"></div>
+                            </div>
+                            High foot traffic expected
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="cta">
+            <h3>📲 Get Event Alerts</h3>
+            <p>Never miss a big day. Get notified about high-traffic events.</p>
+            <a href="#" class="cta-btn">Sign Up for Alerts</a>
+        </div>
+        
+        <footer>
+            Built at SDSU ZIP Launchpad Bootcamp 2026<br>
+            Team Prototype - Volodymyr
+        </footer>
+    </div>
+    
+    <script>
+        function filterEvents(category) {
+            // Update active tab
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Filter cards
+            document.querySelectorAll('.event-card').forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
