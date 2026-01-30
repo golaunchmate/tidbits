@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="tidbit-type" content="founder">
+    <meta name="tidbit-subject" content="Victor Nyden">
+    <meta name="tidbit-company" content="Gym Capacity App">
+    <meta name="tidbit-date" content="2026-01-30">
+    <meta name="tidbit-period" content="2026-W05">
+    <title>Victor Nyden - Bootcamp Journey</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #0f0f0f; color: #e5e5e5; line-height: 1.6; }
+        
+        .slide {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+        }
+        
+        .card {
+            max-width: 600px;
+            width: 100%;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            padding: 3rem;
+        }
+        
+        .page-num {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+        }
+        
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+        
+        h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+        h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; }
+        h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; }
+        
+        p { margin-bottom: 1rem; }
+        
+        .highlight { color: #60a5fa; }
+        .decision { color: #34d399; }
+        .tension { color: #f97316; }
+        
+        .subtitle { color: #9ca3af; font-size: 1.1rem; }
+        .scroll-hint { color: #6b7280; font-size: 0.9rem; margin-top: 2rem; }
+        
+        .stat-row {
+            display: flex;
+            gap: 2rem;
+            margin: 1.5rem 0;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #60a5fa;
+        }
+        
+        .stat-label {
+            font-size: 0.85rem;
+            color: #9ca3af;
+        }
+        
+        ul {
+            list-style: none;
+            margin: 1rem 0;
+        }
+        
+        ul li {
+            padding-left: 1.5rem;
+            position: relative;
+            margin-bottom: 0.5rem;
+        }
+        
+        ul li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #6b7280;
+        }
+        
+        .quote {
+            border-left: 3px solid #60a5fa;
+            padding-left: 1.5rem;
+            font-style: italic;
+            color: #9ca3af;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Slide 1: Cover -->
+    <section class="slide">
+        <div class="card" style="text-align: center;">
+            <p class="label">ZIP Launchpad Bootcamp</p>
+            <h1>Victor Nyden</h1>
+            <p class="subtitle">Gym Capacity App</p>
+            <p style="color: #6b7280; margin-top: 1rem;">January 30, 2026</p>
+            <p class="scroll-hint">scroll ↓</p>
+        </div>
+        <div class="page-num">1/5</div>
+    </section>
+
+    <!-- Slide 2: Where I Started -->
+    <section class="slide">
+        <div class="card">
+            <p class="label">Where I Started</p>
+            <h2>Three interviews, looking for pain</h2>
+            <p>We talked to students about their daily campus life. One had epilepsy and couldn't drive. Another was satisfied with everything. A third was a grad student/TA who mentioned the <span class="highlight">gym being too crowded</span>.</p>
+            <p>At first, "crowded gym" felt weak. People can just go at different times, right?</p>
+            <p class="tension">But we kept digging.</p>
+        </div>
+        <div class="page-num">2/5</div>
+    </section>
+
+    <!-- Slide 3: What I Discovered -->
+    <section class="slide">
+        <div class="card">
+            <p class="label">What I Discovered</p>
+            <h2>The problem isn't crowding—it's <span class="highlight">blind trips</span></h2>
+            <p>The real friction happens BEFORE you get there. You walk 15 minutes to the gym, find it packed, and either suffer through it or leave.</p>
+            <div class="stat-row">
+                <div>
+                    <div class="stat-value">15-30</div>
+                    <div class="stat-label">minutes wasted per bad trip</div>
+                </div>
+                <div>
+                    <div class="stat-value">0</div>
+                    <div class="stat-label">ways to check capacity first</div>
+                </div>
+            </div>
+            <p>Students are making <span class="tension">decisions with no information</span>.</p>
+        </div>
+        <div class="page-num">3/5</div>
+    </section>
+
+    <!-- Slide 4: The Solution -->
+    <section class="slide">
+        <div class="card">
+            <p class="label">The Real Opportunity</p>
+            <h2>Real-time capacity + smart timing</h2>
+            <p>We combined two approaches:</p>
+            <ul>
+                <li><span class="highlight">See NOW</span> — Live busyness levels (% full, trend arrows)</li>
+                <li><span class="highlight">See BEST TIME</span> — "Usually quietest at 2pm" based on patterns</li>
+            </ul>
+            <p>One glance answers: <span class="decision">"Should I go now?"</span> and <span class="decision">"When should I go today?"</span></p>
+            <p style="margin-top: 1rem;">Starting with the ARC gym. Nail one location, then expand.</p>
+        </div>
+        <div class="page-num">4/5</div>
+    </section>
+
+    <!-- Slide 5: Where I'm At -->
+    <section class="slide">
+        <div class="card">
+            <p class="label">Where I'm At</p>
+            <h2>Next: Validate the data source</h2>
+            <ul>
+                <li>Ask ARC front desk if they track capacity</li>
+                <li>Explore gym swipe data access</li>
+                <li>Build quick prototype if data exists</li>
+                <li>Test with original interviewees</li>
+            </ul>
+            <p class="tension">Biggest risk: Getting accurate, real-time data without building hardware.</p>
+            <div class="quote">
+                "I thought the problem was crowded gyms. I actually needed to solve blind trips."
+            </div>
+        </div>
+        <div class="page-num">5/5</div>
+    </section>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
