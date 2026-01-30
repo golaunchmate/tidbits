@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="tidbit-type" content="founder">
+    <meta name="tidbit-subject" content="Jared Eastman">
+    <meta name="tidbit-company" content="Shadow Match">
+    <meta name="tidbit-date" content="2026-01-30">
+    <meta name="tidbit-period" content="2026-W05">
+    <title>Jared Eastman | Shadow Match | Bootcamp</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #0f0f0f; color: #e5e5e5; line-height: 1.6; }
+        
+        .slide {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+        }
+        
+        .card {
+            max-width: 600px;
+            width: 100%;
+            padding: 3rem;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            background: #0f0f0f;
+        }
+        
+        .page-num {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #4a4a4a;
+        }
+        
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+        
+        h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+        h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; }
+        h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.75rem; }
+        
+        .highlight { color: #60a5fa; }
+        .decision { color: #34d399; }
+        .tension { color: #f97316; }
+        
+        .subtitle { color: #9ca3af; font-size: 1.1rem; margin-bottom: 2rem; }
+        .scroll-hint { color: #4a4a4a; font-size: 0.9rem; margin-top: 2rem; }
+        
+        p { margin-bottom: 1rem; }
+        
+        .quote {
+            border-left: 3px solid #60a5fa;
+            padding-left: 1.5rem;
+            font-style: italic;
+            color: #9ca3af;
+            margin: 1.5rem 0;
+        }
+        
+        .stat-row {
+            display: flex;
+            gap: 2rem;
+            margin: 1.5rem 0;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #60a5fa;
+        }
+        
+        .stat-label {
+            font-size: 0.85rem;
+            color: #6b7280;
+        }
+        
+        ul { margin-left: 1.5rem; margin-bottom: 1rem; }
+        li { margin-bottom: 0.5rem; }
+        li::marker { color: #60a5fa; }
+    </style>
+</head>
+<body>
+
+<!-- Slide 1: Cover -->
+<section class="slide">
+    <div class="card" style="text-align: center;">
+        <p class="label">ZIP Launchpad Bootcamp</p>
+        <h1>Jared Eastman</h1>
+        <p class="subtitle">Shadow Match</p>
+        <p style="color: #6b7280;">January 30, 2026</p>
+        <p class="scroll-hint">↓ scroll</p>
+    </div>
+    <span class="page-num">1/5</span>
+</section>
+
+<!-- Slide 2: Where I Started -->
+<section class="slide">
+    <div class="card">
+        <p class="label">Where I Started</p>
+        <h2>We went looking for student problems on campus</h2>
+        <p>Found a senior premed student willing to talk. She's juggling <span class="highlight">20 units per semester</span>, volunteers at Red Cross, and is trying to get into med school.</p>
+        <p>We asked about her biggest challenges. Expected to hear about studying or time management.</p>
+        <p class="tension">That's not what she complained about.</p>
+    </div>
+    <span class="page-num">2/5</span>
+</section>
+
+<!-- Slide 3: What I Discovered -->
+<section class="slide">
+    <div class="card">
+        <p class="label">What I Discovered</p>
+        <h2>Finding shadowing opportunities is <span class="tension">broken</span></h2>
+        <div class="quote">"It's kind of hard to just go to places and be like, hey, do you offer shadowing? Because most of the time they're like, no, we don't do it."</div>
+        <p>Her current system:</p>
+        <ul>
+            <li>Browsing <span class="tension">physical billboards</span> in the science building</li>
+            <li>Cold outreach on LinkedIn/Handshake</li>
+            <li>Waiting <span class="highlight">1-2 weeks</span> for responses</li>
+        </ul>
+        <div class="stat-row">
+            <div>
+                <div class="stat-value">200+</div>
+                <div class="stat-label">hours required for med school</div>
+            </div>
+            <div>
+                <div class="stat-value">50/50</div>
+                <div class="stat-label">response rate on outreach</div>
+            </div>
+        </div>
+    </div>
+    <span class="page-num">3/5</span>
+</section>
+
+<!-- Slide 4: The Opportunity -->
+<section class="slide">
+    <div class="card">
+        <p class="label">The Real Opportunity</p>
+        <h2>A verified database of <span class="decision">shadowing-friendly</span> doctors</h2>
+        <p>The friction isn't the shadowing itself — it's <span class="highlight">finding places that actually say yes</span>.</p>
+        <p>What if premed students could see:</p>
+        <ul>
+            <li>Which clinics/doctors accept shadows</li>
+            <li>Requirements and how to apply</li>
+            <li>"Starter-friendly" tags for beginners</li>
+            <li>Crowdsourced from students who got in</li>
+        </ul>
+        <p style="color: #34d399;">✓ Solves the discovery problem</p>
+        <p style="color: #34d399;">✓ Warm data instead of cold outreach</p>
+    </div>
+    <span class="page-num">4/5</span>
+</section>
+
+<!-- Slide 5: Where I'm At -->
+<section class="slide">
+    <div class="card">
+        <p class="label">Where I'm At</p>
+        <h2>Next: Validate with her</h2>
+        <p>We have her email. Before 4pm today, we're reaching back out to ask:</p>
+        <ul>
+            <li>Would you use this?</li>
+            <li>Would you pay for it?</li>
+            <li>What would make it actually useful?</li>
+        </ul>
+        <div class="quote" style="border-color: #34d399;">"I thought premed students struggled with studying. Turns out they struggle with finding places that will let them learn."</div>
+    </div>
+    <span class="page-num">5/5</span>
+</section>
+
+<script>
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+        window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+    } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+        window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+    }
+});
+</script>
+
+</body>
+</html>
