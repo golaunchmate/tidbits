@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="tidbit-type" content="founder">
     <meta name="tidbit-subject" content="Brian Sussman">
-    <meta name="tidbit-company" content="Class Advisor App">
+    <meta name="tidbit-company" content="Schedule Optimizer">
     <meta name="tidbit-date" content="2026-01-30">
     <meta name="tidbit-period" content="2026-W05">
     <title>Brian Sussman - Bootcamp Tidbit</title>
@@ -118,6 +118,29 @@
             font-size: 1.1rem;
             color: #e5e5e5;
         }
+        
+        .flow-diagram {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .flow-box {
+            background: #1a1a2e;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            padding: 1rem 1.25rem;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        
+        .flow-arrow {
+            color: #60a5fa;
+            font-size: 1.5rem;
+        }
     </style>
 </head>
 <body>
@@ -126,85 +149,89 @@
         <div class="card" style="text-align: center;">
             <p class="label">ZIP Launchpad Bootcamp</p>
             <h1>Brian Sussman</h1>
-            <p class="subtitle">From 8-Feature App Dream → Focused Problem Discovery</p>
+            <p class="subtitle">From Scattered Ideas → Smart Schedule Builder</p>
             <p class="subtitle" style="margin-top: 0.5rem;">January 30, 2026</p>
             <p class="scroll-hint">scroll ↓</p>
         </div>
         <div class="page-num">1/5</div>
     </section>
 
-    <!-- Slide 2: Where I Started -->
+    <!-- Slide 2: The Problem -->
     <section class="slide">
         <div class="card">
-            <p class="label">Where I Started</p>
-            <h2>The <span class="tension">Everything App</span></h2>
-            <p>Walked in with a vision: an app connected to my.SDSU that does <em>everything</em>.</p>
-            <ul>
-                <li>Builds ideal class schedules</li>
-                <li>Connects degree eval to RateMyProfessor</li>
-                <li>Links to Canvas and ARC app</li>
-                <li>Campus event updates</li>
-                <li>Social features beyond Greek life</li>
-            </ul>
-            <p style="color: #f97316;">Problem: 8 features, zero validated pain point.</p>
+            <p class="label">The Problem</p>
+            <h2>Registration is <span class="tension">Chaos</span></h2>
+            <p>Interviewed students across majors — pre-PA, music, biology. Same story:</p>
+            <div class="quote">"Didn't know which route to take initially"</div>
+            <div class="quote">"Unprepared for first semester workload"</div>
+            <div class="stat-row">
+                <div>
+                    <div class="stat-value">3+</div>
+                    <div class="stat-label">sites to juggle</div>
+                </div>
+                <div>
+                    <div class="stat-value">PRE</div>
+                    <div class="stat-label">is where friction lives</div>
+                </div>
+            </div>
+            <p>Students are <span class="tension">juggling degree eval, WebPortal, work schedules, and guesswork</span> — all separately.</p>
         </div>
         <div class="page-num">2/5</div>
     </section>
 
-    <!-- Slide 3: What I Discovered -->
+    <!-- Slide 3: The Pivot -->
     <section class="slide">
         <div class="card">
-            <p class="label">What I Discovered</p>
-            <h2>Students Are <span class="highlight">Flying Blind</span></h2>
-            <p>Interviewed a pre-PA junior, music students, and a biology major. Same pattern emerged:</p>
-            <div class="quote">"Didn't know which route to take initially"</div>
-            <div class="quote">"Unprepared for first semester workload"</div>
-            <div class="quote">"Course difficulty is either really hard or really easy — no middle ground"</div>
-            <div class="stat-row">
-                <div>
-                    <div class="stat-value">PRE</div>
-                    <div class="stat-label">where the friction lives</div>
-                </div>
-                <div>
-                    <div class="stat-value">3+</div>
-                    <div class="stat-label">sites students juggle</div>
-                </div>
-            </div>
-            <p>The real problem: <span class="decision">students don't know what they're getting into until it's too late.</span></p>
+            <p class="label">The Journey</p>
+            <h2>From <span class="tension">Social App</span> to <span class="decision">Utility Tool</span></h2>
+            <p>Started with: Yik Yak meets RateMyProfessor — anonymous class chatter.</p>
+            <p>But realized: students don't just need <em>advice</em>, they need <span class="highlight">the schedule built for them.</span></p>
+            <p style="margin-top: 1rem;"><strong>The pivot:</strong></p>
+            <ul>
+                <li>Social features are nice-to-have</li>
+                <li>Schedule optimization is the <span class="decision">core pain</span></li>
+                <li>Work/life conflicts make it personal</li>
+            </ul>
         </div>
         <div class="page-num">3/5</div>
     </section>
 
-    <!-- Slide 4: The Real Opportunity -->
+    <!-- Slide 4: The Solution -->
     <section class="slide">
         <div class="card">
-            <p class="label">The Real Opportunity</p>
-            <h2><span class="highlight">Yik Yak</span> meets <span class="highlight">RateMyProfessor</span></h2>
-            <p>Anonymous, real-time class advice from students in the trenches right now.</p>
+            <p class="label">The Solution</p>
+            <h2><span class="highlight">Smart Schedule Builder</span></h2>
+            <div class="flow-diagram">
+                <div class="flow-box">Link<br><strong>my.SDSU</strong></div>
+                <span class="flow-arrow">→</span>
+                <div class="flow-box">Add<br><strong>Work/Life</strong></div>
+                <span class="flow-arrow">→</span>
+                <div class="flow-box">Get<br><strong>Ideal Schedule</strong></div>
+            </div>
+            <p><strong>How it works:</strong></p>
             <ul>
-                <li><strong>Anonymous</strong> = brutally honest about workload</li>
-                <li><strong>Campus-specific</strong> = relevant to SDSU requirements</li>
-                <li><strong>Real-time</strong> = current students, not 3-year-old reviews</li>
+                <li>Pulls degree evaluation requirements automatically</li>
+                <li>User adds work shifts, personal conflicts</li>
+                <li>Algorithm generates optimized schedule options</li>
             </ul>
-            <p style="margin-top: 1.5rem;"><span class="decision">✓</span> Why it's different from RMP:</p>
-            <p style="color: #b0b0b0; font-size: 0.95rem;">"Prof just curved the midterm 🙌" beats a stale 2023 review.</p>
+            <p style="margin-top: 1rem;"><span class="decision">✓</span> No more tab-switching. No more guesswork.</p>
         </div>
         <div class="page-num">4/5</div>
     </section>
 
-    <!-- Slide 5: Where I'm At -->
+    <!-- Slide 5: Where We're At -->
     <section class="slide">
         <div class="card">
-            <p class="label">Where I'm At</p>
-            <h2>Ready to <span class="decision">Prototype</span></h2>
+            <p class="label">Where We're At</p>
+            <h2>Ready to <span class="decision">Build & Test</span></h2>
             <ul>
-                <li>Validated the problem with real interviews</li>
-                <li>Narrowed from 8 features to 1 core value prop</li>
-                <li>Clear pitch: "Find out what you're actually signing up for"</li>
+                <li>Problem validated through real interviews</li>
+                <li>Pivoted from social → utility based on user needs</li>
+                <li>Clear value prop: "Your ideal schedule in 30 seconds"</li>
             </ul>
-            <p>Next: build simplest version and test with students today.</p>
+            <p><strong>Key assumption to test:</strong> Will students trust a third-party tool with their my.SDSU login?</p>
             <div class="closing-quote">
-                "I thought I needed to build everything.<br>I actually needed to solve one thing well."
+                "I thought students wanted to talk about classes.<br>They actually want someone to build their schedule for them."
             </div>
         </div>
         <div class="page-num">5/5</div>
