@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="tidbit-type" content="founder">
+    <meta name="tidbit-subject" content="Sophia Colley">
+    <meta name="tidbit-company" content="Move Maven">
+    <meta name="tidbit-date" content="2026-01-30">
+    <meta name="tidbit-period" content="2026-W05">
+    <title>Sophia Colley - Move Maven | Bootcamp Tidbit</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #0f0f0f; color: #e5e5e5; line-height: 1.6; }
+        
+        .slide {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        
+        .card {
+            max-width: 600px;
+            width: 100%;
+            padding: 3rem;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            position: relative;
+        }
+        
+        .page-num {
+            position: absolute;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+        }
+        
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+        
+        h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+        h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; color: #e5e5e5; }
+        h3 { font-size: 1.1rem; font-weight: 500; margin-bottom: 0.5rem; }
+        
+        .highlight { color: #60a5fa; }
+        .decision { color: #34d399; }
+        .tension { color: #f97316; }
+        
+        .subtitle { color: #9ca3af; font-size: 1.1rem; margin-bottom: 1rem; }
+        .scroll-hint { color: #6b7280; font-size: 0.9rem; margin-top: 2rem; }
+        
+        p { margin-bottom: 1rem; }
+        
+        .stat-row {
+            display: flex;
+            gap: 2rem;
+            margin: 1.5rem 0;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #34d399;
+        }
+        
+        .stat-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-transform: uppercase;
+        }
+        
+        .quote {
+            border-left: 3px solid #60a5fa;
+            padding-left: 1.5rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: #9ca3af;
+        }
+        
+        .arrow-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .arrow-list li {
+            padding-left: 1.5rem;
+            position: relative;
+            margin-bottom: 0.75rem;
+        }
+        
+        .arrow-list li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #60a5fa;
+        }
+        
+        .final-quote {
+            background: #1a1a2e;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            text-align: center;
+        }
+        
+        .final-quote p {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        a { color: #60a5fa; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <section class="slide">
+        <div class="card">
+            <p class="label">ZIP Launchpad Bootcamp · Team 2</p>
+            <h1>Sophia Colley</h1>
+            <p class="subtitle"><span class="highlight">Move Maven</span> · January 30, 2026</p>
+            <p>From interview to $95 in sales in one day.</p>
+            <p class="scroll-hint">scroll ↓</p>
+            <span class="page-num">1/5</span>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div class="card">
+            <p class="label">Where I Started</p>
+            <h2>The Interview That Changed Everything</h2>
+            <p>I talked to <span class="highlight">Aaron Lloyd</span>, an advisor at SDSU, about his recent move to San Diego.</p>
+            <p>What he told me:</p>
+            <div class="quote">
+                "I had to look on <span class="tension">dozens of websites</span> and keep track of everything in a <span class="tension">huge spreadsheet</span> just to find a neighborhood I'd want to live in."
+            </div>
+            <p>Moving across states wasn't just stressful—it was a <span class="tension">full-time research project</span>.</p>
+            <span class="page-num">2/5</span>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div class="card">
+            <p class="label">What I Discovered</p>
+            <h2>The PRE-Move Problem</h2>
+            <p>The friction wasn't the actual moving. It was everything <span class="tension">before</span>:</p>
+            <ul class="arrow-list">
+                <li>Zillow for housing prices</li>
+                <li>Niche.com for school ratings</li>
+                <li>Google Maps for commute times</li>
+                <li>Reddit for "what's it really like"</li>
+                <li>Crime maps, walkability scores, local amenities...</li>
+            </ul>
+            <p style="margin-top: 1.5rem;">All tracked in a <span class="tension">monster spreadsheet</span> that took weeks to build.</p>
+            <span class="page-num">3/5</span>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div class="card">
+            <p class="label">The Aha Moment</p>
+            <h2>What If It Was All In One Place?</h2>
+            <p>The insight hit us mid-interview:</p>
+            <div class="quote">
+                "Why is Aaron visiting 12 different websites when all this data could live in <span class="highlight">one dashboard</span>?"
+            </div>
+            <p><span class="decision">Move Maven</span> brings it all together—neighborhoods, prices, schools, commutes, vibe—so you can actually <em>compare</em> places instead of drowning in tabs.</p>
+            <span class="page-num">4/5</span>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div class="card">
+            <p class="label">Where I'm At</p>
+            <h2>Validated With Real Revenue</h2>
+            <div class="stat-row">
+                <div class="stat">
+                    <div class="stat-value">14</div>
+                    <div class="stat-label">Sales</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">$95</div>
+                    <div class="stat-label">Revenue</div>
+                </div>
+            </div>
+            <p>Built a working prototype: <a href="https://move-maven.lovable.app/" target="_blank">move-maven.lovable.app</a></p>
+            <p>People didn't just say "cool idea"—they <span class="decision">paid for it</span>.</p>
+            <div class="final-quote">
+                <p>"I thought moving was the hard part.<br>I actually needed to fix the <span class="highlight">research</span> before the move."</p>
+            </div>
+            <span class="page-num">5/5</span>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
