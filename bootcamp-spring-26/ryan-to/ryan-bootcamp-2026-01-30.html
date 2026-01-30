@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="tidbit-type" content="founder">
+    <meta name="tidbit-subject" content="Ryan To">
+    <meta name="tidbit-company" content="Bootcamp Discovery">
+    <meta name="tidbit-date" content="2026-01-30">
+    <meta name="tidbit-period" content="2026-W05">
+    <title>Ryan To | Bootcamp Discovery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #0f0f0f; color: #e5e5e5; line-height: 1.6; }
+        .slide { min-height: 100vh; scroll-snap-align: start; display: flex; align-items: center; justify-content: center; padding: 2rem; position: relative; }
+        .card { max-width: 600px; width: 100%; padding: 3rem; border: 1px solid #2a2a2a; border-radius: 12px; background: #141414; }
+        .page-num { position: absolute; bottom: 2rem; right: 2rem; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #6b7280; }
+        .highlight { color: #60a5fa; }
+        .decision { color: #34d399; }
+        .tension { color: #f97316; }
+        .label { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; display: block; }
+        h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+        h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1.5rem; color: #e5e5e5; }
+        p { margin-bottom: 1rem; color: #a3a3a3; }
+        .subtitle { color: #6b7280; font-size: 1.1rem; margin-bottom: 2rem; }
+        .scroll-hint { color: #6b7280; font-size: 0.9rem; margin-top: 2rem; }
+        .quote { font-style: italic; border-left: 3px solid #60a5fa; padding-left: 1rem; margin: 1.5rem 0; color: #e5e5e5; }
+        .stat-row { display: flex; gap: 2rem; margin: 1.5rem 0; }
+        .stat { text-align: center; }
+        .stat-value { font-size: 2rem; font-weight: 700; color: #60a5fa; }
+        .stat-label { font-size: 0.75rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.05em; }
+        ul { margin: 1rem 0; padding-left: 0; list-style: none; }
+        ul li { margin-bottom: 0.5rem; color: #a3a3a3; }
+        ul li::before { content: "→ "; color: #60a5fa; }
+    </style>
+</head>
+<body>
+    <section class="slide">
+        <div class="card">
+            <span class="label">Startup Bootcamp</span>
+            <h1>Ryan To</h1>
+            <p class="subtitle">From campus interviews to an unsolved problem</p>
+            <p class="scroll-hint">scroll ↓</p>
+        </div>
+        <span class="page-num">1/5</span>
+    </section>
+
+    <section class="slide">
+        <div class="card">
+            <span class="label">Where I Started</span>
+            <h2>Two interviews, looking for pain</h2>
+            <p>I talked to members of a Christian fraternity about their challenges. First conversation surfaced some stuff about maintaining "dry chapter" culture, but nothing sharp.</p>
+            <p>Then I interviewed a <span class="highlight">former frat president</span> who works at the library. That's when things got interesting.</p>
+        </div>
+        <span class="page-num">2/5</span>
+    </section>
+
+    <section class="slide">
+        <div class="card">
+            <span class="label">What I Discovered</span>
+            <h2>The personalization trap</h2>
+            <p>This guy was DMing <span class="highlight">50-100 potential recruits</span> before every rush event. Individually. By hand.</p>
+            <div class="stat-row">
+                <div class="stat">
+                    <div class="stat-value">30-60</div>
+                    <div class="stat-label">minutes per event</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">50-100</div>
+                    <div class="stat-label">DMs each time</div>
+                </div>
+            </div>
+            <p>He tried Flare (mass messaging app) but <span class="tension">stopped using it</span>. His words:</p>
+            <div class="quote">"It didn't feel as personal. People don't feel like they're talking to a robot... They don't feel like I'm being seen."</div>
+        </div>
+        <span class="page-num">3/5</span>
+    </section>
+
+    <section class="slide">
+        <div class="card">
+            <span class="label">The Real Opportunity</span>
+            <h2>Authenticity at scale</h2>
+            <p>The existing solution (Flare) solves <span class="decision">speed</span> but kills <span class="tension">authenticity</span>.</p>
+            <p>He rejected it for anything that mattered. The gap:</p>
+            <div class="quote">There's no solution that gives both — personalized-feeling outreach at scale.</div>
+            <p>This isn't just a frat problem. It's the same tension for:</p>
+            <ul>
+                <li>Recruiters messaging candidates</li>
+                <li>Salespeople doing outreach</li>
+                <li>Community managers</li>
+                <li>Creators responding to fans</li>
+            </ul>
+        </div>
+        <span class="page-num">4/5</span>
+    </section>
+
+    <section class="slide">
+        <div class="card">
+            <span class="label">Where I'm At</span>
+            <h2>Next: Solution ideation</h2>
+            <p>Problem validated. Now mapping the full journey — what happens before, during, and after sending all those DMs.</p>
+            <p>Looking for the specific friction points where a solution could live.</p>
+            <div class="quote" style="margin-top: 2rem; border-left-color: #34d399;">"I thought I was looking for any campus problem. I actually found a universal tension between being human and being efficient."</div>
+        </div>
+        <span class="page-num">5/5</span>
+    </section>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
