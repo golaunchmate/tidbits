@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="tidbit-type" content="founder">
+  <meta name="tidbit-subject" content="Ravyn Panopio">
+  <meta name="tidbit-company" content="TenantShield">
+  <meta name="tidbit-date" content="2026-01-30">
+  <meta name="tidbit-period" content="2026-W05">
+  <title>Ravyn Panopio — TenantShield | Bootcamp Tidbit</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, sans-serif; background: #0f0f0f; color: #e5e5e5; line-height: 1.6; }
+    
+    .slide {
+      min-height: 100vh;
+      scroll-snap-align: start;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      position: relative;
+    }
+    
+    .card {
+      max-width: 600px;
+      width: 100%;
+      padding: 3rem;
+      border: 1px solid #2a2a2a;
+      border-radius: 12px;
+      background: #151515;
+    }
+    
+    .page-num {
+      position: absolute;
+      bottom: 2rem;
+      right: 2rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: #4a4a4a;
+    }
+    
+    .label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: #6b7280;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+    }
+    
+    h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+    h2 { font-size: 1.75rem; font-weight: 600; margin-bottom: 1.5rem; color: #fff; }
+    h3 { font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: #fff; }
+    
+    p { margin-bottom: 1rem; color: #b0b0b0; }
+    
+    .highlight { color: #60a5fa; }
+    .decision { color: #34d399; }
+    .tension { color: #f97316; }
+    
+    .subtitle { font-size: 1.1rem; color: #6b7280; margin-bottom: 2rem; }
+    .scroll-hint { font-size: 0.9rem; color: #4a4a4a; margin-top: 2rem; }
+    
+    .quote {
+      border-left: 3px solid #60a5fa;
+      padding-left: 1.5rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: #9ca3af;
+    }
+    
+    .stat-row {
+      display: flex;
+      gap: 2rem;
+      margin: 1.5rem 0;
+    }
+    
+    .stat {
+      text-align: center;
+    }
+    
+    .stat-value {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #60a5fa;
+    }
+    
+    .stat-label {
+      font-size: 0.75rem;
+      color: #6b7280;
+      text-transform: uppercase;
+    }
+    
+    ul {
+      list-style: none;
+      margin: 1rem 0;
+    }
+    
+    ul li {
+      padding-left: 1.5rem;
+      position: relative;
+      margin-bottom: 0.75rem;
+      color: #b0b0b0;
+    }
+    
+    ul li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: #60a5fa;
+    }
+    
+    .feature-list li::before {
+      content: "✓";
+      color: #34d399;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Slide 1: Cover -->
+  <section class="slide">
+    <div class="card" style="text-align: center;">
+      <p class="label">ZIP Launchpad Bootcamp</p>
+      <h1>Ravyn Panopio</h1>
+      <p class="subtitle">TenantShield</p>
+      <p style="color: #4a4a4a;">January 30, 2026</p>
+      <p class="scroll-hint">↓ scroll</p>
+    </div>
+    <span class="page-num">1/5</span>
+  </section>
+
+  <!-- Slide 2: Where I Started -->
+  <section class="slide">
+    <div class="card">
+      <p class="label">Where I Started</p>
+      <h2>I interviewed a guy stuck climbing 5 floors</h2>
+      <p>Nick lives on the 5th floor. Both elevators have been broken since December. <span class="tension">Management sends AI-generated non-answers.</span></p>
+      <p>He tried everything — door-to-door organizing, collecting emails, even talking to a lawyer.</p>
+      <div class="quote">
+        "They just see us as money. They don't see us as real people."
+      </div>
+      <p>The lawyer told him there's nothing in his lease about elevator access. <span class="tension">Dead end.</span></p>
+    </div>
+    <span class="page-num">2/5</span>
+  </section>
+
+  <!-- Slide 3: What I Discovered -->
+  <section class="slide">
+    <div class="card">
+      <p class="label">What I Discovered</p>
+      <h2>The lease isn't the only angle</h2>
+      <p>Nick asked the wrong question. He asked about his <span class="tension">lease</span>. He should have asked about <span class="highlight">ADA, building codes, and fire safety laws.</span></p>
+      <p>Most tenants don't know what leverage they actually have.</p>
+      <div class="stat-row">
+        <div class="stat">
+          <div class="stat-value">7</div>
+          <div class="stat-label">flights daily</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">2+</div>
+          <div class="stat-label">months broken</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">0</div>
+          <div class="stat-label">real answers</div>
+        </div>
+      </div>
+      <p>And even when tenants DO find a lawyer — they can't afford one. <span class="highlight">But together?</span></p>
+    </div>
+    <span class="page-num">3/5</span>
+  </section>
+
+  <!-- Slide 4: The Real Opportunity -->
+  <section class="slide">
+    <div class="card">
+      <p class="label">The Real Opportunity</p>
+      <h2>TenantShield</h2>
+      <p>An app that helps renters discover <span class="highlight">hidden legal leverage</span> and access lawyers they can actually afford.</p>
+      <ul class="feature-list">
+        <li>Find laws you didn't know applied (ADA, building codes, habitability)</li>
+        <li>Get a case strength assessment before wasting time</li>
+        <li>Match with tenant-rated lawyers (reviews BY renters, FOR renters)</li>
+        <li>Crowdfund legal fees with neighbors — 40 people × $50 = real lawyer</li>
+      </ul>
+      <p style="margin-top: 1.5rem;"><span class="decision">Business model:</span> Commission on lawyer matches + small platform fee on crowdfunding</p>
+    </div>
+    <span class="page-num">4/5</span>
+  </section>
+
+  <!-- Slide 5: Where I'm At -->
+  <section class="slide">
+    <div class="card">
+      <p class="label">Where I'm At</p>
+      <h2>Built the prototype, ready to validate</h2>
+      <ul>
+        <li>Created AI-powered prototype prompt (works in ChatGPT/Claude)</li>
+        <li>Full flow: intake → legal angles → case assessment → lawyer match → crowdfund</li>
+        <li>Calling Nick back to demo and ask: "Would you pay for this?"</li>
+      </ul>
+      <div class="quote" style="margin-top: 2rem; border-color: #34d399;">
+        "I thought tenants just needed a lawyer. They actually need to know they have a case worth fighting — and the numbers to afford the fight."
+      </div>
+    </div>
+    <span class="page-num">5/5</span>
+  </section>
+
+  <script>
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+        window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+      } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+        window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+      }
+    });
+  </script>
+
+</body>
+</html>
