@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="tidbit-type" content="founder">
+    <meta name="tidbit-subject" content="Brandon Mondragon">
+    <meta name="tidbit-company" content="The Student Hub">
+    <meta name="tidbit-date" content="2026-01-30">
+    <meta name="tidbit-period" content="2026-W05">
+    <title>Brandon Mondragon | The Student Hub | ZIP Launchpad Bootcamp</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #0f0f0f; color: #e5e5e5; line-height: 1.6; }
+        
+        .slide {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        
+        .card {
+            max-width: 600px;
+            width: 100%;
+            padding: 3rem;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            position: relative;
+        }
+        
+        .page-num {
+            position: absolute;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+        }
+        
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+        
+        h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+        h2 { font-size: 1.75rem; font-weight: 600; margin-bottom: 1rem; }
+        h3 { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.75rem; }
+        
+        p { margin-bottom: 1rem; color: #a3a3a3; }
+        
+        .highlight { color: #60a5fa; }
+        .decision { color: #34d399; }
+        .tension { color: #f97316; }
+        
+        .subtitle { font-size: 1.1rem; color: #6b7280; margin-bottom: 1.5rem; }
+        .scroll-hint { font-size: 0.9rem; color: #4b5563; margin-top: 2rem; }
+        
+        .stat-row {
+            display: flex;
+            gap: 2rem;
+            margin: 1.5rem 0;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #60a5fa;
+        }
+        
+        .stat-label {
+            font-size: 0.8rem;
+            color: #6b7280;
+            text-transform: uppercase;
+        }
+        
+        .friction-list {
+            list-style: none;
+            margin: 1rem 0;
+        }
+        
+        .friction-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: #a3a3a3;
+        }
+        
+        .friction-list li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #f97316;
+        }
+        
+        .quote {
+            font-size: 1.25rem;
+            font-style: italic;
+            color: #e5e5e5;
+            border-left: 3px solid #60a5fa;
+            padding-left: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .analogy {
+            background: #1a1a2e;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+        
+        .analogy-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: #60a5fa;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Slide 1: Cover -->
+<section class="slide">
+    <div class="card" style="text-align: center;">
+        <p class="label">ZIP Launchpad Bootcamp</p>
+        <h1>Brandon Mondragon</h1>
+        <p class="subtitle">The Student Hub</p>
+        <p style="color: #4b5563;">January 30, 2026</p>
+        <p class="scroll-hint">↓ scroll</p>
+        <span class="page-num">1/5</span>
+    </div>
+</section>
+
+<!-- Slide 2: Where I Started -->
+<section class="slide">
+    <div class="card">
+        <p class="label">Where I Started</p>
+        <h2>Hunting for real problems</h2>
+        <p>Started the day interviewing strangers — a student at Starbucks, IT staff at the library, people in financial aid and registration.</p>
+        <p>First interviews surfaced everything from <span class="tension">Southwest's chaotic new boarding policy</span> to <span class="tension">landlords throwing out belongings</span> to <span class="tension">Duo authentication headaches</span>.</p>
+        <p>Lots of pain points. But which one had legs?</p>
+        <span class="page-num">2/5</span>
+    </div>
+</section>
+
+<!-- Slide 3: What I Discovered -->
+<section class="slide">
+    <div class="card">
+        <p class="label">What I Discovered</p>
+        <h2>The pattern across every department</h2>
+        <p>Talking to IT, financial aid, and registration revealed the same friction:</p>
+        <ul class="friction-list">
+            <li>Students don't know <span class="highlight">which portal</span> to check</li>
+            <li>Critical info gets <span class="tension">buried in email</span></li>
+            <li>Financial aid lives in a <span class="tension">separate system</span> from Canvas</li>
+            <li>IT issues require <span class="tension">physical visits</span> to the help desk</li>
+        </ul>
+        <div class="stat-row">
+            <div class="stat">
+                <div class="stat-value">5+</div>
+                <div class="stat-label">portals to check</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">1</div>
+                <div class="stat-label">unified view</div>
+            </div>
+        </div>
+        <p><span class="decision">The information exists. It's just scattered everywhere.</span></p>
+        <span class="page-num">3/5</span>
+    </div>
+</section>
+
+<!-- Slide 4: The Real Opportunity -->
+<section class="slide">
+    <div class="card">
+        <p class="label">The Real Opportunity</p>
+        <h2>Mint for student life</h2>
+        <p>Just like Mint unified bank accounts, cards, and bills into one financial dashboard — students need one place for:</p>
+        <ul class="friction-list">
+            <li>Canvas notifications</li>
+            <li>Financial aid deadlines</li>
+            <li>Registration alerts</li>
+            <li>IT self-service fixes</li>
+        </ul>
+        <div class="analogy">
+            <p class="analogy-label">The pitch</p>
+            <p style="margin: 0.5rem 0 0 0; color: #e5e5e5;">"We're not replacing SDSU's systems — we're building the <span class="highlight">layer on top</span> that organizes what matters."</p>
+        </div>
+        <span class="page-num">4/5</span>
+    </div>
+</section>
+
+<!-- Slide 5: Where I'm At -->
+<section class="slide">
+    <div class="card">
+        <p class="label">Where I'm At</p>
+        <h2>Building The Student Hub</h2>
+        <p>Solution chosen: <span class="decision">Centralized dashboard</span> that aggregates notifications and action items from every SDSU system.</p>
+        <p>Next step: Prototype a clickable mockup and validate with students.</p>
+        <p style="margin-top: 0.5rem;"><strong>Key question to test:</strong> <em>"Would you check this daily? What would make you NOT use it?"</em></p>
+        <div class="quote">
+            "I thought students needed better IT help. I realized they needed one place to find everything."
+        </div>
+        <span class="page-num">5/5</span>
+    </div>
+</section>
+
+<script>
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+        window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+    } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+        window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+    }
+});
+</script>
+
+</body>
+</html>
