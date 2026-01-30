@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="tidbit-type" content="team">
+    <meta name="tidbit-subject" content="Michael Hayes">
+    <meta name="tidbit-date" content="2026-01-30">
+    <meta name="tidbit-period" content="2026-W05">
+    <title>Michael Hayes - Week 5</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #0f0f0f; color: #e5e5e5; line-height: 1.6; }
+        .slide { min-height: 100vh; scroll-snap-align: start; display: flex; flex-direction: column; justify-content: center; padding: 3rem; position: relative; }
+        .content { max-width: 700px; margin: 0 auto; width: 100%; }
+        .page-num { position: absolute; top: 2rem; right: 2rem; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #6b7280; }
+        .label { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+        h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+        h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; color: #60a5fa; }
+        h3 { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.75rem; }
+        p { margin-bottom: 1rem; color: #a3a3a3; }
+        .highlight { color: #60a5fa; }
+        .decision { color: #34d399; }
+        .tension { color: #f97316; }
+        .card { background: #1a1a1a; border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; }
+        .stat-row { display: flex; gap: 2rem; margin: 1.5rem 0; }
+        .stat { text-align: center; }
+        .stat-value { font-size: 2rem; font-weight: 700; color: #60a5fa; }
+        .stat-label { font-size: 0.875rem; color: #6b7280; }
+        .scroll-hint { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); color: #6b7280; font-size: 0.875rem; }
+        ul { list-style: none; margin: 1rem 0; }
+        ul li { padding-left: 1.5rem; position: relative; margin-bottom: 0.5rem; color: #a3a3a3; }
+        ul li::before { content: "→"; position: absolute; left: 0; color: #6b7280; }
+        .quote { font-size: 1.25rem; font-style: italic; border-left: 3px solid #60a5fa; padding-left: 1.5rem; margin: 2rem 0; color: #e5e5e5; }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="content" style="text-align: center;">
+            <p class="label">Week of Jan 27-31, 2026</p>
+            <h1>Michael Hayes</h1>
+            <p style="font-size: 1.25rem; color: #a3a3a3;">Scaling LaunchMate for 80 students in 24 hours</p>
+        </div>
+        <div class="scroll-hint">↓ scroll</div>
+    </div>
+
+    <div class="slide">
+        <div class="page-num">2/4</div>
+        <div class="content">
+            <p class="label">The Challenge</p>
+            <h2>Bootcamp drops tomorrow</h2>
+            <p>ZIP Launchpad's startup bootcamp needs <span class="highlight">80 students</span> on LaunchMate simultaneously. Each student gets their own AI agent, tagged by team number.</p>
+            
+            <div class="card">
+                <p class="label">The Decision Fork</p>
+                <p>Shared team agents (20 agents for 80 people) vs. individual agents per student.</p>
+                <p><span class="decision">Decision:</span> Individual agents. Better experience, higher risk.</p>
+            </div>
+            
+            <div class="stat-row">
+                <div class="stat">
+                    <div class="stat-value">80</div>
+                    <div class="stat-label">accounts to create</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">80</div>
+                    <div class="stat-label">agents to spin up</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">~20</div>
+                    <div class="stat-label">teams</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="page-num">3/4</div>
+        <div class="content">
+            <p class="label">The Scaling Question</p>
+            <h2>Will it hold?</h2>
+            
+            <div class="card">
+                <p class="label" style="color: #f97316;">Pressure Points</p>
+                <ul>
+                    <li><span class="tension">Vercel</span> — can it handle 80 simultaneous users?</li>
+                    <li><span class="tension">Letta API</span> — messaged Cameron about rate limits</li>
+                    <li><span class="tension">Supabase</span> — database capacity under load</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <p class="label" style="color: #34d399;">Mitigation</p>
+                <ul>
+                    <li>Craig funding extra Vercel credits</li>
+                    <li>Craig's Claude API key added to Letta</li>
+                    <li><span class="decision">Fallback plan:</span> redirect to ChatGPT if LaunchMate breaks</li>
+                </ul>
+            </div>
+            
+            <p style="margin-top: 1.5rem;">Plus a demo Friday at 2:30pm — Head of IT and AWS rep visiting. No pressure.</p>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="page-num">4/4</div>
+        <div class="content">
+            <p class="label">Where Things Stand</p>
+            <h2>Ready as we'll ever be</h2>
+            
+            <p>New UI is live and <span class="highlight">"snappy and clean"</span>. Four founders onboarded this week, all actively using the platform. Tidbit system working.</p>
+            
+            <p>Tomorrow is the real test: can LaunchMate help 80 students brainstorm startup ideas in real-time?</p>
+            
+            <div class="quote">
+                "If it breaks, we fall back to ChatGPT. But I don't think it's going to break."
+            </div>
+            
+            <p class="label" style="margin-top: 2rem;">Still on the list</p>
+            <ul>
+                <li>Fix Daniel's agent (second cohort)</li>
+                <li>Claude API evaluation — one more hurdle</li>
+                <li>Reddit scraping for Kavindi's restaurant discovery</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
