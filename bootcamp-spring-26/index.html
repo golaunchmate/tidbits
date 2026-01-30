@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bootcamp Spring 2026 Tidbits</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:system-ui,sans-serif;background:#0a0a0a;color:#e0e0e0;min-height:100vh;padding:40px 20px}
+.wrap{max-width:1200px;margin:0 auto}
+h1{font-size:2.5rem;font-weight:700;margin-bottom:8px;background:linear-gradient(135deg,#6366f1,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.sub{color:#666;margin-bottom:40px;font-size:1.1rem}
+.stats{display:flex;gap:24px;margin-bottom:40px}
+.stat{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:12px;padding:20px 28px}
+.stat b{font-size:2rem;color:#8b5cf6}
+.stat span{display:block;font-size:.85rem;color:#666;margin-top:4px}
+.search{width:100%;padding:14px 20px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:10px;color:#fff;font-size:1rem;margin-bottom:30px}
+.search:focus{outline:none;border-color:#6366f1}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.card{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:12px;padding:20px;transition:all .2s}
+.card:hover{border-color:#6366f1;transform:translateY(-2px)}
+.card h3{font-size:1rem;font-weight:600;color:#fff;margin-bottom:6px}
+.card p{font-size:.85rem;color:#888;margin-bottom:12px}
+.links{display:flex;flex-wrap:wrap;gap:8px}
+.links a{font-size:.8rem;color:#8b5cf6;text-decoration:none;background:#2a2a3a;padding:6px 12px;border-radius:6px}
+.links a:hover{background:#3a3a5a}
+.empty{color:#666;text-align:center;padding:60px;font-size:1.1rem}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>🚀 Bootcamp Spring 2026</h1>
+<p class="sub">ZIP Launchpad Founder Tidbits</p>
+<div class="stats">
+<div class="stat"><b>26</b><span>Founders</span></div>
+<div class="stat"><b>35</b><span>Tidbits</span></div>
+<div class="stat"><b>Jan 2026</b><span>Cohort Start</span></div>
+</div>
+<input class="search" id="s" placeholder="Search founders or startups..." oninput="filter()">
+<div class="grid" id="g"></div>
+</div>
+<script>
+const d=[
+{n:"Ahmed Abbadi",t:[{l:"ahmed-discovery-2026-01-30.html",x:"Discovery"}]},
+{n:"Alyssa Lim",t:[{l:"alyssa-lim-2026-01-30.html",x:"Bootcamp"}]},
+{n:"Ayden Yevilov",t:[{l:"ayden-bootcamp-2026-01-30.html",x:"Bootcamp"}]},
+{n:"Brandon Mondragon",t:[{l:"brandon-bootcamp-2026-01-30.html",x:"Bootcamp"}]},
+{n:"Brian Sussman",t:[{l:"brian-bootcamp-2026-01-30.html",x:"Bootcamp"}]},
+{n:"Cameron Brock",s:"DadBod",t:[{l:"cameron-dadbod-2026-01-30.html",x:"DadBod"}]},
+{n:"Drew Curley",t:[{l:"drew-bootcamp-2026-01-30.html",x:"Bootcamp"}]},
+{n:"Ela Emam",t:[{l:"ela-bootcamp-2026-01-30.html",x:"Bootcamp"}]},
+{n:"Guiliany Garcia",t:[{l:"guiliany-bootcamp-2026-01-30.html",x:"Bootcamp"}]},
+{n:"Jared Eastman",s:"ShadowMatch",t:[{l:"jared-shadowmatch-2026-01-30.html",x:"ShadowMatch"},{l:"shadowmatch-solution-card.html",x:"Solution Card"}]},
+{n:"Julrenza Flores",s:"PathLog",t:[{l:"julrenza-bootcamp-2026-01-30.html",x:"Bootcamp"},{l:"julrenza-pathlog-2026-01-30.html",x:"PathLog"}]},
+{n:"Karen Au",t:[{l:"karen-bootcamp-2026-01-30.html",x:"Bootcamp"}]},
+{n:"Kiara Kuehl-Mueller",s:"Campus Miles",t:[{l:"campus-miles-2026-01-30.html",x:"Campus Miles"},{l:"discovery-2026-01-30.html",x:"Discovery"},{l:"sd-miles-2026-01-30.html",x:"SD Miles"}]},
+{n:"Kristina Nguyen",s:"Overload Shield",t:[{l:"kristina-overload-shield-2026-01-30.html",x:"Overload Shield"}]},
+{n:"Macey Wenzel",s:"Granny Smith",t:[{l:"macey-granny-smith-2026-01-30.html",x:"Granny Smith"}]},
+{n:"Marko Jovanovic",s:"Neighbor Network",t:[{l:"marko-neighbor-network-2026-01-30.html",x:"Neighbor Network"}]},
+{n:"Matt Levie",s:"TenantPath",t:[{l:"matt-tenantpath-2026-01-30.html",x:"TenantPath"}]},
+{n:"Michael Hayes",s:"LaunchMate",t:[{l:"michael-2026-w05.html",x:"Week 5"}]},
+{n:"Paige Pucher",t:[{l:"paige-bootcamp-2026-01-30.html",x:"Bootcamp"}]},
+{n:"Ravyn Panopio",s:"TenantShield",t:[{l:"ravyn-tenantshield-2026-01-30.html",x:"TenantShield"}]},
+{n:"Ruby Chan",s:"AztecConnect",t:[{l:"ruby-aztecconnect-2026-01-30.html",x:"AztecConnect"},{l:"ruby-bootcamp-2026-01-30.html",x:"Bootcamp"}]},
+{n:"Ryan Sy",t:[{l:"ryan-bootcamp-2026-01-30.html",x:"Bootcamp"}]},
+{n:"Ryan To",s:"PersonalAI",t:[{l:"ryan-bootcamp-2026-01-30.html",x:"Bootcamp"},{l:"ryan-personalai-2026-01-30.html",x:"PersonalAI"}]},
+{n:"Sophia Colley",s:"MoveMaven",t:[{l:"sophia-movemaven-2026-01-30.html",x:"MoveMaven"}]},
+{n:"Team 11",t:[{l:"bootcamp-sp26-11.html",x:"Team 11"}]},
+{n:"Victor Nyden",s:"Gym App",t:[{l:"victor-gym-app-2026-01-30.html",x:"Gym App"}]},
+{n:"Volodymyr Kalinin",s:"SDSU Events Hub",t:[{l:"sdsu-events-hub.html",x:"Events Hub"}]},
+{n:"Wendy Jacob",t:[{l:"wendy-bootcamp-2026-01-30.html",x:"Bootcamp"}]},
+{n:"Zachary Brenner",t:[{l:"zachary-bootcamp-2026-01-30.html",x:"Bootcamp"}]}
+];
+const p={
+"Ahmed Abbadi":"ahmed-abbadi","Alyssa Lim":"alyssa-lim","Ayden Yevilov":"ayden-yevilov","Brandon Mondragon":"brandon-mondragon","Brian Sussman":"brian-sussman","Cameron Brock":"cameron-brock","Drew Curley":"drew-curley","Ela Emam":"ela-emam","Guiliany Garcia":"guiliany-garcia","Jared Eastman":"jared-eastman","Julrenza Flores":"julrenza-flores","Karen Au":"karen-au","Kiara Kuehl-Mueller":"kiara-kuehl-mueller","Kristina Nguyen":"kristina-nguyen","Macey Wenzel":"macey-wenzel","Marko Jovanovic":"marko-jovanovic","Matt Levie":"matt-levie","Michael Hayes":"michael-hayes","Paige Pucher":"paige-pucher","Ravyn Panopio":"ravyn-panopio","Ruby Chan":"ruby-chan","Ryan Sy":"ryan-sy","Ryan To":"ryan-to","Sophia Colley":"sophia-colley","Team 11":"team-11","Victor Nyden":"victor-nyden","Volodymyr Kalinin":"volodymyr-kalinin","Wendy Jacob":"wendy-jacob","Zachary Brenner":"zachary-brenner"
+};
+function render(f){
+const g=document.getElementById('g');
+g.innerHTML=f.length?f.map(i=>`<div class="card"><h3>${i.n}</h3><p>${i.s||'Exploring ideas...'}</p><div class="links">${i.t.map(t=>`<a href="${p[i.n]}/${t.l}">${t.x}</a>`).join('')}</div></div>`).join(''):'<div class="empty">No founders match your search</div>';
+}
+function filter(){const q=document.getElementById('s').value.toLowerCase();render(d.filter(i=>i.n.toLowerCase().includes(q)||(i.s&&i.s.toLowerCase().includes(q))));}
+render(d);
+</script>
+</body>
+</html>
