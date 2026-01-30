@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="tidbit-type" content="founder">
+    <meta name="tidbit-subject" content="Ryan Sy">
+    <meta name="tidbit-date" content="2026-01-30">
+    <meta name="tidbit-period" content="2026-W05">
+    <title>Ryan Sy | Bootcamp Discovery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #0f0f0f; color: #e5e5e5; line-height: 1.6; }
+        .slide { min-height: 100vh; scroll-snap-align: start; display: flex; align-items: center; justify-content: center; padding: 2rem; position: relative; }
+        .card { max-width: 600px; width: 100%; padding: 3rem; border: 1px solid #2a2a2a; border-radius: 12px; background: #0f0f0f; }
+        .page-num { position: absolute; bottom: 2rem; right: 2rem; font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: #4b5563; }
+        .label { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+        h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+        h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; color: #e5e5e5; }
+        h3 { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.75rem; }
+        p { margin-bottom: 1rem; color: #d1d5db; }
+        .highlight { color: #60a5fa; }
+        .decision { color: #34d399; }
+        .tension { color: #f97316; }
+        .subtitle { color: #9ca3af; font-size: 1.125rem; }
+        .scroll-hint { color: #6b7280; font-size: 0.875rem; margin-top: 2rem; }
+        .stat-row { display: flex; gap: 2rem; margin: 1.5rem 0; }
+        .stat { text-align: center; }
+        .stat-value { font-size: 2rem; font-weight: 700; color: #60a5fa; }
+        .stat-label { font-size: 0.75rem; color: #6b7280; text-transform: uppercase; }
+        ul { margin: 1rem 0; padding-left: 0; list-style: none; }
+        li { margin-bottom: 0.5rem; color: #d1d5db; }
+        li::before { content: "→ "; color: #60a5fa; }
+        .quote { border-left: 3px solid #60a5fa; padding-left: 1rem; margin: 1.5rem 0; font-style: italic; color: #9ca3af; }
+    </style>
+</head>
+<body>
+    <section class="slide">
+        <div class="card" style="text-align: center;">
+            <p class="label">ZIP Launchpad Bootcamp</p>
+            <h1>Ryan Sy</h1>
+            <p class="subtitle">From "fix everything" to finding the sharpest pain</p>
+            <p class="scroll-hint">↓ scroll</p>
+        </div>
+        <div class="page-num">1/5</div>
+    </section>
+
+    <section class="slide">
+        <div class="card">
+            <p class="label">Where I Started</p>
+            <h2>The Big Idea</h2>
+            <p>Came in thinking: <span class="highlight">"Students need one app for everything"</span> — scheduling, Rate My Professor, Canvas, campus events, social life.</p>
+            <p>A centralized student life platform.</p>
+            <p style="color: #6b7280;">Broad. Ambitious. Classic first instinct.</p>
+        </div>
+        <div class="page-num">2/5</div>
+    </section>
+
+    <section class="slide">
+        <div class="card">
+            <p class="label">What I Discovered</p>
+            <h2>The Interviews Changed Things</h2>
+            <div class="stat-row">
+                <div class="stat">
+                    <div class="stat-value">4</div>
+                    <div class="stat-label">interviews</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">1</div>
+                    <div class="stat-label">sharp signal</div>
+                </div>
+            </div>
+            <p>Talked to: Pre-PA student, music majors, credit union employee, bio major.</p>
+            <p>The <span class="tension">Pre-PA student's pain</span> stood out:</p>
+            <ul>
+                <li>No dedicated major → figuring out which classes count</li>
+                <li>Classes fill up instantly → stress and scrambling</li>
+                <li>Didn't know which route to take initially</li>
+            </ul>
+        </div>
+        <div class="page-num">3/5</div>
+    </section>
+
+    <section class="slide">
+        <div class="card">
+            <p class="label">The Real Opportunity</p>
+            <h2>Pre-Health Scheduling Chaos</h2>
+            <p>Students on <span class="highlight">pre-health tracks without dedicated majors</span> (pre-PA, pre-med, pre-dental) are flying blind.</p>
+            <p>The problem isn't "student life" — it's:</p>
+            <ul>
+                <li><span class="tension">PRE:</span> Which classes even count for my path?</li>
+                <li><span class="tension">CONSUMPTION:</span> Racing to register before they fill</li>
+                <li><span class="tension">POST:</span> Realizing you picked wrong, scrambling to fix</li>
+            </ul>
+            <p>Narrower target. Clearer pain. Real urgency.</p>
+        </div>
+        <div class="page-num">4/5</div>
+    </section>
+
+    <section class="slide">
+        <div class="card">
+            <p class="label">Where I'm At</p>
+            <h2>Next Step</h2>
+            <p>Need to pinpoint: where in the journey is the <span class="decision">most intense frustration</span>?</p>
+            <ul>
+                <li>Not knowing which classes? (information gap)</li>
+                <li>Classes filling too fast? (speed/access)</li>
+                <li>Wrong choices discovered too late? (feedback loop)</li>
+            </ul>
+            <p>Going back to interviews to find the sharpest angle before building solutions.</p>
+            <div class="quote">"I thought I needed to solve student life. I actually needed to solve one registration moment."</div>
+        </div>
+        <div class="page-num">5/5</div>
+    </section>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
