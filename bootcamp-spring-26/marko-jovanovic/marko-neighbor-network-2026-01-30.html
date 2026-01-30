@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="tidbit-type" content="founder">
+    <meta name="tidbit-subject" content="Marko Jovanovic">
+    <meta name="tidbit-company" content="Neighbor Network">
+    <meta name="tidbit-date" content="2026-01-30">
+    <meta name="tidbit-period" content="2026-W05">
+    <title>Marko - Bootcamp Day 1</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #0f0f0f; color: #e5e5e5; line-height: 1.6; }
+        .slide { min-height: 100vh; scroll-snap-align: start; display: flex; align-items: center; justify-content: center; padding: 2rem; position: relative; }
+        .card { max-width: 600px; width: 100%; padding: 3rem; border: 1px solid #2a2a2a; border-radius: 12px; }
+        .page-num { position: absolute; bottom: 2rem; right: 2rem; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #6b7280; }
+        .label { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; }
+        h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+        h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; color: #60a5fa; }
+        h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.75rem; }
+        p { margin-bottom: 1rem; color: #a3a3a3; }
+        .highlight { color: #60a5fa; }
+        .decision { color: #34d399; }
+        .tension { color: #f97316; }
+        .subtitle { color: #6b7280; font-size: 1.1rem; margin-bottom: 2rem; }
+        .scroll-hint { color: #6b7280; font-size: 0.9rem; margin-top: 2rem; }
+        .quote { font-style: italic; border-left: 3px solid #60a5fa; padding-left: 1rem; margin: 1.5rem 0; color: #e5e5e5; }
+        .stat-row { display: flex; gap: 2rem; margin: 1.5rem 0; }
+        .stat { text-align: center; }
+        .stat-value { font-size: 2rem; font-weight: 700; color: #60a5fa; }
+        .stat-label { font-size: 0.75rem; color: #6b7280; text-transform: uppercase; }
+        ul { list-style: none; margin: 1rem 0; }
+        ul li { padding-left: 1.5rem; position: relative; margin-bottom: 0.5rem; color: #a3a3a3; }
+        ul li:before { content: "→"; position: absolute; left: 0; color: #6b7280; }
+        .closing-quote { background: #1a1a2e; padding: 1.5rem; border-radius: 8px; margin-top: 1.5rem; text-align: center; }
+        .closing-quote p { color: #e5e5e5; font-size: 1.1rem; margin: 0; }
+    </style>
+</head>
+<body>
+    <section class="slide">
+        <div class="card" style="text-align: center;">
+            <p class="label">Startup Bootcamp · Jan 30, 2026</p>
+            <h1>Marko Jovanovic</h1>
+            <p class="subtitle">From broken elevators to tenant power</p>
+            <p class="scroll-hint">↓ scroll</p>
+        </div>
+        <div class="page-num">1/5</div>
+    </section>
+
+    <section class="slide">
+        <div class="card">
+            <p class="label">Where I Started</p>
+            <h2>Interview with Nick</h2>
+            <p>We talked to Nick, a kinesiology senior living on the 5th floor of off-campus housing. Both elevators have been broken <span class="tension">since December</span>.</p>
+            <p>He's walking 5-7 flights of stairs daily. Management sends <span class="tension">AI-generated non-answers</span>. A lawyer told him there's no legal recourse — the elevator isn't even in his lease.</p>
+            <div class="quote">"They just see us as money. They don't see us as real people."</div>
+        </div>
+        <div class="page-num">2/5</div>
+    </section>
+
+    <section class="slide">
+        <div class="card">
+            <p class="label">What I Discovered</p>
+            <h2>The community power is there</h2>
+            <p>Nick and his roommate went <span class="highlight">door to door</span>. People opened up. They felt united. Multiple households had already complained separately.</p>
+            <p>The problem? <span class="tension">All that work accumulated to nothing.</span></p>
+            <div class="quote">"How do we take that community aspect and put that force towards making a message?"</div>
+            <p>The insight: <span class="decision">Tenants have collective power but no mechanism to use it.</span></p>
+        </div>
+        <div class="page-num">3/5</div>
+    </section>
+
+    <section class="slide">
+        <div class="card">
+            <p class="label">The Real Opportunity</p>
+            <h2>Neighbor Network</h2>
+            <p>Make organizing your building as easy as a group chat.</p>
+            <ul>
+                <li>Join by address</li>
+                <li>See active issues in your building</li>
+                <li>Add your name to collective action</li>
+                <li>Coordinate without knocking on every door</li>
+            </ul>
+            <p><span class="highlight">Why this direction:</span> Door-to-door worked — it just doesn't scale. Nick proved tenants will engage. We need to make that engagement persist.</p>
+        </div>
+        <div class="page-num">4/5</div>
+    </section>
+
+    <section class="slide">
+        <div class="card">
+            <p class="label">Where I'm At</p>
+            <h2>Building the prototype</h2>
+            <p>Next step: Create a simple mockup showing what a building tenant network looks like — then get back to Nick.</p>
+            <p><span class="highlight">Validation question:</span> "If this existed in December, would it have made organizing easier?"</p>
+            <div class="closing-quote">
+                <p>"I thought the problem was broken elevators.<br>It's actually <span class="decision">broken leverage</span>."</p>
+            </div>
+        </div>
+        <div class="page-num">5/5</div>
+    </section>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
