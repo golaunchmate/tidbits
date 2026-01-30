@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="tidbit-type" content="founder">
+    <meta name="tidbit-subject" content="Ruby Chan">
+    <meta name="tidbit-company" content="AztecConnect">
+    <meta name="tidbit-date" content="2026-01-30">
+    <meta name="tidbit-period" content="2026-W05">
+    <title>Ruby Chan | AztecConnect</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #0f0f0f; color: #e5e5e5; line-height: 1.6; }
+        
+        .slide {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        
+        .card {
+            max-width: 600px;
+            width: 100%;
+            padding: 3rem;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            position: relative;
+        }
+        
+        .page-num {
+            position: absolute;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #4a4a4a;
+        }
+        
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+        
+        h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+        h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; color: #60a5fa; }
+        
+        .subtitle { color: #9ca3af; font-size: 1.1rem; margin-bottom: 1rem; }
+        .date { color: #6b7280; font-size: 0.9rem; margin-bottom: 2rem; }
+        .scroll-hint { color: #4a4a4a; font-size: 0.9rem; margin-top: 2rem; }
+        
+        .highlight { color: #60a5fa; }
+        .tension { color: #f97316; }
+        .decision { color: #34d399; }
+        
+        .insight-box {
+            background: #1a1a1a;
+            border-left: 3px solid #f97316;
+            padding: 1rem 1.25rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .success-box {
+            background: #1a1a1a;
+            border-left: 3px solid #34d399;
+            padding: 1rem 1.25rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .quote {
+            font-style: italic;
+            color: #9ca3af;
+            border-left: 2px solid #4a4a4a;
+            padding-left: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .stat-row {
+            display: flex;
+            gap: 2rem;
+            margin: 1.5rem 0;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #60a5fa;
+        }
+        
+        .stat-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        ul { margin-left: 1.25rem; margin-top: 0.75rem; }
+        li { margin-bottom: 0.5rem; }
+        li::marker { color: #60a5fa; }
+        
+        .closing-quote {
+            font-size: 1.1rem;
+            font-style: italic;
+            color: #34d399;
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #2a2a2a;
+        }
+    </style>
+</head>
+<body>
+    <section class="slide">
+        <div class="card">
+            <p class="label">Startup Bootcamp</p>
+            <h1>Ruby Chan</h1>
+            <p class="subtitle">AztecConnect</p>
+            <p class="date">January 30, 2026</p>
+            <p class="scroll-hint">↓ scroll</p>
+            <span class="page-num">1/5</span>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div class="card">
+            <p class="label">Where I Started</p>
+            <h2>The Interview</h2>
+            <p>Talked to a transfer student in her second semester at SDSU. She works with prospective students daily and transferred from a community college.</p>
+            
+            <div class="insight-box">
+                <p class="label" style="margin-bottom: 0.5rem;">Her Reality</p>
+                <p>"It's a <span class="tension">huge campus</span>, it's hard to find community."</p>
+            </div>
+            
+            <p>She found her clubs through one event (Admitted Student Day) and searching Instagram. But she admitted: <span class="highlight">niche programs are nearly invisible.</span></p>
+            <span class="page-num">2/5</span>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div class="card">
+            <p class="label">What I Discovered</p>
+            <h2>The Real Problem</h2>
+            
+            <div class="quote">"Very niche programs... not all people know of. So it's hard to find those very small communities."</div>
+            
+            <p style="margin-top: 1rem;">SDSU has <span class="highlight">400+ clubs</span>. Most students only know the big ones. The discovery moment happens once (orientation or Admitted Student Day) — miss it and you're on your own.</p>
+            
+            <div class="insight-box">
+                <p class="label" style="margin-bottom: 0.5rem;">The Friction</p>
+                <p>Transfer students skip freshman orientation entirely. They get <span class="tension">dropped into a 35,000-student campus</span> with no map to community.</p>
+            </div>
+            <span class="page-num">3/5</span>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div class="card">
+            <p class="label">What We Built</p>
+            <h2>AztecConnect</h2>
+            
+            <p>A quiz-based club matchmaker with <span class="highlight">all 400+ SDSU clubs</span> in the database.</p>
+            
+            <ul>
+                <li>Take a quick quiz about your interests and style</li>
+                <li>Get matched to clubs by percentage fit</li>
+                <li>Browse the full list filtered by your preferences</li>
+            </ul>
+            
+            <div class="success-box">
+                <p class="label" style="margin-bottom: 0.5rem;">The Solution</p>
+                <p>Instead of wandering or searching blindly, students get <span class="decision">personalized matches</span> in 2 minutes.</p>
+            </div>
+            <span class="page-num">4/5</span>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div class="card">
+            <p class="label">Validation</p>
+            <h2>Where I'm At</h2>
+            
+            <div class="stat-row">
+                <div class="stat">
+                    <div class="stat-value">8</div>
+                    <div class="stat-label">signatures</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">400+</div>
+                    <div class="stat-label">clubs in database</div>
+                </div>
+            </div>
+            
+            <p>Went out on campus and got <span class="decision">8 people to sign</span> saying they'd use AztecConnect.</p>
+            
+            <p style="margin-top: 1rem;">Working prototype is live. Real validation from real students.</p>
+            
+            <p class="closing-quote">"I thought finding community was about events. It's actually about discovery."</p>
+            <span class="page-num">5/5</span>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
