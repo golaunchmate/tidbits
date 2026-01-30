@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="tidbit-type" content="founder">
+    <meta name="tidbit-subject" content="Wendy Jacob">
+    <meta name="tidbit-company" content="ZIP Launchpad Bootcamp">
+    <meta name="tidbit-date" content="2026-01-30">
+    <meta name="tidbit-period" content="2026-W05">
+    <title>Wendy & Enzo | Bootcamp Discovery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #0f0f0f; color: #e5e5e5; line-height: 1.6; }
+        
+        .slide {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+        }
+        
+        .card {
+            max-width: 600px;
+            width: 100%;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            padding: 3rem;
+        }
+        
+        .page-num {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #4a4a4a;
+        }
+        
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+        
+        h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+        h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; }
+        h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; }
+        
+        .subtitle { color: #9ca3af; font-size: 1.1rem; margin-bottom: 2rem; }
+        .scroll-hint { color: #4a4a4a; font-size: 0.9rem; margin-top: 2rem; }
+        
+        .highlight { color: #60a5fa; }
+        .decision { color: #34d399; }
+        .tension { color: #f97316; }
+        
+        .quote {
+            border-left: 3px solid #60a5fa;
+            padding-left: 1.5rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: #9ca3af;
+        }
+        
+        .insight-box {
+            background: #1a1a1a;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+        
+        ul { list-style: none; }
+        ul li { margin-bottom: 0.75rem; }
+        ul li:before { content: "→ "; color: #60a5fa; }
+    </style>
+</head>
+<body>
+
+<!-- Slide 1: Cover -->
+<section class="slide">
+    <div class="card" style="text-align: center;">
+        <h1>Wendy & Enzo</h1>
+        <p class="subtitle">ZIP Launchpad Bootcamp<br>January 30, 2026</p>
+        <p class="scroll-hint">↓ scroll</p>
+    </div>
+    <div class="page-num">1/5</div>
+</section>
+
+<!-- Slide 2: The Mission -->
+<section class="slide">
+    <div class="card">
+        <p class="label">The Mission</p>
+        <h2>Find a real problem worth solving</h2>
+        <p>Wendy and Enzo hit the ground at SDSU, looking for pain points in people's day-to-day lives.</p>
+        <p style="margin-top: 1rem;">Their approach: <span class="highlight">Walk me through your day. What do you wish was better?</span></p>
+    </div>
+    <div class="page-num">2/5</div>
+</section>
+
+<!-- Slide 3: The Interview -->
+<section class="slide">
+    <div class="card">
+        <p class="label">The Discovery</p>
+        <h2>They met Daniel</h2>
+        <p>An older professional who'd been through multiple careers — producer, coffee chain owner, serial reinventor.</p>
+        <div class="quote">
+            "I wish I knew all that when I was younger. We don't think about that, or we're not exposed to it."
+        </div>
+        <p>Daniel shared his practice: <span class="highlight">gratitude every morning and night</span>, always having goals, and the power of finding the <span class="decision">right mentor</span>.</p>
+    </div>
+    <div class="page-num">3/5</div>
+</section>
+
+<!-- Slide 4: The Insight -->
+<section class="slide">
+    <div class="card">
+        <p class="label">The Problem</p>
+        <h2>Young people aren't exposed to wisdom until it's too late</h2>
+        <div class="insight-box">
+            <ul>
+                <li>Mindset skills (gratitude, resilience) aren't taught in school</li>
+                <li>Mentorship is key — but young people don't know to seek it</li>
+                <li>Older generations have learned lessons the hard way</li>
+                <li><span class="tension">There's no bridge between the two</span></li>
+            </ul>
+        </div>
+    </div>
+    <div class="page-num">4/5</div>
+</section>
+
+<!-- Slide 5: What's Next -->
+<section class="slide">
+    <div class="card">
+        <p class="label">Where We're At</p>
+        <h2>Problem identified. Solutions next.</h2>
+        <p>The team is now working through the <span class="highlight">pre/post/consumption framework</span> to generate solution approaches.</p>
+        <p style="margin-top: 1rem; color: #9ca3af;">Key question to answer: Which angle resonated most with Daniel — the gratitude practice, the mentorship, or the "schools should teach this" gap?</p>
+        <div class="quote" style="margin-top: 2rem;">
+            "We thought we'd find a logistical problem. We found something deeper."
+        </div>
+    </div>
+    <div class="page-num">5/5</div>
+</section>
+
+<script>
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+        window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+    } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+        window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+    }
+});
+</script>
+
+</body>
+</html>
