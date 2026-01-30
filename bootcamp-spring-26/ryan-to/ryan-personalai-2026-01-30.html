@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="tidbit-type" content="founder">
+    <meta name="tidbit-subject" content="Ryan To">
+    <meta name="tidbit-company" content="Personal AI">
+    <meta name="tidbit-date" content="2026-01-30">
+    <meta name="tidbit-period" content="2026-W05">
+    <title>Ryan To | Personal AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #0f0f0f; color: #e5e5e5; line-height: 1.6; }
+        .slide { min-height: 100vh; scroll-snap-align: start; display: flex; align-items: center; justify-content: center; padding: 2rem; position: relative; }
+        .card { max-width: 600px; width: 100%; padding: 3rem; border: 1px solid #2a2a2a; border-radius: 12px; background: #141414; }
+        .page-num { position: absolute; bottom: 2rem; right: 2rem; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #6b7280; }
+        .highlight { color: #60a5fa; }
+        .decision { color: #34d399; }
+        .tension { color: #f97316; }
+        .label { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; display: block; }
+        h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+        h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1.5rem; color: #e5e5e5; }
+        p { margin-bottom: 1rem; color: #a3a3a3; }
+        .subtitle { color: #6b7280; font-size: 1.1rem; margin-bottom: 2rem; }
+        .scroll-hint { color: #6b7280; font-size: 0.9rem; margin-top: 2rem; }
+        .quote { font-style: italic; border-left: 3px solid #60a5fa; padding-left: 1rem; margin: 1.5rem 0; color: #e5e5e5; }
+        .stat-row { display: flex; gap: 2rem; margin: 1.5rem 0; flex-wrap: wrap; }
+        .stat { text-align: center; }
+        .stat-value { font-size: 2rem; font-weight: 700; color: #60a5fa; }
+        .stat-label { font-size: 0.75rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.05em; }
+        ul { margin: 1rem 0; padding-left: 0; list-style: none; }
+        ul li { margin-bottom: 0.5rem; color: #a3a3a3; }
+        ul li::before { content: "→ "; color: #60a5fa; }
+        .app-link { display: inline-block; margin-top: 1rem; padding: 0.75rem 1.5rem; background: #60a5fa; color: #0f0f0f; text-decoration: none; border-radius: 8px; font-weight: 600; }
+        .app-link:hover { background: #3b82f6; }
+        .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0; }
+        .feature { background: #1a1a1a; padding: 1rem; border-radius: 8px; }
+        .feature-title { font-weight: 600; color: #e5e5e5; margin-bottom: 0.25rem; font-size: 0.9rem; }
+        .feature-desc { font-size: 0.85rem; color: #6b7280; }
+    </style>
+</head>
+<body>
+    <section class="slide">
+        <div class="card">
+            <span class="label">Startup Bootcamp</span>
+            <h1>Ryan To</h1>
+            <p class="subtitle">Personal AI — Sound like yourself, at scale</p>
+            <p style="color: #6b7280;">From campus interviews to working prototype in one day</p>
+            <p class="scroll-hint">scroll ↓</p>
+        </div>
+        <span class="page-num">1/6</span>
+    </section>
+
+    <section class="slide">
+        <div class="card">
+            <span class="label">The Discovery</span>
+            <h2>A frat president's 60-minute problem</h2>
+            <p>Interviewed a former fraternity president who was DMing <span class="highlight">50-100 potential recruits</span> before every rush event. By hand. One by one.</p>
+            <div class="stat-row">
+                <div class="stat">
+                    <div class="stat-value">30-60</div>
+                    <div class="stat-label">minutes per event</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">50-100</div>
+                    <div class="stat-label">individual DMs</div>
+                </div>
+            </div>
+            <p>He tried mass messaging tools. <span class="tension">He stopped using them.</span></p>
+        </div>
+        <span class="page-num">2/6</span>
+    </section>
+
+    <section class="slide">
+        <div class="card">
+            <span class="label">The Insight</span>
+            <h2>Why automation failed him</h2>
+            <div class="quote">"It didn't feel as personal. People don't feel like they're talking to a robot... They don't feel like I'm being seen."</div>
+            <p>Existing tools solved <span class="decision">speed</span> but killed <span class="tension">authenticity</span>.</p>
+            <p>The gap: nothing gives you both — personalized-feeling outreach at scale.</p>
+            <p style="margin-top: 1.5rem; color: #e5e5e5;">This isn't just a frat problem. It's universal:</p>
+            <ul>
+                <li>Recruiters messaging candidates</li>
+                <li>Salespeople doing outreach</li>
+                <li>Community managers</li>
+                <li>Creators responding to fans</li>
+            </ul>
+        </div>
+        <span class="page-num">3/6</span>
+    </section>
+
+    <section class="slide">
+        <div class="card">
+            <span class="label">The Solution</span>
+            <h2>Personal AI</h2>
+            <p>An AI that drafts personalized messages using <span class="highlight">context from past conversations</span> — so it sounds like you, not a robot.</p>
+            <div class="feature-grid">
+                <div class="feature">
+                    <div class="feature-title">Context Input</div>
+                    <div class="feature-desc">Paste conversation history</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-title">Intent</div>
+                    <div class="feature-desc">Tell it what you want to say</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-title">Tone Control</div>
+                    <div class="feature-desc">Casual, professional, hype</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-title">Edit & Send</div>
+                    <div class="feature-desc">Review, tweak, copy</div>
+                </div>
+            </div>
+            <p style="margin-top: 1rem;"><span class="decision">The key:</span> Messages reference real details from past conversations.</p>
+        </div>
+        <span class="page-num">4/6</span>
+    </section>
+
+    <section class="slide">
+        <div class="card">
+            <span class="label">The Prototype</span>
+            <h2>Built in one afternoon</h2>
+            <p>Used V0.dev to generate a working prototype with:</p>
+            <ul>
+                <li>Conversation history input panel</li>
+                <li>Message intent field</li>
+                <li>Tone selector (Casual / Professional / Friendly / Hype)</li>
+                <li>AI-generated personalized output</li>
+                <li>Copy and regenerate functionality</li>
+            </ul>
+            <p style="margin-top: 1rem;">Dark mode UI. Split-screen layout. Mobile responsive.</p>
+            <a href="https://v0.dev/chat/b/b_LrQQnWqgs2S" target="_blank" class="app-link">View Prototype →</a>
+        </div>
+        <span class="page-num">5/6</span>
+    </section>
+
+    <section class="slide">
+        <div class="card">
+            <span class="label">What's Next</span>
+            <h2>Validation time</h2>
+            <p>The prototype exists. Now the real test:</p>
+            <div class="quote" style="border-left-color: #34d399;">"Would you use this? Would you pay for it?"</div>
+            <p>Going back to the original interviewee with a working demo.</p>
+            <p style="margin-top: 2rem; color: #e5e5e5; font-style: italic;">"I thought I was solving a frat recruitment problem. I actually found a universal tension between being human and being efficient."</p>
+        </div>
+        <span class="page-num">6/6</span>
+    </section>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
