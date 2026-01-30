@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="tidbit-type" content="founder">
+    <meta name="tidbit-subject" content="Kiara Kuehl Mueller">
+    <meta name="tidbit-company" content="Campus Miles">
+    <meta name="tidbit-date" content="2026-01-30">
+    <meta name="tidbit-period" content="2026-W05">
+    <title>Kiara Kuehl Mueller | Campus Miles</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #0f0f0f; color: #e5e5e5; line-height: 1.6; }
+        .slide { min-height: 100vh; scroll-snap-align: start; display: flex; align-items: center; justify-content: center; padding: 2rem; position: relative; }
+        .card { max-width: 600px; width: 100%; padding: 3rem; border: 1px solid #2a2a2a; border-radius: 12px; background: #0f0f0f; }
+        .page-num { position: absolute; bottom: 2rem; right: 2rem; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #4b5563; }
+        .label { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+        h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+        h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; color: #60a5fa; }
+        p { margin-bottom: 1rem; color: #a3a3a3; }
+        .highlight { color: #60a5fa; }
+        .tension { color: #f97316; }
+        .decision { color: #34d399; }
+        .subtitle { font-size: 1.1rem; color: #6b7280; margin-bottom: 2rem; }
+        .scroll-hint { font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: #4b5563; margin-top: 2rem; }
+        .stat-row { display: flex; gap: 2rem; margin: 1.5rem 0; flex-wrap: wrap; }
+        .stat { text-align: center; }
+        .stat-value { font-size: 1.75rem; font-weight: 700; color: #60a5fa; }
+        .stat-label { font-size: 0.75rem; color: #6b7280; text-transform: uppercase; }
+        ul { list-style: none; margin: 1rem 0; }
+        ul li { padding-left: 1.5rem; position: relative; margin-bottom: 0.75rem; color: #a3a3a3; }
+        ul li::before { content: '→'; position: absolute; left: 0; color: #4b5563; }
+        .quote { font-size: 1.25rem; font-style: italic; color: #e5e5e5; border-left: 3px solid #34d399; padding-left: 1.5rem; margin: 1.5rem 0; }
+        .check { color: #34d399; }
+        .x { color: #ef4444; }
+    </style>
+</head>
+<body>
+    <section class="slide">
+        <div class="card" style="text-align: center;">
+            <p class="label">ZIP Launchpad Bootcamp</p>
+            <h1>Kiara Kuehl Mueller</h1>
+            <p class="subtitle">From Discovery to Solution · January 30, 2026</p>
+            <p class="scroll-hint">scroll ↓</p>
+        </div>
+        <div class="page-num">1/5</div>
+    </section>
+
+    <section class="slide">
+        <div class="card">
+            <p class="label">The Discovery</p>
+            <h2>Students are stranded on campus</h2>
+            <p>Interviewed <span class="highlight">Jake Rodriguez</span> (freshman, Bay Area) and <span class="highlight">Sophia & Charles</span> (German exchange students).</p>
+            <p>Jake wants to go to martial arts. 60-minute class, 15-minute drive away.</p>
+            <p><span class="tension">Every trip = solving the same puzzle twice:</span> How do I get there cheap and fast? How do I get back?</p>
+        </div>
+        <div class="page-num">2/5</div>
+    </section>
+
+    <section class="slide">
+        <div class="card">
+            <p class="label">The Problem</p>
+            <h2>Nothing fits short, spontaneous trips</h2>
+            <div class="stat-row">
+                <div class="stat">
+                    <div class="stat-value">$20</div>
+                    <div class="stat-label">Uber for 15 min</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">4 hrs</div>
+                    <div class="stat-label">Zipcar min for hiking</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">$500/mo</div>
+                    <div class="stat-label">rental cost</div>
+                </div>
+            </div>
+            <p><span class="x">✗</span> Zipcar: hourly booking, doesn't fit 45-min class</p>
+            <p><span class="x">✗</span> Uber: fast but expensive</p>
+            <p><span class="x">✗</span> Trolley: cheap but slow, requires leaving early</p>
+            <p><span class="x">✗</span> Buy a car: unrealistic for 1-2 semester stay</p>
+        </div>
+        <div class="page-num">3/5</div>
+    </section>
+
+    <section class="slide">
+        <div class="card">
+            <p class="label">The Insight</p>
+            <h2>This is already solved—in Germany</h2>
+            <p>Sophia & Charles mentioned <span class="highlight">"Miles"</span>—a car-sharing service where:</p>
+            <ul>
+                <li>Cars distributed throughout city like scooters</li>
+                <li><span class="decision">Pay per mile, not per hour</span></li>
+                <li>Unlock via app, drop off anywhere in zone</li>
+            </ul>
+            <p>The model fits exactly how students want to use cars: <span class="highlight">short, spontaneous, flexible.</span></p>
+        </div>
+        <div class="page-num">4/5</div>
+    </section>
+
+    <section class="slide">
+        <div class="card">
+            <p class="label">The Decision</p>
+            <h2 style="color: #34d399;">Building: Campus Miles</h2>
+            <p>Pay-per-mile cars distributed around SDSU campus.</p>
+            <ul>
+                <li>No hourly minimums</li>
+                <li>Unlock via app</li>
+                <li>Drop off anywhere in the campus zone</li>
+                <li>Price matches student budgets</li>
+            </ul>
+            <p style="margin-top: 1rem;"><span class="tension">Biggest risk:</span> Can the unit economics work at student price points?</p>
+            <div class="quote">"The model isn't broken. It just doesn't exist here yet."</div>
+        </div>
+        <div class="page-num">5/5</div>
+    </section>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
