@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="tidbit-type" content="founder">
+    <meta name="tidbit-subject" content="Macey Wenzel">
+    <meta name="tidbit-company" content="Granny Smith Market">
+    <meta name="tidbit-date" content="2026-01-30">
+    <meta name="tidbit-period" content="2026-W05">
+    <title>Macey Wenzel | Granny Smith Market | Jan 30, 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #0f0f0f; color: #e5e5e5; line-height: 1.6; }
+        
+        .slide {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        
+        .card {
+            max-width: 600px;
+            width: 100%;
+            padding: 3rem;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            position: relative;
+        }
+        
+        .page-num {
+            position: absolute;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #4b5563;
+        }
+        
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+        
+        h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+        h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; color: #60a5fa; }
+        h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.75rem; }
+        
+        .highlight { color: #60a5fa; }
+        .decision { color: #34d399; }
+        .tension { color: #f97316; }
+        
+        .subtitle { color: #9ca3af; font-size: 1.1rem; margin-bottom: 2rem; }
+        .scroll-hint { color: #4b5563; font-size: 0.9rem; margin-top: 2rem; }
+        
+        .stat-row {
+            display: flex;
+            gap: 2rem;
+            margin: 1.5rem 0;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #60a5fa;
+        }
+        
+        .stat-label {
+            font-size: 0.85rem;
+            color: #6b7280;
+        }
+        
+        ul {
+            list-style: none;
+            margin: 1rem 0;
+        }
+        
+        ul li {
+            padding-left: 1.5rem;
+            position: relative;
+            margin-bottom: 0.5rem;
+        }
+        
+        ul li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #6b7280;
+        }
+        
+        .quote {
+            border-left: 3px solid #60a5fa;
+            padding-left: 1.5rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: #9ca3af;
+        }
+        
+        .check { color: #34d399; }
+        .x { color: #ef4444; }
+    </style>
+</head>
+<body>
+    <!-- Slide 1: Cover -->
+    <section class="slide">
+        <div class="card" style="text-align: center;">
+            <p class="label">ZIP Launchpad Bootcamp</p>
+            <h1>Macey Wenzel</h1>
+            <p class="subtitle">Granny Smith Market</p>
+            <p style="color: #6b7280;">January 30, 2026</p>
+            <p class="scroll-hint">↓ scroll</p>
+            <span class="page-num">1/5</span>
+        </div>
+    </section>
+
+    <!-- Slide 2: Where I Started -->
+    <section class="slide">
+        <div class="card">
+            <p class="label">Where I Started</p>
+            <h2>The Hypothesis</h2>
+            <p>I had this idea: <span class="highlight">Granny Smith Market</span> — a pop-up farmers market inside senior living communities.</p>
+            <p style="margin-top: 1rem;">Fresh produce. On-site. No trips to the grocery store.</p>
+            <p style="margin-top: 1rem;">But I needed to validate: <span class="tension">Is grocery access actually a problem? Would anyone care?</span></p>
+            <p style="margin-top: 1.5rem;">So I picked up the phone and called Lanterncrest Senior Living.</p>
+            <span class="page-num">2/5</span>
+        </div>
+    </section>
+
+    <!-- Slide 3: What I Discovered -->
+    <section class="slide">
+        <div class="card">
+            <p class="label">What I Discovered</p>
+            <h2>The Real Problem</h2>
+            <p>Carolina, a 5-year employee at Lanterncrest, told me something I didn't expect:</p>
+            <div class="quote">"It's more like them having to load the grocery — they're not up for that most of the time."</div>
+            <p><span class="tension">It's not about access. It's about physical effort.</span></p>
+            <ul>
+                <li>They have transportation services</li>
+                <li>They order from Amazon, Walmart, Costco</li>
+                <li>But <span class="highlight">loading groceries is the barrier</span></li>
+            </ul>
+            <p style="margin-top: 1rem;">Plus: "They're here 24/7... some don't have cars, some don't have a driver's license anymore."</p>
+            <p style="margin-top: 1rem;"><span class="decision">They crave experiences that bring the outside world IN.</span></p>
+            <span class="page-num">3/5</span>
+        </div>
+    </section>
+
+    <!-- Slide 4: The Validation -->
+    <section class="slide">
+        <div class="card">
+            <p class="label">The Validation</p>
+            <h2>Green Lights</h2>
+            <p>Carolina's reaction to my idea:</p>
+            <div class="quote">"I don't think your idea is that far off — they'll probably enjoy it because they don't have to go to the grocery store."</div>
+            <p style="margin-top: 1rem;"><span class="check">✓</span> Handcraft markets already get <span class="highlight">"big turnout"</span> — pop-up format works</p>
+            <p><span class="check">✓</span> She loved the intergenerational angle</p>
+            <p><span class="check">✓</span> <span class="decision">She offered to connect me to activities coordinators</span></p>
+            <p style="margin-top: 1.5rem;">Contacts secured:</p>
+            <ul>
+                <li>Carolina (front desk champion)</li>
+                <li>Erica (Activities - Pointe building)</li>
+                <li>Plaza building activities team</li>
+            </ul>
+            <span class="page-num">4/5</span>
+        </div>
+    </section>
+
+    <!-- Slide 5: Where I'm At -->
+    <section class="slide">
+        <div class="card">
+            <p class="label">Where I'm At</p>
+            <h2>Next Steps</h2>
+            <ul>
+                <li>Follow up with activities coordinators</li>
+                <li>Pitch to Lanterncrest for pilot</li>
+                <li>Win the $15K pitch competition</li>
+            </ul>
+            <p style="margin-top: 1.5rem;">The insight:</p>
+            <div class="quote" style="border-color: #34d399;">"I thought the problem was grocery access. It's actually the physical effort — and the isolation of being stuck inside 24/7."</div>
+            <p style="margin-top: 1.5rem; text-align: center;"><span class="decision">Granny Smith Market isn't just produce. It's bringing the world to them.</span></p>
+            <span class="page-num">5/5</span>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
