@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="tidbit-type" content="founder">
+    <meta name="tidbit-subject" content="Julrenza Robert Flores">
+    <meta name="tidbit-company" content="PathLog">
+    <meta name="tidbit-date" content="2026-01-30">
+    <meta name="tidbit-period" content="2026-W05">
+    <title>Julrenza | PathLog | Jan 30, 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #0f0f0f; color: #e5e5e5; line-height: 1.6; }
+        
+        .slide {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+        }
+        
+        .card {
+            max-width: 600px;
+            width: 100%;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            padding: 2.5rem;
+            background: #0f0f0f;
+        }
+        
+        .page-num {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #4b5563;
+        }
+        
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+        
+        .highlight { color: #60a5fa; }
+        .decision { color: #34d399; }
+        .tension { color: #f97316; }
+        
+        h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+        h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; color: #e5e5e5; }
+        h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.75rem; }
+        
+        p { margin-bottom: 1rem; color: #d1d5db; }
+        
+        .subtitle { color: #9ca3af; font-size: 1.1rem; margin-bottom: 1.5rem; }
+        .scroll-hint { color: #4b5563; font-size: 0.9rem; margin-top: 2rem; }
+        
+        .stat-row {
+            display: flex;
+            gap: 2rem;
+            margin: 1.5rem 0;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #60a5fa;
+        }
+        
+        .stat-label {
+            font-size: 0.85rem;
+            color: #6b7280;
+        }
+        
+        .quote {
+            border-left: 3px solid #60a5fa;
+            padding-left: 1rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: #9ca3af;
+        }
+        
+        .closing-quote {
+            background: #1a1a2e;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            text-align: center;
+        }
+        
+        .closing-quote p {
+            font-size: 1.1rem;
+            color: #e5e5e5;
+            margin: 0;
+        }
+        
+        ul {
+            list-style: none;
+            margin: 1rem 0;
+        }
+        
+        ul li {
+            padding-left: 1.5rem;
+            position: relative;
+            margin-bottom: 0.5rem;
+            color: #d1d5db;
+        }
+        
+        ul li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #60a5fa;
+        }
+
+        .revenue-box {
+            background: #1a2e1a;
+            border: 1px solid #34d399;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .revenue-box h4 {
+            color: #34d399;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .compare-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .compare-item {
+            padding: 0.75rem;
+            border-radius: 6px;
+        }
+
+        .compare-item.old {
+            background: #2a1a1a;
+            border-left: 3px solid #ef4444;
+        }
+
+        .compare-item.new {
+            background: #1a2a1a;
+            border-left: 3px solid #34d399;
+        }
+
+        .compare-item p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        .compare-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.25rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Slide 1: Cover -->
+    <section class="slide">
+        <div class="card" style="text-align: center;">
+            <p class="label">ZIP Launchpad Startup Bootcamp</p>
+            <h1>PathLog</h1>
+            <p class="subtitle">Log your hours. Show your path. Unlock opportunities.</p>
+            <p style="color: #9ca3af; margin-top: 1rem;">Julrenza Robert Flores</p>
+            <p style="color: #6b7280;">January 30, 2026</p>
+            <p class="scroll-hint">scroll ↓</p>
+        </div>
+        <span class="page-num">1/5</span>
+    </section>
+
+    <!-- Slide 2: The Problem -->
+    <section class="slide">
+        <div class="card">
+            <p class="label">The Problem</p>
+            <h2>Pre-med students are flying blind</h2>
+            <p>I interviewed <span class="highlight">Jenny</span>, a senior who needs <span class="highlight">200+ hours</span> of clinical experience for med school.</p>
+            <div class="stat-row">
+                <div>
+                    <div class="stat-value">50%</div>
+                    <div class="stat-label">cold outreach rejection</div>
+                </div>
+                <div>
+                    <div class="stat-value">1-2 wks</div>
+                    <div class="stat-label">wait for responses</div>
+                </div>
+            </div>
+            <p>Her current strategy: browse billboards, cold message on LinkedIn, hope for the best.</p>
+            <div class="quote">
+                "There's this whole leveling up system nobody explains. You need starter hours to get intermediate opportunities to get clinical access."
+            </div>
+        </div>
+        <span class="page-num">2/5</span>
+    </section>
+
+    <!-- Slide 3: The Insight -->
+    <section class="slide">
+        <div class="card">
+            <p class="label">The Insight</p>
+            <h2>Students need pathways, not listings</h2>
+            <div class="compare-row">
+                <div class="compare-item old">
+                    <p class="compare-label" style="color: #ef4444;">Current tools</p>
+                    <p>✗ LinkedIn: no verified hours</p>
+                    <p>✗ Glassdoor: reviews, not paths</p>
+                    <p>✗ Handshake: jobs, not experience</p>
+                </div>
+                <div class="compare-item new">
+                    <p class="compare-label" style="color: #34d399;">What's missing</p>
+                    <p>✓ How did they get in?</p>
+                    <p>✓ What did they do?</p>
+                    <p>✓ What did it unlock?</p>
+                </div>
+            </div>
+            <p>The real question isn't <span class="tension">"what opportunities exist"</span> — it's <span class="decision">"what path actually worked for students like me?"</span></p>
+        </div>
+        <span class="page-num">3/5</span>
+    </section>
+
+    <!-- Slide 4: The Solution -->
+    <section class="slide">
+        <div class="card">
+            <p class="label">The Solution</p>
+            <h2>PathLog: The Verified Experience Network</h2>
+            <ul>
+                <li><strong>Log:</strong> Hours, workplace, tasks, skills gained</li>
+                <li><strong>Show:</strong> "This experience → unlocked that opportunity"</li>
+                <li><strong>Discover:</strong> Browse real paths from real students</li>
+                <li><strong>Match:</strong> Opportunities find YOU based on verified experience</li>
+            </ul>
+            <div class="revenue-box">
+                <h4>💰 Revenue Streams</h4>
+                <p style="margin: 0; font-size: 0.9rem;">
+                    <span class="decision">Employers:</span> Pay to access verified students<br>
+                    <span class="decision">Premium:</span> $5-10/mo for matching + insights<br>
+                    <span class="decision">Universities:</span> $2-5K/year for campus license
+                </p>
+            </div>
+        </div>
+        <span class="page-num">4/5</span>
+    </section>
+
+    <!-- Slide 5: Where We're At -->
+    <section class="slide">
+        <div class="card">
+            <p class="label">Where We're At</p>
+            <h2>Ready to build & validate</h2>
+            <p><strong>MVP (4 hours):</strong></p>
+            <ul>
+                <li>Google Form for logging experience</li>
+                <li>Airtable database of pathways</li>
+                <li>Public view for browsing paths</li>
+                <li>Landing page on Carrd</li>
+            </ul>
+            <p><strong>Validation questions for Jenny:</strong></p>
+            <ul>
+                <li>"Would you log your 200 hours here?"</li>
+                <li>"Would you pay $5/mo to see what you qualify for next?"</li>
+                <li>"Can I sign you up as our first user right now?"</li>
+            </ul>
+            <div class="closing-quote">
+                <p>"I thought students needed more <span class="tension">opportunities</span>.<br>They need to see <span class="decision">the path that actually works</span>."</p>
+            </div>
+        </div>
+        <span class="page-num">5/5</span>
+    </section>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
