@@ -8,6 +8,20 @@
     <meta name="tidbit-company" content="Move Maven">
     <meta name="tidbit-date" content="2026-01-30">
     <meta name="tidbit-period" content="2026-W05">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Sophia Colley | Move Maven">
+    <meta property="og:description" content="I thought moving was the hard part. I actually needed to fix the research before the move.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://golaunchmate.github.io/tidbits/bootcamp-spring-26/sophia-colley/sophia-movemaven-2026-01-30.html">
+    <meta property="og:image" content="https://golaunchmate.github.io/tidbits/og-default.png">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Sophia Colley | Move Maven">
+    <meta name="twitter:description" content="I thought moving was the hard part. I actually needed to fix the research before the move.">
+    <meta name="twitter:image" content="https://golaunchmate.github.io/tidbits/og-default.png">
+    
     <title>Sophia Colley - Move Maven | Bootcamp Tidbit</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
     <style>
@@ -131,7 +145,7 @@
     </style>
 </head>
 <body>
-    <section class="slide">
+    <section class="slide" id="slide1">
         <div class="card">
             <p class="label">ZIP Launchpad Bootcamp · Team 2</p>
             <h1>Sophia Colley</h1>
@@ -142,7 +156,7 @@
         </div>
     </section>
 
-    <section class="slide">
+    <section class="slide" id="slide2">
         <div class="card">
             <p class="label">Where I Started</p>
             <h2>The Interview That Changed Everything</h2>
@@ -156,7 +170,7 @@
         </div>
     </section>
 
-    <section class="slide">
+    <section class="slide" id="slide3">
         <div class="card">
             <p class="label">What I Discovered</p>
             <h2>The PRE-Move Problem</h2>
@@ -173,7 +187,7 @@
         </div>
     </section>
 
-    <section class="slide">
+    <section class="slide" id="slide4">
         <div class="card">
             <p class="label">The Aha Moment</p>
             <h2>What If It Was All In One Place?</h2>
@@ -186,7 +200,7 @@
         </div>
     </section>
 
-    <section class="slide">
+    <section class="slide" id="slide5">
         <div class="card">
             <p class="label">Where I'm At</p>
             <h2>Validated With Real Revenue</h2>
@@ -210,6 +224,7 @@
     </section>
 
     <script>
+        // Keyboard navigation
         document.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
                 window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
@@ -217,6 +232,26 @@
                 window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
             }
         });
+
+        // Deep linking: jump to slide on load if hash present
+        if (window.location.hash) {
+            const target = document.querySelector(window.location.hash);
+            if (target) {
+                setTimeout(() => target.scrollIntoView(), 100);
+            }
+        }
+
+        // Update URL hash as user scrolls between slides
+        const slides = document.querySelectorAll('.slide');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    history.replaceState(null, null, '#' + entry.target.id);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        slides.forEach(slide => observer.observe(slide));
     </script>
 </body>
 </html>
