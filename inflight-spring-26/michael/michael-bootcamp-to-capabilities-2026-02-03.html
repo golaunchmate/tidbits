@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootcamp to Capabilities | Michael</title>
+    <meta name="tidbit-type" content="team">
+    <meta name="tidbit-subject" content="Michael">
+    <meta name="tidbit-company" content="Launchmate">
+    <meta name="tidbit-date" content="2026-02-03">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; }
+        body { font-family: 'Inter', sans-serif; background: #0f0f0f; color: #e5e5e5; }
+        .page { min-height: 100vh; scroll-snap-align: start; display: flex; flex-direction: column; justify-content: center; padding: 3rem; max-width: 800px; margin: 0 auto; }
+        .page-num { font-family: 'JetBrains Mono', monospace; color: #6b7280; font-size: 0.875rem; margin-bottom: 2rem; }
+        h1 { font-size: 2.5rem; font-weight: 600; margin-bottom: 1rem; line-height: 1.2; }
+        h2 { font-size: 1.5rem; font-weight: 500; margin-bottom: 1.5rem; color: #a3a3a3; }
+        p { font-size: 1.125rem; line-height: 1.7; margin-bottom: 1rem; color: #d4d4d4; }
+        .highlight { color: #60a5fa; }
+        .tension { color: #f97316; }
+        .decision { color: #34d399; }
+        .label { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+        .scroll-hint { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%); color: #6b7280; font-size: 0.875rem; animation: bounce 2s infinite; }
+        @keyframes bounce { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(-10px); } }
+        .card { background: #1a1a1a; border-radius: 12px; padding: 1.5rem; margin: 1rem 0; }
+        .stat { font-size: 3rem; font-weight: 600; color: #34d399; }
+        .stat-label { font-size: 1rem; color: #6b7280; }
+        .flow-item { background: #1a1a1a; border-radius: 8px; padding: 1rem; margin: 0.5rem 0; border-left: 3px solid #60a5fa; }
+        .flow-item.action { border-left-color: #34d399; }
+        code { font-family: 'JetBrains Mono', monospace; background: #1a1a1a; padding: 0.2rem 0.4rem; border-radius: 4px; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="page-num">1/5</div>
+        <div class="label">Launchmate · Feb 2026</div>
+        <h1>From <span class="decision">Bootcamp</span> to <span class="highlight">Capabilities</span></h1>
+        <h2>65 users shipped. Now building the next layer.</h2>
+        <div class="scroll-hint">↓ scroll</div>
+    </div>
+
+    <div class="page">
+        <div class="page-num">2/5</div>
+        <div class="label">The Win</div>
+        <h2><span class="decision">Bootcamp shipped</span></h2>
+        <div class="card" style="text-align: center;">
+            <div class="stat">65</div>
+            <div class="stat-label">concurrent users onboarded</div>
+        </div>
+        <p>Built the entire onboarding flow in one night: team selection UI (25 teams), name entry, team switching with fault tolerance between Letta and Supabase.</p>
+        <p><span class="decision">Zero bottlenecks.</span> Vercel, Letta, Supabase all held under load.</p>
+        <p>Everyone deployed tidbits — now we have a repo of 65 learnings to mine.</p>
+    </div>
+
+    <div class="page">
+        <div class="page-num">3/5</div>
+        <div class="label">Post-Bootcamp</div>
+        <h2>What came out of it</h2>
+        <p><span class="highlight">Neal's request:</span> Who logged in after bootcamp ended? Need tracking — either ADE access or a progress viewer.</p>
+        <p><span class="highlight">Tidbits repo:</span> 65 tidbits = patterns across cohort. Need to extract learnings.</p>
+        <div class="card">
+            <p class="label">But the real priority</p>
+            <p><span class="tension">Kavindi</span> — our most active user — is asking for capabilities. That's where I'm focusing.</p>
+        </div>
+        <p>When your power user pulls for a feature, you build it.</p>
+    </div>
+
+    <div class="page">
+        <div class="page-num">4/5</div>
+        <div class="label">The Architecture</div>
+        <h2><span class="highlight">Capabilities via Letta Conversations</span></h2>
+        <p>The insight: separate capability management from main chat.</p>
+        <div class="flow-item"><strong>Sidebar</strong> — decodes Letta core block, shows current capabilities</div>
+        <div class="flow-item"><strong>Capabilities conversation</strong> — dedicated thread for adding/editing skills</div>
+        <div class="flow-item"><strong>Main conversation</strong> — stays clean, focused on founder work</div>
+        <div class="flow-item action"><strong>Activation</strong> — when triggered, capability runs in main chat</div>
+        <p style="margin-top: 1.5rem;">User gets visibility + control. Chat history stays uncluttered.</p>
+    </div>
+
+    <div class="page">
+        <div class="page-num">5/5</div>
+        <div class="label">The Next Level</div>
+        <h2>LLM-generated activation</h2>
+        <p>Instead of canned "activate [skill]" prompts, the <span class="highlight">capabilities agent crafts contextual activation messages</span> via tool call.</p>
+        <div class="card">
+            <p class="label">Flow</p>
+            <p>1. User clicks capability in sidebar</p>
+            <p>2. Hits capabilities conversation</p>
+            <p>3. LLM crafts activation prompt</p>
+            <p>4. Tool call drops it into main conversation</p>
+            <p>5. Main agent runs the skill</p>
+        </div>
+        <p>The activation is <span class="decision">intelligent, not static</span>. The capabilities agent becomes the skill launcher.</p>
+        <p style="margin-top: 1.5rem; color: #6b7280;">Building: <code>send_to_main_conversation(message)</code> — the inverse of a2a routing.</p>
+    </div>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
