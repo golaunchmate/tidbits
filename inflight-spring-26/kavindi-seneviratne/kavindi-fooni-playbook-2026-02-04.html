@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="tidbit-type" content="founder">
+    <meta name="tidbit-subject" content="Kavindi Seneviratne">
+    <meta name="tidbit-company" content="Fooni">
+    <meta name="tidbit-date" content="2026-02-04">
+    <meta name="tidbit-period" content="2026-W06">
+    <title>Fooni Playbook | Kavindi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #0f0f0f; color: #e5e5e5; line-height: 1.6; }
+        
+        .slide {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+        }
+        
+        .card {
+            max-width: 600px;
+            width: 100%;
+            padding: 3rem;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            background: #0f0f0f;
+        }
+        
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+        
+        .highlight { color: #60a5fa; }
+        .decision { color: #34d399; }
+        .tension { color: #f97316; }
+        
+        h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+        h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; }
+        h3 { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; }
+        
+        p { margin-bottom: 1rem; color: #a3a3a3; }
+        
+        .subtitle { font-size: 1.25rem; color: #6b7280; margin-bottom: 2rem; }
+        .scroll-hint { color: #4b5563; font-size: 0.875rem; margin-top: 2rem; }
+        
+        .page-num {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #4b5563;
+        }
+        
+        .step-list { list-style: none; margin: 1.5rem 0; }
+        .step-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #2a2a2a;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+        .step-list li:last-child { border-bottom: none; }
+        .step-num {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            color: #60a5fa;
+            font-weight: 600;
+        }
+        
+        .arrow-list { list-style: none; margin: 1rem 0; }
+        .arrow-list li { padding: 0.5rem 0; color: #a3a3a3; }
+        .arrow-list li::before { content: "→ "; color: #60a5fa; }
+        
+        .flywheel {
+            background: #1a1a1a;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+        .flywheel-text {
+            font-size: 0.875rem;
+            color: #a3a3a3;
+            line-height: 2;
+        }
+        .flywheel-text span { color: #34d399; font-weight: 500; }
+        
+        .quote {
+            border-left: 3px solid #60a5fa;
+            padding-left: 1.5rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: #e5e5e5;
+        }
+        
+        .stat-row {
+            display: flex;
+            gap: 2rem;
+            margin: 1.5rem 0;
+        }
+        .stat { text-align: center; flex: 1; }
+        .stat-value { font-size: 1.5rem; font-weight: 700; color: #60a5fa; }
+        .stat-label { font-size: 0.75rem; color: #6b7280; text-transform: uppercase; }
+    </style>
+</head>
+<body>
+
+<!-- Slide 1: Cover -->
+<section class="slide">
+    <div class="card" style="text-align: center;">
+        <p class="label">The Playbook</p>
+        <h1><span class="highlight">Fooni</span></h1>
+        <p class="subtitle">How we turn restaurant deals into student traffic</p>
+        <p style="color: #6b7280; margin-bottom: 0;">Kavindi Seneviratne</p>
+        <p style="color: #4b5563; font-size: 0.875rem;">February 2026</p>
+        <p class="scroll-hint">↓ scroll</p>
+    </div>
+    <div class="page-num">1/5</div>
+</section>
+
+<!-- Slide 2: The Problem -->
+<section class="slide">
+    <div class="card">
+        <p class="label">The Problem</p>
+        <h2><span class="tension">Views without visits</span></h2>
+        <p>We hit 25K views on Instagram. But views don't pay the bills — and they don't prove anything to restaurants.</p>
+        <p>The real question:</p>
+        <p class="quote">"Can you turn views into visits?"</p>
+        <p>That's what we needed to crack. Not just attention — <span class="highlight">action</span>.</p>
+    </div>
+    <div class="page-num">2/5</div>
+</section>
+
+<!-- Slide 3: The Engine -->
+<section class="slide">
+    <div class="card">
+        <p class="label">The Engine</p>
+        <h2>Six steps. <span class="highlight">Repeat forever.</span></h2>
+        <ul class="step-list">
+            <li><span class="step-num">01</span><span><strong>Close a restaurant deal</strong><br><span style="color: #6b7280;">Pitch local spots, secure student discounts</span></span></li>
+            <li><span class="step-num">02</span><span><strong>Create content</strong><br><span style="color: #6b7280;">Film at the restaurant, post 2-3 videos</span></span></li>
+            <li><span class="step-num">03</span><span><strong>Activate clubs</strong><br><span style="color: #6b7280;">Send flyers + content to student orgs, run collabs</span></span></li>
+            <li><span class="step-num">04</span><span><strong>Students take action</strong><br><span style="color: #6b7280;">They see it, use the code, visit the restaurant</span></span></li>
+            <li><span class="step-num">05</span><span><strong>Track the proof</strong><br><span style="color: #6b7280;">Code redemptions, DMs, restaurant feedback</span></span></li>
+            <li><span class="step-num">06</span><span><strong>Use proof to close more deals</strong><br><span style="color: #6b7280;">"We drove X students to Cluck n Sip. Want in?"</span></span></li>
+        </ul>
+    </div>
+    <div class="page-num">3/5</div>
+</section>
+
+<!-- Slide 4: The Flywheel -->
+<section class="slide">
+    <div class="card">
+        <p class="label">The Flywheel</p>
+        <h2>Each win makes the next one <span class="decision">easier</span></h2>
+        <div class="flywheel">
+            <p class="flywheel-text">
+                <span>More Deals</span> → More Content → <span>More Club Collabs</span> → More Students → <span>More Proof</span> → Even More Deals
+            </p>
+        </div>
+        <p><strong>The cheat code:</strong></p>
+        <p>SDSU Foodies as a recurring partner. Every time we close a deal, we plug it into the Foodies collab → instant traffic.</p>
+        <p style="color: #6b7280;">No rebuilding distribution from scratch. Just repeat.</p>
+    </div>
+    <div class="page-num">4/5</div>
+</section>
+
+<!-- Slide 5: Where I'm At -->
+<section class="slide">
+    <div class="card">
+        <p class="label">Where I'm At</p>
+        <h2>Running the playbook <span class="highlight">right now</span></h2>
+        <div class="stat-row">
+            <div class="stat">
+                <div class="stat-value">3</div>
+                <div class="stat-label">Deals Closed</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">1</div>
+                <div class="stat-label">Club Collab Locked</div>
+            </div>
+        </div>
+        <ul class="arrow-list">
+            <li>Cluck n Sip — live, content dropping this week</li>
+            <li>CocoCurry — approved, filming Friday</li>
+            <li>Chance's Coffee — collab in effect</li>
+            <li>SDSU Foodies — first collab confirmed</li>
+        </ul>
+        <p class="quote" style="margin-top: 2rem;">"Close deals. Make content. Let clubs spread the word. Track what works. Repeat."</p>
+    </div>
+    <div class="page-num">5/5</div>
+</section>
+
+<script>
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+        window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+    } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+        window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+    }
+});
+</script>
+
+</body>
+</html>
