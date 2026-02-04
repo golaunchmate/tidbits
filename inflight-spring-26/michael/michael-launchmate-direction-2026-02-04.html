@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Launchmate Direction | Michael</title>
+    <meta name="tidbit-type" content="team">
+    <meta name="tidbit-subject" content="Michael">
+    <meta name="tidbit-company" content="Launchmate">
+    <meta name="tidbit-date" content="2026-02-04">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; }
+        body { font-family: 'Inter', sans-serif; background: #0f0f0f; color: #e5e5e5; }
+        .page { min-height: 100vh; scroll-snap-align: start; display: flex; flex-direction: column; justify-content: center; padding: 3rem; max-width: 800px; margin: 0 auto; }
+        .page-num { font-family: 'JetBrains Mono', monospace; color: #6b7280; font-size: 0.875rem; margin-bottom: 2rem; }
+        h1 { font-size: 2.5rem; font-weight: 600; margin-bottom: 1rem; line-height: 1.2; }
+        h2 { font-size: 1.5rem; font-weight: 500; margin-bottom: 1.5rem; color: #a3a3a3; }
+        p { font-size: 1.125rem; line-height: 1.7; margin-bottom: 1rem; color: #d4d4d4; }
+        .highlight { color: #60a5fa; }
+        .tension { color: #f97316; }
+        .decision { color: #34d399; }
+        .label { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+        .scroll-hint { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%); color: #6b7280; font-size: 0.875rem; animation: bounce 2s infinite; }
+        @keyframes bounce { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(-10px); } }
+        .card { background: #1a1a1a; border-radius: 12px; padding: 1.5rem; margin: 1rem 0; }
+        .loop-item { background: #1a1a1a; border-radius: 8px; padding: 1rem; margin: 0.5rem 0; border-left: 3px solid #60a5fa; }
+        .loop-item.two { border-left-color: #34d399; }
+        .loop-item.three { border-left-color: #f97316; }
+        .primitive-item { display: flex; align-items: center; gap: 0.75rem; padding: 0.5rem 0; border-bottom: 1px solid #262626; }
+        .primitive-item:last-child { border-bottom: none; }
+        .check { color: #34d399; }
+        .unknown-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem; }
+        .unknown-item { background: #1a1a1a; border-radius: 8px; padding: 1rem; border: 1px dashed #6b7280; }
+        .unknown-item h3 { font-size: 1rem; margin-bottom: 0.5rem; color: #f97316; }
+        .unknown-item p { font-size: 0.875rem; color: #a3a3a3; margin: 0; }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="page-num">1/5</div>
+        <div class="label">Launchmate · Feb 2026</div>
+        <h1>The <span class="highlight">Direction</span></h1>
+        <h2>Growing agents, feedback loops, and the scaling problem</h2>
+        <div class="scroll-hint">↓ scroll</div>
+    </div>
+
+    <div class="page">
+        <div class="page-num">2/5</div>
+        <div class="label">Foundation</div>
+        <h2><span class="decision">Growing Agents</span> is the core</h2>
+        <p>The foundational insight: agents that grow over time have compounding value. The growth comes from <span class="highlight">three feedback loops</span>:</p>
+        <div class="loop-item"><strong>Context Loop</strong> — Bringing context back into the agent. Each interaction adds to growth.</div>
+        <div class="loop-item two"><strong>Integration Loop</strong> — Local file access (ClodBot/Letabot). Proprietary data at scale.</div>
+        <div class="loop-item three"><strong>Self-Learning Loop</strong> — Agents learning from interactions, improving across the entire cohort.</div>
+        <p style="margin-top: 1.5rem;">Token costs will drop. <span class="highlight">Infinite agents</span> become viable. Continuity workflows and multi-agent communication at scale.</p>
+    </div>
+
+    <div class="page">
+        <div class="page-num">3/5</div>
+        <div class="label">Key Discovery</div>
+        <h2>The <span class="tension">Specialized Agent Problem</span></h2>
+        <p>Specialized agents have magic. But the magic comes from <span class="highlight">chat history growth</span> — not memory blocks.</p>
+        <p>You can't replicate a specialized agent by copying its memory. The unknown property is in how context accumulates through conversation.</p>
+        <div class="card">
+            <p class="label">Scaling Question</p>
+            <p><span class="tension">How do you scale something whose value is in undivided history?</span></p>
+            <p style="margin-top: 0.75rem;">Two directions being explored:</p>
+            <p>1. <strong>Supervisor → Sub-agent hierarchy</strong> — learnings flow up, updates push down, push model back to supervisor's chat history</p>
+            <p>2. <strong>Horizontal sharding</strong> — partition context, filter by user, skip consistency overhead (requires high-level filtering)</p>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="page-num">4/5</div>
+        <div class="label">What Works</div>
+        <h2>The <span class="decision">Cohort Primitive</span></h2>
+        <p>Bootcamp proved frictionless cohort creation works. 30-second signup to agent access.</p>
+        <div class="card">
+            <div class="primitive-item"><span class="check">✓</span> Pre-trained agent (growth from day one)</div>
+            <div class="primitive-item"><span class="check">✓</span> Team assignment</div>
+            <div class="primitive-item"><span class="check">✓</span> Start/end date (Fall cohort: Aug-May)</div>
+            <div class="primitive-item"><span class="check">✓</span> Type-specific onboarding flow (In-Flight vs Bootcamp vs Live)</div>
+            <div class="primitive-item"><span class="check">✓</span> Tidbits (surface learnings, bridge agent↔human world)</div>
+            <div class="primitive-item"><span class="tension">?</span> Directory for agent-to-agent contact</div>
+        </div>
+        <p style="margin-top: 1rem;"><span class="highlight">New paradigm:</span> Capabilities conversation — manage UI components without cluttering default chat. Conversation thread uses still unknown.</p>
+    </div>
+
+    <div class="page">
+        <div class="page-num">5/5</div>
+        <div class="label">Square of Uncertainty</div>
+        <h2>What's <span class="tension">unresolved</span></h2>
+        <div class="unknown-grid">
+            <div class="unknown-item">
+                <h3>Directory</h3>
+                <p>Active Directory for agents. Scope: per cohort? org? Mediator between agents.</p>
+            </div>
+            <div class="unknown-item">
+                <h3>Letta Bot</h3>
+                <p>Local dev benefits from proprietary data. What's our equivalent beyond chat + tidbits?</p>
+            </div>
+            <div class="unknown-item">
+                <h3>Mentor Model</h3>
+                <p>Mentors deploy specialized agents trained on their expertise. Scales their reach.</p>
+            </div>
+            <div class="unknown-item">
+                <h3>Push Continuity</h3>
+                <p>Teams with dependencies get updates pushed. Continuity managers between agents.</p>
+            </div>
+        </div>
+        <p style="margin-top: 1.5rem; color: #6b7280;">Tidbits post-consumption, external data sources, and specialized agent partitioning remain open threads.</p>
+    </div>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
