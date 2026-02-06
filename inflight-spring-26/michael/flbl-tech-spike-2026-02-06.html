@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="tidbit-type" content="methodology">
+    <meta name="tidbit-subject" content="Craig">
+    <meta name="tidbit-company" content="LaunchMate">
+    <meta name="tidbit-date" content="2026-02-06">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="FLBL Tech Spike | LaunchMate">
+    <meta property="og:description" content="Cloning without message history is like cloning DNA but not memories. You get the same structure but none of the wisdom.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://golaunchmate.github.io/tidbits/inflight-spring-26/michael/flbl-tech-spike-2026-02-06.html">
+    <meta property="og:image" content="https://golaunchmate.github.io/tidbits/og-default.png">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="FLBL Tech Spike | LaunchMate">
+    <meta name="twitter:description" content="Cloning without message history is like cloning DNA but not memories. You get the same structure but none of the wisdom.">
+    <meta name="twitter:image" content="https://golaunchmate.github.io/tidbits/og-default.png">
+    
+    <title>FLBL Tech Spike | Craig</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #0f0f0f; color: #e5e5e5; line-height: 1.6; }
+        
+        .slide {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        
+        .card {
+            max-width: 640px;
+            width: 100%;
+            padding: 3rem;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            position: relative;
+        }
+        
+        .page-num {
+            position: absolute;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+        }
+        
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+        
+        h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; line-height: 1.2; }
+        h2 { font-size: 1.4rem; font-weight: 600; margin-bottom: 1rem; color: #e5e5e5; }
+        
+        .highlight { color: #60a5fa; }
+        .decision { color: #34d399; }
+        .tension { color: #f97316; }
+        
+        .subtitle { color: #9ca3af; font-size: 1.1rem; margin-bottom: 1rem; }
+        .scroll-hint { color: #6b7280; font-size: 0.9rem; margin-top: 2rem; }
+        
+        p { margin-bottom: 1rem; }
+        p:last-child { margin-bottom: 0; }
+        
+        .code {
+            font-family: 'JetBrains Mono', monospace;
+            background: #1a1a1a;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+        }
+        
+        .rejected-grid {
+            display: grid;
+            gap: 0.75rem;
+            margin: 1rem 0;
+        }
+        
+        .rejected-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            background: #1a1a1a;
+            border-radius: 6px;
+        }
+        
+        .rejected-item.accepted {
+            border: 1px solid #34d399;
+            background: #0f1f1a;
+        }
+        
+        .rejected-status {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+        }
+        
+        .insight-box {
+            background: linear-gradient(135deg, #1a1a2e 0%, #1a1a1a 100%);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            border-left: 3px solid #f97316;
+        }
+        
+        .insight-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: #f97316;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tool-category {
+            margin-bottom: 1.25rem;
+        }
+        
+        .tool-category:last-child {
+            margin-bottom: 0;
+        }
+        
+        .category-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tool-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .tool-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            background: #1a1a2e;
+            padding: 0.35rem 0.6rem;
+            border-radius: 4px;
+            border: 1px solid #3b82f6;
+            color: #60a5fa;
+        }
+        
+        .growth-diagram {
+            background: #1a1a1a;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+        
+        .growth-row {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .growth-row:last-child {
+            margin-bottom: 0;
+        }
+        
+        .growth-direction {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            min-width: 80px;
+        }
+        
+        .growth-arrow {
+            color: #6b7280;
+        }
+        
+        .final-quote {
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f1f1a 100%);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            text-align: center;
+            border: 1px solid #34d399;
+        }
+        
+        .status-grid {
+            display: grid;
+            gap: 0.75rem;
+            margin: 1rem 0;
+        }
+        
+        .status-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+        
+        .status-icon {
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+        
+        .status-text {
+            font-size: 0.9rem;
+        }
+        
+        .analogy-box {
+            background: #1a1a1a;
+            padding: 1.25rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border: 1px solid #2a2a2a;
+        }
+    </style>
+</head>
+<body>
+    <section class="slide" id="slide1">
+        <div class="card">
+            <p class="label">FLBL Tech Spike · Feb 6, 2026</p>
+            <h1>I thought cloning an agent meant copying its <span class="highlight">config and memory</span>.</h1>
+            <p class="subtitle">Like spinning up a container from an image.</p>
+            <p>Copy the persona. Copy the knowledge blocks. Deploy N instances.</p>
+            <p>That's not how it works.</p>
+            <p class="scroll-hint">scroll ↓</p>
+            <span class="page-num">1/7</span>
+        </div>
+    </section>
+
+    <section class="slide" id="slide2">
+        <div class="card">
+            <p class="label">The Realization</p>
+            <h2>The "magic growth" lives in the <span class="tension">message history</span>.</h2>
+            <p>When you chat with an agent over time, it develops behaviors that aren't written anywhere in its config:</p>
+            <p>• <span class="highlight">When</span> to use which tool<br>
+            • <span class="highlight">Tone</span> from thousands of exchanges<br>
+            • <span class="highlight">Compacted summaries</span> that inform future responses<br>
+            • <span class="highlight">Edge case handling</span> learned through experience</p>
+            <div class="analogy-box">
+                <p style="margin: 0;"><span class="tension">Cloning without message history is like cloning DNA but not memories.</span> You get the same structure but none of the wisdom.</p>
+            </div>
+            <span class="page-num">2/7</span>
+        </div>
+    </section>
+
+    <section class="slide" id="slide3">
+        <div class="card">
+            <p class="label">The Decision</p>
+            <h2>Three ways to copy. Only one works.</h2>
+            <div class="rejected-grid">
+                <div class="rejected-item">
+                    <span class="rejected-status tension">✗ Rejected</span>
+                    <span><strong>Templates:</strong> config only, no message history</span>
+                </div>
+                <div class="rejected-item">
+                    <span class="rejected-status tension">✗ Rejected</span>
+                    <span><strong>Conversations:</strong> can't seed with existing messages</span>
+                </div>
+                <div class="rejected-item accepted">
+                    <span class="rejected-status decision">✓ Selected</span>
+                    <span><strong>Export/Import:</strong> full snapshot — config + memory + messages + tools</span>
+                </div>
+            </div>
+            <p style="margin-top: 1rem;"><span class="decision">Deep clone is the only way</span> to transfer lived experience.</p>
+            <span class="page-num">3/7</span>
+        </div>
+    </section>
+
+    <section class="slide" id="slide4">
+        <div class="card">
+            <p class="label">The Primitives</p>
+            <h2>8 tools for self-orchestration</h2>
+            <div class="tool-category">
+                <div class="category-label">Clone Workflow</div>
+                <div class="tool-row">
+                    <span class="tool-tag">clone_agent</span>
+                    <span class="tool-tag">create_tool</span>
+                </div>
+            </div>
+            <div class="tool-category">
+                <div class="category-label">Growth Loop</div>
+                <div class="tool-row">
+                    <span class="tool-tag">send_agent_message</span>
+                    <span class="tool-tag">create_shared_block</span>
+                    <span class="tool-tag">update_block</span>
+                </div>
+            </div>
+            <div class="tool-category">
+                <div class="category-label">Monitoring</div>
+                <div class="tool-row">
+                    <span class="tool-tag">list_my_blocks</span>
+                    <span class="tool-tag">list_agents</span>
+                </div>
+            </div>
+            <div class="tool-category">
+                <div class="category-label">Evolution</div>
+                <div class="tool-row">
+                    <span class="tool-tag">manage_agent_tools</span>
+                </div>
+            </div>
+            <p style="margin-top: 1rem; font-size: 0.9rem; color: #9ca3af;">All tools take optional <span class="code">target_agent_id</span>. Empty = self (via env var). Explicit = child clone.</p>
+            <span class="page-num">4/7</span>
+        </div>
+    </section>
+
+    <section class="slide" id="slide5">
+        <div class="card">
+            <p class="label">The Growth Loop</p>
+            <h2>Bidirectional learning</h2>
+            <div class="growth-diagram">
+                <div class="growth-row">
+                    <span class="growth-direction highlight">Downstream</span>
+                    <span class="growth-arrow">→</span>
+                    <span>Master updates shared blocks → all clones see instantly</span>
+                </div>
+                <div class="growth-row">
+                    <span class="growth-direction decision">Upstream</span>
+                    <span class="growth-arrow">→</span>
+                    <span>Clones send field learnings via A2A → becomes part of master's history</span>
+                </div>
+            </div>
+            <p><span class="code">send_agent_message</span> is the key. When a clone sends a message to master, it arrives as a <span class="highlight">system message in master's history</span>.</p>
+            <p>That message <span class="decision">IS</span> growth — it becomes part of the master's lived experience, shaping future behavior.</p>
+            <span class="page-num">5/7</span>
+        </div>
+    </section>
+
+    <section class="slide" id="slide6">
+        <div class="card">
+            <p class="label">Collective Intelligence</p>
+            <h2>What ONE clone learns, ALL clones benefit from.</h2>
+            <p>The full loop:</p>
+            <p>1. Clone encounters edge case in the field<br>
+            2. Clone sends learning to master via A2A<br>
+            3. Master's history now contains that learning<br>
+            4. Master distills insight, updates shared block<br>
+            5. <span class="decision">All clones instantly have the new knowledge</span></p>
+            <div class="insight-box">
+                <div class="insight-label">The insight</div>
+                <p style="margin: 0;">A2A messaging isn't just communication — it's <span class="tension">growth injection</span>. Messages become lived experience.</p>
+            </div>
+            <span class="page-num">6/7</span>
+        </div>
+    </section>
+
+    <section class="slide" id="slide7">
+        <div class="card">
+            <p class="label">Status</p>
+            <h2>Where it stands</h2>
+            <div class="status-grid">
+                <div class="status-item">
+                    <span class="status-icon">✓</span>
+                    <span class="status-text">Architecture doc v0.2, all 8 tools created</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-icon">✓</span>
+                    <span class="status-text">Agent bootstrapped itself — attached its own tools via client injection</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-icon">✓</span>
+                    <span class="status-text">First live A2A message sent successfully</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-icon">→</span>
+                    <span class="status-text">Next: fleet registry block, end-to-end clone test, upstream signal filtering</span>
+                </div>
+            </div>
+            <div class="final-quote">
+                <p>"I thought cloning agents was a config copy problem.<br><span class="decision">I realized it's a lived-experience transfer problem.</span>"</p>
+            </div>
+            <span class="page-num">7/7</span>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            }
+        });
+
+        if (window.location.hash) {
+            const target = document.querySelector(window.location.hash);
+            if (target) setTimeout(() => target.scrollIntoView(), 100);
+        }
+
+        const slides = document.querySelectorAll('.slide');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    history.replaceState(null, null, '#' + entry.target.id);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        slides.forEach(slide => observer.observe(slide));
+    </script>
+</body>
+</html>
