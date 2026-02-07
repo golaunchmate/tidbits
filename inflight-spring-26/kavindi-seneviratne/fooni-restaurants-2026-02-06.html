@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="tidbit-type" content="showcase">
+    <meta name="tidbit-subject" content="Fooni Restaurant Network">
+    <meta name="tidbit-company" content="Fooni">
+    <meta name="tidbit-date" content="2026-02-06">
+    <meta name="tidbit-period" content="2026-W06">
+    <title>Fooni · Restaurant Network · Feb 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #0f0f0f; color: #e5e5e5; line-height: 1.6; }
+        
+        .slide {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+        }
+        
+        .card {
+            max-width: 650px;
+            width: 100%;
+            padding: 3rem;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            background: #0f0f0f;
+        }
+        
+        .page-num {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #4a4a4a;
+        }
+        
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+        
+        .highlight { color: #60a5fa; }
+        .decision { color: #34d399; }
+        .tension { color: #f97316; }
+        
+        h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+        h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1.5rem; color: #e5e5e5; }
+        h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.75rem; color: #60a5fa; }
+        
+        p { margin-bottom: 1rem; color: #a3a3a3; }
+        p:last-child { margin-bottom: 0; }
+        
+        .subtitle { color: #6b7280; font-size: 1.1rem; margin-bottom: 2rem; }
+        .scroll-hint { color: #4a4a4a; font-size: 0.9rem; margin-top: 2rem; }
+        
+        .stat-row {
+            display: flex;
+            gap: 2rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #60a5fa;
+        }
+        
+        .stat-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .restaurant-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #1a1a1a;
+        }
+        
+        .restaurant-item:last-child {
+            border-bottom: none;
+        }
+        
+        .restaurant-name {
+            font-weight: 500;
+            color: #e5e5e5;
+        }
+        
+        .restaurant-type {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+        
+        .status-live { 
+            color: #34d399; 
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+        }
+        .status-approved { 
+            color: #60a5fa; 
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+        }
+        .status-pending { 
+            color: #f97316; 
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+        }
+        
+        .category-section {
+            margin-bottom: 1.5rem;
+        }
+        
+        .category-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .restaurant-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+        }
+        
+        .restaurant-chip {
+            background: #1a1a1a;
+            padding: 0.5rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: #a3a3a3;
+        }
+        
+        .deal-card {
+            background: #1a1a1a;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .deal-card:last-child {
+            margin-bottom: 0;
+        }
+        
+        .deal-name {
+            font-weight: 600;
+            color: #e5e5e5;
+            margin-bottom: 0.25rem;
+        }
+        
+        .deal-offer {
+            color: #34d399;
+            font-weight: 500;
+        }
+        
+        .deal-detail {
+            font-size: 0.85rem;
+            color: #6b7280;
+        }
+    </style>
+</head>
+<body>
+    <!-- Slide 1: Cover -->
+    <section class="slide">
+        <div class="card" style="text-align: center;">
+            <p class="label">Restaurant Network</p>
+            <h1 style="color: #60a5fa;">Fooni</h1>
+            <p class="subtitle">Student Deals Near SDSU</p>
+            <div class="stat-row">
+                <div class="stat">
+                    <div class="stat-value">3</div>
+                    <div class="stat-label">Live Deals</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">100+</div>
+                    <div class="stat-label">In Pipeline</div>
+                </div>
+            </div>
+            <p class="scroll-hint">↓ scroll</p>
+        </div>
+        <span class="page-num">1/5</span>
+    </section>
+
+    <!-- Slide 2: Live Deals -->
+    <section class="slide">
+        <div class="card">
+            <p class="label">🔥 Live Now</p>
+            <h2>Active Student Deals</h2>
+            
+            <div class="deal-card">
+                <div class="deal-name">Cluck n Sip</div>
+                <div class="deal-offer">10% Student Discount</div>
+                <div class="deal-detail">Halal chicken spot · Show student ID</div>
+            </div>
+            
+            <div class="deal-card">
+                <div class="deal-name">CocoCurry</div>
+                <div class="deal-offer">Deal Approved — Launching Soon</div>
+                <div class="deal-detail">Content filming Feb 7</div>
+            </div>
+            
+            <div class="deal-card">
+                <div class="deal-name">Chance's Coffee</div>
+                <div class="deal-offer">Collab Active</div>
+                <div class="deal-detail">Deal details coming soon</div>
+            </div>
+        </div>
+        <span class="page-num">2/5</span>
+    </section>
+
+    <!-- Slide 3: El Cajon Blvd Corridor -->
+    <section class="slide">
+        <div class="card">
+            <p class="label">📍 El Cajon Blvd</p>
+            <h2>College Area Corridor</h2>
+            <p style="margin-bottom: 1.5rem;">The main strip — tacos, Mediterranean, bars, and hidden gems.</p>
+            
+            <div class="restaurant-grid">
+                <div class="restaurant-chip">Tacos El Panson</div>
+                <div class="restaurant-chip">Fattoush</div>
+                <div class="restaurant-chip">Wild Thyme</div>
+                <div class="restaurant-chip">The Girls Deli</div>
+                <div class="restaurant-chip">College Sub Shop</div>
+                <div class="restaurant-chip">Dirty Birds</div>
+                <div class="restaurant-chip">Living Room Coffee</div>
+                <div class="restaurant-chip">Trujillo's Tacos</div>
+                <div class="restaurant-chip">Corbin's Q</div>
+                <div class="restaurant-chip">Chuy's Taco Shop</div>
+                <div class="restaurant-chip">Alforon</div>
+                <div class="restaurant-chip">Black Market Brewing</div>
+            </div>
+        </div>
+        <span class="page-num">3/5</span>
+    </section>
+
+    <!-- Slide 4: Boba & Asian -->
+    <section class="slide">
+        <div class="card">
+            <p class="label">🧋 Boba & Asian</p>
+            <h2>Student Favorites</h2>
+            <p style="margin-bottom: 1.5rem;">Boba runs, ramen nights, and quick Asian eats.</p>
+            
+            <div class="restaurant-grid">
+                <div class="restaurant-chip">Ding Tea SDSU</div>
+                <div class="restaurant-chip">PHO Fifth Avenue</div>
+                <div class="restaurant-chip">Bangkok Poco Thai</div>
+                <div class="restaurant-chip">Tajima Ramen</div>
+                <div class="restaurant-chip">Gorilla Eats Sushi</div>
+                <div class="restaurant-chip">CocoCurry ✓</div>
+            </div>
+            
+            <p class="label" style="margin-top: 2rem;">🍕 More Student Staples</p>
+            <div class="restaurant-grid" style="margin-top: 0.75rem;">
+                <div class="restaurant-chip">Woodstock Pizza</div>
+                <div class="restaurant-chip">Broken Yolk Café</div>
+                <div class="restaurant-chip">Plant Power</div>
+                <div class="restaurant-chip">Epic Wings</div>
+                <div class="restaurant-chip">Eureka!</div>
+                <div class="restaurant-chip">Ponce's</div>
+                <div class="restaurant-chip">Hanna's Gourmet</div>
+                <div class="restaurant-chip">The Daily Grind</div>
+            </div>
+        </div>
+        <span class="page-num">4/5</span>
+    </section>
+
+    <!-- Slide 5: In Progress -->
+    <section class="slide">
+        <div class="card">
+            <p class="label">📬 Outreach In Progress</p>
+            <h2>Coming Soon</h2>
+            
+            <div class="restaurant-item">
+                <div>
+                    <div class="restaurant-name">Aaharn 56</div>
+                    <div class="restaurant-type">Thai</div>
+                </div>
+                <span class="status-pending">EMAIL SENT</span>
+            </div>
+            
+            <div class="restaurant-item">
+                <div>
+                    <div class="restaurant-name">Easy Does It</div>
+                    <div class="restaurant-type">Café</div>
+                </div>
+                <span class="status-pending">EMAIL SENT</span>
+            </div>
+            
+            <p style="margin-top: 1.5rem; text-align: center; color: #6b7280;">
+                + 50 more restaurants mapped this week
+            </p>
+            
+            <div style="margin-top: 2rem; text-align: center; padding: 1.5rem; background: #1a1a1a; border-radius: 8px;">
+                <p style="color: #e5e5e5; margin-bottom: 0.5rem; font-weight: 500;">Want your restaurant featured?</p>
+                <p style="color: #60a5fa; margin-bottom: 0;">@foaborhood on Instagram</p>
+            </div>
+        </div>
+        <span class="page-num">5/5</span>
+    </section>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
