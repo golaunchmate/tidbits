@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="tidbit-type" content="founder">
+    <meta name="tidbit-subject" content="Kavindi Seneviratne">
+    <meta name="tidbit-company" content="Fooni">
+    <meta name="tidbit-date" content="2026-02-06">
+    <meta name="tidbit-period" content="2026-W06">
+    <title>Kavindi · Fooni · Feb 6, 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #0f0f0f; color: #e5e5e5; line-height: 1.6; }
+        
+        .slide {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+        }
+        
+        .card {
+            max-width: 600px;
+            width: 100%;
+            padding: 3rem;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            background: #0f0f0f;
+        }
+        
+        .page-num {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #4a4a4a;
+        }
+        
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+        
+        .highlight { color: #60a5fa; }
+        .decision { color: #34d399; }
+        .tension { color: #f97316; }
+        
+        h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+        h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1.5rem; color: #e5e5e5; }
+        h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 1rem; }
+        
+        p { margin-bottom: 1rem; color: #a3a3a3; }
+        p:last-child { margin-bottom: 0; }
+        
+        .subtitle { color: #6b7280; font-size: 1.1rem; margin-bottom: 2rem; }
+        .scroll-hint { color: #4a4a4a; font-size: 0.9rem; margin-top: 2rem; }
+        
+        .stat-row {
+            display: flex;
+            gap: 2rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #60a5fa;
+        }
+        
+        .stat-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .list-item {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: #a3a3a3;
+        }
+        
+        .list-item::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #4a4a4a;
+        }
+        
+        .quote {
+            border-left: 3px solid #60a5fa;
+            padding-left: 1.5rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: #e5e5e5;
+        }
+        
+        .pipeline-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #1a1a1a;
+        }
+        
+        .pipeline-item:last-child {
+            border-bottom: none;
+        }
+        
+        .status-live { color: #34d399; }
+        .status-approved { color: #60a5fa; }
+        .status-pending { color: #f97316; }
+    </style>
+</head>
+<body>
+    <!-- Slide 1: Cover -->
+    <section class="slide">
+        <div class="card" style="text-align: center;">
+            <p class="label">Founder Update</p>
+            <h1>Kavindi</h1>
+            <p class="subtitle">Fooni · Feb 6, 2026</p>
+            <p style="color: #6b7280; font-size: 1rem; margin-top: 1rem;">From first deal to pipeline machine</p>
+            <p class="scroll-hint">↓ scroll</p>
+        </div>
+        <span class="page-num">1/5</span>
+    </section>
+
+    <!-- Slide 2: Where I Started -->
+    <section class="slide">
+        <div class="card">
+            <p class="label">Where I Started</p>
+            <h2>One deal wasn't enough</h2>
+            <p>Two weeks ago, I closed my first restaurant partner: <span class="highlight">Cluck n Sip</span> — 10% student discount, halal spot, code in hand.</p>
+            <p>It felt like a win. But Craig's question stuck with me:</p>
+            <p class="quote">"Can you turn views into visits?"</p>
+            <p>I had <span class="tension">25K Instagram views</span> but wasn't converting them to action. One deal wouldn't prove the model. I needed to know: <span class="highlight">is this repeatable?</span></p>
+        </div>
+        <span class="page-num">2/5</span>
+    </section>
+
+    <!-- Slide 3: What I Discovered -->
+    <section class="slide">
+        <div class="card">
+            <p class="label">What I Discovered</p>
+            <h2>The playbook works</h2>
+            <div class="stat-row">
+                <div class="stat">
+                    <div class="stat-value">3</div>
+                    <div class="stat-label">Deals Active</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">100+</div>
+                    <div class="stat-label">Restaurants Targeted</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">50+</div>
+                    <div class="stat-label">New This Week</div>
+                </div>
+            </div>
+            <p style="margin-top: 1.5rem;">Restaurants aren't saying no. They're saying <span class="decision">"when can we start?"</span></p>
+            <div style="margin-top: 1.5rem;">
+                <div class="pipeline-item">
+                    <span>Cluck n Sip</span>
+                    <span class="status-live">✓ LIVE</span>
+                </div>
+                <div class="pipeline-item">
+                    <span>CocoCurry</span>
+                    <span class="status-approved">APPROVED</span>
+                </div>
+                <div class="pipeline-item">
+                    <span>Chance's Coffee</span>
+                    <span class="status-approved">COLLAB ACTIVE</span>
+                </div>
+            </div>
+        </div>
+        <span class="page-num">3/5</span>
+    </section>
+
+    <!-- Slide 4: The Pipeline -->
+    <section class="slide">
+        <div class="card">
+            <p class="label">The Real Opportunity</p>
+            <h2>Building the machine</h2>
+            <p>This week I mapped <span class="highlight">100+ restaurants</span> within student reach:</p>
+            <div class="list-item">El Cajon Blvd corridor: tacos, Mediterranean, bars</div>
+            <div class="list-item">Boba & Asian: Ding Tea, Tajima, PHO Fifth Ave</div>
+            <div class="list-item">Late-night & student staples: Woodstock, Dirty Birds</div>
+            <div class="list-item">Underrated gems students don't know about yet</div>
+            <p style="margin-top: 1.5rem;">The formula is simple:</p>
+            <p><span class="highlight">Find restaurants</span> → <span class="highlight">Create content</span> → <span class="highlight">Close deals</span> → <span class="decision">Repeat</span></p>
+        </div>
+        <span class="page-num">4/5</span>
+    </section>
+
+    <!-- Slide 5: Where I'm At -->
+    <section class="slide">
+        <div class="card">
+            <p class="label">Where I'm At</p>
+            <h2>Execution mode</h2>
+            <div class="list-item">Filming CocoCurry content tomorrow (Feb 7)</div>
+            <div class="list-item">Cluck n Sip videos posting Wed/Thurs/Fri</div>
+            <div class="list-item">Student org outreach live — flyers distributed</div>
+            <div class="list-item">Team tasks assigned: Lena on club outreach, tracking</div>
+            <p style="margin-top: 1.5rem;"><strong>Next test:</strong> <span class="tension">Do views convert to visits?</span></p>
+            <p>Tracking code redemptions to prove traffic.</p>
+            <div class="quote" style="margin-top: 2rem;">
+                "I thought I needed one restaurant to say yes.<br>
+                I actually needed a machine that makes restaurants say yes."
+            </div>
+        </div>
+        <span class="page-num">5/5</span>
+    </section>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
