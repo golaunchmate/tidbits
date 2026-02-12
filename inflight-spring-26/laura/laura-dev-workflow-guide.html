@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Launchmate Dev Workflow | Laura</title>
+    <meta name="tidbit-type" content="framework">
+    <meta name="tidbit-subject" content="Laura Wetherhold">
+    <meta name="tidbit-company" content="Launchmate">
+    <meta name="tidbit-date" content="2026-02-04">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; }
+        body { font-family: 'Inter', sans-serif; background: #0f0f0f; color: #e5e5e5; }
+        .page { min-height: 100vh; scroll-snap-align: start; display: flex; flex-direction: column; justify-content: center; padding: 3rem; max-width: 900px; margin: 0 auto; }
+        .page-num { font-family: 'JetBrains Mono', monospace; color: #6b7280; font-size: 0.875rem; margin-bottom: 2rem; }
+        h1 { font-size: 2.5rem; font-weight: 600; margin-bottom: 1rem; line-height: 1.2; }
+        h2 { font-size: 1.5rem; font-weight: 500; margin-bottom: 1.5rem; color: #a3a3a3; }
+        h3 { font-size: 1.125rem; font-weight: 500; margin: 1.5rem 0 0.75rem 0; color: #60a5fa; }
+        p { font-size: 1.125rem; line-height: 1.7; margin-bottom: 1rem; color: #d4d4d4; }
+        .highlight { color: #60a5fa; }
+        .decision { color: #34d399; }
+        .label { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+        .scroll-hint { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%); color: #6b7280; font-size: 0.875rem; animation: bounce 2s infinite; }
+        @keyframes bounce { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(-10px); } }
+        .card { background: #1a1a1a; border-radius: 12px; padding: 1.5rem; margin: 1rem 0; }
+        .step { background: #1a1a1a; border-radius: 8px; padding: 1.25rem; margin: 0.75rem 0; border-left: 3px solid #60a5fa; }
+        .step-num { font-family: 'JetBrains Mono', monospace; color: #60a5fa; font-weight: 600; margin-bottom: 0.5rem; }
+        .code { font-family: 'JetBrains Mono', monospace; background: #0a0a0a; padding: 0.5rem 0.75rem; border-radius: 6px; font-size: 0.9rem; color: #34d399; margin: 0.5rem 0; display: block; overflow-x: auto; }
+        .tip { background: #1a1a1a; border-radius: 8px; padding: 1rem; margin: 0.5rem 0; border-left: 3px solid #f97316; }
+        .tip-label { font-family: 'JetBrains Mono', monospace; color: #f97316; font-size: 0.875rem; font-weight: 600; margin-bottom: 0.25rem; }
+        ul { margin-left: 1.5rem; margin-top: 0.5rem; }
+        li { margin-bottom: 0.5rem; color: #d4d4d4; line-height: 1.6; }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="page-num">1/5</div>
+        <div class="label">Launchmate · Development Guide</div>
+        <h1>Building <span class="highlight">Launchmate</span></h1>
+        <h2>Your workflow reference for Cursor + GitHub</h2>
+        <div class="scroll-hint">↓ scroll</div>
+    </div>
+
+    <div class="page">
+        <div class="page-num">2/5</div>
+        <div class="label">Step 1: Initial Setup</div>
+        <h2>Getting the project on your machine</h2>
+        
+        <div class="step">
+            <div class="step-num">1. Create folder & open in Cursor</div>
+            <p>File → Open Folder → Create new folder called "launchmate"</p>
+        </div>
+
+        <div class="step">
+            <div class="step-num">2. Clone the repository</div>
+            <p>Open terminal (top right icon in Cursor), then run:</p>
+            <code class="code">git clone https://github.com/[repo-url] .</code>
+            <p style="font-size: 0.9rem; color: #6b7280; margin-top: 0.5rem;">The dot at the end means "clone into this current folder"</p>
+        </div>
+
+        <div class="step">
+            <div class="step-num">3. Add environment variables</div>
+            <p>Create new file: <span class="highlight">.env</span> in root directory</p>
+            <p>Paste in all API keys (Michael will send via email)</p>
+        </div>
+
+        <div class="step">
+            <div class="step-num">4. Install dependencies</div>
+            <code class="code">npm i</code>
+            <p style="font-size: 0.9rem; color: #6b7280; margin-top: 0.5rem;">This installs everything listed in package.json</p>
+        </div>
+
+        <div class="step">
+            <div class="step-num">5. Start development server</div>
+            <code class="code">npm run dev</code>
+            <p style="font-size: 0.9rem; color: #6b7280; margin-top: 0.5rem;">Site runs locally at localhost:3000</p>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="page-num">3/5</div>
+        <div class="label">Step 2: Making Changes</div>
+        <h2>Using <span class="decision">Cursor AI</span> to build</h2>
+
+        <div class="step">
+            <div class="step-num">1. Create a new branch</div>
+            <p>Bottom left corner → Click "main" → Type branch name</p>
+            <p style="font-size: 0.9rem; color: #6b7280;">Use kebab-case: <span class="highlight">homepage-button</span> or <span class="highlight">copy-paste-feature</span></p>
+        </div>
+
+        <div class="step">
+            <div class="step-num">2. Find the right file</div>
+            <p>In Cursor chat, ask:</p>
+            <code class="code">"Where is the homepage file?"</code>
+            <p>AI will point you to the file. Click to open it.</p>
+        </div>
+
+        <div class="step">
+            <div class="step-num">3. Make your change</div>
+            <p>Use <span class="highlight">@</span> to add file context, then describe what you want:</p>
+            <code class="code">"Change 'Start Chatting' button to 'Start Building'"</code>
+            <p>Cursor will show changes with <span class="decision">Keep</span> or <span style="color: #f97316;">Undo</span> options</p>
+        </div>
+
+        <div class="tip">
+            <div class="tip-label">💡 Pro Tip</div>
+            <p style="margin: 0; font-size: 0.95rem;">Changes appear <strong>immediately</strong> in your local dev server (localhost:3000). Refresh browser to see updates.</p>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="page-num">4/5</div>
+        <div class="label">Step 3: Committing & Pushing</div>
+        <h2>Getting your work to <span class="highlight">GitHub</span></h2>
+
+        <div class="step">
+            <div class="step-num">1. Stage your changes</div>
+            <p>Top left → Branch icon → Click <strong>+</strong> button next to changed files</p>
+        </div>
+
+        <div class="step">
+            <div class="step-num">2. Commit</div>
+            <p>Click "Generate commit message" (AI writes it for you)</p>
+            <p>Then click <span class="decision">Commit</span></p>
+        </div>
+
+        <div class="step">
+            <div class="step-num">3. Push to GitHub</div>
+            <p>Click <span class="decision">Publish Branch</span> (or Sync if already published)</p>
+            <p style="font-size: 0.9rem; color: #6b7280; margin-top: 0.5rem;">Alternative: Three dots → Push</p>
+        </div>
+
+        <div class="step">
+            <div class="step-num">4. Create Pull Request</div>
+            <p>Go to GitHub repo → "Compare & pull request" button appears</p>
+            <p>Click <span class="decision">Create Pull Request</span></p>
+        </div>
+
+        <div class="step">
+            <div class="step-num">5. Wait for Michael's review</div>
+            <p>Michael merges → Changes auto-deploy to <span class="highlight">golaunchmate.com</span></p>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="page-num">5/5</div>
+        <div class="label">Quick Reference</div>
+        <h2>Commands & <span class="decision">Tips</span></h2>
+
+        <div class="card">
+            <h3>Essential Commands</h3>
+            <code class="code">npm run dev</code>
+            <p style="font-size: 0.9rem; margin-bottom: 1rem;">Start local development server</p>
+            
+            <code class="code">npm i</code>
+            <p style="font-size: 0.9rem; margin-bottom: 1rem;">Install dependencies (first time setup)</p>
+            
+            <code class="code">git fetch</code>
+            <p style="font-size: 0.9rem;">Get latest changes from GitHub</p>
+        </div>
+
+        <div class="card">
+            <h3>Cursor Tips</h3>
+            <ul>
+                <li><strong>Ask AI to explain code:</strong> "What does this function do?"</li>
+                <li><strong>Use @ symbol:</strong> Add specific files to chat context</li>
+                <li><strong>Toggle models:</strong> Bottom of chat → Switch between Codex, Opus, etc.</li>
+                <li><strong>Cursor Pro:</strong> Get student account at cursor.com/students</li>
+            </ul>
+        </div>
+
+        <div class="tip">
+            <div class="tip-label">🚨 Troubleshooting</div>
+            <p style="margin: 0.5rem 0 0 0; font-size: 0.95rem;">If npm doesn't work in Cursor terminal, use Command Prompt instead and navigate to your project folder.</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
