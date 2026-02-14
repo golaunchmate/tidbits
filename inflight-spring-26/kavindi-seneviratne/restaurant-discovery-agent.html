@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta property="og:image" content="https://golaunchmate.github.io/laura/preview.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tidbit | Restaurant Discovery Agent</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-snap-type:y mandatory;scroll-behavior:smooth}
+        body{font-family:'Inter',sans-serif;background:#0f0f0f;color:#e0e0e0;overflow-x:hidden}
+        .page{min-height:100vh;scroll-snap-align:start;display:flex;justify-content:center;align-items:center;padding:40px 20px}
+        .card{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:12px;max-width:640px;width:100%;min-height:70vh;padding:50px 45px;position:relative;display:flex;flex-direction:column;justify-content:center}
+        .section-label{font-family:'JetBrains Mono',monospace;font-size:.75rem;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:#6b7280;margin-bottom:12px}
+        .page-title{font-size:1.75rem;font-weight:600;color:#fff;margin-bottom:28px;line-height:1.3}
+        .page-content{font-size:1.1rem;line-height:1.8;color:#b0b0b0}
+        .page-content p{margin-bottom:1.2em}
+        .highlight{color:#60a5fa;font-weight:500}
+        .decision{color:#34d399;font-weight:500}
+        .tension{color:#f97316;font-weight:500}
+        .page-number{position:absolute;bottom:25px;right:30px;font-family:'JetBrains Mono',monospace;font-size:.8rem;color:#4a4a4a}
+        .scroll-hint{position:absolute;bottom:25px;left:50%;transform:translateX(-50%);color:#4a4a4a;font-family:'JetBrains Mono',monospace;font-size:.7rem;animation:pulse 2s infinite}
+        .scroll-hint svg{width:20px;height:20px;margin-top:6px}
+        @keyframes pulse{0%,100%{opacity:.5}50%{opacity:1}}
+        .cover-page .card{background:linear-gradient(135deg,#1a1a2e 0%,#1e2a4a 100%);border-color:#2a3a5a;text-align:center}
+        .cover-page .page-title{font-size:2.2rem;margin-bottom:16px}
+        .cover-page .subtitle{font-size:1.1rem;color:#8b9dc3;margin-bottom:8px}
+        .cover-page .date{font-family:'JetBrains Mono',monospace;font-size:.9rem;color:#6b7280}
+        .arch-grid{display:grid;gap:12px;margin:20px 0}
+        .arch-item{background:#0f0f0f;border:1px solid #2a2a2a;border-radius:8px;padding:14px}
+        .arch-item .label{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:#60a5fa;margin-bottom:4px}
+        .arch-item .desc{color:#b0b0b0;font-size:.95rem}
+        .warning-box{background:#1f1f0f;border:1px solid #3d3d1a;border-radius:8px;padding:20px;margin:20px 0}
+        .warning-box .label{font-family:'JetBrains Mono',monospace;font-size:.7rem;text-transform:uppercase;letter-spacing:1px;color:#f59e0b;margin-bottom:12px}
+        .warning-box ul{list-style:none}
+        .warning-box li{padding:8px 0;color:#fef3c7;font-size:.95rem}
+        .warning-box li::before{content:"⚠";margin-right:10px}
+        .unlock-box{background:#0f1f0f;border:1px solid #1a3d1a;border-radius:8px;padding:24px;margin:20px 0;text-align:center}
+        .unlock-box .label{font-family:'JetBrains Mono',monospace;font-size:.7rem;text-transform:uppercase;letter-spacing:1px;color:#34d399;margin-bottom:12px}
+        .unlock-box .text{font-size:1.1rem;color:#d1fae5;font-style:italic}
+        .flow-list{list-style:none;margin:20px 0}
+        .flow-list li{padding:12px 0;border-bottom:1px solid #2a2a2a;display:flex;align-items:center;gap:12px;font-size:.95rem}
+        .flow-list li:last-child{border-bottom:none}
+        .flow-list .icon{font-size:1.2rem}
+        .final-page .card{text-align:center}
+        @media(max-width:600px){.card{padding:35px 25px;min-height:80vh}.page-title{font-size:1.5rem}.page-content{font-size:1rem}}
+    </style>
+</head>
+<body>
+    <section class="page cover-page">
+        <div class="card">
+            <p class="section-label">Fooni Agent</p>
+            <h1 class="page-title">🍜 Restaurant Discovery Agent</h1>
+            <p class="subtitle">Mining Reddit for mom & pop partnerships</p>
+            <p class="date">February 2025 // scroll to read</p>
+            <div class="scroll-hint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
+            </div>
+        </div>
+    </section>
+
+    <section class="page">
+        <div class="card">
+            <p class="section-label">The Problem</p>
+            <h2 class="page-title">Why this agent exists</h2>
+            <div class="page-content">
+                <p>Kavindi's bottleneck: <span class="tension">manually scrolling TikTok & Instagram</span> to find mom & pop restaurants for Fooni partnerships.</p>
+                <p>Hours of scrolling. No system. Missing hidden gems.</p>
+                <p><span class="highlight">Reddit has the signal</span> — authentic local recommendations, not influencer spam.</p>
+            </div>
+            <div class="scroll-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg></div>
+            <span class="page-number">1/5</span>
+        </div>
+    </section>
+
+    <section class="page">
+        <div class="card">
+            <p class="section-label">Architecture</p>
+            <h2 class="page-title">How it works</h2>
+            <div class="arch-grid">
+                <div class="arch-item">
+                    <div class="label">reddit_restaurant_scout</div>
+                    <div class="desc">Searches SD subreddits for restaurant mentions</div>
+                </div>
+                <div class="arch-item">
+                    <div class="label">restaurant_prospects</div>
+                    <div class="desc">Memory block tracking status: NEW → REVIEWED → CONTACTED → PARTNERED</div>
+                </div>
+                <div class="arch-item">
+                    <div class="label">chain_blacklist</div>
+                    <div class="desc">Auto-excludes Chipotle, Phil's BBQ, regional chains</div>
+                </div>
+                <div class="arch-item">
+                    <div class="label">sd_local_knowledge</div>
+                    <div class="desc">Knows Convoy = Asian hub, SDSU area, student zones</div>
+                </div>
+            </div>
+            <div class="page-content">
+                <p><span class="decision">Human-in-the-loop:</span> Agent discovers, Kavindi builds relationships.</p>
+            </div>
+            <div class="scroll-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg></div>
+            <span class="page-number">2/5</span>
+        </div>
+    </section>
+
+    <section class="page">
+        <div class="card">
+            <p class="section-label">Current Blocker</p>
+            <h2 class="page-title">Reddit is fighting back</h2>
+            <div class="warning-box">
+                <div class="label">403 Blocked Errors</div>
+                <ul>
+                    <li>Reddit's 2023 API crackdown blocks unauthenticated requests</li>
+                    <li>All subreddits returning same error (r/sandiego, r/UCSD, r/sandiegofood)</li>
+                    <li>Headers/fallbacks alone won't bypass IP-level blocking</li>
+                </ul>
+            </div>
+            <div class="page-content">
+                <p><span class="tension">The tool exists but can't reach Reddit.</span></p>
+            </div>
+            <div class="scroll-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg></div>
+            <span class="page-number">3/5</span>
+        </div>
+    </section>
+
+    <section class="page">
+        <div class="card">
+            <p class="section-label">Paths Forward</p>
+            <h2 class="page-title">How to unblock this</h2>
+            <ul class="flow-list">
+                <li><span class="icon">🔑</span><span><span class="highlight">Reddit API OAuth</span> — Free tier, 100 req/min, ~10 min setup</span></li>
+                <li><span class="icon">🔍</span><span><span class="highlight">web_search fallback</span> — Query with site:reddit.com</span></li>
+                <li><span class="icon">📋</span><span><span class="highlight">Manual paste</span> — Kavindi feeds threads, agent extracts</span></li>
+                <li><span class="icon">🔄</span><span><span class="highlight">Alt data sources</span> — Yelp API, Google Places</span></li>
+            </ul>
+            <div class="unlock-box">
+                <div class="label">Recommended</div>
+                <div class="text">Get Reddit OAuth credentials — it's the right fix for sustainable access.</div>
+            </div>
+            <div class="scroll-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg></div>
+            <span class="page-number">4/5</span>
+        </div>
+    </section>
+
+    <section class="page final-page">
+        <div class="card">
+            <p class="section-label">The Vision</p>
+            <h2 class="page-title">When it works...</h2>
+            <div class="page-content">
+                <p><span class="decision">Kavindi wakes up to a curated list</span> of mom & pop prospects with Reddit context, menu highlights, and location intel.</p>
+                <p>No more scrolling. <span class="highlight">Just relationship building.</span></p>
+                <p style="margin-top:30px;font-style:italic;color:#6b7280">Agent does the mining. Human does the magic.</p>
+            </div>
+            <span class="page-number">5/5</span>
+        </div>
+    </section>
+</body>
+</html>
