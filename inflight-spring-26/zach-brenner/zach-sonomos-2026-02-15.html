@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="tidbit-type" content="founder">
+    <meta name="tidbit-subject" content="Zach Brenner">
+    <meta name="tidbit-company" content="Sonomos">
+    <meta name="tidbit-date" content="2026-02-15">
+    <meta name="tidbit-period" content="2026-W07">
+    <title>Zach Brenner — Sonomos — Feb 15, 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body { 
+            font-family: 'Inter', -apple-system, sans-serif; 
+            background: #0f0f0f; 
+            color: #e5e5e5; 
+            line-height: 1.6; 
+        }
+        
+        .slide {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        
+        .card {
+            max-width: 600px;
+            width: 100%;
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            padding: 3rem;
+            position: relative;
+        }
+        
+        .page-number {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+        
+        h2 {
+            font-size: 1.875rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #60a5fa;
+        }
+        
+        h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #34d399;
+        }
+        
+        p {
+            font-size: 1.125rem;
+            margin-bottom: 1.5rem;
+            color: #d1d5db;
+        }
+        
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            font-size: 1.25rem;
+            color: #9ca3af;
+            margin-bottom: 2rem;
+        }
+        
+        .scroll-hint {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-top: 2rem;
+        }
+        
+        .highlight { color: #60a5fa; }
+        .decision { color: #34d399; }
+        .tension { color: #f97316; }
+        
+        .stat-row {
+            display: flex;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .stat {
+            flex: 1;
+        }
+        
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #60a5fa;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 0.875rem;
+            color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        ul {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+        
+        li {
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #60a5fa;
+        }
+        
+        .quote {
+            font-size: 1.5rem;
+            font-weight: 600;
+            font-style: italic;
+            color: #34d399;
+            margin: 2rem 0;
+            padding-left: 1.5rem;
+            border-left: 3px solid #34d399;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- SLIDE 1: COVER -->
+    <div class="slide">
+        <div class="card">
+            <p class="label">Tidbit · Week of Feb 10, 2026</p>
+            <h1>Zach Brenner</h1>
+            <p class="subtitle">Sonomos · Distribution > Detection</p>
+            <p class="scroll-hint">scroll ↓</p>
+            <div class="page-number">1/5</div>
+        </div>
+    </div>
+
+    <!-- SLIDE 2: WHERE I STARTED -->
+    <div class="slide">
+        <div class="card">
+            <h2>Where I Started</h2>
+            <p>I thought I was selling <span class="highlight">AI monitoring software</span> to law firms.</p>
+            <p>The plan was straightforward: reach out to managing partners, show them the detection tech, close the sale.</p>
+            <p>I knew there'd be organizational friction — no one owns AI policy, firms don't want to look under the hood, "Schrödinger's Compliance."</p>
+            <p>But I figured if the <span class="tension">tech was good enough</span>, that would overcome it.</p>
+            <div class="page-number">2/5</div>
+        </div>
+    </div>
+
+    <!-- SLIDE 3: WHAT I DISCOVERED -->
+    <div class="slide">
+        <div class="card">
+            <h2>What I Discovered</h2>
+            <p>Three signals changed the picture entirely:</p>
+            
+            <h3 class="highlight">1. Swiss Re reached out to me</h3>
+            <p>Not the other way around. They want a phone call and product demo. That's a <span class="decision">PULL signal</span> — insurance carriers might BE the customer, not just a channel.</p>
+            
+            <h3 class="highlight">2. Law firms buy through consultants</h3>
+            <p>SDSU entrepreneurship prof: professional services firms are too busy for cold outreach. They buy through <span class="decision">trusted IT/cybersecurity consultants</span> who already have relationships.</p>
+            
+            <h3 class="highlight">3. My perfectionism is the blocker</h3>
+            <p>I said: "The tool isn't ready to distribute."<br>
+            Neal said: <span class="tension">"It's ready. You'll evolve it over time."</span></p>
+            
+            <div class="page-number">3/5</div>
+        </div>
+    </div>
+
+    <!-- SLIDE 4: THE REAL OPPORTUNITY -->
+    <div class="slide">
+        <div class="card">
+            <h2>The Real Opportunity</h2>
+            <p class="label">Neal's Reframe</p>
+            <p class="quote">"Your innovation is not the detection — it's the distribution hack."</p>
+            
+            <p>Detection code? <span class="tension">Easily replicated by competitors.</span></p>
+            <p>Browser extension in attorneys' workflows? <span class="decision">Hard to displace.</span></p>
+            
+            <ul>
+                <li>Real defensibility: Getting real estate in the browser</li>
+                <li>Emotional hook: Guilt about free AI use drives adoption</li>
+                <li>Moat = adoption, not algorithm</li>
+            </ul>
+            
+            <p>This reframes <span class="highlight">everything</span> about what I'm building and who I'm building for.</p>
+            
+            <div class="page-number">4/5</div>
+        </div>
+    </div>
+
+    <!-- SLIDE 5: WHERE I'M AT -->
+    <div class="slide">
+        <div class="card">
+            <h2>Where I'm At</h2>
+            
+            <div class="stat-row">
+                <div class="stat">
+                    <div class="stat-value">10-20</div>
+                    <div class="stat-label">Attorney installs</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">Feb 27</div>
+                    <div class="stat-label">Launch locked</div>
+                </div>
+            </div>
+            
+            <p>The test isn't "does the tech work?" It's: <span class="highlight">can I ship imperfect and iterate on live feedback?</span></p>
+            
+            <p>Dashboard is built. Widget works. Gemini Nano running locally. Detection pipeline functioning.</p>
+            
+            <p><span class="decision">That's enough to test distribution.</span></p>
+            
+            <p>Feb 27 isn't a marketing event. It's getting the extension in 10-20 browsers and watching what happens.</p>
+            
+            <p class="quote">"I thought the blocker was organizational readiness. I actually needed to ship."</p>
+            
+            <div class="page-number">5/5</div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            }
+        });
+    </script>
+
+</body>
+</html>
