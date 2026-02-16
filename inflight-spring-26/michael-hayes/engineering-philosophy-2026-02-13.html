@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engineering Philosophy | Michael Hayes</title>
+    <meta name="tidbit-type" content="framework">
+    <meta name="tidbit-subject" content="Michael Hayes">
+    <meta name="tidbit-company" content="Launchmate">
+    <meta name="tidbit-date" content="2026-02-13">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; }
+        body { font-family: 'Inter', sans-serif; background: #0f0f0f; color: #e5e5e5; }
+        .page { min-height: 100vh; scroll-snap-align: start; display: flex; flex-direction: column; justify-content: center; padding: 3rem; max-width: 800px; margin: 0 auto; }
+        .page-num { font-family: 'JetBrains Mono', monospace; color: #6b7280; font-size: 0.875rem; margin-bottom: 2rem; }
+        h1 { font-size: 2.5rem; font-weight: 600; margin-bottom: 1rem; line-height: 1.2; }
+        h2 { font-size: 1.5rem; font-weight: 500; margin-bottom: 1.5rem; color: #a3a3a3; }
+        p { font-size: 1.125rem; line-height: 1.7; margin-bottom: 1rem; color: #d4d4d4; }
+        .highlight { color: #60a5fa; }
+        .tension { color: #f97316; }
+        .decision { color: #34d399; }
+        .label { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+        .scroll-hint { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%); color: #6b7280; font-size: 0.875rem; animation: bounce 2s infinite; }
+        @keyframes bounce { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(-10px); } }
+        .card { background: #1a1a1a; border-radius: 12px; padding: 1.5rem; margin: 1rem 0; }
+        .flow-step { display: flex; align-items: flex-start; gap: 1rem; margin: 0.75rem 0; }
+        .step-num { font-family: 'JetBrains Mono', monospace; color: #6b7280; min-width: 1.5rem; }
+        ul { list-style: none; }
+        li { margin: 0.5rem 0; padding-left: 1.5rem; position: relative; }
+        li:before { content: "→"; position: absolute; left: 0; color: #60a5fa; }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="page-num">1/5</div>
+        <div class="label">Engineering Handbook</div>
+        <h1>How to Build Like <span class="highlight">Michael</span></h1>
+        <h2>A development philosophy for the next engineer</h2>
+        <p style="margin-top: 2rem; color: #6b7280;">February 2026</p>
+        <div class="scroll-hint">↓ scroll</div>
+    </div>
+
+    <div class="page">
+        <div class="page-num">2/5</div>
+        <div class="label">Debugging Philosophy</div>
+        <h2>Manual first, <span class="tension">AI as backup</span></h2>
+        <p>Don't give all control to AI. Your brain is the primary debugger.</p>
+        <div class="card">
+            <p class="label">The Process</p>
+            <ul>
+                <li>Reproduce the bug by manipulating database state</li>
+                <li>Read error logs manually — follow the line numbers</li>
+                <li>Test APIs directly with <span class="highlight">curl</span> to isolate the problem</li>
+                <li>Use Supabase to inspect live database state</li>
+                <li>Ask AI when you're stuck, but <span class="tension">review suggestions critically</span></li>
+            </ul>
+        </div>
+        <p>When AI gives conflicting info, <span class="decision">test the actual API directly</span> to confirm what works. The AI might be wrong about implementation details — your curl test won't lie.</p>
+    </div>
+
+    <div class="page">
+        <div class="page-num">3/5</div>
+        <div class="label">Development Cycle</div>
+        <h2>User story → Objective → <span class="decision">Tasks</span></h2>
+        <div class="card">
+            <p class="label">Framework</p>
+            <p><strong>User Story:</strong> "As a [type of user], I want to [perform task] so I can [achieve goal]"</p>
+            <p style="margin-top: 1rem;"><strong>Technical Objective:</strong> What does the system need to do to enable this?</p>
+            <p style="margin-top: 1rem;"><strong>Developer Tasks:</strong> Break it into concrete implementation steps</p>
+        </div>
+        <p>Features often reveal themselves through <span class="highlight">bug discovery</span>. A user hitting an error state? That's not just a bug — it's a missing feature waiting to be built.</p>
+    </div>
+
+    <div class="page">
+        <div class="page-num">4/5</div>
+        <div class="label">Testing Strategy</div>
+        <h2><span class="decision">Incremental</span> and reversible</h2>
+        <p>Don't merge big changes without verifying they work. Don't undo everything immediately when something breaks.</p>
+        <div class="card">
+            <p class="label">Key Tactics</p>
+            <ul>
+                <li><span class="highlight">Cursor checkpoints:</span> Click the reverse button on any message to undo all changes after that point</li>
+                <li><span class="highlight">Database manipulation:</span> Set users to specific states (delete agents, toggle flags) to simulate edge cases</li>
+                <li><span class="highlight">Test in isolation:</span> Use curl to test APIs independently from the full app</li>
+                <li><span class="highlight">Go to definition:</span> Right-click functions to jump to their source — trace the logic manually</li>
+            </ul>
+        </div>
+        <p>Balance <span class="tension">"vibe coding"</span> (accepting all AI changes) with careful review. Know when to lean on each.</p>
+    </div>
+
+    <div class="page">
+        <div class="page-num">5/5</div>
+        <div class="label">Architecture Mental Model</div>
+        <h2>How the pieces <span class="highlight">actually</span> connect</h2>
+        <div class="card">
+            <p class="label">The Flow</p>
+            <div class="flow-step"><span class="step-num">1.</span><span><strong>Client-side:</strong> React/Next.js in the browser (button clicks, UI)</span></div>
+            <div class="flow-step"><span class="step-num">2.</span><span><strong>API routes:</strong> Intermediaries that protect sensitive data</span></div>
+            <div class="flow-step"><span class="step-num">3.</span><span><strong>Services layer:</strong> Core business logic on the server</span></div>
+            <div class="flow-step"><span class="step-num">4.</span><span><strong>Database/External APIs:</strong> Supabase, Letta, etc.</span></div>
+        </div>
+        <p style="margin-top: 1.5rem;"><span class="decision">Key insight:</span> Services contain the <em>logic</em>. API routes are just gatekeepers. If you're debugging, start at the service layer — that's where the real work happens.</p>
+        <p style="margin-top: 1.5rem; color: #6b7280; font-size: 0.95rem;"><em>This is the system Michael built. Now it's yours to maintain and evolve. Good luck. — Feb 2026</em></p>
+    </div>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
