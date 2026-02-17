@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building Trust Through Reliability</title>
+    
+    <!-- Tidbit metadata -->
+    <meta name="tidbit-type" content="team">
+    <meta name="tidbit-subject" content="Michael Hayes">
+    <meta name="tidbit-company" content="Launchmate">
+    <meta name="tidbit-date" content="2026-02-16">
+    <meta name="tidbit-period" content="2026-W07">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0f0f0f;
+            color: #e5e5e5;
+            overflow-x: hidden;
+            scroll-snap-type: y mandatory;
+            height: 100vh;
+            overflow-y: scroll;
+        }
+        
+        .page {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+        }
+        
+        .card {
+            background: #1a1a1a;
+            border-radius: 16px;
+            padding: 3rem;
+            max-width: 800px;
+            width: 100%;
+            border: 1px solid #2a2a2a;
+        }
+        
+        .page-number {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+        
+        .scroll-hint {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            color: #6b7280;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-10px); }
+        }
+        
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+        
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #60a5fa;
+        }
+        
+        .subtitle {
+            font-size: 1.25rem;
+            color: #9ca3af;
+            margin-bottom: 2rem;
+        }
+        
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+        
+        p {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: #d1d5db;
+        }
+        
+        .highlight {
+            color: #60a5fa;
+            font-weight: 500;
+        }
+        
+        .success {
+            color: #34d399;
+            font-weight: 500;
+        }
+        
+        .tension {
+            color: #f97316;
+            font-weight: 500;
+        }
+        
+        .quote {
+            border-left: 3px solid #60a5fa;
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            font-style: italic;
+            color: #9ca3af;
+        }
+        
+        .insight-box {
+            background: #0f0f0f;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        li {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: #d1d5db;
+            margin-bottom: 0.75rem;
+        }
+        
+        /* Keyboard navigation hint */
+        .nav-hint {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #4b5563;
+            background: #1a1a1a;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            border: 1px solid #2a2a2a;
+        }
+        
+        @media (max-width: 768px) {
+            .card {
+                padding: 2rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.25rem;
+            }
+            
+            p, li {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="nav-hint">↑↓ to navigate</div>
+
+<!-- Page 1: Cover -->
+<div class="page">
+    <div class="card">
+        <div class="label">Week 7 • Feb 16, 2026</div>
+        <h1>Building Trust Through Reliability</h1>
+        <p class="subtitle">Why Michael spent cycles on chat polish instead of new features</p>
+    </div>
+    <div class="scroll-hint">↓ scroll to continue</div>
+    <div class="page-number">1/5</div>
+</div>
+
+<!-- Page 2: The Bug & The Decision -->
+<div class="page">
+    <div class="card">
+        <h2>The Bug & The Decision</h2>
+        
+        <p><span class="highlight">Craig found a bug:</span> Chat messages were polluting across agents when switching tabs. The state wasn't properly isolated.</p>
+        
+        <p>At the same time, I wanted to add a feature: <span class="highlight">scroll position persistence</span> across agents. When you switch tabs and come back, you're exactly where you left off.</p>
+        
+        <div class="insight-box">
+            <p class="label">The Trade-Off</p>
+            <p>This wasn't a quick fix. It took <span class="tension">multiple iterations</span> to get a working solution, then <span class="tension">several optimization cycles</span> to get it right.</p>
+            <p>That's time I could have spent on new capabilities, custom agents, or backend architecture.</p>
+        </div>
+    </div>
+    <div class="page-number">2/5</div>
+</div>
+
+<!-- Page 3: The First Cohort Lesson -->
+<div class="page">
+    <div class="card">
+        <h2>The First Cohort Lesson</h2>
+        
+        <p>Here's what I kept thinking about:</p>
+        
+        <p><span class="tension">The first cohort rejected Launchmate.</span> Not because the idea was bad. Not because the agents weren't smart enough.</p>
+        
+        <p>Because <span class="tension">the app was buggy.</span></p>
+        
+        <div class="quote">
+            "Founders already have low trust in AI tooling. A polluted chat or lost scroll position confirms their skepticism: 'See, this thing doesn't actually work.'"
+        </div>
+        
+        <p>The second cohort adopted because <span class="success">the app felt solid.</span> Not flashy. Just dependable.</p>
+    </div>
+    <div class="page-number">3/5</div>
+</div>
+
+<!-- Page 4: The Reasoning -->
+<div class="page">
+    <div class="card">
+        <h2>Why Reliability Comes First</h2>
+        
+        <p>Craig's friction analysis pointed to this: <span class="highlight">F1 - Trust (pre-consumption).</span></p>
+        
+        <p>Founders don't believe AI can help them. So the first interaction has to <span class="success">prove it instantly.</span></p>
+        
+        <p>But here's what I realized:</p>
+        
+        <div class="insight-box">
+            <p>You can't prove anything if the chat breaks. <span class="tension">Buggy experience = no second chance.</span></p>
+            <p style="margin-bottom: 0;">Scroll position feels small. Message isolation feels invisible. But that's the foundation for everything else we're building.</p>
+        </div>
+        
+        <p>New features are worthless if founders don't trust the tool enough to use them.</p>
+    </div>
+    <div class="page-number">4/5</div>
+</div>
+
+<!-- Page 5: Where We Are Now -->
+<div class="page">
+    <div class="card">
+        <h2>Where We Are Now</h2>
+        
+        <p class="label">Current State</p>
+        <p><span class="success">Multi-agent UI is shipped.</span> Add button is shipped. Chat state is properly isolated. Scroll position persists across agents.</p>
+        
+        <p>The interface feels <span class="highlight">dependable.</span></p>
+        
+        <div class="insight-box">
+            <p class="label">What This Unlocks</p>
+            <p>Now we can build:</p>
+            <ul>
+                <li>Custom backend scaling layers</li>
+                <li>Agent coordination strategies</li>
+                <li>Specialized founder agents</li>
+            </ul>
+            <p style="margin-bottom: 0;">Because the <span class="success">foundation is solid.</span> Founders won't bounce off due to bugs. They'll stay long enough to experience the real value.</p>
+        </div>
+        
+        <p>That's the bet. Invisible polish now = trusted tool later.</p>
+    </div>
+    <div class="page-number">5/5</div>
+</div>
+
+<script>
+    // Keyboard navigation
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+            e.preventDefault();
+            window.scrollBy({
+                top: window.innerHeight,
+                behavior: 'smooth'
+            });
+        } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+            e.preventDefault();
+            window.scrollBy({
+                top: -window.innerHeight,
+                behavior: 'smooth'
+            });
+        }
+    });
+    
+    // Hide scroll hint after first scroll
+    let hasScrolled = false;
+    window.addEventListener('scroll', function() {
+        if (!hasScrolled) {
+            hasScrolled = true;
+            document.querySelector('.scroll-hint').style.display = 'none';
+        }
+    });
+</script>
+
+</body>
+</html>
