@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="tidbit-type" content="founder">
+    <meta name="tidbit-subject" content="Zach Brenner">
+    <meta name="tidbit-company" content="Sonomos">
+    <meta name="tidbit-date" content="2026-02-19">
+    <meta name="tidbit-period" content="2026-W08">
+    <title>Zach Brenner — Sonomos — Feb 19, 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body { 
+            font-family: 'Inter', -apple-system, sans-serif; 
+            background: #0f0f0f; 
+            color: #e5e5e5; 
+            line-height: 1.6; 
+        }
+        
+        .slide {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        
+        .card {
+            max-width: 600px;
+            width: 100%;
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            padding: 3rem;
+            position: relative;
+        }
+        
+        .page-number {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+        
+        h2 {
+            font-size: 1.875rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #60a5fa;
+        }
+        
+        h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #34d399;
+        }
+        
+        p {
+            font-size: 1.125rem;
+            margin-bottom: 1.5rem;
+            color: #d1d5db;
+        }
+        
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            font-size: 1.25rem;
+            color: #9ca3af;
+            margin-bottom: 2rem;
+        }
+        
+        .scroll-hint {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-top: 2rem;
+        }
+        
+        .highlight { color: #60a5fa; }
+        .decision { color: #34d399; }
+        .tension { color: #f97316; }
+        
+        .stat-row {
+            display: flex;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .stat {
+            flex: 1;
+        }
+        
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #60a5fa;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 0.875rem;
+            color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        ul {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+        
+        li {
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #60a5fa;
+        }
+        
+        .quote {
+            font-size: 1.5rem;
+            font-weight: 600;
+            font-style: italic;
+            color: #34d399;
+            margin: 2rem 0;
+            padding-left: 1.5rem;
+            border-left: 3px solid #34d399;
+        }
+        
+        .check { color: #34d399; }
+        .x { color: #ef4444; }
+    </style>
+</head>
+<body>
+
+    <!-- SLIDE 1: COVER -->
+    <div class="slide">
+        <div class="card">
+            <p class="label">Tidbit · Week of Feb 17, 2026</p>
+            <h1>Zach Brenner</h1>
+            <p class="subtitle">Sonomos · Built the Entire Stack in 4 Days</p>
+            <p class="scroll-hint">scroll ↓</p>
+            <div class="page-number">1/5</div>
+        </div>
+    </div>
+
+    <!-- SLIDE 2: WHERE I STARTED -->
+    <div class="slide">
+        <div class="card">
+            <h2>Where I Started</h2>
+            <p>I thought I'd install the browser extension on <span class="highlight">10-20 attorneys</span> and watch what happened.</p>
+            <p>That was the test Neal pushed: get it in real browsers, iterate on feedback, prove the distribution hack works.</p>
+            <p>But we hit a hard blocker:</p>
+            <p class="tension">Can't distribute the extension safely without either exposing our entire codebase OR making attorneys enable developer mode and load from a zip file.</p>
+            <p>That's too much friction. Attorneys won't do it. Firms probably won't allow it.</p>
+            <div class="page-number">2/5</div>
+        </div>
+    </div>
+
+    <!-- SLIDE 3: WHAT I DISCOVERED -->
+    <div class="slide">
+        <div class="card">
+            <h2>What I Discovered</h2>
+            
+            <p class="label">Pivot #1: Demo Instead of Install</p>
+            <p>If I can't distribute, I can still validate. Demoed to <span class="highlight">4 lawyers</span> so far.</p>
+            
+            <p><span class="check">✓</span> All loved it</p>
+            <p><span class="check">✓</span> Wanted more detailed reports (liked the concept)</p>
+            <p><span class="check">✓</span> Wanted Cloak immediately (validates both products)</p>
+            <p><span class="check">✓</span> 2 solo practitioners: wrong fit (no staff), but said "this would slot in nicely" at mid-size firms</p>
+            <p><span class="check">✓</span> 2 firm attorneys: passing our info to managing partners (buying decision makers)</p>
+            
+            <p class="label">The Tension That Surfaced</p>
+            <p>Attorneys want <span class="tension">manager dashboards</span> to check employee usage.</p>
+            <p>Our architecture: everything runs locally. Data never leaves the device.</p>
+            <p><span class="highlight">Trade-off:</span> Do we sync metadata (risk scores, counts) to the cloud while keeping prompts local? Or stay pure local and lose organizational visibility?</p>
+            
+            <div class="page-number">3/5</div>
+        </div>
+    </div>
+
+    <!-- SLIDE 4: THE REAL OPPORTUNITY -->
+    <div class="slide">
+        <div class="card">
+            <h2>The Real Opportunity</h2>
+            
+            <p>While solving the distribution problem, we built <span class="decision">the entire backend infrastructure</span> for a real SaaS launch:</p>
+            
+            <ul>
+                <li><span class="check">✓</span> NER model tested, ready to plug in</li>
+                <li><span class="check">✓</span> Auth system: Supabase + Resend OTP</li>
+                <li><span class="check">✓</span> Payment processing: Stripe webhooks + edge functions</li>
+                <li><span class="check">✓</span> Pricing locked: $7.99/month, $69.99/year</li>
+                <li><span class="check">✓</span> Ticketing system for bugs/feedback</li>
+                <li><span class="check">✓</span> Complete onboarding flow</li>
+                <li><span class="check">✓</span> Chrome Web Store account: verified, paid, ready</li>
+                <li><span class="check">✓</span> Microsoft Edge Add-on Store: verified, paid, ready</li>
+            </ul>
+            
+            <p>The distribution blocker? <span class="decision">Solved.</span></p>
+            <p>We just need to <span class="highlight">upload the extension for review</span> to Chrome and Edge stores.</p>
+            
+            <div class="page-number">4/5</div>
+        </div>
+    </div>
+
+    <!-- SLIDE 5: WHERE I'M AT -->
+    <div class="slide">
+        <div class="card">
+            <h2>Where I'm At</h2>
+            
+            <div class="stat-row">
+                <div class="stat">
+                    <div class="stat-value">8 days</div>
+                    <div class="stat-label">to Feb 27 launch</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">10 demos</div>
+                    <div class="stat-label">by Monday (4 done, 6 more scheduled)</div>
+                </div>
+            </div>
+            
+            <p>This isn't a demo-driven sales motion anymore. This is a <span class="highlight">real product launch</span>.</p>
+            
+            <p><span class="decision">This week:</span> Submit extension to Chrome + Edge stores for review (1-7 day approval).</p>
+            
+            <p><span class="decision">Feb 27:</span> Soft launch to warm leads. Chrome/Edge store links. Self-serve signup. Real usage data.</p>
+            
+            <p>The only decision left: Do I build manager dashboard visibility (metadata sync) before submitting, or ship local-only and add it post-launch?</p>
+            
+            <p class="quote">"I thought the blocker was distribution. I actually needed to build the entire infrastructure while solving it."</p>
+            
+            <div class="page-number">5/5</div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            }
+        });
+    </script>
+
+</body>
+</html>
