@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jai & Satith (AI Game Generation) — Commitment Spine</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #e4e4e7;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            background: linear-gradient(90deg, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .subtitle {
+            color: #94a3b8;
+            font-size: 0.95rem;
+        }
+        .last-updated {
+            color: #64748b;
+            font-size: 0.8rem;
+            margin-top: 10px;
+        }
+        .section {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #f1f5f9;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .section-title .icon {
+            font-size: 1.2rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            text-align: left;
+            padding: 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+        th {
+            color: #94a3b8;
+            font-weight: 500;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        td {
+            font-size: 0.9rem;
+        }
+        .status {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .status-pending {
+            background: rgba(251, 191, 36, 0.15);
+            color: #fbbf24;
+        }
+        .status-progress {
+            background: rgba(59, 130, 246, 0.15);
+            color: #60a5fa;
+        }
+        .status-done {
+            background: rgba(34, 197, 94, 0.15);
+            color: #22c55e;
+        }
+        .status-blocked {
+            background: rgba(239, 68, 68, 0.15);
+            color: #ef4444;
+        }
+        .owner {
+            color: #a78bfa;
+            font-weight: 500;
+        }
+        .due-date {
+            color: #f87171;
+            font-weight: 500;
+        }
+        .due-date.past {
+            text-decoration: line-through;
+            opacity: 0.6;
+        }
+        .hypothesis-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 12px;
+        }
+        .hypothesis-text {
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        .evidence-bucket {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        .evidence-confirmed {
+            background: rgba(34, 197, 94, 0.15);
+            color: #22c55e;
+        }
+        .evidence-disconfirmed {
+            background: rgba(239, 68, 68, 0.15);
+            color: #ef4444;
+        }
+        .evidence-unclear {
+            background: rgba(251, 191, 36, 0.15);
+            color: #fbbf24;
+        }
+        .evidence-not-tested {
+            background: rgba(148, 163, 184, 0.15);
+            color: #94a3b8;
+        }
+        .flag {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 3px solid #ef4444;
+            padding: 12px 16px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 12px;
+        }
+        .flag-title {
+            color: #ef4444;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .session-summary {
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        .session-summary ul {
+            margin-left: 20px;
+            margin-top: 8px;
+        }
+        .session-summary li {
+            margin-bottom: 6px;
+        }
+        .advice-box {
+            background: rgba(96, 165, 250, 0.08);
+            border: 1px solid rgba(96, 165, 250, 0.2);
+            border-radius: 8px;
+            padding: 16px;
+            font-style: italic;
+            color: #bfdbfe;
+        }
+        .advice-source {
+            margin-top: 8px;
+            font-style: normal;
+            font-size: 0.8rem;
+            color: #60a5fa;
+        }
+        .implicit-section {
+            background: rgba(167, 139, 250, 0.05);
+            border: 1px solid rgba(167, 139, 250, 0.15);
+        }
+        .implicit-section .section-title {
+            color: #a78bfa;
+        }
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #64748b;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎮 Jai & Satith — AI Game Generation</h1>
+            <div class="subtitle">Live In The Future Track • Commitment Spine</div>
+            <div class="last-updated">Last updated: Feb 20, 2026 • Next session: TBD</div>
+        </header>
+
+        <!-- WATCH FLAGS -->
+        <div class="section">
+            <div class="section-title"><span class="icon">🚨</span> Watch Flags</div>
+            
+            <div class="flag">
+                <div class="flag-title">⚠️ Enthusiasm Gap (CRITICAL)</div>
+                <div>Jai said: "Honestly, no. I don't feel like [this is exciting]" — Has this shifted?</div>
+            </div>
+            
+            <div class="flag">
+                <div class="flag-title">⚠️ Perfectionism vs Shipping</div>
+                <div>Desktop app due Feb 25-28. Will they ship, or get stuck adding features (torch, map, items)?</div>
+            </div>
+            
+            <div class="flag">
+                <div class="flag-title">⚠️ Strategic Pivot Signal</div>
+                <div>API/library model (plug NPCs into existing games) keeps surfacing. Are they exploring it?</div>
+            </div>
+        </div>
+
+        <!-- EXPLICIT COMMITMENTS -->
+        <div class="section">
+            <div class="section-title"><span class="icon">📋</span> Explicit Commitments</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Commitment</th>
+                        <th>Owner</th>
+                        <th>Due</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Ship desktop app for user prompting (beta test with 20 users)</td>
+                        <td><span class="owner">Jai & Satith</span></td>
+                        <td><span class="due-date">Feb 25-28</span></td>
+                        <td><span class="status status-pending">⏳ Not started</span></td>
+                    </tr>
+                    <tr>
+                        <td>Implement dynamic chat box NPC interactions (LLM calls during gameplay)</td>
+                        <td><span class="owner">Jai</span></td>
+                        <td><span class="due-date">Next week</span></td>
+                        <td><span class="status status-pending">⏳ Not started</span></td>
+                    </tr>
+                    <tr>
+                        <td>Deploy model to cloud (reduce API costs)</td>
+                        <td><span class="owner">Satith</span></td>
+                        <td><span class="due-date">Ongoing</span></td>
+                        <td><span class="status status-progress">🔄 In progress</span></td>
+                    </tr>
+                    <tr>
+                        <td>Continue narrative enhancement (test with 2-3 generated games)</td>
+                        <td><span class="owner">Jai & Satith</span></td>
+                        <td><span class="due-date">1 week</span></td>
+                        <td><span class="status status-pending">⏳ Not started</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- IMPLICIT COMMITMENTS -->
+        <div class="section implicit-section">
+            <div class="section-title"><span class="icon">💭</span> Implicit Commitments (Soft Tracking)</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Commitment</th>
+                        <th>Signal to Watch</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Explore context-driven gameplay (Steam/Epic profile, local files)</td>
+                        <td>Are they testing this?</td>
+                        <td><span class="status status-pending">⏳ Not started</span></td>
+                    </tr>
+                    <tr>
+                        <td>Research API/library approach (plug NPCs into Unity, Roblox)</td>
+                        <td>Is this gaining traction as direction?</td>
+                        <td><span class="status status-pending">⏳ Not started</span></td>
+                    </tr>
+                    <tr>
+                        <td>Email Marc Andreessen when beta stable</td>
+                        <td>Trigger: Beta ready</td>
+                        <td><span class="status status-pending">⏳ Waiting</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ACTIVE HYPOTHESES -->
+        <div class="section">
+            <div class="section-title"><span class="icon">🧪</span> Active Hypotheses</div>
+            
+            <div class="hypothesis-card">
+                <div class="hypothesis-text">"Dynamic NPC interactions feel compelling to users"</div>
+                <span class="evidence-bucket evidence-unclear">🔲 Still unclear</span>
+            </div>
+            
+            <div class="hypothesis-card">
+                <div class="hypothesis-text">"Context-driven gameplay (Steam profile, local files) adds value"</div>
+                <span class="evidence-bucket evidence-not-tested">⚪ Not tested</span>
+            </div>
+            
+            <div class="hypothesis-card">
+                <div class="hypothesis-text">"API/library model is better direction than full game generation"</div>
+                <span class="evidence-bucket evidence-unclear">🔲 Still unclear</span>
+            </div>
+            
+            <div class="hypothesis-card">
+                <div class="hypothesis-text">"Users will prompt their own games (not random games)"</div>
+                <span class="evidence-bucket evidence-not-tested">⚪ Not tested</span>
+            </div>
+        </div>
+
+        <!-- KEY ADVICE FROM CRAIG -->
+        <div class="section">
+            <div class="section-title"><span class="icon">💡</span> Key Advice from Craig (Feb 18)</div>
+            
+            <div class="advice-box">
+                "Innovation is NOT about unique technical breakthroughs nobody could copy. Innovation is staking out real estate, going very deep with a small set of users, creating a solution that meets their needs FASTER than anyone else."
+                <div class="advice-source">— Craig on innovation mindset</div>
+            </div>
+            
+            <div class="advice-box" style="margin-top: 12px;">
+                "You guys have finally found an area that is NOT SOLVED. This is a serious unsolved, uncharted problem that feels INEVITABLE. At a minimum, this is a calling card to get hired by a next-gen AI company."
+                <div class="advice-source">— Craig on the Marc Andreessen validation</div>
+            </div>
+            
+            <div class="advice-box" style="margin-top: 12px;">
+                "Let Moonlake/World Labs get really good at 3D world creation. Don't compete there. Focus on what they WON'T be good at: narratives, NPC interactions, stitching AI into game logic."
+                <div class="advice-source">— Craig on strategic positioning</div>
+            </div>
+        </div>
+
+        <!-- SESSION HISTORY -->
+        <div class="section">
+            <div class="section-title"><span class="icon">📜</span> Last Session Summary (Feb 18, 2026)</div>
+            <div class="session-summary">
+                <strong>Key Decisions:</strong>
+                <ul>
+                    <li>Technical shift: Pre-generated dialogue trees → Dynamic chat box NPC interactions</li>
+                    <li>Distribution strategy: Beta test with 20 users who prompt their own games</li>
+                    <li>Strategic positioning: Don't compete with Moonlake/World Labs; focus on narrative/NPC innovation</li>
+                </ul>
+                
+                <strong style="margin-top: 12px; display: block;">Breakthrough Identified:</strong>
+                <ul>
+                    <li>Marc Andreessen (a16z) posted about the exact problem they're solving: "stitching AI into game logic is as complex as the entire engine"</li>
+                    <li>Craig validated they've found an unsolved, uncharted problem</li>
+                </ul>
+                
+                <strong style="margin-top: 12px; display: block;">Emotional Signals:</strong>
+                <ul>
+                    <li>Jai: Lack of enthusiasm ("I don't feel like this is exciting")</li>
+                    <li>Both: Quick to dismiss innovation ("no technical moat")</li>
+                    <li>Trust/rapport with Craig: Strong — receptive to coaching</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- PRE-MEETING BRIEF -->
+        <div class="section">
+            <div class="section-title"><span class="icon">🎯</span> Pre-Meeting Brief (For Next Session)</div>
+            <div class="session-summary">
+                <strong>Questions to Answer:</strong>
+                <ul>
+                    <li>Did the desktop app ship by Feb 25-28?</li>
+                    <li>What did 20 beta users say? Which direction resonated?</li>
+                    <li>Is Jai getting EXCITED about this problem space?</li>
+                    <li>Did they explore context-driven gameplay (Steam profile)?</li>
+                    <li>Is API/library pivot gaining traction?</li>
+                </ul>
+                
+                <strong style="margin-top: 12px; display: block;">Coaching Lever to Pull:</strong>
+                <ul>
+                    <li>If enthusiasm still low → Revisit innovation mindset coaching</li>
+                    <li>If perfectionism blocked shipping → Push for imperfect launch</li>
+                    <li>If API/library idea gaining traction → Explore pivot seriously</li>
+                </ul>
+                
+                <strong style="margin-top: 12px; display: block;">Demo Request:</strong>
+                <ul>
+                    <li>Show dynamic NPC chat interactions in actual gameplay</li>
+                </ul>
+            </div>
+        </div>
+
+        <footer>
+            Maintained by LaunchMate Transcript Agent • Shared between Craig, Jai & Satith
+        </footer>
+    </div>
+</body>
+</html>
