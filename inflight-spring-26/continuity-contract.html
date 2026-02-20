@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Founder ↔ Mentor Continuity Contract</title>
+    <meta name="tidbit-type" content="design">
+    <meta name="tidbit-subject" content="Continuity Contract">
+    <meta name="tidbit-date" content="2026-02-20">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: #0f0f0f;
+            color: #e5e5e5;
+            line-height: 1.6;
+        }
+        .page {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+        }
+        .card {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 16px;
+            padding: 3rem;
+            max-width: 650px;
+            width: 100%;
+        }
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+        h1 { font-size: 2.25rem; font-weight: 700; margin-bottom: 0.5rem; }
+        h2 { font-size: 1.35rem; font-weight: 600; margin-bottom: 1rem; color: #f5f5f5; }
+        h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; color: #d4d4d4; }
+        p { margin-bottom: 1rem; color: #a3a3a3; }
+        .highlight { color: #60a5fa; }
+        .decision { color: #34d399; }
+        .tension { color: #f97316; }
+        .meta { color: #a78bfa; }
+        .quiet { color: #6b7280; }
+        .page-num {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            color: #404040;
+        }
+        .scroll-hint {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #404040;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(5px); }
+        }
+        .callout {
+            background: #111;
+            border-left: 3px solid #f97316;
+            border-radius: 8px;
+            padding: 1.25rem 1.5rem;
+            margin: 1.25rem 0;
+        }
+        .callout.blue { border-left-color: #60a5fa; }
+        .callout.green { border-left-color: #34d399; }
+        .callout.purple { border-left-color: #a78bfa; }
+        .callout.yellow { border-left-color: #fbbf24; }
+        .callout.red { border-left-color: #ef4444; }
+        .divider {
+            border: none;
+            border-top: 1px solid #2a2a2a;
+            margin: 1.5rem 0;
+        }
+        ul {
+            list-style: none;
+            margin: 1rem 0;
+        }
+        ul li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: #a3a3a3;
+        }
+        ul li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #34d399;
+        }
+        ul li.quiet-item::before {
+            color: #6b7280;
+            content: "·";
+            font-size: 1.5rem;
+            top: 0.15rem;
+        }
+        ul li.alert-item::before {
+            color: #ef4444;
+            content: "!";
+            font-weight: 700;
+        }
+        .contract-section {
+            background: #111;
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .contract-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+        .contract-title {
+            font-weight: 600;
+            color: #e5e5e5;
+        }
+        .contract-visibility {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            background: #262626;
+        }
+        .visibility-quiet { color: #6b7280; }
+        .visibility-surfaced { color: #60a5fa; }
+        .visibility-alert { color: #ef4444; }
+        .contract-body {
+            color: #a3a3a3;
+            font-size: 0.9rem;
+        }
+        .party-row {
+            display: flex;
+            gap: 1.5rem;
+            margin: 1rem 0;
+        }
+        .party-box {
+            flex: 1;
+            background: #111;
+            border-radius: 8px;
+            padding: 1rem 1.25rem;
+        }
+        .party-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+        .party-name {
+            font-weight: 600;
+            color: #e5e5e5;
+        }
+        .permission-table {
+            width: 100%;
+            margin: 1rem 0;
+            border-collapse: collapse;
+        }
+        .permission-table th {
+            text-align: left;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            padding: 0.5rem;
+            border-bottom: 1px solid #2a2a2a;
+        }
+        .permission-table td {
+            padding: 0.75rem 0.5rem;
+            border-bottom: 1px solid #2a2a2a;
+            font-size: 0.9rem;
+            color: #a3a3a3;
+        }
+        .permission-table .yes { color: #34d399; }
+        .permission-table .no { color: #ef4444; }
+        .permission-table .partial { color: #fbbf24; }
+        .escalation-ladder {
+            background: #0a0a0a;
+            border-radius: 8px;
+            padding: 1rem 1.25rem;
+            margin: 1rem 0;
+        }
+        .escalation-step {
+            display: flex;
+            gap: 1rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #1a1a1a;
+        }
+        .escalation-step:last-child {
+            border-bottom: none;
+        }
+        .escalation-level {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+            min-width: 4rem;
+        }
+        .escalation-action {
+            color: #a3a3a3;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cover -->
+    <section class="page">
+        <div class="card" style="text-align: center;">
+            <div class="label">Continuity Contract</div>
+            <h1>Founder ↔ Mentor</h1>
+            <p style="color: #60a5fa; font-size: 1.15rem; margin-bottom: 0.5rem;">What OpenClaw Enforces Quietly</p>
+            <p style="color: #6b7280;">February 20, 2026</p>
+            <hr class="divider">
+            <p style="color: #6b7280; font-size: 0.9rem;">The invisible infrastructure that keeps coaching on track.</p>
+        </div>
+        <div class="scroll-hint">scroll ↓</div>
+        <div class="page-num">1/8</div>
+    </section>
+
+    <!-- The Core Premise -->
+    <section class="page">
+        <div class="card">
+            <div class="label">The Core Premise</div>
+            <h2>This isn't project management.</h2>
+            
+            <p>It's <span class="highlight">narrative continuity</span> — making sure every session starts where the last one ended, not from zero.</p>
+            
+            <div class="callout blue">
+                <p style="margin-bottom: 0; color: #e5e5e5;">The contract defines what OpenClaw tracks, what it surfaces, and what it keeps quiet. The goal: coaching that compounds, not resets.</p>
+            </div>
+            
+            <h3 style="margin-top: 1.5rem;">Two Parties, Different Needs</h3>
+            <div class="party-row">
+                <div class="party-box">
+                    <div class="party-label">Founder</div>
+                    <div class="party-name">Jai & Satith</div>
+                    <p style="font-size: 0.85rem; margin-top: 0.5rem; color: #6b7280;">Needs: accountability, learning prompts, no micromanagement</p>
+                </div>
+                <div class="party-box">
+                    <div class="party-label">Mentor</div>
+                    <div class="party-name">Craig</div>
+                    <p style="font-size: 0.85rem; margin-top: 0.5rem; color: #6b7280;">Needs: pre-session briefs, pattern alerts, drift signals</p>
+                </div>
+            </div>
+        </div>
+        <div class="page-num">2/8</div>
+    </section>
+
+    <!-- What's Tracked -->
+    <section class="page">
+        <div class="card">
+            <div class="label">What's Tracked</div>
+            <h2>The data OpenClaw collects</h2>
+            
+            <div class="contract-section">
+                <div class="contract-header">
+                    <div class="contract-title">Explicit Commitments</div>
+                    <div class="contract-visibility visibility-surfaced">SURFACED</div>
+                </div>
+                <div class="contract-body">
+                    Hard deadlines with clear owners. Status changes trigger prompts to both parties.
+                </div>
+            </div>
+            
+            <div class="contract-section">
+                <div class="contract-header">
+                    <div class="contract-title">Implicit Commitments</div>
+                    <div class="contract-visibility visibility-quiet">QUIET</div>
+                </div>
+                <div class="contract-body">
+                    Soft tracking only. Visible in briefs, but no nagging. Gentle bi-weekly nudge.
+                </div>
+            </div>
+            
+            <div class="contract-section">
+                <div class="contract-header">
+                    <div class="contract-title">Hypothesis Evidence</div>
+                    <div class="contract-visibility visibility-surfaced">SURFACED</div>
+                </div>
+                <div class="contract-body">
+                    Weekly prompts force learning mode. Evidence status updated in commitment spine.
+                </div>
+            </div>
+            
+            <div class="contract-section">
+                <div class="contract-header">
+                    <div class="contract-title">Drift Signals</div>
+                    <div class="contract-visibility visibility-alert">MENTOR ONLY</div>
+                </div>
+                <div class="contract-body">
+                    Enthusiasm shifts, perfectionism loops, pivot signals. Alerted to mentor, not founder.
+                </div>
+            </div>
+        </div>
+        <div class="page-num">3/8</div>
+    </section>
+
+    <!-- What's Surfaced vs Quiet -->
+    <section class="page">
+        <div class="card">
+            <div class="label">Visibility Matrix</div>
+            <h2>What's surfaced vs. kept quiet</h2>
+            
+            <table class="permission-table">
+                <tr>
+                    <th>Data Type</th>
+                    <th>To Founder</th>
+                    <th>To Mentor</th>
+                </tr>
+                <tr>
+                    <td>Commitment status</td>
+                    <td class="yes">Yes — prompts + updates</td>
+                    <td class="yes">Yes — in briefs</td>
+                </tr>
+                <tr>
+                    <td>Deadline missed</td>
+                    <td class="yes">Yes — gentle prompt</td>
+                    <td class="yes">Yes — with pattern context</td>
+                </tr>
+                <tr>
+                    <td>Hypothesis evidence</td>
+                    <td class="yes">Yes — weekly prompt</td>
+                    <td class="yes">Yes — in briefs</td>
+                </tr>
+                <tr>
+                    <td>Implicit commitments</td>
+                    <td class="partial">Soft — bi-weekly nudge</td>
+                    <td class="yes">Yes — in briefs</td>
+                </tr>
+                <tr>
+                    <td>Enthusiasm signals</td>
+                    <td class="no">No</td>
+                    <td class="yes">Yes — pattern alerts</td>
+                </tr>
+                <tr>
+                    <td>Perfectionism patterns</td>
+                    <td class="no">No</td>
+                    <td class="yes">Yes — coaching lever</td>
+                </tr>
+                <tr>
+                    <td>Pivot signals</td>
+                    <td class="no">No</td>
+                    <td class="yes">Yes — for exploration</td>
+                </tr>
+            </table>
+            
+            <div class="callout purple">
+                <p style="margin-bottom: 0; color: #a3a3a3; font-size: 0.9rem;"><span class="meta">Rule:</span> Founders see tasks and prompts. Mentors see patterns and signals.</p>
+            </div>
+        </div>
+        <div class="page-num">4/8</div>
+    </section>
+
+    <!-- Escalation Rules -->
+    <section class="page">
+        <div class="card">
+            <div class="label">Escalation Rules</div>
+            <h2>When OpenClaw gets louder</h2>
+            
+            <p>Default mode is quiet. Escalation happens only when patterns emerge:</p>
+            
+            <div class="escalation-ladder">
+                <div class="escalation-step">
+                    <div class="escalation-level">Level 1</div>
+                    <div class="escalation-action">Soft prompt to founder (deadline approaching, hypothesis check)</div>
+                </div>
+                <div class="escalation-step">
+                    <div class="escalation-level">Level 2</div>
+                    <div class="escalation-action">Prompt to both parties (deadline missed, no response)</div>
+                </div>
+                <div class="escalation-step">
+                    <div class="escalation-level">Level 3</div>
+                    <div class="escalation-action">Alert to mentor only (pattern detected: 3+ occurrences)</div>
+                </div>
+                <div class="escalation-step">
+                    <div class="escalation-level">Level 4</div>
+                    <div class="escalation-action">Flag for human review (founder disengaged, critical blocker)</div>
+                </div>
+            </div>
+            
+            <div class="callout yellow">
+                <p style="margin-bottom: 0; color: #a3a3a3; font-size: 0.9rem;"><span class="tension">Human in loop:</span> Level 4 always requires Craig's review before any action.</p>
+            </div>
+        </div>
+        <div class="page-num">5/8</div>
+    </section>
+
+    <!-- Trust Boundaries -->
+    <section class="page">
+        <div class="card">
+            <div class="label">Trust Boundaries</div>
+            <h2>What OpenClaw never does</h2>
+            
+            <ul>
+                <li class="alert-item">Never scolds founders for missed deadlines</li>
+                <li class="alert-item">Never shares founder's emotional signals with founder</li>
+                <li class="alert-item">Never makes coaching decisions — only surfaces data</li>
+                <li class="alert-item">Never contacts external parties (Marc Andreessen, etc.)</li>
+                <li class="alert-item">Never auto-generates emails or messages without approval</li>
+            </ul>
+            
+            <hr class="divider">
+            
+            <h3>Founder Privacy Protections</h3>
+            <ul>
+                <li class="quiet-item">Emotional signals (enthusiasm, stress) are mentor-only</li>
+                <li class="quiet-item">Implicit commitments never trigger escalation</li>
+                <li class="quiet-item">Founder can mark any commitment as "private" — excluded from mentor view</li>
+            </ul>
+            
+            <div class="callout green">
+                <p style="margin-bottom: 0; color: #a3a3a3; font-size: 0.9rem;"><span class="decision">Design principle:</span> OpenClaw is a memory aid, not a manager. It surfaces what humans would forget, without replacing human judgment.</p>
+            </div>
+        </div>
+        <div class="page-num">6/8</div>
+    </section>
+
+    <!-- The Contract Terms -->
+    <section class="page">
+        <div class="card">
+            <div class="label">The Contract Terms</div>
+            <h2>What each party agrees to</h2>
+            
+            <div class="party-row">
+                <div class="party-box">
+                    <div class="party-label">Founder Agrees</div>
+                    <ul style="margin: 0.75rem 0 0 0;">
+                        <li>Respond to status prompts (even "blocked")</li>
+                        <li>Answer hypothesis checks with evidence, not tasks</li>
+                        <li>Flag blockers early, not at deadline</li>
+                        <li>Trust that emotional signals are private</li>
+                    </ul>
+                </div>
+                <div class="party-box">
+                    <div class="party-label">Mentor Agrees</div>
+                    <ul style="margin: 0.75rem 0 0 0;">
+                        <li>Read pre-session briefs before meetings</li>
+                        <li>Use pattern alerts as coaching input, not judgment</li>
+                        <li>Respect founder privacy boundaries</li>
+                        <li>Review Level 4 escalations within 48hrs</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="callout blue">
+                <p style="margin-bottom: 0; color: #a3a3a3; font-size: 0.9rem;"><span class="highlight">OpenClaw Agrees:</span> Hold the narrative steady. Surface what matters. Stay quiet when appropriate. Never replace human judgment.</p>
+            </div>
+        </div>
+        <div class="page-num">7/8</div>
+    </section>
+
+    <!-- The Outcome -->
+    <section class="page">
+        <div class="card">
+            <div class="label">The Outcome</div>
+            <h2>What this enables</h2>
+            
+            <p>Without this contract:</p>
+            <ul>
+                <li class="quiet-item">Sessions start with "Where were we?"</li>
+                <li class="quiet-item">Commitments drift, then disappear</li>
+                <li class="quiet-item">Patterns go unnoticed until it's too late</li>
+                <li class="quiet-item">Coaching resets instead of compounds</li>
+            </ul>
+            
+            <hr class="divider">
+            
+            <p>With this contract:</p>
+            <ul>
+                <li>Sessions start with "Last time you committed to X — what happened?"</li>
+                <li>Commitments have status, visibility, accountability</li>
+                <li>Patterns surface early: "Jai's said 'not excited' for 3 sessions"</li>
+                <li>Coaching compounds: each session builds on the last</li>
+            </ul>
+            
+            <div class="callout green">
+                <p style="margin-bottom: 0; color: #e5e5e5; font-style: italic;">"This isn't about managing founders. It's about holding the narrative steady so Craig's coaching compounds instead of resets."</p>
+            </div>
+        </div>
+        <div class="page-num">8/8</div>
+    </section>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
