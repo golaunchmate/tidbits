@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jai & Satith — Continuity Design</title>
+    <meta name="tidbit-type" content="design">
+    <meta name="tidbit-subject" content="Jai & Satith">
+    <meta name="tidbit-company" content="AI Game Generation">
+    <meta name="tidbit-date" content="2026-02-20">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: #0f0f0f;
+            color: #e5e5e5;
+            line-height: 1.6;
+        }
+        .page {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+        }
+        .card {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 16px;
+            padding: 3rem;
+            max-width: 600px;
+            width: 100%;
+        }
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+        h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+        h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; color: #f5f5f5; }
+        h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.75rem; color: #d4d4d4; }
+        p { margin-bottom: 1rem; color: #a3a3a3; }
+        .highlight { color: #60a5fa; }
+        .decision { color: #34d399; }
+        .tension { color: #f97316; }
+        .meta { color: #a78bfa; }
+        .page-num {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            color: #404040;
+        }
+        .scroll-hint {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #404040;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(5px); }
+        }
+        ul {
+            list-style: none;
+            margin: 1rem 0;
+        }
+        ul li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: #a3a3a3;
+        }
+        ul li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #34d399;
+        }
+        ul li.soft::before {
+            color: #a78bfa;
+            content: "○";
+        }
+        .callout {
+            background: #111;
+            border-left: 3px solid #f97316;
+            border-radius: 8px;
+            padding: 1.25rem 1.5rem;
+            margin: 1.25rem 0;
+        }
+        .callout.blue { border-left-color: #60a5fa; }
+        .callout.green { border-left-color: #34d399; }
+        .callout.purple { border-left-color: #a78bfa; }
+        .divider {
+            border: none;
+            border-top: 1px solid #2a2a2a;
+            margin: 1.5rem 0;
+        }
+        .status-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.6rem 0;
+            border-bottom: 1px solid #2a2a2a;
+            font-size: 0.9rem;
+        }
+        .status-label { color: #a3a3a3; }
+        .status-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: #fbbf24;
+        }
+        .hypothesis-row {
+            background: #111;
+            border-radius: 8px;
+            padding: 0.875rem 1.125rem;
+            margin-bottom: 0.625rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .hypothesis-text { color: #e5e5e5; font-size: 0.9rem; }
+        .hypothesis-status {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: #6b7280;
+        }
+        .instruction-box {
+            background: #0a0a0a;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            padding: 1rem 1.25rem;
+            margin: 1rem 0;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: #a3a3a3;
+        }
+        .instruction-box .prefix {
+            color: #60a5fa;
+            margin-bottom: 0.5rem;
+        }
+        .brief-section {
+            margin-bottom: 1rem;
+        }
+        .brief-header {
+            color: #60a5fa;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+        .brief-item {
+            color: #a3a3a3;
+            font-size: 0.9rem;
+            padding-left: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cover -->
+    <section class="page">
+        <div class="card" style="text-align: center;">
+            <div class="label">Continuity Design</div>
+            <h1>Jai & Satith</h1>
+            <p style="color: #60a5fa; font-size: 1.25rem; margin-bottom: 0.5rem;">AI Game Generation</p>
+            <p style="color: #6b7280;">February 20, 2026</p>
+            <hr class="divider">
+            <p style="color: #6b7280; font-size: 0.9rem;">Three mechanisms to hold the narrative steady between sessions.</p>
+        </div>
+        <div class="scroll-hint">scroll ↓</div>
+        <div class="page-num">1/7</div>
+    </section>
+
+    <!-- Commitment Spine -->
+    <section class="page">
+        <div class="card">
+            <div class="label">Mechanism 1</div>
+            <h2>Commitment Spine</h2>
+            <p>Track explicit and implicit commitments. Surface status changes, not fixed cadence pings.</p>
+            
+            <h3>Explicit Commitments</h3>
+            <div class="status-row">
+                <div class="status-label">Ship desktop app for user prompting</div>
+                <div class="status-value">⏳ Feb 25-28</div>
+            </div>
+            <div class="status-row">
+                <div class="status-label">Dynamic chat box NPC interactions</div>
+                <div class="status-value">⏳ Next week</div>
+            </div>
+            <div class="status-row">
+                <div class="status-label">Deploy model to cloud</div>
+                <div class="status-value">🔄 In progress</div>
+            </div>
+            <div class="status-row">
+                <div class="status-label">Continue narrative enhancement</div>
+                <div class="status-value">⏳ 1 week</div>
+            </div>
+            
+            <h3 style="margin-top: 1.25rem;">Implicit Commitments (soft tracking)</h3>
+            <ul>
+                <li class="soft">Explore context-driven gameplay (Steam/Epic profile)</li>
+                <li class="soft">Research API/library pivot</li>
+                <li class="soft">Email Marc Andreessen when beta stable</li>
+            </ul>
+        </div>
+        <div class="page-num">2/7</div>
+    </section>
+
+    <!-- Commitment Spine: OpenClaw Instructions -->
+    <section class="page">
+        <div class="card">
+            <div class="label">Commitment Spine</div>
+            <h2>How OpenClaw uses this</h2>
+            
+            <ul>
+                <li>Ping both parties when status should change (not fixed cadence)</li>
+                <li>Flag missed deadlines: <em>"Desktop app was due Feb 25-28 — no update. Status?"</em></li>
+                <li>Prevent the classic mismatch:
+                    <ul style="margin-top: 0.5rem; margin-left: 1rem;">
+                        <li style="font-size: 0.9rem;">Jai & Satith: "We've been working hard on the game..."</li>
+                        <li style="font-size: 0.9rem;">Craig: "Did you ship the app? Did users test it?"</li>
+                    </ul>
+                </li>
+            </ul>
+            
+            <div class="instruction-box">
+                <div class="prefix">INSTRUCTION TO OPENCLAW:</div>
+                Track Jai & Satith's explicit commitments from Feb 18 session. Surface only status changes or missed deadlines to both Craig and the founders. Keep implicit commitments visible but don't nag on them.
+            </div>
+        </div>
+        <div class="page-num">3/7</div>
+    </section>
+
+    <!-- Weekly Hypothesis Check-In -->
+    <section class="page">
+        <div class="card">
+            <div class="label">Mechanism 2</div>
+            <h2>Weekly Hypothesis Check-In</h2>
+            <p>Force learning mode, not task lists. Each week, update evidence status.</p>
+            
+            <h3>Active Hypotheses</h3>
+            <div class="hypothesis-row">
+                <div class="hypothesis-text">"Dynamic NPC interactions feel compelling"</div>
+                <div class="hypothesis-status">🔲 Still unclear</div>
+            </div>
+            <div class="hypothesis-row">
+                <div class="hypothesis-text">"Context-driven gameplay adds value"</div>
+                <div class="hypothesis-status">⚪ Not tested</div>
+            </div>
+            <div class="hypothesis-row">
+                <div class="hypothesis-text">"API/library > full game generation"</div>
+                <div class="hypothesis-status">🔲 Still unclear</div>
+            </div>
+            <div class="hypothesis-row">
+                <div class="hypothesis-text">"Users will prompt their own games"</div>
+                <div class="hypothesis-status">⚪ Not tested</div>
+            </div>
+            
+            <div class="callout blue">
+                <p style="margin-bottom: 0; color: #e5e5e5;"><span class="highlight">Weekly prompt:</span></p>
+                <p style="margin-bottom: 0; margin-top: 0.5rem; color: #a3a3a3; font-size: 0.9rem;">"This week, what evidence did you get about whether dynamic NPC interactions feel compelling? Answer: Confirmed / Disconfirmed / Still unclear (and why)."</p>
+            </div>
+        </div>
+        <div class="page-num">4/7</div>
+    </section>
+
+    <!-- Hypothesis Check-In: Why It Matters -->
+    <section class="page">
+        <div class="card">
+            <div class="label">Weekly Hypothesis Check-In</div>
+            <h2>Why this matters</h2>
+            
+            <p>Jai & Satith are <span class="tension">building mode</span> prone — they add features, perfect, iterate.</p>
+            
+            <p>This forces <span class="decision">learning mode</span>:</p>
+            <ul>
+                <li>What did users actually say/feel?</li>
+                <li>Not: "we added a torch and a map"</li>
+                <li>But: "users said X about the NPC interactions"</li>
+            </ul>
+            
+            <div class="instruction-box">
+                <div class="prefix">INSTRUCTION TO OPENCLAW:</div>
+                Each week, prompt Jai & Satith to update the status of active hypotheses. Force answers into: Confirmed / Disconfirmed / Still unclear. Don't accept task lists as answers.
+            </div>
+        </div>
+        <div class="page-num">5/7</div>
+    </section>
+
+    <!-- Pre-Meeting Brief -->
+    <section class="page">
+        <div class="card">
+            <div class="label">Mechanism 3</div>
+            <h2>Pre-Meeting Continuity Brief</h2>
+            <p>For Craig, 24 hours before each session.</p>
+            
+            <div class="callout green">
+                <p style="margin-bottom: 0.75rem; color: #e5e5e5; font-weight: 500;">Jai & Satith Continuity Brief — [Date]</p>
+                
+                <div class="brief-section">
+                    <div class="brief-header">What Changed Since Feb 18:</div>
+                    <div class="brief-item">Desktop app: [Shipped / In progress / Blocked — why?]</div>
+                    <div class="brief-item">Dynamic NPC chat: [Implemented / In progress / Not started]</div>
+                    <div class="brief-item">Cloud deployment: [Satith's progress]</div>
+                </div>
+                
+                <div class="brief-section">
+                    <div class="brief-header">What Was Learned:</div>
+                    <div class="brief-item">User feedback from beta (if any)</div>
+                    <div class="brief-item">Evidence on hypotheses (confirmed/disconfirmed/unclear)</div>
+                </div>
+                
+                <div class="brief-section">
+                    <div class="brief-header">Where They Drifted:</div>
+                    <div class="brief-item">Did they ship on time, or get stuck perfecting?</div>
+                    <div class="brief-item">Did Jai's enthusiasm shift, or still "meh"?</div>
+                    <div class="brief-item">Are they exploring API/library pivot?</div>
+                </div>
+            </div>
+        </div>
+        <div class="page-num">6/7</div>
+    </section>
+
+    <!-- Pre-Meeting Brief: Coaching Lever -->
+    <section class="page">
+        <div class="card">
+            <div class="label">Pre-Meeting Brief</div>
+            <h2>Coaching Lever to Pull</h2>
+            
+            <p>One actionable insight per brief:</p>
+            
+            <ul>
+                <li>If enthusiasm still low → Revisit innovation mindset coaching</li>
+                <li>If perfectionism blocked shipping → Push for imperfect launch</li>
+                <li>If API/library idea gaining traction → Explore pivot seriously</li>
+            </ul>
+            
+            <div class="callout purple">
+                <p style="margin-bottom: 0; color: #e5e5e5;"><span class="meta">Why this matters:</span></p>
+                <p style="margin-bottom: 0; margin-top: 0.5rem; color: #a3a3a3; font-size: 0.9rem;">Craig shows up sharp — no first 10 minutes re-syncing. Coaching compounds instead of resetting. Patterns surface (e.g., "Jai's said 'not excited' for 3 sessions").</p>
+            </div>
+            
+            <div class="instruction-box">
+                <div class="prefix">INSTRUCTION TO OPENCLAW:</div>
+                24 hours before Craig's next session with Jai & Satith, generate a one-page brief: what changed, what was learned, where they drifted, one coaching lever to pull.
+            </div>
+        </div>
+        <div class="page-num">7/7</div>
+    </section>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
