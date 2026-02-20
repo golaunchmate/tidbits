@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenClaw Task Specs — Jai & Satith</title>
+    <meta name="tidbit-type" content="design">
+    <meta name="tidbit-subject" content="OpenClaw">
+    <meta name="tidbit-date" content="2026-02-20">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: #0f0f0f;
+            color: #e5e5e5;
+            line-height: 1.6;
+        }
+        .page {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+        }
+        .card {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 16px;
+            padding: 3rem;
+            max-width: 650px;
+            width: 100%;
+        }
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+        h1 { font-size: 2.25rem; font-weight: 700; margin-bottom: 0.5rem; }
+        h2 { font-size: 1.35rem; font-weight: 600; margin-bottom: 1rem; color: #f5f5f5; }
+        h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; color: #d4d4d4; }
+        p { margin-bottom: 1rem; color: #a3a3a3; }
+        .highlight { color: #60a5fa; }
+        .decision { color: #34d399; }
+        .tension { color: #f97316; }
+        .meta { color: #a78bfa; }
+        .page-num {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            color: #404040;
+        }
+        .scroll-hint {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #404040;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(5px); }
+        }
+        .callout {
+            background: #111;
+            border-left: 3px solid #f97316;
+            border-radius: 8px;
+            padding: 1.25rem 1.5rem;
+            margin: 1.25rem 0;
+        }
+        .callout.blue { border-left-color: #60a5fa; }
+        .callout.green { border-left-color: #34d399; }
+        .callout.purple { border-left-color: #a78bfa; }
+        .callout.yellow { border-left-color: #fbbf24; }
+        .divider {
+            border: none;
+            border-top: 1px solid #2a2a2a;
+            margin: 1.5rem 0;
+        }
+        .spec-block {
+            background: #0a0a0a;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            padding: 1.25rem 1.5rem;
+            margin: 1rem 0;
+        }
+        .spec-header {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: #60a5fa;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.75rem;
+        }
+        .spec-content {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: #a3a3a3;
+            white-space: pre-wrap;
+        }
+        .spec-content .key { color: #e5e5e5; }
+        .spec-content .value { color: #34d399; }
+        .spec-content .comment { color: #6b7280; }
+        .task-card {
+            background: #111;
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #2a2a2a;
+        }
+        .task-name {
+            font-weight: 600;
+            color: #e5e5e5;
+            margin-bottom: 0.5rem;
+        }
+        .task-meta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 0.75rem;
+        }
+        .task-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            background: #262626;
+            color: #a3a3a3;
+        }
+        .task-tag.trigger { color: #fbbf24; }
+        .task-tag.output { color: #60a5fa; }
+        .task-tag.priority { color: #ef4444; }
+        .task-tag.priority-medium { color: #f97316; }
+        .task-tag.priority-low { color: #34d399; }
+        .task-desc {
+            color: #a3a3a3;
+            font-size: 0.9rem;
+        }
+        .edge-case {
+            background: #1a1a1a;
+            border-left: 2px solid #f97316;
+            padding: 0.75rem 1rem;
+            margin: 0.5rem 0;
+            font-size: 0.85rem;
+            color: #a3a3a3;
+        }
+        .edge-case-title {
+            color: #f97316;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cover -->
+    <section class="page">
+        <div class="card" style="text-align: center;">
+            <div class="label">OpenClaw Task Specifications</div>
+            <h1>Exact Instructions</h1>
+            <p style="color: #60a5fa; font-size: 1.15rem; margin-bottom: 0.5rem;">Jai & Satith — AI Game Generation</p>
+            <p style="color: #6b7280;">February 20, 2026</p>
+            <hr class="divider">
+            <p style="color: #6b7280; font-size: 0.9rem;">Precise task definitions, triggers, outputs, and edge cases.</p>
+        </div>
+        <div class="scroll-hint">scroll ↓</div>
+        <div class="page-num">1/8</div>
+    </section>
+
+    <!-- Task 1: Commitment Status Check -->
+    <section class="page">
+        <div class="card">
+            <div class="label">Task Spec 1</div>
+            <h2>Commitment Status Check</h2>
+            
+            <div class="task-card">
+                <div class="task-name">DEADLINE_APPROACHING</div>
+                <div class="task-meta">
+                    <span class="task-tag trigger">TRIGGER: 48hrs before deadline</span>
+                    <span class="task-tag output">OUTPUT: Prompt to founders</span>
+                    <span class="task-tag priority-medium">PRIORITY: Medium</span>
+                </div>
+                <div class="task-desc">Ask founders for status update on approaching commitment. Do NOT alert mentor yet.</div>
+            </div>
+            
+            <div class="spec-block">
+                <div class="spec-header">PROMPT TEMPLATE</div>
+                <div class="spec-content">"Desktop app deadline is <span class="value">Feb 25-28</span>. 
+Current status: <span class="value">⏳ Not started</span>
+Update? Reply with: Shipped / In progress / Blocked (reason)"</div>
+            </div>
+            
+            <div class="edge-case">
+                <div class="edge-case-title">Edge Case: No Response in 24hrs</div>
+                Escalate to mentor: "Jai & Satith haven't updated status on [commitment]. May need check-in."
+            </div>
+        </div>
+        <div class="page-num">2/8</div>
+    </section>
+
+    <!-- Task 2: Deadline Missed -->
+    <section class="page">
+        <div class="card">
+            <div class="label">Task Spec 2</div>
+            <h2>Deadline Missed Flag</h2>
+            
+            <div class="task-card">
+                <div class="task-name">DEADLINE_MISSED</div>
+                <div class="task-meta">
+                    <span class="task-tag trigger">TRIGGER: Deadline passed + no status update</span>
+                    <span class="task-tag output">OUTPUT: Alert both parties</span>
+                    <span class="task-tag priority">PRIORITY: High</span>
+                </div>
+                <div class="task-desc">Surface the mismatch. Don't scold — just make it visible.</div>
+            </div>
+            
+            <div class="spec-block">
+                <div class="spec-header">TO FOUNDERS</div>
+                <div class="spec-content">"Desktop app was due <span class="value">Feb 25-28</span>. No status update received.
+What happened? (This helps Craig coach you better.)"</div>
+            </div>
+            
+            <div class="spec-block">
+                <div class="spec-header">TO MENTOR</div>
+                <div class="spec-content">"Jai & Satith missed deadline: Ship desktop app.
+Possible patterns: <span class="value">perfectionism, scope creep, blocker</span>.
+Ask in next session: 'What got in the way?'"</div>
+            </div>
+        </div>
+        <div class="page-num">3/8</div>
+    </section>
+
+    <!-- Task 3: Weekly Hypothesis Prompt -->
+    <section class="page">
+        <div class="card">
+            <div class="label">Task Spec 3</div>
+            <h2>Weekly Hypothesis Prompt</h2>
+            
+            <div class="task-card">
+                <div class="task-name">HYPOTHESIS_CHECK</div>
+                <div class="task-meta">
+                    <span class="task-tag trigger">TRIGGER: Every Friday 9am</span>
+                    <span class="task-tag output">OUTPUT: Prompt to founders</span>
+                    <span class="task-tag priority-low">PRIORITY: Low</span>
+                </div>
+                <div class="task-desc">Force learning mode. Reject task-list answers.</div>
+            </div>
+            
+            <div class="spec-block">
+                <div class="spec-header">PROMPT TEMPLATE</div>
+                <div class="spec-content">"This week, what evidence did you get about:
+
+<span class="key">[HYPOTHESIS]</span>
+
+Answer format:
+<span class="value">✓ Confirmed</span> — what did users say/do?
+<span class="value">✗ Disconfirmed</span> — what surprised you?
+<span class="value">? Still unclear</span> — what would test it?"</div>
+            </div>
+            
+            <div class="edge-case">
+                <div class="edge-case-title">Edge Case: Task List Answer</div>
+                If founders reply with tasks ("we added X, we built Y"), respond:<br>
+                <em>"Those are tasks. What did users say about the NPC interactions?"</em>
+            </div>
+        </div>
+        <div class="page-num">4/8</div>
+    </section>
+
+    <!-- Task 4: Pre-Meeting Brief Generation -->
+    <section class="page">
+        <div class="card">
+            <div class="label">Task Spec 4</div>
+            <h2>Pre-Meeting Brief Generation</h2>
+            
+            <div class="task-card">
+                <div class="task-name">SESSION_BRIEF</div>
+                <div class="task-meta">
+                    <span class="task-tag trigger">TRIGGER: 24hrs before scheduled session</span>
+                    <span class="task-tag output">OUTPUT: Brief to mentor</span>
+                    <span class="task-tag priority-medium">PRIORITY: Medium</span>
+                </div>
+                <div class="task-desc">One-page brief for Craig. Pull from commitment spine + hypothesis tracking + drift signals.</div>
+            </div>
+            
+            <div class="spec-block">
+                <div class="spec-header">BRIEF TEMPLATE</div>
+                <div class="spec-content"><span class="key">Jai & Satith Continuity Brief — [DATE]</span>
+
+<span class="comment">WHAT CHANGED:</span>
+• Desktop app: [status + evidence]
+• Dynamic NPC chat: [status + evidence]
+• Cloud deployment: [Satith's progress]
+
+<span class="comment">WHAT WAS LEARNED:</span>
+• User feedback: [summary]
+• Hypothesis updates: [confirmed/disconfirmed/unclear]
+
+<span class="comment">DRIFT SIGNALS:</span>
+• Enthusiasm: [shifted / same]
+• Perfectionism: [shipped / blocked]
+• Pivot signal: [API/library traction?]
+
+<span class="comment">COACHING LEVER:</span>
+→ [One specific insight for Craig to pull]</div>
+            </div>
+        </div>
+        <div class="page-num">5/8</div>
+    </section>
+
+    <!-- Task 5: Implicit Commitment Surface -->
+    <section class="page">
+        <div class="card">
+            <div class="label">Task Spec 5</div>
+            <h2>Implicit Commitment Surface</h2>
+            
+            <div class="task-card">
+                <div class="task-name">IMPLICIT_NUDGE</div>
+                <div class="task-meta">
+                    <span class="task-tag trigger">TRIGGER: Bi-weekly, low priority</span>
+                    <span class="task-tag output">OUTPUT: Soft prompt to founders</span>
+                    <span class="task-tag priority-low">PRIORITY: Low</span>
+                </div>
+                <div class="task-desc">Keep implicit commitments visible without nagging. Gentle reminders.</div>
+            </div>
+            
+            <div class="spec-block">
+                <div class="spec-header">PROMPT TEMPLATE</div>
+                <div class="spec-content">"Quick check on the back-burner items:
+
+• Context-driven gameplay — any exploration?
+• API/library pivot — still thinking about it?
+• Marc Andreessen email — ready to send?
+
+Reply only if there's an update. Otherwise, ignore."</div>
+            </div>
+            
+            <div class="callout yellow">
+                <p style="margin-bottom: 0; color: #a3a3a3; font-size: 0.9rem;"><span class="tension">Rule:</span> These are soft. No escalation. No mentor alert. Just visibility.</p>
+            </div>
+        </div>
+        <div class="page-num">6/8</div>
+    </section>
+
+    <!-- Task 6: Pattern Detection -->
+    <section class="page">
+        <div class="card">
+            <div class="label">Task Spec 6</div>
+            <h2>Pattern Detection Alert</h2>
+            
+            <div class="task-card">
+                <div class="task-name">PATTERN_FLAG</div>
+                <div class="task-meta">
+                    <span class="task-tag trigger">TRIGGER: 3+ occurrences of same signal</span>
+                    <span class="task-tag output">OUTPUT: Alert to mentor only</span>
+                    <span class="task-tag priority">PRIORITY: High</span>
+                </div>
+                <div class="task-desc">Detect patterns that humans miss. Alert mentor, not founders.</div>
+            </div>
+            
+            <div class="spec-block">
+                <div class="spec-header">PATTERNS TO TRACK</div>
+                <div class="spec-content"><span class="key">ENTHUSIASM_GAP:</span>
+• Jai has said "not excited" for <span class="value">N sessions</span>
+• Pattern started: Feb 18, 2026
+
+<span class="key">PERFECTIONISM_LOOP:</span>
+• Missed deadlines: <span class="value">N</span>
+• Reason pattern: <span class="value">"adding features" / "not ready yet"</span>
+
+<span class="key">PIVOT_SIGNAL:</span>
+• API/library mentioned: <span class="value">N times</span>
+• But no action taken</div>
+            </div>
+            
+            <div class="spec-block">
+                <div class="spec-header">ALERT TEMPLATE</div>
+                <div class="spec-content">"Pattern detected: <span class="value">[PATTERN_NAME]</span>
+Occurrences: <span class="value">N</span>
+Sessions: <span class="value">[dates]</span>
+Suggested intervention: <span class="value">[coaching lever]</span>"</div>
+            </div>
+        </div>
+        <div class="page-num">7/8</div>
+    </section>
+
+    <!-- Summary -->
+    <section class="page">
+        <div class="card">
+            <div class="label">Summary</div>
+            <h2>All Tasks for Jai & Satith</h2>
+            
+            <div class="task-card" style="padding: 1rem 1.25rem;">
+                <div class="task-meta" style="margin-bottom: 0;">
+                    <span class="task-tag trigger">DEADLINE_APPROACHING</span>
+                    <span class="task-tag priority-medium">48hrs before</span>
+                    <span class="task-tag output">→ Founders</span>
+                </div>
+            </div>
+            
+            <div class="task-card" style="padding: 1rem 1.25rem;">
+                <div class="task-meta" style="margin-bottom: 0;">
+                    <span class="task-tag trigger">DEADLINE_MISSED</span>
+                    <span class="task-tag priority">After deadline</span>
+                    <span class="task-tag output">→ Both parties</span>
+                </div>
+            </div>
+            
+            <div class="task-card" style="padding: 1rem 1.25rem;">
+                <div class="task-meta" style="margin-bottom: 0;">
+                    <span class="task-tag trigger">HYPOTHESIS_CHECK</span>
+                    <span class="task-tag priority-low">Weekly Friday</span>
+                    <span class="task-tag output">→ Founders</span>
+                </div>
+            </div>
+            
+            <div class="task-card" style="padding: 1rem 1.25rem;">
+                <div class="task-meta" style="margin-bottom: 0;">
+                    <span class="task-tag trigger">SESSION_BRIEF</span>
+                    <span class="task-tag priority-medium">24hrs before session</span>
+                    <span class="task-tag output">→ Mentor</span>
+                </div>
+            </div>
+            
+            <div class="task-card" style="padding: 1rem 1.25rem;">
+                <div class="task-meta" style="margin-bottom: 0;">
+                    <span class="task-tag trigger">IMPLICIT_NUDGE</span>
+                    <span class="task-tag priority-low">Bi-weekly</span>
+                    <span class="task-tag output">→ Founders (soft)</span>
+                </div>
+            </div>
+            
+            <div class="task-card" style="padding: 1rem 1.25rem;">
+                <div class="task-meta" style="margin-bottom: 0;">
+                    <span class="task-tag trigger">PATTERN_FLAG</span>
+                    <span class="task-tag priority">3+ occurrences</span>
+                    <span class="task-tag output">→ Mentor only</span>
+                </div>
+            </div>
+        </div>
+        <div class="page-num">8/8</div>
+    </section>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
