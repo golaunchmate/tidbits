@@ -16,6 +16,51 @@ body {
   line-height: 1.7;
   padding: 40px 20px;
   scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/* Parallax Background Layers */
+.parallax-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.parallax-layer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+.layer-1 {
+  background: radial-gradient(circle at 20% 30%, rgba(255, 107, 157, 0.08) 0%, transparent 50%);
+}
+
+.layer-2 {
+  background: radial-gradient(circle at 80% 70%, rgba(196, 69, 105, 0.06) 0%, transparent 50%);
+}
+
+.layer-3 {
+  background: radial-gradient(circle at 50% 50%, rgba(255, 238, 248, 0.1) 0%, transparent 70%);
+}
+
+/* Cursor Sparkles */
+.cursor-sparkle {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  animation: sparkleFloat 1s ease-out forwards;
+}
+
+@keyframes sparkleFloat {
+  0% { opacity: 1; transform: scale(1) translateY(0); }
+  100% { opacity: 0; transform: scale(0) translateY(-50px); }
 }
 
 /* Loading Screen */
@@ -73,6 +118,94 @@ body {
   overflow: hidden;
   position: relative;
   z-index: 2;
+}
+
+/* Mobile Menu */
+.mobile-menu-toggle {
+  display: none;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #ff6b9d, #c44569);
+  border-radius: 8px;
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(196, 69, 105, 0.3);
+}
+
+.hamburger {
+  width: 25px;
+  height: 3px;
+  background: white;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.hamburger::before,
+.hamburger::after {
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 3px;
+  background: white;
+  transition: all 0.3s ease;
+}
+
+.hamburger::before { top: -8px; }
+.hamburger::after { bottom: -8px; }
+
+.mobile-menu-toggle.active .hamburger {
+  background: transparent;
+}
+
+.mobile-menu-toggle.active .hamburger::before {
+  top: 0;
+  transform: rotate(45deg);
+}
+
+.mobile-menu-toggle.active .hamburger::after {
+  bottom: 0;
+  transform: rotate(-45deg);
+}
+
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: -300px;
+  width: 300px;
+  height: 100%;
+  background: white;
+  z-index: 999;
+  padding: 80px 30px 30px;
+  transition: right 0.3s ease;
+  box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.mobile-menu.active {
+  right: 0;
+}
+
+.mobile-menu-link {
+  display: block;
+  padding: 15px 0;
+  color: #4a2c3e;
+  text-decoration: none;
+  font-weight: 500;
+  border-bottom: 1px solid #ffe4f1;
+  transition: all 0.3s ease;
+}
+
+.mobile-menu-link:hover {
+  color: #c44569;
+  padding-left: 10px;
+}
+
+@media (max-width: 768px) {
+  .mobile-menu-toggle { display: flex; }
 }
 
 .header {
@@ -252,21 +385,79 @@ h1 {
   line-height: 1.8;
 }
 
-.weather {
-  background: #e8f4fd;
-  border: 2px solid #c4e1f5;
+/* Weather Widget */
+.weather-widget {
+  background: linear-gradient(135deg, #e8f4fd, #c4e1f5);
   border-radius: 16px;
-  padding: 20px;
+  padding: 25px;
   margin: 30px 0;
-  color: #2c5f8d;
+  box-shadow: 0 4px 15px rgba(44, 95, 141, 0.1);
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-.weather.visible {
+.weather-widget.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+.weather-widget-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.weather-widget-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  color: #2c5f8d;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.weather-widget-content {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.weather-icon {
+  font-size: 3rem;
+}
+
+.weather-info {
+  flex: 1;
+}
+
+.weather-temp {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2c5f8d;
+  margin-bottom: 5px;
+}
+
+.weather-desc {
+  color: #2c5f8d;
+  font-size: 0.95rem;
+}
+
+.weather-details {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 15px;
+}
+
+.weather-detail-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #2c5f8d;
+  font-size: 0.9rem;
 }
 
 .section-title {
@@ -277,6 +468,144 @@ h1 {
   display: flex;
   align-items: center;
   gap: 12px;
+}
+
+/* Interactive Map Section */
+.map-section {
+  margin: 40px 0;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.map-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.map-container {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(219, 112, 147, 0.15);
+  background: white;
+  padding: 20px;
+}
+
+.map-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  color: #c44569;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.map-placeholder {
+  width: 100%;
+  height: 400px;
+  background: linear-gradient(135deg, #fff5f7, #ffeef8);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #c44569;
+  font-size: 1.1rem;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.map-placeholder i {
+  font-size: 3rem;
+}
+
+/* Memory Timeline */
+.memory-timeline {
+  margin: 50px 0;
+  padding: 30px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(219, 112, 147, 0.08);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.memory-timeline.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.timeline-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  color: #c44569;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.timeline {
+  position: relative;
+  padding-left: 40px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 15px;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, #ff6b9d, #c44569);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 30px;
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: all 0.6s ease;
+}
+
+.timeline-item.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -32px;
+  top: 5px;
+  width: 16px;
+  height: 16px;
+  background: #ff6b9d;
+  border-radius: 50%;
+  border: 3px solid white;
+  box-shadow: 0 2px 8px rgba(196, 69, 105, 0.3);
+}
+
+.timeline-time {
+  font-weight: 600;
+  color: #c44569;
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+}
+
+.timeline-content {
+  background: #fff5f7;
+  padding: 15px 20px;
+  border-radius: 12px;
+  border-left: 3px solid #ff6b9d;
+}
+
+.timeline-content h4 {
+  color: #4a2c3e;
+  margin-bottom: 8px;
+  font-family: 'Playfair Display', serif;
+}
+
+.timeline-content p {
+  color: #5a3c4e;
+  font-size: 0.95rem;
 }
 
 .stop {
@@ -408,6 +737,358 @@ h1 {
 .detail-section p {
   color: #5a3c4e;
   margin-bottom: 8px;
+}
+
+/* Photo Gallery */
+.photo-gallery {
+  margin: 20px 0;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+}
+
+.gallery-image {
+  width: 100%;
+  height: 150px;
+  background: linear-gradient(135deg, #fff5f7, #ffeef8);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.gallery-image:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(219, 112, 147, 0.2);
+}
+
+.gallery-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gallery-placeholder {
+  color: #c44569;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+/* Lightbox */
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 20px;
+}
+
+.lightbox.active {
+  display: flex;
+}
+
+.lightbox-content {
+  position: relative;
+  max-width: 90%;
+  max-height: 90%;
+}
+
+.lightbox-image {
+  max-width: 100%;
+  max-height: 80vh;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  background: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.lightbox-close:hover {
+  transform: scale(1.1);
+}
+
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: white;
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.lightbox-prev { left: -70px; }
+.lightbox-next { right: -70px; }
+
+.lightbox-nav:hover {
+  background: #ff6b9d;
+  color: white;
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* Photo Carousel */
+.carousel-section {
+  margin: 40px 0;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.carousel-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.carousel-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  color: #c44569;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.carousel-container {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(219, 112, 147, 0.15);
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.carousel-slide {
+  min-width: 100%;
+  height: 400px;
+  background: linear-gradient(135deg, #fff5f7, #ffeef8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: #c44569;
+  font-size: 1.1rem;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.carousel-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-prev { left: 15px; }
+.carousel-next { right: 15px; }
+
+.carousel-nav:hover {
+  background: #ff6b9d;
+  color: white;
+}
+
+.carousel-dots {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+.carousel-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.carousel-dot.active {
+  background: #ff6b9d;
+  transform: scale(1.2);
+}
+
+/* Music Player */
+.music-player {
+  position: fixed;
+  bottom: 100px;
+  right: 30px;
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 8px 25px rgba(219, 112, 147, 0.2);
+  z-index: 100;
+  min-width: 280px;
+  transform: translateX(calc(100% + 40px));
+  transition: transform 0.3s ease;
+}
+
+.music-player.active {
+  transform: translateX(0);
+}
+
+.music-player-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.music-player-title {
+  font-weight: 600;
+  color: #c44569;
+  font-size: 0.95rem;
+}
+
+.music-player-close {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #c44569;
+}
+
+.music-player-content {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.music-album-art {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #ff6b9d, #c44569);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5rem;
+}
+
+.music-info {
+  flex: 1;
+}
+
+.music-track {
+  font-weight: 600;
+  color: #4a2c3e;
+  font-size: 0.95rem;
+  margin-bottom: 3px;
+}
+
+.music-artist {
+  color: #888;
+  font-size: 0.85rem;
+}
+
+.music-controls {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+  align-items: center;
+  justify-content: center;
+}
+
+.music-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #c44569;
+  transition: all 0.3s ease;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.music-btn:hover {
+  background: #fff5f7;
+  transform: scale(1.1);
+}
+
+.music-btn.play-pause {
+  background: linear-gradient(135deg, #ff6b9d, #c44569);
+  color: white;
+  font-size: 1.8rem;
+}
+
+.music-btn.play-pause:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 15px rgba(196, 69, 105, 0.3);
+}
+
+.music-toggle {
+  position: fixed;
+  bottom: 30px;
+  right: 100px;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #ff6b9d, #c44569);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(196, 69, 105, 0.3);
+  z-index: 100;
+  transition: all 0.3s ease;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.music-toggle:hover {
+  transform: scale(1.1);
 }
 
 .recommendations {
@@ -605,6 +1286,83 @@ h1 {
 .share-whatsapp {
   background: #25d366;
   color: white;
+}
+
+/* Tooltips */
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip-text {
+  visibility: hidden;
+  width: 200px;
+  background-color: #4a2c3e;
+  color: #fff;
+  text-align: center;
+  border-radius: 8px;
+  padding: 10px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.tooltip-text::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #4a2c3e transparent transparent transparent;
+}
+
+.tooltip:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Dropdown Menus */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 200px;
+  box-shadow: 0 8px 25px rgba(219, 112, 147, 0.2);
+  border-radius: 12px;
+  z-index: 100;
+  border: 2px solid #ffe4f1;
+  overflow: hidden;
+}
+
+.dropdown-content.active {
+  display: block;
+}
+
+.dropdown-item {
+  padding: 12px 20px;
+  color: #4a2c3e;
+  text-decoration: none;
+  display: block;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.dropdown-item:hover {
+  background-color: #fff5f7;
+  color: #c44569;
 }
 
 /* Love Notes */
@@ -831,11 +1589,24 @@ h1 {
   .countdown-timer { gap: 15px; }
   .countdown-value { font-size: 1.5rem; }
   .love-note-trigger { bottom: 20px; right: 20px; width: 50px; height: 50px; }
+  .music-toggle { right: 80px; width: 50px; height: 50px; }
+  .music-player { bottom: 90px; right: 20px; min-width: 250px; }
+  .lightbox-nav { display: none; }
+  .carousel-nav { width: 40px; height: 40px; }
+  .carousel-prev { left: 10px; }
+  .carousel-next { right: 10px; }
 }
 </style>
 </head>
 
 <body>
+<!-- Parallax Background -->
+<div class="parallax-bg">
+  <div class="parallax-layer layer-1" id="layer1"></div>
+  <div class="parallax-layer layer-2" id="layer2"></div>
+  <div class="parallax-layer layer-3" id="layer3"></div>
+</div>
+
 <!-- Loading Screen -->
 <div class="loading-screen" id="loadingScreen">
   <div class="loading-heart">💕</div>
@@ -843,6 +1614,50 @@ h1 {
 
 <!-- Floating Particles Container -->
 <div id="particles"></div>
+
+<!-- Mobile Menu Toggle -->
+<div class="mobile-menu-toggle" id="mobileMenuToggle">
+  <div class="hamburger"></div>
+</div>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#summary" class="mobile-menu-link">Summary</a>
+  <a href="#countdown" class="mobile-menu-link">Countdown</a>
+  <a href="#weather" class="mobile-menu-link">Weather</a>
+  <a href="#stop1" class="mobile-menu-link">Stop 1: Sea Cave</a>
+  <a href="#stop2" class="mobile-menu-link">Stop 2: Dinner</a>
+  <a href="#stop3" class="mobile-menu-link">Stop 3: Dessert</a>
+  <a href="#map" class="mobile-menu-link">Map</a>
+  <a href="#timeline" class="mobile-menu-link">Timeline</a>
+  <a href="#checklist" class="mobile-menu-link">Checklist</a>
+  <a href="#budget" class="mobile-menu-link">Budget</a>
+</div>
+
+<!-- Music Player -->
+<div class="music-player" id="musicPlayer">
+  <div class="music-player-header">
+    <div class="music-player-title">🎵 Background Music</div>
+    <button class="music-player-close" onclick="toggleMusicPlayer()">×</button>
+  </div>
+  <div class="music-player-content">
+    <div class="music-album-art">♪</div>
+    <div class="music-info">
+      <div class="music-track">Romantic Coastal Vibes</div>
+      <div class="music-artist">DateFlo Playlist</div>
+    </div>
+  </div>
+  <div class="music-controls">
+    <button class="music-btn" onclick="prevTrack()">⏮</button>
+    <button class="music-btn play-pause" id="playPauseBtn" onclick="togglePlay()">▶</button>
+    <button class="music-btn" onclick="nextTrack()">⏭</button>
+  </div>
+</div>
+
+<!-- Music Toggle Button -->
+<div class="music-toggle" id="musicToggle" onclick="toggleMusicPlayer()">
+  <span style="font-size: 1.8rem;">🎵</span>
+</div>
 
 <!-- Love Note Trigger -->
 <div class="love-note-trigger" id="loveNoteTrigger">
@@ -856,6 +1671,16 @@ h1 {
     <h2 style="font-family: 'Playfair Display', serif; color: #c44569; margin-bottom: 15px;">💕 A Note for You</h2>
     <p class="love-note-text">"May your coastal adventure be filled with ocean breezes, delicious flavors, and moments that make your heart smile."</p>
     <p style="color: #5a3c4e; font-style: italic; margin-top: 20px;">— Made with love by DateFlo ✨</p>
+  </div>
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-content">
+    <button class="lightbox-close" onclick="closeLightbox()">×</button>
+    <button class="lightbox-nav lightbox-prev" onclick="prevImage()">◀</button>
+    <img class="lightbox-image" id="lightboxImage" src="" alt="Gallery Image">
+    <button class="lightbox-nav lightbox-next" onclick="nextImage()">▶</button>
   </div>
 </div>
 
@@ -883,7 +1708,7 @@ h1 {
     </div>
     
     <!-- Countdown Timer -->
-    <div class="countdown">
+    <div class="countdown" id="countdown">
       <h3 class="countdown-title">⏰ Countdown to Your Date</h3>
       <div class="countdown-timer">
         <div class="countdown-item">
@@ -911,13 +1736,45 @@ h1 {
       <p style="margin-top: 12px; font-style: italic; opacity: 0.8;">Pickup in Mira Mesa, then one drive to La Jolla Cove. Everything is walkable after that.</p>
     </div>
     
-    <div class="weather" id="weather">
-      <strong>🌤️ Weather Note:</strong> It's too far out for a reliable forecast. Check again 48 hours before—the coastal bluff can get chilly fast!
+    <!-- Weather Widget -->
+    <div class="weather-widget" id="weather">
+      <div class="weather-widget-header">
+        <h3 class="weather-widget-title">
+          <span>🌤️</span>
+          Live Weather - La Jolla
+        </h3>
+        <button class="btn menu-btn" style="width: auto; padding: 0 15px; height: 32px; font-size: 0.85rem;" onclick="refreshWeather()">Refresh</button>
+      </div>
+      <div class="weather-widget-content">
+        <div class="weather-icon">🌤️</div>
+        <div class="weather-info">
+          <div class="weather-temp" id="weatherTemp">--°F</div>
+          <div class="weather-desc" id="weatherDesc">Loading weather data...</div>
+        </div>
+      </div>
+      <div class="weather-details">
+        <div class="weather-detail-item">
+          <span>💨</span>
+          <span id="weatherWind">Wind: -- mph</span>
+        </div>
+        <div class="weather-detail-item">
+          <span>💧</span>
+          <span id="weatherHumidity">Humidity: --%</span>
+        </div>
+        <div class="weather-detail-item">
+          <span>🌡️</span>
+          <span id="weatherFeels">Feels like: --°F</span>
+        </div>
+      </div>
+      <p style="margin-top: 15px; font-size: 0.85rem; color: #888; font-style: italic;">*Weather updates require API key. Displaying simulated data.</p>
     </div>
 
     <div style="background: #e8f4fd; border: 2px solid #c4e1f5; border-radius: 16px; padding: 20px; margin: 30px 0; color: #2c5f8d;">
       <strong>🚗 Parking Reservation:</strong> Reserve your spot at ACE Lot 0545 near La Jolla Cove<br>
-      <a href="https://space.aceparking.com/site/reserve/4c56ff4ce4aaf9573aa5dff913df997a" target="_blank" class="parking-link">Reserve Parking Here →</a>
+      <div class="tooltip">
+        <a href="https://space.aceparking.com/site/reserve/4c56ff4ce4aaf9573aa5dff913df997a" target="_blank" class="parking-link">Reserve Parking Here →</a>
+        <span class="tooltip-text">Reserve your parking spot in advance to save time!</span>
+      </div>
     </div>
 
     <div class="recommendations" id="recommendations">
@@ -963,22 +1820,59 @@ h1 {
         <div class="stop-phone">☎️ (858) 459-0746</div>
         
         <div class="btns">
-          <a href="https://www.google.com/maps/search/?api=1&query=The%20Cave%20Store%201325%20Coast%20Blvd%20La%20Jolla%20CA%2092037" target="_blank" class="btn dir-btn" title="Google Maps">
-            <i data-lucide="map"></i>
-          </a>
-          <a href="https://maps.apple.com/?address=1325%20Coast%20Blvd,%20La%20Jolla,%20CA%2092037" target="_blank" class="btn dir-btn" title="Apple Maps">
-            <i data-lucide="navigation"></i>
-          </a>
-          <a href="tel:+18584590746" class="btn ph-btn" title="Call">
-            <i data-lucide="phone"></i>
-          </a>
-          <a href="https://www.cavestore.com/" target="_blank" class="btn menu-btn" title="Visit Website">
-            <i data-lucide="globe"></i>
-          </a>
+          <div class="tooltip">
+            <a href="https://www.google.com/maps/search/?api=1&query=The%20Cave%20Store%201325%20Coast%20Blvd%20La%20Jolla%20CA%2092037" target="_blank" class="btn dir-btn" title="Google Maps">
+              <i data-lucide="map"></i>
+            </a>
+            <span class="tooltip-text">Get directions via Google Maps</span>
+          </div>
+          <div class="tooltip">
+            <a href="https://maps.apple.com/?address=1325%20Coast%20Blvd,%20La%20Jolla,%20CA%2092037" target="_blank" class="btn dir-btn" title="Apple Maps">
+              <i data-lucide="navigation"></i>
+            </a>
+            <span class="tooltip-text">Get directions via Apple Maps</span>
+          </div>
+          <div class="tooltip">
+            <a href="tel:+18584590746" class="btn ph-btn" title="Call">
+              <i data-lucide="phone"></i>
+            </a>
+            <span class="tooltip-text">Call The Cave Store</span>
+          </div>
+          <div class="tooltip">
+            <a href="https://www.cavestore.com/" target="_blank" class="btn menu-btn" title="Visit Website">
+              <i data-lucide="globe"></i>
+            </a>
+            <span class="tooltip-text">Visit official website</span>
+          </div>
         </div>
         
         <div class="vibe">
           Coastal, sweet, low-pressure. Start with a slow walk along the bluff by La Jolla Cove and Scripps Park.
+        </div>
+        
+        <!-- Photo Gallery -->
+        <div class="photo-gallery">
+          <h4 style="font-weight: 600; color: #c44569; margin-bottom: 10px;">📸 Venue Photos</h4>
+          <div class="gallery-grid">
+            <div class="gallery-image" onclick="openLightbox(0, 'stop1')">
+              <div class="gallery-placeholder">
+                <i data-lucide="image" style="font-size: 2rem;"></i>
+                <br><br>Sea Cave Entrance
+              </div>
+            </div>
+            <div class="gallery-image" onclick="openLightbox(1, 'stop1')">
+              <div class="gallery-placeholder">
+                <i data-lucide="image" style="font-size: 2rem;"></i>
+                <br><br>Coastal Views
+              </div>
+            </div>
+            <div class="gallery-image" onclick="openLightbox(2, 'stop1')">
+              <div class="gallery-placeholder">
+                <i data-lucide="image" style="font-size: 2rem;"></i>
+                <br><br>Scripps Park
+              </div>
+            </div>
+          </div>
         </div>
         
         <div class="detail-section">
@@ -1012,22 +1906,59 @@ h1 {
         <div class="stop-phone">☎️ (858) 999-099</div>
         
         <div class="btns">
-          <a href="https://www.google.com/maps/search/?api=1&query=Sushi%20Nekosan%201119%20Wall%20Street%20La%20Jolla%20CA%2092037" target="_blank" class="btn dir-btn" title="Google Maps">
-            <i data-lucide="map"></i>
-          </a>
-          <a href="https://maps.apple.com/?address=1119%20Wall%20Street,%20La%20Jolla,%20CA%2092037" target="_blank" class="btn dir-btn" title="Apple Maps">
-            <i data-lucide="navigation"></i>
-          </a>
-          <a href="tel:+18589990990" class="btn ph-btn" title="Call">
-            <i data-lucide="phone"></i>
-          </a>
-          <a href="https://sushinekosan.com/" target="_blank" class="btn menu-btn" title="View Menu">
-            <i data-lucide="utensils"></i>
-          </a>
+          <div class="tooltip">
+            <a href="https://www.google.com/maps/search/?api=1&query=Sushi%20Nekosan%201119%20Wall%20Street%20La%20Jolla%20CA%2092037" target="_blank" class="btn dir-btn" title="Google Maps">
+              <i data-lucide="map"></i>
+            </a>
+            <span class="tooltip-text">Get directions via Google Maps</span>
+          </div>
+          <div class="tooltip">
+            <a href="https://maps.apple.com/?address=1119%20Wall%20Street,%20La%20Jolla,%20CA%2092037" target="_blank" class="btn dir-btn" title="Apple Maps">
+              <i data-lucide="navigation"></i>
+            </a>
+            <span class="tooltip-text">Get directions via Apple Maps</span>
+          </div>
+          <div class="tooltip">
+            <a href="tel:+18589990990" class="btn ph-btn" title="Call">
+              <i data-lucide="phone"></i>
+            </a>
+            <span class="tooltip-text">Call Sushi Nekosan</span>
+          </div>
+          <div class="tooltip">
+            <a href="https://sushinekosan.com/" target="_blank" class="btn menu-btn" title="View Menu">
+              <i data-lucide="utensils"></i>
+            </a>
+            <span class="tooltip-text">View full menu online</span>
+          </div>
         </div>
         
         <div class="vibe">
           Cozy, intimate, "we picked a good one." Go earlier than peak dinner so it feels calm.
+        </div>
+        
+        <!-- Photo Gallery -->
+        <div class="photo-gallery">
+          <h4 style="font-weight: 600; color: #c44569; margin-bottom: 10px;">📸 Venue Photos</h4>
+          <div class="gallery-grid">
+            <div class="gallery-image" onclick="openLightbox(0, 'stop2')">
+              <div class="gallery-placeholder">
+                <i data-lucide="image" style="font-size: 2rem;"></i>
+                <br><br>Interior Ambiance
+              </div>
+            </div>
+            <div class="gallery-image" onclick="openLightbox(1, 'stop2')">
+              <div class="gallery-placeholder">
+                <i data-lucide="image" style="font-size: 2rem;"></i>
+                <br><br>Sushi Selection
+              </div>
+            </div>
+            <div class="gallery-image" onclick="openLightbox(2, 'stop2')">
+              <div class="gallery-placeholder">
+                <i data-lucide="image" style="font-size: 2rem;"></i>
+                <br><br>Signature Dishes
+              </div>
+            </div>
+          </div>
         </div>
         
         <div class="detail-section">
@@ -1067,22 +1998,59 @@ h1 {
         <div class="stop-phone">☎️ (858) 255-8693</div>
         
         <div class="btns">
-          <a href="https://www.google.com/maps/search/?api=1&query=Bobboi%20Natural%20Gelato%208008%20Girard%20Ave%20La%20Jolla%20CA%2092037" target="_blank" class="btn dir-btn" title="Google Maps">
-            <i data-lucide="map"></i>
-          </a>
-          <a href="https://maps.apple.com/?address=8008%20Girard%20Ave,%20La%20Jolla,%20CA%2092037" target="_blank" class="btn dir-btn" title="Apple Maps">
-            <i data-lucide="navigation"></i>
-          </a>
-          <a href="tel:+18582558693" class="btn ph-btn" title="Call">
-            <i data-lucide="phone"></i>
-          </a>
-          <a href="https://www.bobboi.com/la-jolla" target="_blank" class="btn menu-btn" title="View Menu">
-            <i data-lucide="utensils"></i>
-          </a>
+          <div class="tooltip">
+            <a href="https://www.google.com/maps/search/?api=1&query=Bobboi%20Natural%20Gelato%208008%20Girard%20Ave%20La%20Jolla%20CA%2092037" target="_blank" class="btn dir-btn" title="Google Maps">
+              <i data-lucide="map"></i>
+            </a>
+            <span class="tooltip-text">Get directions via Google Maps</span>
+          </div>
+          <div class="tooltip">
+            <a href="https://maps.apple.com/?address=8008%20Girard%20Ave,%20La%20Jolla,%20CA%2092037" target="_blank" class="btn dir-btn" title="Apple Maps">
+              <i data-lucide="navigation"></i>
+            </a>
+            <span class="tooltip-text">Get directions via Apple Maps</span>
+          </div>
+          <div class="tooltip">
+            <a href="tel:+18582558693" class="btn ph-btn" title="Call">
+              <i data-lucide="phone"></i>
+            </a>
+            <span class="tooltip-text">Call Bobboi Gelato</span>
+          </div>
+          <div class="tooltip">
+            <a href="https://www.bobboi.com/la-jolla" target="_blank" class="btn menu-btn" title="View Menu">
+              <i data-lucide="utensils"></i>
+            </a>
+            <span class="tooltip-text">View flavors online</span>
+          </div>
         </div>
         
         <div class="vibe">
           Cute, easy, "let's linger." Split a couple scoops and take it back toward the water for a slow, end-of-date walk.
+        </div>
+        
+        <!-- Photo Gallery -->
+        <div class="photo-gallery">
+          <h4 style="font-weight: 600; color: #c44569; margin-bottom: 10px;">📸 Venue Photos</h4>
+          <div class="gallery-grid">
+            <div class="gallery-image" onclick="openLightbox(0, 'stop3')">
+              <div class="gallery-placeholder">
+                <i data-lucide="image" style="font-size: 2rem;"></i>
+                <br><br>Gelato Display
+              </div>
+            </div>
+            <div class="gallery-image" onclick="openLightbox(1, 'stop3')">
+              <div class="gallery-placeholder">
+                <i data-lucide="image" style="font-size: 2rem;"></i>
+                <br><br>Shop Interior
+              </div>
+            </div>
+            <div class="gallery-image" onclick="openLightbox(2, 'stop3')">
+              <div class="gallery-placeholder">
+                <i data-lucide="image" style="font-size: 2rem;"></i>
+                <br><br>Artisan Flavors
+              </div>
+            </div>
+          </div>
         </div>
         
         <div class="detail-section">
@@ -1103,6 +2071,101 @@ h1 {
         
         <div class="backup">
           <strong>🍰 Backup Dessert:</strong> <strong>Parfait Paris</strong> - Still walkable on Girard Ave, open until 7 PM on Mon–Thu. <a href="tel:+18589643714" style="color: #d4a017">(858) 964-3714</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Map Section -->
+    <div class="map-section" id="map">
+      <h3 class="map-title">🗺️ Interactive Map - All Stops</h3>
+      <div class="map-container">
+        <div class="map-placeholder">
+          <i data-lucide="map-pin" style="font-size: 3rem;"></i>
+          <p><strong>Map Integration</strong></p>
+          <p style="font-size: 0.9rem; margin-top: 10px;">La Jolla Cove • Sushi Nekosan • Bobboi Gelato</p>
+          <p style="font-size: 0.85rem; margin-top: 10px; color: #888;">*Map requires Google Maps API key for full functionality</p>
+          <p style="font-size: 0.85rem; color: #c44569; margin-top: 10px;">All stops are within walking distance!</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Photo Carousel -->
+    <div class="carousel-section" id="carousel">
+      <h3 class="carousel-title">📸 Date Highlights Gallery</h3>
+      <div class="carousel-container">
+        <div class="carousel-track" id="carouselTrack">
+          <div class="carousel-slide">
+            <i data-lucide="sunset" style="font-size: 4rem; margin-bottom: 15px;"></i>
+            <p><strong>Coastal Sunset Views</strong></p>
+            <p style="font-size: 0.9rem;">La Jolla Cove</p>
+          </div>
+          <div class="carousel-slide">
+            <i data-lucide="utensils" style="font-size: 4rem; margin-bottom: 15px;"></i>
+            <p><strong>Artisan Sushi</strong></p>
+            <p style="font-size: 0.9rem;">Sushi Nekosan</p>
+          </div>
+          <div class="carousel-slide">
+            <i data-lucide="ice-cream-bowl" style="font-size: 4rem; margin-bottom: 15px;"></i>
+            <p><strong>Natural Gelato</strong></p>
+            <p style="font-size: 0.9rem;">Bobboi</p>
+          </div>
+          <div class="carousel-slide">
+            <i data-lucide="heart" style="font-size: 4rem; margin-bottom: 15px;"></i>
+            <p><strong>Romantic Moments</strong></p>
+            <p style="font-size: 0.9rem;">Quality Time Together</p>
+          </div>
+        </div>
+        <button class="carousel-nav carousel-prev" onclick="prevSlide()">◀</button>
+        <button class="carousel-nav carousel-next" onclick="nextSlide()">▶</button>
+        <div class="carousel-dots" id="carouselDots"></div>
+      </div>
+    </div>
+
+    <!-- Memory Timeline -->
+    <div class="memory-timeline" id="timeline">
+      <h3 class="timeline-title">✨ Your Date Timeline</h3>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-time">2:00 PM</div>
+          <div class="timeline-content">
+            <h4>🚗 Pickup & Drive</h4>
+            <p>Depart Mira Mesa for La Jolla Cove</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time">2:30 PM</div>
+          <div class="timeline-content">
+            <h4>🌊 Coastal Stroll</h4>
+            <p>Walk the bluff, enjoy ocean views</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time">3:00 PM</div>
+          <div class="timeline-content">
+            <h4>🔦 Sea Cave Adventure</h4>
+            <p>Optional: Explore Sunny Jim's Sea Cave</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time">4:30 PM</div>
+          <div class="timeline-content">
+            <h4>🍣 Dinner Time</h4>
+            <p>Sushi Nekosan - flavorful & intimate</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time">5:30 PM</div>
+          <div class="timeline-content">
+            <h4>🍨 Sweet Finish</h4>
+            <p>Bobboi Gelato - linger & enjoy</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time">6:00 PM</div>
+          <div class="timeline-content">
+            <h4>🌅 Sunset Walk</h4>
+            <p>End-of-date stroll by the water</p>
+          </div>
         </div>
       </div>
     </div>
@@ -1201,14 +2264,55 @@ h1 {
 // Initialize Lucide icons
 lucide.createIcons();
 
-// Loading Screen
+// ===== PARALLAX EFFECT =====
+let ticking = false;
+
+window.addEventListener('scroll', function(e) {
+  if (!ticking) {
+    window.requestAnimationFrame(function() {
+      const scrolled = window.pageYOffset;
+      const layer1 = document.getElementById('layer1');
+      const layer2 = document.getElementById('layer2');
+      const layer3 = document.getElementById('layer3');
+      
+      if (layer1) layer1.style.transform = 'translateY(' + (scrolled * 0.3) + 'px)';
+      if (layer2) layer2.style.transform = 'translateY(' + (scrolled * 0.5) + 'px)';
+      if (layer3) layer3.style.transform = 'translateY(' + (scrolled * 0.7) + 'px)';
+      
+      ticking = false;
+    });
+    ticking = true;
+  }
+});
+
+// ===== CURSOR SPARKLES =====
+document.addEventListener('mousemove', function(e) {
+  if (Math.random() > 0.92) {
+    createCursorSparkle(e.clientX, e.clientY);
+  }
+});
+
+function createCursorSparkle(x, y) {
+  const sparkle = document.createElement('div');
+  sparkle.className = 'cursor-sparkle';
+  sparkle.textContent = ['✨', '💕', '💫', '💖'][Math.floor(Math.random() * 4)];
+  sparkle.style.left = x + 'px';
+  sparkle.style.top = y + 'px';
+  sparkle.style.position = 'fixed';
+  sparkle.style.fontSize = (Math.random() * 10 + 10) + 'px';
+  document.body.appendChild(sparkle);
+  
+  setTimeout(() => sparkle.remove(), 1000);
+}
+
+// ===== LOADING SCREEN =====
 window.addEventListener('load', function() {
   setTimeout(function() {
     document.getElementById('loadingScreen').classList.add('hidden');
   }, 1500);
 });
 
-// Create floating particles
+// ===== FLOATING PARTICLES =====
 function createParticles() {
   const particlesContainer = document.getElementById('particles');
   const emojis = ['💕', '✨', '💖', '💫', '🌸'];
@@ -1226,19 +2330,19 @@ function createParticles() {
 }
 createParticles();
 
-// Typewriter Effect
+// ===== TYPEWRITER EFFECT =====
 const typewriterText = "Ocean views and a calm coastal stroll, a little \"this feels special\" micro-adventure, then a flavorful (not bland) Asian dinner and a sweet finish. Unhurried, with lots of sit-and-chat moments built in.";
-let i = 0;
+let charIndex = 0;
 
 function typeWriter() {
-  if (i < typewriterText.length) {
-    document.getElementById("typewriterText").textContent += typewriterText.charAt(i);
-    i++;
+  if (charIndex < typewriterText.length) {
+    document.getElementById("typewriterText").textContent += typewriterText.charAt(charIndex);
+    charIndex++;
     setTimeout(typeWriter, 30);
   }
 }
 
-// Countdown Timer
+// ===== COUNTDOWN TIMER =====
 function updateCountdown() {
   const targetDate = new Date('March 30, 2026 14:00:00').getTime();
   const now = new Date().getTime();
@@ -1260,7 +2364,20 @@ function updateCountdown() {
 setInterval(updateCountdown, 1000);
 updateCountdown();
 
-// Scroll animations
+// ===== WEATHER WIDGET =====
+function refreshWeather() {
+  // Simulated weather data (would require API key for real data)
+  const temps = [62, 65, 68, 64, 66];
+  const temp = temps[Math.floor(Math.random() * temps.length)];
+  document.getElementById('weatherTemp').textContent = temp + '°F';
+  document.getElementById('weatherDesc').textContent = 'Partly cloudy with coastal breeze';
+  document.getElementById('weatherWind').textContent = 'Wind: ' + (Math.floor(Math.random() * 10) + 5) + ' mph';
+  document.getElementById('weatherHumidity').textContent = 'Humidity: ' + (Math.floor(Math.random() * 20) + 60) + '%';
+  document.getElementById('weatherFeels').textContent = 'Feels like: ' + (temp - 2) + '°F';
+}
+refreshWeather();
+
+// ===== SCROLL ANIMATIONS =====
 function handleScroll() {
   const elements = [
     document.getElementById('summary'),
@@ -1269,17 +2386,34 @@ function handleScroll() {
     document.getElementById('stop1'),
     document.getElementById('stop2'),
     document.getElementById('stop3'),
+    document.getElementById('map'),
+    document.getElementById('carousel'),
+    document.getElementById('timeline'),
     document.getElementById('checklist'),
     document.getElementById('share'),
     document.getElementById('budget')
   ];
   
   elements.forEach(element => {
-    const rect = element.getBoundingClientRect();
-    const isVisible = rect.top < window.innerHeight - 100;
+    if (element) {
+      const rect = element.getBoundingClientRect();
+      const isVisible = rect.top < window.innerHeight - 100;
+      
+      if (isVisible) {
+        element.classList.add('visible');
+      }
+    }
+  });
+  
+  // Timeline items
+  document.querySelectorAll('.timeline-item').forEach((item, index) => {
+    const rect = item.getBoundingClientRect();
+    const isVisible = rect.top < window.innerHeight - 50;
     
     if (isVisible) {
-      element.classList.add('visible');
+      setTimeout(() => {
+        item.classList.add('visible');
+      }, index * 150);
     }
   });
 }
@@ -1299,14 +2433,14 @@ const summaryObserver = new IntersectionObserver((entries) => {
 
 summaryObserver.observe(document.getElementById('summary'));
 
-// Interactive Timeline (Expand/Collapse)
+// ===== INTERACTIVE TIMELINE (Expand/Collapse) =====
 document.querySelectorAll('.stop-title').forEach(title => {
   title.addEventListener('click', function() {
     this.parentElement.classList.toggle('collapsed');
   });
 });
 
-// Interactive Checklist
+// ===== INTERACTIVE CHECKLIST =====
 function toggleCheck(item) {
   item.classList.toggle('checked');
   
@@ -1318,7 +2452,7 @@ function toggleCheck(item) {
   }
 }
 
-// Love Notes Modal
+// ===== LOVE NOTES MODAL =====
 document.getElementById('loveNoteTrigger').addEventListener('click', function() {
   document.getElementById('loveNoteModal').classList.add('active');
 });
@@ -1333,7 +2467,52 @@ document.getElementById('loveNoteModal').addEventListener('click', function(e) {
   }
 });
 
-// Share Buttons
+// ===== MOBILE MENU =====
+document.getElementById('mobileMenuToggle').addEventListener('click', function() {
+  this.classList.toggle('active');
+  document.getElementById('mobileMenu').classList.toggle('active');
+});
+
+document.querySelectorAll('.mobile-menu-link').forEach(link => {
+  link.addEventListener('click', function() {
+    document.getElementById('mobileMenuToggle').classList.remove('active');
+    document.getElementById('mobileMenu').classList.remove('active');
+  });
+});
+
+// ===== MUSIC PLAYER =====
+let isPlaying = false;
+let musicPlayer = document.getElementById('musicPlayer');
+let musicToggle = document.getElementById('musicToggle');
+
+function toggleMusicPlayer() {
+  musicPlayer.classList.toggle('active');
+}
+
+function togglePlay() {
+  isPlaying = !isPlaying;
+  const btn = document.getElementById('playPauseBtn');
+  btn.textContent = isPlaying ? '⏸' : '▶';
+  
+  // Visual feedback
+  if (isPlaying) {
+    btn.style.background = 'linear-gradient(135deg, #ff6b9d, #c44569)';
+  } else {
+    btn.style.background = 'linear-gradient(135deg, #ff6b9d, #c44569)';
+  }
+}
+
+function prevTrack() {
+  // Simulated previous track
+  console.log('Previous track');
+}
+
+function nextTrack() {
+  // Simulated next track
+  console.log('Next track');
+}
+
+// ===== SHARE BUTTONS =====
 function copyLink() {
   navigator.clipboard.writeText(window.location.href).then(function() {
     alert('Link copied to clipboard! 💕');
@@ -1350,6 +2529,84 @@ function shareWhatsApp() {
   const text = `Check out this beautiful coastal date plan! 🌊💕 ${window.location.href}`;
   window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
 }
+
+// ===== LIGHTBOX =====
+let currentLightboxIndex = 0;
+let currentLightboxStop = 'stop1';
+
+function openLightbox(index, stop) {
+  currentLightboxIndex = index;
+  currentLightboxStop = stop;
+  document.getElementById('lightbox').classList.add('active');
+  // In real implementation, would load actual images
+  document.getElementById('lightboxImage').alt = `Gallery Image ${index + 1} from ${stop}`;
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('active');
+}
+
+function prevImage() {
+  currentLightboxIndex = (currentLightboxIndex - 1 + 3) % 3;
+  document.getElementById('lightboxImage').alt = `Gallery Image ${currentLightboxIndex + 1}`;
+}
+
+function nextImage() {
+  currentLightboxIndex = (currentLightboxIndex + 1) % 3;
+  document.getElementById('lightboxImage').alt = `Gallery Image ${currentLightboxIndex + 1}`;
+}
+
+// Close lightbox with escape key
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    closeLightbox();
+    document.getElementById('loveNoteModal').classList.remove('active');
+    musicPlayer.classList.remove('active');
+  }
+});
+
+// ===== PHOTO CAROUSEL =====
+let currentSlide = 0;
+const totalSlides = 4;
+
+function initCarousel() {
+  const dotsContainer = document.getElementById('carouselDots');
+  for (let i = 0; i < totalSlides; i++) {
+    const dot = document.createElement('button');
+    dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+    dot.onclick = () => goToSlide(i);
+    dotsContainer.appendChild(dot);
+  }
+}
+
+function updateCarousel() {
+  const track = document.getElementById('carouselTrack');
+  track.style.transform = `translateX(-${currentSlide * 100}%)`;
+  
+  document.querySelectorAll('.carousel-dot').forEach((dot, index) => {
+    dot.classList.toggle('active', index === currentSlide);
+  });
+}
+
+function nextSlide() {
+  currentSlide = (currentSlide + 1) % totalSlides;
+  updateCarousel();
+}
+
+function prevSlide() {
+  currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+  updateCarousel();
+}
+
+function goToSlide(index) {
+  currentSlide = index;
+  updateCarousel();
+}
+
+initCarousel();
+
+// Auto-advance carousel
+setInterval(nextSlide, 5000);
 </script>
 </body>
 </html>
