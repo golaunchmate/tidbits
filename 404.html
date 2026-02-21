@@ -3,43 +3,397 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Building Your Page...</title>
+    <title>✨ Loading Your Spark... ✨</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
-            margin: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #f9f9f9;
-            color: #333;
+            min-height: 100vh;
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #ff6b9d 0%, #c44569 50%, #ff6b9d 100%);
+            background-size: 200% 200%;
+            animation: gradientShift 8s ease-in-out infinite;
+            color: white;
+            overflow: hidden;
+            position: relative;
         }
-        .loader {
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #3498db;
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        /* Floating background hearts */
+        .bg-hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .bg-heart {
+            position: absolute;
+            opacity: 0.1;
+            animation: floatHeart 15s infinite ease-in-out;
+        }
+
+        @keyframes floatHeart {
+            0%, 100% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% { opacity: 0.1; }
+            90% { opacity: 0.1; }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Main container */
+        .container {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 40px;
+        }
+
+        /* Logo */
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            letter-spacing: 0.05em;
+        }
+
+        /* Heart Loading Animation */
+        .heart-loader {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 40px;
+        }
+
+        /* Central pulsing heart */
+        .center-heart {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3.5rem;
+            animation: heartbeat 1.2s ease-in-out infinite;
+            z-index: 5;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            15% { transform: translate(-50%, -50%) scale(1.15); }
+            30% { transform: translate(-50%, -50%) scale(1); }
+            45% { transform: translate(-50%, -50%) scale(1.1); }
+            60% { transform: translate(-50%, -50%) scale(1); }
+        }
+
+        /* Orbiting hearts */
+        .orbit {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin-bottom: 20px;
         }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+
+        .orbit-1 {
+            width: 120px;
+            height: 120px;
+            animation: rotate 3s linear infinite;
         }
-        h1 { font-size: 1.5rem; margin: 0; }
-        p { color: #666; font-size: 0.9rem; }
+
+        .orbit-2 {
+            width: 120px;
+            height: 120px;
+            animation: rotate 4s linear infinite reverse;
+        }
+
+        .orbit-heart {
+            position: absolute;
+            font-size: 1.2rem;
+            animation: counterRotate 3s linear infinite;
+        }
+
+        .orbit-1 .orbit-heart:nth-child(1) {
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .orbit-1 .orbit-heart:nth-child(2) {
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .orbit-1 .orbit-heart:nth-child(3) {
+            left: -10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .orbit-1 .orbit-heart:nth-child(4) {
+            right: -10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .orbit-2 .orbit-heart:nth-child(1) {
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation-delay: -1.5s;
+        }
+
+        .orbit-2 .orbit-heart:nth-child(2) {
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation-delay: -1.5s;
+        }
+
+        @keyframes rotate {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        @keyframes counterRotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(-360deg); }
+        }
+
+        /* Sparkle particles */
+        .sparkles {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 180px;
+            height: 180px;
+        }
+
+        .sparkle {
+            position: absolute;
+            font-size: 0.8rem;
+            animation: sparkle 2s ease-in-out infinite;
+        }
+
+        .sparkle:nth-child(1) { top: 0; left: 50%; animation-delay: 0s; }
+        .sparkle:nth-child(2) { top: 15%; right: 10%; animation-delay: 0.3s; }
+        .sparkle:nth-child(3) { top: 50%; right: 0; animation-delay: 0.6s; }
+        .sparkle:nth-child(4) { bottom: 15%; right: 10%; animation-delay: 0.9s; }
+        .sparkle:nth-child(5) { bottom: 0; left: 50%; animation-delay: 1.2s; }
+        .sparkle:nth-child(6) { bottom: 15%; left: 10%; animation-delay: 1.5s; }
+        .sparkle:nth-child(7) { top: 50%; left: 0; animation-delay: 1.8s; }
+        .sparkle:nth-child(8) { top: 15%; left: 10%; animation-delay: 2.1s; }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0.3; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* Loading progress ring */
+        .progress-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 160px;
+            height: 160px;
+        }
+
+        .progress-ring-circle {
+            fill: none;
+            stroke: rgba(255, 255, 255, 0.3);
+            stroke-width: 2;
+            stroke-linecap: round;
+            animation: progressSpin 2s linear infinite;
+        }
+
+        @keyframes progressSpin {
+            0% {
+                stroke-dasharray: 0, 500;
+                stroke-dashoffset: 0;
+                stroke: rgba(255, 255, 255, 0.5);
+            }
+            50% {
+                stroke-dasharray: 250, 500;
+                stroke-dashoffset: 0;
+                stroke: rgba(255, 255, 255, 0.8);
+            }
+            100% {
+                stroke-dasharray: 500, 500;
+                stroke-dashoffset: -500;
+                stroke: rgba(255, 255, 255, 0.5);
+            }
+        }
+
+        /* Text */
+        .title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            font-weight: 400;
+            opacity: 0.95;
+            line-height: 1.6;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Loading dots */
+        .loading-dots {
+            margin-top: 30px;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        .loading-dots span {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            margin: 0 4px;
+            animation: bounce 1.4s ease-in-out infinite;
+        }
+
+        .loading-dots span:nth-child(1) { animation-delay: 0s; }
+        .loading-dots span:nth-child(2) { animation-delay: 0.2s; }
+        .loading-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes bounce {
+            0%, 80%, 100% { transform: scale(0.6); opacity: 0.5; }
+            40% { transform: scale(1); opacity: 1; }
+        }
+
+        /* Footer note */
+        .footer-note {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.85rem;
+            opacity: 0.7;
+            animation: fadeInUp 0.8s ease-out 0.6s both;
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .title { font-size: 1.8rem; }
+            .subtitle { font-size: 1rem; padding: 0 20px; }
+            .heart-loader { transform: scale(0.85); }
+        }
     </style>
 </head>
 <body>
 
-    <div class="loader"></div>
-    <h1>Deploying your content...</h1>
-    <p>This page will automatically refresh in a few seconds.</p>
+    <!-- Floating Background Hearts -->
+    <div class="bg-hearts" id="bgHearts"></div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="logo">💕 DateFlo</div>
+        
+        <!-- Heart Loading Animation -->
+        <div class="heart-loader">
+            <!-- SVG Progress Ring -->
+            <svg class="progress-ring" viewBox="0 0 160 160">
+                <circle class="progress-ring-circle" cx="80" cy="80" r="75"/>
+            </svg>
+            
+            <!-- Sparkles -->
+            <div class="sparkles">
+                <span class="sparkle">✨</span>
+                <span class="sparkle">✨</span>
+                <span class="sparkle">✨</span>
+                <span class="sparkle">✨</span>
+                <span class="sparkle">✨</span>
+                <span class="sparkle">✨</span>
+                <span class="sparkle">✨</span>
+                <span class="sparkle">✨</span>
+            </div>
+            
+            <!-- Orbiting Hearts -->
+            <div class="orbit orbit-1">
+                <span class="orbit-heart">💖</span>
+                <span class="orbit-heart">💖</span>
+                <span class="orbit-heart">💖</span>
+                <span class="orbit-heart">💖</span>
+            </div>
+            <div class="orbit orbit-2">
+                <span class="orbit-heart">💕</span>
+                <span class="orbit-heart">💕</span>
+            </div>
+            
+            <!-- Center Heart -->
+            <div class="center-heart">💗</div>
+        </div>
+
+        <h1 class="title">✨ One moment ✨</h1>
+        <p class="subtitle">💖 Romance takes a second to arrive<br>(but it's worth it) 💖</p>
+        
+        <div class="loading-dots">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <p class="footer-note">This page will automatically refresh when ready</p>
 
     <script>
+        // Create floating background hearts
+        function createBackgroundHearts() {
+            const container = document.getElementById('bgHearts');
+            const hearts = ['💕', '💖', '💗', '💝', '✨', '💫'];
+            
+            for (let i = 0; i < 15; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'bg-heart';
+                heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.fontSize = (Math.random() * 2 + 1) + 'rem';
+                heart.style.animationDelay = Math.random() * 15 + 's';
+                heart.style.animationDuration = (15 + Math.random() * 10) + 's';
+                container.appendChild(heart);
+            }
+        }
+        
+        createBackgroundHearts();
+
         // The URL the user tried to visit
         const targetUrl = window.location.href;
 
