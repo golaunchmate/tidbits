@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="tidbit-type" content="founder">
+    <meta name="tidbit-subject" content="Zach Brenner">
+    <meta name="tidbit-company" content="Sonomos">
+    <meta name="tidbit-date" content="2026-02-22">
+    <meta name="tidbit-period" content="2026-W08">
+    <title>Zach Brenner — Sonomos — Feb 22, 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body { 
+            font-family: 'Inter', -apple-system, sans-serif; 
+            background: #0f0f0f; 
+            color: #e5e5e5; 
+            line-height: 1.6; 
+        }
+        
+        .slide {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        
+        .card {
+            max-width: 600px;
+            width: 100%;
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            padding: 3rem;
+            position: relative;
+        }
+        
+        .page-number {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+        
+        h2 {
+            font-size: 1.875rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #60a5fa;
+        }
+        
+        h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        p {
+            font-size: 1.125rem;
+            margin-bottom: 1.25rem;
+            color: #d1d5db;
+        }
+        
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            font-size: 1.25rem;
+            color: #9ca3af;
+            margin-bottom: 2rem;
+        }
+        
+        .scroll-hint {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-top: 2rem;
+        }
+        
+        .highlight { color: #60a5fa; }
+        .decision { color: #34d399; }
+        .tension { color: #f97316; }
+        
+        .stat-row {
+            display: flex;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .stat {
+            flex: 1;
+        }
+        
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #60a5fa;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 0.875rem;
+            color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        ul {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+            color: #9ca3af;
+        }
+        
+        li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #60a5fa;
+        }
+        
+        .quote {
+            font-size: 1.375rem;
+            font-weight: 600;
+            font-style: italic;
+            color: #34d399;
+            margin: 2rem 0;
+            padding-left: 1.5rem;
+            border-left: 3px solid #34d399;
+        }
+        
+        .check { color: #34d399; }
+        .x { color: #ef4444; }
+        
+        .small {
+            font-size: 0.9375rem;
+            color: #6b7280;
+        }
+        
+        .callout {
+            background: #252525;
+            border-left: 3px solid #f97316;
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+        }
+        
+        .callout p {
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- SLIDE 1: COVER -->
+    <div class="slide">
+        <div class="card">
+            <p class="label">Tidbit · Week of Feb 20, 2026</p>
+            <h1>Zach Brenner</h1>
+            <p class="subtitle">Sonomos · Built the Right Thing, Pitched It Wrong</p>
+            <p class="scroll-hint">scroll ↓</p>
+            <div class="page-number">1/5</div>
+        </div>
+    </div>
+
+    <!-- SLIDE 2: WHERE I STARTED -->
+    <div class="slide">
+        <div class="card">
+            <h2>Where I Started</h2>
+            
+            <p>I thought the blocker was distribution.</p>
+            
+            <p>Chrome Web Store approval. Edge Add-on Store. Waiting for review. Can't get it on lawyers' computers fast enough.</p>
+            
+            <p>So I demoed to 4 attorneys instead. All positive. But something was off.</p>
+            
+            <p class="label">The Pattern</p>
+            <p>I kept starting with: <span class="tension">"Do you use AI?"</span></p>
+            
+            <p>Solo practitioners said "not for me." Firm attorneys were interested. But there was a hesitation I couldn't explain.</p>
+            
+            <p>Thursday morning, Craig and Neal told me what was happening.</p>
+            
+            <div class="page-number">2/5</div>
+        </div>
+    </div>
+
+    <!-- SLIDE 3: WHAT I DISCOVERED -->
+    <div class="slide">
+        <div class="card">
+            <h2>What I Discovered</h2>
+            
+            <p class="label">The Pitch Problem</p>
+            <p>Neal: <span class="tension">"By using ['Do you use AI?'] as your starting sentence, you made this sound like a tool to stop people from using AI."</span></p>
+            
+            <p>That's why lawyers got defensive. They thought I was offering to monitor them. Police their AI usage.</p>
+            
+            <p>Solo practitioners don't want to monitor themselves. Of course they said no.</p>
+            
+            <div class="callout">
+                <p class="label">The Reframe</p>
+                <p>It's not about AI. It's about <span class="highlight">personal information.</span></p>
+            </div>
+            
+            <h3>New Opening</h3>
+            <p class="quote">"What stops you from putting personal information in the wrong places?"</p>
+            
+            <p class="label">The Tool Validation</p>
+            <p class="decision">Craig: "This is one of the more compelling demos I've seen. I look at it and I go, of course I want this on my shoulder. 100%."</p>
+            
+            <p><strong>The tool is good. The pitch is the problem.</strong></p>
+            
+            <div class="page-number">3/5</div>
+        </div>
+    </div>
+
+    <!-- SLIDE 4: THE REAL OPPORTUNITY -->
+    <div class="slide">
+        <div class="card">
+            <h2>The Real Opportunity</h2>
+            
+            <p class="label">Distribution Shift</p>
+            <p>Neal told me to <span class="tension">stop waiting for Chrome Web Store.</span></p>
+            
+            <p>Instead: <span class="highlight">Collison installation.</span></p>
+            
+            <h3>What Patrick Collison Did (Stripe)</h3>
+            <p>Sat with first 200 customers personally. Installed Stripe himself.</p>
+            <p class="quote">"I will not leave your side until I get you up and running."</p>
+            
+            <p class="label">The New Plan</p>
+            <ul>
+                <li>Go to lawyers' offices</li>
+                <li>Install the tool myself</li>
+                <li>Don't leave until they're running</li>
+                <li>Do this for the first 200 customers</li>
+            </ul>
+            
+            <p class="label">Website Overhaul</p>
+            <ul>
+                <li>New headline: "Privacy layer for AI"</li>
+                <li>Add checkout flow — capture credit cards</li>
+                <li>Kill the confusing "Thinkers belong to big thoughts" tagline</li>
+            </ul>
+            
+            <div class="page-number">4/5</div>
+        </div>
+    </div>
+
+    <!-- SLIDE 5: WHERE I'M AT -->
+    <div class="slide">
+        <div class="card">
+            <h2>Where I'm At</h2>
+            
+            <p class="label">This Week</p>
+            <ul>
+                <li>Get lawyers using the tool — Collison method</li>
+                <li>Reframe pitch — lead with personal information</li>
+                <li>Add Stripe checkout to website</li>
+                <li>Update headline to "Privacy layer for AI"</li>
+                <li>Go live with $7.99/month</li>
+                <li>Send to Craig's wife (attorney) for real user test</li>
+            </ul>
+            
+            <p class="label">The Open Questions</p>
+            <p class="tension">Will lawyers actually use it once installed? Or will they ignore the warnings?</p>
+            <p class="tension">Is the solo practitioner market wrong? Should I pivot to managing partners?</p>
+            <p class="tension">Is the insurance company play viable? Or is it a distraction?</p>
+            
+            <p class="quote">I thought I needed to build the perfect tool. I actually needed to pitch the right problem.</p>
+            
+            <p class="small">The tool is ready. Now it's about getting it on lawyers' computers and watching what happens.</p>
+            
+            <div class="page-number">5/5</div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            }
+        });
+    </script>
+
+</body>
+</html>
