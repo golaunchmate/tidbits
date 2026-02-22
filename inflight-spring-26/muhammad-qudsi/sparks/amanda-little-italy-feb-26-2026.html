@@ -1,0 +1,1823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amanda's Little Italy Date</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: linear-gradient(135deg, #ffeef8 0%, #fff5f7 50%, #ffe4f1 100%);
+  color: #4a2c3e;
+  line-height: 1.7;
+  padding: 40px 20px;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/* Parallax Background Layers */
+.parallax-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.parallax-layer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+.layer-1 {
+  background: radial-gradient(circle at 20% 30%, rgba(255, 107, 157, 0.08) 0%, transparent 50%);
+}
+
+.layer-2 {
+  background: radial-gradient(circle at 80% 70%, rgba(196, 69, 105, 0.06) 0%, transparent 50%);
+}
+
+.layer-3 {
+  background: radial-gradient(circle at 50% 50%, rgba(255, 238, 248, 0.1) 0%, transparent 70%);
+}
+
+/* Cursor Sparkles */
+.cursor-sparkle {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  animation: sparkleFloat 1s ease-out forwards;
+}
+
+@keyframes sparkleFloat {
+  0% { opacity: 1; transform: scale(1) translateY(0); }
+  100% { opacity: 0; transform: scale(0) translateY(-50px); }
+}
+
+/* Loading Screen */
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #ff6b9d, #c44569);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.loading-screen.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loading-heart {
+  font-size: 4rem;
+  animation: heartbeat 1s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+}
+
+/* Floating Particles */
+.particle {
+  position: fixed;
+  pointer-events: none;
+  opacity: 0.6;
+  z-index: 1;
+  animation: float 15s infinite ease-in-out;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.6; }
+  90% { opacity: 0.6; }
+  100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 24px;
+  box-shadow: 0 20px 60px rgba(219, 112, 147, 0.15);
+  overflow: visible;
+  position: relative;
+  z-index: 2;
+}
+
+.header {
+  background: linear-gradient(135deg, #ff6b9d 0%, #c44569 100%);
+  padding: 60px 40px;
+  text-align: center;
+  color: white;
+  position: relative;
+  animation: gradientShift 10s ease-in-out infinite;
+  background-size: 200% 200%;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.header::before {
+  content: "💕";
+  position: absolute;
+  top: 20px;
+  left: 40px;
+  font-size: 2rem;
+  opacity: 0.3;
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.header::after {
+  content: "✨";
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  font-size: 2rem;
+  opacity: 0.3;
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.3; }
+  50% { transform: scale(1.2); opacity: 0.5; }
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+}
+
+.logo {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  opacity: 0.9;
+}
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  opacity: 0.95;
+  font-weight: 300;
+}
+
+.content {
+  padding: 50px 40px;
+}
+
+.meta {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 40px;
+  padding: 30px;
+  background: linear-gradient(135deg, #fff5f7, #ffeef8);
+  border-radius: 16px;
+  border-left: 4px solid #ff6b9d;
+}
+
+.meta-item {
+  flex: 1;
+}
+
+.meta-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #c44569;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.meta-value {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #4a2c3e;
+}
+
+/* Countdown Timer */
+.countdown {
+  background: linear-gradient(135deg, #ff6b9d, #c44569);
+  color: white;
+  padding: 25px;
+  border-radius: 16px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.countdown-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+}
+
+.countdown-timer {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.countdown-item {
+  text-align: center;
+}
+
+.countdown-value {
+  font-size: 2rem;
+  font-weight: 700;
+  display: block;
+}
+
+.countdown-label {
+  font-size: 0.75rem;
+  opacity: 0.9;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.summary {
+  background: #fff;
+  padding: 35px;
+  border-radius: 16px;
+  border: 2px solid #ffe4f1;
+  margin-bottom: 40px;
+  box-shadow: 0 4px 15px rgba(219, 112, 147, 0.08);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.summary.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.summary-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  color: #c44569;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.summary-title::before {
+  content: "🌹";
+  font-size: 1.5rem;
+}
+
+.summary p {
+  font-size: 1.05rem;
+  color: #5a3c4e;
+  line-height: 1.8;
+}
+
+/* Collapsible Sections */
+.collapsible-section {
+  margin: 30px 0;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.collapsible-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.collapsible-header {
+  background: linear-gradient(135deg, #fff5f7, #ffeef8);
+  padding: 20px 25px;
+  border-radius: 16px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid #ffe4f1;
+  transition: all 0.3s ease;
+}
+
+.collapsible-header:hover {
+  background: linear-gradient(135deg, #ffeef8, #ffe4f1);
+  border-color: #ff6b9d;
+}
+
+.collapsible-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  color: #c44569;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.collapsible-icon {
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.collapsible-section.open .collapsible-icon {
+  transform: rotate(180deg);
+}
+
+.collapsible-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+  background: white;
+  border-radius: 0 0 16px 16px;
+}
+
+.collapsible-section.open .collapsible-content {
+  max-height: 5000px;
+}
+
+.collapsible-inner {
+  padding: 25px;
+}
+
+/* Weather Widget */
+.weather-widget {
+  background: linear-gradient(135deg, #e8f4fd, #c4e1f5);
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 4px 15px rgba(44, 95, 141, 0.1);
+}
+
+.weather-widget-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.weather-widget-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  color: #2c5f8d;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.weather-date-badge {
+  background: rgba(44, 95, 141, 0.15);
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  color: #2c5f8d;
+  font-weight: 500;
+}
+
+.weather-widget-content {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.weather-icon {
+  font-size: 3rem;
+}
+
+.weather-info {
+  flex: 1;
+}
+
+.weather-temp {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2c5f8d;
+  margin-bottom: 5px;
+}
+
+.weather-desc {
+  color: #2c5f8d;
+  font-size: 0.95rem;
+}
+
+.weather-details {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 15px;
+}
+
+.weather-detail-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #2c5f8d;
+  font-size: 0.9rem;
+}
+
+.weather-note {
+  background: rgba(44, 95, 141, 0.1);
+  padding: 12px 15px;
+  border-radius: 10px;
+  margin-top: 15px;
+  font-size: 0.85rem;
+  color: #2c5f8d;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  color: #c44569;
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.stop {
+  background: linear-gradient(135deg, #fff 0%, #fffbfc 100%);
+  padding: 35px;
+  border-radius: 20px;
+  margin-bottom: 35px;
+  border: 2px solid #ffe4f1;
+  position: relative;
+  box-shadow: 0 8px 25px rgba(219, 112, 147, 0.1);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.stop.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stop::before {
+  content: attr(data-number);
+  position: absolute;
+  top: -15px;
+  left: 30px;
+  background: linear-gradient(135deg, #ff6b9d, #c44569);
+  color: white;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.2rem;
+  box-shadow: 0 4px 15px rgba(196, 69, 105, 0.3);
+}
+
+.stop-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  color: #4a2c3e;
+  margin-bottom: 8px;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.stop-title:hover {
+  color: #c44569;
+}
+
+.stop-title::after {
+  content: " ▼";
+  font-size: 0.7rem;
+  opacity: 0.5;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.stop.collapsed .stop-title::after {
+  transform: rotate(-90deg);
+}
+
+.stop-content {
+  max-height: 2000px;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+}
+
+.stop.collapsed .stop-content {
+  max-height: 0;
+}
+
+.stop-location {
+  color: #c44569;
+  font-size: 0.95rem;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.stop-phone {
+  color: #888;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+}
+
+.vibe {
+  background: #fff5f7;
+  padding: 15px 20px;
+  border-radius: 12px;
+  margin: 20px 0;
+  border-left: 3px solid #ff6b9d;
+  font-style: italic;
+  color: #5a3c4e;
+}
+
+.detail-section {
+  margin: 20px 0;
+}
+
+.detail-title {
+  font-weight: 600;
+  color: #c44569;
+  margin-bottom: 10px;
+  font-size: 1.05rem;
+}
+
+.detail-section ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.detail-section li {
+  padding-left: 25px;
+  position: relative;
+  margin-bottom: 8px;
+  color: #5a3c4e;
+}
+
+.detail-section li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: #ff6b9d;
+  font-weight: 600;
+}
+
+.detail-section p {
+  color: #5a3c4e;
+  margin-bottom: 8px;
+}
+
+/* Photo Gallery */
+.photo-gallery {
+  margin: 20px 0;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+}
+
+.gallery-image {
+  width: 100%;
+  height: 150px;
+  background: linear-gradient(135deg, #fff5f7, #ffeef8);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.gallery-image:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(219, 112, 147, 0.2);
+}
+
+.gallery-placeholder {
+  color: #c44569;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+/* Lightbox */
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 20px;
+}
+
+.lightbox.active {
+  display: flex;
+}
+
+.lightbox-content {
+  position: relative;
+  max-width: 90%;
+  max-height: 90%;
+}
+
+.lightbox-image {
+  max-width: 100%;
+  max-height: 80vh;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  background: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.lightbox-close:hover {
+  transform: scale(1.1);
+}
+
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: white;
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.lightbox-prev { left: -70px; }
+.lightbox-next { right: -70px; }
+
+.lightbox-nav:hover {
+  background: #ff6b9d;
+  color: white;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.recommendations {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  margin: 40px 0;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.recommendations.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.rec-card {
+  background: linear-gradient(135deg, #fff5f7, #ffeef8);
+  padding: 25px;
+  border-radius: 16px;
+  border: 2px solid #ffe4f1;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.rec-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(219, 112, 147, 0.15);
+}
+
+.rec-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  color: #c44569;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.rec-item {
+  margin-bottom: 18px;
+}
+
+.rec-number {
+  display: inline-block;
+  background: #ff6b9d;
+  color: white;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 24px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-right: 8px;
+}
+
+.rec-text {
+  color: #5a3c4e;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Interactive Checklist */
+.checklist {
+  background: #fff;
+  padding: 30px;
+  border-radius: 16px;
+  border: 2px solid #ffe4f1;
+  box-shadow: 0 4px 15px rgba(219, 112, 147, 0.08);
+}
+
+.checklist-item {
+  padding: 12px 0;
+  border-bottom: 1px solid #ffe4f1;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.checklist-item:last-child {
+  border-bottom: none;
+}
+
+.checklist-item:hover {
+  background: #fff5f7;
+  padding-left: 10px;
+}
+
+.checklist-checkbox {
+  width: 24px;
+  height: 24px;
+  border: 2px solid #c44569;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.checklist-item.checked .checklist-checkbox {
+  background: #c44569;
+  color: white;
+}
+
+.checklist-text {
+  color: #5a3c4e;
+  flex: 1;
+}
+
+.checklist-item.checked .checklist-text {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+/* Share Buttons */
+.share-section {
+  margin: 40px 0;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.share-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.share-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  color: #c44569;
+  margin-bottom: 15px;
+}
+
+.share-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.share-btn {
+  padding: 12px 24px;
+  border-radius: 25px;
+  border: none;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.share-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.share-copy {
+  background: linear-gradient(135deg, #ff6b9d, #c44569);
+  color: white;
+}
+
+/* Tooltips */
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip-text {
+  visibility: hidden;
+  width: 180px;
+  background-color: #4a2c3e;
+  color: #fff;
+  text-align: center;
+  border-radius: 8px;
+  padding: 8px 10px;
+  position: fixed;
+  z-index: 99999;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  font-size: 0.8rem;
+  line-height: 1.3;
+  pointer-events: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.tooltip-text::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  margin-left: -6px;
+  border-width: 6px;
+  border-style: solid;
+  border-color: #4a2c3e transparent transparent transparent;
+}
+
+.tooltip:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Love Notes */
+.love-note-trigger {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #ff6b9d, #c44569);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(196, 69, 105, 0.3);
+  z-index: 100;
+  transition: all 0.3s ease;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.love-note-trigger:hover {
+  transform: scale(1.1);
+}
+
+.love-note-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.love-note-modal.active {
+  display: flex;
+}
+
+.love-note-content {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  max-width: 500px;
+  text-align: center;
+  position: relative;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.love-note-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #c44569;
+}
+
+.love-note-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  color: #c44569;
+  margin: 20px 0;
+  font-style: italic;
+}
+
+.budget {
+  background: linear-gradient(135deg, #c44569, #ff6b9d);
+  color: white;
+  padding: 35px;
+  border-radius: 20px;
+  margin-top: 50px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.budget.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.budget-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  margin-bottom: 20px;
+}
+
+.budget-items {
+  display: flex;
+  justify-content: space-around;
+  margin: 25px 0;
+  flex-wrap: wrap;
+}
+
+.budget-item {
+  text-align: center;
+  margin: 10px;
+}
+
+.budget-label {
+  font-size: 0.9rem;
+  opacity: 0.9;
+  margin-bottom: 8px;
+}
+
+.budget-value {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.budget-total {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.backup {
+  background: #fff9e6;
+  border: 2px solid #ffd966;
+  border-radius: 12px;
+  padding: 15px 20px;
+  margin: 15px 0;
+  font-size: 0.95rem;
+  color: #8b6914;
+}
+
+.backup strong {
+  color: #d4a017;
+}
+
+.btns {
+  margin: 15px 0;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.dir-btn {
+  background: linear-gradient(135deg, #ff6b9d, #c44569);
+  color: white;
+}
+
+.dir-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(196, 69, 105, 0.3);
+}
+
+.ph-btn {
+  background: #4a2c3e;
+  color: white;
+}
+
+.ph-btn:hover {
+  background: #5a3c4e;
+}
+
+.menu-btn {
+  background: #fff5f7;
+  color: #c44569;
+  border: 2px solid #c44569;
+}
+
+.menu-btn:hover {
+  background: #ffeef8;
+}
+
+.parking-link {
+  display: inline-block;
+  background: #fff5f7;
+  color: #c44569;
+  padding: 8px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  border: 2px solid #c44569;
+  margin: 5px 0;
+  transition: all 0.3s ease;
+}
+
+.parking-link:hover {
+  background: #ffeef8;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .recommendations { grid-template-columns: 1fr; }
+  .meta { flex-direction: column; gap: 15px; }
+  .budget-items { flex-direction: column; gap: 15px; }
+  h1 { font-size: 2rem; }
+  .countdown-timer { gap: 15px; }
+  .countdown-value { font-size: 1.5rem; }
+  .love-note-trigger { bottom: 20px; right: 20px; width: 50px; height: 50px; }
+  .lightbox-nav { display: none; }
+}
+</style>
+</head>
+
+<body>
+<!-- Parallax Background -->
+<div class="parallax-bg">
+  <div class="parallax-layer layer-1" id="layer1"></div>
+  <div class="parallax-layer layer-2" id="layer2"></div>
+  <div class="parallax-layer layer-3" id="layer3"></div>
+</div>
+
+<!-- Loading Screen -->
+<div class="loading-screen" id="loadingScreen">
+  <div class="loading-heart">💕</div>
+</div>
+
+<!-- Floating Particles Container -->
+<div id="particles"></div>
+
+<!-- Love Note Trigger -->
+<div class="love-note-trigger" id="loveNoteTrigger">
+  <span style="font-size: 2rem;">💝</span>
+</div>
+
+<!-- Love Note Modal -->
+<div class="love-note-modal" id="loveNoteModal">
+  <div class="love-note-content">
+    <button class="love-note-close" id="loveNoteClose">✕</button>
+    <h2 style="font-family: 'Playfair Display', serif; color: #c44569; margin-bottom: 15px;">💕 A Note for You</h2>
+    <p class="love-note-text">"May your Little Italy adventure be filled with shared slices, sweet moments, and the joy of discovering together."</p>
+    <p style="color: #5a3c4e; font-style: italic; margin-top: 20px;">— Made with love by DateFlo ✨</p>
+  </div>
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-content">
+    <button class="lightbox-close" onclick="closeLightbox()">×</button>
+    <button class="lightbox-nav lightbox-prev" onclick="prevImage()">◀</button>
+    <img class="lightbox-image" id="lightboxImage" src="" alt="Gallery Image">
+    <button class="lightbox-nav lightbox-next" onclick="nextImage()">▶</button>
+  </div>
+</div>
+
+<div class="container">
+  <div class="header">
+    <div class="logo">💕 DateFlo</div>
+    <h1>Amanda's Little Italy Date</h1>
+    <p class="subtitle">A Mini-Adventure, Pizza & Sweet Moments ✨</p>
+  </div>
+  
+  <div class="content">
+    <div class="meta">
+      <div class="meta-item">
+        <div class="meta-label">Date</div>
+        <div class="meta-value">Thursday, February 26, 2026</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Time</div>
+        <div class="meta-value">6:30 PM Pickup</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Duration</div>
+        <div class="meta-value">3-3.5 hours</div>
+      </div>
+    </div>
+    
+    <!-- Countdown Timer -->
+    <div class="countdown" id="countdown">
+      <h3 class="countdown-title">⏰ Countdown to Your Date</h3>
+      <div class="countdown-timer">
+        <div class="countdown-item">
+          <span class="countdown-value" id="days">00</span>
+          <span class="countdown-label">Days</span>
+        </div>
+        <div class="countdown-item">
+          <span class="countdown-value" id="hours">00</span>
+          <span class="countdown-label">Hours</span>
+        </div>
+        <div class="countdown-item">
+          <span class="countdown-value" id="minutes">00</span>
+          <span class="countdown-label">Minutes</span>
+        </div>
+        <div class="countdown-item">
+          <span class="countdown-value" id="seconds">00</span>
+          <span class="countdown-label">Seconds</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="summary" id="summary">
+      <h2 class="summary-title">Quick Summary</h2>
+      <p id="typewriterText"></p>
+      <p style="margin-top: 12px; font-style: italic; opacity: 0.8;">Undergrad-friendly • Quality-time focused • Walkable once you park</p>
+    </div>
+    
+    <!-- Weather Widget - FORECAST FOR DATE DAY -->
+    <div class="collapsible-section" id="weatherSection">
+      <div class="collapsible-header" onclick="toggleCollapsible('weatherSection')">
+        <div class="collapsible-title">
+          <span>🌤️</span>
+          <span>Weather Forecast - Feb 26, 2026</span>
+        </div>
+        <span class="collapsible-icon">▼</span>
+      </div>
+      <div class="collapsible-content">
+        <div class="collapsible-inner">
+          <div class="weather-widget">
+            <div class="weather-widget-header">
+              <div class="weather-widget-title">
+                <span>📅</span>
+                <span>Little Italy, San Diego</span>
+              </div>
+              <div class="weather-date-badge">6:30 PM - 9:30 PM</div>
+            </div>
+            <div class="weather-widget-content">
+              <div class="weather-icon">🌙</div>
+              <div class="weather-info">
+                <div class="weather-temp">63°F → 58°F</div>
+                <div class="weather-desc">Cooling evening, no rain expected</div>
+              </div>
+            </div>
+            <div class="weather-details">
+              <div class="weather-detail-item">
+                <span>🌡️</span>
+                <span>Evening: 63° → 58°F</span>
+              </div>
+              <div class="weather-detail-item">
+                <span>🌧️</span>
+                <span>No rain expected</span>
+              </div>
+              <div class="weather-detail-item">
+                <span>💨</span>
+                <span>Ocean breeze possible</span>
+              </div>
+            </div>
+            <div class="weather-note">
+              <span>💡</span>
+              <span>Bring a light layer! Ocean breeze can show up fast after sunset.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="recommendations" id="recommendations">
+      <div class="rec-card">
+        <h3 class="rec-title">For Amanda 💙</h3>
+        <div class="rec-item">
+          <span class="rec-number">1</span>
+          <span class="rec-text">Pick a tiny "phone-free" pocket during the first walk (even just while you cross the piazza and hit the waterfront).</span>
+        </div>
+        <div class="rec-item">
+          <span class="rec-number">2</span>
+          <span class="rec-text">Choose the dinner order around sharing: one slice each plus something you split (like a salad or garlic knots).</span>
+        </div>
+        <div class="rec-item">
+          <span class="rec-number">3</span>
+          <span class="rec-text">Bring a light layer you can toss on mid-walk. The ocean breeze in that area can show up fast after sunset.</span>
+        </div>
+      </div>
+      
+      <div class="rec-card">
+        <h3 class="rec-title">For Partner 💕</h3>
+        <div class="rec-item">
+          <span class="rec-number">1</span>
+          <span class="rec-text">Park once and stay parked. It keeps the whole night calm and "together" instead of logistical.</span>
+        </div>
+        <div class="rec-item">
+          <span class="rec-number">2</span>
+          <span class="rec-text">Take the lead on the walking loop for the first 10 minutes, then hand it back to Amanda to pick the next turn.</span>
+        </div>
+        <div class="rec-item">
+          <span class="rec-number">3</span>
+          <span class="rec-text">At gelato, pick one "safe" flavor and one "wild card" flavor to share. A fun, low-stakes little moment.</span>
+        </div>
+      </div>
+    </div>
+    
+    <h2 class="section-title">✨ The Plan</h2>
+
+    <!-- Stop 1 -->
+    <div class="stop" data-number="1" id="stop1">
+      <h3 class="stop-title">Little Italy "Mini-Hike" Loop</h3>
+      <div class="stop-content">
+        <div class="stop-location">📍 Start at: Piazza della Famiglia</div>
+        
+        <div class="btns">
+          <div class="tooltip">
+            <a href="https://www.google.com/maps/search/?api=1&query=Piazza%20della%20Famiglia%20Little%20Italy%20San%20Diego" target="_blank" class="btn dir-btn" title="Google Maps">
+              <i data-lucide="map"></i>
+            </a>
+            <span class="tooltip-text">Get directions via Google Maps</span>
+          </div>
+          <div class="tooltip">
+            <a href="https://maps.apple.com/?address=Piazza%20della%20Famiglia,%20Little%20Italy,%20San%20Diego" target="_blank" class="btn dir-btn" title="Apple Maps">
+              <i data-lucide="navigation"></i>
+            </a>
+            <span class="tooltip-text">Get directions via Apple Maps</span>
+          </div>
+          <div class="tooltip">
+            <a href="https://www.littleitalysd.com/" target="_blank" class="btn menu-btn" title="Little Italy Guide">
+              <i data-lucide="globe"></i>
+            </a>
+            <span class="tooltip-text">View Little Italy guide</span>
+          </div>
+        </div>
+        
+        <div class="vibe">
+          Bright, romantic-in-a-city-way. Perfect for a shared stroll and discovery.
+        </div>
+        
+        <div class="detail-section">
+          <div class="detail-title">What you do:</div>
+          <p>Do a simple loop: piazza → stroll north/south along India Street for people-watching → cut over toward the waterfront for open views → wander back through the heart of Little Italy. The walking feels active, but it's still chill and date-y.</p>
+        </div>
+        
+        <div class="detail-section">
+          <div class="detail-title">You might like:</div>
+          <p>Make it a tiny "explore challenge" with zero pressure: spot 3 murals, 1 cute balcony, and 1 place you want to try another time.</p>
+        </div>
+        
+        <div class="detail-section">
+          <div class="detail-title">🚗 Parking:</div>
+          <ul>
+            <li><strong>Best bet:</strong> 610 WEST ASH at Little Italy Parking</li>
+            <li><strong>Closest backup:</strong> Ace Parking - <a href="tel:+16192336624" style="color: #c44569;">(619) 233-6624</a></li>
+          </ul>
+        </div>
+        
+        <div class="backup">
+          <strong>🔄 Backup option:</strong> Keep it fully in Little Italy and linger around the public plazas and landmark sign area so you still get the "walking and exploring" energy without going as close to the water.
+        </div>
+      </div>
+    </div>
+
+    <!-- Stop 2 -->
+    <div class="stop" data-number="2" id="stop2">
+      <h3 class="stop-title">Dinner at Landini's Pizzeria</h3>
+      <div class="stop-content">
+        <div class="stop-location">📍 Landini's Pizzeria, Little Italy</div>
+        <div class="stop-phone">☎️ (619) 238-3502</div>
+        
+        <div class="btns">
+          <div class="tooltip">
+            <a href="https://www.google.com/maps/search/?api=1&query=Landinis%20Pizzeria%20Little%20Italy%20San%20Diego" target="_blank" class="btn dir-btn" title="Google Maps">
+              <i data-lucide="map"></i>
+            </a>
+            <span class="tooltip-text">Get directions via Google Maps</span>
+          </div>
+          <div class="tooltip">
+            <a href="https://maps.apple.com/?address=Landinis%20Pizzeria,%20Little%20Italy,%20San%20Diego" target="_blank" class="btn dir-btn" title="Apple Maps">
+              <i data-lucide="navigation"></i>
+            </a>
+            <span class="tooltip-text">Get directions via Apple Maps</span>
+          </div>
+          <div class="tooltip">
+            <a href="tel:+16192383502" class="btn ph-btn" title="Call">
+              <i data-lucide="phone"></i>
+            </a>
+            <span class="tooltip-text">Call Landini's Pizzeria</span>
+          </div>
+          <div class="tooltip">
+            <a href="https://landinispizzeria.com/" target="_blank" class="btn menu-btn" title="View Menu">
+              <i data-lucide="utensils"></i>
+            </a>
+            <span class="tooltip-text">View full menu online</span>
+          </div>
+        </div>
+        
+        <div class="vibe">
+          Casual, warm, no-pressure. Budget-smart and share-forward.
+        </div>
+        
+        <div class="detail-section">
+          <div class="detail-title">Menu picks (budget-smart):</div>
+          <ul>
+            <li><strong>Slice + Salad + Soda</strong> - easy "date combo" for value</li>
+            <li><strong>MeatBall Ricotta slice</strong> - hearty and classic</li>
+            <li><strong>Greek Salad</strong> - nice shared side</li>
+            <li><strong>Garlic Knots</strong> - if you want one extra shared bite</li>
+          </ul>
+        </div>
+        
+        <div class="detail-section">
+          <div class="detail-title">💡 Pro tip:</div>
+          <p>Keep it budget-smart with the daily specials (choose the soda-based specials, skip the beer one).</p>
+        </div>
+        
+        <div class="detail-section">
+          <div class="detail-title">🚗 Parking:</div>
+          <p>Stick with the same garage/lot from Stop 1 so you stay fully walkable.</p>
+        </div>
+        
+        <div class="backup">
+          <strong>🍜 Backup Dinner:</strong> <strong>Mona Lisa Italian Foods (Deli)</strong> - Same neighborhood, fast, reliable order style. <a href="tel:+16192395367" style="color: #d4a017">(619) 239-5367</a><br>
+          <em>Menu picks: Deluxe Sub, Caprese, or Spicy Special.</em>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stop 3 -->
+    <div class="stop" data-number="3" id="stop3">
+      <h3 class="stop-title">Sweet Finish at Bobboi Natural Gelato</h3>
+      <div class="stop-content">
+        <div class="stop-location">📍 Bobboi Natural Gelato, Kettner Blvd</div>
+        <div class="stop-phone">☎️ (858) 214-8240</div>
+        
+        <div class="btns">
+          <div class="tooltip">
+            <a href="https://www.google.com/maps/search/?api=1&query=Bobboi%20Natural%20Gelato%20Kettner%20Blvd%20San%20Diego" target="_blank" class="btn dir-btn" title="Google Maps">
+              <i data-lucide="map"></i>
+            </a>
+            <span class="tooltip-text">Get directions via Google Maps</span>
+          </div>
+          <div class="tooltip">
+            <a href="https://maps.apple.com/?address=Bobboi%20Natural%20Gelato,%20Kettner%20Blvd,%20San%20Diego" target="_blank" class="btn dir-btn" title="Apple Maps">
+              <i data-lucide="navigation"></i>
+            </a>
+            <span class="tooltip-text">Get directions via Apple Maps</span>
+          </div>
+          <div class="tooltip">
+            <a href="tel:+18582148240" class="btn ph-btn" title="Call">
+              <i data-lucide="phone"></i>
+            </a>
+            <span class="tooltip-text">Call Bobboi Gelato</span>
+          </div>
+          <div class="tooltip">
+            <a href="https://www.bobboi.com/" target="_blank" class="btn menu-btn" title="View Menu">
+              <i data-lucide="utensils"></i>
+            </a>
+            <span class="tooltip-text">View flavors online</span>
+          </div>
+        </div>
+        
+        <div class="vibe">
+          Sweet, cozy, end-on-a-high-note. Split two flavors and take it for a slow walk back through the neighborhood.
+        </div>
+        
+        <div class="detail-section">
+          <div class="detail-title">Menu picks:</div>
+          <ul>
+            <li><strong>Vegan Pistachio</strong> - fun to share and a little different</li>
+            <li><strong>Bacio or Stracciatella</strong> - classic Italian gelato vibe</li>
+            <li><strong>Dark chocolate sorbet</strong> - vegan option, super chocolatey</li>
+          </ul>
+        </div>
+        
+        <div class="detail-section">
+          <div class="detail-title">💡 Pro tip:</div>
+          <p>Pick one "safe" flavor and one "wild card" flavor to share. It's a fun, low-stakes little moment!</p>
+        </div>
+        
+        <div class="detail-section">
+          <div class="detail-title">🚗 Parking:</div>
+          <p>Same as Stop 1. You're staying in the same walkable pocket.</p>
+        </div>
+        
+        <div class="backup">
+          <strong>🍰 Backup Dessert:</strong> <strong>Salt & Straw (Little Italy)</strong> - Nearby and keeps dessert easy if you want something that stays open later. <a href="tel:+16195429394" style="color: #d4a017">(619) 542-9394</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Interactive Checklist -->
+    <div class="collapsible-section" id="checklistSection">
+      <div class="collapsible-header" onclick="toggleCollapsible('checklistSection')">
+        <div class="collapsible-title">
+          <span>✅</span>
+          <span>Date Checklist</span>
+        </div>
+        <span class="collapsible-icon">▼</span>
+      </div>
+      <div class="collapsible-content">
+        <div class="collapsible-inner">
+          <div class="checklist">
+            <div class="checklist-item" onclick="toggleCheck(this)" data-item="0">
+              <div class="checklist-checkbox"></div>
+              <span class="checklist-text">Park once and stay parked (610 WEST ASH recommended)</span>
+            </div>
+            <div class="checklist-item" onclick="toggleCheck(this)" data-item="1">
+              <div class="checklist-checkbox"></div>
+              <span class="checklist-text">Bring a light layer for the evening breeze</span>
+            </div>
+            <div class="checklist-item" onclick="toggleCheck(this)" data-item="2">
+              <div class="checklist-checkbox"></div>
+              <span class="checklist-text">Do a "phone-free" pocket during the walk</span>
+            </div>
+            <div class="checklist-item" onclick="toggleCheck(this)" data-item="3">
+              <div class="checklist-checkbox"></div>
+              <span class="checklist-text">Try the "explore challenge": spot 3 murals, 1 cute balcony, 1 place to try later</span>
+            </div>
+            <div class="checklist-item" onclick="toggleCheck(this)" data-item="4">
+              <div class="checklist-checkbox"></div>
+              <span class="checklist-text">Order dinner share-style (slices + shared side)</span>
+            </div>
+            <div class="checklist-item" onclick="toggleCheck(this)" data-item="5">
+              <div class="checklist-checkbox"></div>
+              <span class="checklist-text">Pick one "safe" and one "wild card" gelato flavor</span>
+            </div>
+            <div class="checklist-item" onclick="toggleCheck(this)" data-item="6">
+              <div class="checklist-checkbox"></div>
+              <span class="checklist-text">Take a slow walk back through the neighborhood</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Share Buttons -->
+    <div class="share-section" id="share">
+      <h3 class="share-title">💕 Share This Date Plan</h3>
+      <div class="share-buttons">
+        <button class="share-btn share-copy" onclick="copyLink()">
+          <i data-lucide="copy"></i>
+          Copy Link
+        </button>
+      </div>
+    </div>
+
+    <div class="budget" id="budget">
+      <h3 class="budget-title">💰 Estimated Budget for Two</h3>
+      <div class="budget-items">
+        <div class="budget-item">
+          <div class="budget-label">Dinner</div>
+          <div class="budget-value">$20-$32</div>
+        </div>
+        <div class="budget-item">
+          <div class="budget-label">Gelato</div>
+          <div class="budget-value">$10-$18</div>
+        </div>
+        <div class="budget-item">
+          <div class="budget-label">Parking</div>
+          <div class="budget-value">Varies</div>
+        </div>
+      </div>
+      <div class="budget-total">
+        Total (without parking): $30-$50
+      </div>
+    </div>
+    
+    <div style="background: #fff9e6; border: 2px solid #ffd966; border-radius: 12px; padding: 20px; margin: 20px 0; color: #8b6914;">
+      <strong>⚠️ Heads Up:</strong> There's a convention at the San Diego Convention Center on Feb 26-27, so downtown parking can feel a bit tighter than usual.
+    </div>
+    
+  </div>
+</div>
+
+<script>
+// Initialize Lucide icons
+lucide.createIcons();
+
+// ===== TOOLTIP POSITIONING =====
+document.querySelectorAll('.tooltip').forEach(tooltip => {
+  tooltip.addEventListener('mouseenter', function(e) {
+    const tooltipText = this.querySelector('.tooltip-text');
+    if (tooltipText) {
+      const rect = this.getBoundingClientRect();
+      tooltipText.style.left = (rect.left + rect.width / 2 - 90) + 'px';
+      tooltipText.style.top = (rect.top - 50) + 'px';
+    }
+  });
+});
+
+// ===== PARALLAX EFFECT =====
+let ticking = false;
+window.addEventListener('scroll', function(e) {
+  if (!ticking) {
+    window.requestAnimationFrame(function() {
+      const scrolled = window.pageYOffset;
+      const layer1 = document.getElementById('layer1');
+      const layer2 = document.getElementById('layer2');
+      const layer3 = document.getElementById('layer3');
+      if (layer1) layer1.style.transform = 'translateY(' + (scrolled * 0.3) + 'px)';
+      if (layer2) layer2.style.transform = 'translateY(' + (scrolled * 0.5) + 'px)';
+      if (layer3) layer3.style.transform = 'translateY(' + (scrolled * 0.7) + 'px)';
+      ticking = false;
+    });
+    ticking = true;
+  }
+});
+
+// ===== CURSOR SPARKLES =====
+document.addEventListener('mousemove', function(e) {
+  if (Math.random() > 0.92) {
+    createCursorSparkle(e.clientX, e.clientY);
+  }
+});
+
+function createCursorSparkle(x, y) {
+  const sparkle = document.createElement('div');
+  sparkle.className = 'cursor-sparkle';
+  sparkle.textContent = ['✨', '💕', '💫', '💖'][Math.floor(Math.random() * 4)];
+  sparkle.style.left = x + 'px';
+  sparkle.style.top = y + 'px';
+  sparkle.style.position = 'fixed';
+  sparkle.style.fontSize = (Math.random() * 10 + 10) + 'px';
+  document.body.appendChild(sparkle);
+  setTimeout(() => sparkle.remove(), 1000);
+}
+
+// ===== LOADING SCREEN =====
+window.addEventListener('load', function() {
+  setTimeout(function() {
+    document.getElementById('loadingScreen').classList.add('hidden');
+  }, 1500);
+});
+
+// ===== FLOATING PARTICLES =====
+function createParticles() {
+  const particlesContainer = document.getElementById('particles');
+  const emojis = ['💕', '✨', '💖', '💫', '🌸'];
+  for (let i = 0; i < 20; i++) {
+    const particle = document.createElement('div');
+    particle.className = 'particle';
+    particle.style.left = Math.random() * 100 + 'vw';
+    particle.style.animationDelay = Math.random() * 15 + 's';
+    particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+    particle.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    particle.style.fontSize = (1 + Math.random() * 1.5) + 'rem';
+    particlesContainer.appendChild(particle);
+  }
+}
+createParticles();
+
+// ===== TYPEWRITER EFFECT =====
+const typewriterText = "A lively Little Italy stroll that feels like a mini-adventure, then pizza-by-the-slice for an easy budget win, finished with handcrafted Italian gelato.";
+let charIndex = 0;
+
+function typeWriter() {
+  if (charIndex < typewriterText.length) {
+    document.getElementById("typewriterText").textContent += typewriterText.charAt(charIndex);
+    charIndex++;
+    setTimeout(typeWriter, 30);
+  }
+}
+
+// ===== COUNTDOWN TIMER =====
+function updateCountdown() {
+  const targetDate = new Date('February 26, 2026 18:30:00').getTime();
+  const now = new Date().getTime();
+  const difference = targetDate - now;
+  
+  if (difference > 0) {
+    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+    
+    document.getElementById('days').textContent = String(days).padStart(2, '0');
+    document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+    document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+    document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+  }
+}
+
+setInterval(updateCountdown, 1000);
+updateCountdown();
+
+// ===== SCROLL ANIMATIONS =====
+function handleScroll() {
+  const elements = [
+    document.getElementById('summary'),
+    document.getElementById('recommendations'),
+    document.getElementById('stop1'),
+    document.getElementById('stop2'),
+    document.getElementById('stop3'),
+    document.getElementById('weatherSection'),
+    document.getElementById('checklistSection'),
+    document.getElementById('share'),
+    document.getElementById('budget')
+  ];
+  
+  elements.forEach(element => {
+    if (element) {
+      const rect = element.getBoundingClientRect();
+      const isVisible = rect.top < window.innerHeight - 100;
+      if (isVisible) {
+        element.classList.add('visible');
+      }
+    }
+  });
+}
+
+window.addEventListener('scroll', handleScroll);
+window.addEventListener('load', handleScroll);
+
+const summaryObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      typeWriter();
+      summaryObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.5 });
+
+summaryObserver.observe(document.getElementById('summary'));
+
+// ===== INTERACTIVE TIMELINE =====
+document.querySelectorAll('.stop-title').forEach(title => {
+  title.addEventListener('click', function() {
+    this.parentElement.classList.toggle('collapsed');
+  });
+});
+
+// ===== COLLAPSIBLE SECTIONS =====
+function toggleCollapsible(sectionId) {
+  const section = document.getElementById(sectionId);
+  section.classList.toggle('open');
+}
+
+// ===== INTERACTIVE CHECKLIST =====
+function toggleCheck(item) {
+  item.classList.toggle('checked');
+  const checkbox = item.querySelector('.checklist-checkbox');
+  const itemIndex = item.getAttribute('data-item');
+  
+  if (item.classList.contains('checked')) {
+    checkbox.textContent = '✓';
+    localStorage.setItem('dateChecklist_' + itemIndex, 'checked');
+  } else {
+    checkbox.textContent = '';
+    localStorage.removeItem('dateChecklist_' + itemIndex);
+  }
+}
+
+function loadChecklistState() {
+  document.querySelectorAll('.checklist-item').forEach(item => {
+    const itemIndex = item.getAttribute('data-item');
+    const isChecked = localStorage.getItem('dateChecklist_' + itemIndex) === 'checked';
+    if (isChecked) {
+      item.classList.add('checked');
+      const checkbox = item.querySelector('.checklist-checkbox');
+      checkbox.textContent = '✓';
+    }
+  });
+}
+
+loadChecklistState();
+
+// ===== LOVE NOTES MODAL =====
+document.getElementById('loveNoteTrigger').addEventListener('click', function() {
+  document.getElementById('loveNoteModal').classList.add('active');
+});
+
+document.getElementById('loveNoteClose').addEventListener('click', function() {
+  document.getElementById('loveNoteModal').classList.remove('active');
+});
+
+document.getElementById('loveNoteModal').addEventListener('click', function(e) {
+  if (e.target === this) {
+    this.classList.remove('active');
+  }
+});
+
+// ===== SHARE BUTTONS =====
+function copyLink() {
+  navigator.clipboard.writeText(window.location.href).then(function() {
+    alert('Link copied to clipboard! 💕');
+  });
+}
+
+// ===== LIGHTBOX =====
+let currentLightboxIndex = 0;
+let currentLightboxStop = 'stop1';
+
+const galleryImages = {
+  'stop1': ['', '', ''],
+  'stop2': ['', '', ''],
+  'stop3': ['', '', '']
+};
+
+function openLightbox(index, stop) {
+  currentLightboxIndex = index;
+  currentLightboxStop = stop;
+  document.getElementById('lightbox').classList.add('active');
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('active');
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    closeLightbox();
+    document.getElementById('loveNoteModal').classList.remove('active');
+  }
+});
+</script>
+</body>
+</html>
