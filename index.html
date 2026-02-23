@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Launchmate - In-Flight Spring 2026 Tidbits</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            color: #e0e0e0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(90deg, #00d4ff, #7b2cbf);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #888;
+            font-size: 1.1rem;
+        }
+        
+        .back-btn {
+            display: none;
+            background: linear-gradient(90deg, #00d4ff, #7b2cbf);
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-bottom: 30px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+        }
+        
+        .founders-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        
+        .founder-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .founder-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(0, 212, 255, 0.5);
+            transform: translateY(-5px);
+        }
+        
+        .founder-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+        
+        .tidbit-count {
+            color: #00d4ff;
+            font-size: 0.9rem;
+        }
+        
+        .tidbits-view {
+            display: none;
+        }
+        
+        .tidbits-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .tidbit-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .tidbit-card:hover {
+            border-color: rgba(0, 212, 255, 0.5);
+        }
+        
+        .tidbit-header {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .tidbit-title {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+        
+        .tidbit-date {
+            color: #888;
+            font-size: 0.9rem;
+        }
+        
+        .tidbit-content {
+            display: none;
+            padding: 0 20px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .tidbit-content.active {
+            display: block;
+        }
+        
+        .tidbit-content iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+            border-radius: 8px;
+            background: #0d0d1a;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #888;
+        }
+        
+        .error {
+            text-align: center;
+            padding: 40px;
+            color: #ff6b6b;
+        }
+        
+        .expand-icon {
+            transition: transform 0.3s ease;
+        }
+        
+        .expanded .expand-icon {
+            transform: rotate(180deg);
+        }
+        
+        .meta-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+        
+        .meta-tag {
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: #00d4ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 Launchmate Tidbits</h1>
+            <p class="subtitle">In-Flight Spring 2026 Cohort</p>
+        </header>
+        
+        <button class="back-btn" onclick="showFounders()">← Back to Founders</button>
+        
+        <div id="founders-view" class="founders-grid"></div>
+        <div id="tidbits-view" class="tidbits-view">
+            <div class="tidbits-list" id="tidbits-list"></div>
+        </div>
+    </div>
+
+    <script>
+        const REPO_OWNER = 'golaunchmate';
+        const REPO_NAME = 'tidbits';
+        const BASE_PATH = 'inflight-spring-26';
+        
+        // Founder folders to fetch
+        const founderFolders = [
+            'billy-carter',
+            'juan-alcala', 
+            'kavindi-seneviratne',
+            'michael-hayes',
+            'michael-rodriguez',
+            'muhammad-qudsi',
+            'robert-sanchez',
+            'vineeta-khanna',
+            'zach-brenner',
+            'laura',
+            'michael',
+            'team'
+        ];
+        
+        let tidbitCache = {};
+        
+        // Format founder name for display
+        function formatFounderName(folder) {
+            return folder.split('-').map(word => 
+                word.charAt(0).toUpperCase() + word.slice(1)
+            ).join(' ');
+        }
+        
+        // Fetch folder contents from GitHub API
+        async function fetchFolderContents(folder) {
+            const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${BASE_PATH}/${folder}`;
+            try {
+                const response = await fetch(url);
+                if (!response.ok) throw new Error('Failed to fetch');
+                const data = await response.json();
+                return data.filter(item => item.type === 'file' && item.name.endsWith('.html'));
+            } catch (error) {
+                console.error(`Error fetching ${folder}:`, error);
+                return [];
+            }
+        }
+        
+        // Parse HTML to extract meta tags
+        function parseMetaTags(html) {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+            
+            const getMeta = (name) => {
+                const meta = doc.querySelector(`meta[name="${name}"]`);
+                return meta ? meta.getAttribute('content') : null;
+            };
+            
+            const title = doc.querySelector('title')?.textContent || 'Untitled';
+            
+            return {
+                title: title,
+                type: getMeta('tidbit-type'),
+                subject: getMeta('tidbit-subject'),
+                company: getMeta('tidbit-company'),
+                date: getMeta('tidbit-date'),
+                track: getMeta('tidbit-track')
+            };
+        }
+        
+        // Fetch and parse tidbit file
+        async function fetchTidbit(folder, filename) {
+            const url = `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/main/${BASE_PATH}/${folder}/${filename}`;
+            try {
+                const response = await fetch(url);
+                const html = await response.text();
+                return parseMetaTags(html);
+            } catch (error) {
+                console.error(`Error fetching tidbit ${filename}:`, error);
+                return { title: filename, date: null };
+            }
+        }
+        
+        // Load all founders and their tidbit counts
+        async function loadFounders() {
+            const container = document.getElementById('founders-view');
+            container.innerHTML = '<div class="loading">Loading founders...</div>';
+            
+            const founders = [];
+            
+            for (const folder of founderFolders) {
+                const files = await fetchFolderContents(folder);
+                founders.push({
+                    folder: folder,
+                    name: formatFounderName(folder),
+                    count: files.length,
+                    files: files
+                });
+            }
+            
+            // Sort by count descending
+            founders.sort((a, b) => b.count - a.count);
+            
+            container.innerHTML = founders.map(founder => `
+                <div class="founder-card" onclick="showTidbits('${founder.folder}')">
+                    <div class="founder-name">${founder.name}</div>
+                    <div class="tidbit-count">${founder.count} tidbit${founder.count !== 1 ? 's' : ''}</div>
+                </div>
+            `).join('');
+            
+            // Cache the files for each founder
+            founders.forEach(f => tidbitCache[f.folder] = f.files);
+        }
+        
+        // Show tidbits for a specific founder
+        async function showTidbits(folder) {
+            document.getElementById('founders-view').style.display = 'none';
+            document.getElementById('tidbits-view').style.display = 'block';
+            document.querySelector('.back-btn').style.display = 'inline-block';
+            
+            const container = document.getElementById('tidbits-list');
+            container.innerHTML = '<div class="loading">Loading tidbits...</div>';
+            
+            // Update header
+            document.querySelector('h1').textContent = `📄 ${formatFounderName(folder)}`;
+            
+            let files = tidbitCache[folder];
+            if (!files) {
+                files = await fetchFolderContents(folder);
+            }
+            
+            if (files.length === 0) {
+                container.innerHTML = '<div class="error">No tidbits found</div>';
+                return;
+            }
+            
+            // Fetch all tidbit metadata
+            const tidbits = await Promise.all(
+                files.map(async (file) => {
+                    const meta = await fetchTidbit(folder, file.name);
+                    return {
+                        filename: file.name,
+                        url: `https://${REPO_OWNER}.github.io/${REPO_NAME}/${BASE_PATH}/${folder}/${file.name}`,
+                        ...meta
+                    };
+                })
+            );
+            
+            // Sort by date descending (newest first)
+            tidbits.sort((a, b) => {
+                if (!a.date) return 1;
+                if (!b.date) return -1;
+                return new Date(b.date) - new Date(a.date);
+            });
+            
+            container.innerHTML = tidbits.map((tidbit, index) => `
+                <div class="tidbit-card" id="tidbit-${index}">
+                    <div class="tidbit-header" onclick="toggleTidbit(${index})">
+                        <div>
+                            <div class="tidbit-title">${tidbit.title}</div>
+                            ${tidbit.type || tidbit.subject ? `
+                                <div class="meta-tags">
+                                    ${tidbit.type ? `<span class="meta-tag">${tidbit.type}</span>` : ''}
+                                    ${tidbit.subject ? `<span class="meta-tag">${tidbit.subject}</span>` : ''}
+                                </div>
+                            ` : ''}
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 15px;">
+                            <span class="tidbit-date">${tidbit.date || 'No date'}</span>
+                            <span class="expand-icon">▼</span>
+                        </div>
+                    </div>
+                    <div class="tidbit-content" id="content-${index}">
+                        <iframe src="${tidbit.url}" loading="lazy"></iframe>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        // Toggle tidbit expansion
+        function toggleTidbit(index) {
+            const card = document.getElementById(`tidbit-${index}`);
+            const content = document.getElementById(`content-${index}`);
+            
+            content.classList.toggle('active');
+            card.classList.toggle('expanded');
+        }
+        
+        // Show founders view
+        function showFounders() {
+            document.getElementById('founders-view').style.display = 'grid';
+            document.getElementById('tidbits-view').style.display = 'none';
+            document.querySelector('.back-btn').style.display = 'none';
+            document.querySelector('h1').textContent = '🚀 Launchmate Tidbits';
+        }
+        
+        // Initialize on load
+        loadFounders();
+    </script>
+</body>
+</html>
