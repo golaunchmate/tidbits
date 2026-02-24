@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Launchmate - In-Flight Spring 2026 Tidbits</title>
+    <title>Tidbit - Launchmate</title>
     <style>
         * {
             margin: 0;
@@ -19,64 +19,150 @@
         }
         
         .container {
-            max-width: 1200px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 40px 20px;
         }
         
-        header {
-            text-align: center;
-            margin-bottom: 50px;
+        .back-btn {
+            display: inline-block;
+            background: linear-gradient(90deg, #00d4ff, #7b2cbf);
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-bottom: 30px;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
         
-        h1 {
-            font-size: 2.5rem;
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+        }
+        
+        .tidbit-header {
+            margin-bottom: 40px;
+        }
+        
+        .tidbit-title {
+            font-size: 2rem;
             background: linear-gradient(90deg, #00d4ff, #7b2cbf);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            line-height: 1.3;
         }
         
-        .subtitle {
+        .meta-row {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        
+        .meta-tag {
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: #00d4ff;
+        }
+        
+        .source-tag {
+            background: rgba(123, 44, 191, 0.1);
+            border: 1px solid rgba(123, 44, 191, 0.3);
+            color: #b366ff;
+        }
+        
+        .date-tag {
             color: #888;
-            font-size: 1.1rem;
+            font-size: 0.9rem;
         }
         
-        .founders-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
-        }
-        
-        .founder-card {
-            background: rgba(255, 255, 255, 0.05);
+        .tidbit-content {
+            background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 12px;
-            padding: 25px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            color: inherit;
-            display: block;
+            padding: 30px;
+            line-height: 1.8;
         }
         
-        .founder-card:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(0, 212, 255, 0.5);
-            transform: translateY(-5px);
+        .tidbit-content h1,
+        .tidbit-content h2,
+        .tidbit-content h3 {
+            color: #fff;
+            margin-top: 25px;
+            margin-bottom: 15px;
         }
         
-        .founder-name {
-            font-size: 1.3rem;
-            font-weight: 600;
+        .tidbit-content h1:first-child,
+        .tidbit-content h2:first-child,
+        .tidbit-content h3:first-child {
+            margin-top: 0;
+        }
+        
+        .tidbit-content p {
+            margin-bottom: 15px;
+            color: #c0c0c0;
+        }
+        
+        .tidbit-content ul,
+        .tidbit-content ol {
+            margin-bottom: 15px;
+            padding-left: 25px;
+            color: #c0c0c0;
+        }
+        
+        .tidbit-content li {
             margin-bottom: 8px;
+        }
+        
+        .tidbit-content strong {
             color: #fff;
         }
         
-        .tidbit-count {
+        .tidbit-content a {
             color: #00d4ff;
-            font-size: 0.9rem;
+            text-decoration: none;
+        }
+        
+        .tidbit-content a:hover {
+            text-decoration: underline;
+        }
+        
+        .tidbit-content blockquote {
+            border-left: 3px solid #7b2cbf;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #a0a0a0;
+            font-style: italic;
+        }
+        
+        .tidbit-content code {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Monaco', 'Consolas', monospace;
+            font-size: 0.9em;
+            color: #ff9f43;
+        }
+        
+        .tidbit-content pre {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        .tidbit-content pre code {
+            background: none;
+            padding: 0;
         }
         
         .loading {
@@ -90,112 +176,150 @@
             padding: 40px;
             color: #ff6b6b;
         }
+        
+        .not-found {
+            text-align: center;
+            padding: 60px 20px;
+        }
+        
+        .not-found h2 {
+            color: #fff;
+            margin-bottom: 15px;
+        }
+        
+        .not-found p {
+            color: #888;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>🚀 Launchmate Tidbits</h1>
-            <p class="subtitle">In-Flight Spring 2026 Cohort</p>
-        </header>
+        <a href="#" id="back-link" class="back-btn">← Back to Tidbits</a>
         
-        <div id="founders-view" class="founders-grid"></div>
+        <div id="tidbit-view">
+            <div class="loading">Loading tidbit...</div>
+        </div>
     </div>
 
     <script>
         const REPO_OWNER = 'golaunchmate';
         
         const founderConfig = {
-            'kavindi-seneviratne': {
-                name: 'Kavindi Seneviratne',
-                craigPatterns: ['kavindi']
-            },
-            'zach-brenner': {
-                name: 'Zach Brenner',
-                craigPatterns: ['zach']
-            },
-            'billy-carter': {
-                name: 'Billy Carter',
-                craigPatterns: ['billy']
-            },
-            'muhammad-qudsi': {
-                name: 'Muhammad Qudsi',
-                craigPatterns: ['qudsi']
-            },
-            'juan-alcala': {
-                name: 'Juan Alcala',
-                craigPatterns: ['juan']
-            },
-            'robert-sanchez': {
-                name: 'Robert Sanchez',
-                craigPatterns: ['robert']
-            },
-            'vineeta-khanna': {
-                name: 'Vineeta Khanna',
-                craigPatterns: ['vineeta']
-            }
+            'kavindi-seneviratne': 'Kavindi Seneviratne',
+            'zach-brenner': 'Zach Brenner',
+            'billy-carter': 'Billy Carter',
+            'muhammad-qudsi': 'Muhammad Qudsi',
+            'juan-alcala': 'Juan Alcala',
+            'robert-sanchez': 'Robert Sanchez',
+            'vineeta-khanna': 'Vineeta Khanna'
         };
         
-        async function fetchFolderContents(repo, path) {
-            const url = `https://api.github.com/repos/${REPO_OWNER}/${repo}/contents/${path}`;
-            try {
-                const response = await fetch(url);
-                if (!response.ok) throw new Error('Failed to fetch');
-                const data = await response.json();
-                return data.filter(item => item.type === 'file' && item.name.endsWith('.html'));
-            } catch (error) {
-                console.error(`Error fetching ${path}:`, error);
-                return [];
-            }
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
         }
         
-        async function fetchCraigTidbits(patterns) {
-            const url = `https://api.github.com/repos/${REPO_OWNER}/craig/contents`;
-            try {
-                const response = await fetch(url);
-                if (!response.ok) throw new Error('Failed to fetch');
-                const data = await response.json();
-                return data.filter(item => {
-                    if (item.type !== 'file' || !item.name.endsWith('.html')) return false;
-                    const lowerName = item.name.toLowerCase();
-                    return patterns.some(p => lowerName.startsWith(p.toLowerCase()));
-                });
-            } catch (error) {
-                console.error('Error fetching craig tidbits:', error);
-                return [];
+        function parseMetaAndContent(html) {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+            
+            const getMeta = (name) => {
+                const meta = doc.querySelector(`meta[name="${name}"]`);
+                return meta ? meta.getAttribute('content') : null;
+            };
+            
+            const title = doc.querySelector('title')?.textContent || 'Untitled';
+            const body = doc.body;
+            
+            // Remove title from body if it's the first h1/h2 and matches the title
+            const firstHeading = body.querySelector('h1, h2');
+            if (firstHeading && firstHeading.textContent.trim() === title.trim()) {
+                firstHeading.remove();
             }
+            
+            return {
+                title: title,
+                type: getMeta('tidbit-type'),
+                subject: getMeta('tidbit-subject'),
+                company: getMeta('tidbit-company'),
+                date: getMeta('tidbit-date'),
+                track: getMeta('tidbit-track'),
+                content: body.innerHTML
+            };
         }
         
-        async function loadFounders() {
-            const container = document.getElementById('founders-view');
-            container.innerHTML = '<div class="loading">Loading founders...</div>';
+        async function loadTidbit() {
+            const founder = getQueryParam('founder');
+            const file = getQueryParam('file');
+            const source = getQueryParam('source');
             
-            const founders = [];
+            const container = document.getElementById('tidbit-view');
             
-            for (const [folder, config] of Object.entries(founderConfig)) {
-                const tidbitsPath = `inflight-spring-26/${folder}`;
-                const tidbitsFiles = await fetchFolderContents('tidbits', tidbitsPath);
-                const craigFiles = await fetchCraigTidbits(config.craigPatterns);
-                const total = tidbitsFiles.length + craigFiles.length;
+            // Set up back link
+            document.getElementById('back-link').href = `founder.html?name=${founder}`;
+            
+            // Validate parameters
+            if (!founder || !file || !source) {
+                container.innerHTML = `
+                    <div class="not-found">
+                        <h2>Tidbit Not Found</h2>
+                        <p>Missing required parameters. Please navigate from the founder list.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            const founderName = founderConfig[founder] || 'Unknown Founder';
+            
+            // Build the raw file URL
+            let fileUrl;
+            if (source === 'craig') {
+                fileUrl = `https://raw.githubusercontent.com/${REPO_OWNER}/craig/main/${file}`;
+            } else {
+                fileUrl = `https://raw.githubusercontent.com/${REPO_OWNER}/tidbits/main/inflight-spring-26/${founder}/${file}`;
+            }
+            
+            try {
+                const response = await fetch(fileUrl);
+                if (!response.ok) throw new Error('Failed to fetch tidbit');
                 
-                founders.push({
-                    folder: folder,
-                    name: config.name,
-                    count: total
-                });
+                const html = await response.text();
+                const { title, type, subject, date, content } = parseMetaAndContent(html);
+                
+                // Update page title
+                document.title = `${title} - ${founderName}`;
+                
+                // Build meta tags
+                const metaTags = [];
+                if (source === 'craig') {
+                    metaTags.push('<span class="meta-tag source-tag">Archive</span>');
+                }
+                if (type) metaTags.push(`<span class="meta-tag">${type}</span>`);
+                if (subject) metaTags.push(`<span class="meta-tag">${subject}</span>`);
+                
+                container.innerHTML = `
+                    <div class="tidbit-header">
+                        <h1 class="tidbit-title">${title}</h1>
+                        <div class="meta-row">
+                            ${metaTags.join('')}
+                            ${date ? `<span class="date-tag">${date}</span>` : ''}
+                        </div>
+                    </div>
+                    <div class="tidbit-content">
+                        ${content}
+                    </div>
+                `;
+            } catch (error) {
+                console.error('Error loading tidbit:', error);
+                container.innerHTML = `
+                    <div class="error">
+                        <p>Failed to load tidbit. It may have been moved or deleted.</p>
+                    </div>
+                `;
             }
-            
-            founders.sort((a, b) => b.count - a.count);
-            
-            container.innerHTML = founders.map(founder => `
-                <a href="founder.html?name=${founder.folder}" class="founder-card">
-                    <div class="founder-name">${founder.name}</div>
-                    <div class="tidbit-count">${founder.count} tidbit${founder.count !== 1 ? 's' : ''}</div>
-                </a>
-            `).join('');
         }
         
-        loadFounders();
+        loadTidbit();
     </script>
 </body>
 </html>
