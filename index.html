@@ -187,6 +187,12 @@
             font-size: 0.8rem;
             color: #00d4ff;
         }
+        
+        .source-tag {
+            background: rgba(123, 44, 191, 0.1);
+            border: 1px solid rgba(123, 44, 191, 0.3);
+            color: #b366ff;
+        }
     </style>
 </head>
 <body>
@@ -206,39 +212,104 @@
 
     <script>
         const REPO_OWNER = 'golaunchmate';
-        const REPO_NAME = 'tidbits';
-        const BASE_PATH = 'inflight-spring-26';
         
-        // Founder folders to fetch (In-Flight Spring 2026 founders only)
-        const founderFolders = [
-            'kavindi-seneviratne',
-            'zach-brenner',
-            'billy-carter',
-            'muhammad-qudsi',
-            'juan-alcala',
-            'robert-sanchez',
-            'vineeta-khanna'
-        ];
+        // Founder configurations with both repo sources
+        const founderConfig = {
+            'kavindi-seneviratne': {
+                name: 'Kavindi Seneviratne',
+                tidbitsRepo: {
+                    folder: 'kavindi-seneviratne',
+                    repo: 'tidbits',
+                    path: 'inflight-spring-26'
+                },
+                craigPatterns: ['kavindi']
+            },
+            'zach-brenner': {
+                name: 'Zach Brenner',
+                tidbitsRepo: {
+                    folder: 'zach-brenner',
+                    repo: 'tidbits',
+                    path: 'inflight-spring-26'
+                },
+                craigPatterns: ['zach']
+            },
+            'billy-carter': {
+                name: 'Billy Carter',
+                tidbitsRepo: {
+                    folder: 'billy-carter',
+                    repo: 'tidbits',
+                    path: 'inflight-spring-26'
+                },
+                craigPatterns: ['billy']
+            },
+            'muhammad-qudsi': {
+                name: 'Muhammad Qudsi',
+                tidbitsRepo: {
+                    folder: 'muhammad-qudsi',
+                    repo: 'tidbits',
+                    path: 'inflight-spring-26'
+                },
+                craigPatterns: ['qudsi']
+            },
+            'juan-alcala': {
+                name: 'Juan Alcala',
+                tidbitsRepo: {
+                    folder: 'juan-alcala',
+                    repo: 'tidbits',
+                    path: 'inflight-spring-26'
+                },
+                craigPatterns: ['juan']
+            },
+            'robert-sanchez': {
+                name: 'Robert Sanchez',
+                tidbitsRepo: {
+                    folder: 'robert-sanchez',
+                    repo: 'tidbits',
+                    path: 'inflight-spring-26'
+                },
+                craigPatterns: ['robert']
+            },
+            'vineeta-khanna': {
+                name: 'Vineeta Khanna',
+                tidbitsRepo: {
+                    folder: 'vineeta-khanna',
+                    repo: 'tidbits',
+                    path: 'inflight-spring-26'
+                },
+                craigPatterns: ['vineeta']
+            }
+        };
         
         let tidbitCache = {};
         
-        // Format founder name for display
-        function formatFounderName(folder) {
-            return folder.split('-').map(word => 
-                word.charAt(0).toUpperCase() + word.slice(1)
-            ).join(' ');
-        }
-        
         // Fetch folder contents from GitHub API
-        async function fetchFolderContents(folder) {
-            const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${BASE_PATH}/${folder}`;
+        async function fetchFolderContents(repo, path) {
+            const url = `https://api.github.com/repos/${REPO_OWNER}/${repo}/contents/${path}`;
             try {
                 const response = await fetch(url);
                 if (!response.ok) throw new Error('Failed to fetch');
                 const data = await response.json();
                 return data.filter(item => item.type === 'file' && item.name.endsWith('.html'));
             } catch (error) {
-                console.error(`Error fetching ${folder}:`, error);
+                console.error(`Error fetching ${path}:`, error);
+                return [];
+            }
+        }
+        
+        // Fetch craig repo contents and filter by patterns
+        async function fetchCraigTidbits(patterns) {
+            const url = `https://api.github.com/repos/${REPO_OWNER}/craig/contents`;
+            try {
+                const response = await fetch(url);
+                if (!response.ok) throw new Error('Failed to fetch');
+                const data = await response.json();
+                return data.filter(item => {
+                    if (item.type !== 'file' || !item.name.endsWith('.html')) return false;
+                    const lowerName = item.name.toLowerCase();
+                    return patterns.some(p => lowerName.startsWith(p.toLowerCase()));
+                });
+            } catch (error) {
+                console.error('Error fetching craig tidbits:', error);
                 return [];
             }
         }
@@ -265,16 +336,21 @@
             };
         }
         
+        // Extract date from filename (format: name-YYYY-MM-DD.html)
+        function extractDateFromFilename(filename) {
+            const match = filename.match(/(\d{4}-\d{2}-\d{2})/);
+            return match ? match[1] : null;
+        }
+        
         // Fetch and parse tidbit file
-        async function fetchTidbit(folder, filename) {
-            const url = `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/main/${BASE_PATH}/${folder}/${filename}`;
+        async function fetchTidbit(url) {
             try {
                 const response = await fetch(url);
                 const html = await response.text();
                 return parseMetaTags(html);
             } catch (error) {
-                console.error(`Error fetching tidbit ${filename}:`, error);
-                return { title: filename, date: null };
+                console.error(`Error fetching tidbit:`, error);
+                return { title: 'Unknown', date: null };
             }
         }
         
@@ -285,13 +361,22 @@
             
             const founders = [];
             
-            for (const folder of founderFolders) {
-                const files = await fetchFolderContents(folder);
+            for (const [folder, config] of Object.entries(founderConfig)) {
+                // Fetch from tidbits repo
+                const tidbitsPath = `${config.tidbitsRepo.path}/${config.tidbitsRepo.folder}`;
+                const tidbitsFiles = await fetchFolderContents(config.tidbitsRepo.repo, tidbitsPath);
+                
+                // Fetch from craig repo
+                const craigFiles = await fetchCraigTidbits(config.craigPatterns);
+                
+                const total = tidbitsFiles.length + craigFiles.length;
+                
                 founders.push({
                     folder: folder,
-                    name: formatFounderName(folder),
-                    count: files.length,
-                    files: files
+                    name: config.name,
+                    count: total,
+                    tidbitsFiles: tidbitsFiles,
+                    craigFiles: craigFiles
                 });
             }
             
@@ -305,8 +390,11 @@
                 </div>
             `).join('');
             
-            // Cache the files for each founder
-            founders.forEach(f => tidbitCache[f.folder] = f.files);
+            // Cache the files
+            founders.forEach(f => tidbitCache[f.folder] = {
+                tidbitsFiles: f.tidbitsFiles,
+                craigFiles: f.craigFiles
+            });
         }
         
         // Show tidbits for a specific founder
@@ -318,30 +406,50 @@
             const container = document.getElementById('tidbits-list');
             container.innerHTML = '<div class="loading">Loading tidbits...</div>';
             
-            // Update header
-            document.querySelector('h1').textContent = `📄 ${formatFounderName(folder)}`;
+            const config = founderConfig[folder];
+            document.querySelector('h1').textContent = `📄 ${config.name}`;
             
-            let files = tidbitCache[folder];
-            if (!files) {
-                files = await fetchFolderContents(folder);
+            let cached = tidbitCache[folder];
+            if (!cached) {
+                const tidbitsPath = `${config.tidbitsRepo.path}/${config.tidbitsRepo.folder}`;
+                cached = {
+                    tidbitsFiles: await fetchFolderContents(config.tidbitsRepo.repo, tidbitsPath),
+                    craigFiles: await fetchCraigTidbits(config.craigPatterns)
+                };
             }
             
-            if (files.length === 0) {
+            // Process tidbits from main repo
+            const tidbitsPromises = cached.tidbitsFiles.map(async (file) => {
+                const url = `https://raw.githubusercontent.com/${REPO_OWNER}/tidbits/main/${config.tidbitsRepo.path}/${folder}/${file.name}`;
+                const meta = await fetchTidbit(url);
+                return {
+                    filename: file.name,
+                    url: `https://${REPO_OWNER}.github.io/tidbits/${config.tidbitsRepo.path}/${folder}/${file.name}`,
+                    source: 'tidbits',
+                    ...meta,
+                    date: meta.date || extractDateFromFilename(file.name)
+                };
+            });
+            
+            // Process tidbits from craig repo
+            const craigPromises = cached.craigFiles.map(async (file) => {
+                const url = `https://raw.githubusercontent.com/${REPO_OWNER}/craig/main/${file.name}`;
+                const meta = await fetchTidbit(url);
+                return {
+                    filename: file.name,
+                    url: `https://${REPO_OWNER}.github.io/craig/${file.name}`,
+                    source: 'craig',
+                    ...meta,
+                    date: meta.date || extractDateFromFilename(file.name)
+                };
+            });
+            
+            let tidbits = await Promise.all([...tidbitsPromises, ...craigPromises]);
+            
+            if (tidbits.length === 0) {
                 container.innerHTML = '<div class="error">No tidbits found</div>';
                 return;
             }
-            
-            // Fetch all tidbit metadata
-            const tidbits = await Promise.all(
-                files.map(async (file) => {
-                    const meta = await fetchTidbit(folder, file.name);
-                    return {
-                        filename: file.name,
-                        url: `https://${REPO_OWNER}.github.io/${REPO_NAME}/${BASE_PATH}/${folder}/${file.name}`,
-                        ...meta
-                    };
-                })
-            );
             
             // Sort by date descending (newest first)
             tidbits.sort((a, b) => {
@@ -355,12 +463,11 @@
                     <div class="tidbit-header" onclick="toggleTidbit(${index})">
                         <div>
                             <div class="tidbit-title">${tidbit.title}</div>
-                            ${tidbit.type || tidbit.subject ? `
-                                <div class="meta-tags">
-                                    ${tidbit.type ? `<span class="meta-tag">${tidbit.type}</span>` : ''}
-                                    ${tidbit.subject ? `<span class="meta-tag">${tidbit.subject}</span>` : ''}
-                                </div>
-                            ` : ''}
+                            <div class="meta-tags">
+                                ${tidbit.source === 'craig' ? '<span class="meta-tag source-tag">Archive</span>' : ''}
+                                ${tidbit.type ? `<span class="meta-tag">${tidbit.type}</span>` : ''}
+                                ${tidbit.subject ? `<span class="meta-tag">${tidbit.subject}</span>` : ''}
+                            </div>
                         </div>
                         <div style="display: flex; align-items: center; gap: 15px;">
                             <span class="tidbit-date">${tidbit.date || 'No date'}</span>
