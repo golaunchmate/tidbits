@@ -287,7 +287,7 @@
                 const meta = await fetchTidbit(url);
                 return {
                     filename: file.name,
-                    viewUrl: `tidbit.html?founder=${folder}&file=${encodeURIComponent(file.name)}&source=tidbits`,
+                    viewUrl: `https://golaunchmate.github.io/tidbits/${tidbitsPath}/${file.name}`,
                     source: 'tidbits',
                     ...meta,
                     date: meta.date || extractDateFromFilename(file.name)
@@ -299,7 +299,7 @@
                 const meta = await fetchTidbit(url);
                 return {
                     filename: file.name,
-                    viewUrl: `tidbit.html?founder=${folder}&file=${encodeURIComponent(file.name)}&source=craig`,
+                    viewUrl: `https://golaunchmate.github.io/craig/${file.name}`,
                     source: 'craig',
                     ...meta,
                     date: meta.date || extractDateFromFilename(file.name)
