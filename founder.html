@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Founder Tidbits - Launchmate</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            color: #e0e0e0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(90deg, #00d4ff, #7b2cbf);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #888;
+            font-size: 1.1rem;
+        }
+        
+        .back-btn {
+            display: inline-block;
+            background: linear-gradient(90deg, #00d4ff, #7b2cbf);
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-bottom: 30px;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+        }
+        
+        .tidbits-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .tidbit-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .tidbit-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(0, 212, 255, 0.5);
+            transform: translateX(5px);
+        }
+        
+        .tidbit-info {
+            flex: 1;
+        }
+        
+        .tidbit-title {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+        
+        .meta-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .meta-tag {
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: #00d4ff;
+        }
+        
+        .source-tag {
+            background: rgba(123, 44, 191, 0.1);
+            border: 1px solid rgba(123, 44, 191, 0.3);
+            color: #b366ff;
+        }
+        
+        .tidbit-date {
+            color: #888;
+            font-size: 0.95rem;
+            white-space: nowrap;
+        }
+        
+        .arrow {
+            margin-left: 15px;
+            color: #00d4ff;
+            font-size: 1.2rem;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #888;
+        }
+        
+        .error {
+            text-align: center;
+            padding: 40px;
+            color: #ff6b6b;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">← Back to Founders</a>
+        
+        <header>
+            <h1 id="founder-name">Loading...</h1>
+            <p class="subtitle">In-Flight Spring 2026</p>
+        </header>
+        
+        <div class="tidbits-list" id="tidbits-list"></div>
+    </div>
+
+    <script>
+        const REPO_OWNER = 'golaunchmate';
+        
+        const founderConfig = {
+            'kavindi-seneviratne': {
+                name: 'Kavindi Seneviratne',
+                craigPatterns: ['kavindi']
+            },
+            'zach-brenner': {
+                name: 'Zach Brenner',
+                craigPatterns: ['zach']
+            },
+            'billy-carter': {
+                name: 'Billy Carter',
+                craigPatterns: ['billy']
+            },
+            'muhammad-qudsi': {
+                name: 'Muhammad Qudsi',
+                craigPatterns: ['qudsi']
+            },
+            'juan-alcala': {
+                name: 'Juan Alcala',
+                craigPatterns: ['juan']
+            },
+            'robert-sanchez': {
+                name: 'Robert Sanchez',
+                craigPatterns: ['robert']
+            },
+            'vineeta-khanna': {
+                name: 'Vineeta Khanna',
+                craigPatterns: ['vineeta']
+            }
+        };
+        
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+        
+        async function fetchFolderContents(repo, path) {
+            const url = `https://api.github.com/repos/${REPO_OWNER}/${repo}/contents/${path}`;
+            try {
+                const response = await fetch(url);
+                if (!response.ok) throw new Error('Failed to fetch');
+                const data = await response.json();
+                return data.filter(item => item.type === 'file' && item.name.endsWith('.html'));
+            } catch (error) {
+                console.error(`Error fetching ${path}:`, error);
+                return [];
+            }
+        }
+        
+        async function fetchCraigTidbits(patterns) {
+            const url = `https://api.github.com/repos/${REPO_OWNER}/craig/contents`;
+            try {
+                const response = await fetch(url);
+                if (!response.ok) throw new Error('Failed to fetch');
+                const data = await response.json();
+                return data.filter(item => {
+                    if (item.type !== 'file' || !item.name.endsWith('.html')) return false;
+                    const lowerName = item.name.toLowerCase();
+                    return patterns.some(p => lowerName.startsWith(p.toLowerCase()));
+                });
+            } catch (error) {
+                console.error('Error fetching craig tidbits:', error);
+                return [];
+            }
+        }
+        
+        function parseMetaTags(html) {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+            
+            const getMeta = (name) => {
+                const meta = doc.querySelector(`meta[name="${name}"]`);
+                return meta ? meta.getAttribute('content') : null;
+            };
+            
+            const title = doc.querySelector('title')?.textContent || 'Untitled';
+            
+            return {
+                title: title,
+                type: getMeta('tidbit-type'),
+                subject: getMeta('tidbit-subject'),
+                company: getMeta('tidbit-company'),
+                date: getMeta('tidbit-date'),
+                track: getMeta('tidbit-track')
+            };
+        }
+        
+        function extractDateFromFilename(filename) {
+            const match = filename.match(/(\d{4}-\d{2}-\d{2})/);
+            return match ? match[1] : null;
+        }
+        
+        async function fetchTidbit(url) {
+            try {
+                const response = await fetch(url);
+                const html = await response.text();
+                return parseMetaTags(html);
+            } catch (error) {
+                console.error(`Error fetching tidbit:`, error);
+                return { title: 'Unknown', date: null };
+            }
+        }
+        
+        async function loadTidbits() {
+            const folder = getQueryParam('name');
+            const config = founderConfig[folder];
+            
+            if (!config) {
+                document.getElementById('tidbits-list').innerHTML = '<div class="error">Founder not found</div>';
+                return;
+            }
+            
+            document.getElementById('founder-name').textContent = `📄 ${config.name}`;
+            document.title = `${config.name} - Launchmate Tidbits`;
+            
+            const container = document.getElementById('tidbits-list');
+            container.innerHTML = '<div class="loading">Loading tidbits...</div>';
+            
+            const tidbitsPath = `inflight-spring-26/${folder}`;
+            const tidbitsFiles = await fetchFolderContents('tidbits', tidbitsPath);
+            const craigFiles = await fetchCraigTidbits(config.craigPatterns);
+            
+            const tidbitsPromises = tidbitsFiles.map(async (file) => {
+                const url = `https://raw.githubusercontent.com/${REPO_OWNER}/tidbits/main/${tidbitsPath}/${file.name}`;
+                const meta = await fetchTidbit(url);
+                return {
+                    filename: file.name,
+                    viewUrl: `tidbit.html?founder=${folder}&file=${encodeURIComponent(file.name)}&source=tidbits`,
+                    source: 'tidbits',
+                    ...meta,
+                    date: meta.date || extractDateFromFilename(file.name)
+                };
+            });
+            
+            const craigPromises = craigFiles.map(async (file) => {
+                const url = `https://raw.githubusercontent.com/${REPO_OWNER}/craig/main/${file.name}`;
+                const meta = await fetchTidbit(url);
+                return {
+                    filename: file.name,
+                    viewUrl: `tidbit.html?founder=${folder}&file=${encodeURIComponent(file.name)}&source=craig`,
+                    source: 'craig',
+                    ...meta,
+                    date: meta.date || extractDateFromFilename(file.name)
+                };
+            });
+            
+            let tidbits = await Promise.all([...tidbitsPromises, ...craigPromises]);
+            
+            if (tidbits.length === 0) {
+                container.innerHTML = '<div class="error">No tidbits found</div>';
+                return;
+            }
+            
+            tidbits.sort((a, b) => {
+                if (!a.date) return 1;
+                if (!b.date) return -1;
+                return new Date(b.date) - new Date(a.date);
+            });
+            
+            container.innerHTML = tidbits.map(tidbit => `
+                <a href="${tidbit.viewUrl}" class="tidbit-card">
+                    <div class="tidbit-info">
+                        <div class="tidbit-title">${tidbit.title}</div>
+                        <div class="meta-tags">
+                            ${tidbit.source === 'craig' ? '<span class="meta-tag source-tag">Archive</span>' : ''}
+                            ${tidbit.type ? `<span class="meta-tag">${tidbit.type}</span>` : ''}
+                            ${tidbit.subject ? `<span class="meta-tag">${tidbit.subject}</span>` : ''}
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <span class="tidbit-date">${tidbit.date || 'No date'}</span>
+                        <span class="arrow">→</span>
+                    </div>
+                </a>
+            `).join('');
+        }
+        
+        loadTidbits();
+    </script>
+</body>
+</html>
