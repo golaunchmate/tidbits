@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tidbit - Launchmate</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            color: #e0e0e0;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .back-btn {
+            display: inline-block;
+            background: linear-gradient(90deg, #00d4ff, #7b2cbf);
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-bottom: 30px;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+        }
+        
+        .tidbit-header {
+            margin-bottom: 40px;
+        }
+        
+        .tidbit-title {
+            font-size: 2rem;
+            background: linear-gradient(90deg, #00d4ff, #7b2cbf);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+        
+        .meta-row {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        
+        .meta-tag {
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: #00d4ff;
+        }
+        
+        .source-tag {
+            background: rgba(123, 44, 191, 0.1);
+            border: 1px solid rgba(123, 44, 191, 0.3);
+            color: #b366ff;
+        }
+        
+        .date-tag {
+            color: #888;
+            font-size: 0.9rem;
+        }
+        
+        .tidbit-content {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 30px;
+            line-height: 1.8;
+        }
+        
+        .tidbit-content h1,
+        .tidbit-content h2,
+        .tidbit-content h3 {
+            color: #fff;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+        
+        .tidbit-content h1:first-child,
+        .tidbit-content h2:first-child,
+        .tidbit-content h3:first-child {
+            margin-top: 0;
+        }
+        
+        .tidbit-content p {
+            margin-bottom: 15px;
+            color: #c0c0c0;
+        }
+        
+        .tidbit-content ul,
+        .tidbit-content ol {
+            margin-bottom: 15px;
+            padding-left: 25px;
+            color: #c0c0c0;
+        }
+        
+        .tidbit-content li {
+            margin-bottom: 8px;
+        }
+        
+        .tidbit-content strong {
+            color: #fff;
+        }
+        
+        .tidbit-content a {
+            color: #00d4ff;
+            text-decoration: none;
+        }
+        
+        .tidbit-content a:hover {
+            text-decoration: underline;
+        }
+        
+        .tidbit-content blockquote {
+            border-left: 3px solid #7b2cbf;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #a0a0a0;
+            font-style: italic;
+        }
+        
+        .tidbit-content code {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Monaco', 'Consolas', monospace;
+            font-size: 0.9em;
+            color: #ff9f43;
+        }
+        
+        .tidbit-content pre {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        .tidbit-content pre code {
+            background: none;
+            padding: 0;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #888;
+        }
+        
+        .error {
+            text-align: center;
+            padding: 40px;
+            color: #ff6b6b;
+        }
+        
+        .not-found {
+            text-align: center;
+            padding: 60px 20px;
+        }
+        
+        .not-found h2 {
+            color: #fff;
+            margin-bottom: 15px;
+        }
+        
+        .not-found p {
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="#" id="back-link" class="back-btn">← Back to Tidbits</a>
+        
+        <div id="tidbit-view">
+            <div class="loading">Loading tidbit...</div>
+        </div>
+    </div>
+
+    <script>
+        const REPO_OWNER = 'golaunchmate';
+        
+        const founderConfig = {
+            'kavindi-seneviratne': 'Kavindi Seneviratne',
+            'zach-brenner': 'Zach Brenner',
+            'billy-carter': 'Billy Carter',
+            'muhammad-qudsi': 'Muhammad Qudsi',
+            'juan-alcala': 'Juan Alcala',
+            'robert-sanchez': 'Robert Sanchez',
+            'vineeta-khanna': 'Vineeta Khanna'
+        };
+        
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+        
+        function parseMetaAndContent(html) {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+            
+            const getMeta = (name) => {
+                const meta = doc.querySelector(`meta[name="${name}"]`);
+                return meta ? meta.getAttribute('content') : null;
+            };
+            
+            const title = doc.querySelector('title')?.textContent || 'Untitled';
+            const body = doc.body;
+            
+            // Remove title from body if it's the first h1/h2 and matches the title
+            const firstHeading = body.querySelector('h1, h2');
+            if (firstHeading && firstHeading.textContent.trim() === title.trim()) {
+                firstHeading.remove();
+            }
+            
+            return {
+                title: title,
+                type: getMeta('tidbit-type'),
+                subject: getMeta('tidbit-subject'),
+                company: getMeta('tidbit-company'),
+                date: getMeta('tidbit-date'),
+                track: getMeta('tidbit-track'),
+                content: body.innerHTML
+            };
+        }
+        
+        async function loadTidbit() {
+            const founder = getQueryParam('founder');
+            const file = getQueryParam('file');
+            const source = getQueryParam('source');
+            
+            const container = document.getElementById('tidbit-view');
+            
+            // Set up back link
+            document.getElementById('back-link').href = `founder.html?name=${founder}`;
+            
+            // Validate parameters
+            if (!founder || !file || !source) {
+                container.innerHTML = `
+                    <div class="not-found">
+                        <h2>Tidbit Not Found</h2>
+                        <p>Missing required parameters. Please navigate from the founder list.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            const founderName = founderConfig[founder] || 'Unknown Founder';
+            
+            // Build the raw file URL
+            let fileUrl;
+            if (source === 'craig') {
+                fileUrl = `https://raw.githubusercontent.com/${REPO_OWNER}/craig/main/${file}`;
+            } else {
+                fileUrl = `https://raw.githubusercontent.com/${REPO_OWNER}/tidbits/main/inflight-spring-26/${founder}/${file}`;
+            }
+            
+            try {
+                const response = await fetch(fileUrl);
+                if (!response.ok) throw new Error('Failed to fetch tidbit');
+                
+                const html = await response.text();
+                const { title, type, subject, date, content } = parseMetaAndContent(html);
+                
+                // Update page title
+                document.title = `${title} - ${founderName}`;
+                
+                // Build meta tags
+                const metaTags = [];
+                if (source === 'craig') {
+                    metaTags.push('<span class="meta-tag source-tag">Archive</span>');
+                }
+                if (type) metaTags.push(`<span class="meta-tag">${type}</span>`);
+                if (subject) metaTags.push(`<span class="meta-tag">${subject}</span>`);
+                
+                container.innerHTML = `
+                    <div class="tidbit-header">
+                        <h1 class="tidbit-title">${title}</h1>
+                        <div class="meta-row">
+                            ${metaTags.join('')}
+                            ${date ? `<span class="date-tag">${date}</span>` : ''}
+                        </div>
+                    </div>
+                    <div class="tidbit-content">
+                        ${content}
+                    </div>
+                `;
+            } catch (error) {
+                console.error('Error loading tidbit:', error);
+                container.innerHTML = `
+                    <div class="error">
+                        <p>Failed to load tidbit. It may have been moved or deleted.</p>
+                    </div>
+                `;
+            }
+        }
+        
+        loadTidbit();
+    </script>
+</body>
+</html>
