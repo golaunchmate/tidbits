@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="tidbit-type" content="founder">
+    <meta name="tidbit-subject" content="Zach Brenner">
+    <meta name="tidbit-company" content="Sonomos">
+    <meta name="tidbit-date" content="2026-02-26">
+    <meta name="tidbit-period" content="2026-W09">
+    <title>Zach Brenner — Sonomos — Feb 26, 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body { 
+            font-family: 'Inter', -apple-system, sans-serif; 
+            background: #0f0f0f; 
+            color: #e5e5e5; 
+            line-height: 1.6; 
+        }
+        
+        .slide {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        
+        .card {
+            max-width: 600px;
+            width: 100%;
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            padding: 3rem;
+            position: relative;
+        }
+        
+        .page-number {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+        
+        h2 {
+            font-size: 1.875rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #60a5fa;
+        }
+        
+        h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        p {
+            font-size: 1.125rem;
+            margin-bottom: 1.25rem;
+            color: #d1d5db;
+        }
+        
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            font-size: 1.25rem;
+            color: #9ca3af;
+            margin-bottom: 2rem;
+        }
+        
+        .scroll-hint {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-top: 2rem;
+        }
+        
+        .highlight { color: #60a5fa; }
+        .decision { color: #34d399; }
+        .tension { color: #f9716; }
+        
+        .stat-row {
+            display: flex;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .stat {
+            flex: 1;
+        }
+        
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #60a5fa;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 0.875rem;
+            color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        ul {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+            color: #9ca3af;
+        }
+        
+        li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #60a5fa;
+        }
+        
+        .quote {
+            font-size: 1.375rem;
+            font-weight: 600;
+            font-style: italic;
+            color: #34d399;
+            margin: 2rem 0;
+            padding-left: 1.5rem;
+            border-left: 3px solid #34d399;
+        }
+        
+        .check { color: #34d399; }
+        .x { color: #ef4444; }
+        
+        .small {
+            font-size: 0.9375rem;
+            color: #6b7280;
+        }
+        
+        .callout {
+            background: #252525;
+            border-left: 3px solid #f97316;
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+        }
+        
+        .callout p {
+            margin-bottom: 0;
+        }
+        
+        .callout-green {
+            border-color: #34d399;
+        }
+        
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .col h3 {
+            margin-top: 0;
+        }
+        
+        .milestone {
+            background: linear-gradient(135deg, #1e3a5f 0%, #1a1a1a 100%);
+            border: 1px solid #3b82f6;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+        
+        .milestone p {
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- SLIDE 1: COVER -->
+    <div class="slide">
+        <div class="card">
+            <p class="label">Tidbit · Week of Feb 26, 2026</p>
+            <h1>Zach Brenner</h1>
+            <p class="subtitle">Sonomos · The Price of Patience</p>
+            <p class="scroll-hint">scroll ↓</p>
+            <div class="page-number">1/5</div>
+        </div>
+    </div>
+
+    <!-- SLIDE 2: WHERE I STARTED -->
+    <div class="slide">
+        <div class="card">
+            <h2>Where I Started</h2>
+            
+            <p>Last week, Craig and Neal pushed me: <span class="highlight">"Go install it yourself. Don't leave until they're running."</span></p>
+            
+            <p>I did two Collison installs. And learned something fast.</p>
+            
+            <div class="callout">
+                <p class="label">Install #1</p>
+                <p>Had to use developer mode. Lawyer said "fix the install process before you come back."</p>
+                <p class="small" style="margin-top: 0.5rem; color: #f97316;">The app works. The install doesn't.</p>
+            </div>
+            
+            <div class="callout callout-green">
+                <p class="label">Install #2</p>
+                <p>She likes it. But asked for Cloak. Noticed false positives. Suggested $4.99 price.</p>
+            </div>
+            
+            <p>Same pattern in every conversation: <span class="tension">everyone wants Cloak, everyone thinks $7.99 is too high for Dagger alone.</span></p>
+            
+            <div class="page-number">2/5</div>
+        </div>
+    </div>
+
+    <!-- SLIDE 3: WHAT I DISCOVERED -->
+    <div class="slide">
+        <div class="card">
+            <h2>What I Discovered</h2>
+            
+            <p class="label">Three Signals, Same Message</p>
+            
+            <div class="two-col">
+                <div class="col">
+                    <h3 style="color: #f97316;">The Friction</h3>
+                    <ul>
+                        <li>Developer mode install kills momentum</li>
+                        <li>Lawyers want simple, not technical</li>
+                        <li>Chrome Web Store is the only path</li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <h3 style="color: #60a5fa;">The Feedback</h3>
+                    <ul>
+                        <li>"I'd buy once Cloak is ready"</li>
+                        <li>"$4.99 feels right for current features"</li>
+                        <li>"Small and medium firms need this"</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <p class="label">The Architecture Insight</p>
+            <p>Dagger and Cloak share the same engine. Dagger wasn't a delay — <span class="highlight">it was the foundation.</span> Now the engine exists, Cloak ships faster.</p>
+            
+            <p class="quote">Users don't see the foundation. They just see the missing feature.</p>
+            
+            <div class="page-number">3/5</div>
+        </div>
+    </div>
+
+    <!-- SLIDE 4: THE REAL OPPORTUNITY -->
+    <div class="slide">
+        <div class="card">
+            <h2>The Real Opportunity</h2>
+            
+            <p class="label">The Decision</p>
+            <p>Not $7.99. Not $4.99. <span class="decision">$3.99.</span></p>
+            
+            <p>Why? Because I'm not trying to maximize revenue right now. I'm maximizing <span class="highlight">users who experience the core value</span> before Cloak ships.</p>
+            
+            <div class="milestone">
+                <p class="label">Positioning</p>
+                <p><strong>"Core protection now. Cloak coming soon."</strong></p>
+                <p class="small" style="margin-top: 0.5rem;">Not "early access." Not "beta." Just: here's what you get, here's what's coming.</p>
+            </div>
+            
+            <p class="label">Urgency Angle</p>
+            <p class="decision">"Lock in $3.99 before Cloak ships."</p>
+            
+            <p>The pricing becomes a feature: early adopters get grandfathered. Cloak justifies the raise to $7.99.</p>
+            
+            <div class="page-number">4/5</div>
+        </div>
+    </div>
+
+    <!-- SLIDE 5: WHERE I'M AT -->
+    <div class="slide">
+        <div class="card">
+            <h2>Where I'm At</h2>
+            
+            <div class="stat-row">
+                <div class="stat">
+                    <div class="stat-value">$3.99</div>
+                    <div class="stat-label">price locked</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">⏳</div>
+                    <div class="stat-label">Chrome Store pending</div>
+                </div>
+            </div>
+            
+            <p class="label">Completed This Week</p>
+            <ul>
+                <li>Website redesigned — new tagline, new hero</li>
+                <li>Checkout page live (Stripe)</li>
+                <li>Keylogging blocker finalized</li>
+                <li>Account deletion in extension</li>
+                <li>Chrome Web Store submitted for review</li>
+            </ul>
+            
+            <p class="label">This Week</p>
+            <ul>
+                <li>3 lawyer meetings scheduled</li>
+                <li>Finish demo video for busy lawyers</li>
+                <li>Create user instructions</li>
+                <li>Follow up with Legal Quants</li>
+            </ul>
+            
+            <p class="quote">I thought I needed to sell harder. I actually needed to price smarter.</p>
+            
+            <div class="page-number">5/5</div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            }
+        });
+    </script>
+
+</body>
+</html>
