@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="tidbit-type" content="founder">
+    <meta name="tidbit-subject" content="Mohammad Qudsi">
+    <meta name="tidbit-company" content="DateFlo">
+    <meta name="tidbit-date" content="2026-02-22">
+    <meta name="tidbit-period" content="2026-W08">
+    <title>Qudsi / DateFlo - Week of Feb 16-22</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body { 
+            font-family: 'Inter', -apple-system, sans-serif; 
+            background: #0f0f0f; 
+            color: #e5e5e5; 
+            line-height: 1.6; 
+        }
+        
+        .page {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+        }
+        
+        .card {
+            max-width: 600px;
+            width: 100%;
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            padding: 3rem;
+        }
+        
+        .page-number {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            color: #4a4a4a;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+        
+        h2 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #fff;
+        }
+        
+        h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+            color: #d1d1d1;
+            font-size: 1rem;
+        }
+        
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        .highlight { color: #60a5fa; }
+        .decision { color: #34d399; }
+        .tension { color: #f97316; }
+        
+        .subtitle {
+            font-size: 1.125rem;
+            color: #9ca3af;
+            margin-bottom: 0.5rem;
+        }
+        
+        .scroll-hint {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-top: 2rem;
+            text-align: center;
+        }
+        
+        .stat-row {
+            display: flex;
+            gap: 2rem;
+            margin: 1.5rem 0;
+        }
+        
+        .stat {
+            flex: 1;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #60a5fa;
+            margin-bottom: 0.25rem;
+        }
+        
+        .stat-label {
+            font-size: 0.875rem;
+            color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        ul {
+            list-style: none;
+            margin: 1rem 0;
+        }
+        
+        li {
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #60a5fa;
+        }
+        
+        .quote {
+            font-size: 1.25rem;
+            font-style: italic;
+            color: #34d399;
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: rgba(52, 211, 153, 0.1);
+            border-left: 3px solid #34d399;
+            border-radius: 4px;
+        }
+        
+        .callout {
+            background: rgba(249, 115, 22, 0.1);
+            border-left: 3px solid #f97316;
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+        
+        .killed {
+            color: #ef4444;
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+<body>
+    <!-- SLIDE 1: COVER -->
+    <div class="page">
+        <div class="card">
+            <span class="label">Week of Feb 16-22, 2026</span>
+            <h1>Qudsi</h1>
+            <div class="subtitle">DateFlo</div>
+            <h2 style="margin-top: 2rem;">From Product Hypotheses to Business Model</h2>
+            <div class="scroll-hint">scroll ↓</div>
+        </div>
+        <div class="page-number">1/5</div>
+    </div>
+
+    <!-- SLIDE 2: WHERE I STARTED -->
+    <div class="page">
+        <div class="card">
+            <h2>Where I Started</h2>
+            <p>Last week, Craig and Neal gave me two hypotheses to test:</p>
+            <ul>
+                <li><span class="highlight">Hypothesis A:</span> Do people need help with decision confidence? (Active daters who want better choices)</li>
+                <li><span class="highlight">Hypothesis B:</span> Do people need help with inertia? (Couch-sitters who never act)</li>
+            </ul>
+            <p>My plan: Interview customers, deliver more dates, figure out which problem I'm really solving.</p>
+            <p>I thought I'd spend the week validating hypotheses. I ended up discovering my entire business model.</p>
+        </div>
+        <div class="page-number">2/5</div>
+    </div>
+
+    <!-- SLIDE 3: WHAT I DISCOVERED -->
+    <div class="page">
+        <div class="card">
+            <h2>What I Discovered</h2>
+            
+            <h3>The Sean Interview</h3>
+            <p>I talked to Sean Flanagan—active dater who plans dates regularly. His pain wasn't inertia. It was <span class="highlight">decision confidence</span>.</p>
+            
+            <div class="stat-row">
+                <div class="stat">
+                    <div class="stat-value">1 hour</div>
+                    <div class="stat-label">spent planning</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">Still unsatisfied</div>
+                    <div class="stat-label">with choices</div>
+                </div>
+            </div>
+            
+            <p>He experiences FOMO <em>during</em> the date: "We could have done something better."</p>
+            
+            <div class="callout">
+                <p><strong>Sean's exact words:</strong> "I'd be willing to spend MORE money if I know what to expect."</p>
+            </div>
+            
+            <h3>The Cathy Demo Review</h3>
+            <p>Craig watched me do a live 10-minute date planning demo. When problems came up (closed restaurant, no parking, she hates sand), Cathy gave me a pass because we were in <span class="decision">conversation</span>—not just receiving AI output.</p>
+            
+            <p><strong>Craig:</strong> "The magic was the conversation. If it was just a sheet of paper, she'd never use this again."</p>
+        </div>
+        <div class="page-number">3/5</div>
+    </div>
+
+    <!-- SLIDE 4: THE REAL OPPORTUNITY -->
+    <div class="page">
+        <div class="card">
+            <h2>The Real Opportunity</h2>
+            
+            <p class="label">Craig/Neal Strategy Session (Feb 20)</p>
+            
+            <p><strong>Craig:</strong> "The problem is not planning dates. The problem is <span class="highlight">getting people to open up about what is meaningful</span>."</p>
+            
+            <div class="callout">
+                <p><strong>The insight:</strong> My superpower isn't the AI recommendations—it's the human intake process. I pull out of people what they don't even know they have.</p>
+            </div>
+            
+            <h3>The Pivot</h3>
+            <ul>
+                <li class="killed">NOT building an app</li>
+                <li class="killed">NOT automating the conversation</li>
+                <li><span class="decision">Date Concierge Service</span> — ongoing relationship, subscription model</li>
+            </ul>
+            
+            <h3>Business Model</h3>
+            <ul>
+                <li>Free first date (credibility builder)</li>
+                <li><span class="highlight">$50/month</span> for 2 custom dates</li>
+                <li>I stay involved through date night (text check-ins, adjustments)</li>
+                <li>Ongoing relationship (not transactional)</li>
+            </ul>
+            
+            <p><strong>Craig's reaction:</strong> <span class="decision">"I would sign up for that right now."</span></p>
+            
+            <p style="margin-top: 1.5rem;"><strong>The Rich People Formula:</strong> Take something only rich people can do (personal concierge) and democratize it.</p>
+        </div>
+        <div class="page-number">4/5</div>
+    </div>
+
+    <!-- SLIDE 5: WHERE I'M AT -->
+    <div class="page">
+        <div class="card">
+            <h2>Where I'm At</h2>
+            
+            <h3>What died this week</h3>
+            <ul>
+                <li>App automation strategy</li>
+                <li>One-off $5 per date model</li>
+                <li>"Tidbits" feature (Craig: "Your baby's ugly")</li>
+            </ul>
+            
+            <h3>What's alive</h3>
+            <ul>
+                <li><span class="decision">Clear product:</span> "Talk to me for 10 minutes, I'll have a date for you by the end"</li>
+                <li><span class="decision">Clear customer:</span> Active daters with pressure (Valentine's, birthdays, anniversaries)</li>
+                <li><span class="decision">Clear model:</span> $50/month concierge service</li>
+                <li><span class="decision">Clear proof:</span> Craig wants to book</li>
+            </ul>
+            
+            <h3>This week's actions</h3>
+            <ul>
+                <li>Convert Craig to first paying customer</li>
+                <li>Send transcripts to Neal</li>
+                <li>Price March 14 event ($10-15 tickets → subscription conversions)</li>
+                <li>Switch to Claude (fix hallucination issue)</li>
+                <li>Plan 5 more dates, perfect intake process</li>
+            </ul>
+            
+            <div class="quote">
+                "I thought I was building an app to automate date planning. I'm actually building a concierge service that scales human conversation."
+            </div>
+        </div>
+        <div class="page-number">5/5</div>
+    </div>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
