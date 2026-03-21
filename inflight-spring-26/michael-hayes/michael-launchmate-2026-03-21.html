@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Human Bottleneck Problem</title>
+    
+    <!-- Tidbit Metadata -->
+    <meta name="tidbit-type" content="team">
+    <meta name="tidbit-subject" content="Michael Hayes">
+    <meta name="tidbit-company" content="Launchmate">
+    <meta name="tidbit-date" content="2026-03-21">
+    <meta name="tidbit-agent-id" content="agent-a72dbb02-e690-4c7b-be19-b00c6758d817">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0f0f0f;
+            color: #e5e5e5;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .scroll-container {
+            height: 100vh;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+        }
+        
+        .page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            scroll-snap-align: start;
+            position: relative;
+        }
+        
+        .content {
+            max-width: 800px;
+            width: 100%;
+        }
+        
+        .page-number {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+        
+        .scroll-hint {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #6b7280;
+            font-size: 0.875rem;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-10px); }
+        }
+        
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #60a5fa;
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .subtitle {
+            font-size: 1.25rem;
+            color: #9ca3af;
+            margin-bottom: 0.5rem;
+        }
+        
+        .date {
+            font-family: 'JetBrains Mono', monospace;
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+        
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #6b7280;
+            margin-bottom: 0.5rem;
+        }
+        
+        .card {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .highlight-blue {
+            color: #60a5fa;
+            font-weight: 600;
+        }
+        
+        .highlight-green {
+            color: #34d399;
+            font-weight: 600;
+        }
+        
+        .highlight-orange {
+            color: #f97316;
+            font-weight: 600;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+            font-size: 1.125rem;
+        }
+        
+        ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        li {
+            margin-bottom: 0.75rem;
+            font-size: 1.125rem;
+        }
+        
+        .quote {
+            border-left: 3px solid #60a5fa;
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            font-style: italic;
+            color: #d1d5db;
+        }
+        
+        code {
+            font-family: 'JetBrains Mono', monospace;
+            background: #2a2a2a;
+            padding: 0.2rem 0.4rem;
+            border-radius: 0.25rem;
+            font-size: 0.95em;
+        }
+        
+        .tier {
+            margin-bottom: 1rem;
+        }
+        
+        .tier-header {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="scroll-container">
+        <!-- Page 1: Cover -->
+        <div class="page">
+            <div class="content">
+                <div class="page-number">1/5</div>
+                <div class="label">Launchmate Architecture Review</div>
+                <h1>The Human Bottleneck Problem</h1>
+                <div class="subtitle">We built the infrastructure. Now we need to remove ourselves from the loop.</div>
+                <div class="date">March 21, 2026 • Michael Hayes</div>
+                <div class="scroll-hint">↓ scroll to continue</div>
+            </div>
+        </div>
+
+        <!-- Page 2: Context -->
+        <div class="page">
+            <div class="content">
+                <div class="page-number">2/5</div>
+                <h2>What We've Built So Far</h2>
+                
+                <div class="card">
+                    <div class="label">Infrastructure</div>
+                    <p>LaunchMate agents have <span class="highlight-blue">persistent memory</span> (founder_profile, business_context, ecosystem_map) and a <span class="highlight-blue">skills system</span> for swappable behavioral modes (tidbit creation, weekly reflection, coaching).</p>
+                </div>
+
+                <div class="card">
+                    <div class="label">The Pre-Training Architecture</div>
+                    <p>Mentors fill in founder context through interviews, then the founder gets an agent that <span class="highlight-green">mysteriously knows them</span> in the first 30 seconds. Solves the trust problem.</p>
+                </div>
+
+                <p>This architecture works. Second cohort adopted where the first didn't—because we prioritized reliability over capabilities.</p>
+                
+                <p>But I realized something this week: <span class="highlight-orange">all value requires the founder to prompt us.</span></p>
+            </div>
+        </div>
+
+        <!-- Page 3: The Realization -->
+        <div class="page">
+            <div class="content">
+                <div class="page-number">3/5</div>
+                <h2>The Andrej Karpathy Paradigm</h2>
+                
+                <p>I read a transcript from a recent podcast with Andrej Karpathy. He said something that hit me:</p>
+                
+                <div class="quote">
+                    "I haven't typed a line of code since December. It's not coding anymore—it's expressing will to agents for 16 hours a day."
+                </div>
+
+                <p>His home automation agent (Dobby) <span class="highlight-blue">monitors security cameras</span>, detects FedEx trucks, and sends WhatsApp notifications. <span class="highlight-orange">Zero human prompting.</span></p>
+
+                <p>Peter Levels runs <span class="highlight-blue">10+ Codex agents in parallel</span>, each working on different features simultaneously. Token throughput is the new bottleneck, not typing speed.</p>
+
+                <p>The pattern: <span class="highlight-green">Agents should detect opportunities and act autonomously.</span></p>
+                
+                <p>And I realized: <span class="highlight-orange">LaunchMate is still reactive. Every piece of value requires the founder to ask.</span></p>
+            </div>
+        </div>
+
+        <!-- Page 4: The Bottlenecks -->
+        <div class="page">
+            <div class="content">
+                <div class="page-number">4/5</div>
+                <h2>Four Critical Bottlenecks</h2>
+                
+                <div class="card">
+                    <h3 class="highlight-orange">1. Tidbit Creation</h3>
+                    <p><strong>Now:</strong> Founder says "create a tidbit" → agent generates HTML</p>
+                    <p><strong>Should be:</strong> Agent detects "productive week with 3+ insights" → autonomously proposes tidbit → human approves</p>
+                </div>
+
+                <div class="card">
+                    <h3 class="highlight-orange">2. Pre-Training</h3>
+                    <p><strong>Now:</strong> Mentor sits through 30min interview filling founder context</p>
+                    <p><strong>Should be:</strong> Agent scrapes application materials + LinkedIn → synthesizes → mentor reviews in 5min</p>
+                </div>
+
+                <div class="card">
+                    <h3 class="highlight-orange">3. Coordination</h3>
+                    <p><strong>Now:</strong> Mentors manually check dashboards, reach out reactively</p>
+                    <p><strong>Should be:</strong> Synthesizer agent scans for blockers → matches to mentor expertise → notifies autonomously</p>
+                </div>
+
+                <div class="card">
+                    <h3 class="highlight-orange">4. Weekly Reflection</h3>
+                    <p><strong>Now:</strong> Founder must remember to trigger it</p>
+                    <p><strong>Should be:</strong> Agent initiates every Friday 4pm → nudges if no response → auto-synthesizes from chat history</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page 5: The Path Forward -->
+        <div class="page">
+            <div class="content">
+                <div class="page-number">5/5</div>
+                <h2>The Path Forward</h2>
+                
+                <p>We've built the infrastructure—memory, skills, coordination architecture proposal. Now we need to <span class="highlight-green">remove humans from the loop.</span></p>
+
+                <div class="card">
+                    <div class="tier">
+                        <div class="tier-header highlight-green">Tier 1 (High Impact, Low Complexity)</div>
+                        <ul>
+                            <li>Scheduled tidbits (cron job triggers every Friday)</li>
+                            <li>Autonomous weekly reflection (agent initiates)</li>
+                            <li>Pre-training form (async form + auto-synthesis, not live interview)</li>
+                        </ul>
+                    </div>
+
+                    <div class="tier">
+                        <div class="tier-header highlight-blue">Tier 2 (High Impact, Medium Complexity)</div>
+                        <ul>
+                            <li>Synthesizer agent (autonomous mentor notifications)</li>
+                            <li>Background research (while founder reads, agent researches)</li>
+                            <li>Founder advocate "claw" (persistent monitoring for regressions)</li>
+                        </ul>
+                    </div>
+
+                    <div class="tier">
+                        <div class="tier-header highlight-orange">Tier 3 (Transformative, High Complexity)</div>
+                        <ul>
+                            <li>Docker orchestration (parallel specialist agents)</li>
+                            <li>Skills meta-optimization (track outcomes, evolve instructions)</li>
+                            <li>MCP knowledge graphs (shared institutional memory)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="quote">
+                    "The capability IS there, you just haven't configured it right." — Andrej Karpathy
+                </div>
+
+                <p>We have the pieces. <span class="highlight-green">Time to make them autonomous.</span></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            const container = document.querySelector('.scroll-container');
+            const pageHeight = window.innerHeight;
+            
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                container.scrollBy({ top: pageHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                container.scrollBy({ top: -pageHeight, behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
