@@ -1,0 +1,578 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LaunchMate Tidbits Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #4F46E5;
+            --primary-light: #818CF8;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --danger: #EF4444;
+            --gray-50: #F9FAFB;
+            --gray-100: #F3F4F6;
+            --gray-200: #E5E7EB;
+            --gray-300: #D1D5DB;
+            --gray-600: #4B5563;
+            --gray-900: #111827;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: var(--gray-50);
+            color: var(--gray-900);
+            line-height: 1.5;
+        }
+        
+        /* Header */
+        .header {
+            background: white;
+            border-bottom: 1px solid var(--gray-200);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .logo span {
+            color: var(--gray-600);
+            font-weight: 400;
+        }
+        
+        /* Filters */
+        .filters {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+        
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .filter-label {
+            font-size: 0.875rem;
+            color: var(--gray-600);
+        }
+        
+        select, input {
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--gray-300);
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            background: white;
+        }
+        
+        select:focus, input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+        }
+        
+        /* Main Content */
+        .main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        /* Stats Section */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--gray-600);
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--gray-900);
+        }
+        
+        .stat-change {
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+        }
+        
+        .stat-change.positive { color: var(--success); }
+        .stat-change.negative { color: var(--danger); }
+        
+        /* Tabs */
+        .tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--gray-200);
+            padding-bottom: 1rem;
+        }
+        
+        .tab {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            background: transparent;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--gray-600);
+            cursor: pointer;
+            border-radius: 0.5rem;
+            transition: all 0.2s;
+        }
+        
+        .tab:hover {
+            background: var(--gray-100);
+        }
+        
+        .tab.active {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+        
+        .card-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--gray-900);
+        }
+        
+        .card-subtitle {
+            font-size: 0.875rem;
+            color: var(--gray-600);
+            margin-top: 0.25rem;
+        }
+        
+        .status-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+        
+        .status-active { background: #D1FAE5; color: #065F46; }
+        .status-pending { background: #FEF3C7; color: #92400E; }
+        .status-inactive { background: #FEE2E2; color: #991B1B; }
+        
+        .card-meta {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.875rem;
+            color: var(--gray-600);
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--gray-200);
+        }
+        
+        .card-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+        
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0.5rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--gray-200);
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-bottom: 2rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 0.25rem;
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            background: white;
+            border: 2px solid var(--primary);
+        }
+        
+        .timeline-date {
+            font-size: 0.75rem;
+            color: var(--gray-600);
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-content {
+            background: white;
+            border-radius: 0.75rem;
+            padding: 1rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-title {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        
+        .timeline-desc {
+            font-size: 0.875rem;
+            color: var(--gray-600);
+        }
+        
+        /* Hidden */
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">LaunchMate <span>Tidbits</span></div>
+            <div class="filters">
+                <div class="filter-group">
+                    <span class="filter-label">Program:</span>
+                    <select id="program-filter">
+                        <option value="all">All Programs</option>
+                        <option value="bootcamp-spring-26">Bootcamp Spring 26</option>
+                        <option value="inflight-spring-26">Inflight Spring 26</option>
+                        <option value="community-spring-26">Community Spring 26</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <span class="filter-label">Stakeholder:</span>
+                    <select id="stakeholder-filter">
+                        <option value="all">All Stakeholders</option>
+                        <option value="laura">Laura</option>
+                        <option value="michael-hayes">Michael Hayes</option>
+                        <option value="craig">Craig Lauer</option>
+                        <option value="erica">Erica</option>
+                        <option value="jordyn">Jordyn</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <span class="filter-label">Status:</span>
+                    <select id="status-filter">
+                        <option value="all">All Status</option>
+                        <option value="active">Active</option>
+                        <option value="pending">Pending</option>
+                        <option value="inactive">Inactive</option>
+                    </select>
+                </div>
+                <input type="text" id="search" placeholder="Search tidbits...">
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <!-- Stats -->
+        <section class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-label">Total Tidbits</div>
+                <div class="stat-value" id="stat-total">--</div>
+                <div class="stat-change positive" id="stat-total-change">Loading...</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Active Startups</div>
+                <div class="stat-value" id="stat-startups">--</div>
+                <div class="stat-change">Across all programs</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Founders</div>
+                <div class="stat-value" id="stat-founders">--</div>
+                <div class="stat-change">Tracked individuals</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Latest Update</div>
+                <div class="stat-value" id="stat-latest">--</div>
+                <div class="stat-change" id="stat-latest-from">Loading...</div>
+            </div>
+        </section>
+
+        <!-- Tabs -->
+        <div class="tabs">
+            <button class="tab active" data-tab="cards">Card Grid</button>
+            <button class="tab" data-tab="timeline">Timeline</button>
+            <button class="tab" data-tab="by-stakeholder">By Stakeholder</button>
+        </div>
+
+        <!-- Cards View -->
+        <section id="cards-view" class="cards-grid">
+            <!-- Populated by JS -->
+        </section>
+
+        <!-- Timeline View -->
+        <section id="timeline-view" class="timeline hidden">
+            <!-- Populated by JS -->
+        </section>
+
+        <!-- By Stakeholder View -->
+        <section id="stakeholder-view" class="hidden">
+            <!-- Populated by JS -->
+        </section>
+    </main>
+
+    <script>
+                // Tidbit data - will be populated from scanning the repo
+        const tidbits = [
+            // Inflight Spring 26
+            { name: "AI Game Generation", founder: "Jai Satith", program: "inflight-spring-26", startup: "ai-game-generation", status: "active", lastUpdate: "2026-02-22", count: 3 },
+            { name: "Celebrity Concierge", founder: "Billy Carter", program: "inflight-spring-26", startup: "celebrity-concierge", status: "active", lastUpdate: "2026-01-28", count: 1 },
+            { name: "Dateflo", founder: "Muhammad Qudsi", program: "inflight-spring-26", startup: "dateflo", status: "active", lastUpdate: "2026-02-22", count: 10 },
+            { name: "Fooni", founder: "Kavindi Seneviratne", program: "inflight-spring-26", startup: "fooni", status: "active", lastUpdate: "2026-02-06", count: 12 },
+            { name: "Harmony", founder: "Vineeta Khanna", program: "inflight-spring-26", startup: "harmony", status: "active", lastUpdate: "2025-12-11", count: 1 },
+            { name: "LaunchMate", founder: "Michael Hayes & Laura Wetherhold", program: "inflight-spring-26", startup: "launchmate", status: "active", lastUpdate: "2026-03-21", count: 14 },
+            { name: "RAFRS", founder: "Juan Alcala", program: "inflight-spring-26", startup: "rafrs", status: "active", lastUpdate: "2026-02-26", count: 2 },
+            { name: "Sonomos", founder: "Zach Brenner", program: "inflight-spring-26", startup: "sonomos", status: "active", lastUpdate: "2026-02-26", count: 6 },
+            { name: "TurnerAI", founder: "Robert Sanchez", program: "inflight-spring-26", startup: "turnerai", status: "active", lastUpdate: "2026-01-29", count: 1 },
+            // Bootcamp Spring 26
+            { name: "AztecConnect", founder: "Ruby Chan", program: "bootcamp-spring-26", startup: "aztecconnect", status: "active", lastUpdate: "2026-01-30", count: 2 },
+            { name: "Campus Miles", founder: "Kiara Kuehl-Mueller", program: "bootcamp-spring-26", startup: "campus-miles", status: "active", lastUpdate: "2026-01-30", count: 3 },
+            { name: "DadBod", founder: "Cameron Brock", program: "bootcamp-spring-26", startup: "dadbod", status: "active", lastUpdate: "2026-01-30", count: 1 },
+            { name: "Granny Smith", founder: "Macey Wenzel", program: "bootcamp-spring-26", startup: "granny-smith", status: "active", lastUpdate: "2026-01-30", count: 1 },
+            { name: "Gym App", founder: "Victor Nyden", program: "bootcamp-spring-26", startup: "gym-app", status: "active", lastUpdate: "2026-01-30", count: 1 },
+            { name: "LaunchMate", founder: "Michael Hayes", program: "bootcamp-spring-26", startup: "launchmate", status: "active", lastUpdate: "2026-01-30", count: 1 },
+            { name: "MoveMaven", founder: "Sophia Colley", program: "bootcamp-spring-26", startup: "movemaven", status: "active", lastUpdate: "2026-01-30", count: 1 },
+            { name: "Neighbor Network", founder: "Marko Jovanovic", program: "bootcamp-spring-26", startup: "neighbor-network", status: "active", lastUpdate: "2026-01-30", count: 1 },
+            { name: "Neighborhood Discovery", founder: "Ela Emam", program: "bootcamp-spring-26", startup: "neighborhood-discovery", status: "active", lastUpdate: "2026-01-30", count: 1 },
+            { name: "Overload Shield", founder: "Kristina Nguyen", program: "bootcamp-spring-26", startup: "overload-shield", status: "active", lastUpdate: "2026-01-30", count: 1 },
+            { name: "Pathlog", founder: "Julrenza Flores", program: "bootcamp-spring-26", startup: "pathlog", status: "active", lastUpdate: "2026-01-30", count: 2 },
+            { name: "PersonalAI", founder: "Ryan To", program: "bootcamp-spring-26", startup: "personalai", status: "active", lastUpdate: "2026-01-30", count: 2 },
+            { name: "Plotz", founder: "Team 11", program: "bootcamp-spring-26", startup: "plotz", status: "active", lastUpdate: "2026-01-30", count: 1 },
+            { name: "Project H1B", founder: "Ayden Yevilov", program: "bootcamp-spring-26", startup: "project-h1b", status: "active", lastUpdate: "2026-01-30", count: 1 },
+            { name: "Schedule Optimizer", founder: "Brian Sussman", program: "bootcamp-spring-26", startup: "schedule-optimizer", status: "active", lastUpdate: "2026-01-30", count: 1 },
+            { name: "SDSU Events Hub", founder: "Volodymyr Kalinin", program: "bootcamp-spring-26", startup: "sdsu-events-hub", status: "active", lastUpdate: "2026-01-30", count: 1 },
+            { name: "ShadowMatch", founder: "Jared Eastman", program: "bootcamp-spring-26", startup: "shadowmatch", status: "active", lastUpdate: "2026-01-30", count: 2 },
+            { name: "TenantPath", founder: "Matt Levie", program: "bootcamp-spring-26", startup: "tenantpath", status: "active", lastUpdate: "2026-01-30", count: 1 },
+            { name: "TenantShield", founder: "Ravyn Panopio", program: "bootcamp-spring-26", startup: "tenantshield", status: "active", lastUpdate: "2026-01-30", count: 1 },
+            { name: "The Student Hub", founder: "Brandon Mondragon", program: "bootcamp-spring-26", startup: "the-student-hub", status: "active", lastUpdate: "2026-01-30", count: 1 },
+            { name: "Visa Tax Help", founder: "Alyssa Lim", program: "bootcamp-spring-26", startup: "visa-tax-help", status: "active", lastUpdate: "2026-01-30", count: 1 },
+            // Community Spring 26
+            { name: "Cursor", founder: "Alex Zakoor", program: "community-spring-26", startup: "cursor", status: "active", lastUpdate: "2026-03-20", count: 1 },
+        ];
+
+        // Stakeholder mapping
+        const stakeholderMap = {
+            "michael-hayes": { name: "Michael Hayes", startups: ["launchmate"] },
+            "laura": { name: "Laura Wetherhold", startups: ["laura"] },
+            "craig": { name: "Craig Lauer", startups: [] },
+            "erica": { name: "Erica", startups: [] },
+            "jordyn": { name: "Jordyn", startups: [] },
+        };
+
+        // Calculate stats
+        function updateStats() {
+            document.getElementById('stat-total').textContent = tidbits.length;
+            document.getElementById('stat-startups').textContent = new Set(tidbits.map(t => t.startup)).size;
+            document.getElementById('stat-founders').textContent = new Set(tidbits.map(t => t.founder)).size;
+            
+            const latest = tidbits.reduce((a, b) => a.lastUpdate > b.lastUpdate ? a : b);
+            document.getElementById('stat-latest').textContent = latest.lastUpdate;
+            document.getElementById('stat-latest-from').textContent = ${latest.name} - ;
+            document.getElementById('stat-total-change').textContent = ${tidbits.reduce((sum, t) => sum + t.count, 0)} total tidbit files;
+        }
+
+        // Render cards
+        function renderCards(filter = {}) {
+            const container = document.getElementById('cards-view');
+            container.innerHTML = '';
+            
+            const filtered = tidbits.filter(t => {
+                if (filter.program && filter.program !== 'all' && t.program !== filter.program) return false;
+                if (filter.status && filter.status !== 'all' && t.status !== filter.status) return false;
+                if (filter.search && !t.name.toLowerCase().includes(filter.search.toLowerCase()) && 
+                    !t.founder.toLowerCase().includes(filter.search.toLowerCase())) return false;
+                return true;
+            });
+            
+            filtered.forEach(t => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = 
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title"></div>
+                            <div class="card-subtitle"></div>
+                        </div>
+                        <span class="status-badge status-"></span>
+                    </div>
+                    <div class="card-meta">
+                        <div class="card-meta-item">📁  files</div>
+                        <div class="card-meta-item">📅 </div>
+                        <div class="card-meta-item">🏷️ </div>
+                    </div>
+                ;
+                container.appendChild(card);
+            });
+        }
+
+        // Render timeline
+        function renderTimeline() {
+            const container = document.getElementById('timeline-view');
+            container.innerHTML = '';
+            
+            const sorted = [...tidbits].sort((a, b) => b.lastUpdate.localeCompare(a.lastUpdate));
+            
+            sorted.forEach(t => {
+                const item = document.createElement('div');
+                item.className = 'timeline-item';
+                item.innerHTML = 
+                    <div class="timeline-date"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-title"> - </div>
+                        <div class="timeline-desc"> tidbit file(s) in </div>
+                    </div>
+                ;
+                container.appendChild(item);
+            });
+        }
+
+        // Render by stakeholder
+        function renderByStakeholder() {
+            const container = document.getElementById('stakeholder-view');
+            container.innerHTML = '';
+            
+            Object.entries(stakeholderMap).forEach(([key, stakeholder]) => {
+                const section = document.createElement('div');
+                section.style.marginBottom = '2rem';
+                section.innerHTML = <h3 style="margin-bottom: 1rem;"></h3>;
+                
+                const grid = document.createElement('div');
+                grid.className = 'cards-grid';
+                
+                // Find tidbits for this stakeholder
+                const relatedTidbits = tidbits.filter(t => 
+                    stakeholder.startups.includes(t.startup) || 
+                    t.founder.toLowerCase().includes(stakeholder.name.toLowerCase())
+                );
+                
+                if (relatedTidbits.length === 0) {
+                    grid.innerHTML = '<p style="color: var(--gray-600);">No tidbits yet</p>';
+                } else {
+                    relatedTidbits.forEach(t => {
+                        const card = document.createElement('div');
+                        card.className = 'card';
+                        card.innerHTML = 
+                            <div class="card-header">
+                                <div>
+                                    <div class="card-title"></div>
+                                    <div class="card-subtitle"></div>
+                                </div>
+                                <span class="status-badge status-"></span>
+                            </div>
+                            <div class="card-meta">
+                                <div class="card-meta-item">📁  files</div>
+                                <div class="card-meta-item">📅 </div>
+                            </div>
+                        ;
+                        grid.appendChild(card);
+                    });
+                }
+                
+                section.appendChild(grid);
+                container.appendChild(section);
+            });
+        }
+
+        // Tab switching
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                const tabName = tab.dataset.tab;
+                document.getElementById('cards-view').classList.toggle('hidden', tabName !== 'cards');
+                document.getElementById('timeline-view').classList.toggle('hidden', tabName !== 'timeline');
+                document.getElementById('stakeholder-view').classList.toggle('hidden', tabName !== 'by-stakeholder');
+            });
+        });
+
+        // Filters
+        function applyFilters() {
+            const program = document.getElementById('program-filter').value;
+            const status = document.getElementById('status-filter').value;
+            const search = document.getElementById('search').value;
+            
+            renderCards({ program, status, search });
+        }
+
+        document.getElementById('program-filter').addEventListener('change', applyFilters);
+        document.getElementById('status-filter').addEventListener('change', applyFilters);
+        document.getElementById('search').addEventListener('input', applyFilters);
+
+        // Initialize
+        updateStats();
+        renderCards();
+        renderTimeline();
+        renderByStakeholder();
+    </script>
+</body>
+</html>
+
