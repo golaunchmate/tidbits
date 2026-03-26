@@ -1,0 +1,770 @@
+﻿[
+    {
+        "name":  true,
+        "founder":  "ela-emam",
+        "program":  "bootcamp-spring-26",
+        "startup":  "neighborhood-discovery",
+        "status":  "inactive",
+        "lastUpdate":  "2026-01-30",
+        "count":  1,
+        "files":  [
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "bootcamp-spring-26\\neighborhood-discovery\\ela-emam\\bootcamp-summary-2026-01-30.html",
+                          "name":  "Ela Emam | Bootcamp Tidbit",
+                          "summary":  "Agent-generated tidbit"
+                      }
+                  ]
+    },
+    {
+        "name":  true,
+        "founder":  "404-dateflo.html",
+        "program":  "inflight-spring-26",
+        "startup":  "dateflo",
+        "status":  "active",
+        "lastUpdate":  "2026-02-22",
+        "count":  9,
+        "files":  [
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "inflight-spring-26\\dateflo\\404-dateflo.html",
+                          "name":  "✨ Loading Your Spark... ✨",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-02-19",
+                          "path":  "inflight-spring-26\\dateflo\\muhammad-qudsi\\discovery-summary-2026-02-19.html",
+                          "name":  "Qudsi × DateFlo — Feb 19, 2026",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-02-22",
+                          "path":  "inflight-spring-26\\dateflo\\muhammad-qudsi\\discovery-summary-2026-02-22.html",
+                          "name":  "Qudsi / DateFlo - Week of Feb 16-22",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "inflight-spring-26\\dateflo\\muhammad-qudsi\\sparks\\amanda-little-italy-2026-02-26.html",
+                          "name":  "Amanda\u0027s Little Italy Date",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "inflight-spring-26\\dateflo\\muhammad-qudsi\\sparks\\cathy-sunset-2026-02-20.html",
+                          "name":  "Cathy\u0027s Sunset Date",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "inflight-spring-26\\dateflo\\muhammad-qudsi\\sparks\\craig-birthday-2026-02-21.html",
+                          "name":  "Craig\u0027s Birthday Date",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "inflight-spring-26\\dateflo\\muhammad-qudsi\\sparks\\kavindi-coastal-2026-03-30.html",
+                          "name":  "Kavindi\u0027s Coastal Date",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "inflight-spring-26\\dateflo\\muhammad-qudsi\\sparks\\kavindi-coastal-enhanced-2026-03-30.html",
+                          "name":  "Kavindi\u0027s Coastal Date",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "inflight-spring-26\\dateflo\\muhammad-qudsi\\sparks\\kavindi-coastal-fully-enhanced-2026-03-30.html",
+                          "name":  "Kavindi\u0027s Coastal Date - Fully Enhanced",
+                          "summary":  "Agent-generated tidbit"
+                      }
+                  ]
+    },
+    {
+        "name":  true,
+        "founder":  "jai-satith",
+        "program":  "inflight-spring-26",
+        "startup":  "ai-game-generation",
+        "status":  "active",
+        "lastUpdate":  "2026-02-20",
+        "count":  3,
+        "files":  [
+                      {
+                          "date":  "2026-02-20",
+                          "path":  "inflight-spring-26\\ai-game-generation\\jai-satith\\continuity-contract.html",
+                          "name":  "Founder ↔ Mentor Continuity Contract",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-02-20",
+                          "path":  "inflight-spring-26\\ai-game-generation\\jai-satith\\jai-satith-continuity-design.html",
+                          "name":  "Jai \u0026 Satith — Continuity Design",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-02-20",
+                          "path":  "inflight-spring-26\\ai-game-generation\\jai-satith\\jai-satith.html",
+                          "name":  "Jai \u0026 Satith - AI Game Generation - Commitment Spine",
+                          "summary":  "Agent-generated tidbit"
+                      }
+                  ]
+    },
+    {
+        "name":  true,
+        "founder":  "juan-alcala",
+        "program":  "inflight-spring-26",
+        "startup":  "rafrs",
+        "status":  "active",
+        "lastUpdate":  "2026-02-26",
+        "count":  2,
+        "files":  [
+                      {
+                          "date":  "2026-02-11",
+                          "path":  "inflight-spring-26\\rafrs\\juan-alcala\\rafrs-update-2026-02-11.html",
+                          "name":  "Juan Alcala · RAFRS · Feb 11",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-02-26",
+                          "path":  "inflight-spring-26\\rafrs\\juan-alcala\\rafrs-update-2026-02-26.html",
+                          "name":  "Juan Alcala | RAFRS | Feb 26, 2026",
+                          "summary":  "Agent-generated tidbit"
+                      }
+                  ]
+    },
+    {
+        "name":  true,
+        "founder":  "brandon-mondragon",
+        "program":  "bootcamp-spring-26",
+        "startup":  "the-student-hub",
+        "status":  "inactive",
+        "lastUpdate":  "2026-01-30",
+        "count":  1,
+        "files":  [
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "bootcamp-spring-26\\the-student-hub\\brandon-mondragon\\bootcamp-summary-2026-01-30.html",
+                          "name":  "Brandon Mondragon | The Student Hub | ZIP Launchpad Bootcamp",
+                          "summary":  "Agent-generated tidbit"
+                      }
+                  ]
+    },
+    {
+        "name":  true,
+        "founder":  "michael-hayes",
+        "program":  "bootcamp-spring-26",
+        "startup":  "launchmate",
+        "status":  "inactive",
+        "lastUpdate":  "2026-03-21",
+        "count":  12,
+        "files":  [
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "bootcamp-spring-26\\launchmate\\michael-hayes\\launchmate-weekly-2026-w05.html",
+                          "name":  "Michael Hayes · Week 5",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-02-04",
+                          "path":  "inflight-spring-26\\launchmate\\laura\\laura-dev-workflow-guide.html",
+                          "name":  "Launchmate Dev Workflow | Laura",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-02-13",
+                          "path":  "inflight-spring-26\\launchmate\\michael-hayes\\engineering-philosophy-2026-02-13.html",
+                          "name":  "Engineering Philosophy | Michael Rodriguez",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-02-06",
+                          "path":  "inflight-spring-26\\launchmate\\michael-hayes\\flbl-tech-spike-2026-02-06.html",
+                          "name":  "FLBL Tech Spike | Craig",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-03-21",
+                          "path":  "inflight-spring-26\\launchmate\\michael-hayes\\launchmate-update-2026-03-21.html",
+                          "name":  "The Human Bottleneck Problem",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-02-17",
+                          "path":  "inflight-spring-26\\launchmate\\michael-hayes\\launchmate-weekly-2026-02-17.html",
+                          "name":  "Reliability First, Then Scale",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "inflight-spring-26\\launchmate\\michael-hayes\\launchmate-weekly-2026-w05.html",
+                          "name":  "Michael Hayes - Week 5",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-01-27",
+                          "path":  "inflight-spring-26\\launchmate\\michael-hayes\\michael-3-week-summary-2026-01-27.html",
+                          "name":  "3 Weeks: Skills to Infrastructure | Michael",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-01-27",
+                          "path":  "inflight-spring-26\\launchmate\\michael-hayes\\michael-a2a-routing-2026-01-27.html",
+                          "name":  "A2A Response Routing | Michael",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-02-03",
+                          "path":  "inflight-spring-26\\launchmate\\michael-hayes\\michael-bootcamp-to-capabilities-2026-02-03.html",
+                          "name":  "Bootcamp to Capabilities | Michael",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-02-04",
+                          "path":  "inflight-spring-26\\launchmate\\michael-hayes\\michael-launchmate-direction-2026-02-04.html",
+                          "name":  "Launchmate Direction | Michael",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-02-16",
+                          "path":  "inflight-spring-26\\launchmate\\michael-hayes\\reliability-notes-2026-02-16.html",
+                          "name":  "Building Trust Through Reliability",
+                          "summary":  "Agent-generated tidbit"
+                      }
+                  ]
+    },
+    {
+        "name":  true,
+        "founder":  "team-11",
+        "program":  "bootcamp-spring-26",
+        "startup":  "plotz",
+        "status":  "inactive",
+        "lastUpdate":  "2026-01-30",
+        "count":  1,
+        "files":  [
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "bootcamp-spring-26\\plotz\\team-11\\team-update-2026-01-30.html",
+                          "name":  "Team 11 - Plotz | Bootcamp Spring 2026",
+                          "summary":  "Agent-generated tidbit"
+                      }
+                  ]
+    },
+    {
+        "name":  true,
+        "founder":  "kavindi-seneviratne",
+        "program":  "inflight-spring-26",
+        "startup":  "fooni",
+        "status":  "active",
+        "lastUpdate":  "2026-02-06",
+        "count":  11,
+        "files":  [
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "inflight-spring-26\\fooni\\kavindi-seneviratne\\fooni-cafes-contacts.html",
+                          "name":  "Fooni Cafe Contacts",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "inflight-spring-26\\fooni\\kavindi-seneviratne\\fooni-cafes.html",
+                          "name":  "Fooni Cafe Discovery",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-02-04",
+                          "path":  "inflight-spring-26\\fooni\\kavindi-seneviratne\\fooni-playbook-2026-02-04.html",
+                          "name":  "Fooni Playbook | Kavindi",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-02-06",
+                          "path":  "inflight-spring-26\\fooni\\kavindi-seneviratne\\fooni-restaurants-2026-02-06.html",
+                          "name":  "Fooni · Restaurant Network · Feb 2026",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "inflight-spring-26\\fooni\\kavindi-seneviratne\\fooni-restaurants.html",
+                          "name":  "Fooni Restaurant Discovery",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "inflight-spring-26\\fooni\\kavindi-seneviratne\\fooni-sdsu-asian-cluster.html",
+                          "name":  "Fooni SDSU Asian Restaurants",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "inflight-spring-26\\fooni\\kavindi-seneviratne\\fooni-sdsu-restaurants-contacts.html",
+                          "name":  "Fooni SDSU Restaurant Contacts",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "inflight-spring-26\\fooni\\kavindi-seneviratne\\fooni-sdsu-restaurants.html",
+                          "name":  "Fooni SDSU Restaurant Discovery",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-01-28",
+                          "path":  "inflight-spring-26\\fooni\\kavindi-seneviratne\\fooni-update-2026-01-28.html",
+                          "name":  "Kavindi | Fooni | Jan 28, 2026",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-02-06",
+                          "path":  "inflight-spring-26\\fooni\\kavindi-seneviratne\\fooni-update-2026-02-06.html",
+                          "name":  "Kavindi · Fooni · Feb 6, 2026",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "inflight-spring-26\\fooni\\kavindi-seneviratne\\restaurant-discovery-agent.html",
+                          "name":  "Tidbit | Restaurant Discovery Agent",
+                          "summary":  "Agent-generated tidbit"
+                      }
+                  ]
+    },
+    {
+        "name":  true,
+        "founder":  "ravyn-panopio",
+        "program":  "bootcamp-spring-26",
+        "startup":  "tenantshield",
+        "status":  "inactive",
+        "lastUpdate":  "2026-01-30",
+        "count":  1,
+        "files":  [
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "bootcamp-spring-26\\tenantshield\\ravyn-panopio\\tenantshield-discovery-2026-01-30.html",
+                          "name":  "Ravyn Panopio — TenantShield | Bootcamp Tidbit",
+                          "summary":  "Agent-generated tidbit"
+                      }
+                  ]
+    },
+    {
+        "name":  true,
+        "founder":  "brian-sussman",
+        "program":  "bootcamp-spring-26",
+        "startup":  "schedule-optimizer",
+        "status":  "inactive",
+        "lastUpdate":  "2026-01-30",
+        "count":  1,
+        "files":  [
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "bootcamp-spring-26\\schedule-optimizer\\brian-sussman\\bootcamp-summary-2026-01-30.html",
+                          "name":  "Brian Sussman - Bootcamp Tidbit",
+                          "summary":  "Agent-generated tidbit"
+                      }
+                  ]
+    },
+    {
+        "name":  true,
+        "founder":  "alex-zakoor",
+        "program":  "community-spring-26",
+        "startup":  "cursor",
+        "status":  "active",
+        "lastUpdate":  "2026-03-20",
+        "count":  1,
+        "files":  [
+                      {
+                          "date":  "2026-03-20",
+                          "path":  "community-spring-26\\cursor\\alex-zakoor\\cursor-update-2026-03-20.html",
+                          "name":  "Alex Zakoor - Cursor GTM - March 2026",
+                          "summary":  "Agent-generated tidbit"
+                      }
+                  ]
+    },
+    {
+        "name":  true,
+        "founder":  "alyssa-lim",
+        "program":  "bootcamp-spring-26",
+        "startup":  "visa-tax-help",
+        "status":  "inactive",
+        "lastUpdate":  "2026-01-30",
+        "count":  1,
+        "files":  [
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "bootcamp-spring-26\\visa-tax-help\\alyssa-lim\\bootcamp-summary-2026-01-30.html",
+                          "name":  "Alyssa Lim | Visa Tax Help",
+                          "summary":  "Agent-generated tidbit"
+                      }
+                  ]
+    },
+    {
+        "name":  true,
+        "founder":  "ruby-chan",
+        "program":  "bootcamp-spring-26",
+        "startup":  "aztecconnect",
+        "status":  "inactive",
+        "lastUpdate":  "2026-01-30",
+        "count":  2,
+        "files":  [
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "bootcamp-spring-26\\aztecconnect\\ruby-chan\\aztecconnect-discovery-2026-01-30.html",
+                          "name":  "Ruby Chan | AztecConnect",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "bootcamp-spring-26\\aztecconnect\\ruby-chan\\bootcamp-summary-2026-01-30.html",
+                          "name":  "Ruby Chan | Bootcamp Discovery",
+                          "summary":  "Agent-generated tidbit"
+                      }
+                  ]
+    },
+    {
+        "name":  true,
+        "founder":  "kristina-nguyen",
+        "program":  "bootcamp-spring-26",
+        "startup":  "overload-shield",
+        "status":  "inactive",
+        "lastUpdate":  "2026-01-30",
+        "count":  1,
+        "files":  [
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "bootcamp-spring-26\\overload-shield\\kristina-nguyen\\overload-shield-discovery-2026-01-30.html",
+                          "name":  "Kristina Nguyen - Overload Shield",
+                          "summary":  "Agent-generated tidbit"
+                      }
+                  ]
+    },
+    {
+        "name":  true,
+        "founder":  "julrenza-flores",
+        "program":  "bootcamp-spring-26",
+        "startup":  "pathlog",
+        "status":  "inactive",
+        "lastUpdate":  "2026-01-30",
+        "count":  2,
+        "files":  [
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "bootcamp-spring-26\\pathlog\\julrenza-flores\\bootcamp-summary-2026-01-30.html",
+                          "name":  "Julrenza | Startup Bootcamp | Jan 30, 2026",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "bootcamp-spring-26\\pathlog\\julrenza-flores\\pathlog-discovery-2026-01-30.html",
+                          "name":  "Julrenza | PathLog | Jan 30, 2026",
+                          "summary":  "Agent-generated tidbit"
+                      }
+                  ]
+    },
+    {
+        "name":  true,
+        "founder":  "cameron-brock",
+        "program":  "bootcamp-spring-26",
+        "startup":  "dadbod",
+        "status":  "inactive",
+        "lastUpdate":  "2026-01-30",
+        "count":  1,
+        "files":  [
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "bootcamp-spring-26\\dadbod\\cameron-brock\\dadbod-discovery-2026-01-30.html",
+                          "name":  "Cameron - Dad Bod Protein Health Discovery",
+                          "summary":  "Agent-generated tidbit"
+                      }
+                  ]
+    },
+    {
+        "name":  true,
+        "founder":  "vineeta-khanna",
+        "program":  "inflight-spring-26",
+        "startup":  "harmony",
+        "status":  "active",
+        "lastUpdate":  "2025-12-11",
+        "count":  1,
+        "files":  [
+                      {
+                          "date":  "2025-12-11",
+                          "path":  "inflight-spring-26\\harmony\\vineeta-khanna\\harmony-update-2025-12-11.html",
+                          "name":  "Vineeta Khanna | Harmony Health AI",
+                          "summary":  "Agent-generated tidbit"
+                      }
+                  ]
+    },
+    {
+        "name":  true,
+        "founder":  "billy-carter",
+        "program":  "inflight-spring-26",
+        "startup":  "celebrity-concierge",
+        "status":  "active",
+        "lastUpdate":  "2026-01-28",
+        "count":  1,
+        "files":  [
+                      {
+                          "date":  "2026-01-28",
+                          "path":  "inflight-spring-26\\celebrity-concierge\\billy-carter\\celebrity-concierge-update-2026-01-28.html",
+                          "name":  "Billy Carter - Celebrity Concierge | Jan 28, 2026",
+                          "summary":  "Agent-generated tidbit"
+                      }
+                  ]
+    },
+    {
+        "name":  true,
+        "founder":  "sophia-colley",
+        "program":  "bootcamp-spring-26",
+        "startup":  "movemaven",
+        "status":  "inactive",
+        "lastUpdate":  "2026-01-30",
+        "count":  1,
+        "files":  [
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "bootcamp-spring-26\\movemaven\\sophia-colley\\movemaven-discovery-2026-01-30.html",
+                          "name":  "Sophia Colley - Move Maven | Bootcamp Tidbit",
+                          "summary":  "Agent-generated tidbit"
+                      }
+                  ]
+    },
+    {
+        "name":  true,
+        "founder":  "ayden-yevilov",
+        "program":  "bootcamp-spring-26",
+        "startup":  "project-h1b",
+        "status":  "inactive",
+        "lastUpdate":  "2026-01-30",
+        "count":  1,
+        "files":  [
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "bootcamp-spring-26\\project-h1b\\ayden-yevilov\\bootcamp-summary-2026-01-30.html",
+                          "name":  "Ayden Yevilov | Project H1B",
+                          "summary":  "Agent-generated tidbit"
+                      }
+                  ]
+    },
+    {
+        "name":  true,
+        "founder":  "ryan-to",
+        "program":  "bootcamp-spring-26",
+        "startup":  "personalai",
+        "status":  "inactive",
+        "lastUpdate":  "2026-01-30",
+        "count":  2,
+        "files":  [
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "bootcamp-spring-26\\personalai\\ryan-to\\bootcamp-summary-2026-01-30.html",
+                          "name":  "Ryan To | Bootcamp Discovery",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "bootcamp-spring-26\\personalai\\ryan-to\\personalai-discovery-2026-01-30.html",
+                          "name":  "Ryan To | Personal AI",
+                          "summary":  "Agent-generated tidbit"
+                      }
+                  ]
+    },
+    {
+        "name":  true,
+        "founder":  "victor-nyden",
+        "program":  "bootcamp-spring-26",
+        "startup":  "gym-app",
+        "status":  "inactive",
+        "lastUpdate":  "2026-01-30",
+        "count":  1,
+        "files":  [
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "bootcamp-spring-26\\gym-app\\victor-nyden\\gym-app-discovery-2026-01-30.html",
+                          "name":  "Victor Nyden - Bootcamp Journey",
+                          "summary":  "Agent-generated tidbit"
+                      }
+                  ]
+    },
+    {
+        "name":  true,
+        "founder":  "kiara-kuehl-mueller",
+        "program":  "bootcamp-spring-26",
+        "startup":  "campus-miles",
+        "status":  "inactive",
+        "lastUpdate":  "2026-01-30",
+        "count":  3,
+        "files":  [
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "bootcamp-spring-26\\campus-miles\\kiara-kuehl-mueller\\campus-miles-discovery-2026-01-30.html",
+                          "name":  "Kiara Kuehl Mueller | Campus Miles",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "bootcamp-spring-26\\campus-miles\\kiara-kuehl-mueller\\discovery-2026-01-30.html",
+                          "name":  "Kiara Kuehl Mueller | Bootcamp Discovery",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "bootcamp-spring-26\\campus-miles\\kiara-kuehl-mueller\\sd-miles-discovery-2026-01-30.html",
+                          "name":  "Kiara Kuehl Mueller | SD Miles",
+                          "summary":  "Agent-generated tidbit"
+                      }
+                  ]
+    },
+    {
+        "name":  true,
+        "founder":  "zach-brenner",
+        "program":  "inflight-spring-26",
+        "startup":  "sonomos",
+        "status":  "active",
+        "lastUpdate":  "2026-02-26",
+        "count":  6,
+        "files":  [
+                      {
+                          "date":  "2026-02-15",
+                          "path":  "inflight-spring-26\\sonomos\\zach-brenner\\sonomos-update-2026-02-15.html",
+                          "name":  "Zach Brenner — Sonomos — Feb 15, 2026",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-02-19",
+                          "path":  "inflight-spring-26\\sonomos\\zach-brenner\\sonomos-update-2026-02-19.html",
+                          "name":  "Zach Brenner — Sonomos — Feb 19, 2026",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-02-22",
+                          "path":  "inflight-spring-26\\sonomos\\zach-brenner\\sonomos-update-2026-02-22.html",
+                          "name":  "Zach Brenner — Sonomos — Feb 22, 2026",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-02-25",
+                          "path":  "inflight-spring-26\\sonomos\\zach-brenner\\sonomos-update-2026-02-25.html",
+                          "name":  "Zach Brenner — Sonomos — Feb 25, 2026",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-02-26",
+                          "path":  "inflight-spring-26\\sonomos\\zach-brenner\\sonomos-update-2026-02-26.html",
+                          "name":  "Zach Brenner — Sonomos — Feb 26, 2026",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-02-19",
+                          "path":  "inflight-spring-26\\sonomos\\zach-brenner\\sonomos-update-v2-2026-02-19.html",
+                          "name":  "Zach Brenner — Sonomos — Feb 19, 2026",
+                          "summary":  "Agent-generated tidbit"
+                      }
+                  ]
+    },
+    {
+        "name":  true,
+        "founder":  "robert-sanchez",
+        "program":  "inflight-spring-26",
+        "startup":  "turnerai",
+        "status":  "active",
+        "lastUpdate":  "2026-01-29",
+        "count":  1,
+        "files":  [
+                      {
+                          "date":  "2026-01-29",
+                          "path":  "inflight-spring-26\\turnerai\\robert-sanchez\\turnerai-update-2026-01-29.html",
+                          "name":  "Robert Sanchez — Turner.AI",
+                          "summary":  "Agent-generated tidbit"
+                      }
+                  ]
+    },
+    {
+        "name":  true,
+        "founder":  "macey-wenzel",
+        "program":  "bootcamp-spring-26",
+        "startup":  "granny-smith",
+        "status":  "inactive",
+        "lastUpdate":  "2026-01-30",
+        "count":  1,
+        "files":  [
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "bootcamp-spring-26\\granny-smith\\macey-wenzel\\granny-smith-discovery-2026-01-30.html",
+                          "name":  "Macey Wenzel | Granny Smith Market | Jan 30, 2026",
+                          "summary":  "Agent-generated tidbit"
+                      }
+                  ]
+    },
+    {
+        "name":  true,
+        "founder":  "marko-jovanovic",
+        "program":  "bootcamp-spring-26",
+        "startup":  "neighbor-network",
+        "status":  "inactive",
+        "lastUpdate":  "2026-01-30",
+        "count":  1,
+        "files":  [
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "bootcamp-spring-26\\neighbor-network\\marko-jovanovic\\neighbor-network-discovery-2026-01-30.html",
+                          "name":  "Marko - Bootcamp Day 1",
+                          "summary":  "Agent-generated tidbit"
+                      }
+                  ]
+    },
+    {
+        "name":  true,
+        "founder":  "jared-eastman",
+        "program":  "bootcamp-spring-26",
+        "startup":  "shadowmatch",
+        "status":  "inactive",
+        "lastUpdate":  "2026-01-30",
+        "count":  2,
+        "files":  [
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "bootcamp-spring-26\\shadowmatch\\jared-eastman\\shadowmatch-discovery-2026-01-30.html",
+                          "name":  "Jared Eastman | Shadow Match | Bootcamp",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "bootcamp-spring-26\\shadowmatch\\jared-eastman\\shadowmatch-solution-card.html",
+                          "name":  "Shadow Match | Solution Card",
+                          "summary":  "Agent-generated tidbit"
+                      }
+                  ]
+    },
+    {
+        "name":  true,
+        "founder":  "volodymyr-kalinin",
+        "program":  "bootcamp-spring-26",
+        "startup":  "sdsu-events-hub",
+        "status":  "inactive",
+        "lastUpdate":  "2026-01-30",
+        "count":  1,
+        "files":  [
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "bootcamp-spring-26\\sdsu-events-hub\\volodymyr-kalinin\\sdsu-events-hub.html",
+                          "name":  "SDSU Events Hub",
+                          "summary":  "Agent-generated tidbit"
+                      }
+                  ]
+    },
+    {
+        "name":  true,
+        "founder":  "matt-levie",
+        "program":  "bootcamp-spring-26",
+        "startup":  "tenantpath",
+        "status":  "inactive",
+        "lastUpdate":  "2026-01-30",
+        "count":  1,
+        "files":  [
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "bootcamp-spring-26\\tenantpath\\matt-levie\\tenantpath-discovery-2026-01-30.html",
+                          "name":  "Matt Levie | TenantPath | Bootcamp",
+                          "summary":  "Agent-generated tidbit"
+                      }
+                  ]
+    }
+]
