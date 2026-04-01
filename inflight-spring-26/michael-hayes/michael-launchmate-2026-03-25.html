@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="tidbit-type" content="team">
+  <meta name="tidbit-subject" content="Michael Hayes">
+  <meta name="tidbit-company" content="LaunchMate">
+  <meta name="tidbit-date" content="2026-03-25">
+  <meta name="tidbit-period" content="2026-W12">
+  <meta name="tidbit-tags" content="autonomous-agents, pokes, value-perception, execution-logs">
+  <meta name="tidbit-cohort" content="inflight-spring-26">
+  <title>Effort Visibility in Autonomous Agents | Michael Hayes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0f0f0f;
+      color: #e5e7eb;
+      line-height: 1.6;
+      scroll-snap-type: y mandatory;
+      overflow-y: scroll;
+      height: 100vh;
+    }
+    
+    .page {
+      min-height: 100vh;
+      scroll-snap-align: start;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      position: relative;
+    }
+    
+    .container {
+      max-width: 800px;
+      width: 100%;
+    }
+    
+    .card {
+      background: #1a1a1a;
+      border-radius: 12px;
+      padding: 3rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
+    
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+    
+    h2 {
+      font-size: 1.75rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      color: #60a5fa;
+    }
+    
+    .meta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.875rem;
+      color: #6b7280;
+      margin-bottom: 2rem;
+    }
+    
+    .label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #6b7280;
+      margin-bottom: 0.5rem;
+    }
+    
+    p {
+      font-size: 1.125rem;
+      margin-bottom: 1.5rem;
+      color: #d1d5db;
+    }
+    
+    .highlight-blue {
+      color: #60a5fa;
+      font-weight: 500;
+    }
+    
+    .highlight-green {
+      color: #34d399;
+      font-weight: 500;
+    }
+    
+    .highlight-orange {
+      color: #f97316;
+      font-weight: 500;
+    }
+    
+    .code-block {
+      background: #0f0f0f;
+      border-left: 3px solid #60a5fa;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      line-height: 1.8;
+      color: #e5e7eb;
+    }
+    
+    .checkmark {
+      color: #34d399;
+      margin-right: 0.5rem;
+    }
+    
+    .page-number {
+      position: absolute;
+      bottom: 2rem;
+      right: 2rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.875rem;
+      color: #6b7280;
+    }
+    
+    .scroll-hint {
+      position: absolute;
+      bottom: 3rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: #6b7280;
+      text-align: center;
+    }
+    
+    .scroll-arrow {
+      display: block;
+      margin-top: 0.5rem;
+      animation: bounce 2s infinite;
+    }
+    
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+      }
+      40% {
+        transform: translateY(-10px);
+      }
+      60% {
+        transform: translateY(-5px);
+      }
+    }
+    
+    ul {
+      list-style: none;
+      margin: 1.5rem 0;
+    }
+    
+    li {
+      padding-left: 1.5rem;
+      margin-bottom: 0.75rem;
+      position: relative;
+    }
+    
+    li:before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: #60a5fa;
+    }
+  </style>
+</head>
+<body>
+  
+  <!-- Page 1: Cover -->
+  <div class="page">
+    <div class="container">
+      <div class="card">
+        <div class="label">Week of March 25, 2026</div>
+        <h1>Effort Visibility in Autonomous Agents</h1>
+        <p class="meta">Michael Hayes · LaunchMate</p>
+        <p style="font-size: 1.25rem; color: #9ca3af; margin-top: 2rem;">
+          Building scheduled tasks that run autonomously led to a realization: 
+          <span class="highlight-orange">good output isn't enough if founders can't see the work that produced it</span>.
+        </p>
+      </div>
+    </div>
+    <div class="scroll-hint">
+      scroll to continue
+      <span class="scroll-arrow">↓</span>
+    </div>
+    <div class="page-number">1/5</div>
+  </div>
+
+  <!-- Page 2: Context -->
+  <div class="page">
+    <div class="container">
+      <div class="card">
+        <h2>The Starting Point</h2>
+        <p>
+          I thought I was building <span class="highlight-blue">scheduled reminders</span> — simple prompts that fire at specific times to nudge founders into action.
+        </p>
+        <p>
+          But as I wrote the prompt spec, I kept thinking about the autonomous execution patterns from Andrej's podcast: agents running experiments overnight, auto-research loops, Peter Levels' 10 parallel Codex agents doing real work without supervision.
+        </p>
+        <p>
+          The question shifted: <span class="highlight-orange">What if these aren't reminders at all?</span> What if they're full autonomous executions — founders wake up to <em>completed work</em>, not just notifications?
+        </p>
+      </div>
+    </div>
+    <div class="page-number">2/5</div>
+  </div>
+
+  <!-- Page 3: Realization -->
+  <div class="page">
+    <div class="container">
+      <div class="card">
+        <h2>The ChatGPT Problem</h2>
+        <p>
+          Here's the tension: <span class="highlight-orange">ChatGPT produces incredibly good output, but founders still can't attribute value to it</span>.
+        </p>
+        <p>
+          Craig's friction analysis (F7+F14) identified this as the "meaning" problem — even when AI helps, founders don't <em>perceive</em> the value because they don't see the effort.
+        </p>
+        <p>
+          When I manually generate a tidbit, Michael sees:
+        </p>
+        <ul>
+          <li>Me scrolling through 42 messages</li>
+          <li>Highlighting key decisions</li>
+          <li>Writing multiple drafts</li>
+          <li>Tweaking tone and structure</li>
+          <li>Publishing and updating memory</li>
+        </ul>
+        <p>
+          That's <span class="highlight-blue">2 hours of visible labor</span>. When an agent just returns a URL, that perception disappears.
+        </p>
+      </div>
+    </div>
+    <div class="page-number">3/5</div>
+  </div>
+
+  <!-- Page 4: Decision -->
+  <div class="page">
+    <div class="container">
+      <div class="card">
+        <h2>The Decision: Surface the Work</h2>
+        <p>
+          Autonomous execution needs <span class="highlight-green">execution transparency</span> — not just the deliverable, but a log of every step completed.
+        </p>
+        <p>
+          I added this to the poke schema:
+        </p>
+        <div class="code-block">
+<span class="checkmark">✓</span> Searched last 7 days (42 messages)<br>
+<span class="checkmark">✓</span> Identified key decision: MCP architecture<br>
+<span class="checkmark">✓</span> Extracted trade-off: centralized vs isolated tidbits<br>
+<span class="checkmark">✓</span> Generated 4-slide tidbit (850 words, engineer tone)<br>
+<span class="checkmark">✓</span> Published to GitHub Pages<br>
+<span class="checkmark">✓</span> Updated interaction_history memory<br>
+<br>
+<span style="color: #34d399;">Here's your tidbit:</span> [URL]
+        </div>
+        <p>
+          Now founders see <span class="highlight-blue">6 checkmarks of labor</span> before the result. The "wow this is incredible" moment comes from perceiving effort, not just quality.
+        </p>
+      </div>
+    </div>
+    <div class="page-number">4/5</div>
+  </div>
+
+  <!-- Page 5: Status & Open Question -->
+  <div class="page">
+    <div class="container">
+      <div class="card">
+        <h2>Where Things Stand</h2>
+        <p>
+          <span class="highlight-green">Shipped:</span> Agent Pokes with autonomous execution specs — founders can schedule multi-step workflows (tidbit generation, mentor syncs, research) that run without human intervention.
+        </p>
+        <p>
+          <span class="highlight-blue">Key addition:</span> <code>execution_plan.steps</code> array + <code>sample_output</code> in schema. Execution-side prompt must log each step before surfacing deliverable.
+        </p>
+        <p>
+          <span class="highlight-orange">Open question:</span> Tidbits storage architecture. Currently nested HTML files (good for GitHub Pages, human browsing). But if tidbits are "historical magic" that multiple agents query for coordination, should they move to Supabase?
+        </p>
+        <p>
+          Trade-off: simplicity vs cross-agent query performance. Deferred until we validate whether coordination actually requires cross-founder thematic queries like "show all market validation decisions across cohort."
+        </p>
+        <p style="margin-top: 2rem; color: #6b7280;">
+          Next: Build execution-side prompt that receives poke spec and runs autonomous workflow with full logging.
+        </p>
+      </div>
+    </div>
+    <div class="page-number">5/5</div>
+  </div>
+
+  <script>
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+        const pages = document.querySelectorAll('.page');
+        const current = Math.floor(window.scrollY / window.innerHeight);
+        if (current < pages.length - 1) {
+          pages[current + 1].scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+      if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+        const pages = document.querySelectorAll('.page');
+        const current = Math.floor(window.scrollY / window.innerHeight);
+        if (current > 0) {
+          pages[current - 1].scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
