@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="tidbit-type" content="founder">
+  <meta name="tidbit-subject" content="Juan Alcala">
+  <meta name="tidbit-company" content="RAFRS">
+  <meta name="tidbit-date" content="2026-03-25">
+  <meta name="tidbit-period" content="2026-W13">
+  <title>Juan Alcala - RAFRS - March 25, 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, sans-serif; background: #0f0f0f; color: #e5e5e5; line-height: 1.6; }
+    
+    .slide {
+      min-height: 100vh;
+      scroll-snap-align: start;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      position: relative;
+    }
+    
+    .card {
+      max-width: 600px;
+      width: 100%;
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    
+    .cover-card {
+      text-align: center;
+      border: 2px solid #3b82f6;
+    }
+    
+    h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; color: #fff; }
+    h2 { font-size: 1.75rem; font-weight: 600; margin-bottom: 1.5rem; color: #fff; }
+    h3 { font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: #60a5fa; }
+    
+    .subtitle { font-size: 1.25rem; color: #6b7280; margin-bottom: 0.5rem; }
+    .date { font-size: 1rem; color: #6b7280; margin-bottom: 2rem; }
+    .scroll-hint { font-size: 0.875rem; color: #3b82f6; margin-top: 3rem; }
+    
+    .label { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.75rem; }
+    
+    p { margin-bottom: 1rem; color: #d1d5db; }
+    
+    .highlight { color: #60a5fa; }
+    .decision { color: #34d399; }
+    .tension { color: #f97316; }
+    
+    .stat-row {
+      display: flex;
+      gap: 2rem;
+      margin: 1.5rem 0;
+    }
+    
+    .stat {
+      flex: 1;
+    }
+    
+    .stat-value {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    
+    .stat-label {
+      font-size: 0.875rem;
+      color: #6b7280;
+    }
+    
+    .quote {
+      font-style: italic;
+      color: #9ca3af;
+      border-left: 3px solid #3b82f6;
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+    }
+    
+    .page-number {
+      position: absolute;
+      bottom: 1.5rem;
+      right: 2rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: #4b5563;
+    }
+    
+    ul {
+      list-style: none;
+      margin: 1rem 0;
+    }
+    
+    ul li {
+      padding: 0.5rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+      color: #d1d5db;
+    }
+    
+    ul li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: #3b82f6;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SLIDE 1: COVER -->
+  <div class="slide">
+    <div class="card cover-card">
+      <p class="subtitle">RAFRS</p>
+      <h1>Juan Alcala</h1>
+      <p class="date">March 25, 2026</p>
+      <p class="scroll-hint">scroll ↓</p>
+    </div>
+    <div class="page-number">1/5</div>
+  </div>
+
+  <!-- SLIDE 2: WHERE I STARTED -->
+  <div class="slide">
+    <div class="card">
+      <p class="label">Where I Started</p>
+      <h2>Testing the Everyday People Market</h2>
+      <p>I thought: <span class="highlight">Fix It Fair</span> would validate demand from regular people who need repairs.</p>
+      <p>Setup at the engineering courtyard. Four demos, 30 minutes each. People brought broken items, tried the kit.</p>
+      <p>The tech worked. The kit worked.</p>
+      <p>But something felt <span class="tension">off</span>.</p>
+    </div>
+    <div class="page-number">2/5</div>
+  </div>
+
+  <!-- SLIDE 3: WHAT I DISCOVERED -->
+  <div class="slide">
+    <div class="card">
+      <p class="label">What I Discovered</p>
+      <h2>The Replace vs Repair Economy</h2>
+      <div class="stat-row">
+        <div class="stat">
+          <div class="stat-value">4</div>
+          <div class="stat-label">demos completed</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">0</div>
+          <div class="stat-label">viable customers</div>
+        </div>
+      </div>
+      <p>People kept saying: <span class="tension">"I don't have anything worth fixing versus replacing."</span></p>
+      <p class="quote">"The US is a replace economy. If it breaks, you buy a new one."</p>
+      <p>Everyday people don't have the repair mindset. They don't have expensive enough things that justify a $149 kit.</p>
+      <p>But this wasn't a failure. It was <span class="decision">validation</span>.</p>
+    </div>
+    <div class="page-number">3/5</div>
+  </div>
+
+  <!-- SLIDE 4: THE REAL OPPORTUNITY -->
+  <div class="slide">
+    <div class="card">
+      <p class="label">The Real Opportunity</p>
+      <h2>Boat People. Validated.</h2>
+      <p>My Feb 20 pivot to maritime was right. Fix It Fair just proved the inverse.</p>
+      <p>Boat owners are different:</p>
+      <ul>
+        <li>They have <span class="highlight">expensive things worth repairing</span></li>
+        <li>They're <span class="highlight">stranded when something breaks</span></li>
+        <li>They'll pay <span class="highlight">$149 for peace of mind</span></li>
+      </ul>
+      <p><span class="decision">NEW: Freedom Boat Club</span> — membership-based fleet rental. Multiple locations, each with repair needs. High revenue pressure when boats are down. Enterprise B2B angle.</p>
+      <p class="quote">"This is an in-person sale. You want to see people in the eyes and have them tell you why they don't like your box." — Cathy</p>
+    </div>
+    <div class="page-number">4/5</div>
+  </div>
+
+  <!-- SLIDE 5: WHERE I'M AT -->
+  <div class="slide">
+    <div class="card">
+      <p class="label">Where I'm At</p>
+      <h2>Marina Push Week</h2>
+      <p>This week's priorities:</p>
+      <ul>
+        <li>Connect with Coronado Beer Can racing series friend</li>
+        <li>Try Freedom Boat Club (Mission Bay)</li>
+        <li>5 marina visits by Friday</li>
+        <li>Drop updated box with QR code to boatyard guy</li>
+      </ul>
+      <p><span class="highlight">UV epoxy progress:</span> Found Sunrez Corp in El Cajon — 20 minutes from SDSU. One-component, no mixing, <10 min cure. Local sourcing could be huge.</p>
+      <p class="quote">"I thought everyday people needed repairs. They don't. Boat people do."</p>
+    </div>
+    <div class="page-number">5/5</div>
+  </div>
+
+  <script>
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+        window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+      } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+        window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+      }
+    });
+  </script>
+
+</body>
+</html>
