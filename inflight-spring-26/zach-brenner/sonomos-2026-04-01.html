@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="tidbit-type" content="founder">
+  <meta name="tidbit-subject" content="Zach Brenner">
+  <meta name="tidbit-company" content="Sonomos">
+  <meta name="tidbit-date" content="2026-04-01">
+  <meta name="tidbit-period" content="2026-W14">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <title>Zach Brenner · Sonomos · April 2026</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, sans-serif; background: #0f0f0f; color: #e5e5e5; line-height: 1.6; }
+    
+    .slide {
+      min-height: 100vh;
+      scroll-snap-align: start;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      position: relative;
+    }
+    
+    .card {
+      max-width: 600px;
+      width: 100%;
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    
+    .label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: #6b7280;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+    }
+    
+    h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+    h2 { font-size: 1.75rem; font-weight: 600; margin-bottom: 1.5rem; }
+    h3 { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.75rem; }
+    
+    .subtitle { color: #6b7280; font-size: 1.125rem; }
+    .date { color: #6b7280; font-size: 0.875rem; margin-top: 0.25rem; }
+    
+    .highlight { color: #60a5fa; }
+    .decision { color: #34d399; }
+    .tension { color: #f97316; }
+    
+    .stat-row {
+      display: flex;
+      gap: 2rem;
+      margin: 1.5rem 0;
+    }
+    
+    .stat {
+      text-align: center;
+    }
+    
+    .stat-value {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #60a5fa;
+    }
+    
+    .stat-label {
+      font-size: 0.75rem;
+      color: #6b7280;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    ul { list-style: none; margin: 1rem 0; }
+    li { padding: 0.5rem 0; padding-left: 1.5rem; position: relative; }
+    li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: #60a5fa;
+    }
+    
+    .quote {
+      font-style: italic;
+      color: #9ca3af;
+      border-left: 3px solid #3b82f6;
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+    }
+    
+    .page-num {
+      position: absolute;
+      bottom: 1.5rem;
+      right: 2rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: #4b5563;
+    }
+    
+    .scroll-hint {
+      text-align: center;
+      color: #4b5563;
+      font-size: 0.875rem;
+      margin-top: 2rem;
+    }
+    
+    .check { color: #34d399; }
+    .x { color: #ef4444; }
+    
+    .callout {
+      background: #252525;
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      margin: 1rem 0;
+    }
+    
+    .callout-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: #f97316;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Slide 1: Cover -->
+  <div class="slide">
+    <div class="card" style="text-align: center; border: none; background: transparent;">
+      <p class="label">Founder Update</p>
+      <h1>Zach Brenner</h1>
+      <p class="subtitle" style="margin-top: 0.5rem;">Sonomos</p>
+      <p class="date">April 1, 2026</p>
+      <p class="scroll-hint">↓ scroll</p>
+    </div>
+    <span class="page-num">1/5</span>
+  </div>
+
+  <!-- Slide 2: Where I Started -->
+  <div class="slide">
+    <div class="card">
+      <p class="label">Where I Started</p>
+      <h2>Selling to partners, extension-first</h2>
+      
+      <p style="color: #9ca3af; margin-bottom: 1.5rem;">
+        I thought the path was clear: demo to managing partners, show them the risk, they'd see the value.
+      </p>
+      
+      <ul>
+        <li>Extension as primary product</li>
+        <li>Managing partners as buyers</li>
+        <li>"Privacy layer for AI" positioning</li>
+        <li>Focus on distribution and awareness</li>
+      </ul>
+      
+      <div class="callout" style="margin-top: 1.5rem;">
+        <p class="callout-label">The Assumption</p>
+        <p style="color: #9ca3af;">If partners understood the risk, they'd buy. Awareness was the bottleneck.</p>
+      </div>
+    </div>
+    <span class="page-num">2/5</span>
+  </div>
+
+  <!-- Slide 3: What I Discovered -->
+  <div class="slide">
+    <div class="card">
+      <p class="label">What I Discovered</p>
+      <h2>Partners defer. Product breaks.</h2>
+      
+      <div class="stat-row">
+        <div class="stat">
+          <div class="stat-value">3</div>
+          <div class="stat-label">partner meetings</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value" style="color: #f97316;">3</div>
+          <div class="stat-label">"talk to IT"</div>
+        </div>
+      </div>
+      
+      <ul>
+        <li><span class="tension">IP attorney:</span> "I trust my employees" — zero safeguards, deflected</li>
+        <li><span class="tension">Attorney + CPA:</span> "We don't hire people who'd do this" — same logic</li>
+        <li><span class="tension">CPA follow-up:</span> Dashcam reframe landed, still said "talk to IT"</li>
+      </ul>
+      
+      <div class="callout">
+        <p class="callout-label">The Pattern</p>
+        <p>Partners default to trust-based reasoning. When pushed, they admit no safeguards exist — but still defer to IT.</p>
+      </div>
+      
+      <p style="margin-top: 1rem; color: #9ca3af;">
+        <span class="x">✗</span> Tool broke during demos — kills trust immediately<br>
+        <span class="x">✗</span> Free users: "doesn't work well enough" + feels like Presidio clone
+      </p>
+    </div>
+    <span class="page-num">3/5</span>
+  </div>
+
+  <!-- Slide 4: The Real Opportunity -->
+  <div class="slide">
+    <div class="card">
+      <p class="label">The Real Opportunity</p>
+      <h2>IT buyers. Desktop-first. Defensive infrastructure.</h2>
+      
+      <div class="callout" style="border-left: 3px solid #34d399; background: rgba(52, 211, 153, 0.05);">
+        <p class="callout-label" style="color: #34d399;">The Signal</p>
+        <p><strong>AI-native law firm:</strong> Strong pilot interest, hard requirement — <span class="decision">desktop or nothing</span>.</p>
+        <p style="color: #9ca3af; margin-top: 0.5rem; font-size: 0.875rem;">"I'd feel more comfortable running my firm with this."</p>
+      </div>
+      
+      <table style="width: 100%; margin: 1.5rem 0; font-size: 0.875rem;">
+        <tr style="color: #6b7280;">
+          <td style="padding: 0.5rem 0;">Buyer</td>
+          <td style="padding: 0.5rem 0;">Managing partners → <span class="highlight">IT / Security teams</span></td>
+        </tr>
+        <tr style="color: #6b7280;">
+          <td style="padding: 0.5rem 0;">Format</td>
+          <td style="padding: 0.5rem 0;">Extension → <span class="highlight">Desktop</span></td>
+        </tr>
+        <tr style="color: #6b7280;">
+          <td style="padding: 0.5rem 0;">Framing</td>
+          <td style="padding: 0.5rem 0;">Compliance → <span class="highlight">Defensive infrastructure</span></td>
+        </tr>
+        <tr style="color: #6b7280;">
+          <td style="padding: 0.5rem 0;">Analogy</td>
+          <td style="padding: 0.5rem 0;">Not monitoring — <span class="highlight">dashcam for data</span></td>
+        </tr>
+      </table>
+      
+      <p style="color: #9ca3af;">
+        Desktop Cloak is <span class="check">already working better</span> than browser. More stable. More controllable.
+      </p>
+    </div>
+    <span class="page-num">4/5</span>
+  </div>
+
+  <!-- Slide 5: Where I'm At -->
+  <div class="slide">
+    <div class="card">
+      <p class="label">Where I'm At</p>
+      <h2>Rebuilding the foundation</h2>
+      
+      <ul>
+        <li><span class="highlight">GLiNER model:</span> Replacing underperforming detection</li>
+        <li><span class="highlight">Action-based Cloak:</span> Not network interception — detect submit, apply before send</li>
+        <li><span class="highlight">my.sonomos.ai:</span> Portal for onboarding, team management</li>
+        <li><span class="highlight">Desktop version:</span> In progress, Cloak already more stable</li>
+      </ul>
+      
+      <div class="callout" style="margin-top: 1.5rem;">
+        <p class="callout-label">Next</p>
+        <p>Follow up with AI-native firm (strongest signal). Start IT outreach. Ship desktop.</p>
+      </div>
+      
+      <div class="quote" style="margin-top: 1.5rem;">
+        "I thought I needed to convince partners. I actually needed to build something IT would buy."
+      </div>
+    </div>
+    <span class="page-num">5/5</span>
+  </div>
+
+  <script>
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+        window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+      } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+        window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+      }
+    });
+  </script>
+</body>
+</html>
