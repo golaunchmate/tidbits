@@ -10,11 +10,11 @@
         :root {
             --bg-primary: #0a0f1a;
             --bg-secondary: #111827;
-            --bg-card: rgba(17, 24, 39, 0.8);
+            --bg-card: rgba(17, 24, 39, 0.6);
             --bg-glass: rgba(255, 255, 255, 0.03);
-            --accent-primary: #3b82f6;
-            --accent-secondary: #8b5cf6;
-            --accent-gradient: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            --accent-purple: #8b5cf6;
+            --accent-blue: #3b82f6;
+            --accent-gradient: linear-gradient(135deg, #8b5cf6, #3b82f6);
             --text-primary: #f9fafb;
             --text-secondary: #9ca3af;
             --text-muted: #6b7280;
@@ -22,35 +22,37 @@
             --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
         }
         body { font-family: 'Inter', sans-serif; background: var(--bg-primary); color: var(--text-primary); min-height: 100vh; }
-        .bg-gradient { position: fixed; inset: 0; background: radial-gradient(ellipse at 20% 20%, rgba(59, 130, 246, 0.15) 0%, transparent 50%), radial-gradient(ellipse at 80% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%); pointer-events: none; z-index: 0; }
+        .bg-gradient { position: fixed; inset: 0; background: radial-gradient(ellipse at 20% 20%, rgba(139, 92, 246, 0.15) 0%, transparent 50%), radial-gradient(ellipse at 80% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%); pointer-events: none; z-index: 0; }
         .header { position: sticky; top: 0; z-index: 100; background: rgba(10, 15, 26, 0.8); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 1rem 2rem; }
         .header-content { max-width: 1800px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
         .logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: var(--text-primary); }
-        .logo-icon { width: 44px; height: 44px; background: var(--accent-gradient); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; }
-        .logo-text { font-size: 1.5rem; font-weight: 700; background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .logo-icon { width: 44px; height: 44px; background: linear-gradient(135deg, #8b5cf6, #3b82f6); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
+        .logo-text { font-size: 1.5rem; font-weight: 700; background: linear-gradient(135deg, #8b5cf6, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .header-actions { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
-        .btn-primary { background: var(--accent-gradient); color: white; padding: 0.6rem 1.25rem; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 0.875rem; display: flex; align-items: center; gap: 0.5rem; transition: all 0.3s ease; }
+        .btn-primary { background: linear-gradient(135deg, #3b82f6, #8b5cf6); color: white; padding: 0.6rem 1.25rem; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 0.875rem; display: flex; align-items: center; gap: 0.5rem; transition: all 0.3s ease; border: none; cursor: pointer; }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(139, 92, 246, 0.3); }
         .filters { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; }
         .filter-group { display: flex; align-items: center; gap: 0.5rem; }
         .filter-label { font-size: 0.75rem; color: var(--text-muted); font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; }
         select, input[type="text"] { padding: 0.5rem 1rem; background: var(--bg-glass); border: 1px solid var(--border); border-radius: 8px; color: var(--text-primary); font-size: 0.875rem; min-width: 140px; outline: none; }
+        select:focus, input:focus { border-color: var(--accent-purple); }
         .main { position: relative; z-index: 1; max-width: 1800px; margin: 0 auto; padding: 2rem; }
         .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
-        .stat-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 1.5rem; transition: all 0.3s ease; }
-        .stat-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+        .stat-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 1.5rem; transition: all 0.3s ease; backdrop-filter: blur(10px); }
+        .stat-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: rgba(139, 92, 246, 0.3); }
         .stat-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
-        .stat-value { font-size: 2.5rem; font-weight: 800; background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .stat-value { font-size: 2.5rem; font-weight: 800; background: linear-gradient(135deg, #8b5cf6, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .stat-change { font-size: 0.875rem; color: var(--text-secondary); margin-top: 0.5rem; }
         .tabs { display: flex; gap: 0.5rem; margin-bottom: 2rem; border-bottom: 1px solid var(--border); padding-bottom: 1rem; }
         .tab { padding: 0.75rem 1.5rem; background: transparent; border: 1px solid transparent; border-radius: 10px; color: var(--text-secondary); font-size: 0.875rem; font-weight: 500; cursor: pointer; transition: all 0.2s ease; }
         .tab:hover { background: var(--bg-glass); color: var(--text-primary); }
-        .tab.active { background: var(--accent-gradient); color: white; }
+        .tab.active { background: linear-gradient(135deg, #8b5cf6, #3b82f6); color: white; }
         .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 1.5rem; }
-        .founder-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 1.5rem; cursor: pointer; transition: all 0.3s ease; }
-        .founder-card:hover { transform: translateY(-6px); border-color: rgba(59, 130, 246, 0.4); box-shadow: var(--shadow); }
+        .founder-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 1.5rem; cursor: pointer; transition: all 0.3s ease; backdrop-filter: blur(10px); }
+        .founder-card:hover { transform: translateY(-6px); border-color: rgba(139, 92, 246, 0.4); box-shadow: var(--shadow); }
         .founder-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; }
         .founder-info { flex: 1; }
-        .founder-avatar { width: 48px; height: 48px; background: var(--accent-gradient); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; margin-bottom: 0.75rem; font-weight: 700; }
+        .founder-avatar { width: 48px; height: 48px; background: linear-gradient(135deg, #8b5cf6, #3b82f6); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; margin-bottom: 0.75rem; font-weight: 700; color: white; }
         .founder-name { font-size: 1.125rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.25rem; }
         .founder-startup { font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 0.25rem; }
         .founder-program { font-size: 0.75rem; color: var(--text-muted); }
@@ -59,56 +61,58 @@
         .status-inactive { background: rgba(245, 158, 11, 0.15); color: #f59e0b; border: 1px solid rgba(245, 158, 11, 0.3); }
         .tidbit-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(52px, 1fr)); gap: 0.5rem; }
         .tidbit-square { aspect-ratio: 1; background: var(--bg-glass); border: 1px solid var(--border); border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-decoration: none; color: var(--text-primary); transition: all 0.2s ease; font-size: 0.75rem; font-weight: 500; }
-        .tidbit-square:hover { background: var(--accent-gradient); transform: scale(1.1); }
-        .tidbit-date { font-size: 0.6rem; color: var(--text-muted); margin-top: 2px; }
+        .tidbit-square:hover { background: linear-gradient(135deg, #8b5cf6, #3b82f6); transform: scale(1.1); color: white; }
+        .tidbit-date { font-size: 0.6rem; opacity: 0.7; margin-top: 2px; }
         .tidbit-more { background: transparent; border: 1px dashed var(--border); color: var(--text-muted); font-size: 0.7rem; font-weight: 600; }
         .modal-overlay { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(10px); z-index: 1000; display: none; overflow-y: auto; padding: 2rem; }
         .modal-overlay.show { display: flex; align-items: flex-start; justify-content: center; }
-        .modal-content { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 20px; max-width: 1200px; width: 100%; padding: 2rem; }
+        .modal-content { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 20px; max-width: 1200px; width: 100%; padding: 2rem; margin-top: 2rem; }
         .modal-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
-        .modal-title { font-size: 1.75rem; font-weight: 800; background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .modal-title { font-size: 1.75rem; font-weight: 800; background: linear-gradient(135deg, #8b5cf6, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .modal-subtitle { font-size: 1rem; color: var(--text-secondary); margin-top: 0.5rem; }
         .modal-close { width: 44px; height: 44px; background: var(--bg-glass); border: 1px solid var(--border); border-radius: 12px; color: var(--text-secondary); font-size: 1.5rem; cursor: pointer; }
         .modal-close:hover { background: #ef4444; color: white; }
         .detail-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
         .detail-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; transition: all 0.3s ease; }
-        .detail-card:hover { border-color: rgba(59, 130, 246, 0.4); transform: translateY(-4px); }
-        .detail-preview { height: 100px; background: var(--accent-gradient); display: flex; align-items: center; justify-content: center; font-size: 2.5rem; font-weight: 700; }
+        .detail-card:hover { border-color: rgba(139, 92, 246, 0.4); transform: translateY(-4px); }
+        .detail-preview { height: 100px; background: linear-gradient(135deg, #8b5cf6, #3b82f6); display: flex; align-items: center; justify-content: center; font-size: 2.5rem; font-weight: 700; color: white; }
         .detail-content { padding: 1rem; }
         .detail-title { font-size: 0.9rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.25rem; }
         .detail-date { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.5rem; }
         .detail-summary { font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 1rem; }
         .detail-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
         .btn-sm { padding: 0.4rem 0.75rem; border-radius: 6px; font-size: 0.7rem; font-weight: 500; text-decoration: none; display: inline-flex; align-items: center; gap: 0.25rem; cursor: pointer; border: none; }
-        .btn-accent { background: var(--accent-gradient); color: white; }
+        .btn-accent { background: linear-gradient(135deg, #8b5cf6, #3b82f6); color: white; }
         .btn-ghost { background: var(--bg-glass); color: var(--text-secondary); border: 1px solid var(--border); }
         .toast { position: fixed; bottom: 2rem; right: 2rem; background: #10b981; color: white; padding: 1rem 1.5rem; border-radius: 10px; font-weight: 600; transform: translateY(100px); opacity: 0; transition: all 0.3s ease; z-index: 2000; }
         .toast.show { transform: translateY(0); opacity: 1; }
         .hidden { display: none !important; }
         .timeline { position: relative; padding-left: 2rem; }
-        .timeline::before { content: ''; position: absolute; left: 0.5rem; top: 0; bottom: 0; width: 2px; background: var(--accent-gradient); opacity: 0.3; }
+        .timeline::before { content: ''; position: absolute; left: 0.5rem; top: 0; bottom: 0; width: 2px; background: linear-gradient(180deg, #8b5cf6, #3b82f6); opacity: 0.3; }
         .timeline-item { position: relative; padding-bottom: 1.5rem; padding-left: 1.5rem; }
-        .timeline-item::before { content: ''; position: absolute; left: -1.5rem; top: 0.25rem; width: 12px; height: 12px; border-radius: 50%; background: var(--accent-gradient); }
+        .timeline-item::before { content: ''; position: absolute; left: -1.5rem; top: 0.25rem; width: 12px; height: 12px; border-radius: 50%; background: linear-gradient(135deg, #8b5cf6, #3b82f6); }
         .timeline-date { font-size: 0.7rem; color: var(--text-muted); margin-bottom: 0.5rem; }
         .timeline-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 1rem; }
         .timeline-title { font-weight: 600; color: var(--text-primary); }
         .timeline-desc { font-size: 0.8rem; color: var(--text-secondary); }
         .admin-panel { padding: 1rem; }
-        .admin-section { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; }
+        .admin-section { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; backdrop-filter: blur(10px); }
         .admin-section-title { font-size: 1rem; font-weight: 600; color: var(--text-primary); margin-bottom: 1rem; }
         .admin-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
         .admin-btn { background: var(--bg-glass); border: 1px solid var(--border); color: var(--text-primary); padding: 0.75rem 1.25rem; border-radius: 8px; font-size: 0.875rem; font-weight: 500; cursor: pointer; transition: all 0.2s ease; }
-        .admin-btn:hover { background: var(--accent-gradient); border-color: transparent; }
+        .admin-btn:hover { background: linear-gradient(135deg, #8b5cf6, #3b82f6); border-color: transparent; }
         .engagement-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; }
         .engagement-card { background: var(--bg-glass); border-radius: 8px; padding: 1rem; }
         .engagement-name { font-weight: 600; font-size: 0.9rem; }
         .engagement-stats { font-size: 0.75rem; color: var(--text-secondary); }
         .engagement-bar { height: 4px; background: var(--bg-glass); border-radius: 2px; margin-top: 0.5rem; overflow: hidden; }
-        .engagement-fill { height: 100%; background: var(--accent-gradient); border-radius: 2px; }
+        .engagement-fill { height: 100%; background: linear-gradient(90deg, #8b5cf6, #3b82f6); border-radius: 2px; }
         .inactive-list, .activity-list { display: flex; flex-direction: column; gap: 0.5rem; }
         .inactive-item, .activity-item { background: var(--bg-glass); border-radius: 8px; padding: 0.75rem 1rem; display: flex; justify-content: space-between; align-items: center; }
         .inactive-name { font-weight: 500; }
         .inactive-since { font-size: 0.75rem; color: var(--text-muted); }
+        .info-bar { background: var(--bg-glass); border: 1px solid var(--border); border-radius: 10px; padding: 1rem; margin-top: 2rem; font-size: 0.8rem; color: var(--text-muted); display: flex; align-items: center; gap: 0.5rem; }
+        .info-bar code { background: var(--bg-card); padding: 0.2rem 0.5rem; border-radius: 4px; color: var(--accent-purple); }
         @media (max-width: 768px) { .header { padding: 1rem; } .main { padding: 1rem; } .cards-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
@@ -117,11 +121,13 @@
     <header class="header">
         <div class="header-content">
             <a href="https://golaunchmate.github.io" target="_blank" class="logo">
-                <div class="logo-icon">L</div>
+                <div class="logo-icon">ðŸš€</div>
                 <span class="logo-text">LaunchMate Tidbits</span>
             </a>
             <div class="header-actions">
-                <a href="https://golaunchmate.com" target="_blank" class="btn-primary">LaunchMate Website</a>
+                <a href="https://golaunchmate.com" target="_blank" class="btn-primary">
+                    <span>ðŸŒ</span> LaunchMate Website
+                </a>
                 <div class="filters">
                     <div class="filter-group">
                         <span class="filter-label">Founder</span>
@@ -152,21 +158,21 @@
             <button class="tab active" data-tab="founders" onclick="switchTab('founders')">Founders</button>
             <button class="tab" data-tab="timeline" onclick="switchTab('timeline')">Timeline</button>
             <button class="tab" data-tab="programs" onclick="switchTab('programs')">By Program</button>
-            <button class="tab" data-tab="admin" onclick="switchTab('admin')">Admin</button>
+            <button class="tab" data-tab="admin" onclick="switchTab('admin')">ðŸ”§ Admin</button>
         </div>
         <section id="founders-view" class="cards-grid"></section>
         <section id="timeline-view" class="timeline hidden"></section>
         <section id="programs-view" class="hidden"></section>
         <section id="admin-view" class="hidden">
             <div class="admin-panel">
-                <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1.5rem;">Mentor Admin Panel</h2>
+                <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1.5rem; background: linear-gradient(135deg, #8b5cf6, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">ðŸ”§ Mentor Admin Panel</h2>
                 <div class="admin-section">
                     <h3 class="admin-section-title">Quick Actions</h3>
                     <div class="admin-actions">
-                        <button class="admin-btn" onclick="exportAllData()">Export All Data (JSON)</button>
-                        <button class="admin-btn" onclick="exportCSV()">Export to CSV</button>
-                        <button class="admin-btn" onclick="copyAllLinks()">Copy All Tidbit Links</button>
-                        <button class="admin-btn" onclick="generateReport()">Generate Summary Report</button>
+                        <button class="admin-btn" onclick="exportAllData()">ðŸ“¥ Export All Data (JSON)</button>
+                        <button class="admin-btn" onclick="exportCSV()">ðŸ“Š Export to CSV</button>
+                        <button class="admin-btn" onclick="copyAllLinks()">ðŸ“‹ Copy All Tidbit Links</button>
+                        <button class="admin-btn" onclick="generateReport()">ðŸ“ Generate Summary Report</button>
                     </div>
                 </div>
                 <div class="admin-section">
@@ -183,6 +189,9 @@
                 </div>
             </div>
         </section>
+        <div class="info-bar">
+            <span>ðŸ¤–</span> Agent-friendly: Access data at <code>/dashboard/data.json</code> or parse JSON-LD with id "tidbits-data"
+        </div>
     </main>
     <div class="modal-overlay" id="founder-modal" onclick="closeModal(event)">
         <div class="modal-content" onclick="event.stopPropagation()">
@@ -191,7 +200,7 @@
                     <div class="modal-title" id="modal-title">Founder Name</div>
                     <div class="modal-subtitle" id="modal-subtitle">Startup | Program</div>
                 </div>
-                <button class="modal-close" onclick="closeFounderModal()">X</button>
+                <button class="modal-close" onclick="closeFounderModal()">Ã—</button>
             </div>
             <div class="detail-grid" id="modal-tidbits"></div>
         </div>
@@ -1023,7 +1032,7 @@
                     squares += '<a href="' + baseUrl + file.path + '" target="_blank" class="tidbit-square" onclick="event.stopPropagation()"><span>' + (file.date || '').slice(5) + '</span></a>';
                 });
                 if (f.files.length > 12) squares += '<div class="tidbit-square tidbit-more">+' + (f.files.length - 12) + '</div>';
-                card.innerHTML = '<div class="founder-header"><div class="founder-info"><div class="founder-avatar">' + f.founder.charAt(0) + '</div><div class="founder-name">' + f.founder + '</div><div class="founder-startup">' + f.name + '</div><div class="founder-program">' + f.program.replace('-spring-26', '') + ' - ' + f.count + ' tidbits</div></div><span class="status-badge status-' + f.status + '">' + f.status + '</span></div><div class="tidbit-grid">' + squares + '</div>';
+                card.innerHTML = '<div class="founder-header"><div class="founder-info"><div class="founder-avatar">' + f.founder.charAt(0) + '</div><div class="founder-name">' + f.founder + '</div><div class="founder-startup">' + f.name + '</div><div class="founder-program">' + f.program.replace('-spring-26', '') + ' â€¢ ' + f.count + ' tidbits</div></div><span class="status-badge status-' + f.status + '">' + f.status + '</span></div><div class="tidbit-grid">' + squares + '</div>';
                 container.appendChild(card);
             });
         }
@@ -1036,7 +1045,7 @@
             allFiles.sort((a, b) => (b.date || '').localeCompare((a.date || ''))).slice(0, 50).forEach(item => {
                 const el = document.createElement('div');
                 el.className = 'timeline-item';
-                el.innerHTML = '<div class="timeline-date">' + (item.date || '') + '</div><div class="timeline-card"><div class="timeline-title">' + (item.name || 'Tidbit') + '</div><div class="timeline-desc">' + item.founder + ' - ' + item.startup + '</div></div>';
+                el.innerHTML = '<div class="timeline-date">' + (item.date || '') + '</div><div class="timeline-card"><div class="timeline-title">' + (item.name || 'Tidbit') + '</div><div class="timeline-desc">' + item.founder + ' â€¢ ' + item.startup + '</div></div>';
                 container.appendChild(el);
             });
         }
@@ -1071,13 +1080,13 @@
         
         function openFounderModal(founder) {
             document.getElementById('modal-title').textContent = founder.founder;
-            document.getElementById('modal-subtitle').textContent = founder.name + ' | ' + founder.program + ' | ' + founder.count + ' tidbits';
+            document.getElementById('modal-subtitle').textContent = founder.name + ' â€¢ ' + founder.program + ' â€¢ ' + founder.count + ' tidbits';
             const container = document.getElementById('modal-tidbits');
             container.innerHTML = '';
             founder.files.forEach(file => {
                 const card = document.createElement('div');
                 card.className = 'detail-card';
-                card.innerHTML = '<div class="detail-preview">T</div><div class="detail-content"><div class="detail-title">' + (file.name || 'Tidbit') + '</div><div class="detail-date">' + (file.date || '') + '</div><div class="detail-summary">' + (file.summary || 'Agent-generated tidbit') + '</div><div class="detail-actions"><a href="' + baseUrl + file.path + '" target="_blank" class="btn-sm btn-accent">Open</a><button class="btn-sm btn-ghost" onclick="copyLink(\'' + baseUrl + file.path + '\')">Copy</button></div></div>';
+                card.innerHTML = '<div class="detail-preview">ðŸ“„</div><div class="detail-content"><div class="detail-title">' + (file.name || 'Tidbit') + '</div><div class="detail-date">' + (file.date || '') + '</div><div class="detail-summary">' + (file.summary || 'Agent-generated tidbit') + '</div><div class="detail-actions"><a href="' + baseUrl + file.path + '" target="_blank" class="btn-sm btn-accent">Open</a><button class="btn-sm btn-ghost" onclick="copyLink(\'' + baseUrl + file.path + '\')">Copy</button></div></div>';
                 container.appendChild(card);
             });
             document.getElementById('founder-modal').classList.add('show');
@@ -1126,14 +1135,14 @@
             const maxFiles = Math.max(...founders.map(f => f.count));
             container.innerHTML = founders.slice(0, 12).map(f => {
                 const percent = Math.round((f.count / maxFiles) * 100);
-                return '<div class="engagement-card"><div class="engagement-name">' + f.founder + '</div><div class="engagement-stats">' + f.count + ' tidbits - ' + f.name + '</div><div class="engagement-bar"><div class="engagement-fill" style="width: ' + percent + '%"></div></div></div>';
+                return '<div class="engagement-card"><div class="engagement-name">' + f.founder + '</div><div class="engagement-stats">' + f.count + ' tidbits â€¢ ' + f.name + '</div><div class="engagement-bar"><div class="engagement-fill" style="width: ' + percent + '%"></div></div></div>';
             }).join('');
         }
         
         function renderInactiveFounders() {
             const container = document.getElementById('inactive-founders');
             const inactive = founders.filter(f => f.status === 'inactive').sort((a, b) => a.lastUpdate.localeCompare(b.lastUpdate));
-            container.innerHTML = inactive.map(f => '<div class="inactive-item"><div><div class="inactive-name">' + f.founder + '</div><div class="inactive-since">' + f.name + ' - Last: ' + f.lastUpdate + '</div></div></div>').join('');
+            container.innerHTML = inactive.map(f => '<div class="inactive-item"><div><div class="inactive-name">' + f.founder + '</div><div class="inactive-since">' + f.name + ' â€¢ Last: ' + f.lastUpdate + '</div></div></div>').join('');
         }
         
         function renderRecentActivity() {
@@ -1141,7 +1150,7 @@
             const allFiles = [];
             founders.forEach(f => f.files.forEach(file => allFiles.push({ ...file, founder: f.founder, startup: f.name })));
             const recent = allFiles.sort((a, b) => b.date.localeCompare(a.date)).slice(0, 10);
-            container.innerHTML = recent.map(f => '<div class="activity-item"><div>' + f.founder + ' - <strong>' + (f.name || 'Tidbit') + '</strong></div><div style="font-size: 0.75rem; color: var(--text-muted);">' + f.date + '</div></div>').join('');
+            container.innerHTML = recent.map(f => '<div class="activity-item"><div>' + f.founder + ' â€¢ <strong>' + (f.name || 'Tidbit') + '</strong></div><div style="font-size: 0.75rem; color: var(--text-muted);">' + f.date + '</div></div>').join('');
         }
         
         function exportAllData() {

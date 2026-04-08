@@ -8,40 +8,33 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
-            /* LaunchMate Brand Colors */
-            --launchmate-blue: #263051;
-            --launchmate-blue-accent: #546ab1;
-            --launchmate-white: #edf0fc;
-            --navy-dark: #14234a;
-            --navy-medium: #233d7e;
-            --blue-primary: #5473c6;
-            --launchmate-green: #82d491;
-            --launchmate-red: #db4937;
-            --bg-primary: #0f1a35;
-            --bg-secondary: #14234a;
-            --bg-card: rgba(20, 35, 74, 0.8);
-            --bg-glass: rgba(237, 240, 252, 0.03);
-            --accent-gradient: linear-gradient(135deg, #5473c6, #546ab1);
-            --text-primary: #edf0fc;
-            --text-secondary: #8a9dd4;
+            --bg-primary: #0a0f1a;
+            --bg-secondary: #111827;
+            --bg-card: rgba(17, 24, 39, 0.8);
+            --bg-glass: rgba(255, 255, 255, 0.03);
+            --accent-purple: #8b5cf6;
+            --accent-blue: #3b82f6;
+            --accent-gradient: linear-gradient(135deg, #8b5cf6, #3b82f6);
+            --text-primary: #f9fafb;
+            --text-secondary: #9ca3af;
             --text-muted: #6b7280;
-            --border: rgba(237, 240, 252, 0.1);
+            --border: rgba(255, 255, 255, 0.08);
         }
         body { font-family: 'Inter', sans-serif; background: var(--bg-primary); color: var(--text-primary); min-height: 100vh; overflow: hidden; }
         .app-frame { width: 100vw; height: 100vh; display: flex; flex-direction: column; background: var(--bg-primary); }
-        .title-bar { height: 40px; background: var(--navy-dark); display: flex; align-items: center; justify-content: space-between; padding: 0 12px; border-bottom: 1px solid var(--border); }
+        .title-bar { height: 40px; background: var(--bg-secondary); display: flex; align-items: center; justify-content: space-between; padding: 0 12px; border-bottom: 1px solid var(--border); }
         .window-controls { display: flex; gap: 8px; }
-        .window-btn { width: 12px; height: 12px; border-radius: 50%; border: none; }
-        .window-btn.close { background: #db4937; }
-        .window-btn.minimize { background: #f59e0b; }
-        .window-btn.maximize { background: #82d491; }
+        .window-btn { width: 12px; height: 12px; border-radius: 50%; border: none; cursor: pointer; }
+        .window-btn.close { background: #ff5f57; }
+        .window-btn.minimize { background: #febc2e; }
+        .window-btn.maximize { background: #28c840; }
         .title-bar-text { font-size: 0.75rem; color: var(--text-secondary); display: flex; align-items: center; gap: 8px; }
-        .title-bar-icon { width: 20px; height: 20px; background: var(--accent-gradient); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; }
+        .title-bar-icon { width: 20px; height: 20px; background: var(--accent-gradient); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 12px; }
         .app-container { display: flex; flex: 1; overflow: hidden; }
-        .sidebar { width: 260px; background: var(--navy-dark); border-right: 1px solid var(--border); display: flex; flex-direction: column; }
+        .sidebar { width: 260px; background: var(--bg-secondary); border-right: 1px solid var(--border); display: flex; flex-direction: column; }
         .sidebar-header { padding: 20px; border-bottom: 1px solid var(--border); }
         .user-profile { display: flex; align-items: center; gap: 12px; }
-        .avatar { width: 48px; height: 48px; background: var(--accent-gradient); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; font-weight: 700; }
+        .avatar { width: 48px; height: 48px; background: linear-gradient(135deg, #8b5cf6, #3b82f6); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
         .user-info h3 { font-size: 1rem; font-weight: 600; }
         .user-info p { font-size: 0.75rem; color: var(--text-secondary); }
         .sidebar-nav { flex: 1; padding: 12px; overflow-y: auto; }
@@ -50,61 +43,54 @@
         .nav-item { display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 8px; color: var(--text-secondary); cursor: pointer; transition: all 0.2s ease; }
         .nav-item:hover { background: var(--bg-card); color: var(--text-primary); }
         .nav-item.active { background: var(--accent-gradient); color: white; }
-        .nav-icon { width: 20px; text-align: center; }
-        .nav-badge { margin-left: auto; background: var(--blue-primary); color: white; font-size: 0.65rem; padding: 2px 6px; border-radius: 10px; }
+        .nav-icon { width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; font-size: 1rem; }
+        .nav-badge { margin-left: auto; background: var(--accent-blue); color: white; font-size: 0.65rem; padding: 2px 6px; border-radius: 10px; }
         .main-content { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
         .content-header { padding: 20px 24px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
         .content-header h1 { font-size: 1.5rem; font-weight: 700; }
         .header-actions { display: flex; gap: 12px; }
-        .btn { padding: 8px 16px; border-radius: 8px; font-size: 0.875rem; font-weight: 500; cursor: pointer; border: none; transition: all 0.2s ease; }
+        .btn { padding: 8px 16px; border-radius: 8px; font-size: 0.875rem; font-weight: 500; cursor: pointer; border: none; transition: all 0.2s ease; display: flex; align-items: center; gap: 6px; }
         .btn-primary { background: var(--accent-gradient); color: white; }
         .btn-secondary { background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border); }
         .content-area { flex: 1; padding: 24px; overflow-y: auto; }
-        .dashboard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 24px; }
-        .dashboard-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; transition: all 0.3s ease; }
+        .dashboard-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-bottom: 24px; }
+        .dashboard-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 20px; transition: all 0.3s ease; }
         .dashboard-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3); }
-        .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
-        .card-icon { width: 40px; height: 40px; background: var(--accent-gradient); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; }
-        .card-value { font-size: 2rem; font-weight: 800; background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+        .card-icon { width: 48px; height: 48px; background: var(--bg-glass); border: 1px solid var(--border); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
+        .card-value { font-size: 2.5rem; font-weight: 800; color: var(--accent-blue); }
         .card-label { font-size: 0.875rem; color: var(--text-secondary); }
-        .activity-section { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+        .activity-section { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 20px; }
         .activity-title { font-size: 1rem; font-weight: 600; margin-bottom: 16px; }
         .activity-item { display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border); }
         .activity-item:last-child { border-bottom: none; }
-        .activity-avatar { width: 36px; height: 36px; background: var(--accent-gradient); border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+        .activity-avatar { width: 40px; height: 40px; background: var(--bg-glass); border: 1px solid var(--border); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; }
         .activity-content { flex: 1; }
-        .activity-text { font-size: 0.875rem; margin-bottom: 4px; }
-        .activity-text strong { color: var(--text-primary); }
-        .activity-time { font-size: 0.75rem; color: var(--text-secondary); }
-        .chat-panel { width: 380px; background: var(--navy-dark); border-left: 1px solid var(--border); display: flex; flex-direction: column; }
+        .activity-text { font-size: 0.875rem; margin-bottom: 4px; line-height: 1.4; }
+        .activity-text strong { color: var(--text-primary); font-weight: 600; }
+        .activity-time { font-size: 0.75rem; color: var(--text-muted); }
+        .chat-panel { width: 380px; background: var(--bg-secondary); border-left: 1px solid var(--border); display: flex; flex-direction: column; }
         .chat-header { padding: 16px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 12px; }
         .chat-agent { flex: 1; }
         .chat-agent-name { font-weight: 600; font-size: 0.9rem; }
-        .chat-agent-status { font-size: 0.75rem; color: #82d491; }
+        .chat-agent-status { font-size: 0.75rem; color: #10b981; display: flex; align-items: center; gap: 4px; }
+        .chat-agent-status::before { content: ''; width: 6px; height: 6px; background: #10b981; border-radius: 50%; }
         .chat-messages { flex: 1; padding: 16px; overflow-y: auto; }
         .message { margin-bottom: 16px; }
         .message-user { text-align: right; }
-        .message-bubble { display: inline-block; padding: 10px 14px; border-radius: 12px; max-width: 80%; font-size: 0.875rem; line-height: 1.5; }
+        .message-bubble { display: inline-block; padding: 12px 16px; border-radius: 16px; max-width: 85%; font-size: 0.875rem; line-height: 1.5; }
         .message-user .message-bubble { background: var(--accent-gradient); color: white; border-bottom-right-radius: 4px; }
-        .message-agent .message-bubble { background: var(--bg-card); color: var(--text-primary); border-bottom-left-radius: 4px; }
+        .message-agent .message-bubble { background: var(--bg-card); color: var(--text-primary); border-bottom-left-radius: 4px; border: 1px solid var(--border); }
         .chat-input { padding: 16px; border-top: 1px solid var(--border); }
         .input-wrapper { display: flex; gap: 8px; }
-        .chat-input input { flex: 1; padding: 10px 14px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; color: var(--text-primary); font-size: 0.875rem; outline: none; }
-        .chat-input input:focus { border-color: var(--blue-primary); }
-        .send-btn { width: 40px; height: 40px; background: var(--accent-gradient); border: none; border-radius: 8px; color: white; cursor: pointer; font-size: 1rem; }
-        .preview-badge { position: fixed; top: 50px; right: 20px; background: var(--accent-gradient); color: white; padding: 8px 16px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; z-index: 1000; }
-        .comparison-note { position: fixed; bottom: 20px; left: 20px; background: var(--bg-card); border: 1px solid var(--border); padding: 12px 16px; border-radius: 8px; font-size: 0.75rem; color: var(--text-secondary); max-width: 300px; }
+        .chat-input input { flex: 1; padding: 12px 16px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; color: var(--text-primary); font-size: 0.875rem; outline: none; }
+        .chat-input input:focus { border-color: var(--accent-purple); }
+        .send-btn { width: 44px; height: 44px; background: var(--accent-gradient); border: none; border-radius: 12px; color: white; cursor: pointer; font-size: 1.25rem; display: flex; align-items: center; justify-content: center; }
+        .preview-badge { position: fixed; top: 50px; right: 20px; background: var(--accent-gradient); color: white; padding: 8px 16px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; z-index: 1000; box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4); }
     </style>
 </head>
 <body>
-    <div class="preview-badge">Desktop App Preview - Laura Wetherhold</div>
-    <div class="comparison-note">
-        <strong>Similar to:</strong><br>
-        Letta ADE: Agent-centric, memory-focused<br>
-        Claude Code: Chat panel, sidebar nav<br>
-        Codex: Dashboard cards, activity feed<br><br>
-        <strong>LaunchMate Brand:</strong> Navy blues, clean UI
-    </div>
+    <div class="preview-badge">🎨 UI PREVIEW - Laura Wetherhold</div>
     
     <div class="app-frame">
         <div class="title-bar">
@@ -114,7 +100,7 @@
                 <button class="window-btn maximize"></button>
             </div>
             <div class="title-bar-text">
-                <div class="title-bar-icon">L</div>
+                <div class="title-bar-icon">🚀</div>
                 LaunchMate Desktop
             </div>
             <div style="width: 60px;"></div>
@@ -124,7 +110,7 @@
             <div class="sidebar">
                 <div class="sidebar-header">
                     <div class="user-profile">
-                        <div class="avatar">LW</div>
+                        <div class="avatar">👤</div>
                         <div class="user-info">
                             <h3>Laura Wetherhold</h3>
                             <p>ZIP Launchpad Founder</p>
@@ -136,21 +122,21 @@
                     <div class="nav-section">
                         <div class="nav-section-title">Main</div>
                         <div class="nav-item active">
-                            <span class="nav-icon">D</span>
+                            <span class="nav-icon">📊</span>
                             Dashboard
                         </div>
                         <div class="nav-item">
-                            <span class="nav-icon">C</span>
+                            <span class="nav-icon">💬</span>
                             AI Mentor Chat
                             <span class="nav-badge">3</span>
                         </div>
                         <div class="nav-item">
-                            <span class="nav-icon">T</span>
+                            <span class="nav-icon">📋</span>
                             My Tasks
                             <span class="nav-badge">12</span>
                         </div>
                         <div class="nav-item">
-                            <span class="nav-icon">N</span>
+                            <span class="nav-icon">📄</span>
                             My Tidbits
                         </div>
                     </div>
@@ -158,15 +144,15 @@
                     <div class="nav-section">
                         <div class="nav-section-title">Resources</div>
                         <div class="nav-item">
-                            <span class="nav-icon">K</span>
+                            <span class="nav-icon">📚</span>
                             Knowledge Base
                         </div>
                         <div class="nav-item">
-                            <span class="nav-icon">A</span>
+                            <span class="nav-icon">📅</span>
                             Calendar
                         </div>
                         <div class="nav-item">
-                            <span class="nav-icon">P</span>
+                            <span class="nav-icon">👥</span>
                             Team
                         </div>
                     </div>
@@ -174,11 +160,11 @@
                     <div class="nav-section">
                         <div class="nav-section-title">Integrations</div>
                         <div class="nav-item">
-                            <span class="nav-icon">M</span>
+                            <span class="nav-icon">📱</span>
                             Telegram Bot
                         </div>
                         <div class="nav-item">
-                            <span class="nav-icon">S</span>
+                            <span class="nav-icon">🔗</span>
                             Slack
                         </div>
                     </div>
@@ -186,8 +172,12 @@
                     <div class="nav-section">
                         <div class="nav-section-title">Settings</div>
                         <div class="nav-item">
-                            <span class="nav-icon">G</span>
+                            <span class="nav-icon">⚙️</span>
                             Preferences
+                        </div>
+                        <div class="nav-item">
+                            <span class="nav-icon">🔑</span>
+                            API Keys
                         </div>
                     </div>
                 </div>
@@ -197,8 +187,12 @@
                 <div class="content-header">
                     <h1>Dashboard</h1>
                     <div class="header-actions">
-                        <button class="btn btn-secondary">Export</button>
-                        <button class="btn btn-primary">+ New Tidbit</button>
+                        <button class="btn btn-secondary">
+                            <span>📊</span> Export
+                        </button>
+                        <button class="btn btn-primary">
+                            <span>+</span> New Tidbit
+                        </button>
                     </div>
                 </div>
                 
@@ -206,28 +200,28 @@
                     <div class="dashboard-grid">
                         <div class="dashboard-card">
                             <div class="card-header">
-                                <div class="card-icon">T</div>
+                                <div class="card-icon">📋</div>
                             </div>
                             <div class="card-value">12</div>
                             <div class="card-label">Active Tasks</div>
                         </div>
                         <div class="dashboard-card">
                             <div class="card-header">
-                                <div class="card-icon">N</div>
+                                <div class="card-icon">📝</div>
                             </div>
                             <div class="card-value">8</div>
                             <div class="card-label">Tidbits Created</div>
                         </div>
                         <div class="dashboard-card">
                             <div class="card-header">
-                                <div class="card-icon">C</div>
+                                <div class="card-icon">💬</div>
                             </div>
                             <div class="card-value">47</div>
                             <div class="card-label">AI Conversations</div>
                         </div>
                         <div class="dashboard-card">
                             <div class="card-header">
-                                <div class="card-icon">G</div>
+                                <div class="card-icon">🎯</div>
                             </div>
                             <div class="card-value">78%</div>
                             <div class="card-label">Goal Progress</div>
@@ -237,21 +231,21 @@
                     <div class="activity-section">
                         <div class="activity-title">Recent Activity</div>
                         <div class="activity-item">
-                            <div class="activity-avatar">A</div>
+                            <div class="activity-avatar">🤖</div>
                             <div class="activity-content">
                                 <div class="activity-text"><strong>AI Mentor</strong> suggested a new milestone for your product launch</div>
                                 <div class="activity-time">2 minutes ago</div>
                             </div>
                         </div>
                         <div class="activity-item">
-                            <div class="activity-avatar">T</div>
+                            <div class="activity-avatar">✅</div>
                             <div class="activity-content">
                                 <div class="activity-text">You completed <strong>"Update pitch deck"</strong></div>
                                 <div class="activity-time">1 hour ago</div>
                             </div>
                         </div>
                         <div class="activity-item">
-                            <div class="activity-avatar">N</div>
+                            <div class="activity-avatar">📝</div>
                             <div class="activity-content">
                                 <div class="activity-text">New tidbit created: <strong>"Customer Discovery Notes"</strong></div>
                                 <div class="activity-time">3 hours ago</div>
@@ -263,7 +257,7 @@
             
             <div class="chat-panel">
                 <div class="chat-header">
-                    <div class="avatar">A</div>
+                    <div class="avatar">🤖</div>
                     <div class="chat-agent">
                         <div class="chat-agent-name">AI Mentor</div>
                         <div class="chat-agent-status">Online</div>
@@ -274,9 +268,11 @@
                     <div class="message message-agent">
                         <div class="message-bubble">Hi Laura! I've reviewed your latest customer discovery notes. It looks like you're making great progress on understanding your target audience.</div>
                     </div>
+                    
                     <div class="message message-user">
                         <div class="message-bubble">Thanks! I'm still trying to figure out the best pricing model though.</div>
                     </div>
+                    
                     <div class="message message-agent">
                         <div class="message-bubble">That's a common challenge for early-stage founders. Based on your notes, I'd suggest starting with a value-based pricing approach. Would you like me to create a pricing strategy checklist for you?</div>
                     </div>
@@ -285,7 +281,7 @@
                 <div class="chat-input">
                     <div class="input-wrapper">
                         <input type="text" placeholder="Message your AI mentor...">
-                        <button class="send-btn">></button>
+                        <button class="send-btn">→</button>
                     </div>
                 </div>
             </div>

@@ -10,11 +10,12 @@
         :root {
             --bg-primary: #0a0f1a;
             --bg-secondary: #111827;
-            --bg-card: rgba(17, 24, 39, 0.8);
+            --bg-card: rgba(17, 24, 39, 0.6);
             --bg-glass: rgba(255, 255, 255, 0.03);
-            --accent-primary: #8b5cf6;
-            --accent-secondary: #10b981;
-            --accent-gradient: linear-gradient(135deg, #8b5cf6, #10b981);
+            --accent-purple: #8b5cf6;
+            --accent-blue: #3b82f6;
+            --accent-green: #10b981;
+            --accent-gradient: linear-gradient(135deg, #8b5cf6, #3b82f6);
             --text-primary: #f9fafb;
             --text-secondary: #9ca3af;
             --text-muted: #6b7280;
@@ -25,47 +26,38 @@
         .header { position: sticky; top: 0; z-index: 100; background: rgba(10, 15, 26, 0.8); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 1rem 2rem; }
         .header-content { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
         .logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: var(--text-primary); }
-        .logo-icon { width: 44px; height: 44px; background: var(--accent-gradient); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; }
-        .logo-text { font-size: 1.5rem; font-weight: 700; background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .logo-icon { width: 44px; height: 44px; background: linear-gradient(135deg, #8b5cf6, #10b981); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
+        .logo-text { font-size: 1.5rem; font-weight: 700; background: linear-gradient(135deg, #8b5cf6, #10b981); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .nav-links { display: flex; gap: 1rem; }
         .nav-link { padding: 0.5rem 1rem; background: var(--bg-glass); border: 1px solid var(--border); border-radius: 8px; color: var(--text-secondary); text-decoration: none; font-size: 0.875rem; transition: all 0.2s ease; }
         .nav-link:hover { background: var(--bg-card); color: var(--text-primary); }
         .main { position: relative; z-index: 1; max-width: 1400px; margin: 0 auto; padding: 2rem; }
-        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
-        .stat-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 1.5rem; transition: all 0.3s ease; }
-        .stat-card:hover { transform: translateY(-4px); }
+        .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 2rem; }
+        .stat-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 1.5rem; transition: all 0.3s ease; backdrop-filter: blur(10px); }
+        .stat-card:hover { transform: translateY(-4px); border-color: rgba(139, 92, 246, 0.3); }
         .stat-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
-        .stat-value { font-size: 2.5rem; font-weight: 800; background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .stat-value { font-size: 2.5rem; font-weight: 800; background: linear-gradient(135deg, #8b5cf6, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .agent-selector { margin-bottom: 2rem; }
+        .agent-selector label { display: block; font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 0.5rem; }
+        .agent-selector select { width: 100%; max-width: 400px; padding: 0.75rem 1rem; background: var(--bg-glass); border: 1px solid var(--border); border-radius: 8px; color: var(--text-primary); font-size: 1rem; }
         .section-title { font-size: 1.5rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text-primary); }
-        .agent-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 1.5rem; margin-bottom: 1.5rem; }
-        .agent-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
-        .agent-name { font-size: 1.25rem; font-weight: 700; color: var(--text-primary); }
-        .agent-id { font-size: 0.75rem; color: var(--text-muted); font-family: monospace; }
-        .agent-meta { display: flex; gap: 1rem; font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 1rem; }
-        .memory-category { margin-bottom: 1rem; }
-        .category-header { background: var(--bg-glass); border: 1px solid var(--border); border-radius: 8px; padding: 0.75rem 1rem; display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
-        .category-header:hover { background: rgba(255, 255, 255, 0.05); }
-        .category-name { font-weight: 600; display: flex; align-items: center; gap: 0.5rem; }
+        .category-section { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 1.5rem; margin-bottom: 1.5rem; backdrop-filter: blur(10px); }
+        .category-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
+        .category-icon { width: 36px; height: 36px; background: linear-gradient(135deg, #3b82f6, #8b5cf6); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1rem; }
+        .category-icon.persona { background: linear-gradient(135deg, #8b5cf6, #ec4899); }
+        .category-icon.project { background: linear-gradient(135deg, #10b981, #3b82f6); }
+        .category-title { font-size: 1.125rem; font-weight: 600; flex: 1; }
         .category-count { font-size: 0.75rem; color: var(--text-muted); background: var(--bg-glass); padding: 0.25rem 0.75rem; border-radius: 20px; }
-        .category-content { padding: 0.5rem 0 0 1rem; display: none; }
-        .category-content.open { display: block; }
-        .memory-file { background: var(--bg-glass); border: 1px solid var(--border); border-radius: 8px; padding: 0.75rem 1rem; margin-bottom: 0.5rem; cursor: pointer; transition: all 0.2s ease; }
-        .memory-file:hover { border-color: rgba(139, 92, 246, 0.4); }
-        .file-path { font-size: 0.7rem; color: var(--text-muted); font-family: monospace; }
-        .file-name { font-weight: 600; color: var(--text-primary); margin: 0.25rem 0; }
-        .file-description { font-size: 0.8rem; color: var(--text-secondary); }
-        .modal-overlay { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(10px); z-index: 1000; display: none; overflow-y: auto; padding: 2rem; }
-        .modal-overlay.show { display: flex; align-items: flex-start; justify-content: center; }
-        .modal-content { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 20px; max-width: 900px; width: 100%; padding: 2rem; }
-        .modal-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
-        .modal-title { font-size: 1.5rem; font-weight: 700; }
-        .modal-path { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem; font-family: monospace; }
-        .modal-close { width: 40px; height: 40px; background: var(--bg-glass); border: 1px solid var(--border); border-radius: 10px; color: var(--text-secondary); font-size: 1.25rem; cursor: pointer; }
-        .modal-close:hover { background: #ef4444; color: white; }
-        .modal-body { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; max-height: 60vh; overflow-y: auto; }
-        .modal-body pre { font-family: 'Monaco', 'Consolas', monospace; font-size: 0.8rem; line-height: 1.6; white-space: pre-wrap; word-wrap: break-word; color: var(--text-secondary); }
-        .info-box { background: var(--bg-glass); border: 1px solid var(--border); border-radius: 10px; padding: 1rem; margin-top: 2rem; font-size: 0.8rem; color: var(--text-muted); }
-        .info-box code { background: var(--bg-card); padding: 0.2rem 0.5rem; border-radius: 4px; color: var(--accent-primary); }
+        .memory-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
+        .memory-card { background: var(--bg-glass); border: 1px solid var(--border); border-radius: 12px; padding: 1rem; cursor: pointer; transition: all 0.2s ease; }
+        .memory-card:hover { border-color: rgba(139, 92, 246, 0.4); transform: translateY(-2px); }
+        .memory-path { font-size: 0.7rem; color: var(--text-muted); font-family: monospace; margin-bottom: 0.5rem; }
+        .memory-name { font-weight: 600; color: var(--text-primary); margin-bottom: 0.25rem; }
+        .memory-desc { font-size: 0.8rem; color: var(--text-secondary); line-height: 1.4; }
+        .info-bar { background: var(--bg-glass); border: 1px solid var(--border); border-radius: 10px; padding: 1rem; margin-top: 2rem; font-size: 0.8rem; color: var(--text-muted); display: flex; align-items: center; gap: 0.5rem; }
+        .info-bar a { color: var(--accent-purple); text-decoration: none; }
+        .info-bar a:hover { text-decoration: underline; }
+        .hidden { display: none !important; }
     </style>
 </head>
 <body>
@@ -73,7 +65,7 @@
     <header class="header">
         <div class="header-content">
             <a href="https://golaunchmate.github.io/memories" target="_blank" class="logo">
-                <div class="logo-icon">M</div>
+                <div class="logo-icon">🧠</div>
                 <span class="logo-text">Agent Memories</span>
             </a>
             <div class="nav-links">
@@ -84,140 +76,126 @@
     </header>
     <main class="main">
         <section class="stats-grid">
-            <div class="stat-card"><div class="stat-label">Agents</div><div class="stat-value" id="stat-agents">1</div></div>
-            <div class="stat-card"><div class="stat-label">Memory Files</div><div class="stat-value" id="stat-files">--</div></div>
-            <div class="stat-card"><div class="stat-label">Last Sync</div><div class="stat-value" id="stat-sync">Today</div></div>
+            <div class="stat-card"><div class="stat-label">Memory Files</div><div class="stat-value" id="stat-files">11</div></div>
+            <div class="stat-card"><div class="stat-label">Categories</div><div class="stat-value">3</div></div>
+            <div class="stat-card"><div class="stat-label">Last Sync</div><div class="stat-value">Today</div></div>
         </section>
-        <h2 class="section-title">Agents</h2>
-        <div id="agents-container"></div>
-        <div class="info-box">
-            <strong>Memory Types:</strong><br>
-            <code>system/</code> - Always in context (pinned to prompt)<br>
-            <code>progressive/</code> - Loaded on demand (file tools)<br>
-            <code>recall/</code> - Conversation history (searchable via recall subagent)<br><br>
-            <strong>Agent ID:</strong> Shown subtly in gray. <strong>Common Name:</strong> Shown prominently.
+        
+        <div class="agent-selector">
+            <label>Select Agent</label>
+            <select id="agent-select" onchange="switchAgent()">
+                <option value="agent-8f31ed67-bc7d-40e7-abde-5a8bc4f7e601">Letta Code (Laura)</option>
+            </select>
+        </div>
+        
+        <h2 class="section-title">Memory Hierarchy</h2>
+        
+        <div id="agent-container">
+            <!-- Human Category -->
+            <div class="category-section">
+                <div class="category-header">
+                    <div class="category-icon">👤</div>
+                    <div class="category-title">Human</div>
+                    <span class="category-count">3 files</span>
+                </div>
+                <div class="memory-grid">
+                    <div class="memory-card" onclick="openMemory('system/human.md', 'Human Overview')">
+                        <div class="memory-path">system/human.md</div>
+                        <div class="memory-name">Human Overview</div>
+                        <div class="memory-desc">What I know about the person I work with - Laura Wetherhold</div>
+                    </div>
+                    <div class="memory-card" onclick="openMemory('system/human/identity.md', 'Identity')">
+                        <div class="memory-path">system/human/identity.md</div>
+                        <div class="memory-name">Identity</div>
+                        <div class="memory-desc">Detailed identity of the user - Laura Wetherhold</div>
+                    </div>
+                    <div class="memory-card" onclick="openMemory('system/human/prefs/workflow.md', 'Workflow Preferences')">
+                        <div class="memory-path">system/human/prefs/workflow.md</div>
+                        <div class="memory-name">Workflow Preferences</div>
+                        <div class="memory-desc">User workflow and communication preferences</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Persona Category -->
+            <div class="category-section">
+                <div class="category-header">
+                    <div class="category-icon persona">🎭</div>
+                    <div class="category-title">Persona</div>
+                    <span class="category-count">2 files</span>
+                </div>
+                <div class="memory-grid">
+                    <div class="memory-card" onclick="openMemory('system/persona.md', 'Persona Overview')">
+                        <div class="memory-path">system/persona.md</div>
+                        <div class="memory-name">Persona Overview</div>
+                        <div class="memory-desc">My identity and behavior as a stateful coding agent</div>
+                    </div>
+                    <div class="memory-card" onclick="openMemory('system/persona/behavior/learned.md', 'Learned Behavior')">
+                        <div class="memory-path">system/persona/behavior/learned.md</div>
+                        <div class="memory-name">Learned Behavior</div>
+                        <div class="memory-desc">Behavioral adaptations learned from user interactions</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Project Category -->
+            <div class="category-section">
+                <div class="category-header">
+                    <div class="category-icon project">📁</div>
+                    <div class="category-title">Project</div>
+                    <span class="category-count">6 files</span>
+                </div>
+                <div class="memory-grid">
+                    <div class="memory-card" onclick="openMemory('system/project/overview.md', 'Project Overview')">
+                        <div class="memory-path">system/project/overview.md</div>
+                        <div class="memory-name">Project Overview</div>
+                        <div class="memory-desc">LaunchMate project overview and tech stack</div>
+                    </div>
+                    <div class="memory-card" onclick="openMemory('system/project/conventions.md', 'Conventions')">
+                        <div class="memory-path">system/project/conventions.md</div>
+                        <div class="memory-name">Conventions</div>
+                        <div class="memory-desc">Project-specific coding conventions and patterns</div>
+                    </div>
+                    <div class="memory-card" onclick="openMemory('system/project/gotchas.md', 'Gotchas')">
+                        <div class="memory-path">system/project/gotchas.md</div>
+                        <div class="memory-name">Gotchas</div>
+                        <div class="memory-desc">Footguns and gotchas to watch out for</div>
+                    </div>
+                    <div class="memory-card" onclick="openMemory('system/project/team.md', 'Team')">
+                        <div class="memory-path">system/project/team.md</div>
+                        <div class="memory-name">Team</div>
+                        <div class="memory-desc">LaunchMate team structure and stakeholders</div>
+                    </div>
+                    <div class="memory-card" onclick="openMemory('system/project/architecture/directory-structure.md', 'Directory Structure')">
+                        <div class="memory-path">system/project/architecture/directory-structure.md</div>
+                        <div class="memory-name">Directory Structure</div>
+                        <div class="memory-desc">Project directory structure and key files</div>
+                    </div>
+                    <div class="memory-card" onclick="openMemory('system/project/tooling/commands.md', 'Commands')">
+                        <div class="memory-path">system/project/tooling/commands.md</div>
+                        <div class="memory-name">Commands</div>
+                        <div class="memory-desc">Build, dev, and lint commands for LaunchMate</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="info-bar">
+            <span>🤖</span> Agent Memory: This dashboard displays the persistent memory of Letta Code agents. Access raw files at <a href="https://github.com/golaunchmate/memories" target="_blank">https://github.com/golaunchmate/memories</a>
         </div>
     </main>
-    <div class="modal-overlay" id="memory-modal" onclick="closeModal(event)">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <div class="modal-header">
-                <div>
-                    <div class="modal-title" id="modal-title">Memory File</div>
-                    <div class="modal-path" id="modal-path">path/to/file.md</div>
-                </div>
-                <button class="modal-close" onclick="closeMemoryModal()">X</button>
-            </div>
-            <div class="modal-body">
-                <pre id="modal-content">Loading...</pre>
-            </div>
-        </div>
-    </div>
+    
     <script>
-        // Agent data - would be fetched from GitHub API in production
-        const agents = [
-            {
-                id: "agent-8f31ed67-bc7d-40e7-abde-5a8bc4f7e601",
-                name: "Letta Code (Laura)",
-                human: "Laura Wetherhold",
-                project: "LaunchMate",
-                created: "2026-04-08",
-                memory: {
-                    system: [
-                        { path: "system/human.md", name: "Human Overview", description: "What I know about the person I work with" },
-                        { path: "system/human/identity.md", name: "Identity", description: "Detailed identity of Laura Wetherhold" },
-                        { path: "system/human/prefs/workflow.md", name: "Workflow Preferences", description: "User workflow and communication preferences" },
-                        { path: "system/persona.md", name: "Persona Overview", description: "My identity and behavior as a stateful coding agent" },
-                        { path: "system/persona/behavior/learned.md", name: "Learned Behavior", description: "Behavioral adaptations learned from user" },
-                        { path: "system/project/overview.md", name: "Project Overview", description: "LaunchMate project overview and tech stack" },
-                        { path: "system/project/conventions.md", name: "Conventions", description: "Project-specific coding conventions" },
-                        { path: "system/project/gotchas.md", name: "Gotchas", description: "Footguns and gotchas to watch out for" },
-                        { path: "system/project/team.md", name: "Team", description: "LaunchMate team structure" },
-                        { path: "system/project/roadmap.md", name: "Roadmap", description: "Future features and ideas for LaunchMate" },
-                        { path: "system/project/architecture/directory-structure.md", name: "Directory Structure", description: "Project directory structure" },
-                        { path: "system/project/tooling/commands.md", name: "Commands", description: "Build, dev, and lint commands" }
-                    ],
-                    progressive: [],
-                    recall: []
-                }
-            }
-        ];
-        
-        function init() {
-            const totalFiles = agents.reduce((sum, a) => sum + a.memory.system.length + a.memory.progressive.length + a.memory.recall.length, 0);
-            document.getElementById('stat-files').textContent = totalFiles;
-            renderAgents();
-        }
-        
-        function renderAgents() {
-            const container = document.getElementById('agents-container');
-            container.innerHTML = '';
-            
-            agents.forEach(agent => {
-                const card = document.createElement('div');
-                card.className = 'agent-card';
-                
-                const totalFiles = agent.memory.system.length + agent.memory.progressive.length + agent.memory.recall.length;
-                
-                card.innerHTML = 
-                    '<div class="agent-header">' +
-                        '<div>' +
-                            '<div class="agent-name">' + agent.name + '</div>' +
-                            '<div class="agent-id">' + agent.id + '</div>' +
-                        '</div>' +
-                    '</div>' +
-                    '<div class="agent-meta">' +
-                        '<span>Human: ' + agent.human + '</span>' +
-                        '<span>Project: ' + agent.project + '</span>' +
-                        '<span>' + totalFiles + ' memory files</span>' +
-                    '</div>' +
-                    '<div class="memory-category">' +
-                        '<div class="category-header" onclick="toggleCategory(\'' + agent.id + '-system\')">' +
-                            '<div class="category-name">System Memory</div>' +
-                            '<span class="category-count">' + agent.memory.system.length + ' files</span>' +
-                        '</div>' +
-                        '<div class="category-content" id="' + agent.id + '-system">' +
-                            agent.memory.system.map(f => 
-                                '<div class="memory-file" onclick="openMemory(\'' + f.path + '\', \'' + f.name + '\')">' +
-                                    '<div class="file-path">' + f.path + '</div>' +
-                                    '<div class="file-name">' + f.name + '</div>' +
-                                    '<div class="file-description">' + f.description + '</div>' +
-                                '</div>'
-                            ).join('') +
-                        '</div>' +
-                    '</div>';
-                
-                container.appendChild(card);
-            });
-        }
-        
-        function toggleCategory(id) {
-            const content = document.getElementById(id);
-            content.classList.toggle('open');
+        function switchAgent() {
+            // In future, this would load different agent data
+            const select = document.getElementById('agent-select');
+            console.log('Switched to:', select.value);
         }
         
         function openMemory(path, name) {
-            document.getElementById('modal-title').textContent = name;
-            document.getElementById('modal-path').textContent = path;
-            document.getElementById('modal-content').textContent = 'Loading memory content...\n\nIn production, this would fetch from:\nhttps://raw.githubusercontent.com/golaunchmate/memories/main/agents/' + agents[0].id + '/' + path;
-            document.getElementById('memory-modal').classList.add('show');
-            document.body.style.overflow = 'hidden';
+            // In production, this would open a modal with the file content
+            alert('Opening: ' + name + '\nPath: ' + path + '\n\nIn production, this would fetch from GitHub API');
         }
-        
-        function closeMemoryModal() {
-            document.getElementById('memory-modal').classList.remove('show');
-            document.body.style.overflow = '';
-        }
-        
-        function closeModal(event) {
-            if (event.target.id === 'memory-modal') closeMemoryModal();
-        }
-        
-        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMemoryModal(); });
-        
-        // Open first category by default
-        setTimeout(() => toggleCategory(agents[0].id + '-system'), 100);
-        
-        init();
     </script>
 </body>
 </html>
