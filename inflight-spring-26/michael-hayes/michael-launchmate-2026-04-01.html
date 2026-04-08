@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="tidbit-type" content="team">
+  <meta name="tidbit-subject" content="Michael Hayes">
+  <meta name="tidbit-company" content="LaunchMate">
+  <meta name="tidbit-date" content="2026-04-01">
+  <meta name="tidbit-period" content="2026-W14">
+  <meta name="tidbit-tags" content="infrastructure, queues, async-processing, pragmatism">
+  <meta name="tidbit-cohort" content="inflight-spring-26">
+  <title>Non-Blocking Message Delivery | Michael Hayes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0f0f0f;
+      color: #e5e7eb;
+      line-height: 1.6;
+      scroll-snap-type: y mandatory;
+      overflow-y: scroll;
+      height: 100vh;
+    }
+    
+    .page {
+      min-height: 100vh;
+      scroll-snap-align: start;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      position: relative;
+    }
+    
+    .container {
+      max-width: 800px;
+      width: 100%;
+    }
+    
+    .card {
+      background: #1a1a1a;
+      border-radius: 12px;
+      padding: 3rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
+    
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+    
+    h2 {
+      font-size: 1.75rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      color: #60a5fa;
+    }
+    
+    .meta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.875rem;
+      color: #6b7280;
+      margin-bottom: 2rem;
+    }
+    
+    .label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #6b7280;
+      margin-bottom: 0.5rem;
+    }
+    
+    p {
+      font-size: 1.125rem;
+      margin-bottom: 1.5rem;
+      color: #d1d5db;
+    }
+    
+    .highlight-blue {
+      color: #60a5fa;
+      font-weight: 500;
+    }
+    
+    .highlight-green {
+      color: #34d399;
+      font-weight: 500;
+    }
+    
+    .highlight-orange {
+      color: #f97316;
+      font-weight: 500;
+    }
+    
+    .code-block {
+      background: #0f0f0f;
+      border-left: 3px solid #60a5fa;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      line-height: 1.8;
+      color: #e5e7eb;
+    }
+    
+    .comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    
+    .option {
+      background: #0f0f0f;
+      padding: 1.25rem;
+      border-radius: 8px;
+      border: 2px solid #2a2a2a;
+    }
+    
+    .option-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.875rem;
+      color: #60a5fa;
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+    
+    .option-pro {
+      color: #34d399;
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .option-con {
+      color: #f97316;
+      font-size: 0.9rem;
+    }
+    
+    .page-number {
+      position: absolute;
+      bottom: 2rem;
+      right: 2rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.875rem;
+      color: #6b7280;
+    }
+    
+    .scroll-hint {
+      position: absolute;
+      bottom: 3rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: #6b7280;
+      text-align: center;
+    }
+    
+    .scroll-arrow {
+      display: block;
+      margin-top: 0.5rem;
+      animation: bounce 2s infinite;
+    }
+    
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+      }
+      40% {
+        transform: translateY(-10px);
+      }
+      60% {
+        transform: translateY(-5px);
+      }
+    }
+    
+    ul {
+      list-style: none;
+      margin: 1.5rem 0;
+    }
+    
+    li {
+      padding-left: 1.5rem;
+      margin-bottom: 0.75rem;
+      position: relative;
+      font-size: 1.05rem;
+    }
+    
+    li:before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: #60a5fa;
+    }
+  </style>
+</head>
+<body>
+  
+  <!-- Page 1: Cover -->
+  <div class="page">
+    <div class="container">
+      <div class="card">
+        <div class="label">Week of April 1, 2026</div>
+        <h1>Non-Blocking Message Delivery Architecture</h1>
+        <p class="meta">Michael Hayes · LaunchMate</p>
+        <p style="font-size: 1.25rem; color: #9ca3af; margin-top: 2rem;">
+          Building autonomous pokes meant solving a constraint: 
+          <span class="highlight-orange">agents can't wait around for message delivery to complete</span>. 
+          The solution was obvious. The interesting part was choosing the simple version.
+        </p>
+      </div>
+    </div>
+    <div class="scroll-hint">
+      scroll to continue
+      <span class="scroll-arrow">↓</span>
+    </div>
+    <div class="page-number">1/4</div>
+  </div>
+
+  <!-- Page 2: Context -->
+  <div class="page">
+    <div class="container">
+      <div class="card">
+        <h2>The Starting Point</h2>
+        <p>
+          I'm building the execution side of Agent Pokes — cron jobs and agent-triggered workflows that autonomously deliver messages to founder agents.
+        </p>
+        <p>
+          The pattern is simple:
+        </p>
+        <ul>
+          <li>Founder schedules a poke ("generate weekly tidbit every Monday 9am")</li>
+          <li>Cron triggers → agent executes multi-step workflow</li>
+          <li>Agent delivers result message to founder</li>
+        </ul>
+        <p>
+          But there's a constraint: <span class="highlight-orange">the sender agent can't be blocked waiting for message delivery</span>. Letta's <code>send_message_to_agent</code> waits for a response — that could take 10-30 seconds if the founder agent is processing something complex.
+        </p>
+        <p>
+          My question: <span class="highlight-blue">"Should I just queue messages on my server?"</span>
+        </p>
+      </div>
+    </div>
+    <div class="page-number">2/4</div>
+  </div>
+
+  <!-- Page 3: The Options -->
+  <div class="page">
+    <div class="container">
+      <div class="card">
+        <h2>Three Infrastructure Approaches</h2>
+        
+        <div class="comparison">
+          <div class="option">
+            <div class="option-title">Database Queue</div>
+            <div class="option-pro">✓ Zero new infra</div>
+            <div class="option-pro">✓ Ship today</div>
+            <div class="option-pro">✓ Native scheduling</div>
+            <div class="option-con">✗ Polling overhead</div>
+          </div>
+          
+          <div class="option">
+            <div class="option-title">Redis + Worker</div>
+            <div class="option-pro">✓ Instant delivery</div>
+            <div class="option-pro">✓ Built-in retries</div>
+            <div class="option-pro">✓ Production-grade</div>
+            <div class="option-con">✗ New dependency</div>
+          </div>
+          
+          <div class="option">
+            <div class="option-title">Vercel Background</div>
+            <div class="option-pro">✓ Built into Vercel</div>
+            <div class="option-pro">✓ No extra infra</div>
+            <div class="option-con">✗ 5min limit</div>
+            <div class="option-con">✗ Limited retries</div>
+          </div>
+        </div>
+        
+        <p style="margin-top: 1.5rem;">
+          Redis is objectively "better" — instant processing, proven at scale, built-in retry logic. 
+          <span class="highlight-orange">But better for what use case?</span>
+        </p>
+      </div>
+    </div>
+    <div class="page-number">3/4</div>
+  </div>
+
+  <!-- Page 4: Decision & Status -->
+  <div class="page">
+    <div class="container">
+      <div class="card">
+        <h2>The Decision: Database Queue</h2>
+        
+        <p>
+          I chose <span class="highlight-green">Option 1: Supabase table + cron worker</span>.
+        </p>
+        
+        <div class="code-block">
+CREATE TABLE message_queue (<br>
+&nbsp;&nbsp;id UUID PRIMARY KEY,<br>
+&nbsp;&nbsp;recipient_agent_id TEXT,<br>
+&nbsp;&nbsp;message_content TEXT,<br>
+&nbsp;&nbsp;scheduled_for TIMESTAMP,<br>
+&nbsp;&nbsp;status TEXT, -- pending/delivered/failed<br>
+&nbsp;&nbsp;retry_count INT DEFAULT 0<br>
+)
+        </div>
+        
+        <p>
+          <span class="highlight-blue">Why not Redis?</span> Because I already have Supabase, and the constraint isn't latency — it's "don't block the sender." A 30-second polling delay doesn't matter when the alternative is 2 days of Redis setup + deployment config.
+        </p>
+        
+        <p>
+          This maps to the reliability-first decision from Feb 16: <span class="highlight-orange">ship dependable infrastructure with what you have, optimize when you hit the constraint</span>.
+        </p>
+        
+        <p style="margin-top: 2rem; color: #6b7280;">
+          <strong>Current status:</strong> Architecture decided. Next: worker implementation + retry logic + execution log storage.
+        </p>
+        
+        <p style="color: #6b7280;">
+          <strong>Upgrade trigger:</strong> If we hit >1000 messages/day or need sub-second delivery, migrate to Redis. Until then, "good enough" ships today.
+        </p>
+      </div>
+    </div>
+    <div class="page-number">4/4</div>
+  </div>
+
+  <script>
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+        const pages = document.querySelectorAll('.page');
+        const current = Math.floor(window.scrollY / window.innerHeight);
+        if (current < pages.length - 1) {
+          pages[current + 1].scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+      if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+        const pages = document.querySelectorAll('.page');
+        const current = Math.floor(window.scrollY / window.innerHeight);
+        if (current > 0) {
+          pages[current - 1].scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
