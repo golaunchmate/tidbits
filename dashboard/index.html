@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -747,6 +747,94 @@
             .cards-grid { grid-template-columns: 1fr; }
             .stats-grid { grid-template-columns: repeat(2, 1fr); }
         }
+        
+        /* Admin Panel Styles */
+        .admin-panel { padding: 1rem; }
+        .admin-section { 
+            background: var(--bg-card); 
+            border: 1px solid var(--border); 
+            border-radius: 12px; 
+            padding: 1.5rem; 
+            margin-bottom: 1.5rem; 
+        }
+        .admin-section-title { 
+            font-size: 1rem; 
+            font-weight: 600; 
+            color: var(--text-primary); 
+            margin-bottom: 1rem; 
+            display: flex; 
+            align-items: center; 
+            gap: 0.5rem; 
+        }
+        .admin-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+        .admin-btn { 
+            background: var(--bg-glass); 
+            border: 1px solid var(--border); 
+            color: var(--text-primary); 
+            padding: 0.75rem 1.25rem; 
+            border-radius: 8px; 
+            font-size: 0.875rem; 
+            font-weight: 500; 
+            cursor: pointer; 
+            transition: all 0.2s ease; 
+            display: flex; 
+            align-items: center; 
+            gap: 0.5rem; 
+        }
+        .admin-btn:hover { 
+            background: var(--accent-gradient); 
+            border-color: transparent; 
+            transform: translateY(-2px); 
+        }
+        .engagement-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
+            gap: 1rem; 
+        }
+        .engagement-card { 
+            background: var(--bg-glass); 
+            border-radius: 8px; 
+            padding: 1rem; 
+        }
+        .engagement-name { 
+            font-weight: 600; 
+            font-size: 0.9rem; 
+            margin-bottom: 0.25rem; 
+        }
+        .engagement-stats { 
+            font-size: 0.75rem; 
+            color: var(--text-secondary); 
+        }
+        .engagement-bar { 
+            height: 4px; 
+            background: var(--bg-glass); 
+            border-radius: 2px; 
+            margin-top: 0.5rem; 
+            overflow: hidden; 
+        }
+        .engagement-fill { 
+            height: 100%; 
+            background: var(--accent-gradient); 
+            border-radius: 2px; 
+            transition: width 0.3s ease; 
+        }
+        .inactive-list, .activity-list { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 0.5rem; 
+        }
+        .inactive-item, .activity-item { 
+            background: var(--bg-glass); 
+            border-radius: 8px; 
+            padding: 0.75rem 1rem; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+        .inactive-name { font-weight: 500; }
+        .inactive-since { font-size: 0.75rem; color: var(--text-muted); }
+        .activity-item { font-size: 0.875rem; }
+        .activity-date { font-size: 0.75rem; color: var(--text-muted); }
     </style>
 </head>
 <body>
@@ -756,13 +844,13 @@
     <header class="header">
         <div class="header-content">
             <a href="https://golaunchmate.github.io" target="_blank" class="logo">
-                <div class="logo-icon">🚀</div>
+                <div class="logo-icon">ðŸš€</div>
                 <span class="logo-text">LaunchMate Tidbits</span>
             </a>
             
             <div class="header-actions">
                 <a href="https://launchmate.ai" target="_blank" class="btn-primary">
-                    🌐 LaunchMate Website
+                    ðŸŒ LaunchMate Website
                 </a>
                 
                 <div class="filters">
@@ -817,14 +905,47 @@
             <button class="tab active" data-tab="founders" onclick="switchTab('founders')">Founders</button>
             <button class="tab" data-tab="timeline" onclick="switchTab('timeline')">Timeline</button>
             <button class="tab" data-tab="programs" onclick="switchTab('programs')">By Program</button>
+            <button class="tab" data-tab="admin" onclick="switchTab('admin')">🔧 Admin</button>
         </div>
         
         <section id="founders-view" class="cards-grid"></section>
         <section id="timeline-view" class="timeline hidden"></section>
         <section id="programs-view" class="hidden"></section>
         
+        <!-- Admin Panel for Mentors -->
+        <section id="admin-view" class="hidden">
+            <div class="admin-panel">
+                <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text-primary);">🔧 Mentor Admin Panel</h2>
+                
+                <div class="admin-section">
+                    <h3 class="admin-section-title">Quick Actions</h3>
+                    <div class="admin-actions">
+                        <button class="admin-btn" onclick="exportAllData()">📥 Export All Data (JSON)</button>
+                        <button class="admin-btn" onclick="exportCSV()">📊 Export to CSV</button>
+                        <button class="admin-btn" onclick="copyAllLinks()">📋 Copy All Tidbit Links</button>
+                        <button class="admin-btn" onclick="generateReport()">📝 Generate Summary Report</button>
+                    </div>
+                </div>
+                
+                <div class="admin-section">
+                    <h3 class="admin-section-title">Engagement Overview</h3>
+                    <div id="engagement-stats" class="engagement-grid"></div>
+                </div>
+                
+                <div class="admin-section">
+                    <h3 class="admin-section-title">Inactive Founders (Need Follow-up)</h3>
+                    <div id="inactive-founders" class="inactive-list"></div>
+                </div>
+                
+                <div class="admin-section">
+                    <h3 class="admin-section-title">Recent Activity (Last 7 Days)</h3>
+                    <div id="recent-activity" class="activity-list"></div>
+                </div>
+            </div>
+        </section>
+        
         <div class="agent-info">
-            🤖 <strong>Agent-friendly:</strong> Access data at <code>/dashboard/data.json</code> or parse JSON-LD with id "tidbits-data"
+            ðŸ¤– <strong>Agent-friendly:</strong> Access data at <code>/dashboard/data.json</code> or parse JSON-LD with id "tidbits-data"
         </div>
     </main>
     
@@ -835,7 +956,7 @@
                     <div class="modal-title" id="modal-title">Founder Name</div>
                     <div class="modal-subtitle" id="modal-subtitle">Startup | Program</div>
                 </div>
-                <button class="modal-close" onclick="closeFounderModal()">×</button>
+                <button class="modal-close" onclick="closeFounderModal()">Ã—</button>
             </div>
             <div class="detail-grid" id="modal-tidbits"></div>
         </div>
@@ -843,8 +964,757 @@
     
     <div class="toast" id="toast">Link copied!</div>
     
-    <script type="application/ld+json" id="tidbits-data">
-    </script>
+    <script type="application/ld+json" id="tidbits-data">[
+    {
+        "name":  "AztecConnect",
+        "founder":  "Ruby Chan",
+        "program":  "bootcamp-spring-26",
+        "startup":  "aztecconnect",
+        "status":  "inactive",
+        "lastUpdate":  "2026-01-30",
+        "count":  2,
+        "files":  [
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "bootcamp-spring-26/aztecconnect/ruby-chan/bootcamp-summary-2026-01-30.html",
+                          "name":  "Ruby Chan | Bootcamp Discovery",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "bootcamp-spring-26/aztecconnect/ruby-chan/aztecconnect-discovery-2026-01-30.html",
+                          "name":  "Ruby Chan | AztecConnect",
+                          "summary":  "Agent-generated tidbit"
+                      }
+                  ]
+    },
+    {
+        "name":  "Bootcamp Discovery",
+        "founder":  "Ryan To",
+        "program":  "bootcamp-spring-26",
+        "startup":  "personalai",
+        "status":  "inactive",
+        "lastUpdate":  "2026-01-30",
+        "count":  2,
+        "files":  [
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "bootcamp-spring-26/personalai/ryan-to/personalai-discovery-2026-01-30.html",
+                          "name":  "Ryan To | Personal AI",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "bootcamp-spring-26/personalai/ryan-to/bootcamp-summary-2026-01-30.html",
+                          "name":  "Ryan To | Bootcamp Discovery",
+                          "summary":  "Agent-generated tidbit"
+                      }
+                  ]
+    },
+    {
+        "name":  "Campus Miles",
+        "founder":  "Kiara Kuehl Mueller",
+        "program":  "bootcamp-spring-26",
+        "startup":  "campus-miles",
+        "status":  "inactive",
+        "lastUpdate":  "2026-01-30",
+        "count":  3,
+        "files":  [
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "bootcamp-spring-26/campus-miles/kiara-kuehl-mueller/sd-miles-discovery-2026-01-30.html",
+                          "name":  "Kiara Kuehl Mueller | SD Miles",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "bootcamp-spring-26/campus-miles/kiara-kuehl-mueller/discovery-2026-01-30.html",
+                          "name":  "Kiara Kuehl Mueller | Bootcamp Discovery",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "bootcamp-spring-26/campus-miles/kiara-kuehl-mueller/campus-miles-discovery-2026-01-30.html",
+                          "name":  "Kiara Kuehl Mueller | Campus Miles",
+                          "summary":  "Agent-generated tidbit"
+                      }
+                  ]
+    },
+    {
+        "name":  "Dad Bod Protein Health",
+        "founder":  "Cameron Brock",
+        "program":  "bootcamp-spring-26",
+        "startup":  "dadbod",
+        "status":  "inactive",
+        "lastUpdate":  "2026-01-30",
+        "count":  1,
+        "files":  {
+                      "date":  "2026-01-30",
+                      "path":  "bootcamp-spring-26/dadbod/cameron-brock/dadbod-discovery-2026-01-30.html",
+                      "name":  "Cameron - Dad Bod Protein Health Discovery",
+                      "summary":  "Agent-generated tidbit"
+                  }
+    },
+    {
+        "name":  "Granny Smith Market",
+        "founder":  "Macey Wenzel",
+        "program":  "bootcamp-spring-26",
+        "startup":  "granny-smith",
+        "status":  "inactive",
+        "lastUpdate":  "2026-01-30",
+        "count":  1,
+        "files":  {
+                      "date":  "2026-01-30",
+                      "path":  "bootcamp-spring-26/granny-smith/macey-wenzel/granny-smith-discovery-2026-01-30.html",
+                      "name":  "Macey Wenzel | Granny Smith Market | Jan 30, 2026",
+                      "summary":  "Agent-generated tidbit"
+                  }
+    },
+    {
+        "name":  "Gym Capacity App",
+        "founder":  "Victor Nyden",
+        "program":  "bootcamp-spring-26",
+        "startup":  "gym-app",
+        "status":  "inactive",
+        "lastUpdate":  "2026-01-30",
+        "count":  1,
+        "files":  {
+                      "date":  "2026-01-30",
+                      "path":  "bootcamp-spring-26/gym-app/victor-nyden/gym-app-discovery-2026-01-30.html",
+                      "name":  "Victor Nyden - Bootcamp Journey",
+                      "summary":  "Agent-generated tidbit"
+                  }
+    },
+    {
+        "name":  "launchmate",
+        "founder":  "Michael Hayes",
+        "program":  "bootcamp-spring-26",
+        "startup":  "launchmate",
+        "status":  "inactive",
+        "lastUpdate":  "2026-03-21",
+        "count":  11,
+        "files":  [
+                      {
+                          "date":  "2026-01-27",
+                          "path":  "inflight-spring-26/launchmate/michael-hayes/michael-a2a-routing-2026-01-27.html",
+                          "name":  "A2A Response Routing | Michael",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-01-27",
+                          "path":  "inflight-spring-26/launchmate/michael-hayes/michael-3-week-summary-2026-01-27.html",
+                          "name":  "3 Weeks: Skills to Infrastructure | Michael",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-02-03",
+                          "path":  "inflight-spring-26/launchmate/michael-hayes/michael-bootcamp-to-capabilities-2026-02-03.html",
+                          "name":  "Bootcamp to Capabilities | Michael",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-02-16",
+                          "path":  "inflight-spring-26/launchmate/michael-hayes/reliability-notes-2026-02-16.html",
+                          "name":  "Building Trust Through Reliability",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-02-04",
+                          "path":  "inflight-spring-26/launchmate/michael-hayes/michael-launchmate-direction-2026-02-04.html",
+                          "name":  "Launchmate Direction | Michael",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "inflight-spring-26/launchmate/michael-hayes/launchmate-weekly-2026-w05.html",
+                          "name":  "Michael Hayes - Week 5",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-02-13",
+                          "path":  "inflight-spring-26/launchmate/michael-hayes/engineering-philosophy-2026-02-13.html",
+                          "name":  "Engineering Philosophy | Michael Rodriguez",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "bootcamp-spring-26/launchmate/michael-hayes/launchmate-weekly-2026-w05.html",
+                          "name":  "Michael Hayes Â· Week 5",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-02-06",
+                          "path":  "inflight-spring-26/launchmate/michael-hayes/flbl-tech-spike-2026-02-06.html",
+                          "name":  "FLBL Tech Spike | Craig",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-02-17",
+                          "path":  "inflight-spring-26/launchmate/michael-hayes/launchmate-weekly-2026-02-17.html",
+                          "name":  "Reliability First, Then Scale",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-03-21",
+                          "path":  "inflight-spring-26/launchmate/michael-hayes/launchmate-update-2026-03-21.html",
+                          "name":  "The Human Bottleneck Problem",
+                          "summary":  "Agent-generated tidbit"
+                      }
+                  ]
+    },
+    {
+        "name":  "MedPath",
+        "founder":  "Julrenza Flores",
+        "program":  "bootcamp-spring-26",
+        "startup":  "pathlog",
+        "status":  "inactive",
+        "lastUpdate":  "2026-01-30",
+        "count":  2,
+        "files":  [
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "bootcamp-spring-26/pathlog/julrenza-flores/pathlog-discovery-2026-01-30.html",
+                          "name":  "Julrenza | PathLog | Jan 30, 2026",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "bootcamp-spring-26/pathlog/julrenza-flores/bootcamp-summary-2026-01-30.html",
+                          "name":  "Julrenza | Startup Bootcamp | Jan 30, 2026",
+                          "summary":  "Agent-generated tidbit"
+                      }
+                  ]
+    },
+    {
+        "name":  "Move Maven",
+        "founder":  "Sophia Colley",
+        "program":  "bootcamp-spring-26",
+        "startup":  "movemaven",
+        "status":  "inactive",
+        "lastUpdate":  "2026-01-30",
+        "count":  1,
+        "files":  {
+                      "date":  "2026-01-30",
+                      "path":  "bootcamp-spring-26/movemaven/sophia-colley/movemaven-discovery-2026-01-30.html",
+                      "name":  "Sophia Colley - Move Maven | Bootcamp Tidbit",
+                      "summary":  "Agent-generated tidbit"
+                  }
+    },
+    {
+        "name":  "Neighbor Network",
+        "founder":  "Marko Jovanovic",
+        "program":  "bootcamp-spring-26",
+        "startup":  "neighbor-network",
+        "status":  "inactive",
+        "lastUpdate":  "2026-01-30",
+        "count":  1,
+        "files":  {
+                      "date":  "2026-01-30",
+                      "path":  "bootcamp-spring-26/neighbor-network/marko-jovanovic/neighbor-network-discovery-2026-01-30.html",
+                      "name":  "Marko - Bootcamp Day 1",
+                      "summary":  "Agent-generated tidbit"
+                  }
+    },
+    {
+        "name":  "Neighborhood Discovery Platform",
+        "founder":  "Ela Emam",
+        "program":  "bootcamp-spring-26",
+        "startup":  "neighborhood-discovery",
+        "status":  "inactive",
+        "lastUpdate":  "2026-01-30",
+        "count":  1,
+        "files":  {
+                      "date":  "2026-01-30",
+                      "path":  "bootcamp-spring-26/neighborhood-discovery/ela-emam/bootcamp-summary-2026-01-30.html",
+                      "name":  "Ela Emam | Bootcamp Tidbit",
+                      "summary":  "Agent-generated tidbit"
+                  }
+    },
+    {
+        "name":  "Overload Shield",
+        "founder":  "Kristina Nguyen",
+        "program":  "bootcamp-spring-26",
+        "startup":  "overload-shield",
+        "status":  "inactive",
+        "lastUpdate":  "2026-01-30",
+        "count":  1,
+        "files":  {
+                      "date":  "2026-01-30",
+                      "path":  "bootcamp-spring-26/overload-shield/kristina-nguyen/overload-shield-discovery-2026-01-30.html",
+                      "name":  "Kristina Nguyen - Overload Shield",
+                      "summary":  "Agent-generated tidbit"
+                  }
+    },
+    {
+        "name":  "Plotz",
+        "founder":  "Team 11",
+        "program":  "bootcamp-spring-26",
+        "startup":  "plotz",
+        "status":  "inactive",
+        "lastUpdate":  "2026-01-30",
+        "count":  1,
+        "files":  {
+                      "date":  "2026-01-30",
+                      "path":  "bootcamp-spring-26/plotz/team-11/team-update-2026-01-30.html",
+                      "name":  "Team 11 - Plotz | Bootcamp Spring 2026",
+                      "summary":  "Agent-generated tidbit"
+                  }
+    },
+    {
+        "name":  "Project H1B",
+        "founder":  "Ayden Yevilov",
+        "program":  "bootcamp-spring-26",
+        "startup":  "project-h1b",
+        "status":  "inactive",
+        "lastUpdate":  "2026-01-30",
+        "count":  1,
+        "files":  {
+                      "date":  "2026-01-30",
+                      "path":  "bootcamp-spring-26/project-h1b/ayden-yevilov/bootcamp-summary-2026-01-30.html",
+                      "name":  "Ayden Yevilov | Project H1B",
+                      "summary":  "Agent-generated tidbit"
+                  }
+    },
+    {
+        "name":  "Schedule Optimizer",
+        "founder":  "Brian Sussman",
+        "program":  "bootcamp-spring-26",
+        "startup":  "schedule-optimizer",
+        "status":  "inactive",
+        "lastUpdate":  "2026-01-30",
+        "count":  1,
+        "files":  {
+                      "date":  "2026-01-30",
+                      "path":  "bootcamp-spring-26/schedule-optimizer/brian-sussman/bootcamp-summary-2026-01-30.html",
+                      "name":  "Brian Sussman - Bootcamp Tidbit",
+                      "summary":  "Agent-generated tidbit"
+                  }
+    },
+    {
+        "name":  "sdsu events hub",
+        "founder":  "Volodymyr Kalinin",
+        "program":  "bootcamp-spring-26",
+        "startup":  "sdsu-events-hub",
+        "status":  "inactive",
+        "lastUpdate":  "2026-01-30",
+        "count":  1,
+        "files":  {
+                      "date":  "2026-01-30",
+                      "path":  "bootcamp-spring-26/sdsu-events-hub/volodymyr-kalinin/sdsu-events-hub.html",
+                      "name":  "SDSU Events Hub",
+                      "summary":  "Agent-generated tidbit"
+                  }
+    },
+    {
+        "name":  "Shadow Match",
+        "founder":  "Jared Eastman",
+        "program":  "bootcamp-spring-26",
+        "startup":  "shadowmatch",
+        "status":  "inactive",
+        "lastUpdate":  "2026-01-30",
+        "count":  2,
+        "files":  [
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "bootcamp-spring-26/shadowmatch/jared-eastman/shadowmatch-solution-card.html",
+                          "name":  "Shadow Match | Solution Card",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "bootcamp-spring-26/shadowmatch/jared-eastman/shadowmatch-discovery-2026-01-30.html",
+                          "name":  "Jared Eastman | Shadow Match | Bootcamp",
+                          "summary":  "Agent-generated tidbit"
+                      }
+                  ]
+    },
+    {
+        "name":  "TenantPath",
+        "founder":  "Matt Levie",
+        "program":  "bootcamp-spring-26",
+        "startup":  "tenantpath",
+        "status":  "inactive",
+        "lastUpdate":  "2026-01-30",
+        "count":  1,
+        "files":  {
+                      "date":  "2026-01-30",
+                      "path":  "bootcamp-spring-26/tenantpath/matt-levie/tenantpath-discovery-2026-01-30.html",
+                      "name":  "Matt Levie | TenantPath | Bootcamp",
+                      "summary":  "Agent-generated tidbit"
+                  }
+    },
+    {
+        "name":  "TenantShield",
+        "founder":  "Ravyn Panopio",
+        "program":  "bootcamp-spring-26",
+        "startup":  "tenantshield",
+        "status":  "inactive",
+        "lastUpdate":  "2026-01-30",
+        "count":  1,
+        "files":  {
+                      "date":  "2026-01-30",
+                      "path":  "bootcamp-spring-26/tenantshield/ravyn-panopio/tenantshield-discovery-2026-01-30.html",
+                      "name":  "Ravyn Panopio â€” TenantShield | Bootcamp Tidbit",
+                      "summary":  "Agent-generated tidbit"
+                  }
+    },
+    {
+        "name":  "The Student Hub",
+        "founder":  "Brandon Mondragon",
+        "program":  "bootcamp-spring-26",
+        "startup":  "the-student-hub",
+        "status":  "inactive",
+        "lastUpdate":  "2026-01-30",
+        "count":  1,
+        "files":  {
+                      "date":  "2026-01-30",
+                      "path":  "bootcamp-spring-26/the-student-hub/brandon-mondragon/bootcamp-summary-2026-01-30.html",
+                      "name":  "Brandon Mondragon | The Student Hub | ZIP Launchpad Bootcamp",
+                      "summary":  "Agent-generated tidbit"
+                  }
+    },
+    {
+        "name":  "Visa Tax Help",
+        "founder":  "Alyssa Lim",
+        "program":  "bootcamp-spring-26",
+        "startup":  "visa-tax-help",
+        "status":  "inactive",
+        "lastUpdate":  "2026-01-30",
+        "count":  1,
+        "files":  {
+                      "date":  "2026-01-30",
+                      "path":  "bootcamp-spring-26/visa-tax-help/alyssa-lim/bootcamp-summary-2026-01-30.html",
+                      "name":  "Alyssa Lim | Visa Tax Help",
+                      "summary":  "Agent-generated tidbit"
+                  }
+    },
+    {
+        "name":  "Cursor",
+        "founder":  "Alex Zakoor",
+        "program":  "community-spring-26",
+        "startup":  "cursor",
+        "status":  "active",
+        "lastUpdate":  "2026-03-20",
+        "count":  1,
+        "files":  {
+                      "date":  "2026-03-20",
+                      "path":  "community-spring-26/cursor/alex-zakoor/cursor-update-2026-03-20.html",
+                      "name":  "Alex Zakoor - Cursor GTM - March 2026",
+                      "summary":  "Agent-generated tidbit"
+                  }
+    },
+    {
+        "name":  "ai game generation",
+        "founder":  "Jai Satith",
+        "program":  "inflight-spring-26",
+        "startup":  "ai-game-generation",
+        "status":  "active",
+        "lastUpdate":  "2026-02-20",
+        "count":  3,
+        "files":  [
+                      {
+                          "date":  "2026-02-20",
+                          "path":  "inflight-spring-26/ai-game-generation/jai-satith/jai-satith.html",
+                          "name":  "Jai \u0026 Satith - AI Game Generation - Commitment Spine",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-02-20",
+                          "path":  "inflight-spring-26/ai-game-generation/jai-satith/jai-satith-continuity-design.html",
+                          "name":  "Jai \u0026 Satith â€” Continuity Design",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-02-20",
+                          "path":  "inflight-spring-26/ai-game-generation/jai-satith/continuity-contract.html",
+                          "name":  "Founder â†” Mentor Continuity Contract",
+                          "summary":  "Agent-generated tidbit"
+                      }
+                  ]
+    },
+    {
+        "name":  "Celebrity Concierge",
+        "founder":  "Billy Carter",
+        "program":  "inflight-spring-26",
+        "startup":  "celebrity-concierge",
+        "status":  "active",
+        "lastUpdate":  "2026-01-28",
+        "count":  1,
+        "files":  {
+                      "date":  "2026-01-28",
+                      "path":  "inflight-spring-26/celebrity-concierge/billy-carter/celebrity-concierge-update-2026-01-28.html",
+                      "name":  "Billy Carter - Celebrity Concierge | Jan 28, 2026",
+                      "summary":  "Agent-generated tidbit"
+                  }
+    },
+    {
+        "name":  "DateFlo",
+        "founder":  "Muhammad Qudsi",
+        "program":  "inflight-spring-26",
+        "startup":  "dateflo",
+        "status":  "active",
+        "lastUpdate":  "2026-03-30",
+        "count":  8,
+        "files":  [
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "inflight-spring-26/dateflo/muhammad-qudsi/sparks/kavindi-coastal-2026-03-30.html",
+                          "name":  "Kavindi\u0027s Coastal Date",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "inflight-spring-26/dateflo/muhammad-qudsi/sparks/craig-birthday-2026-02-21.html",
+                          "name":  "Craig\u0027s Birthday Date",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "inflight-spring-26/dateflo/muhammad-qudsi/sparks/kavindi-coastal-fully-enhanced-2026-03-30.html",
+                          "name":  "Kavindi\u0027s Coastal Date - Fully Enhanced",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-03-30",
+                          "path":  "inflight-spring-26/dateflo/muhammad-qudsi/sparks/kavindi-coastal-enhanced-2026-03-30.html",
+                          "name":  "Kavindi\u0027s Coastal Date",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-02-22",
+                          "path":  "inflight-spring-26/dateflo/muhammad-qudsi/discovery-summary-2026-02-22.html",
+                          "name":  "Qudsi / DateFlo - Week of Feb 16-22",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-02-19",
+                          "path":  "inflight-spring-26/dateflo/muhammad-qudsi/discovery-summary-2026-02-19.html",
+                          "name":  "Qudsi Ã— DateFlo â€” Feb 19, 2026",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "inflight-spring-26/dateflo/muhammad-qudsi/sparks/cathy-sunset-2026-02-20.html",
+                          "name":  "Cathy\u0027s Sunset Date",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "inflight-spring-26/dateflo/muhammad-qudsi/sparks/amanda-little-italy-2026-02-26.html",
+                          "name":  "Amanda\u0027s Little Italy Date",
+                          "summary":  "Agent-generated tidbit"
+                      }
+                  ]
+    },
+    {
+        "name":  "dateflo",
+        "founder":  "404 Dateflo.Html",
+        "program":  "inflight-spring-26",
+        "startup":  "dateflo",
+        "status":  "active",
+        "lastUpdate":  "2026-01-30",
+        "count":  1,
+        "files":  {
+                      "date":  "2026-01-30",
+                      "path":  "inflight-spring-26/dateflo/404-dateflo.html",
+                      "name":  "âœ¨ Loading Your Spark... âœ¨",
+                      "summary":  "Agent-generated tidbit"
+                  }
+    },
+    {
+        "name":  "fooni",
+        "founder":  "Kavindi Seneviratne",
+        "program":  "inflight-spring-26",
+        "startup":  "fooni",
+        "status":  "active",
+        "lastUpdate":  "2026-02-06",
+        "count":  11,
+        "files":  [
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "inflight-spring-26/fooni/kavindi-seneviratne/fooni-sdsu-restaurants.html",
+                          "name":  "Fooni SDSU Restaurant Discovery",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "inflight-spring-26/fooni/kavindi-seneviratne/fooni-sdsu-restaurants-contacts.html",
+                          "name":  "Fooni SDSU Restaurant Contacts",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-01-28",
+                          "path":  "inflight-spring-26/fooni/kavindi-seneviratne/fooni-update-2026-01-28.html",
+                          "name":  "Kavindi | Fooni | Jan 28, 2026",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "inflight-spring-26/fooni/kavindi-seneviratne/restaurant-discovery-agent.html",
+                          "name":  "Tidbit | Restaurant Discovery Agent",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-02-06",
+                          "path":  "inflight-spring-26/fooni/kavindi-seneviratne/fooni-update-2026-02-06.html",
+                          "name":  "Kavindi Â· Fooni Â· Feb 6, 2026",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "inflight-spring-26/fooni/kavindi-seneviratne/fooni-sdsu-asian-cluster.html",
+                          "name":  "Fooni SDSU Asian Restaurants",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "inflight-spring-26/fooni/kavindi-seneviratne/fooni-cafes.html",
+                          "name":  "Fooni Cafe Discovery",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "inflight-spring-26/fooni/kavindi-seneviratne/fooni-cafes-contacts.html",
+                          "name":  "Fooni Cafe Contacts",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-02-04",
+                          "path":  "inflight-spring-26/fooni/kavindi-seneviratne/fooni-playbook-2026-02-04.html",
+                          "name":  "Fooni Playbook | Kavindi",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-01-30",
+                          "path":  "inflight-spring-26/fooni/kavindi-seneviratne/fooni-restaurants.html",
+                          "name":  "Fooni Restaurant Discovery",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-02-06",
+                          "path":  "inflight-spring-26/fooni/kavindi-seneviratne/fooni-restaurants-2026-02-06.html",
+                          "name":  "Fooni Â· Restaurant Network Â· Feb 2026",
+                          "summary":  "Agent-generated tidbit"
+                      }
+                  ]
+    },
+    {
+        "name":  "Harmony Health AI",
+        "founder":  "Vineeta Khanna",
+        "program":  "inflight-spring-26",
+        "startup":  "harmony",
+        "status":  "active",
+        "lastUpdate":  "2025-12-11",
+        "count":  1,
+        "files":  {
+                      "date":  "2025-12-11",
+                      "path":  "inflight-spring-26/harmony/vineeta-khanna/harmony-update-2025-12-11.html",
+                      "name":  "Vineeta Khanna | Harmony Health AI",
+                      "summary":  "Agent-generated tidbit"
+                  }
+    },
+    {
+        "name":  "Launchmate",
+        "founder":  "Laura",
+        "program":  "inflight-spring-26",
+        "startup":  "launchmate",
+        "status":  "active",
+        "lastUpdate":  "2026-02-04",
+        "count":  1,
+        "files":  {
+                      "date":  "2026-02-04",
+                      "path":  "inflight-spring-26/launchmate/laura/laura-dev-workflow-guide.html",
+                      "name":  "Launchmate Dev Workflow | Laura",
+                      "summary":  "Agent-generated tidbit"
+                  }
+    },
+    {
+        "name":  "RAFRS",
+        "founder":  "Juan Alcala",
+        "program":  "inflight-spring-26",
+        "startup":  "rafrs",
+        "status":  "active",
+        "lastUpdate":  "2026-02-26",
+        "count":  2,
+        "files":  [
+                      {
+                          "date":  "2026-02-26",
+                          "path":  "inflight-spring-26/rafrs/juan-alcala/rafrs-update-2026-02-26.html",
+                          "name":  "Juan Alcala | RAFRS | Feb 26, 2026",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-02-11",
+                          "path":  "inflight-spring-26/rafrs/juan-alcala/rafrs-update-2026-02-11.html",
+                          "name":  "Juan Alcala Â· RAFRS Â· Feb 11",
+                          "summary":  "Agent-generated tidbit"
+                      }
+                  ]
+    },
+    {
+        "name":  "Sonomos",
+        "founder":  "Zach Brenner",
+        "program":  "inflight-spring-26",
+        "startup":  "sonomos",
+        "status":  "active",
+        "lastUpdate":  "2026-02-26",
+        "count":  6,
+        "files":  [
+                      {
+                          "date":  "2026-02-25",
+                          "path":  "inflight-spring-26/sonomos/zach-brenner/sonomos-update-2026-02-25.html",
+                          "name":  "Zach Brenner â€” Sonomos â€” Feb 25, 2026",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-02-26",
+                          "path":  "inflight-spring-26/sonomos/zach-brenner/sonomos-update-2026-02-26.html",
+                          "name":  "Zach Brenner â€” Sonomos â€” Feb 26, 2026",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-02-19",
+                          "path":  "inflight-spring-26/sonomos/zach-brenner/sonomos-update-v2-2026-02-19.html",
+                          "name":  "Zach Brenner â€” Sonomos â€” Feb 19, 2026",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-02-15",
+                          "path":  "inflight-spring-26/sonomos/zach-brenner/sonomos-update-2026-02-15.html",
+                          "name":  "Zach Brenner â€” Sonomos â€” Feb 15, 2026",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-02-19",
+                          "path":  "inflight-spring-26/sonomos/zach-brenner/sonomos-update-2026-02-19.html",
+                          "name":  "Zach Brenner â€” Sonomos â€” Feb 19, 2026",
+                          "summary":  "Agent-generated tidbit"
+                      },
+                      {
+                          "date":  "2026-02-22",
+                          "path":  "inflight-spring-26/sonomos/zach-brenner/sonomos-update-2026-02-22.html",
+                          "name":  "Zach Brenner â€” Sonomos â€” Feb 22, 2026",
+                          "summary":  "Agent-generated tidbit"
+                      }
+                  ]
+    },
+    {
+        "name":  "Turner.AI",
+        "founder":  "Robert Sanchez",
+        "program":  "inflight-spring-26",
+        "startup":  "turnerai",
+        "status":  "active",
+        "lastUpdate":  "2026-01-29",
+        "count":  1,
+        "files":  {
+                      "date":  "2026-01-29",
+                      "path":  "inflight-spring-26/turnerai/robert-sanchez/turnerai-update-2026-01-29.html",
+                      "name":  "Robert Sanchez â€” Turner.AI",
+                      "summary":  "Agent-generated tidbit"
+                  }
+    }
+]
+</script>
     
     <script>
         const baseUrl = "https://golaunchmate.github.io/tidbits/";
@@ -852,10 +1722,13 @@
         
         // Load data from JSON-LD
         async function loadData() {
-            try {
-                const response = await fetch('data.json');
+            // Try embedded data first
+            const embeddedData = document.getElementById('tidbits-data');
+            if (embeddedData && embeddedData.textContent && embeddedData.textContent.trim()) {
+                try {
+                    founders = JSON.parse(embeddedData.textContent);
                 const data = await response.json();
-                founders = data.map(f => ({
+                founders = founders.map(f => ({
                     name: f.name || f.startup,
                     founder: f.founder,
                     program: f.program,
@@ -939,7 +1812,7 @@
                 const displayFiles = f.files.slice(0, 12);
                 displayFiles.forEach(file => {
                     squares += '<a href="' + baseUrl + file.path + '" target="_blank" class="tidbit-square" onclick="event.stopPropagation()">';
-                    squares += '<span class="tidbit-icon">📄</span>';
+                    squares += '<span class="tidbit-icon">ðŸ“„</span>';
                     squares += '<span class="tidbit-date">' + (file.date || '').slice(5) + '</span>';
                     squares += '</a>';
                 });
@@ -950,10 +1823,10 @@
                 card.innerHTML = 
                     '<div class="founder-header">' +
                         '<div class="founder-info">' +
-                            '<div class="founder-avatar">👤</div>' +
+                            '<div class="founder-avatar">ðŸ‘¤</div>' +
                             '<div class="founder-name">' + f.founder + '</div>' +
                             '<div class="founder-startup">' + f.name + '</div>' +
-                            '<div class="founder-program">' + f.program.replace('-spring-26', '') + ' · ' + f.count + ' tidbits</div>' +
+                            '<div class="founder-program">' + f.program.replace('-spring-26', '') + ' Â· ' + f.count + ' tidbits</div>' +
                         '</div>' +
                         '<span class="status-badge status-' + f.status + '">' + f.status + '</span>' +
                     '</div>' +
@@ -983,7 +1856,7 @@
                     '<div class="timeline-date">' + (item.file.date || '') + '</div>' +
                     '<div class="timeline-card">' +
                         '<div class="timeline-title">' + (item.file.name || 'Tidbit') + '</div>' +
-                        '<div class="timeline-desc">' + item.founder.founder + ' · ' + item.founder.name + '</div>' +
+                        '<div class="timeline-desc">' + item.founder.founder + ' Â· ' + item.founder.name + '</div>' +
                     '</div>';
                 container.appendChild(el);
             });
@@ -1020,7 +1893,7 @@
                     let squares = '';
                     f.files.slice(0, 8).forEach(file => {
                         squares += '<a href="' + baseUrl + file.path + '" target="_blank" class="tidbit-square" onclick="event.stopPropagation()">' +
-                            '<span class="tidbit-icon">📄</span>' +
+                            '<span class="tidbit-icon">ðŸ“„</span>' +
                             '<span class="tidbit-date">' + (file.date || '').slice(5) + '</span>' +
                         '</a>';
                     });
@@ -1031,7 +1904,7 @@
                     card.innerHTML = 
                         '<div class="founder-header">' +
                             '<div class="founder-info">' +
-                                '<div class="founder-avatar">👤</div>' +
+                                '<div class="founder-avatar">ðŸ‘¤</div>' +
                                 '<div class="founder-name">' + f.founder + '</div>' +
                                 '<div class="founder-startup">' + f.name + '</div>' +
                             '</div>' +
@@ -1059,7 +1932,7 @@
                 const card = document.createElement('div');
                 card.className = 'detail-card';
                 card.innerHTML = 
-                    '<div class="detail-preview">📄</div>' +
+                    '<div class="detail-preview">ðŸ“„</div>' +
                     '<div class="detail-content">' +
                         '<div class="detail-title">' + (file.name || 'Tidbit') + '</div>' +
                         '<div class="detail-date">' + (file.date || '') + '</div>' +
@@ -1113,6 +1986,103 @@
             document.getElementById('founders-view').classList.toggle('hidden', tabName !== 'founders');
             document.getElementById('timeline-view').classList.toggle('hidden', tabName !== 'timeline');
             document.getElementById('programs-view').classList.toggle('hidden', tabName !== 'programs');
+            document.getElementById('admin-view').classList.toggle('hidden', tabName !== 'admin');
+            
+            if (tabName === 'admin') renderAdminPanel();
+        }
+        
+        // Admin Panel Functions
+        function renderAdminPanel() {
+            renderEngagementStats();
+            renderInactiveFounders();
+            renderRecentActivity();
+        }
+        
+        function renderEngagementStats() {
+            const container = document.getElementById('engagement-stats');
+            const maxFiles = Math.max(...founders.map(f => f.count));
+            
+            container.innerHTML = founders.slice(0, 12).map(f => {
+                const percent = Math.round((f.count / maxFiles) * 100);
+                return '<div class="engagement-card">' +
+                    '<div class="engagement-name">' + f.founder + '</div>' +
+                    '<div class="engagement-stats">' + f.count + ' tidbits · ' + f.name + '</div>' +
+                    '<div class="engagement-bar"><div class="engagement-fill" style="width: ' + percent + '%"></div></div>' +
+                '</div>';
+            }).join('');
+        }
+        
+        function renderInactiveFounders() {
+            const container = document.getElementById('inactive-founders');
+            const inactive = founders.filter(f => f.status === 'inactive').sort((a, b) => a.lastUpdate.localeCompare(b.lastUpdate));
+            
+            container.innerHTML = inactive.map(f => 
+                '<div class="inactive-item">' +
+                    '<div><div class="inactive-name">' + f.founder + '</div>' +
+                    '<div class="inactive-since">' + f.name + ' · Last update: ' + f.lastUpdate + '</div></div>' +
+                    '<button class="btn-sm btn-ghost" onclick="openFounderModal(founders.find(x => x.startup === \'' + f.startup + '\' && x.founder === \'' + f.founder + '\'))">View</button>' +
+                '</div>'
+            ).join('');
+        }
+        
+        function renderRecentActivity() {
+            const container = document.getElementById('recent-activity');
+            const allFiles = [];
+            founders.forEach(f => f.files.forEach(file => allFiles.push({ ...file, founder: f.founder, startup: f.name })));
+            const recent = allFiles.sort((a, b) => b.date.localeCompare(a.date)).slice(0, 10);
+            
+            container.innerHTML = recent.map(f => 
+                '<div class="activity-item">' +
+                    '<div>' + f.founder + ' · <strong>' + (f.name || 'Tidbit') + '</strong></div>' +
+                    '<div class="activity-date">' + f.date + '</div>' +
+                '</div>'
+            ).join('');
+        }
+        
+        function exportAllData() {
+            const dataStr = JSON.stringify(founders, null, 2);
+            const blob = new Blob([dataStr], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'tidbits-export-' + new Date().toISOString().slice(0, 10) + '.json';
+            a.click();
+            showToast('Data exported!');
+        }
+        
+        function exportCSV() {
+            let csv = 'Founder,Startup,Program,Status,Last Update,File Count\\n';
+            founders.forEach(f => {
+                csv += '"' + f.founder + '","' + f.name + '","' + f.program + '","' + f.status + '","' + f.lastUpdate + '",' + f.count + '\\n';
+            });
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'tidbits-export-' + new Date().toISOString().slice(0, 10) + '.csv';
+            a.click();
+            showToast('CSV exported!');
+        }
+        
+        function copyAllLinks() {
+            const links = founders.flatMap(f => f.files.map(file => baseUrl + file.path));
+            navigator.clipboard.writeText(links.join('\\n')).then(() => showToast('All ' + links.length + ' links copied!'));
+        }
+        
+        function generateReport() {
+            const active = founders.filter(f => f.status === 'active').length;
+            const inactive = founders.filter(f => f.status === 'inactive').length;
+            const totalFiles = founders.reduce((sum, f) => sum + f.count, 0);
+            const report = 'LaunchMate Tidbits Report\\n' +
+                'Generated: ' + new Date().toLocaleDateString() + '\\n\\n' +
+                'SUMMARY\\n' +
+                'Active Founders: ' + active + '\\n' +
+                'Inactive Founders: ' + inactive + '\\n' +
+                'Total Tidbits: ' + totalFiles + '\\n\\n' +
+                'NEEDS FOLLOW-UP\\n' +
+                founders.filter(f => f.status === 'inactive').map(f => '- ' + f.founder + ' (' + f.name + ') - ' + f.lastUpdate).join('\\n');
+            
+            navigator.clipboard.writeText(report).then(() => showToast('Report copied to clipboard!'));
         }
         
         function applyFilters() {
@@ -1130,3 +2100,4 @@
     </script>
 </body>
 </html>
+
