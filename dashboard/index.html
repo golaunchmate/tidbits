@@ -1,1300 +1,780 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LaunchMate Tidbits Dashboard</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root {
-            --navy-dark: #14234a; --navy-medium: #233d7e; --launchmate-blue: #263051;
-            --launchmate-blue-accent: #546ab1; --blue-primary: #5473c6; --blue-light: #c5cbeb;
-            --launchmate-white: #edf0fc; --success: #82d491; --warning: #f59e0b; --danger: #db4937;
-        }
-        body { font-family: 'Inter', sans-serif; background: var(--navy-dark); color: var(--launchmate-white); min-height: 100vh; }
-        .header { background: var(--launchmate-blue); border-bottom: 1px solid rgba(255,255,255,0.1); padding: 1rem 2rem; position: sticky; top: 0; z-index: 100; }
-        .header-content { max-width: 1600px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-        .logo { font-size: 1.5rem; font-weight: 700; color: var(--launchmate-white); display: flex; align-items: center; gap: 0.75rem; cursor: pointer; }
-        .logo-icon { width: 40px; height: 40px; background: linear-gradient(135deg, var(--blue-primary), var(--launchmate-blue-accent)); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; }
-        .filters { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
-        .filter-group { display: flex; align-items: center; gap: 0.5rem; }
-        .filter-label { font-size: 0.875rem; color: var(--blue-light); }
-        select, input { padding: 0.5rem 1rem; border: 1px solid var(--launchmate-blue-accent); border-radius: 0.5rem; font-size: 0.875rem; background: var(--navy-medium); color: var(--launchmate-white); min-width: 150px; }
-        select:focus, input:focus { outline: none; border-color: var(--blue-primary); }
-        input::placeholder { color: var(--blue-light); }
-        .main { max-width: 1600px; margin: 0 auto; padding: 2rem; }
-        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
-        .stat-card { background: var(--launchmate-blue); border-radius: 1rem; padding: 1.5rem; border: 1px solid rgba(255,255,255,0.1); }
-        .stat-label { font-size: 0.875rem; color: var(--blue-light); margin-bottom: 0.5rem; }
-        .stat-value { font-size: 2rem; font-weight: 700; color: var(--launchmate-white); }
-        .stat-change { font-size: 0.875rem; margin-top: 0.5rem; color: var(--blue-light); }
-        .tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1rem; }
-        .tab { padding: 0.75rem 1.5rem; border: none; background: transparent; font-size: 0.875rem; font-weight: 500; color: var(--blue-light); cursor: pointer; border-radius: 0.5rem; }
-        .tab:hover { background: var(--navy-medium); }
-        .tab.active { background: var(--blue-primary); color: white; }
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 1.5rem; }
-        .startup-card { background: var(--launchmate-blue); border-radius: 1rem; padding: 1.5rem; border: 1px solid rgba(255,255,255,0.1); transition: all 0.3s; cursor: pointer; }
-        .startup-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,0,0,0.3); border-color: var(--blue-primary); }
-        .startup-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; }
-        .startup-name { font-size: 1.25rem; font-weight: 600; color: var(--launchmate-white); margin-bottom: 0.25rem; }
-        .startup-founder { font-size: 0.875rem; color: var(--blue-light); }
-        .status-badge { padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 500; text-transform: uppercase; }
-        .status-active { background: rgba(130, 212, 145, 0.2); color: var(--success); }
-        .status-inactive { background: rgba(245, 158, 11, 0.2); color: var(--warning); }
-        .tidbit-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(70px, 1fr)); gap: 0.5rem; }
-        .tidbit-square { aspect-ratio: 1; background: var(--navy-medium); border-radius: 0.5rem; display: flex; flex-direction: column; align-items: center; justify-content: center; text-decoration: none; color: var(--launchmate-white); transition: all 0.2s; position: relative; overflow: hidden; padding: 0.5rem; text-align: center; }
-        .tidbit-square:hover { background: var(--launchmate-blue-accent); transform: scale(1.08); }
-        .tidbit-square-icon { font-size: 1.25rem; }
-        .tidbit-square-date { font-size: 0.625rem; color: var(--blue-light); }
-        .tidbit-more { background: var(--navy-dark); border: 1px dashed var(--launchmate-blue-accent); color: var(--blue-light); font-size: 0.75rem; }
-        .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(10, 20, 40, 0.95); z-index: 1000; display: none; overflow-y: auto; }
-        .modal-overlay.show { display: block; }
-        .modal-content { max-width: 1200px; margin: 2rem auto; padding: 2rem; }
-        .modal-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2rem; }
-        .modal-title { font-size: 2rem; font-weight: 700; }
-        .modal-subtitle { font-size: 1.125rem; color: var(--blue-light); margin-top: 0.5rem; }
-        .modal-close { background: var(--navy-medium); border: none; color: var(--launchmate-white); font-size: 1.5rem; cursor: pointer; width: 40px; height: 40px; border-radius: 50%; }
-        .modal-close:hover { background: var(--danger); }
-        .detail-tidbit-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
-        .detail-tidbit-card { background: var(--launchmate-blue); border-radius: 1rem; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); transition: all 0.2s; }
-        .detail-tidbit-card:hover { border-color: var(--blue-primary); transform: translateY(-2px); }
-        .detail-tidbit-preview { height: 100px; background: linear-gradient(135deg, var(--navy-medium), var(--launchmate-blue-accent)); display: flex; align-items: center; justify-content: center; font-size: 2.5rem; }
-        .detail-tidbit-content { padding: 1rem; }
-        .detail-tidbit-title { font-weight: 600; margin-bottom: 0.5rem; }
-        .detail-tidbit-date { font-size: 0.875rem; color: var(--blue-light); margin-bottom: 0.5rem; }
-        .detail-tidbit-summary { font-size: 0.875rem; color: var(--blue-light); margin-bottom: 1rem; line-height: 1.4; }
-        .detail-tidbit-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-        .tidbit-btn { padding: 0.5rem 0.75rem; border: none; border-radius: 0.5rem; font-size: 0.75rem; font-weight: 500; cursor: pointer; display: flex; align-items: center; gap: 0.25rem; text-decoration: none; }
-        .tidbit-btn-primary { background: var(--blue-primary); color: white; }
-        .tidbit-btn-primary:hover { background: var(--launchmate-blue-accent); }
-        .tidbit-btn-secondary { background: var(--navy-medium); color: var(--launchmate-white); }
-        .tidbit-btn-secondary:hover { background: var(--navy-dark); }
-        .timeline { position: relative; padding-left: 2rem; }
-        .timeline::before { content: ''; position: absolute; left: 0.5rem; top: 0; bottom: 0; width: 2px; background: var(--launchmate-blue-accent); }
-        .timeline-item { position: relative; padding-bottom: 1.5rem; padding-left: 1.5rem; }
-        .timeline-item::before { content: ''; position: absolute; left: -1.5rem; top: 0.25rem; width: 1rem; height: 1rem; border-radius: 50%; background: var(--blue-primary); border: 2px solid var(--launchmate-blue); }
-        .timeline-date { font-size: 0.75rem; color: var(--blue-light); margin-bottom: 0.5rem; font-weight: 500; }
-        .timeline-card { background: var(--launchmate-blue); border-radius: 0.75rem; padding: 1rem; border: 1px solid rgba(255,255,255,0.1); }
-        .timeline-title { font-weight: 600; margin-bottom: 0.25rem; }
-        .timeline-desc { font-size: 0.875rem; color: var(--blue-light); }
-        .toast { position: fixed; bottom: 2rem; right: 2rem; background: var(--success); color: var(--navy-dark); padding: 1rem 1.5rem; border-radius: 0.5rem; font-weight: 500; transform: translateY(100px); opacity: 0; transition: all 0.3s; z-index: 2000; }
-        .toast.show { transform: translateY(0); opacity: 1; }
-        .hidden { display: none; }
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--navy-dark); }
-        ::-webkit-scrollbar-thumb { background: var(--launchmate-blue-accent); border-radius: 4px; }
-    </style>
-</head>
-<body>
-    <header class="header">
-        <div class="header-content">
-            <div class="logo" onclick="showAllStartups()">
-                <div class="logo-icon">🚀</div>
-                LaunchMate Tidbits
-            </div>
-            <div class="filters">
-                <div class="filter-group">
-                    <span class="filter-label">Program:</span>
-                    <select id="program-filter" onchange="applyFilters()">
-                        <option value="inflight-spring-26">Inflight Spring 26</option>
-                        <option value="all">All Programs</option>
-                        <option value="bootcamp-spring-26">Bootcamp Spring 26</option>
-                        <option value="community-spring-26">Community Spring 26</option>
-                    </select>
-                </div>
-                <div class="filter-group">
-                    <span class="filter-label">Status:</span>
-                    <select id="status-filter" onchange="applyFilters()">
-                        <option value="all">All Status</option>
-                        <option value="active">Active</option>
-                        <option value="inactive">Inactive</option>
-                    </select>
-                </div>
-                <input type="text" id="search" placeholder="Search startups..." oninput="applyFilters()">
-            </div>
-        </div>
-    </header>
-
-    <main class="main">
-        <section class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-label">Active Startups</div>
-                <div class="stat-value" id="stat-active">--</div>
-                <div class="stat-change">Currently in program</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-label">Total Founders</div>
-                <div class="stat-value" id="stat-founders">--</div>
-                <div class="stat-change">Across all programs</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-label">Total Tidbit Files</div>
-                <div class="stat-value" id="stat-files">--</div>
-                <div class="stat-change">Agent-generated content</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-label">Latest Update</div>
-                <div class="stat-value" id="stat-latest">--</div>
-                <div class="stat-change" id="stat-latest-from">Loading...</div>
-            </div>
-        </section>
-
-        <div class="tabs">
-            <button class="tab active" data-tab="startups" onclick="switchTab('startups')">Startups</button>
-            <button class="tab" data-tab="timeline" onclick="switchTab('timeline')">Timeline</button>
-            <button class="tab" data-tab="by-program" onclick="switchTab('by-program')">By Program</button>
-        </div>
-
-        <section id="startups-view" class="cards-grid"></section>
-        <section id="timeline-view" class="timeline hidden"></section>
-        <section id="program-view" class="hidden"></section>
-    </main>
-
-    <div class="modal-overlay" id="startup-modal" onclick="closeModal(event)">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <div class="modal-header">
-                <div>
-                    <div class="modal-title" id="modal-title">Startup Name</div>
-                    <div class="modal-subtitle" id="modal-subtitle">Founder Name</div>
-                </div>
-                <button class="modal-close" onclick="closeStartupModal()">×</button>
-            </div>
-            <div class="detail-tidbit-grid" id="modal-tidbits"></div>
-        </div>
-    </div>
-
-    <div class="toast" id="toast">Link copied!</div>
-    <script>
-        const baseUrl = "https://golaunchmate.github.io/tidbits/";
-        
-        const tidbits = [
-            { name: "AI Game Generation", founder: "Jai Satith", program: "inflight-spring-26", startup: "ai-game-generation", status: "active", lastUpdate: "2026-02-22", count: 3, files: [
-                { name: "Continuity Contract", date: "2026-02-22", path: "inflight-spring-26/ai-game-generation/jai-satith/continuity-contract.html", summary: "Contract details for AI game service" },
-                { name: "Continuity Design", date: "2026-02-22", path: "inflight-spring-26/ai-game-generation/jai-satith/jai-satith-continuity-design.html", summary: "Design specs and mockups" },
-                { name: "Jai Satith Update", date: "2026-02-22", path: "inflight-spring-26/ai-game-generation/jai-satith/jai-satith.html", summary: "Weekly progress update" }
-            ]},
-            { name: "Celebrity Concierge", founder: "Billy Carter", program: "inflight-spring-26", startup: "celebrity-concierge", status: "active", lastUpdate: "2026-01-28", count: 1, files: [
-                { name: "Celebrity Concierge Update", date: "2026-01-28", path: "inflight-spring-26/celebrity-concierge/billy-carter/celebrity-concierge-update-2026-01-28.html", summary: "Platform update and features" }
-            ]},
-            { name: "Dateflo", founder: "Muhammad Qudsi", program: "inflight-spring-26", startup: "dateflo", status: "active", lastUpdate: "2026-02-22", count: 10, files: [
-                { name: "Discovery Summary 2026-02-22", date: "2026-02-22", path: "inflight-spring-26/dateflo/muhammad-qudsi/discovery-summary-2026-02-22.html", summary: "User discovery insights" },
-                { name: "Discovery Summary 2026-02-19", date: "2026-02-19", path: "inflight-spring-26/dateflo/muhammad-qudsi/discovery-summary-2026-02-19.html", summary: "Early stage discovery" },
-                { name: "Amanda Little Italy", date: "2026-02-26", path: "inflight-spring-26/dateflo/muhammad-qudsi/sparks/amanda-little-italy-2026-02-26.html", summary: "Date spot recommendation" },
-                { name: "Cathy Sunset", date: "2026-02-20", path: "inflight-spring-26/dateflo/muhammad-qudsi/sparks/cathy-sunset-2026-02-20.html", summary: "Sunset viewing spot" },
-                { name: "Craig Birthday", date: "2026-02-21", path: "inflight-spring-26/dateflo/muhammad-qudsi/sparks/craig-birthday-2026-02-21.html", summary: "Birthday date ideas" }
-            ]},
-            { name: "Fooni", founder: "Kavindi Seneviratne", program: "inflight-spring-26", startup: "fooni", status: "active", lastUpdate: "2026-02-06", count: 12, files: [
-                { name: "Fooni Update 2026-02-06", date: "2026-02-06", path: "inflight-spring-26/fooni/kavindi-seneviratne/fooni-update-2026-02-06.html", summary: "Platform update with new restaurants" },
-                { name: "Fooni Playbook", date: "2026-02-04", path: "inflight-spring-26/fooni/kavindi-seneviratne/fooni-playbook-2026-02-04.html", summary: "Strategic playbook" },
-                { name: "Fooni Cafes", date: "2026-02-06", path: "inflight-spring-26/fooni/kavindi-seneviratne/fooni-cafes.html", summary: "Featured cafes list" },
-                { name: "SDSU Restaurants", date: "2026-02-06", path: "inflight-spring-26/fooni/kavindi-seneviratne/fooni-sdsu-restaurants.html", summary: "Restaurants near SDSU" }
-            ]},
-            { name: "Harmony", founder: "Vineeta Khanna", program: "inflight-spring-26", startup: "harmony", status: "active", lastUpdate: "2025-12-11", count: 1, files: [
-                { name: "Harmony Update", date: "2025-12-11", path: "inflight-spring-26/harmony/vineeta-khanna/harmony-update-2025-12-11.html", summary: "Platform update" }
-            ]},
-            { name: "LaunchMate", founder: "Michael Hayes & Laura Wetherhold", program: "inflight-spring-26", startup: "launchmate", status: "active", lastUpdate: "2026-03-21", count: 14, files: [
-                { name: "LaunchMate Update", date: "2026-03-21", path: "inflight-spring-26/launchmate/michael-hayes/launchmate-update-2026-03-21.html", summary: "Major platform update" },
-                { name: "Engineering Philosophy", date: "2026-02-13", path: "inflight-spring-26/launchmate/michael-hayes/engineering-philosophy-2026-02-13.html", summary: "Technical philosophy" },
-                { name: "Laura Dev Workflow", date: "2026-02-04", path: "inflight-spring-26/launchmate/laura/laura-dev-workflow-guide.html", summary: "Dev workflow docs" },
-                { name: "A2A Routing", date: "2026-01-27", path: "inflight-spring-26/launchmate/michael-hayes/michael-a2a-routing-2026-01-27.html", summary: "Agent communication design" }
-            ]},
-            { name: "RAFRS", founder: "Juan Alcala", program: "inflight-spring-26", startup: "rafrs", status: "active", lastUpdate: "2026-02-26", count: 2, files: [
-                { name: "RAFRS Update 2026-02-26", date: "2026-02-26", path: "inflight-spring-26/rafrs/juan-alcala/rafrs-update-2026-02-26.html", summary: "New reporting features" },
-                { name: "RAFRS Update 2026-02-11", date: "2026-02-11", path: "inflight-spring-26/rafrs/juan-alcala/rafrs-update-2026-02-11.html", summary: "Initial platform launch" }
-            ]},
-            { name: "Sonomos", founder: "Zach Brenner", program: "inflight-spring-26", startup: "sonomos", status: "active", lastUpdate: "2026-02-26", count: 6, files: [
-                { name: "Sonomos Update 2026-02-26", date: "2026-02-26", path: "inflight-spring-26/sonomos/zach-brenner/sonomos-update-2026-02-26.html", summary: "Sleep tracking features" },
-                { name: "Sonomos Update 2026-02-25", date: "2026-02-25", path: "inflight-spring-26/sonomos/zach-brenner/sonomos-update-2026-02-25.html", summary: "Daily progress" },
-                { name: "Sonomos Update 2026-02-22", date: "2026-02-22", path: "inflight-spring-26/sonomos/zach-brenner/sonomos-update-2026-02-22.html", summary: "Weekly milestone" }
-            ]},
-            { name: "TurnerAI", founder: "Robert Sanchez", program: "inflight-spring-26", startup: "turnerai", status: "active", lastUpdate: "2026-01-29", count: 1, files: [
-                { name: "TurnerAI Update", date: "2026-01-29", path: "inflight-spring-26/turnerai/robert-sanchez/turnerai-update-2026-01-29.html", summary: "Platform launch" }
-            ]},
-            { name: "AztecConnect", founder: "Ruby Chan", program: "bootcamp-spring-26", startup: "aztecconnect", status: "inactive", lastUpdate: "2026-01-30", count: 2, files: [
-                { name: "AztecConnect Discovery", date: "2026-01-30", path: "bootcamp-spring-26/aztecconnect/ruby-chan/aztecconnect-discovery-2026-01-30.html", summary: "User discovery" }
-            ]},
-            { name: "Campus Miles", founder: "Kiara Kuehl-Mueller", program: "bootcamp-spring-26", startup: "campus-miles", status: "inactive", lastUpdate: "2026-01-30", count: 3, files: [
-                { name: "Campus Miles Discovery", date: "2026-01-30", path: "bootcamp-spring-26/campus-miles/kiara-kuehl-mueller/campus-miles-discovery-2026-01-30.html", summary: "Transportation discovery" }
-            ]},
-            { name: "DadBod", founder: "Cameron Brock", program: "bootcamp-spring-26", startup: "dadbod", status: "inactive", lastUpdate: "2026-01-30", count: 1, files: [
-                { name: "DadBod Discovery", date: "2026-01-30", path: "bootcamp-spring-26/dadbod/cameron-brock/dadbod-discovery-2026-01-30.html", summary: "Target user discovery" }
-            ]},
-            { name: "Cursor", founder: "Alex Zakoor", program: "community-spring-26", startup: "cursor", status: "active", lastUpdate: "2026-03-20", count: 1, files: [
-                { name: "Cursor Update", date: "2026-03-20", path: "community-spring-26/cursor/alex-zakoor/cursor-update-2026-03-20.html", summary: "Community project update" }
-            ]},
-        ];
-        function updateStats() {
-            const activeTidbits = tidbits.filter(t => t.status === 'active');
-            const totalFiles = tidbits.reduce((sum, t) => sum + t.count, 0);
-            const uniqueFounders = new Set(tidbits.map(t => t.founder)).size;
-            const latest = tidbits.reduce((a, b) => a.lastUpdate > b.lastUpdate ? a : b);
-            document.getElementById('stat-active').textContent = activeTidbits.length;
-            document.getElementById('stat-founders').textContent = uniqueFounders;
-            document.getElementById('stat-files').textContent = totalFiles;
-            document.getElementById('stat-latest').textContent = latest.lastUpdate;
-            document.getElementById('stat-latest-from').textContent = latest.name + ' - ' + latest.founder;
-        }
-
-        function renderStartups(filter) {
-            filter = filter || {};
-            const container = document.getElementById('startups-view');
-            container.innerHTML = '';
-            let filtered = tidbits;
-            if (filter.program && filter.program !== 'all') {
-                filtered = filtered.filter(t => t.program === filter.program);
-            }
-            if (filter.status && filter.status !== 'all') {
-                filtered = filtered.filter(t => t.status === filter.status);
-            }
-            if (filter.search) {
-                const search = filter.search.toLowerCase();
-                filtered = filtered.filter(t => t.name.toLowerCase().includes(search) || t.founder.toLowerCase().includes(search));
-            }
-            filtered.forEach(t => {
-                const card = document.createElement('div');
-                card.className = 'startup-card';
-                card.onclick = function() { openStartupModal(t); };
-                let tidbitSquares = '';
-                const displayFiles = t.files.slice(0, 8);
-                displayFiles.forEach(f => {
-                    tidbitSquares += '<a href="' + baseUrl + f.path + '" target="_blank" class="tidbit-square" onclick="event.stopPropagation()">';
-                    tidbitSquares += '<div class="tidbit-square-icon">📄</div>';
-                    tidbitSquares += '<div class="tidbit-square-date">' + f.date.slice(5) + '</div>';
-                    tidbitSquares += '</a>';
-                });
-                if (t.files.length > 8) {
-                    tidbitSquares += '<div class="tidbit-square tidbit-more">+' + (t.files.length - 8) + '</div>';
-                }
-                card.innerHTML = '<div class="startup-header"><div><div class="startup-name">' + t.name + '</div><div class="startup-founder">' + t.founder + '</div></div><span class="status-badge status-' + t.status + '">' + t.status + '</span></div><div class="tidbit-grid">' + tidbitSquares + '</div>';
-                container.appendChild(card);
-            });
-        }
-
-        function renderTimeline() {
-            const container = document.getElementById('timeline-view');
-            container.innerHTML = '';
-            const allFiles = [];
-            tidbits.forEach(t => {
-                t.files.forEach(f => {
-                    allFiles.push({ name: t.name, founder: t.founder, program: t.program, status: t.status, file: f });
-                });
-            });
-            const sorted = allFiles.sort((a, b) => b.file.date.localeCompare(a.file.date));
-            sorted.slice(0, 30).forEach(item => {
-                const el = document.createElement('div');
-                el.className = 'timeline-item';
-                el.innerHTML = '<div class="timeline-date">' + item.file.date + '</div><div class="timeline-card"><div class="timeline-title">' + item.file.name + '</div><div class="timeline-desc">' + item.name + ' - ' + item.founder + '</div></div>';
-                container.appendChild(el);
-            });
-        }
-
-        function renderByProgram() {
-            const container = document.getElementById('program-view');
-            container.innerHTML = '';
-            const programs = {
-                'inflight-spring-26': { name: 'Inflight Spring 26', status: 'active' },
-                'bootcamp-spring-26': { name: 'Bootcamp Spring 26 (Completed)', status: 'inactive' },
-                'community-spring-26': { name: 'Community Spring 26', status: 'active' }
-            };
-            Object.entries(programs).forEach(([key, prog]) => {
-                const section = document.createElement('div');
-                section.style.marginBottom = '2rem';
-                const programTidbits = tidbits.filter(t => t.program === key);
-                section.innerHTML = '<h3 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: var(--blue-primary);">' + prog.name + ' <span style="font-size: 0.875rem; background: var(--navy-medium); padding: 0.25rem 0.75rem; border-radius: 9999px; color: var(--blue-light);">' + programTidbits.length + ' startups</span></h3>';
-                const grid = document.createElement('div');
-                grid.className = 'cards-grid';
-                programTidbits.forEach(t => {
-                    const card = document.createElement('div');
-                    card.className = 'startup-card';
-                    card.onclick = function() { openStartupModal(t); };
-                    let tidbitSquares = '';
-                    const displayFiles = t.files.slice(0, 6);
-                    displayFiles.forEach(f => {
-                        tidbitSquares += '<a href="' + baseUrl + f.path + '" target="_blank" class="tidbit-square" onclick="event.stopPropagation()"><div class="tidbit-square-icon">📄</div><div class="tidbit-square-date">' + f.date.slice(5) + '</div></a>';
-                    });
-                    if (t.files.length > 6) {
-                        tidbitSquares += '<div class="tidbit-square tidbit-more">+' + (t.files.length - 6) + '</div>';
-                    }
-                    card.innerHTML = '<div class="startup-header"><div><div class="startup-name">' + t.name + '</div><div class="startup-founder">' + t.founder + '</div></div><span class="status-badge status-' + t.status + '">' + t.status + '</span></div><div class="tidbit-grid">' + tidbitSquares + '</div>';
-                    grid.appendChild(card);
-                });
-                section.appendChild(grid);
-                container.appendChild(section);
-            });
-        }
-        function openStartupModal(startup) {
-            document.getElementById('modal-title').textContent = startup.name;
-            document.getElementById('modal-subtitle').textContent = startup.founder + ' | ' + startup.program + ' | ' + startup.status;
-            const container = document.getElementById('modal-tidbits');
-            container.innerHTML = '';
-            startup.files.forEach(f => {
-                const card = document.createElement('div');
-                card.className = 'detail-tidbit-card';
-                card.innerHTML = '<div class="detail-tidbit-preview">📄</div><div class="detail-tidbit-content"><div class="detail-tidbit-title">' + f.name + '</div><div class="detail-tidbit-date">' + f.date + '</div><div class="detail-tidbit-summary">' + (f.summary || 'Agent-generated tidbit') + '</div><div class="detail-tidbit-actions"><a href="' + baseUrl + f.path + '" target="_blank" class="tidbit-btn tidbit-btn-primary">Open</a><button class="tidbit-btn tidbit-btn-secondary" onclick="copyLink(\'' + baseUrl + f.path + '\')">Copy</button><button class="tidbit-btn tidbit-btn-secondary" onclick="shareLink(\'' + baseUrl + f.path + '\', \'' + f.name + '\')">Share</button></div></div>';
-                container.appendChild(card);
-            });
-            document.getElementById('startup-modal').classList.add('show');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeStartupModal() {
-            document.getElementById('startup-modal').classList.remove('show');
-            document.body.style.overflow = '';
-        }
-
-        function closeModal(event) {
-            if (event.target.id === 'startup-modal') closeStartupModal();
-        }
-
-        function showAllStartups() {
-            closeStartupModal();
-            document.getElementById('program-filter').value = 'inflight-spring-26';
-            applyFilters();
-        }
-
-        function copyLink(url) {
-            navigator.clipboard.writeText(url).then(function() { showToast('Link copied!'); });
-        }
-
-        function shareLink(url, title) {
-            if (navigator.share) { navigator.share({ title: title, url: url }); } else { copyLink(url); }
-        }
-
-        function showToast(message) {
-            const toast = document.getElementById('toast');
-            toast.textContent = message;
-            toast.classList.add('show');
-            setTimeout(function() { toast.classList.remove('show'); }, 2000);
-        }
-
-        function switchTab(tabName) {
-            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-            document.querySelector('[data-tab="' + tabName + '"]').classList.add('active');
-            document.getElementById('startups-view').classList.toggle('hidden', tabName !== 'startups');
-            document.getElementById('timeline-view').classList.toggle('hidden', tabName !== 'timeline');
-            document.getElementById('program-view').classList.toggle('hidden', tabName !== 'by-program');
-        }
-
-        function applyFilters() {
-            const program = document.getElementById('program-filter').value;
-            const status = document.getElementById('status-filter').value;
-            const search = document.getElementById('search').value;
-            renderStartups({ program: program, status: status, search: search });
-        }
-
-        updateStats();
-        renderStartups({ program: 'inflight-spring-26' });
-        renderTimeline();
-        renderByProgram();
-
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') closeStartupModal();
-        });
-    </script>
-</body>
-</html>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LaunchMate Tidbits Dashboard</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Agent-friendly: Structured data for AI agents -->
-    <script type="application/ld+json" id="tidbits-data">
-[
-    {
-        "name":  true,
-        "founder":  "ela-emam",
-        "program":  "bootcamp-spring-26",
-        "startup":  "neighborhood-discovery",
-        "status":  "inactive",
-        "lastUpdate":  "2026-01-30",
-        "count":  1,
-        "files":  [
-                      {
-                          "date":  "2026-01-30",
-                          "path":  "bootcamp-spring-26\\neighborhood-discovery\\ela-emam\\bootcamp-summary-2026-01-30.html",
-                          "name":  "Ela Emam | Bootcamp Tidbit",
-                          "summary":  "Agent-generated tidbit"
-                      }
-                  ]
-    },
-    {
-        "name":  true,
-        "founder":  "404-dateflo.html",
-        "program":  "inflight-spring-26",
-        "startup":  "dateflo",
-        "status":  "active",
-        "lastUpdate":  "2026-02-22",
-        "count":  9,
-        "files":  [
-                      {
-                          "date":  "2026-01-30",
-                          "path":  "inflight-spring-26\\dateflo\\404-dateflo.html",
-                          "name":  "✨ Loading Your Spark... ✨",
-                          "summary":  "Agent-generated tidbit"
-                      },
-                      {
-                          "date":  "2026-02-19",
-                          "path":  "inflight-spring-26\\dateflo\\muhammad-qudsi\\discovery-summary-2026-02-19.html",
-                          "name":  "Qudsi × DateFlo — Feb 19, 2026",
-                          "summary":  "Agent-generated tidbit"
-                      },
-                      {
-                          "date":  "2026-02-22",
-                          "path":  "inflight-spring-26\\dateflo\\muhammad-qudsi\\discovery-summary-2026-02-22.html",
-                          "name":  "Qudsi / DateFlo - Week of Feb 16-22",
-                          "summary":  "Agent-generated tidbit"
-                      },
-                      {
-                          "date":  "2026-01-30",
-                          "path":  "inflight-spring-26\\dateflo\\muhammad-qudsi\\sparks\\amanda-little-italy-2026-02-26.html",
-                          "name":  "Amanda\u0027s Little Italy Date",
-                          "summary":  "Agent-generated tidbit"
-                      },
-                      {
-                          "date":  "2026-01-30",
-                          "path":  "inflight-spring-26\\dateflo\\muhammad-qudsi\\sparks\\cathy-sunset-2026-02-20.html",
-                          "name":  "Cathy\u0027s Sunset Date",
-                          "summary":  "Agent-generated tidbit"
-                      },
-                      {
-                          "date":  "2026-01-30",
-                          "path":  "inflight-spring-26\\dateflo\\muhammad-qudsi\\sparks\\craig-birthday-2026-02-21.html",
-                          "name":  "Craig\u0027s Birthday Date",
-                          "summary":  "Agent-generated tidbit"
-                      },
-                      {
-                          "date":  "2026-01-30",
-                          "path":  "inflight-spring-26\\dateflo\\muhammad-qudsi\\sparks\\kavindi-coastal-2026-03-30.html",
-                          "name":  "Kavindi\u0027s Coastal Date",
-                          "summary":  "Agent-generated tidbit"
-                      },
-                      {
-                          "date":  "2026-01-30",
-                          "path":  "inflight-spring-26\\dateflo\\muhammad-qudsi\\sparks\\kavindi-coastal-enhanced-2026-03-30.html",
-                          "name":  "Kavindi\u0027s Coastal Date",
-                          "summary":  "Agent-generated tidbit"
-                      },
-                      {
-                          "date":  "2026-01-30",
-                          "path":  "inflight-spring-26\\dateflo\\muhammad-qudsi\\sparks\\kavindi-coastal-fully-enhanced-2026-03-30.html",
-                          "name":  "Kavindi\u0027s Coastal Date - Fully Enhanced",
-                          "summary":  "Agent-generated tidbit"
-                      }
-                  ]
-    },
-    {
-        "name":  true,
-        "founder":  "jai-satith",
-        "program":  "inflight-spring-26",
-        "startup":  "ai-game-generation",
-        "status":  "active",
-        "lastUpdate":  "2026-02-20",
-        "count":  3,
-        "files":  [
-                      {
-                          "date":  "2026-02-20",
-                          "path":  "inflight-spring-26\\ai-game-generation\\jai-satith\\continuity-contract.html",
-                          "name":  "Founder ↔ Mentor Continuity Contract",
-                          "summary":  "Agent-generated tidbit"
-                      },
-                      {
-                          "date":  "2026-02-20",
-                          "path":  "inflight-spring-26\\ai-game-generation\\jai-satith\\jai-satith-continuity-design.html",
-                          "name":  "Jai \u0026 Satith — Continuity Design",
-                          "summary":  "Agent-generated tidbit"
-                      },
-                      {
-                          "date":  "2026-02-20",
-                          "path":  "inflight-spring-26\\ai-game-generation\\jai-satith\\jai-satith.html",
-                          "name":  "Jai \u0026 Satith - AI Game Generation - Commitment Spine",
-                          "summary":  "Agent-generated tidbit"
-                      }
-                  ]
-    },
-    {
-        "name":  true,
-        "founder":  "juan-alcala",
-        "program":  "inflight-spring-26",
-        "startup":  "rafrs",
-        "status":  "active",
-        "lastUpdate":  "2026-02-26",
-        "count":  2,
-        "files":  [
-                      {
-                          "date":  "2026-02-11",
-                          "path":  "inflight-spring-26\\rafrs\\juan-alcala\\rafrs-update-2026-02-11.html",
-                          "name":  "Juan Alcala · RAFRS · Feb 11",
-                          "summary":  "Agent-generated tidbit"
-                      },
-                      {
-                          "date":  "2026-02-26",
-                          "path":  "inflight-spring-26\\rafrs\\juan-alcala\\rafrs-update-2026-02-26.html",
-                          "name":  "Juan Alcala | RAFRS | Feb 26, 2026",
-                          "summary":  "Agent-generated tidbit"
-                      }
-                  ]
-    },
-    {
-        "name":  true,
-        "founder":  "brandon-mondragon",
-        "program":  "bootcamp-spring-26",
-        "startup":  "the-student-hub",
-        "status":  "inactive",
-        "lastUpdate":  "2026-01-30",
-        "count":  1,
-        "files":  [
-                      {
-                          "date":  "2026-01-30",
-                          "path":  "bootcamp-spring-26\\the-student-hub\\brandon-mondragon\\bootcamp-summary-2026-01-30.html",
-                          "name":  "Brandon Mondragon | The Student Hub | ZIP Launchpad Bootcamp",
-                          "summary":  "Agent-generated tidbit"
-                      }
-                  ]
-    },
-    {
-        "name":  true,
-        "founder":  "michael-hayes",
-        "program":  "bootcamp-spring-26",
-        "startup":  "launchmate",
-        "status":  "inactive",
-        "lastUpdate":  "2026-03-21",
-        "count":  12,
-        "files":  [
-                      {
-                          "date":  "2026-01-30",
-                          "path":  "bootcamp-spring-26\\launchmate\\michael-hayes\\launchmate-weekly-2026-w05.html",
-                          "name":  "Michael Hayes · Week 5",
-                          "summary":  "Agent-generated tidbit"
-                      },
-                      {
-                          "date":  "2026-02-04",
-                          "path":  "inflight-spring-26\\launchmate\\laura\\laura-dev-workflow-guide.html",
-                          "name":  "Launchmate Dev Workflow | Laura",
-                          "summary":  "Agent-generated tidbit"
-                      },
-                      {
-                          "date":  "2026-02-13",
-                          "path":  "inflight-spring-26\\launchmate\\michael-hayes\\engineering-philosophy-2026-02-13.html",
-                          "name":  "Engineering Philosophy | Michael Rodriguez",
-                          "summary":  "Agent-generated tidbit"
-                      },
-                      {
-                          "date":  "2026-02-06",
-                          "path":  "inflight-spring-26\\launchmate\\michael-hayes\\flbl-tech-spike-2026-02-06.html",
-                          "name":  "FLBL Tech Spike | Craig",
-                          "summary":  "Agent-generated tidbit"
-                      },
-                      {
-                          "date":  "2026-03-21",
-                          "path":  "inflight-spring-26\\launchmate\\michael-hayes\\launchmate-update-2026-03-21.html",
-                          "name":  "The Human Bottleneck Problem",
-                          "summary":  "Agent-generated tidbit"
-                      },
-                      {
-                          "date":  "2026-02-17",
-                          "path":  "inflight-spring-26\\launchmate\\michael-hayes\\launchmate-weekly-2026-02-17.html",
-                          "name":  "Reliability First, Then Scale",
-                          "summary":  "Agent-generated tidbit"
-                      },
-                      {
-                          "date":  "2026-01-30",
-                          "path":  "inflight-spring-26\\launchmate\\michael-hayes\\launchmate-weekly-2026-w05.html",
-                          "name":  "Michael Hayes - Week 5",
-                          "summary":  "Agent-generated tidbit"
-                      },
-                      {
-                          "date":  "2026-01-27",
-                          "path":  "inflight-spring-26\\launchmate\\michael-hayes\\michael-3-week-summary-2026-01-27.html",
-                          "name":  "3 Weeks: Skills to Infrastructure | Michael",
-                          "summary":  "Agent-generated tidbit"
-                      },
-                      {
-                          "date":  "2026-01-27",
-                          "path":  "inflight-spring-26\\launchmate\\michael-hayes\\michael-a2a-routing-2026-01-27.html",
-                          "name":  "A2A Response Routing | Michael",
-                          "summary":  "Agent-generated tidbit"
-                      },
-                      {
-                          "date":  "2026-02-03",
-                          "path":  "inflight-spring-26\\launchmate\\michael-hayes\\michael-bootcamp-to-capabilities-2026-02-03.html",
-                          "name":  "Bootcamp to Capabilities | Michael",
-                          "summary":  "Agent-generated tidbit"
-                      },
-                      {
-                          "date":  "2026-02-04",
-                          "path":  "inflight-spring-26\\launchmate\\michael-hayes\\michael-launchmate-direction-2026-02-04.html",
-                          "name":  "Launchmate Direction | Michael",
-                          "summary":  "Agent-generated tidbit"
-                      },
-                      {
-                          "date":  "2026-02-16",
-                          "path":  "inflight-spring-26\\launchmate\\michael-hayes\\reliability-notes-2026-02-16.html",
-                          "name":  "Building Trust Through Reliability",
-                          "summary":  "Agent-generated tidbit"
-                      }
-                  ]
-    },
-    {
-        "name":  true,
-        "founder":  "team-11",
-        "program":  "bootcamp-spring-26",
-        "startup":  "plotz",
-        "status":  "inactive",
-        "lastUpdate":  "2026-01-30",
-        "count":  1,
-        "files":  [
-                      {
-                          "date":  "2026-01-30",
-                          "path":  "bootcamp-spring-26\\plotz\\team-11\\team-update-2026-01-30.html",
-                          "name":  "Team 11 - Plotz | Bootcamp Spring 2026",
-                          "summary":  "Agent-generated tidbit"
-                      }
-                  ]
-    },
-    {
-        "name":  true,
-        "founder":  "kavindi-seneviratne",
-        "program":  "inflight-spring-26",
-        "startup":  "fooni",
-        "status":  "active",
-        "lastUpdate":  "2026-02-06",
-        "count":  11,
-        "files":  [
-                      {
-                          "date":  "2026-01-30",
-                          "path":  "inflight-spring-26\\fooni\\kavindi-seneviratne\\fooni-cafes-contacts.html",
-                          "name":  "Fooni Cafe Contacts",
-                          "summary":  "Agent-generated tidbit"
-                      },
-                      {
-                          "date":  "2026-01-30",
-                          "path":  "inflight-spring-26\\fooni\\kavindi-seneviratne\\fooni-cafes.html",
-                          "name":  "Fooni Cafe Discovery",
-                          "summary":  "Agent-generated tidbit"
-                      },
-                      {
-                          "date":  "2026-02-04",
-                          "path":  "inflight-spring-26\\fooni\\kavindi-seneviratne\\fooni-playbook-2026-02-04.html",
-                          "name":  "Fooni Playbook | Kavindi",
-                          "summary":  "Agent-generated tidbit"
-                      },
-                      {
-                          "date":  "2026-02-06",
-                          "path":  "inflight-spring-26\\fooni\\kavindi-seneviratne\\fooni-restaurants-2026-02-06.html",
-                          "name":  "Fooni · Restaurant Network · Feb 2026",
-                          "summary":  "Agent-generated tidbit"
-                      },
-                      {
-                          "date":  "2026-01-30",
-                          "path":  "inflight-spring-26\\fooni\\kavindi-seneviratne\\fooni-restaurants.html",
-                          "name":  "Fooni Restaurant Discovery",
-                          "summary":  "Agent-generated tidbit"
-                      },
-                      {
-                          "date":  "2026-01-30",
-                          "path":  "inflight-spring-26\\fooni\\kavindi-seneviratne\\fooni-sdsu-asian-cluster.html",
-                          "name":  "Fooni SDSU Asian Restaurants",
-                          "summary":  "Agent-generated tidbit"
-                      },
-                      {
-                          "date":  "2026-01-30",
-                          "path":  "inflight-spring-26\\fooni\\kavindi-seneviratne\\fooni-sdsu-restaurants-contacts.html",
-                          "name":  "Fooni SDSU Restaurant Contacts",
-                          "summary":  "Agent-generated tidbit"
-                      },
-                      {
-                          "date":  "2026-01-30",
-                          "path":  "inflight-spring-26\\fooni\\kavindi-seneviratne\\fooni-sdsu-restaurants.html",
-                          "name":  "Fooni SDSU Restaurant Discovery",
-                          "summary":  "Agent-generated tidbit"
-                      },
-                      {
-                          "date":  "2026-01-28",
-                          "path":  "inflight-spring-26\\fooni\\kavindi-seneviratne\\fooni-update-2026-01-28.html",
-                          "name":  "Kavindi | Fooni | Jan 28, 2026",
-                          "summary":  "Agent-generated tidbit"
-                      },
-                      {
-                          "date":  "2026-02-06",
-                          "path":  "inflight-spring-26\\fooni\\kavindi-seneviratne\\fooni-update-2026-02-06.html",
-                          "name":  "Kavindi · Fooni · Feb 6, 2026",
-                          "summary":  "Agent-generated tidbit"
-                      },
-                      {
-                          "date":  "2026-01-30",
-                          "path":  "inflight-spring-26\\fooni\\kavindi-seneviratne\\restaurant-discovery-agent.html",
-                          "name":  "Tidbit | Restaurant Discovery Agent",
-                          "summary":  "Agent-generated tidbit"
-                      }
-                  ]
-    },
-    {
-        "name":  true,
-        "founder":  "ravyn-panopio",
-        "program":  "bootcamp-spring-26",
-        "startup":  "tenantshield",
-        "status":  "inactive",
-        "lastUpdate":  "2026-01-30",
-        "count":  1,
-        "files":  [
-                      {
-                          "date":  "2026-01-30",
-                          "path":  "bootcamp-spring-26\\tenantshield\\ravyn-panopio\\tenantshield-discovery-2026-01-30.html",
-                          "name":  "Ravyn Panopio — TenantShield | Bootcamp Tidbit",
-                          "summary":  "Agent-generated tidbit"
-                      }
-                  ]
-    },
-    {
-        "name":  true,
-        "founder":  "brian-sussman",
-        "program":  "bootcamp-spring-26",
-        "startup":  "schedule-optimizer",
-        "status":  "inactive",
-        "lastUpdate":  "2026-01-30",
-        "count":  1,
-        "files":  [
-                      {
-                          "date":  "2026-01-30",
-                          "path":  "bootcamp-spring-26\\schedule-optimizer\\brian-sussman\\bootcamp-summary-2026-01-30.html",
-                          "name":  "Brian Sussman - Bootcamp Tidbit",
-                          "summary":  "Agent-generated tidbit"
-                      }
-                  ]
-    },
-    {
-        "name":  true,
-        "founder":  "alex-zakoor",
-        "program":  "community-spring-26",
-        "startup":  "cursor",
-        "status":  "active",
-        "lastUpdate":  "2026-03-20",
-        "count":  1,
-        "files":  [
-                      {
-                          "date":  "2026-03-20",
-                          "path":  "community-spring-26\\cursor\\alex-zakoor\\cursor-update-2026-03-20.html",
-                          "name":  "Alex Zakoor - Cursor GTM - March 2026",
-                          "summary":  "Agent-generated tidbit"
-                      }
-                  ]
-    },
-    {
-        "name":  true,
-        "founder":  "alyssa-lim",
-        "program":  "bootcamp-spring-26",
-        "startup":  "visa-tax-help",
-        "status":  "inactive",
-        "lastUpdate":  "2026-01-30",
-        "count":  1,
-        "files":  [
-                      {
-                          "date":  "2026-01-30",
-                          "path":  "bootcamp-spring-26\\visa-tax-help\\alyssa-lim\\bootcamp-summary-2026-01-30.html",
-                          "name":  "Alyssa Lim | Visa Tax Help",
-                          "summary":  "Agent-generated tidbit"
-                      }
-                  ]
-    },
-    {
-        "name":  true,
-        "founder":  "ruby-chan",
-        "program":  "bootcamp-spring-26",
-        "startup":  "aztecconnect",
-        "status":  "inactive",
-        "lastUpdate":  "2026-01-30",
-        "count":  2,
-        "files":  [
-                      {
-                          "date":  "2026-01-30",
-                          "path":  "bootcamp-spring-26\\aztecconnect\\ruby-chan\\aztecconnect-discovery-2026-01-30.html",
-                          "name":  "Ruby Chan | AztecConnect",
-                          "summary":  "Agent-generated tidbit"
-                      },
-                      {
-                          "date":  "2026-01-30",
-                          "path":  "bootcamp-spring-26\\aztecconnect\\ruby-chan\\bootcamp-summary-2026-01-30.html",
-                          "name":  "Ruby Chan | Bootcamp Discovery",
-                          "summary":  "Agent-generated tidbit"
-                      }
-                  ]
-    },
-    {
-        "name":  true,
-        "founder":  "kristina-nguyen",
-        "program":  "bootcamp-spring-26",
-        "startup":  "overload-shield",
-        "status":  "inactive",
-        "lastUpdate":  "2026-01-30",
-        "count":  1,
-        "files":  [
-                      {
-                          "date":  "2026-01-30",
-                          "path":  "bootcamp-spring-26\\overload-shield\\kristina-nguyen\\overload-shield-discovery-2026-01-30.html",
-                          "name":  "Kristina Nguyen - Overload Shield",
-                          "summary":  "Agent-generated tidbit"
-                      }
-                  ]
-    },
-    {
-        "name":  true,
-        "founder":  "julrenza-flores",
-        "program":  "bootcamp-spring-26",
-        "startup":  "pathlog",
-        "status":  "inactive",
-        "lastUpdate":  "2026-01-30",
-        "count":  2,
-        "files":  [
-                      {
-                          "date":  "2026-01-30",
-                          "path":  "bootcamp-spring-26\\pathlog\\julrenza-flores\\bootcamp-summary-2026-01-30.html",
-                          "name":  "Julrenza | Startup Bootcamp | Jan 30, 2026",
-                          "summary":  "Agent-generated tidbit"
-                      },
-                      {
-                          "date":  "2026-01-30",
-                          "path":  "bootcamp-spring-26\\pathlog\\julrenza-flores\\pathlog-discovery-2026-01-30.html",
-                          "name":  "Julrenza | PathLog | Jan 30, 2026",
-                          "summary":  "Agent-generated tidbit"
-                      }
-                  ]
-    },
-    {
-        "name":  true,
-        "founder":  "cameron-brock",
-        "program":  "bootcamp-spring-26",
-        "startup":  "dadbod",
-        "status":  "inactive",
-        "lastUpdate":  "2026-01-30",
-        "count":  1,
-        "files":  [
-                      {
-                          "date":  "2026-01-30",
-                          "path":  "bootcamp-spring-26\\dadbod\\cameron-brock\\dadbod-discovery-2026-01-30.html",
-                          "name":  "Cameron - Dad Bod Protein Health Discovery",
-                          "summary":  "Agent-generated tidbit"
-                      }
-                  ]
-    },
-    {
-        "name":  true,
-        "founder":  "vineeta-khanna",
-        "program":  "inflight-spring-26",
-        "startup":  "harmony",
-        "status":  "active",
-        "lastUpdate":  "2025-12-11",
-        "count":  1,
-        "files":  [
-                      {
-                          "date":  "2025-12-11",
-                          "path":  "inflight-spring-26\\harmony\\vineeta-khanna\\harmony-update-2025-12-11.html",
-                          "name":  "Vineeta Khanna | Harmony Health AI",
-                          "summary":  "Agent-generated tidbit"
-                      }
-                  ]
-    },
-    {
-        "name":  true,
-        "founder":  "billy-carter",
-        "program":  "inflight-spring-26",
-        "startup":  "celebrity-concierge",
-        "status":  "active",
-        "lastUpdate":  "2026-01-28",
-        "count":  1,
-        "files":  [
-                      {
-                          "date":  "2026-01-28",
-                          "path":  "inflight-spring-26\\celebrity-concierge\\billy-carter\\celebrity-concierge-update-2026-01-28.html",
-                          "name":  "Billy Carter - Celebrity Concierge | Jan 28, 2026",
-                          "summary":  "Agent-generated tidbit"
-                      }
-                  ]
-    },
-    {
-        "name":  true,
-        "founder":  "sophia-colley",
-        "program":  "bootcamp-spring-26",
-        "startup":  "movemaven",
-        "status":  "inactive",
-        "lastUpdate":  "2026-01-30",
-        "count":  1,
-        "files":  [
-                      {
-                          "date":  "2026-01-30",
-                          "path":  "bootcamp-spring-26\\movemaven\\sophia-colley\\movemaven-discovery-2026-01-30.html",
-                          "name":  "Sophia Colley - Move Maven | Bootcamp Tidbit",
-                          "summary":  "Agent-generated tidbit"
-                      }
-                  ]
-    },
-    {
-        "name":  true,
-        "founder":  "ayden-yevilov",
-        "program":  "bootcamp-spring-26",
-        "startup":  "project-h1b",
-        "status":  "inactive",
-        "lastUpdate":  "2026-01-30",
-        "count":  1,
-        "files":  [
-                      {
-                          "date":  "2026-01-30",
-                          "path":  "bootcamp-spring-26\\project-h1b\\ayden-yevilov\\bootcamp-summary-2026-01-30.html",
-                          "name":  "Ayden Yevilov | Project H1B",
-                          "summary":  "Agent-generated tidbit"
-                      }
-                  ]
-    },
-    {
-        "name":  true,
-        "founder":  "ryan-to",
-        "program":  "bootcamp-spring-26",
-        "startup":  "personalai",
-        "status":  "inactive",
-        "lastUpdate":  "2026-01-30",
-        "count":  2,
-        "files":  [
-                      {
-                          "date":  "2026-01-30",
-                          "path":  "bootcamp-spring-26\\personalai\\ryan-to\\bootcamp-summary-2026-01-30.html",
-                          "name":  "Ryan To | Bootcamp Discovery",
-                          "summary":  "Agent-generated tidbit"
-                      },
-                      {
-                          "date":  "2026-01-30",
-                          "path":  "bootcamp-spring-26\\personalai\\ryan-to\\personalai-discovery-2026-01-30.html",
-                          "name":  "Ryan To | Personal AI",
-                          "summary":  "Agent-generated tidbit"
-                      }
-                  ]
-    },
-    {
-        "name":  true,
-        "founder":  "victor-nyden",
-        "program":  "bootcamp-spring-26",
-        "startup":  "gym-app",
-        "status":  "inactive",
-        "lastUpdate":  "2026-01-30",
-        "count":  1,
-        "files":  [
-                      {
-                          "date":  "2026-01-30",
-                          "path":  "bootcamp-spring-26\\gym-app\\victor-nyden\\gym-app-discovery-2026-01-30.html",
-                          "name":  "Victor Nyden - Bootcamp Journey",
-                          "summary":  "Agent-generated tidbit"
-                      }
-                  ]
-    },
-    {
-        "name":  true,
-        "founder":  "kiara-kuehl-mueller",
-        "program":  "bootcamp-spring-26",
-        "startup":  "campus-miles",
-        "status":  "inactive",
-        "lastUpdate":  "2026-01-30",
-        "count":  3,
-        "files":  [
-                      {
-                          "date":  "2026-01-30",
-                          "path":  "bootcamp-spring-26\\campus-miles\\kiara-kuehl-mueller\\campus-miles-discovery-2026-01-30.html",
-                          "name":  "Kiara Kuehl Mueller | Campus Miles",
-                          "summary":  "Agent-generated tidbit"
-                      },
-                      {
-                          "date":  "2026-01-30",
-                          "path":  "bootcamp-spring-26\\campus-miles\\kiara-kuehl-mueller\\discovery-2026-01-30.html",
-                          "name":  "Kiara Kuehl Mueller | Bootcamp Discovery",
-                          "summary":  "Agent-generated tidbit"
-                      },
-                      {
-                          "date":  "2026-01-30",
-                          "path":  "bootcamp-spring-26\\campus-miles\\kiara-kuehl-mueller\\sd-miles-discovery-2026-01-30.html",
-                          "name":  "Kiara Kuehl Mueller | SD Miles",
-                          "summary":  "Agent-generated tidbit"
-                      }
-                  ]
-    },
-    {
-        "name":  true,
-        "founder":  "zach-brenner",
-        "program":  "inflight-spring-26",
-        "startup":  "sonomos",
-        "status":  "active",
-        "lastUpdate":  "2026-02-26",
-        "count":  6,
-        "files":  [
-                      {
-                          "date":  "2026-02-15",
-                          "path":  "inflight-spring-26\\sonomos\\zach-brenner\\sonomos-update-2026-02-15.html",
-                          "name":  "Zach Brenner — Sonomos — Feb 15, 2026",
-                          "summary":  "Agent-generated tidbit"
-                      },
-                      {
-                          "date":  "2026-02-19",
-                          "path":  "inflight-spring-26\\sonomos\\zach-brenner\\sonomos-update-2026-02-19.html",
-                          "name":  "Zach Brenner — Sonomos — Feb 19, 2026",
-                          "summary":  "Agent-generated tidbit"
-                      },
-                      {
-                          "date":  "2026-02-22",
-                          "path":  "inflight-spring-26\\sonomos\\zach-brenner\\sonomos-update-2026-02-22.html",
-                          "name":  "Zach Brenner — Sonomos — Feb 22, 2026",
-                          "summary":  "Agent-generated tidbit"
-                      },
-                      {
-                          "date":  "2026-02-25",
-                          "path":  "inflight-spring-26\\sonomos\\zach-brenner\\sonomos-update-2026-02-25.html",
-                          "name":  "Zach Brenner — Sonomos — Feb 25, 2026",
-                          "summary":  "Agent-generated tidbit"
-                      },
-                      {
-                          "date":  "2026-02-26",
-                          "path":  "inflight-spring-26\\sonomos\\zach-brenner\\sonomos-update-2026-02-26.html",
-                          "name":  "Zach Brenner — Sonomos — Feb 26, 2026",
-                          "summary":  "Agent-generated tidbit"
-                      },
-                      {
-                          "date":  "2026-02-19",
-                          "path":  "inflight-spring-26\\sonomos\\zach-brenner\\sonomos-update-v2-2026-02-19.html",
-                          "name":  "Zach Brenner — Sonomos — Feb 19, 2026",
-                          "summary":  "Agent-generated tidbit"
-                      }
-                  ]
-    },
-    {
-        "name":  true,
-        "founder":  "robert-sanchez",
-        "program":  "inflight-spring-26",
-        "startup":  "turnerai",
-        "status":  "active",
-        "lastUpdate":  "2026-01-29",
-        "count":  1,
-        "files":  [
-                      {
-                          "date":  "2026-01-29",
-                          "path":  "inflight-spring-26\\turnerai\\robert-sanchez\\turnerai-update-2026-01-29.html",
-                          "name":  "Robert Sanchez — Turner.AI",
-                          "summary":  "Agent-generated tidbit"
-                      }
-                  ]
-    },
-    {
-        "name":  true,
-        "founder":  "macey-wenzel",
-        "program":  "bootcamp-spring-26",
-        "startup":  "granny-smith",
-        "status":  "inactive",
-        "lastUpdate":  "2026-01-30",
-        "count":  1,
-        "files":  [
-                      {
-                          "date":  "2026-01-30",
-                          "path":  "bootcamp-spring-26\\granny-smith\\macey-wenzel\\granny-smith-discovery-2026-01-30.html",
-                          "name":  "Macey Wenzel | Granny Smith Market | Jan 30, 2026",
-                          "summary":  "Agent-generated tidbit"
-                      }
-                  ]
-    },
-    {
-        "name":  true,
-        "founder":  "marko-jovanovic",
-        "program":  "bootcamp-spring-26",
-        "startup":  "neighbor-network",
-        "status":  "inactive",
-        "lastUpdate":  "2026-01-30",
-        "count":  1,
-        "files":  [
-                      {
-                          "date":  "2026-01-30",
-                          "path":  "bootcamp-spring-26\\neighbor-network\\marko-jovanovic\\neighbor-network-discovery-2026-01-30.html",
-                          "name":  "Marko - Bootcamp Day 1",
-                          "summary":  "Agent-generated tidbit"
-                      }
-                  ]
-    },
-    {
-        "name":  true,
-        "founder":  "jared-eastman",
-        "program":  "bootcamp-spring-26",
-        "startup":  "shadowmatch",
-        "status":  "inactive",
-        "lastUpdate":  "2026-01-30",
-        "count":  2,
-        "files":  [
-                      {
-                          "date":  "2026-01-30",
-                          "path":  "bootcamp-spring-26\\shadowmatch\\jared-eastman\\shadowmatch-discovery-2026-01-30.html",
-                          "name":  "Jared Eastman | Shadow Match | Bootcamp",
-                          "summary":  "Agent-generated tidbit"
-                      },
-                      {
-                          "date":  "2026-01-30",
-                          "path":  "bootcamp-spring-26\\shadowmatch\\jared-eastman\\shadowmatch-solution-card.html",
-                          "name":  "Shadow Match | Solution Card",
-                          "summary":  "Agent-generated tidbit"
-                      }
-                  ]
-    },
-    {
-        "name":  true,
-        "founder":  "volodymyr-kalinin",
-        "program":  "bootcamp-spring-26",
-        "startup":  "sdsu-events-hub",
-        "status":  "inactive",
-        "lastUpdate":  "2026-01-30",
-        "count":  1,
-        "files":  [
-                      {
-                          "date":  "2026-01-30",
-                          "path":  "bootcamp-spring-26\\sdsu-events-hub\\volodymyr-kalinin\\sdsu-events-hub.html",
-                          "name":  "SDSU Events Hub",
-                          "summary":  "Agent-generated tidbit"
-                      }
-                  ]
-    },
-    {
-        "name":  true,
-        "founder":  "matt-levie",
-        "program":  "bootcamp-spring-26",
-        "startup":  "tenantpath",
-        "status":  "inactive",
-        "lastUpdate":  "2026-01-30",
-        "count":  1,
-        "files":  [
-                      {
-                          "date":  "2026-01-30",
-                          "path":  "bootcamp-spring-26\\tenantpath\\matt-levie\\tenantpath-discovery-2026-01-30.html",
-                          "name":  "Matt Levie | TenantPath | Bootcamp",
-                          "summary":  "Agent-generated tidbit"
-                      }
-                  ]
-    }
-]
-
-    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         :root {
-            --navy-dark: #14234a; --navy-medium: #233d7e; --launchmate-blue: #263051;
-            --launchmate-blue-accent: #546ab1; --blue-primary: #5473c6; --blue-light: #c5cbeb;
-            --launchmate-white: #edf0fc; --success: #82d491; --warning: #f59e0b; --danger: #db4937;
+            --bg-primary: #0a0f1a;
+            --bg-secondary: #111827;
+            --bg-card: rgba(17, 24, 39, 0.8);
+            --bg-glass: rgba(255, 255, 255, 0.03);
+            --accent-primary: #3b82f6;
+            --accent-secondary: #8b5cf6;
+            --accent-gradient: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            --accent-gradient-hover: linear-gradient(135deg, #60a5fa, #a78bfa);
+            --text-primary: #f9fafb;
+            --text-secondary: #9ca3af;
+            --text-muted: #6b7280;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --border: rgba(255, 255, 255, 0.08);
+            --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            --glow: 0 0 40px rgba(59, 130, 246, 0.15);
         }
-        body { font-family: 'Inter', sans-serif; background: var(--navy-dark); color: var(--launchmate-white); min-height: 100vh; }
-        .header { background: var(--launchmate-blue); border-bottom: 1px solid rgba(255,255,255,0.1); padding: 1rem 2rem; position: sticky; top: 0; z-index: 100; }
-        .header-content { max-width: 1600px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-        .logo { font-size: 1.25rem; font-weight: 700; color: var(--launchmate-white); display: flex; align-items: center; gap: 0.75rem; cursor: pointer; text-decoration: none; }
-        .logo-icon { width: 36px; height: 36px; background: linear-gradient(135deg, var(--blue-primary), var(--launchmate-blue-accent)); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
-        .header-actions { display: flex; gap: 0.75rem; align-items: center; }
-        .launchmate-btn { 
-            background: var(--blue-primary); color: white; padding: 0.5rem 1rem; border-radius: 0.5rem; 
-            text-decoration: none; font-size: 0.875rem; font-weight: 500; display: flex; align-items: center; gap: 0.5rem;
-            transition: background 0.2s;
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
         }
-        .launchmate-btn:hover { background: var(--launchmate-blue-accent); }
-        .filters { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; }
-        .filter-group { display: flex; align-items: center; gap: 0.5rem; }
-        .filter-label { font-size: 0.75rem; color: var(--blue-light); }
-        select, input { padding: 0.4rem 0.75rem; border: 1px solid var(--launchmate-blue-accent); border-radius: 0.5rem; font-size: 0.8rem; background: var(--navy-medium); color: var(--launchmate-white); min-width: 120px; }
-        select:focus, input:focus { outline: none; border-color: var(--blue-primary); }
-        .main { max-width: 1600px; margin: 0 auto; padding: 1.5rem; }
-        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
-        .stat-card { background: var(--launchmate-blue); border-radius: 0.75rem; padding: 1.25rem; border: 1px solid rgba(255,255,255,0.1); }
-        .stat-label { font-size: 0.75rem; color: var(--blue-light); margin-bottom: 0.25rem; }
-        .stat-value { font-size: 1.75rem; font-weight: 700; color: var(--launchmate-white); }
-        .stat-change { font-size: 0.75rem; margin-top: 0.25rem; color: var(--blue-light); }
-        .tabs { display: flex; gap: 0.5rem; margin-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.75rem; }
-        .tab { padding: 0.5rem 1rem; border: none; background: transparent; font-size: 0.8rem; font-weight: 500; color: var(--blue-light); cursor: pointer; border-radius: 0.5rem; }
-        .tab:hover { background: var(--navy-medium); }
-        .tab.active { background: var(--blue-primary); color: white; }
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 1rem; }
-        .startup-card { background: var(--launchmate-blue); border-radius: 0.75rem; padding: 1.25rem; border: 1px solid rgba(255,255,255,0.1); transition: all 0.2s; cursor: pointer; }
-        .startup-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.25); border-color: var(--blue-primary); }
-        .startup-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.75rem; }
-        .startup-name { font-size: 1.1rem; font-weight: 600; color: var(--launchmate-white); }
-        .startup-founder { font-size: 0.8rem; color: var(--blue-light); margin-top: 0.15rem; }
-        .status-badge { padding: 0.2rem 0.6rem; border-radius: 9999px; font-size: 0.65rem; font-weight: 500; text-transform: uppercase; }
-        .status-active { background: rgba(130, 212, 145, 0.2); color: var(--success); }
-        .status-inactive { background: rgba(245, 158, 11, 0.2); color: var(--warning); }
-        .tidbit-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(60px, 1fr)); gap: 0.4rem; }
-        .tidbit-square { 
-            aspect-ratio: 1; background: var(--navy-medium); border-radius: 0.4rem; 
-            display: flex; flex-direction: column; align-items: center; justify-content: center; 
-            text-decoration: none; color: var(--launchmate-white); transition: all 0.15s; 
-            position: relative; overflow: hidden; padding: 0.25rem;
+        
+        /* Animated background */
+        .bg-gradient {
+            position: fixed;
+            inset: 0;
+            background: 
+                radial-gradient(ellipse at 20% 20%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(16, 185, 129, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
         }
-        .tidbit-square:hover { background: var(--launchmate-blue-accent); transform: scale(1.08); z-index: 10; }
-        .tidbit-preview { 
-            position: absolute; inset: 0; background: white; 
-            transform: scale(0.1); transform-origin: top left; 
-            pointer-events: none; opacity: 0; transition: opacity 0.2s;
+        
+        .bg-grid {
+            position: fixed;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+            z-index: 0;
         }
-        .tidbit-square:hover .tidbit-preview { opacity: 0.15; }
-        .tidbit-square-icon { font-size: 1rem; }
-        .tidbit-square-date { font-size: 0.55rem; color: var(--blue-light); }
-        .tidbit-more { background: var(--navy-dark); border: 1px dashed var(--launchmate-blue-accent); color: var(--blue-light); font-size: 0.65rem; }
-        .modal-overlay { position: fixed; inset: 0; background: rgba(10, 20, 40, 0.97); z-index: 1000; display: none; overflow-y: auto; }
-        .modal-overlay.show { display: block; }
-        .modal-content { max-width: 1300px; margin: 1.5rem auto; padding: 1.5rem; }
-        .modal-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.5rem; }
-        .modal-title { font-size: 1.75rem; font-weight: 700; }
-        .modal-subtitle { font-size: 1rem; color: var(--blue-light); margin-top: 0.25rem; }
-        .modal-close { background: var(--navy-medium); border: none; color: var(--launchmate-white); font-size: 1.5rem; cursor: pointer; width: 36px; height: 36px; border-radius: 50%; line-height: 1; }
-        .modal-close:hover { background: var(--danger); }
-        .detail-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax 260px, 1fr)); gap: 1rem; }
-        .detail-card { background: var(--launchmate-blue); border-radius: 0.75rem; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); }
-        .detail-card:hover { border-color: var(--blue-primary); }
-        .detail-preview { height: 80px; background: linear-gradient(135deg, var(--navy-medium), var(--launchmate-blue-accent)); display: flex; align-items: center; justify-content: center; font-size: 2rem; position: relative; overflow: hidden; }
-        .detail-preview iframe { position: absolute; inset: -50%; width: 200%; height: 200%; border: none; transform: scale(0.5); transform-origin: center; pointer-events: none; opacity: 0.3; }
-        .detail-content { padding: 0.75rem; }
-        .detail-title { font-weight: 600; font-size: 0.9rem; margin-bottom: 0.25rem; }
-        .detail-date { font-size: 0.75rem; color: var(--blue-light); margin-bottom: 0.5rem; }
-        .detail-summary { font-size: 0.75rem; color: var(--blue-light); margin-bottom: 0.75rem; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-        .detail-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-        .detail-btn { padding: 0.4rem 0.6rem; border: none; border-radius: 0.4rem; font-size: 0.7rem; font-weight: 500; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 0.25rem; }
-        .detail-btn-primary { background: var(--blue-primary); color: white; }
-        .detail-btn-primary:hover { background: var(--launchmate-blue-accent); }
-        .detail-btn-secondary { background: var(--navy-medium); color: var(--launchmate-white); }
-        .detail-btn-secondary:hover { background: var(--navy-dark); }
-        .timeline { position: relative; padding-left: 1.5rem; }
-        .timeline::before { content: ''; position: absolute; left: 0.4rem; top: 0; bottom: 0; width: 2px; background: var(--launchmate-blue-accent); }
-        .timeline-item { position: relative; padding-bottom: 1rem; padding-left: 1rem; }
-        .timeline-item::before { content: ''; position: absolute; left: -1rem; top: 0.2rem; width: 0.75rem; height: 0.75rem; border-radius: 50%; background: var(--blue-primary); border: 2px solid var(--launchmate-blue); }
-        .timeline-date { font-size: 0.7rem; color: var(--blue-light); margin-bottom: 0.25rem; font-weight: 500; }
-        .timeline-card { background: var(--launchmate-blue); border-radius: 0.5rem; padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1); }
-        .timeline-title { font-weight: 600; font-size: 0.85rem; }
-        .timeline-desc { font-size: 0.75rem; color: var(--blue-light); }
-        .toast { position: fixed; bottom: 1.5rem; right: 1.5rem; background: var(--success); color: var(--navy-dark); padding: 0.75rem 1.25rem; border-radius: 0.5rem; font-weight: 500; font-size: 0.875rem; transform: translateY(100px); opacity: 0; transition: all 0.3s; z-index: 2000; }
-        .toast.show { transform: translateY(0); opacity: 1; }
-        .hidden { display: none; }
-        .agent-info { font-size: 0.7rem; color: var(--blue-light); background: var(--navy-medium); padding: 0.5rem 0.75rem; border-radius: 0.5rem; margin-top: 0.5rem; }
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: var(--navy-dark); }
-        ::-webkit-scrollbar-thumb { background: var(--launchmate-blue-accent); border-radius: 3px; }
+        
+        /* Header */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(10, 15, 26, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 2rem;
+        }
+        
+        .header-content {
+            max-width: 1800px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+        
+        .logo-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--accent-gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: var(--glow);
+            animation: pulse 3s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); box-shadow: var(--glow); }
+            50% { transform: scale(1.02); box-shadow: 0 0 60px rgba(59, 130, 246, 0.3); }
+        }
+        
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn-primary {
+            background: var(--accent-gradient);
+            color: white;
+            padding: 0.6rem 1.25rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+        }
+        
+        .filters {
+            display: flex;
+            gap: 0.75rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .filter-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        select, input[type="text"] {
+            padding: 0.5rem 1rem;
+            background: var(--bg-glass);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 0.875rem;
+            min-width: 140px;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+        
+        select:hover, input[type="text"]:hover {
+            border-color: rgba(255,255,255,0.15);
+        }
+        
+        select:focus, input[type="text"]:focus {
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        
+        /* Main content */
+        .main {
+            position: relative;
+            z-index: 1;
+            max-width: 1800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        /* Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--accent-gradient);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(59, 130, 246, 0.3);
+            box-shadow: var(--shadow);
+        }
+        
+        .stat-card:hover::before {
+            opacity: 1;
+        }
+        
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+        }
+        
+        .stat-change {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+        }
+        
+        /* Tabs */
+        .tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 1rem;
+        }
+        
+        .tab {
+            padding: 0.75rem 1.5rem;
+            background: transparent;
+            border: 1px solid transparent;
+            border-radius: 10px;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .tab:hover {
+            background: var(--bg-glass);
+            color: var(--text-primary);
+        }
+        
+        .tab.active {
+            background: var(--accent-gradient);
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        }
+        
+        /* Cards grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        /* Founder card */
+        .founder-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .founder-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--accent-gradient);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .founder-card:hover {
+            transform: translateY(-6px) scale(1.01);
+            border-color: rgba(59, 130, 246, 0.4);
+            box-shadow: var(--shadow), var(--glow);
+        }
+        
+        .founder-card:hover::before {
+            opacity: 0.03;
+        }
+        
+        .founder-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+        
+        .founder-info {
+            flex: 1;
+        }
+        
+        .founder-avatar {
+            width: 48px;
+            height: 48px;
+            background: var(--accent-gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            box-shadow: var(--glow);
+        }
+        
+        .founder-name {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+        
+        .founder-startup {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.25rem;
+        }
+        
+        .founder-program {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+        
+        .status-badge {
+            padding: 0.35rem 0.85rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .status-active {
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--success);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+        
+        .status-inactive {
+            background: rgba(245, 158, 11, 0.15);
+            color: var(--warning);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+        }
+        
+        /* Tidbit grid */
+        .tidbit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(52px, 1fr));
+            gap: 0.5rem;
+        }
+        
+        .tidbit-square {
+            aspect-ratio: 1;
+            background: var(--bg-glass);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tidbit-square:hover {
+            background: var(--accent-gradient);
+            border-color: transparent;
+            transform: scale(1.1) rotate(2deg);
+            z-index: 10;
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+        }
+        
+        .tidbit-icon {
+            font-size: 1rem;
+            transition: transform 0.2s ease;
+        }
+        
+        .tidbit-square:hover .tidbit-icon {
+            transform: scale(1.2);
+        }
+        
+        .tidbit-date {
+            font-size: 0.6rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+        
+        .tidbit-more {
+            background: transparent;
+            border: 1px dashed var(--border);
+            color: var(--text-muted);
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+        
+        .tidbit-more:hover {
+            background: var(--accent-gradient);
+            border-style: solid;
+            color: white;
+        }
+        
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            display: none;
+            overflow-y: auto;
+            padding: 2rem;
+        }
+        
+        .modal-overlay.show {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            max-width: 1200px;
+            width: 100%;
+            padding: 2rem;
+            animation: modalIn 0.3s ease;
+        }
+        
+        @keyframes modalIn {
+            from { opacity: 0; transform: scale(0.95) translateY(20px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .modal-title {
+            font-size: 1.75rem;
+            font-weight: 800;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .modal-subtitle {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+        }
+        
+        .modal-close {
+            width: 44px;
+            height: 44px;
+            background: var(--bg-glass);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-close:hover {
+            background: var(--danger);
+            border-color: var(--danger);
+            color: white;
+        }
+        
+        /* Detail cards */
+        .detail-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .detail-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .detail-card:hover {
+            border-color: rgba(59, 130, 246, 0.4);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow);
+        }
+        
+        .detail-preview {
+            height: 100px;
+            background: var(--accent-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            position: relative;
+        }
+        
+        .detail-content {
+            padding: 1rem;
+        }
+        
+        .detail-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+            line-height: 1.4;
+        }
+        
+        .detail-date {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+        
+        .detail-summary {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .detail-actions {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn-sm {
+            padding: 0.4rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-accent {
+            background: var(--accent-gradient);
+            color: white;
+        }
+        
+        .btn-accent:hover {
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+        }
+        
+        .btn-ghost {
+            background: var(--bg-glass);
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+        }
+        
+        .btn-ghost:hover {
+            background: var(--bg-card);
+            color: var(--text-primary);
+        }
+        
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0.5rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--accent-gradient);
+            opacity: 0.3;
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 0.25rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent-gradient);
+            border: 2px solid var(--bg-secondary);
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+        }
+        
+        .timeline-date {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .timeline-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1rem;
+        }
+        
+        .timeline-title {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+        
+        .timeline-desc {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+        
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--success);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            font-weight: 600;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 2000;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+        }
+        
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        /* Hidden */
+        .hidden { display: none !important; }
+        
+        /* Agent info */
+        .agent-info {
+            background: var(--bg-glass);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1rem;
+            margin-top: 2rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+        
+        .agent-info code {
+            background: var(--bg-card);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            color: var(--accent-primary);
+        }
+        
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-primary); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-primary); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent-secondary); }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header { padding: 1rem; }
+            .main { padding: 1rem; }
+            .cards-grid { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+        }
     </style>
 </head>
 <body>
+    <div class="bg-gradient"></div>
+    <div class="bg-grid"></div>
+    
     <header class="header">
         <div class="header-content">
             <a href="https://golaunchmate.github.io" target="_blank" class="logo">
                 <div class="logo-icon">🚀</div>
-                LaunchMate Tidbits
+                <span class="logo-text">LaunchMate Tidbits</span>
             </a>
+            
             <div class="header-actions">
-                <a href="https://launchmate.ai" target="_blank" class="launchmate-btn">
+                <a href="https://launchmate.ai" target="_blank" class="btn-primary">
                     🌐 LaunchMate Website
                 </a>
+                
                 <div class="filters">
                     <div class="filter-group">
-                        <span class="filter-label">Startup:</span>
-                        <select id="startup-select" onchange="selectStartup()">
-                            <option value="all">All Startups</option>
+                        <span class="filter-label">Founder</span>
+                        <select id="founder-select" onchange="selectFounder()">
+                            <option value="all">All Founders</option>
                         </select>
                     </div>
+                    
                     <div class="filter-group">
-                        <span class="filter-label">Program:</span>
+                        <span class="filter-label">Program</span>
                         <select id="program-filter" onchange="applyFilters()">
                             <option value="inflight-spring-26">Inflight</option>
                             <option value="all">All</option>
@@ -1302,27 +782,29 @@
                             <option value="community-spring-26">Community</option>
                         </select>
                     </div>
-                    <input type="text" id="search" placeholder="Search..." oninput="applyFilters()" style="min-width: 100px;">
+                    
+                    <input type="text" id="search" placeholder="Search..." oninput="applyFilters()">
                 </div>
             </div>
         </div>
     </header>
+    
     <main class="main">
         <section class="stats-grid">
             <div class="stat-card">
-                <div class="stat-label">Active Startups</div>
+                <div class="stat-label">Active Founders</div>
                 <div class="stat-value" id="stat-active">--</div>
-                <div class="stat-change">In program</div>
+                <div class="stat-change">Currently in program</div>
             </div>
             <div class="stat-card">
-                <div class="stat-label">Founders</div>
-                <div class="stat-value" id="stat-founders">--</div>
-                <div class="stat-change">Total</div>
+                <div class="stat-label">Total Founders</div>
+                <div class="stat-value" id="stat-total">--</div>
+                <div class="stat-change">All programs</div>
             </div>
             <div class="stat-card">
                 <div class="stat-label">Tidbit Files</div>
                 <div class="stat-value" id="stat-files">--</div>
-                <div class="stat-change">Generated</div>
+                <div class="stat-change">Agent-generated</div>
             </div>
             <div class="stat-card">
                 <div class="stat-label">Latest Update</div>
@@ -1330,235 +812,321 @@
                 <div class="stat-change" id="stat-latest-from">--</div>
             </div>
         </section>
-
+        
         <div class="tabs">
-            <button class="tab active" data-tab="startups" onclick="switchTab('startups')">Startups</button>
+            <button class="tab active" data-tab="founders" onclick="switchTab('founders')">Founders</button>
             <button class="tab" data-tab="timeline" onclick="switchTab('timeline')">Timeline</button>
-            <button class="tab" data-tab="by-program" onclick="switchTab('by-program')">By Program</button>
+            <button class="tab" data-tab="programs" onclick="switchTab('programs')">By Program</button>
         </div>
-
-        <section id="startups-view" class="cards-grid"></section>
+        
+        <section id="founders-view" class="cards-grid"></section>
         <section id="timeline-view" class="timeline hidden"></section>
-        <section id="program-view" class="hidden"></section>
+        <section id="programs-view" class="hidden"></section>
         
         <div class="agent-info">
-            🤖 Agent-friendly: Access data at <code>/dashboard/data.json</code> or parse the JSON-LD script tag with id "tidbits-data"
+            🤖 <strong>Agent-friendly:</strong> Access data at <code>/dashboard/data.json</code> or parse JSON-LD with id "tidbits-data"
         </div>
     </main>
-
-    <div class="modal-overlay" id="startup-modal" onclick="closeModal(event)">
+    
+    <div class="modal-overlay" id="founder-modal" onclick="closeModal(event)">
         <div class="modal-content" onclick="event.stopPropagation()">
             <div class="modal-header">
                 <div>
-                    <div class="modal-title" id="modal-title">Startup Name</div>
-                    <div class="modal-subtitle" id="modal-subtitle">Founder</div>
+                    <div class="modal-title" id="modal-title">Founder Name</div>
+                    <div class="modal-subtitle" id="modal-subtitle">Startup | Program</div>
                 </div>
-                <button class="modal-close" onclick="closeStartupModal()">×</button>
+                <button class="modal-close" onclick="closeFounderModal()">×</button>
             </div>
             <div class="detail-grid" id="modal-tidbits"></div>
         </div>
     </div>
-
+    
     <div class="toast" id="toast">Link copied!</div>
+    
+    <script type="application/ld+json" id="tidbits-data">
+    </script>
+    
     <script>
         const baseUrl = "https://golaunchmate.github.io/tidbits/";
+        let founders = [];
         
-        // Load data from JSON-LD (agent-friendly)
-        let tidbitsData = []; try { tidbitsData = JSON.parse(document.getElementById("tidbits-data").textContent); } catch(e) { console.log("Using fallback data"); tidbitsData = []; }
-        const tidbits = (tidbitsData && tidbitsData.length > 0) ? tidbitsData.map(t => ({
-            name: t.name || t.startup,
-            founder: t.founder,
-            program: t.program,
-            startup: t.startup,
-            status: t.status,
-            lastUpdate: t.lastUpdate,
-            count: t.count,
-            files: t.files || []
-        }));
-
+        // Load data from JSON-LD
+        async function loadData() {
+            try {
+                const response = await fetch('data.json');
+                const data = await response.json();
+                founders = data.map(f => ({
+                    name: f.name || f.startup,
+                    founder: f.founder,
+                    program: f.program,
+                    startup: f.startup,
+                    status: f.status,
+                    lastUpdate: f.lastUpdate,
+                    count: f.count,
+                    files: f.files || []
+                }));
+                init();
+            } catch (e) {
+                console.error('Failed to load data:', e);
+            }
+        }
+        
+        function init() {
+            updateStats();
+            populateFounderSelect();
+            renderFounders({ program: 'inflight-spring-26' });
+            renderTimeline();
+            renderPrograms();
+        }
+        
         function updateStats() {
-            const activeTidbits = tidbits.filter(t => t.status === 'active');
-            const totalFiles = tidbits.reduce((sum, t) => sum + t.count, 0);
-            const uniqueFounders = new Set(tidbits.map(t => t.founder)).size;
-            const latest = tidbits.reduce((a, b) => a.lastUpdate > b.lastUpdate ? a : b);
-            document.getElementById('stat-active').textContent = activeTidbits.length;
-            document.getElementById('stat-founders').textContent = uniqueFounders;
+            const active = founders.filter(f => f.status === 'active');
+            const totalFiles = founders.reduce((sum, f) => sum + f.count, 0);
+            const latest = founders.reduce((a, b) => a.lastUpdate > b.lastUpdate ? a : b);
+            
+            document.getElementById('stat-active').textContent = active.length;
+            document.getElementById('stat-total').textContent = founders.length;
             document.getElementById('stat-files').textContent = totalFiles;
             document.getElementById('stat-latest').textContent = latest.lastUpdate;
-            document.getElementById('stat-latest-from').textContent = latest.name;
+            document.getElementById('stat-latest-from').textContent = latest.founder + ' - ' + latest.name;
         }
-
-        function populateStartupSelect() {
-            const select = document.getElementById('startup-select');
-            const sorted = [...tidbits].sort((a, b) => a.name.localeCompare(b.name));
-            sorted.forEach(t => {
+        
+        function populateFounderSelect() {
+            const select = document.getElementById('founder-select');
+            const sorted = [...founders].sort((a, b) => a.founder.localeCompare(b.founder));
+            sorted.forEach(f => {
                 const opt = document.createElement('option');
-                opt.value = t.startup;
-                opt.textContent = t.name + ' (' + t.count + ')';
+                opt.value = f.startup + '|' + f.founder;
+                opt.textContent = f.founder + ' (' + f.name + ')';
                 select.appendChild(opt);
             });
         }
-
-        function selectStartup() {
-            const startupId = document.getElementById('startup-select').value;
-            if (startupId === 'all') {
+        
+        function selectFounder() {
+            const value = document.getElementById('founder-select').value;
+            if (value === 'all') {
                 document.getElementById('program-filter').value = 'inflight-spring-26';
                 applyFilters();
             } else {
-                const startup = tidbits.find(t => t.startup === startupId);
-                if (startup) openStartupModal(startup);
+                const [startup, founder] = value.split('|');
+                const f = founders.find(f => f.startup === startup && f.founder === founder);
+                if (f) openFounderModal(f);
             }
         }
-
-        function renderStartups(filter) {
-            filter = filter || {};
-            const container = document.getElementById('startups-view');
+        
+        function renderFounders(filter = {}) {
+            const container = document.getElementById('founders-view');
             container.innerHTML = '';
-            let filtered = tidbits;
+            
+            let filtered = founders;
             if (filter.program && filter.program !== 'all') {
-                filtered = filtered.filter(t => t.program === filter.program);
+                filtered = filtered.filter(f => f.program === filter.program);
             }
             if (filter.search) {
                 const search = filter.search.toLowerCase();
-                filtered = filtered.filter(t => t.name.toLowerCase().includes(search) || t.founder.toLowerCase().includes(search));
+                filtered = filtered.filter(f => 
+                    f.name.toLowerCase().includes(search) || 
+                    f.founder.toLowerCase().includes(search)
+                );
             }
-            filtered.forEach(t => {
+            
+            filtered.forEach(f => {
                 const card = document.createElement('div');
-                card.className = 'startup-card';
-                card.onclick = function() { openStartupModal(t); };
+                card.className = 'founder-card';
+                card.onclick = () => openFounderModal(f);
+                
                 let squares = '';
-                const displayFiles = t.files.slice(0, 10);
-                displayFiles.forEach(f => {
-                    squares += '<a href="' + baseUrl + f.path + '" target="_blank" class="tidbit-square" onclick="event.stopPropagation()">';
-                    squares += '<div class="tidbit-preview"><iframe src="' + baseUrl + f.path + '"></iframe></div>';
-                    squares += '<div class="tidbit-square-icon">📄</div>';
-                    squares += '<div class="tidbit-square-date">' + (f.date || '').slice(5) + '</div>';
+                const displayFiles = f.files.slice(0, 12);
+                displayFiles.forEach(file => {
+                    squares += '<a href="' + baseUrl + file.path + '" target="_blank" class="tidbit-square" onclick="event.stopPropagation()">';
+                    squares += '<span class="tidbit-icon">📄</span>';
+                    squares += '<span class="tidbit-date">' + (file.date || '').slice(5) + '</span>';
                     squares += '</a>';
                 });
-                if (t.files.length > 10) {
-                    squares += '<div class="tidbit-square tidbit-more">+' + (t.files.length - 10) + '</div>';
+                if (f.files.length > 12) {
+                    squares += '<div class="tidbit-square tidbit-more">+' + (f.files.length - 12) + '</div>';
                 }
-                card.innerHTML = '<div class="startup-header"><div><div class="startup-name">' + t.name + '</div><div class="startup-founder">' + t.founder + '</div></div><span class="status-badge status-' + t.status + '">' + t.status + '</span></div><div class="tidbit-grid">' + squares + '</div>';
+                
+                card.innerHTML = 
+                    '<div class="founder-header">' +
+                        '<div class="founder-info">' +
+                            '<div class="founder-avatar">👤</div>' +
+                            '<div class="founder-name">' + f.founder + '</div>' +
+                            '<div class="founder-startup">' + f.name + '</div>' +
+                            '<div class="founder-program">' + f.program.replace('-spring-26', '') + ' · ' + f.count + ' tidbits</div>' +
+                        '</div>' +
+                        '<span class="status-badge status-' + f.status + '">' + f.status + '</span>' +
+                    '</div>' +
+                    '<div class="tidbit-grid">' + squares + '</div>';
+                
                 container.appendChild(card);
             });
         }
-
+        
         function renderTimeline() {
             const container = document.getElementById('timeline-view');
             container.innerHTML = '';
+            
             const allFiles = [];
-            tidbits.forEach(t => {
-                t.files.forEach(f => {
-                    allFiles.push({ name: t.name, founder: t.founder, file: f });
+            founders.forEach(f => {
+                f.files.forEach(file => {
+                    allFiles.push({ founder: f, file: file });
                 });
             });
+            
             const sorted = allFiles.sort((a, b) => (b.file.date || '').localeCompare(a.file.date || ''));
-            sorted.slice(0, 40).forEach(item => {
+            
+            sorted.slice(0, 50).forEach(item => {
                 const el = document.createElement('div');
                 el.className = 'timeline-item';
-                el.innerHTML = '<div class="timeline-date">' + (item.file.date || '') + '</div><div class="timeline-card"><div class="timeline-title">' + (item.file.name || '') + '</div><div class="timeline-desc">' + item.name + ' - ' + item.founder + '</div></div>';
+                el.innerHTML = 
+                    '<div class="timeline-date">' + (item.file.date || '') + '</div>' +
+                    '<div class="timeline-card">' +
+                        '<div class="timeline-title">' + (item.file.name || 'Tidbit') + '</div>' +
+                        '<div class="timeline-desc">' + item.founder.founder + ' · ' + item.founder.name + '</div>' +
+                    '</div>';
                 container.appendChild(el);
             });
         }
-
-        function renderByProgram() {
-            const container = document.getElementById('program-view');
+        
+        function renderPrograms() {
+            const container = document.getElementById('programs-view');
             container.innerHTML = '';
+            
             const programs = {
-                'inflight-spring-26': 'Inflight Spring 26',
-                'bootcamp-spring-26': 'Bootcamp Spring 26 (Completed)',
-                'community-spring-26': 'Community Spring 26'
+                'inflight-spring-26': { name: 'Inflight Spring 26', status: 'active' },
+                'bootcamp-spring-26': { name: 'Bootcamp Spring 26', status: 'inactive' },
+                'community-spring-26': { name: 'Community Spring 26', status: 'active' }
             };
-            Object.entries(programs).forEach(([key, name]) => {
+            
+            Object.entries(programs).forEach(([key, prog]) => {
                 const section = document.createElement('div');
-                section.style.marginBottom = '1.5rem';
-                const programTidbits = tidbits.filter(t => t.program === key);
-                section.innerHTML = '<h3 style="font-size: 1.1rem; font-weight: 600; margin-bottom: 0.75rem; color: var(--blue-primary);">' + name + ' <span style="font-size: 0.75rem; background: var(--navy-medium); padding: 0.2rem 0.6rem; border-radius: 9999px; color: var(--blue-light);">' + programTidbits.length + '</span></h3>';
+                section.style.marginBottom = '2rem';
+                
+                const programFounders = founders.filter(f => f.program === key);
+                section.innerHTML = '<h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">' +
+                    prog.name + ' ' +
+                    '<span style="font-size: 0.875rem; background: var(--bg-glass); padding: 0.25rem 0.75rem; border-radius: 20px; color: var(--text-secondary);">' +
+                    programFounders.length + ' founders</span></h3>';
+                
                 const grid = document.createElement('div');
                 grid.className = 'cards-grid';
-                programTidbits.forEach(t => {
+                
+                programFounders.forEach(f => {
                     const card = document.createElement('div');
-                    card.className = 'startup-card';
-                    card.onclick = function() { openStartupModal(t); };
+                    card.className = 'founder-card';
+                    card.onclick = () => openFounderModal(f);
+                    
                     let squares = '';
-                    t.files.slice(0, 8).forEach(f => {
-                        squares += '<a href="' + baseUrl + f.path + '" target="_blank" class="tidbit-square" onclick="event.stopPropagation()"><div class="tidbit-square-icon">📄</div><div class="tidbit-square-date">' + (f.date || '').slice(5) + '</div></a>';
+                    f.files.slice(0, 8).forEach(file => {
+                        squares += '<a href="' + baseUrl + file.path + '" target="_blank" class="tidbit-square" onclick="event.stopPropagation()">' +
+                            '<span class="tidbit-icon">📄</span>' +
+                            '<span class="tidbit-date">' + (file.date || '').slice(5) + '</span>' +
+                        '</a>';
                     });
-                    if (t.files.length > 8) squares += '<div class="tidbit-square tidbit-more">+' + (t.files.length - 8) + '</div>';
-                    card.innerHTML = '<div class="startup-header"><div><div class="startup-name">' + t.name + '</div><div class="startup-founder">' + t.founder + '</div></div><span class="status-badge status-' + t.status + '">' + t.status + '</span></div><div class="tidbit-grid">' + squares + '</div>';
+                    if (f.files.length > 8) {
+                        squares += '<div class="tidbit-square tidbit-more">+' + (f.files.length - 8) + '</div>';
+                    }
+                    
+                    card.innerHTML = 
+                        '<div class="founder-header">' +
+                            '<div class="founder-info">' +
+                                '<div class="founder-avatar">👤</div>' +
+                                '<div class="founder-name">' + f.founder + '</div>' +
+                                '<div class="founder-startup">' + f.name + '</div>' +
+                            '</div>' +
+                            '<span class="status-badge status-' + f.status + '">' + f.status + '</span>' +
+                        '</div>' +
+                        '<div class="tidbit-grid">' + squares + '</div>';
+                    
                     grid.appendChild(card);
                 });
+                
                 section.appendChild(grid);
                 container.appendChild(section);
             });
         }
-        function openStartupModal(startup) {
-            document.getElementById('modal-title').textContent = startup.name;
-            document.getElementById('modal-subtitle').textContent = startup.founder + ' | ' + startup.program + ' | ' + startup.status + ' | ' + startup.count + ' files';
+        
+        function openFounderModal(founder) {
+            document.getElementById('modal-title').textContent = founder.founder;
+            document.getElementById('modal-subtitle').textContent = 
+                founder.name + ' | ' + founder.program + ' | ' + founder.count + ' tidbits';
+            
             const container = document.getElementById('modal-tidbits');
             container.innerHTML = '';
-            (startup.files || []).forEach(f => {
+            
+            founder.files.forEach(file => {
                 const card = document.createElement('div');
                 card.className = 'detail-card';
-                card.innerHTML = '<div class="detail-preview"><iframe src="' + baseUrl + f.path + '"></iframe>📄</div><div class="detail-content"><div class="detail-title">' + (f.name || 'Tidbit') + '</div><div class="detail-date">' + (f.date || '') + '</div><div class="detail-summary">' + (f.summary || 'Agent-generated tidbit') + '</div><div class="detail-actions"><a href="' + baseUrl + f.path + '" target="_blank" class="detail-btn detail-btn-primary">Open</a><button class="detail-btn detail-btn-secondary" onclick="copyLink(\'' + baseUrl + f.path + '\')">Copy</button><button class="detail-btn detail-btn-secondary" onclick="shareLink(\'' + baseUrl + f.path + '\')">Share</button></div></div>';
+                card.innerHTML = 
+                    '<div class="detail-preview">📄</div>' +
+                    '<div class="detail-content">' +
+                        '<div class="detail-title">' + (file.name || 'Tidbit') + '</div>' +
+                        '<div class="detail-date">' + (file.date || '') + '</div>' +
+                        '<div class="detail-summary">' + (file.summary || 'Agent-generated tidbit') + '</div>' +
+                        '<div class="detail-actions">' +
+                            '<a href="' + baseUrl + file.path + '" target="_blank" class="btn-sm btn-accent">Open</a>' +
+                            '<button class="btn-sm btn-ghost" onclick="copyLink(\'' + baseUrl + file.path + '\')">Copy</button>' +
+                            '<button class="btn-sm btn-ghost" onclick="shareLink(\'' + baseUrl + file.path + '\', \'' + (file.name || 'Tidbit') + '\')">Share</button>' +
+                        '</div>' +
+                    '</div>';
                 container.appendChild(card);
             });
-            document.getElementById('startup-modal').classList.add('show');
+            
+            document.getElementById('founder-modal').classList.add('show');
             document.body.style.overflow = 'hidden';
         }
-
-        function closeStartupModal() {
-            document.getElementById('startup-modal').classList.remove('show');
+        
+        function closeFounderModal() {
+            document.getElementById('founder-modal').classList.remove('show');
             document.body.style.overflow = '';
-            document.getElementById('startup-select').value = 'all';
+            document.getElementById('founder-select').value = 'all';
         }
-
+        
         function closeModal(event) {
-            if (event.target.id === 'startup-modal') closeStartupModal();
+            if (event.target.id === 'founder-modal') closeFounderModal();
         }
-
+        
         function copyLink(url) {
-            navigator.clipboard.writeText(url).then(function() { showToast('Link copied!'); });
+            navigator.clipboard.writeText(url).then(() => showToast('Link copied!'));
         }
-
+        
         function shareLink(url, title) {
-            if (navigator.share) { navigator.share({ title: title || 'Tidbit', url: url }); } else { copyLink(url); }
+            if (navigator.share) {
+                navigator.share({ title: title, url: url });
+            } else {
+                copyLink(url);
+            }
         }
-
+        
         function showToast(message) {
             const toast = document.getElementById('toast');
             toast.textContent = message;
             toast.classList.add('show');
-            setTimeout(function() { toast.classList.remove('show'); }, 2000);
+            setTimeout(() => toast.classList.remove('show'), 2000);
         }
-
+        
         function switchTab(tabName) {
             document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
             document.querySelector('[data-tab="' + tabName + '"]').classList.add('active');
-            document.getElementById('startups-view').classList.toggle('hidden', tabName !== 'startups');
+            
+            document.getElementById('founders-view').classList.toggle('hidden', tabName !== 'founders');
             document.getElementById('timeline-view').classList.toggle('hidden', tabName !== 'timeline');
-            document.getElementById('program-view').classList.toggle('hidden', tabName !== 'by-program');
+            document.getElementById('programs-view').classList.toggle('hidden', tabName !== 'programs');
         }
-
+        
         function applyFilters() {
             const program = document.getElementById('program-filter').value;
             const search = document.getElementById('search').value;
-            renderStartups({ program: program, search: search });
+            renderFounders({ program: program, search: search });
         }
-
-        // Initialize
-        updateStats();
-        populateStartupSelect();
-        renderStartups({ program: 'inflight-spring-26' });
-        renderTimeline();
-        renderByProgram();
-
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') closeStartupModal();
+        
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') closeFounderModal();
         });
+        
+        // Init
+        loadData();
     </script>
 </body>
 </html>
-
-
-
