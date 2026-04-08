@@ -687,7 +687,14 @@ async function ghFetch(url, bypass = false) {
   if (S.token) headers.Authorization = 'Bearer ' + S.token;
 
   const res = await fetch(url, { headers });
-  if (res.status === 401 || res.status === 403) throw Object.assign(new Error('auth'), { auth: true });
+  if (res.status === 401) throw Object.assign(new Error('auth'), { auth: true });
+  if (res.status === 403) {
+    const body = await res.json().catch(() => ({}));
+    if (body.message && body.message.toLowerCase().includes('rate limit')) {
+      throw Object.assign(new Error('ratelimit'), { ratelimit: true });
+    }
+    throw Object.assign(new Error('auth'), { auth: true });
+  }
   if (!res.ok) throw new Error('HTTP ' + res.status);
 
   const data = await res.json();
@@ -913,12 +920,21 @@ function renderLoading() {
 
 function renderError(msg) {
   const isAuth = msg === 'auth';
+  const isRate = msg === 'ratelimit';
+  let text, extra = '';
+  if (isAuth) {
+    text = 'This repo requires a GitHub personal access token to access.';
+    extra = `<button class="btn-primary" onclick="openTokenDialog()">Set Token</button>`;
+  } else if (isRate) {
+    text = 'GitHub API rate limit reached. Set a personal access token to continue (authenticated requests get 5,000 req/hr).';
+    extra = `<button class="btn-primary" onclick="openTokenDialog()">Set Token</button>`;
+  } else {
+    text = 'Failed to load tidbits: ' + msg;
+  }
   return `
     <div class="error-state">
-      <p>${isAuth
-        ? 'This repo requires authentication. Please set a GitHub personal access token.'
-        : 'Failed to load tidbits: ' + msg}</p>
-      ${isAuth ? `<button class="btn-primary" onclick="openTokenDialog()">Set Token</button>` : ''}
+      <p>${text}</p>
+      ${extra}
       <button class="btn-ghost" onclick="loadData(true)">Try again</button>
     </div>`;
 }
@@ -1110,7 +1126,7 @@ async function loadData(force = false) {
     S.loading = false;
   } catch (e) {
     S.loading = false;
-    S.error = e.auth ? 'auth' : (e.message || 'Unknown error');
+    S.error = e.auth ? 'auth' : e.ratelimit ? 'ratelimit' : (e.message || 'Unknown error');
   }
 
   document.getElementById('refresh-btn').disabled = false;
