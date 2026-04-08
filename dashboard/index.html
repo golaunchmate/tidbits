@@ -7,7 +7,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
         :root {
             --bg-primary: #0a0f1a;
             --bg-secondary: #111827;
@@ -16,851 +15,118 @@
             --accent-primary: #3b82f6;
             --accent-secondary: #8b5cf6;
             --accent-gradient: linear-gradient(135deg, #3b82f6, #8b5cf6);
-            --accent-gradient-hover: linear-gradient(135deg, #60a5fa, #a78bfa);
             --text-primary: #f9fafb;
             --text-secondary: #9ca3af;
             --text-muted: #6b7280;
-            --success: #10b981;
-            --warning: #f59e0b;
-            --danger: #ef4444;
             --border: rgba(255, 255, 255, 0.08);
             --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            --glow: 0 0 40px rgba(59, 130, 246, 0.15);
         }
-        
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-        
-        /* Animated background */
-        .bg-gradient {
-            position: fixed;
-            inset: 0;
-            background: 
-                radial-gradient(ellipse at 20% 20%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
-                radial-gradient(ellipse at 50% 50%, rgba(16, 185, 129, 0.05) 0%, transparent 70%);
-            pointer-events: none;
-            z-index: 0;
-        }
-        
-        .bg-grid {
-            position: fixed;
-            inset: 0;
-            background-image: 
-                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-            background-size: 60px 60px;
-            pointer-events: none;
-            z-index: 0;
-        }
-        
-        /* Header */
-        .header {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: rgba(10, 15, 26, 0.8);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border);
-            padding: 1rem 2rem;
-        }
-        
-        .header-content {
-            max-width: 1800px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            text-decoration: none;
-            color: var(--text-primary);
-        }
-        
-        .logo-icon {
-            width: 44px;
-            height: 44px;
-            background: var(--accent-gradient);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            box-shadow: var(--glow);
-            animation: pulse 3s ease-in-out infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); box-shadow: var(--glow); }
-            50% { transform: scale(1.02); box-shadow: 0 0 60px rgba(59, 130, 246, 0.3); }
-        }
-        
-        .logo-text {
-            font-size: 1.5rem;
-            font-weight: 700;
-            background: var(--accent-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .header-actions {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-        
-        .btn-primary {
-            background: var(--accent-gradient);
-            color: white;
-            padding: 0.6rem 1.25rem;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.875rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
-        }
-        
-        .filters {
-            display: flex;
-            gap: 0.75rem;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        
-        .filter-group {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .filter-label {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-        
-        select, input[type="text"] {
-            padding: 0.5rem 1rem;
-            background: var(--bg-glass);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            color: var(--text-primary);
-            font-size: 0.875rem;
-            min-width: 140px;
-            outline: none;
-            transition: all 0.2s ease;
-        }
-        
-        select:hover, input[type="text"]:hover {
-            border-color: rgba(255,255,255,0.15);
-        }
-        
-        select:focus, input[type="text"]:focus {
-            border-color: var(--accent-primary);
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-        }
-        
-        /* Main content */
-        .main {
-            position: relative;
-            z-index: 1;
-            max-width: 1800px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-        
-        /* Stats */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-        
-        .stat-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 1.5rem;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-        
-        .stat-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: var(--accent-gradient);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .stat-card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(59, 130, 246, 0.3);
-            box-shadow: var(--shadow);
-        }
-        
-        .stat-card:hover::before {
-            opacity: 1;
-        }
-        
-        .stat-label {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 0.5rem;
-        }
-        
-        .stat-value {
-            font-size: 2.5rem;
-            font-weight: 800;
-            background: var(--accent-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            line-height: 1;
-        }
-        
-        .stat-change {
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-            margin-top: 0.5rem;
-        }
-        
-        /* Tabs */
-        .tabs {
-            display: flex;
-            gap: 0.5rem;
-            margin-bottom: 2rem;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 1rem;
-        }
-        
-        .tab {
-            padding: 0.75rem 1.5rem;
-            background: transparent;
-            border: 1px solid transparent;
-            border-radius: 10px;
-            color: var(--text-secondary);
-            font-size: 0.875rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-        
-        .tab:hover {
-            background: var(--bg-glass);
-            color: var(--text-primary);
-        }
-        
-        .tab.active {
-            background: var(--accent-gradient);
-            color: white;
-            border-color: transparent;
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
-        }
-        
-        /* Cards grid */
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-            gap: 1.5rem;
-        }
-        
-        /* Founder card */
-        .founder-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 1.5rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .founder-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: var(--accent-gradient);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            pointer-events: none;
-        }
-        
-        .founder-card:hover {
-            transform: translateY(-6px) scale(1.01);
-            border-color: rgba(59, 130, 246, 0.4);
-            box-shadow: var(--shadow), var(--glow);
-        }
-        
-        .founder-card:hover::before {
-            opacity: 0.03;
-        }
-        
-        .founder-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 1rem;
-        }
-        
-        .founder-info {
-            flex: 1;
-        }
-        
-        .founder-avatar {
-            width: 48px;
-            height: 48px;
-            background: var(--accent-gradient);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.25rem;
-            margin-bottom: 0.75rem;
-            box-shadow: var(--glow);
-        }
-        
-        .founder-name {
-            font-size: 1.125rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 0.25rem;
-        }
-        
-        .founder-startup {
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-            margin-bottom: 0.25rem;
-        }
-        
-        .founder-program {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-        }
-        
-        .status-badge {
-            padding: 0.35rem 0.85rem;
-            border-radius: 20px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-        
-        .status-active {
-            background: rgba(16, 185, 129, 0.15);
-            color: var(--success);
-            border: 1px solid rgba(16, 185, 129, 0.3);
-        }
-        
-        .status-inactive {
-            background: rgba(245, 158, 11, 0.15);
-            color: var(--warning);
-            border: 1px solid rgba(245, 158, 11, 0.3);
-        }
-        
-        /* Tidbit grid */
-        .tidbit-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(52px, 1fr));
-            gap: 0.5rem;
-        }
-        
-        .tidbit-square {
-            aspect-ratio: 1;
-            background: var(--bg-glass);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            color: var(--text-primary);
-            transition: all 0.2s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .tidbit-square:hover {
-            background: var(--accent-gradient);
-            border-color: transparent;
-            transform: scale(1.1) rotate(2deg);
-            z-index: 10;
-            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
-        }
-        
-        .tidbit-icon {
-            font-size: 1rem;
-            transition: transform 0.2s ease;
-        }
-        
-        .tidbit-square:hover .tidbit-icon {
-            transform: scale(1.2);
-        }
-        
-        .tidbit-date {
-            font-size: 0.6rem;
-            color: var(--text-muted);
-            margin-top: 2px;
-        }
-        
-        .tidbit-more {
-            background: transparent;
-            border: 1px dashed var(--border);
-            color: var(--text-muted);
-            font-size: 0.7rem;
-            font-weight: 600;
-        }
-        
-        .tidbit-more:hover {
-            background: var(--accent-gradient);
-            border-style: solid;
-            color: white;
-        }
-        
-        /* Modal */
-        .modal-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            display: none;
-            overflow-y: auto;
-            padding: 2rem;
-        }
-        
-        .modal-overlay.show {
-            display: flex;
-            align-items: flex-start;
-            justify-content: center;
-        }
-        
-        .modal-content {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            max-width: 1200px;
-            width: 100%;
-            padding: 2rem;
-            animation: modalIn 0.3s ease;
-        }
-        
-        @keyframes modalIn {
-            from { opacity: 0; transform: scale(0.95) translateY(20px); }
-            to { opacity: 1; transform: scale(1) translateY(0); }
-        }
-        
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 2rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid var(--border);
-        }
-        
-        .modal-title {
-            font-size: 1.75rem;
-            font-weight: 800;
-            background: var(--accent-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .modal-subtitle {
-            font-size: 1rem;
-            color: var(--text-secondary);
-            margin-top: 0.5rem;
-        }
-        
-        .modal-close {
-            width: 44px;
-            height: 44px;
-            background: var(--bg-glass);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            color: var(--text-secondary);
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .modal-close:hover {
-            background: var(--danger);
-            border-color: var(--danger);
-            color: white;
-        }
-        
-        /* Detail cards */
-        .detail-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
-        
-        .detail-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-        
-        .detail-card:hover {
-            border-color: rgba(59, 130, 246, 0.4);
-            transform: translateY(-4px);
-            box-shadow: var(--shadow);
-        }
-        
-        .detail-preview {
-            height: 100px;
-            background: var(--accent-gradient);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            position: relative;
-        }
-        
-        .detail-content {
-            padding: 1rem;
-        }
-        
-        .detail-title {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 0.25rem;
-            line-height: 1.4;
-        }
-        
-        .detail-date {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            margin-bottom: 0.5rem;
-        }
-        
-        .detail-summary {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
-            line-height: 1.5;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-        
-        .detail-actions {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-        }
-        
-        .btn-sm {
-            padding: 0.4rem 0.75rem;
-            border-radius: 6px;
-            font-size: 0.7rem;
-            font-weight: 500;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.25rem;
-            transition: all 0.2s ease;
-            border: none;
-            cursor: pointer;
-        }
-        
-        .btn-accent {
-            background: var(--accent-gradient);
-            color: white;
-        }
-        
-        .btn-accent:hover {
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
-        }
-        
-        .btn-ghost {
-            background: var(--bg-glass);
-            color: var(--text-secondary);
-            border: 1px solid var(--border);
-        }
-        
-        .btn-ghost:hover {
-            background: var(--bg-card);
-            color: var(--text-primary);
-        }
-        
-        /* Timeline */
-        .timeline {
-            position: relative;
-            padding-left: 2rem;
-        }
-        
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 0.5rem;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: var(--accent-gradient);
-            opacity: 0.3;
-        }
-        
-        .timeline-item {
-            position: relative;
-            padding-bottom: 1.5rem;
-            padding-left: 1.5rem;
-        }
-        
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -1.5rem;
-            top: 0.25rem;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: var(--accent-gradient);
-            border: 2px solid var(--bg-secondary);
-            box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
-        }
-        
-        .timeline-date {
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-        
-        .timeline-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 1rem;
-        }
-        
-        .timeline-title {
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 0.25rem;
-        }
-        
-        .timeline-desc {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-        }
-        
-        /* Toast */
-        .toast {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background: var(--success);
-            color: white;
-            padding: 1rem 1.5rem;
-            border-radius: 10px;
-            font-weight: 600;
-            transform: translateY(100px);
-            opacity: 0;
-            transition: all 0.3s ease;
-            z-index: 2000;
-            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
-        }
-        
-        .toast.show {
-            transform: translateY(0);
-            opacity: 1;
-        }
-        
-        /* Hidden */
+        body { font-family: 'Inter', sans-serif; background: var(--bg-primary); color: var(--text-primary); min-height: 100vh; }
+        .bg-gradient { position: fixed; inset: 0; background: radial-gradient(ellipse at 20% 20%, rgba(59, 130, 246, 0.15) 0%, transparent 50%), radial-gradient(ellipse at 80% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%); pointer-events: none; z-index: 0; }
+        .header { position: sticky; top: 0; z-index: 100; background: rgba(10, 15, 26, 0.8); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 1rem 2rem; }
+        .header-content { max-width: 1800px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
+        .logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: var(--text-primary); }
+        .logo-icon { width: 44px; height: 44px; background: var(--accent-gradient); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; }
+        .logo-text { font-size: 1.5rem; font-weight: 700; background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .header-actions { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+        .btn-primary { background: var(--accent-gradient); color: white; padding: 0.6rem 1.25rem; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 0.875rem; display: flex; align-items: center; gap: 0.5rem; transition: all 0.3s ease; }
+        .filters { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; }
+        .filter-group { display: flex; align-items: center; gap: 0.5rem; }
+        .filter-label { font-size: 0.75rem; color: var(--text-muted); font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; }
+        select, input[type="text"] { padding: 0.5rem 1rem; background: var(--bg-glass); border: 1px solid var(--border); border-radius: 8px; color: var(--text-primary); font-size: 0.875rem; min-width: 140px; outline: none; }
+        .main { position: relative; z-index: 1; max-width: 1800px; margin: 0 auto; padding: 2rem; }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+        .stat-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 1.5rem; transition: all 0.3s ease; }
+        .stat-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+        .stat-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+        .stat-value { font-size: 2.5rem; font-weight: 800; background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .stat-change { font-size: 0.875rem; color: var(--text-secondary); margin-top: 0.5rem; }
+        .tabs { display: flex; gap: 0.5rem; margin-bottom: 2rem; border-bottom: 1px solid var(--border); padding-bottom: 1rem; }
+        .tab { padding: 0.75rem 1.5rem; background: transparent; border: 1px solid transparent; border-radius: 10px; color: var(--text-secondary); font-size: 0.875rem; font-weight: 500; cursor: pointer; transition: all 0.2s ease; }
+        .tab:hover { background: var(--bg-glass); color: var(--text-primary); }
+        .tab.active { background: var(--accent-gradient); color: white; }
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 1.5rem; }
+        .founder-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 1.5rem; cursor: pointer; transition: all 0.3s ease; }
+        .founder-card:hover { transform: translateY(-6px); border-color: rgba(59, 130, 246, 0.4); box-shadow: var(--shadow); }
+        .founder-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; }
+        .founder-info { flex: 1; }
+        .founder-avatar { width: 48px; height: 48px; background: var(--accent-gradient); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; margin-bottom: 0.75rem; font-weight: 700; }
+        .founder-name { font-size: 1.125rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.25rem; }
+        .founder-startup { font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 0.25rem; }
+        .founder-program { font-size: 0.75rem; color: var(--text-muted); }
+        .status-badge { padding: 0.35rem 0.85rem; border-radius: 20px; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; }
+        .status-active { background: rgba(16, 185, 129, 0.15); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.3); }
+        .status-inactive { background: rgba(245, 158, 11, 0.15); color: #f59e0b; border: 1px solid rgba(245, 158, 11, 0.3); }
+        .tidbit-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(52px, 1fr)); gap: 0.5rem; }
+        .tidbit-square { aspect-ratio: 1; background: var(--bg-glass); border: 1px solid var(--border); border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-decoration: none; color: var(--text-primary); transition: all 0.2s ease; font-size: 0.75rem; font-weight: 500; }
+        .tidbit-square:hover { background: var(--accent-gradient); transform: scale(1.1); }
+        .tidbit-date { font-size: 0.6rem; color: var(--text-muted); margin-top: 2px; }
+        .tidbit-more { background: transparent; border: 1px dashed var(--border); color: var(--text-muted); font-size: 0.7rem; font-weight: 600; }
+        .modal-overlay { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(10px); z-index: 1000; display: none; overflow-y: auto; padding: 2rem; }
+        .modal-overlay.show { display: flex; align-items: flex-start; justify-content: center; }
+        .modal-content { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 20px; max-width: 1200px; width: 100%; padding: 2rem; }
+        .modal-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
+        .modal-title { font-size: 1.75rem; font-weight: 800; background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .modal-subtitle { font-size: 1rem; color: var(--text-secondary); margin-top: 0.5rem; }
+        .modal-close { width: 44px; height: 44px; background: var(--bg-glass); border: 1px solid var(--border); border-radius: 12px; color: var(--text-secondary); font-size: 1.5rem; cursor: pointer; }
+        .modal-close:hover { background: #ef4444; color: white; }
+        .detail-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
+        .detail-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; transition: all 0.3s ease; }
+        .detail-card:hover { border-color: rgba(59, 130, 246, 0.4); transform: translateY(-4px); }
+        .detail-preview { height: 100px; background: var(--accent-gradient); display: flex; align-items: center; justify-content: center; font-size: 2.5rem; font-weight: 700; }
+        .detail-content { padding: 1rem; }
+        .detail-title { font-size: 0.9rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.25rem; }
+        .detail-date { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.5rem; }
+        .detail-summary { font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 1rem; }
+        .detail-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+        .btn-sm { padding: 0.4rem 0.75rem; border-radius: 6px; font-size: 0.7rem; font-weight: 500; text-decoration: none; display: inline-flex; align-items: center; gap: 0.25rem; cursor: pointer; border: none; }
+        .btn-accent { background: var(--accent-gradient); color: white; }
+        .btn-ghost { background: var(--bg-glass); color: var(--text-secondary); border: 1px solid var(--border); }
+        .toast { position: fixed; bottom: 2rem; right: 2rem; background: #10b981; color: white; padding: 1rem 1.5rem; border-radius: 10px; font-weight: 600; transform: translateY(100px); opacity: 0; transition: all 0.3s ease; z-index: 2000; }
+        .toast.show { transform: translateY(0); opacity: 1; }
         .hidden { display: none !important; }
-        
-        /* Agent info */
-        .agent-info {
-            background: var(--bg-glass);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 1rem;
-            margin-top: 2rem;
-            font-size: 0.8rem;
-            color: var(--text-muted);
-        }
-        
-        .agent-info code {
-            background: var(--bg-card);
-            padding: 0.2rem 0.5rem;
-            border-radius: 4px;
-            color: var(--accent-primary);
-        }
-        
-        /* Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--bg-primary); }
-        ::-webkit-scrollbar-thumb { background: var(--accent-primary); border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: var(--accent-secondary); }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .header { padding: 1rem; }
-            .main { padding: 1rem; }
-            .cards-grid { grid-template-columns: 1fr; }
-            .stats-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-        
-        /* Admin Panel Styles */
+        .timeline { position: relative; padding-left: 2rem; }
+        .timeline::before { content: ''; position: absolute; left: 0.5rem; top: 0; bottom: 0; width: 2px; background: var(--accent-gradient); opacity: 0.3; }
+        .timeline-item { position: relative; padding-bottom: 1.5rem; padding-left: 1.5rem; }
+        .timeline-item::before { content: ''; position: absolute; left: -1.5rem; top: 0.25rem; width: 12px; height: 12px; border-radius: 50%; background: var(--accent-gradient); }
+        .timeline-date { font-size: 0.7rem; color: var(--text-muted); margin-bottom: 0.5rem; }
+        .timeline-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 1rem; }
+        .timeline-title { font-weight: 600; color: var(--text-primary); }
+        .timeline-desc { font-size: 0.8rem; color: var(--text-secondary); }
         .admin-panel { padding: 1rem; }
-        .admin-section { 
-            background: var(--bg-card); 
-            border: 1px solid var(--border); 
-            border-radius: 12px; 
-            padding: 1.5rem; 
-            margin-bottom: 1.5rem; 
-        }
-        .admin-section-title { 
-            font-size: 1rem; 
-            font-weight: 600; 
-            color: var(--text-primary); 
-            margin-bottom: 1rem; 
-            display: flex; 
-            align-items: center; 
-            gap: 0.5rem; 
-        }
+        .admin-section { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; }
+        .admin-section-title { font-size: 1rem; font-weight: 600; color: var(--text-primary); margin-bottom: 1rem; }
         .admin-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
-        .admin-btn { 
-            background: var(--bg-glass); 
-            border: 1px solid var(--border); 
-            color: var(--text-primary); 
-            padding: 0.75rem 1.25rem; 
-            border-radius: 8px; 
-            font-size: 0.875rem; 
-            font-weight: 500; 
-            cursor: pointer; 
-            transition: all 0.2s ease; 
-            display: flex; 
-            align-items: center; 
-            gap: 0.5rem; 
-        }
-        .admin-btn:hover { 
-            background: var(--accent-gradient); 
-            border-color: transparent; 
-            transform: translateY(-2px); 
-        }
-        .engagement-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
-            gap: 1rem; 
-        }
-        .engagement-card { 
-            background: var(--bg-glass); 
-            border-radius: 8px; 
-            padding: 1rem; 
-        }
-        .engagement-name { 
-            font-weight: 600; 
-            font-size: 0.9rem; 
-            margin-bottom: 0.25rem; 
-        }
-        .engagement-stats { 
-            font-size: 0.75rem; 
-            color: var(--text-secondary); 
-        }
-        .engagement-bar { 
-            height: 4px; 
-            background: var(--bg-glass); 
-            border-radius: 2px; 
-            margin-top: 0.5rem; 
-            overflow: hidden; 
-        }
-        .engagement-fill { 
-            height: 100%; 
-            background: var(--accent-gradient); 
-            border-radius: 2px; 
-            transition: width 0.3s ease; 
-        }
-        .inactive-list, .activity-list { 
-            display: flex; 
-            flex-direction: column; 
-            gap: 0.5rem; 
-        }
-        .inactive-item, .activity-item { 
-            background: var(--bg-glass); 
-            border-radius: 8px; 
-            padding: 0.75rem 1rem; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-        }
+        .admin-btn { background: var(--bg-glass); border: 1px solid var(--border); color: var(--text-primary); padding: 0.75rem 1.25rem; border-radius: 8px; font-size: 0.875rem; font-weight: 500; cursor: pointer; transition: all 0.2s ease; }
+        .admin-btn:hover { background: var(--accent-gradient); border-color: transparent; }
+        .engagement-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; }
+        .engagement-card { background: var(--bg-glass); border-radius: 8px; padding: 1rem; }
+        .engagement-name { font-weight: 600; font-size: 0.9rem; }
+        .engagement-stats { font-size: 0.75rem; color: var(--text-secondary); }
+        .engagement-bar { height: 4px; background: var(--bg-glass); border-radius: 2px; margin-top: 0.5rem; overflow: hidden; }
+        .engagement-fill { height: 100%; background: var(--accent-gradient); border-radius: 2px; }
+        .inactive-list, .activity-list { display: flex; flex-direction: column; gap: 0.5rem; }
+        .inactive-item, .activity-item { background: var(--bg-glass); border-radius: 8px; padding: 0.75rem 1rem; display: flex; justify-content: space-between; align-items: center; }
         .inactive-name { font-weight: 500; }
         .inactive-since { font-size: 0.75rem; color: var(--text-muted); }
-        .activity-item { font-size: 0.875rem; }
-        .activity-date { font-size: 0.75rem; color: var(--text-muted); }
+        @media (max-width: 768px) { .header { padding: 1rem; } .main { padding: 1rem; } .cards-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
     <div class="bg-gradient"></div>
-    <div class="bg-grid"></div>
-    
     <header class="header">
         <div class="header-content">
             <a href="https://golaunchmate.github.io" target="_blank" class="logo">
-                <div class="logo-icon">ðŸš€</div>
+                <div class="logo-icon">L</div>
                 <span class="logo-text">LaunchMate Tidbits</span>
             </a>
-            
             <div class="header-actions">
-                <a href="https://launchmate.ai" target="_blank" class="btn-primary">
-                    ðŸŒ LaunchMate Website
-                </a>
-                
+                <a href="https://golaunchmate.com" target="_blank" class="btn-primary">LaunchMate Website</a>
                 <div class="filters">
                     <div class="filter-group">
                         <span class="filter-label">Founder</span>
-                        <select id="founder-select" onchange="selectFounder()">
-                            <option value="all">All Founders</option>
-                        </select>
+                        <select id="founder-select" onchange="selectFounder()"><option value="all">All Founders</option></select>
                     </div>
-                    
                     <div class="filter-group">
                         <span class="filter-label">Program</span>
                         <select id="program-filter" onchange="applyFilters()">
@@ -870,85 +136,54 @@
                             <option value="community-spring-26">Community</option>
                         </select>
                     </div>
-                    
                     <input type="text" id="search" placeholder="Search..." oninput="applyFilters()">
                 </div>
             </div>
         </div>
     </header>
-    
     <main class="main">
         <section class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-label">Active Founders</div>
-                <div class="stat-value" id="stat-active">--</div>
-                <div class="stat-change">Currently in program</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-label">Total Founders</div>
-                <div class="stat-value" id="stat-total">--</div>
-                <div class="stat-change">All programs</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-label">Tidbit Files</div>
-                <div class="stat-value" id="stat-files">--</div>
-                <div class="stat-change">Agent-generated</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-label">Latest Update</div>
-                <div class="stat-value" id="stat-latest">--</div>
-                <div class="stat-change" id="stat-latest-from">--</div>
-            </div>
+            <div class="stat-card"><div class="stat-label">Active Founders</div><div class="stat-value" id="stat-active">--</div><div class="stat-change">Currently in program</div></div>
+            <div class="stat-card"><div class="stat-label">Total Founders</div><div class="stat-value" id="stat-total">--</div><div class="stat-change">All programs</div></div>
+            <div class="stat-card"><div class="stat-label">Tidbit Files</div><div class="stat-value" id="stat-files">--</div><div class="stat-change">Agent-generated</div></div>
+            <div class="stat-card"><div class="stat-label">Latest Update</div><div class="stat-value" id="stat-latest">--</div><div class="stat-change" id="stat-latest-from">--</div></div>
         </section>
-        
         <div class="tabs">
             <button class="tab active" data-tab="founders" onclick="switchTab('founders')">Founders</button>
             <button class="tab" data-tab="timeline" onclick="switchTab('timeline')">Timeline</button>
             <button class="tab" data-tab="programs" onclick="switchTab('programs')">By Program</button>
-            <button class="tab" data-tab="admin" onclick="switchTab('admin')">🔧 Admin</button>
+            <button class="tab" data-tab="admin" onclick="switchTab('admin')">Admin</button>
         </div>
-        
         <section id="founders-view" class="cards-grid"></section>
         <section id="timeline-view" class="timeline hidden"></section>
         <section id="programs-view" class="hidden"></section>
-        
-        <!-- Admin Panel for Mentors -->
         <section id="admin-view" class="hidden">
             <div class="admin-panel">
-                <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text-primary);">🔧 Mentor Admin Panel</h2>
-                
+                <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1.5rem;">Mentor Admin Panel</h2>
                 <div class="admin-section">
                     <h3 class="admin-section-title">Quick Actions</h3>
                     <div class="admin-actions">
-                        <button class="admin-btn" onclick="exportAllData()">📥 Export All Data (JSON)</button>
-                        <button class="admin-btn" onclick="exportCSV()">📊 Export to CSV</button>
-                        <button class="admin-btn" onclick="copyAllLinks()">📋 Copy All Tidbit Links</button>
-                        <button class="admin-btn" onclick="generateReport()">📝 Generate Summary Report</button>
+                        <button class="admin-btn" onclick="exportAllData()">Export All Data (JSON)</button>
+                        <button class="admin-btn" onclick="exportCSV()">Export to CSV</button>
+                        <button class="admin-btn" onclick="copyAllLinks()">Copy All Tidbit Links</button>
+                        <button class="admin-btn" onclick="generateReport()">Generate Summary Report</button>
                     </div>
                 </div>
-                
                 <div class="admin-section">
                     <h3 class="admin-section-title">Engagement Overview</h3>
                     <div id="engagement-stats" class="engagement-grid"></div>
                 </div>
-                
                 <div class="admin-section">
                     <h3 class="admin-section-title">Inactive Founders (Need Follow-up)</h3>
                     <div id="inactive-founders" class="inactive-list"></div>
                 </div>
-                
                 <div class="admin-section">
-                    <h3 class="admin-section-title">Recent Activity (Last 7 Days)</h3>
+                    <h3 class="admin-section-title">Recent Activity</h3>
                     <div id="recent-activity" class="activity-list"></div>
                 </div>
             </div>
         </section>
-        
-        <div class="agent-info">
-            ðŸ¤– <strong>Agent-friendly:</strong> Access data at <code>/dashboard/data.json</code> or parse JSON-LD with id "tidbits-data"
-        </div>
     </main>
-    
     <div class="modal-overlay" id="founder-modal" onclick="closeModal(event)">
         <div class="modal-content" onclick="event.stopPropagation()">
             <div class="modal-header">
@@ -956,15 +191,13 @@
                     <div class="modal-title" id="modal-title">Founder Name</div>
                     <div class="modal-subtitle" id="modal-subtitle">Startup | Program</div>
                 </div>
-                <button class="modal-close" onclick="closeFounderModal()">Ã—</button>
+                <button class="modal-close" onclick="closeFounderModal()">X</button>
             </div>
             <div class="detail-grid" id="modal-tidbits"></div>
         </div>
     </div>
-    
     <div class="toast" id="toast">Link copied!</div>
-    
-    <script type="application/ld+json" id="tidbits-data">[
+    <script type="application/json" id="tidbits-data">[
     {
         "name":  "AztecConnect",
         "founder":  "Ruby Chan",
@@ -1715,33 +948,24 @@
     }
 ]
 </script>
-    
     <script>
         const baseUrl = "https://golaunchmate.github.io/tidbits/";
         let founders = [];
         
-        // Load data from JSON-LD
         async function loadData() {
-            // Try embedded data first
             const embeddedData = document.getElementById('tidbits-data');
             if (embeddedData && embeddedData.textContent && embeddedData.textContent.trim()) {
                 try {
                     founders = JSON.parse(embeddedData.textContent);
-                const data = await response.json();
-                founders = founders.map(f => ({
-                    name: f.name || f.startup,
-                    founder: f.founder,
-                    program: f.program,
-                    startup: f.startup,
-                    status: f.status,
-                    lastUpdate: f.lastUpdate,
-                    count: f.count,
-                    files: f.files || []
-                }));
-                init();
-            } catch (e) {
-                console.error('Failed to load data:', e);
+                    init();
+                    return;
+                } catch (e) { console.error('Parse error:', e); }
             }
+            try {
+                const response = await fetch('data.json');
+                founders = await response.json();
+                init();
+            } catch (e) { console.error('Load error:', e); }
         }
         
         function init() {
@@ -1756,7 +980,6 @@
             const active = founders.filter(f => f.status === 'active');
             const totalFiles = founders.reduce((sum, f) => sum + f.count, 0);
             const latest = founders.reduce((a, b) => a.lastUpdate > b.lastUpdate ? a : b);
-            
             document.getElementById('stat-active').textContent = active.length;
             document.getElementById('stat-total').textContent = founders.length;
             document.getElementById('stat-files').textContent = totalFiles;
@@ -1766,8 +989,7 @@
         
         function populateFounderSelect() {
             const select = document.getElementById('founder-select');
-            const sorted = [...founders].sort((a, b) => a.founder.localeCompare(b.founder));
-            sorted.forEach(f => {
+            [...founders].sort((a, b) => a.founder.localeCompare(b.founder)).forEach(f => {
                 const opt = document.createElement('option');
                 opt.value = f.startup + '|' + f.founder;
                 opt.textContent = f.founder + ' (' + f.name + ')';
@@ -1777,61 +999,31 @@
         
         function selectFounder() {
             const value = document.getElementById('founder-select').value;
-            if (value === 'all') {
-                document.getElementById('program-filter').value = 'inflight-spring-26';
-                applyFilters();
-            } else {
-                const [startup, founder] = value.split('|');
-                const f = founders.find(f => f.startup === startup && f.founder === founder);
-                if (f) openFounderModal(f);
-            }
+            if (value === 'all') { applyFilters(); return; }
+            const [startup, founder] = value.split('|');
+            const f = founders.find(f => f.startup === startup && f.founder === founder);
+            if (f) openFounderModal(f);
         }
         
         function renderFounders(filter = {}) {
             const container = document.getElementById('founders-view');
             container.innerHTML = '';
-            
             let filtered = founders;
-            if (filter.program && filter.program !== 'all') {
-                filtered = filtered.filter(f => f.program === filter.program);
-            }
+            if (filter.program && filter.program !== 'all') filtered = filtered.filter(f => f.program === filter.program);
             if (filter.search) {
                 const search = filter.search.toLowerCase();
-                filtered = filtered.filter(f => 
-                    f.name.toLowerCase().includes(search) || 
-                    f.founder.toLowerCase().includes(search)
-                );
+                filtered = filtered.filter(f => f.name.toLowerCase().includes(search) || f.founder.toLowerCase().includes(search));
             }
-            
             filtered.forEach(f => {
                 const card = document.createElement('div');
                 card.className = 'founder-card';
                 card.onclick = () => openFounderModal(f);
-                
                 let squares = '';
-                const displayFiles = f.files.slice(0, 12);
-                displayFiles.forEach(file => {
-                    squares += '<a href="' + baseUrl + file.path + '" target="_blank" class="tidbit-square" onclick="event.stopPropagation()">';
-                    squares += '<span class="tidbit-icon">ðŸ“„</span>';
-                    squares += '<span class="tidbit-date">' + (file.date || '').slice(5) + '</span>';
-                    squares += '</a>';
+                f.files.slice(0, 12).forEach(file => {
+                    squares += '<a href="' + baseUrl + file.path + '" target="_blank" class="tidbit-square" onclick="event.stopPropagation()"><span>' + (file.date || '').slice(5) + '</span></a>';
                 });
-                if (f.files.length > 12) {
-                    squares += '<div class="tidbit-square tidbit-more">+' + (f.files.length - 12) + '</div>';
-                }
-                
-                card.innerHTML = 
-                    '<div class="founder-header">' +
-                        '<div class="founder-info">' +
-                            '<div class="founder-avatar">ðŸ‘¤</div>' +
-                            '<div class="founder-name">' + f.founder + '</div>' +
-                            '<div class="founder-startup">' + f.name + '</div>' +
-                            '<div class="founder-program">' + f.program.replace('-spring-26', '') + ' Â· ' + f.count + ' tidbits</div>' +
-                        '</div>' +
-                        '<span class="status-badge status-' + f.status + '">' + f.status + '</span>' +
-                    '</div>' +
-                    '<div class="tidbit-grid">' + squares + '</div>';
-                
+                if (f.files.length > 12) squares += '<div class="tidbit-square tidbit-more">+' + (f.files.length - 12) + '</div>';
+                card.innerHTML = '<div class="founder-header"><div class="founder-info"><div class="founder-avatar">' + f.founder.charAt(0) + '</div><div class="founder-name">' + f.founder + '</div><div class="founder-startup">' + f.name + '</div><div class="founder-program">' + f.program.replace('-spring-26', '') + ' - ' + f.count + ' tidbits</div></div><span class="status-badge status-' + f.status + '">' + f.status + '</span></div><div class="tidbit-grid">' + squares + '</div>';
                 container.appendChild(card);
             });
         }
@@ -1839,25 +1031,12 @@
         function renderTimeline() {
             const container = document.getElementById('timeline-view');
             container.innerHTML = '';
-            
             const allFiles = [];
-            founders.forEach(f => {
-                f.files.forEach(file => {
-                    allFiles.push({ founder: f, file: file });
-                });
-            });
-            
-            const sorted = allFiles.sort((a, b) => (b.file.date || '').localeCompare(a.file.date || ''));
-            
-            sorted.slice(0, 50).forEach(item => {
+            founders.forEach(f => f.files.forEach(file => allFiles.push({ ...file, founder: f.founder, startup: f.name })));
+            allFiles.sort((a, b) => (b.date || '').localeCompare((a.date || ''))).slice(0, 50).forEach(item => {
                 const el = document.createElement('div');
                 el.className = 'timeline-item';
-                el.innerHTML = 
-                    '<div class="timeline-date">' + (item.file.date || '') + '</div>' +
-                    '<div class="timeline-card">' +
-                        '<div class="timeline-title">' + (item.file.name || 'Tidbit') + '</div>' +
-                        '<div class="timeline-desc">' + item.founder.founder + ' Â· ' + item.founder.name + '</div>' +
-                    '</div>';
+                el.innerHTML = '<div class="timeline-date">' + (item.date || '') + '</div><div class="timeline-card"><div class="timeline-title">' + (item.name || 'Tidbit') + '</div><div class="timeline-desc">' + item.founder + ' - ' + item.startup + '</div></div>';
                 container.appendChild(el);
             });
         }
@@ -1865,56 +1044,26 @@
         function renderPrograms() {
             const container = document.getElementById('programs-view');
             container.innerHTML = '';
-            
-            const programs = {
-                'inflight-spring-26': { name: 'Inflight Spring 26', status: 'active' },
-                'bootcamp-spring-26': { name: 'Bootcamp Spring 26', status: 'inactive' },
-                'community-spring-26': { name: 'Community Spring 26', status: 'active' }
-            };
-            
-            Object.entries(programs).forEach(([key, prog]) => {
+            const programs = { 'inflight-spring-26': 'Inflight', 'bootcamp-spring-26': 'Bootcamp', 'community-spring-26': 'Community' };
+            Object.entries(programs).forEach(([key, name]) => {
                 const section = document.createElement('div');
                 section.style.marginBottom = '2rem';
-                
                 const programFounders = founders.filter(f => f.program === key);
-                section.innerHTML = '<h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">' +
-                    prog.name + ' ' +
-                    '<span style="font-size: 0.875rem; background: var(--bg-glass); padding: 0.25rem 0.75rem; border-radius: 20px; color: var(--text-secondary);">' +
-                    programFounders.length + ' founders</span></h3>';
-                
+                section.innerHTML = '<h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem;">' + name + ' <span style="font-size: 0.875rem; background: var(--bg-glass); padding: 0.25rem 0.75rem; border-radius: 20px; color: var(--text-secondary);">' + programFounders.length + ' founders</span></h3>';
                 const grid = document.createElement('div');
                 grid.className = 'cards-grid';
-                
                 programFounders.forEach(f => {
                     const card = document.createElement('div');
                     card.className = 'founder-card';
                     card.onclick = () => openFounderModal(f);
-                    
                     let squares = '';
                     f.files.slice(0, 8).forEach(file => {
-                        squares += '<a href="' + baseUrl + file.path + '" target="_blank" class="tidbit-square" onclick="event.stopPropagation()">' +
-                            '<span class="tidbit-icon">ðŸ“„</span>' +
-                            '<span class="tidbit-date">' + (file.date || '').slice(5) + '</span>' +
-                        '</a>';
+                        squares += '<a href="' + baseUrl + file.path + '" target="_blank" class="tidbit-square" onclick="event.stopPropagation()"><span>' + (file.date || '').slice(5) + '</span></a>';
                     });
-                    if (f.files.length > 8) {
-                        squares += '<div class="tidbit-square tidbit-more">+' + (f.files.length - 8) + '</div>';
-                    }
-                    
-                    card.innerHTML = 
-                        '<div class="founder-header">' +
-                            '<div class="founder-info">' +
-                                '<div class="founder-avatar">ðŸ‘¤</div>' +
-                                '<div class="founder-name">' + f.founder + '</div>' +
-                                '<div class="founder-startup">' + f.name + '</div>' +
-                            '</div>' +
-                            '<span class="status-badge status-' + f.status + '">' + f.status + '</span>' +
-                        '</div>' +
-                        '<div class="tidbit-grid">' + squares + '</div>';
-                    
+                    if (f.files.length > 8) squares += '<div class="tidbit-square tidbit-more">+' + (f.files.length - 8) + '</div>';
+                    card.innerHTML = '<div class="founder-header"><div class="founder-info"><div class="founder-avatar">' + f.founder.charAt(0) + '</div><div class="founder-name">' + f.founder + '</div><div class="founder-startup">' + f.name + '</div></div><span class="status-badge status-' + f.status + '">' + f.status + '</span></div><div class="tidbit-grid">' + squares + '</div>';
                     grid.appendChild(card);
                 });
-                
                 section.appendChild(grid);
                 container.appendChild(section);
             });
@@ -1922,30 +1071,15 @@
         
         function openFounderModal(founder) {
             document.getElementById('modal-title').textContent = founder.founder;
-            document.getElementById('modal-subtitle').textContent = 
-                founder.name + ' | ' + founder.program + ' | ' + founder.count + ' tidbits';
-            
+            document.getElementById('modal-subtitle').textContent = founder.name + ' | ' + founder.program + ' | ' + founder.count + ' tidbits';
             const container = document.getElementById('modal-tidbits');
             container.innerHTML = '';
-            
             founder.files.forEach(file => {
                 const card = document.createElement('div');
                 card.className = 'detail-card';
-                card.innerHTML = 
-                    '<div class="detail-preview">ðŸ“„</div>' +
-                    '<div class="detail-content">' +
-                        '<div class="detail-title">' + (file.name || 'Tidbit') + '</div>' +
-                        '<div class="detail-date">' + (file.date || '') + '</div>' +
-                        '<div class="detail-summary">' + (file.summary || 'Agent-generated tidbit') + '</div>' +
-                        '<div class="detail-actions">' +
-                            '<a href="' + baseUrl + file.path + '" target="_blank" class="btn-sm btn-accent">Open</a>' +
-                            '<button class="btn-sm btn-ghost" onclick="copyLink(\'' + baseUrl + file.path + '\')">Copy</button>' +
-                            '<button class="btn-sm btn-ghost" onclick="shareLink(\'' + baseUrl + file.path + '\', \'' + (file.name || 'Tidbit') + '\')">Share</button>' +
-                        '</div>' +
-                    '</div>';
+                card.innerHTML = '<div class="detail-preview">T</div><div class="detail-content"><div class="detail-title">' + (file.name || 'Tidbit') + '</div><div class="detail-date">' + (file.date || '') + '</div><div class="detail-summary">' + (file.summary || 'Agent-generated tidbit') + '</div><div class="detail-actions"><a href="' + baseUrl + file.path + '" target="_blank" class="btn-sm btn-accent">Open</a><button class="btn-sm btn-ghost" onclick="copyLink(\'' + baseUrl + file.path + '\')">Copy</button></div></div>';
                 container.appendChild(card);
             });
-            
             document.getElementById('founder-modal').classList.add('show');
             document.body.style.overflow = 'hidden';
         }
@@ -1956,22 +1090,8 @@
             document.getElementById('founder-select').value = 'all';
         }
         
-        function closeModal(event) {
-            if (event.target.id === 'founder-modal') closeFounderModal();
-        }
-        
-        function copyLink(url) {
-            navigator.clipboard.writeText(url).then(() => showToast('Link copied!'));
-        }
-        
-        function shareLink(url, title) {
-            if (navigator.share) {
-                navigator.share({ title: title, url: url });
-            } else {
-                copyLink(url);
-            }
-        }
-        
+        function closeModal(event) { if (event.target.id === 'founder-modal') closeFounderModal(); }
+        function copyLink(url) { navigator.clipboard.writeText(url).then(() => showToast('Link copied!')); }
         function showToast(message) {
             const toast = document.getElementById('toast');
             toast.textContent = message;
@@ -1982,16 +1102,19 @@
         function switchTab(tabName) {
             document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
             document.querySelector('[data-tab="' + tabName + '"]').classList.add('active');
-            
             document.getElementById('founders-view').classList.toggle('hidden', tabName !== 'founders');
             document.getElementById('timeline-view').classList.toggle('hidden', tabName !== 'timeline');
             document.getElementById('programs-view').classList.toggle('hidden', tabName !== 'programs');
             document.getElementById('admin-view').classList.toggle('hidden', tabName !== 'admin');
-            
             if (tabName === 'admin') renderAdminPanel();
         }
         
-        // Admin Panel Functions
+        function applyFilters() {
+            const program = document.getElementById('program-filter').value;
+            const search = document.getElementById('search').value;
+            renderFounders({ program: program, search: search });
+        }
+        
         function renderAdminPanel() {
             renderEngagementStats();
             renderInactiveFounders();
@@ -2001,28 +1124,16 @@
         function renderEngagementStats() {
             const container = document.getElementById('engagement-stats');
             const maxFiles = Math.max(...founders.map(f => f.count));
-            
             container.innerHTML = founders.slice(0, 12).map(f => {
                 const percent = Math.round((f.count / maxFiles) * 100);
-                return '<div class="engagement-card">' +
-                    '<div class="engagement-name">' + f.founder + '</div>' +
-                    '<div class="engagement-stats">' + f.count + ' tidbits · ' + f.name + '</div>' +
-                    '<div class="engagement-bar"><div class="engagement-fill" style="width: ' + percent + '%"></div></div>' +
-                '</div>';
+                return '<div class="engagement-card"><div class="engagement-name">' + f.founder + '</div><div class="engagement-stats">' + f.count + ' tidbits - ' + f.name + '</div><div class="engagement-bar"><div class="engagement-fill" style="width: ' + percent + '%"></div></div></div>';
             }).join('');
         }
         
         function renderInactiveFounders() {
             const container = document.getElementById('inactive-founders');
             const inactive = founders.filter(f => f.status === 'inactive').sort((a, b) => a.lastUpdate.localeCompare(b.lastUpdate));
-            
-            container.innerHTML = inactive.map(f => 
-                '<div class="inactive-item">' +
-                    '<div><div class="inactive-name">' + f.founder + '</div>' +
-                    '<div class="inactive-since">' + f.name + ' · Last update: ' + f.lastUpdate + '</div></div>' +
-                    '<button class="btn-sm btn-ghost" onclick="openFounderModal(founders.find(x => x.startup === \'' + f.startup + '\' && x.founder === \'' + f.founder + '\'))">View</button>' +
-                '</div>'
-            ).join('');
+            container.innerHTML = inactive.map(f => '<div class="inactive-item"><div><div class="inactive-name">' + f.founder + '</div><div class="inactive-since">' + f.name + ' - Last: ' + f.lastUpdate + '</div></div></div>').join('');
         }
         
         function renderRecentActivity() {
@@ -2030,13 +1141,7 @@
             const allFiles = [];
             founders.forEach(f => f.files.forEach(file => allFiles.push({ ...file, founder: f.founder, startup: f.name })));
             const recent = allFiles.sort((a, b) => b.date.localeCompare(a.date)).slice(0, 10);
-            
-            container.innerHTML = recent.map(f => 
-                '<div class="activity-item">' +
-                    '<div>' + f.founder + ' · <strong>' + (f.name || 'Tidbit') + '</strong></div>' +
-                    '<div class="activity-date">' + f.date + '</div>' +
-                '</div>'
-            ).join('');
+            container.innerHTML = recent.map(f => '<div class="activity-item"><div>' + f.founder + ' - <strong>' + (f.name || 'Tidbit') + '</strong></div><div style="font-size: 0.75rem; color: var(--text-muted);">' + f.date + '</div></div>').join('');
         }
         
         function exportAllData() {
@@ -2045,59 +1150,38 @@
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = 'tidbits-export-' + new Date().toISOString().slice(0, 10) + '.json';
+            a.download = 'tidbits-export.json';
             a.click();
             showToast('Data exported!');
         }
         
         function exportCSV() {
-            let csv = 'Founder,Startup,Program,Status,Last Update,File Count\\n';
-            founders.forEach(f => {
-                csv += '"' + f.founder + '","' + f.name + '","' + f.program + '","' + f.status + '","' + f.lastUpdate + '",' + f.count + '\\n';
-            });
+            let csv = 'Founder,Startup,Program,Status,Last Update,File Count\n';
+            founders.forEach(f => { csv += '"' + f.founder + '","' + f.name + '","' + f.program + '","' + f.status + '","' + f.lastUpdate + '",' + f.count + '\n'; });
             const blob = new Blob([csv], { type: 'text/csv' });
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = 'tidbits-export-' + new Date().toISOString().slice(0, 10) + '.csv';
+            a.download = 'tidbits-export.csv';
             a.click();
             showToast('CSV exported!');
         }
         
         function copyAllLinks() {
             const links = founders.flatMap(f => f.files.map(file => baseUrl + file.path));
-            navigator.clipboard.writeText(links.join('\\n')).then(() => showToast('All ' + links.length + ' links copied!'));
+            navigator.clipboard.writeText(links.join('\n')).then(() => showToast('All ' + links.length + ' links copied!'));
         }
         
         function generateReport() {
             const active = founders.filter(f => f.status === 'active').length;
             const inactive = founders.filter(f => f.status === 'inactive').length;
             const totalFiles = founders.reduce((sum, f) => sum + f.count, 0);
-            const report = 'LaunchMate Tidbits Report\\n' +
-                'Generated: ' + new Date().toLocaleDateString() + '\\n\\n' +
-                'SUMMARY\\n' +
-                'Active Founders: ' + active + '\\n' +
-                'Inactive Founders: ' + inactive + '\\n' +
-                'Total Tidbits: ' + totalFiles + '\\n\\n' +
-                'NEEDS FOLLOW-UP\\n' +
-                founders.filter(f => f.status === 'inactive').map(f => '- ' + f.founder + ' (' + f.name + ') - ' + f.lastUpdate).join('\\n');
-            
-            navigator.clipboard.writeText(report).then(() => showToast('Report copied to clipboard!'));
+            const report = 'LaunchMate Tidbits Report\nGenerated: ' + new Date().toLocaleDateString() + '\n\nSUMMARY\nActive Founders: ' + active + '\nInactive Founders: ' + inactive + '\nTotal Tidbits: ' + totalFiles + '\n\nNEEDS FOLLOW-UP\n' + founders.filter(f => f.status === 'inactive').map(f => '- ' + f.founder + ' (' + f.name + ') - ' + f.lastUpdate).join('\n');
+            navigator.clipboard.writeText(report).then(() => showToast('Report copied!'));
         }
         
-        function applyFilters() {
-            const program = document.getElementById('program-filter').value;
-            const search = document.getElementById('search').value;
-            renderFounders({ program: program, search: search });
-        }
-        
-        document.addEventListener('keydown', e => {
-            if (e.key === 'Escape') closeFounderModal();
-        });
-        
-        // Init
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeFounderModal(); });
         loadData();
     </script>
 </body>
 </html>
-
