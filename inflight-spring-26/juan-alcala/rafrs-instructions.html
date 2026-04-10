@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RAFRS - Quick Repair Instructions</title>
+  <style>
+    @page {
+      size: letter;
+      margin: 0.5in;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 11pt;
+      line-height: 1.4;
+      color: #1a1a1a;
+      background: white;
+    }
+    
+    .page {
+      width: 8.5in;
+      height: 11in;
+      padding: 0.5in;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    /* HEADER */
+    .header {
+      text-align: center;
+      border-bottom: 3px solid #1a1a1a;
+      padding-bottom: 12px;
+      margin-bottom: 16px;
+    }
+    
+    .brand {
+      font-size: 28pt;
+      font-weight: 800;
+      letter-spacing: 4px;
+      margin-bottom: 4px;
+    }
+    
+    .tagline {
+      font-size: 10pt;
+      color: #666;
+      font-weight: 500;
+    }
+    
+    /* MAIN CONTENT */
+    .main {
+      display: flex;
+      gap: 24px;
+      flex: 1;
+    }
+    
+    /* STEPS COLUMN */
+    .steps-column {
+      flex: 2;
+    }
+    
+    .section-title {
+      font-size: 14pt;
+      font-weight: 700;
+      margin-bottom: 12px;
+      padding-bottom: 6px;
+      border-bottom: 2px solid #e5e5e5;
+    }
+    
+    .step {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 14px;
+      align-items: flex-start;
+    }
+    
+    .step-number {
+      width: 28px;
+      height: 28px;
+      background: #1a1a1a;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 12pt;
+      flex-shrink: 0;
+    }
+    
+    .step-content {
+      flex: 1;
+    }
+    
+    .step-title {
+      font-weight: 700;
+      font-size: 11pt;
+      margin-bottom: 2px;
+    }
+    
+    .step-desc {
+      font-size: 10pt;
+      color: #444;
+    }
+    
+    /* TIPS BOX */
+    .tips-box {
+      background: #f5f5f5;
+      border-left: 3px solid #f97316;
+      padding: 10px 12px;
+      margin-top: 16px;
+    }
+    
+    .tips-title {
+      font-weight: 700;
+      font-size: 10pt;
+      margin-bottom: 6px;
+      color: #f97316;
+    }
+    
+    .tips-list {
+      font-size: 9pt;
+      color: #555;
+      padding-left: 14px;
+    }
+    
+    .tips-list li {
+      margin-bottom: 3px;
+    }
+    
+    /* SIDEBAR */
+    .sidebar {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    
+    /* QR BOXES */
+    .qr-box {
+      background: #fafafa;
+      border: 1px solid #ddd;
+      padding: 12px;
+      text-align: center;
+    }
+    
+    .qr-placeholder {
+      width: 80px;
+      height: 80px;
+      background: white;
+      border: 2px dashed #ccc;
+      margin: 0 auto 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 8pt;
+      color: #999;
+    }
+    
+    .qr-label {
+      font-size: 9pt;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+    
+    .qr-desc {
+      font-size: 8pt;
+      color: #666;
+    }
+    
+    /* KIT CONTENTS */
+    .contents-box {
+      background: #f9f9f9;
+      border: 1px solid #e5e5e5;
+      padding: 10px 12px;
+    }
+    
+    .contents-list {
+      font-size: 9pt;
+      padding-left: 16px;
+      color: #444;
+    }
+    
+    .contents-list li {
+      margin-bottom: 2px;
+    }
+    
+    /* CURE TIME BOX */
+    .cure-box {
+      background: #1a1a1a;
+      color: white;
+      padding: 12px;
+      text-align: center;
+    }
+    
+    .cure-title {
+      font-size: 8pt;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      opacity: 0.7;
+      margin-bottom: 4px;
+    }
+    
+    .cure-time {
+      font-size: 20pt;
+      font-weight: 800;
+    }
+    
+    .cure-note {
+      font-size: 8pt;
+      opacity: 0.7;
+    }
+    
+    /* FOOTER */
+    .footer {
+      border-top: 1px solid #e5e5e5;
+      padding-top: 10px;
+      margin-top: auto;
+      display: flex;
+      justify-content: space-between;
+      font-size: 8pt;
+      color: #888;
+    }
+    
+    /* PRINT STYLES */
+    @media print {
+      body {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    
+    <!-- HEADER -->
+    <div class="header">
+      <div class="brand">RAFRS</div>
+      <div class="tagline">Emergency Metal Repair Kit — No Welding Required</div>
+    </div>
+    
+    <!-- MAIN CONTENT -->
+    <div class="main">
+      
+      <!-- STEPS COLUMN -->
+      <div class="steps-column">
+        <div class="section-title">Quick Repair Steps</div>
+        
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <div class="step-title">Clean & Prep Surface</div>
+            <div class="step-desc">Remove loose debris. Sand the repair area until shiny. Wipe clean with dry cloth.</div>
+          </div>
+        </div>
+        
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <div class="step-title">Mix Resin</div>
+            <div class="step-desc">Combine Part A and Part B in equal amounts. Stir thoroughly for 30 seconds.</div>
+          </div>
+        </div>
+        
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <div class="step-title">Apply Resin to Surface</div>
+            <div class="step-desc">Brush a thin layer onto the repair area. Work it into any cracks or gaps.</div>
+          </div>
+        </div>
+        
+        <div class="step">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <div class="step-title">Wrap with Carbon Fiber</div>
+            <div class="step-desc">Apply carbon fiber cloth over wet resin. Overlap edges by 1 inch. Saturate with more resin.</div>
+          </div>
+        </div>
+        
+        <div class="step">
+          <div class="step-number">5</div>
+          <div class="step-content">
+            <div class="step-title">Wrap with Shrink Tape</div>
+            <div class="step-desc">Spiral wrap tightly with shrink tape. This compresses the repair and removes air bubbles.</div>
+          </div>
+        </div>
+        
+        <div class="step">
+          <div class="step-number">6</div>
+          <div class="step-content">
+            <div class="step-title">Let Cure</div>
+            <div class="step-desc">Leave undisturbed for 8 hours. Remove tape. Sand smooth if needed. You're back in action.</div>
+          </div>
+        </div>
+        
+        <!-- TIPS BOX -->
+        <div class="tips-box">
+          <div class="tips-title">⚠️ PRO TIPS</div>
+          <ul class="tips-list">
+            <li>Surface prep is everything — the shinier, the better</li>
+            <li>Work fast once resin is mixed (you have ~15 min working time)</li>
+            <li>Wrap tighter than you think — compression = strength</li>
+            <li>If it's cold, cure time will be longer</li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- SIDEBAR -->
+      <div class="sidebar">
+        
+        <!-- CURE TIME -->
+        <div class="cure-box">
+          <div class="cure-title">Full Cure Time</div>
+          <div class="cure-time">8 hrs</div>
+          <div class="cure-note">at 70°F (21°C)</div>
+        </div>
+        
+        <!-- QR: VIDEO -->
+        <div class="qr-box">
+          <div class="qr-placeholder">QR CODE</div>
+          <div class="qr-label">Watch Video Tutorial</div>
+          <div class="qr-desc">Step-by-step demonstration</div>
+        </div>
+        
+        <!-- QR: REORDER -->
+        <div class="qr-box">
+          <div class="qr-placeholder">QR CODE</div>
+          <div class="qr-label">Reorder Supplies</div>
+          <div class="qr-desc">Get refills or new kits</div>
+        </div>
+        
+        <!-- KIT CONTENTS -->
+        <div class="contents-box">
+          <div class="section-title" style="font-size: 10pt; margin-bottom: 8px;">Kit Contents</div>
+          <ul class="contents-list">
+            <li>Carbon fiber cloth roll</li>
+            <li>Epoxy resin (Part A & B)</li>
+            <li>Shrink tape</li>
+            <li>Flash tape</li>
+            <li>Sandpaper (various grits)</li>
+            <li>Disposable gloves</li>
+            <li>Application brush</li>
+            <li>Scissors</li>
+          </ul>
+        </div>
+        
+      </div>
+      
+    </div>
+    
+    <!-- FOOTER -->
+    <div class="footer">
+      <div>RAFRS — Emergency Metal Repair Kit</div>
+      <div>Questions? Contact: [your contact info]</div>
+    </div>
+    
+  </div>
+</body>
+</html>
