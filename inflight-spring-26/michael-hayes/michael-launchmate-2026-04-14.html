@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="tidbit-type" content="team">
+    <meta name="tidbit-subject" content="Michael Hayes">
+    <meta name="tidbit-company" content="LaunchMate">
+    <meta name="tidbit-date" content="2026-04-14">
+    <meta name="tidbit-agent-id" content="agent-a72dbb02-e690-4c7b-be19-b00c6758d817">
+    <title>Discord Remote: Two-Way Chat Interface</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0f0f0f;
+            color: #e5e5e5;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            scroll-snap-type: y mandatory;
+            overflow-y: scroll;
+            height: 100vh;
+        }
+        
+        .page {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+        }
+        
+        .content {
+            max-width: 800px;
+            width: 100%;
+            background: #1a1a1a;
+            border-radius: 12px;
+            padding: 3rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+        
+        .page-number {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+        
+        .scroll-hint {
+            position: absolute;
+            bottom: 4rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.875rem;
+            color: #6b7280;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        h2 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #60a5fa;
+        }
+        
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        p {
+            font-size: 1.125rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            color: #d1d5db;
+        }
+        
+        .highlight {
+            color: #60a5fa;
+            font-weight: 600;
+        }
+        
+        .success {
+            color: #34d399;
+            font-weight: 600;
+        }
+        
+        .tension {
+            color: #f97316;
+            font-weight: 600;
+        }
+        
+        ul {
+            margin: 1.5rem 0;
+            padding-left: 1.5rem;
+        }
+        
+        li {
+            font-size: 1.125rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+            color: #d1d5db;
+        }
+        
+        .quote {
+            border-left: 4px solid #60a5fa;
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            font-style: italic;
+            color: #9ca3af;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Page 1: Cover -->
+        <div class="page">
+            <div class="content">
+                <div class="label">LaunchMate Development</div>
+                <h1>Discord Remote: Two-Way Chat Interface</h1>
+                <p style="font-size: 1.25rem; color: #9ca3af; margin-top: 2rem;">
+                    From one-way notifications to a full alternative interface — LaunchMate now meets founders where they already collaborate.
+                </p>
+                <div class="label" style="margin-top: 3rem;">Michael Hayes • April 14, 2026</div>
+            </div>
+            <div class="scroll-hint">scroll to continue ↓</div>
+            <div class="page-number">1/5</div>
+        </div>
+
+        <!-- Page 2: Context -->
+        <div class="page">
+            <div class="content">
+                <h2>The Foundation Was In Place</h2>
+                <p>
+                    By mid-April, we had shipped <span class="highlight">autonomous execution infrastructure</span>: Agent Pokes, message queues, and Discord notifications for completed work.
+                </p>
+                <p>
+                    Founders would receive a notification in Discord when their agent finished a tidbit, mentor sync prep, or research task. Clean. Reliable. Worked as designed.
+                </p>
+                <p>
+                    But there was a <span class="tension">gap</span> I kept noticing.
+                </p>
+            </div>
+            <div class="page-number">2/5</div>
+        </div>
+
+        <!-- Page 3: The Realization -->
+        <div class="page">
+            <div class="content">
+                <h2>Notifications Aren't Conversations</h2>
+                <p>
+                    The notification would land: <em>"Your agent just finished your weekly tidbit."</em>
+                </p>
+                <p>
+                    Great — but if the founder wanted to ask a follow-up question, give feedback, or just say "thanks, but can you adjust X?" they had to:
+                </p>
+                <ul>
+                    <li>Leave Discord</li>
+                    <li>Open LaunchMate web app</li>
+                    <li>Navigate to the right agent</li>
+                    <li>Start typing</li>
+                </ul>
+                <p>
+                    We'd solved <span class="highlight">discovery</span> (founders see the work), but not <span class="tension">engagement</span> (founders respond to the work).
+                </p>
+                <p>
+                    The agent was <em>visible</em> but not <em>accessible</em>.
+                </p>
+            </div>
+            <div class="page-number">3/5</div>
+        </div>
+
+        <!-- Page 4: The Trade-Off -->
+        <div class="page">
+            <div class="content">
+                <h2>Build Mobile vs Leverage Discord</h2>
+                <p>
+                    Two paths forward:
+                </p>
+                <p>
+                    <span class="tension">Option 1: Build a mobile app.</span> Native iOS/Android, full-featured, polished. Timeline: weeks. Risk: adoption friction (another app to download).
+                </p>
+                <p>
+                    <span class="success">Option 2: Make Discord two-way.</span> Founders already have Discord on their phones. They're already in the ZIP workspace. Just route their messages to the Letta agent. Timeline: hours.
+                </p>
+                <p>
+                    The decision was obvious. Discord wasn't just a <span class="highlight">notification channel</span> — it could become a <span class="highlight">full interface</span>.
+                </p>
+                <div class="quote">
+                    "Meet founders where they already have attention."
+                </div>
+            </div>
+            <div class="page-number">4/5</div>
+        </div>
+
+        <!-- Page 5: What Shipped -->
+        <div class="page">
+            <div class="content">
+                <h2>Discord Remote Is Live</h2>
+                <p>
+                    <span class="success">Outbound:</span> Agent completes a poke → message queue → Discord notification (same as before).
+                </p>
+                <p>
+                    <span class="success">Inbound (new):</span> Founder sends message in Discord → Letta agent processes it → same conversation history as web app.
+                </p>
+                <p>
+                    Now Discord is LaunchMate's <span class="highlight">second client</span>. Founders can switch between web and Discord mid-conversation without losing context.
+                </p>
+                <p>
+                    <strong>Strategic impact:</strong>
+                </p>
+                <ul>
+                    <li><span class="success">F1 Trust:</span> Lower friction — no separate app to open</li>
+                    <li><span class="success">Mobile-first by default:</span> Discord's mobile app just works</li>
+                    <li><span class="success">Discovery solved:</span> Agents visible in existing workspace</li>
+                </ul>
+                <p style="margin-top: 2rem;">
+                    Early testers: Craig (product), Laura (technical), Nitin (founder usage). Watching for adoption patterns, context preservation, and notification UX.
+                </p>
+            </div>
+            <div class="page-number">5/5</div>
+        </div>
+    </div>
+
+    <script>
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            const pages = document.querySelectorAll('.page');
+            const currentPage = Math.round(document.querySelector('.container').scrollTop / window.innerHeight);
+            
+            if (e.key === 'ArrowDown' && currentPage < pages.length - 1) {
+                pages[currentPage + 1].scrollIntoView({ behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' && currentPage > 0) {
+                pages[currentPage - 1].scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
