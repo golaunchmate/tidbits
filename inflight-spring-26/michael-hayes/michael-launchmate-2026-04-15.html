@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Validation Gap</title>
+    <meta name="tidbit-type" content="team">
+    <meta name="tidbit-subject" content="Michael Hayes">
+    <meta name="tidbit-company" content="LaunchMate">
+    <meta name="tidbit-date" content="2026-04-15">
+    <meta name="tidbit-agent-id" content="agent-a72dbb02-e690-4c7b-be19-b00c6758d817">
+    <meta name="tidbit-period" content="2026-W16">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body {
+            background: #0f0f0f;
+            color: #e5e5e5;
+            font-family: 'Inter', sans-serif;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+        }
+        .page {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 3rem 2rem;
+            position: relative;
+        }
+        .page-inner {
+            max-width: 680px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        .page-number {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+        }
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #6b7280;
+            margin-bottom: 1rem;
+        }
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+            color: #f5f5f5;
+        }
+        h2 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 1.25rem;
+            color: #f5f5f5;
+        }
+        p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #d4d4d4;
+            margin-bottom: 1rem;
+        }
+        .highlight { color: #60a5fa; font-weight: 500; }
+        .tension { color: #f97316; font-weight: 500; }
+        .decision { color: #34d399; font-weight: 500; }
+        .card {
+            background: #1a1a1a;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .card-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #6b7280;
+            margin-bottom: 0.75rem;
+        }
+        .metric {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #2a2a2a;
+        }
+        .metric:last-child { border-bottom: none; }
+        .metric-label { color: #a3a3a3; font-size: 0.9rem; }
+        .metric-value { font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; }
+        .scroll-hint {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            color: #6b7280;
+            font-size: 0.75rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(8px); }
+        }
+        .timeline {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #2a2a2a;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 1.25rem;
+            padding-left: 0.5rem;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 0.5rem;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #f97316;
+            transform: translateX(-3px);
+        }
+        .timeline-item.resolved::before { background: #34d399; }
+        .timeline-date {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: #6b7280;
+            margin-bottom: 0.25rem;
+        }
+        .timeline-text { font-size: 0.95rem; color: #d4d4d4; line-height: 1.5; }
+        .quote {
+            border-left: 3px solid #f97316;
+            padding-left: 1rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: #a3a3a3;
+        }
+        ul { list-style: none; padding: 0; margin: 1rem 0; }
+        li {
+            padding: 0.5rem 0;
+            padding-left: 1.25rem;
+            position: relative;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #d4d4d4;
+        }
+        li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #60a5fa;
+        }
+    </style>
+</head>
+<body>
+    <!-- Page 1: Cover -->
+    <div class="page">
+        <div class="page-inner">
+            <div class="label">Week 16 — April 15, 2026</div>
+            <h1>The Validation Gap</h1>
+            <p>Shipping fast vs. knowing what works.</p>
+            <p style="margin-top: 2rem; color: #6b7280; font-size: 0.9rem;">A story about building features no one asked you to validate — and the uncomfortable question that changes everything.</p>
+        </div>
+        <div class="page-number">1/5</div>
+        <div class="scroll-hint">scroll ↓</div>
+    </div>
+
+    <!-- Page 2: The Setup — Feature Velocity -->
+    <div class="page">
+        <div class="page-inner">
+            <div class="label">Context</div>
+            <h2>The shipping streak</h2>
+            <p>Look at the last three weeks:</p>
+            <div class="card">
+                <div class="timeline">
+                    <div class="timeline-item resolved">
+                        <div class="timeline-date">March 25</div>
+                        <div class="timeline-text">Agent Pokes — autonomous execution with effort visibility</div>
+                    </div>
+                    <div class="timeline-item resolved">
+                        <div class="timeline-date">April 1</div>
+                        <div class="timeline-text">Non-blocking message queue — Supabase over Redis, ship today</div>
+                    </div>
+                    <div class="timeline-item resolved">
+                        <div class="timeline-date">April 13</div>
+                        <div class="timeline-text">Discord notifications — meet founders where they have attention</div>
+                    </div>
+                    <div class="timeline-item resolved">
+                        <div class="timeline-date">April 14</div>
+                        <div class="timeline-text">Discord Remote — full two-way chat, LaunchMate's second client</div>
+                    </div>
+                </div>
+            </div>
+            <p>Four features in three weeks. <span class="highlight">That's real velocity.</span> Each one well-reasoned, each one documented in a tidy tidbit.</p>
+            <p>But here's the thing I didn't want to look at:</p>
+            <div class="quote">Zero of those decisions were validated by founder behavior.</div>
+        </div>
+        <div class="page-number">2/5</div>
+    </div>
+
+    <!-- Page 3: The Realization -->
+    <div class="page">
+        <div class="page-inner">
+            <div class="label">The realization</div>
+            <h2>Building in a vacuum</h2>
+            <p>My weekly product strategy check-in hit different this time. The audit came back empty:</p>
+            <div class="card">
+                <ul>
+                    <li>No Discord vs. web app usage split</li>
+                    <li>No early tester feedback quotes</li>
+                    <li>No founder response time data</li>
+                    <li>No evidence Discord solved the discovery problem</li>
+                </ul>
+            </div>
+            <p>The tidbits I'd been writing? <span class="tension">They documented my reasoning, not my results.</span> Beautiful decision journals. Useless for knowing if the decisions were right.</p>
+            <p>Here's the uncomfortable pattern: I was treating each feature like a solved problem the moment I shipped it. But shipping isn't solving. <span class="tension">Solving is when a founder's behavior changes.</span></p>
+            <p>And I had zero data on whether any founder's behavior had changed.</p>
+        </div>
+        <div class="page-number">3/5</div>
+    </div>
+
+    <!-- Page 4: The Trade-off -->
+    <div class="page">
+        <div class="page-inner">
+            <div class="label">The trade-off</div>
+            <h2>Velocity vs. truth</h2>
+            <p>There's a real tension here and I want to name it honestly:</p>
+            <div class="card">
+                <div class="metric">
+                    <span class="metric-label">Ship fast, iterate</span>
+                    <span class="metric-value highlight">→ Get something out, learn from usage</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Validate before building</span>
+                    <span class="metric-value tension">→ Slower, but you build the right thing</span>
+                </div>
+            </div>
+            <p>I'd been optimizing for the first column. And the argument for it is real — I'm leaving in May, the clock is ticking, and deployed software beats perfect software.</p>
+            <p>But the check-in forced a hard question: <span class="tension">What if I'm just really good at building the wrong things fast?</span></p>
+            <p>The whole point of Discord Remote was to solve F1 — founder trust through lower friction. But if no founder has actually used it to chat with their agent... I didn't solve F1. I just built infrastructure that <em>could</em> solve F1.</p>
+            <p><span class="decision">The gap isn't technical. It's observational.</span></p>
+        </div>
+        <div class="page-number">4/5</div>
+    </div>
+
+    <!-- Page 5: Decision + Kill Threshold -->
+    <div class="page">
+        <div class="page-inner">
+            <div class="label">What changes now</div>
+            <h2>Kill thresholds</h2>
+            <p>No more shipping without a measurement plan. Every feature from here gets a <span class="decision">kill threshold</span> — a specific metric that, if it doesn't hit by a specific date, means we stop investing.</p>
+            <div class="card">
+                <div class="card-label">Discord Remote kill threshold</div>
+                <p style="margin-bottom: 0.5rem;"><span class="highlight">Metric:</span> Founder messages sent via Discord (not notifications received — actual two-way usage)</p>
+                <p style="margin-bottom: 0.5rem;"><span class="tension">Threshold:</span> &lt; 10 founder messages by April 22</p>
+                <p style="margin-bottom: 0;"><span class="decision">Action:</span> Kill or pivot hard — the discovery thesis is wrong</p>
+            </div>
+            <p>Three founder interviews this week: one engaged, one hesitant, one ghost. The question I need answered isn't "do you like Discord?" — it's <span class="highlight">"when you got that notification, what did you actually do?"</span></p>
+            <p>And the question I'm sitting with: <em>What metric would make me kill the thing I just built?</em> If I can't answer that, I'm not building a product. I'm building a portfolio.</p>
+        </div>
+        <div class="page-number">5/5</div>
+    </div>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            const pages = document.querySelectorAll('.page');
+            const currentPage = Math.round(window.scrollY / window.innerHeight);
+            if (e.key === 'ArrowDown' && currentPage < pages.length - 1) {
+                pages[currentPage + 1].scrollIntoView({ behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' && currentPage > 0) {
+                pages[currentPage - 1].scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
