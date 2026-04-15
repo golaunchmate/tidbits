@@ -5,7 +5,7 @@
 $tidbitsPath = "C:\Users\marga\ dashboard data
 # Each founder gets their own card (separate by startup|founder)
 
-$tidbitsPath = "C:\Users\marga\OneDrive\Documents\GitHub\tidbits"
+$tidbitsPath = "C:\Users\marga\OneDrive\Documents\GitHub\golaunchmate\tidbits"
 $dashboardPath = "$tidbitsPath\dashboard"
 $outputJson = "$dashboardPath\data.json"
 
