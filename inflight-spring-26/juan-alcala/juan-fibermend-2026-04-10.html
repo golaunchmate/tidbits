@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="tidbit-type" content="founder">
+  <meta name="tidbit-subject" content="Juan Alcala">
+  <meta name="tidbit-company" content="FiberMend">
+  <meta name="tidbit-date" content="2026-04-10">
+  <meta name="tidbit-period" content="2026-W15">
+  <title>Juan Alcala - FiberMend - April 10, 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, sans-serif; background: #0f0f0f; color: #e5e5e5; line-height: 1.6; }
+    
+    .slide {
+      min-height: 100vh;
+      scroll-snap-align: start;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      position: relative;
+    }
+    
+    .card {
+      max-width: 600px;
+      width: 100%;
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    
+    .cover-card {
+      text-align: center;
+      border: 2px solid #3b82f6;
+    }
+    
+    h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; color: #fff; }
+    h2 { font-size: 1.75rem; font-weight: 600; margin-bottom: 1.5rem; color: #fff; }
+    h3 { font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: #60a5fa; }
+    
+    .subtitle { font-size: 1.25rem; color: #6b7280; margin-bottom: 0.5rem; }
+    .date { font-size: 1rem; color: #6b7280; margin-bottom: 2rem; }
+    .scroll-hint { font-size: 0.875rem; color: #3b82f6; margin-top: 3rem; }
+    
+    .label { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.75rem; }
+    
+    p { margin-bottom: 1rem; color: #d1d5db; }
+    
+    .highlight { color: #60a5fa; }
+    .decision { color: #34d399; }
+    .tension { color: #f97316; }
+    
+    .quote {
+      font-style: italic;
+      color: #9ca3af;
+      border-left: 3px solid #3b82f6;
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+    }
+    
+    .page-number {
+      position: absolute;
+      bottom: 1.5rem;
+      right: 2rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: #4b5563;
+    }
+    
+    ul {
+      list-style: none;
+      margin: 1rem 0;
+    }
+    
+    ul li {
+      padding: 0.5rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+      color: #d1d5db;
+    }
+    
+    ul li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: #3b82f6;
+    }
+    
+    .pitch-box {
+      background: #0f0f0f;
+      border: 1px solid #3b82f6;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    
+    .pitch-box p {
+      margin-bottom: 0.5rem;
+      color: #fff;
+    }
+    
+    .pitch-box .label {
+      color: #60a5fa;
+    }
+    
+    .checklist {
+      background: #0f0f0f;
+      border-radius: 8px;
+      padding: 1rem 1.5rem;
+      margin: 1rem 0;
+    }
+    
+    .checklist li::before {
+      content: "✓";
+      color: #34d399;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SLIDE 1: COVER -->
+  <div class="slide">
+    <div class="card cover-card">
+      <p class="subtitle">FiberMend</p>
+      <h1>Juan Alcala</h1>
+      <p class="date">April 10, 2026</p>
+      <p class="scroll-hint">scroll ↓</p>
+    </div>
+    <div class="page-number">1/5</div>
+  </div>
+
+  <!-- SLIDE 2: WHERE I STARTED -->
+  <div class="slide">
+    <div class="card">
+      <p class="label">Where I Started</p>
+      <h2>Shelter Island Reality Check</h2>
+      <p>Went to talk to repair professionals at the marina. Thought they'd see the value.</p>
+      <p>They liked the concept. But they wouldn't buy.</p>
+      <p class="quote">"This is more expensive for us in the long run. We already have proper methods."</p>
+      <p>But then they said something that <span class="decision">clarified everything</span>:</p>
+      <p class="quote">"For a boater? This would be priceless if it gets them out of a pinch."</p>
+    </div>
+    <div class="page-number">2/5</div>
+  </div>
+
+  <!-- SLIDE 3: WHAT I DISCOVERED -->
+  <div class="slide">
+    <div class="card">
+      <p class="label">What I Discovered</p>
+      <h2>The Pitch Locked In</h2>
+      <p>Shelter Island confirmed what Craig said Feb 20. The customer is the person <span class="tension">stranded offshore</span>, not the guy in the shop.</p>
+      <div class="pitch-box">
+        <p class="label">PROBLEM</p>
+        <p>We help boat owners get home when something breaks offshore.</p>
+        <p class="label" style="margin-top: 1rem;">SOLUTION</p>
+        <p>A carbon-fiber repair kit that bonds to metal in 15 minutes — no welding, no power, no skills required.</p>
+      </div>
+      <p>Two sentences. Done. Now I can say it in any conversation.</p>
+    </div>
+    <div class="page-number">3/5</div>
+  </div>
+
+  <!-- SLIDE 4: THE REAL OPPORTUNITY -->
+  <div class="slide">
+    <div class="card">
+      <p class="label">The Real Opportunity</p>
+      <h2>Product Ready, Brand Fresh</h2>
+      <p><span class="decision">New name:</span> RAFRS is now <span class="highlight">FiberMend</span>. Clean, clear, says what it does.</p>
+      <p><span class="decision">Instruction sheet:</span> Print-ready, 8.5×11. Six steps, pro tips, QR code to Fibermend.com.</p>
+      <ul class="checklist">
+        <li>Brand name locked</li>
+        <li>Pitch locked</li>
+        <li>Customer locked (boat owners, not repair shops)</li>
+        <li>Instruction sheet ready to print</li>
+        <li>QR code pointing to Fibermend.com</li>
+      </ul>
+      <p>Now I can hand someone a complete kit with instructions and say: <span class="highlight">"Scan this, follow the steps."</span></p>
+    </div>
+    <div class="page-number">4/5</div>
+  </div>
+
+  <!-- SLIDE 5: WHERE I'M AT -->
+  <div class="slide">
+    <div class="card">
+      <p class="label">Where I'm At</p>
+      <h2>Get It In Hands</h2>
+      <p>Next moves:</p>
+      <ul>
+        <li>Print instruction sheets, add to kits</li>
+        <li>Coronado Beer Can racing series — racers need emergency repairs</li>
+        <li>Freedom Boat Club members — not the shop, the people on the water</li>
+        <li>Charter captains — livelihood depends on staying operational</li>
+      </ul>
+      <p>The product is real. The pitch is clear. The instructions are printed.</p>
+      <p>Now I need to find the people who are <span class="tension">desperate enough</span> to buy it.</p>
+      <p class="quote">"I thought repair shops were the customer. They're not. The people they rescue are."</p>
+    </div>
+    <div class="page-number">5/5</div>
+  </div>
+
+  <script>
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+        window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+      } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+        window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+      }
+    });
+  </script>
+
+</body>
+</html>
