@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="tidbit-type" content="founder">
+    <meta name="tidbit-subject" content="Gaius Dulay">
+    <meta name="tidbit-company" content="Octopost">
+    <meta name="tidbit-date" content="2026-04-08">
+    <meta name="tidbit-period" content="2026-W15">
+    <title>Gaius Dulay · Octopost · April 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #0f0f0f; color: #e5e5e5; line-height: 1.6; }
+        
+        .slide {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+        }
+        
+        .card {
+            max-width: 600px;
+            width: 100%;
+            padding: 2.5rem;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            background: rgba(20, 20, 20, 0.8);
+        }
+        
+        .page-number {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+        }
+        
+        h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+        h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1.5rem; color: #60a5fa; }
+        h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.75rem; }
+        
+        .subtitle { font-size: 1.1rem; color: #9ca3af; margin-bottom: 2rem; }
+        .label { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; display: block; }
+        
+        .highlight { color: #60a5fa; }
+        .decision { color: #34d399; }
+        .tension { color: #f97316; }
+        
+        .stat-row { display: flex; gap: 2rem; margin: 1.5rem 0; flex-wrap: wrap; }
+        .stat { text-align: center; }
+        .stat-value { font-size: 2rem; font-weight: 700; color: #60a5fa; }
+        .stat-label { font-size: 0.875rem; color: #9ca3af; margin-top: 0.25rem; }
+        
+        ul { list-style: none; margin: 1rem 0; }
+        li { padding: 0.5rem 0; padding-left: 1.5rem; position: relative; }
+        li::before { content: "→"; position: absolute; left: 0; color: #60a5fa; }
+        
+        .quote { font-style: italic; color: #9ca3af; border-left: 3px solid #34d399; padding-left: 1rem; margin-top: 1.5rem; }
+        
+        .scroll-hint {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            color: #6b7280;
+            text-align: center;
+            margin-top: 2rem;
+        }
+        
+        .company { color: #60a5fa; font-weight: 600; }
+    </style>
+</head>
+<body>
+
+    <!-- SLIDE 1: COVER -->
+    <div class="slide">
+        <div class="card">
+            <p class="label">Founder Tidbit</p>
+            <h1>Gaius Dulay</h1>
+            <p class="subtitle"><span class="company">Octopost</span> · AI-powered social media automation</p>
+            <p style="color: #9ca3af; margin-top: 1rem;">April 8, 2026</p>
+            <p class="scroll-hint">↓ scroll</p>
+        </div>
+        <span class="page-number">1 / 5</span>
+    </div>
+
+    <!-- SLIDE 2: WHERE I STARTED -->
+    <div class="slide">
+        <div class="card">
+            <p class="label">Where I Started</p>
+            <h2>Building for the wrong problem</h2>
+            <p>I thought the pain point was <span class="highlight">scheduling posts</span>.</p>
+            <p style="margin-top: 1rem;">Tools like Buffer and Hootsuite already handled that. I figured I'd just add better AI captions and call it a day.</p>
+            <p style="margin-top: 1rem; color: #9ca3af;">But that's not where creators were actually hurting.</p>
+        </div>
+        <span class="page-number">2 / 5</span>
+    </div>
+
+    <!-- SLIDE 3: WHAT I DISCOVERED -->
+    <div class="slide">
+        <div class="card">
+            <p class="label">What I Discovered</p>
+            <h2>Validation came fast</h2>
+            <div class="stat-row">
+                <div class="stat">
+                    <div class="stat-value">30M+</div>
+                    <div class="stat-label">TikTok views</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">8.3M</div>
+                    <div class="stat-label">YouTube views</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">1M+</div>
+                    <div class="stat-label">Instagram views</div>
+                </div>
+            </div>
+            <p>All in <span class="highlight">one summer</span> with a rough prototype.</p>
+            <p style="margin-top: 1rem;">But the real signal: <span class="tension">3 active testers</span> (2 small businesses + 1 creator) kept asking for access. More people wanted in.</p>
+            <p style="margin-top: 1rem;">The gap wasn't scheduling. It was the <span class="decision">entire pipeline</span>.</p>
+        </div>
+        <span class="page-number">3 / 5</span>
+    </div>
+
+    <!-- SLIDE 4: THE REAL OPPORTUNITY -->
+    <div class="slide">
+        <div class="card">
+            <p class="label">The Real Opportunity</p>
+            <h2>No one automates the full pipeline</h2>
+            <ul>
+                <li><span class="tension">Hootsuite ($99-$249/mo)</span> — Expensive. Still manual input.</li>
+                <li><span class="tension">Buffer ($5-$12/mo)</span> — Just scheduling. No AI optimization.</li>
+                <li><span class="tension">Postiz/Blotato</span> — Generic captions. Heavy editing needed.</li>
+            </ul>
+            <p style="margin-top: 1.5rem;"><span class="decision">Octopost is the only tool automating the full end-to-end pipeline:</span></p>
+            <ul>
+                <li>AI caption generation</li>
+                <li>Hashtag research</li>
+                <li>Platform-specific formatting</li>
+                <li>Multi-platform scheduling</li>
+            </ul>
+        </div>
+        <span class="page-number">4 / 5</span>
+    </div>
+
+    <!-- SLIDE 5: WHERE I'M AT -->
+    <div class="slide">
+        <div class="card">
+            <p class="label">Where I'm At</p>
+            <h2>From validation to monetization</h2>
+            <p style="margin-top: 1rem;">I have the traction. Now I need the revenue.</p>
+            <p style="margin-top: 1rem;">Current focus:</p>
+            <ul>
+                <li>Polish UI for <span class="highlight">E-Track kickoff</span></li>
+                <li>Set up <span class="highlight">payment systems</span></li>
+                <li>Onboard more test users</li>
+                <li>Define target persona + <span class="highlight">40+ customer interviews</span></li>
+            </ul>
+            <p style="margin-top: 1rem;"><span class="tension">Risk:</span> Platform API dependency. TikTok/Instagram could restrict access. Need to build moat fast.</p>
+            <p class="quote">"I thought I needed a better scheduler. I actually needed to automate everything."</p>
+        </div>
+        <span class="page-number">5 / 5</span>
+    </div>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            }
+        });
+    </script>
+
+</body>
+</html>
