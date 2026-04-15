@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="tidbit-type" content="founder">
+  <meta name="tidbit-subject" content="Zach Brenner">
+  <meta name="tidbit-company" content="Sonomos">
+  <meta name="tidbit-date" content="2026-04-08">
+  <meta name="tidbit-period" content="2026-W15">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <title>Zach Brenner · Sonomos · April 2026</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, sans-serif; background: #0f0f0f; color: #e5e5e5; line-height: 1.6; }
+    
+    .slide {
+      min-height: 100vh;
+      scroll-snap-align: start;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      position: relative;
+    }
+    
+    .card {
+      max-width: 600px;
+      width: 100%;
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    
+    .label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: #6b7280;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+    }
+    
+    h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+    h2 { font-size: 1.75rem; font-weight: 600; margin-bottom: 1.5rem; }
+    h3 { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.75rem; }
+    
+    .subtitle { color: #6b7280; font-size: 1.125rem; }
+    .date { color: #6b7280; font-size: 0.875rem; margin-top: 0.25rem; }
+    
+    .highlight { color: #60a5fa; }
+    .decision { color: #34d399; }
+    .tension { color: #f97316; }
+    
+    .stat-row {
+      display: flex;
+      gap: 2rem;
+      margin: 1.5rem 0;
+    }
+    
+    .stat {
+      text-align: center;
+    }
+    
+    .stat-value {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #60a5fa;
+    }
+    
+    .stat-label {
+      font-size: 0.75rem;
+      color: #6b7280;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    ul { list-style: none; margin: 1rem 0; }
+    li { padding: 0.5rem 0; padding-left: 1.5rem; position: relative; }
+    li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: #60a5fa;
+    }
+    
+    .quote {
+      font-style: italic;
+      color: #9ca3af;
+      border-left: 3px solid #3b82f6;
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+    }
+    
+    .page-num {
+      position: absolute;
+      bottom: 1.5rem;
+      right: 2rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: #4b5563;
+    }
+    
+    .scroll-hint {
+      text-align: center;
+      color: #4b5563;
+      font-size: 0.875rem;
+      margin-top: 2rem;
+    }
+    
+    .check { color: #34d399; }
+    .x { color: #ef4444; }
+    
+    .callout {
+      background: #252525;
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      margin: 1rem 0;
+    }
+    
+    .callout-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: #f97316;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.5rem;
+    }
+    
+    .signal-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin: 1rem 0;
+    }
+    
+    .signal-item {
+      background: #1f1f1f;
+      border-radius: 6px;
+      padding: 0.75rem 1rem;
+      font-size: 0.875rem;
+    }
+    
+    .signal-source {
+      color: #6b7280;
+      font-size: 0.75rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Slide 1: Cover -->
+  <div class="slide">
+    <div class="card" style="text-align: center; border: none; background: transparent;">
+      <p class="label">Founder Update</p>
+      <h1>Zach Brenner</h1>
+      <p class="subtitle" style="margin-top: 0.5rem;">Sonomos</p>
+      <p class="date">April 8, 2026</p>
+      <p class="scroll-hint">↓ scroll</p>
+    </div>
+    <span class="page-num">1/5</span>
+  </div>
+
+  <!-- Slide 2: Where I Started -->
+  <div class="slide">
+    <div class="card">
+      <p class="label">Where I Started</p>
+      <h2>Extension-first, selling to partners</h2>
+      
+      <p style="color: #9ca3af; margin-bottom: 1.5rem;">
+        Built a browser extension. Demoed to managing partners. Thought awareness was the bottleneck.
+      </p>
+      
+      <ul>
+        <li>Extension as primary product</li>
+        <li>Partners as buyers</li>
+        <li>Focus on distribution</li>
+        <li>Desktop as "nice to have"</li>
+      </ul>
+      
+      <div class="callout" style="margin-top: 1.5rem;">
+        <p class="callout-label">The Assumption</p>
+        <p style="color: #9ca3af;">If the extension worked well enough, IT would approve it.</p>
+      </div>
+    </div>
+    <span class="page-num">2/5</span>
+  </div>
+
+  <!-- Slide 3: What I Discovered -->
+  <div class="slide">
+    <div class="card">
+      <p class="label">What I Discovered</p>
+      <h2>Every signal points to desktop</h2>
+      
+      <div class="signal-grid">
+        <div class="signal-item">
+          <span class="signal-source">AI-native firm</span><br>
+          <span class="tension">"Desktop or nothing"</span>
+        </div>
+        <div class="signal-item">
+          <span class="signal-source">Cyber exec</span><br>
+          <span class="tension">Extensions lack credibility</span>
+        </div>
+        <div class="signal-item">
+          <span class="signal-source">Developer event</span><br>
+          <span class="tension">Need terminal + VS Code</span>
+        </div>
+        <div class="signal-item">
+          <span class="signal-source">Churn feedback</span><br>
+          <span class="tension">"No desktop support"</span>
+        </div>
+      </div>
+      
+      <div class="callout">
+        <p class="callout-label">The Pattern</p>
+        <p>IT/Infosec buyers <strong>won't approve</strong> tools requiring broad extension permissions. The buyer I've been deferring to won't buy what I'm selling.</p>
+      </div>
+      
+      <p style="margin-top: 1rem; color: #9ca3af;">
+        <span class="x">✗</span> High churn — users deleting accounts<br>
+        <span class="x">✗</span> 3 partner meetings — all said "talk to IT"
+      </p>
+    </div>
+    <span class="page-num">3/5</span>
+  </div>
+
+  <!-- Slide 4: The Real Opportunity -->
+  <div class="slide">
+    <div class="card">
+      <p class="label">The Real Opportunity</p>
+      <h2>Desktop-native = enterprise credibility</h2>
+      
+      <table style="width: 100%; margin: 1.5rem 0; font-size: 0.875rem;">
+        <tr style="color: #6b7280;">
+          <td style="padding: 0.5rem 0;">Buyer</td>
+          <td style="padding: 0.5rem 0;">Partners → <span class="highlight">IT / Infosec teams</span></td>
+        </tr>
+        <tr style="color: #6b7280;">
+          <td style="padding: 0.5rem 0;">Format</td>
+          <td style="padding: 0.5rem 0;">Extension → <span class="highlight">System-level desktop</span></td>
+        </tr>
+        <tr style="color: #6b7280;">
+          <td style="padding: 0.5rem 0;">Credibility</td>
+          <td style="padding: 0.5rem 0;">Browser add-on → <span class="highlight">Enterprise infrastructure</span></td>
+        </tr>
+        <tr style="color: #6b7280;">
+          <td style="padding: 0.5rem 0;">Coverage</td>
+          <td style="padding: 0.5rem 0;">Browser only → <span class="highlight">Terminal, VS Code, everything</span></td>
+        </tr>
+      </table>
+      
+      <div class="callout" style="border-left: 3px solid #34d399; background: rgba(52, 211, 153, 0.05);">
+        <p class="callout-label" style="color: #34d399;">Developer Event Signal</p>
+        <p>15-20 developers wanted Sonomos in their coding workflows. Current product can't touch terminals or local environments.</p>
+      </div>
+    </div>
+    <span class="page-num">4/5</span>
+  </div>
+
+  <!-- Slide 5: Where I'm At -->
+  <div class="slide">
+    <div class="card">
+      <p class="label">Where I'm At</p>
+      <h2>Waiting on code-signing</h2>
+      
+      <ul>
+        <li><span class="check">✓</span> Desktop architecture: Complete</li>
+        <li><span class="check">✓</span> GLiNER model: Quantized, fast, performing well</li>
+        <li><span class="tension">⏳</span> Windows code-signing: Pending SSL.com approval</li>
+        <li><span class="tension">⏳</span> Extension → Desktop transition: Decoupling in progress</li>
+      </ul>
+      
+      <div class="callout" style="margin-top: 1.5rem;">
+        <p class="callout-label">Blocker</p>
+        <p>Once code-signing clears, re-engage users who requested desktop. macOS follows Windows.</p>
+      </div>
+      
+      <p style="margin-top: 1rem; color: #6b7280; font-size: 0.875rem;">
+        <strong>IX partnership:</strong> Exploring integration, cautious about "developer accessory" positioning.
+      </p>
+      
+      <div class="quote" style="margin-top: 1.5rem;">
+        "I thought the extension was the product. I actually needed to build what IT would approve."
+      </div>
+    </div>
+    <span class="page-num">5/5</span>
+  </div>
+
+  <script>
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+        window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+      } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+        window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+      }
+    });
+  </script>
+</body>
+</html>
