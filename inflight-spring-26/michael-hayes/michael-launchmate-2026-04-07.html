@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Connector Pivot</title>
+    <meta name="tidbit-type" content="team">
+    <meta name="tidbit-subject" content="Michael Hayes">
+    <meta name="tidbit-company" content="LaunchMate">
+    <meta name="tidbit-date" content="2026-04-07">
+    <meta name="tidbit-agent-id" content="agent-a72dbb02-e690-4c7b-be19-b00c6758d817">
+    <meta name="tidbit-period" content="2026-W15">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body {
+            background: #0f0f0f;
+            color: #e5e5e5;
+            font-family: 'Inter', sans-serif;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+        }
+        .page {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 3rem 2rem;
+            position: relative;
+        }
+        .page-inner {
+            max-width: 680px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        .page-number {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+        }
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #6b7280;
+            margin-bottom: 1rem;
+        }
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+            color: #f5f5f5;
+        }
+        h2 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 1.25rem;
+            color: #f5f5f5;
+        }
+        p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #d4d4d4;
+            margin-bottom: 1rem;
+        }
+        .highlight { color: #60a5fa; font-weight: 500; }
+        .tension { color: #f97316; font-weight: 500; }
+        .decision { color: #34d399; font-weight: 500; }
+        .card {
+            background: #1a1a1a;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .card-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #6b7280;
+            margin-bottom: 0.75rem;
+        }
+        .metric {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #2a2a2a;
+        }
+        .metric:last-child { border-bottom: none; }
+        .metric-label { color: #a3a3a3; font-size: 0.9rem; }
+        .metric-value { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; text-align: right; max-width: 55%; }
+        .scroll-hint {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            color: #6b7280;
+            font-size: 0.75rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(8px); }
+        }
+        .quote {
+            border-left: 3px solid #60a5fa;
+            padding-left: 1rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: #a3a3a3;
+        }
+        .quote-orange {
+            border-left: 3px solid #f97316;
+            padding-left: 1rem;
+            margin: 1.5rem 0;
+            color: #d4d4d4;
+        }
+        ul { list-style: none; padding: 0; margin: 1rem 0; }
+        li {
+            padding: 0.5rem 0;
+            padding-left: 1.25rem;
+            position: relative;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #d4d4d4;
+        }
+        li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #60a5fa;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        th {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #6b7280;
+            text-align: left;
+            padding: 0.5rem 0.75rem;
+            border-bottom: 1px solid #2a2a2a;
+        }
+        td {
+            font-size: 0.9rem;
+            padding: 0.65rem 0.75rem;
+            border-bottom: 1px solid #1f1f1f;
+            color: #d4d4d4;
+            vertical-align: top;
+        }
+    </style>
+</head>
+<body>
+    <!-- Page 1: Cover -->
+    <div class="page">
+        <div class="page-inner">
+            <div class="label">Week 15 — April 7, 2026</div>
+            <h1>The Connector Pivot</h1>
+            <p>When your product isn't the interface — it's the memory behind every interface.</p>
+            <p style="margin-top: 2rem; color: #6b7280; font-size: 0.9rem;">A team meeting where we asked the question we'd been avoiding: what happens when founders don't need to type anymore?</p>
+        </div>
+        <div class="page-number">1/5</div>
+        <div class="scroll-hint">scroll ↓</div>
+    </div>
+
+    <!-- Page 2: The Graduation Problem -->
+    <div class="page">
+        <div class="page-inner">
+            <div class="label">The problem we'd been avoiding</div>
+            <h2>Founders graduate</h2>
+            <p>Three AI revolutions hit while we were building LaunchMate:</p>
+            <div class="card">
+                <table>
+                    <thead>
+                        <tr><th>Revolution</th><th>What it proved</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><span class="highlight">ChatGPT</span></td><td>AI can be super intelligent</td></tr>
+                        <tr><td><span class="highlight">Claude Code</span></td><td>AI can code — generative, project-based</td></tr>
+                        <tr><td><span class="highlight">OpenClaude</span></td><td>Generalized agent with compounding context</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p>Each one made LaunchMate's chat interface <span class="tension">less special</span>. Founders discover Claude Code, start building with it, and suddenly they're not typing updates into our app anymore.</p>
+            <p>We lose visibility. Their agent loses context. And we can't blame them — <span class="tension">why would they manually update us when their tools already know what they did?</span></p>
+            <div class="quote-orange">"The one thing through everything we've done is it's required the human to type the update. If we get around that using connectors, we could see really cool benefit."</div>
+        </div>
+        <div class="page-number">2/5</div>
+    </div>
+
+    <!-- Page 3: The Insight -->
+    <div class="page">
+        <div class="page-inner">
+            <div class="label">The insight that reframed everything</div>
+            <h2>Memory is the moat</h2>
+            <p>Craig made an observation that stuck: two years into ChatGPT, and we're still coordinating via email, video calls, and text messages. <span class="highlight">AI made individuals smarter, but teams still sync the old way.</span></p>
+            <p>The multiplayer problem is unsolved. And that's where LaunchMate actually lives.</p>
+            <div class="card">
+                <div class="card-label">The Letta argument</div>
+                <p style="margin-bottom: 0;"><span class="decision">Harnesses and LLMs are a commodity. Memory is what you should own.</span></p>
+            </div>
+            <p>This hit hard. We'd been optimizing the chat interface — making it snappier, adding Discord, polishing the experience. But the chat isn't the value. <span class="tension">The context that lives behind it is.</span></p>
+            <p>What if founders never visited LaunchMate at all? What if they just connected their tools, kept working where they already work, and advisors got everything they needed from the dashboard?</p>
+        </div>
+        <div class="page-number">3/5</div>
+    </div>
+
+    <!-- Page 4: The Trade-off -->
+    <div class="page">
+        <div class="page-inner">
+            <div class="label">The pivot</div>
+            <h2>From chat app to memory hub</h2>
+            <div class="card">
+                <table>
+                    <thead>
+                        <tr><th>Current model</th><th>Proposed model</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Founders type updates into LaunchMate</td><td><span class="decision">Connectors auto-populate from existing tools</span></td></tr>
+                        <tr><td>Chat interface is primary</td><td><span class="decision">Dashboard is primary (for advisors)</span></td></tr>
+                        <tr><td>Lose founders when they graduate</td><td><span class="decision">Stay connected via MCP hooks</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p>The technical path: <span class="highlight">MCP server</span>. Once that exists, any agent — Claude Code, Cursor, Poke, Letabot — can inject context into LaunchMate agents. Neal wants to dump transcripts via Poke. Same pattern.</p>
+            <p>And for the proactive side: <span class="highlight">Pokes + Discord notifications</span> become the outbound channel. Daily briefings, weekly assessments, prompts to try in other tools. Ship the kitchen sink, see what sticks.</p>
+            <div class="quote">"I could see there being no chat interface for LaunchMate for the founder. It's purely: what tools do you use? Connect, connect, connect. Start working."</div>
+        </div>
+        <div class="page-number">4/5</div>
+    </div>
+
+    <!-- Page 5: Open Questions + Commitments -->
+    <div class="page">
+        <div class="page-inner">
+            <div class="label">Where we landed</div>
+            <h2>Unresolved (and that's okay)</h2>
+            <p>Three tensions we're sitting with:</p>
+            <div class="card">
+                <ul>
+                    <li><span class="tension">Chat vs. Dashboard:</span> Should founders ever visit LaunchMate web, or just let it run in the background?</li>
+                    <li><span class="tension">Letta Code integration:</span> If Letta goes all-in on local agents, how does that benefit our cloud?</li>
+                    <li><span class="tension">Memory ownership:</span> If memory is the moat, how do we become the hub across ALL tools?</li>
+                </ul>
+            </div>
+            <p>This week's bets:</p>
+            <div class="card">
+                <div class="card-label">Commitments</div>
+                <p style="margin-bottom: 0.5rem;"><span class="highlight">Michael:</span> Explore MCP server for Neal's transcript use case. Test founder agent in Letta Code. Ship LITF credentials to teams.</p>
+                <p style="margin-bottom: 0.5rem;"><span class="highlight">Laura:</span> Continue Letta Code exploration. Demo prompt engineering agent to building industry.</p>
+                <p style="margin-bottom: 0;"><span class="highlight">Craig:</span> Design creative weekly pokes for founders. Test Discord Remote thoroughly.</p>
+            </div>
+            <p>The question isn't whether to pivot — it's how fast we can make memory the product and chat just one of many doors into it.</p>
+        </div>
+        <div class="page-number">5/5</div>
+    </div>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            const pages = document.querySelectorAll('.page');
+            const currentPage = Math.round(window.scrollY / window.innerHeight);
+            if (e.key === 'ArrowDown' && currentPage < pages.length - 1) {
+                pages[currentPage + 1].scrollIntoView({ behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' && currentPage > 0) {
+                pages[currentPage - 1].scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
