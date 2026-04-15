@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="tidbit-type" content="founder">
+    <meta name="tidbit-subject" content="Mohammad Qudsi">
+    <meta name="tidbit-company" content="DateFlo">
+    <meta name="tidbit-date" content="2026-03-31">
+    <meta name="tidbit-period" content="2026-W13">
+    <title>Qudsi / DateFlo - Week of Mar 23-31</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body { 
+            font-family: 'Inter', -apple-system, sans-serif; 
+            background: #0f0f0f; 
+            color: #e5e5e5; 
+            line-height: 1.6; 
+        }
+        
+        .page {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+        }
+        
+        .card {
+            max-width: 600px;
+            width: 100%;
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            padding: 3rem;
+        }
+        
+        .page-number {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            color: #4a4a4a;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+        
+        h2 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #fff;
+        }
+        
+        h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+            color: #d1d1d1;
+            font-size: 1rem;
+        }
+        
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        .highlight { color: #60a5fa; }
+        .decision { color: #34d399; }
+        .tension { color: #f97316; }
+        
+        .subtitle {
+            font-size: 1.125rem;
+            color: #9ca3af;
+            margin-bottom: 0.5rem;
+        }
+        
+        .scroll-hint {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-top: 2rem;
+            text-align: center;
+        }
+        
+        .stat-row {
+            display: flex;
+            gap: 2rem;
+            margin: 1.5rem 0;
+        }
+        
+        .stat {
+            flex: 1;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #f97316;
+            margin-bottom: 0.25rem;
+        }
+        
+        .stat-label {
+            font-size: 0.875rem;
+            color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        ul {
+            list-style: none;
+            margin: 1rem 0;
+        }
+        
+        li {
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #60a5fa;
+        }
+        
+        .quote {
+            font-size: 1.25rem;
+            font-style: italic;
+            color: #34d399;
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: rgba(52, 211, 153, 0.1);
+            border-left: 3px solid #34d399;
+            border-radius: 4px;
+        }
+        
+        .callout {
+            background: rgba(249, 115, 22, 0.1);
+            border-left: 3px solid #f97316;
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+        
+        .warning {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 3px solid #ef4444;
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+        
+        .check { color: #34d399; }
+        .x { color: #ef4444; }
+    </style>
+</head>
+<body>
+    <!-- SLIDE 1: COVER -->
+    <div class="page">
+        <div class="card">
+            <span class="label">Week of Mar 23-31, 2026</span>
+            <h1>Qudsi</h1>
+            <div class="subtitle">DateFlo</div>
+            <h2 style="margin-top: 2rem;">The Month That Went Dark</h2>
+            <div class="scroll-hint">scroll ↓</div>
+        </div>
+        <div class="page-number">1/5</div>
+    </div>
+
+    <!-- SLIDE 2: WHERE I STARTED -->
+    <div class="page">
+        <div class="card">
+            <h2>Where I Started</h2>
+            <p>Feb 20 was a breakthrough. Craig and Neal helped me see the real opportunity:</p>
+            
+            <ul>
+                <li><span class="decision">Clear product:</span> Date Concierge — $50/month for 2 custom dates</li>
+                <li><span class="decision">Clear superpower:</span> Human intake process (not AI automation)</li>
+                <li><span class="decision">Clear proof:</span> Craig said "I would sign up right now"</li>
+            </ul>
+            
+            <p>I had 5 action items and momentum. The path forward was obvious.</p>
+            
+            <p>Then... 5 weeks passed.</p>
+        </div>
+        <div class="page-number">2/5</div>
+    </div>
+
+    <!-- SLIDE 3: WHAT HAPPENED (OR DIDN'T) -->
+    <div class="page">
+        <div class="card">
+            <h2>What Happened</h2>
+            
+            <div class="stat-row">
+                <div class="stat">
+                    <div class="stat-value">5+</div>
+                    <div class="stat-label">weeks since Feb 20</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">0</div>
+                    <div class="stat-label">new user tests logged</div>
+                </div>
+            </div>
+            
+            <h3>Action Items Status</h3>
+            <ul>
+                <li><span class="x">✗</span> Convert Craig to paying customer — <span class="tension">status unknown</span></li>
+                <li><span class="x">✗</span> Send transcripts to Neal — <span class="tension">status unknown</span></li>
+                <li><span class="x">✗</span> Price March 14 event — <span class="tension">event passed, no data logged</span></li>
+                <li><span class="x">✗</span> Switch to Claude — <span class="tension">status unknown</span></li>
+                <li><span class="x">✗</span> Plan 5 more dates — <span class="tension">status unknown</span></li>
+            </ul>
+            
+            <div class="warning">
+                <p><strong>The gap:</strong> No activity logged in my memory between Feb 20 and Mar 31. I don't know what worked, what failed, or what was learned.</p>
+            </div>
+        </div>
+        <div class="page-number">3/5</div>
+    </div>
+
+    <!-- SLIDE 4: THE REAL TENSION -->
+    <div class="page">
+        <div class="card">
+            <h2>The Real Tension</h2>
+            
+            <p>On Feb 20, I had:</p>
+            <ul>
+                <li>A mentor ready to pay</li>
+                <li>A clear business model</li>
+                <li>A validated superpower</li>
+                <li>Momentum</li>
+            </ul>
+            
+            <p>Five weeks later, I'm being asked to create a tidbit — and I have no story to tell.</p>
+            
+            <div class="callout">
+                <p><strong>The question:</strong> Did I execute on the plan and forget to log it? Or did the plan not get executed?</p>
+            </div>
+            
+            <p>Both are fixable. But I need to know which one it is.</p>
+            
+            <h3>What I Need to Answer</h3>
+            <ul>
+                <li>Did Craig book his date?</li>
+                <li>How did the March 14 event go?</li>
+                <li>How many dates have I planned since Feb 20?</li>
+                <li>What's working? What's not?</li>
+            </ul>
+        </div>
+        <div class="page-number">4/5</div>
+    </div>
+
+    <!-- SLIDE 5: WHERE I'M AT -->
+    <div class="page">
+        <div class="card">
+            <h2>Where I'm At</h2>
+            
+            <h3>The Honest State</h3>
+            <ul>
+                <li>Business model: <span class="decision">Still $50/month concierge</span> (no pivot logged)</li>
+                <li>Paying customers: <span class="tension">0 confirmed under new model</span></li>
+                <li>User tests: <span class="tension">2 total (last one Feb 15)</span></li>
+                <li>Decisions logged: <span class="highlight">7</span> (last one Feb 20)</li>
+            </ul>
+            
+            <h3>This Week's Real Action Items</h3>
+            <ul>
+                <li>Fill in the gap — what actually happened Feb 20 - Mar 31?</li>
+                <li>Log the story (even if it's "I got busy" or "I pivoted again")</li>
+                <li>Get back to customer discovery or explain why it stopped</li>
+            </ul>
+            
+            <div class="quote">
+                "I thought I had clarity and momentum. I actually have a 5-week gap in my story."
+            </div>
+        </div>
+        <div class="page-number">5/5</div>
+    </div>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
