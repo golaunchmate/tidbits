@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="tidbit-type" content="founder">
+    <meta name="tidbit-subject" content="Kyan Santiago-Calling">
+    <meta name="tidbit-company" content="ToneAdapt">
+    <meta name="tidbit-date" content="2026-03-06">
+    <meta name="tidbit-period" content="2026-W10">
+    <title>Kyan Santiago-Calling | ToneAdapt</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #0f0f0f; color: #e5e5e5; line-height: 1.6; }
+        
+        .slide { min-height: 100vh; scroll-snap-align: start; display: flex; align-items: center; justify-content: center; padding: 2rem; position: relative; }
+        .card { max-width: 600px; width: 100%; background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%); border: 1px solid #2a2a2a; border-radius: 12px; padding: 3rem; }
+        
+        h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; }
+        h2 { font-size: 1.75rem; font-weight: 600; margin-bottom: 1.5rem; }
+        .subtitle { color: #6b7280; font-size: 1rem; margin-bottom: 2rem; }
+        .label { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.75rem; }
+        
+        .highlight { color: #60a5fa; }
+        .decision { color: #34d399; }
+        .tension { color: #f97316; }
+        
+        .stat-row { display: flex; gap: 2rem; margin: 1.5rem 0; }
+        .stat { text-align: center; flex: 1; }
+        .stat-value { font-size: 2.5rem; font-weight: 700; color: #60a5fa; }
+        .stat-label { font-size: 0.875rem; color: #6b7280; }
+        
+        ul { list-style: none; margin: 1rem 0; }
+        li { padding: 0.5rem 0; padding-left: 1.5rem; position: relative; }
+        li::before { content: "→"; position: absolute; left: 0; color: #60a5fa; }
+        
+        .quote { font-style: italic; border-left: 3px solid #f97316; padding-left: 1.5rem; margin-top: 2rem; font-size: 1.125rem; color: #d1d5db; }
+        
+        .page-number { position: absolute; bottom: 2rem; right: 2rem; font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: #4b5563; }
+        
+        .cover-content { text-align: center; }
+        .cover-name { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .cover-company { font-size: 1.5rem; color: #60a5fa; margin-bottom: 1rem; }
+        .cover-date { color: #6b7280; margin-bottom: 3rem; }
+        .scroll-indicator { color: #4b5563; font-size: 0.875rem; }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="card">
+            <div class="cover-content">
+                <div class="cover-name">Kyan Santiago-Calling</div>
+                <div class="cover-company">ToneAdapt</div>
+                <div class="cover-date">March 6, 2026</div>
+                <div class="scroll-indicator">scroll ↓</div>
+            </div>
+        </div>
+        <div class="page-number">1/5</div>
+    </div>
+    
+    <div class="slide">
+        <div class="card">
+            <p class="label">Where I Started</p>
+            <h2>"I thought I had a retention problem."</h2>
+            <div class="stat-row">
+                <div class="stat">
+                    <div class="stat-value">64K</div>
+                    <div class="stat-label">registered users</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">861</div>
+                    <div class="stat-label">active subscribers</div>
+                </div>
+            </div>
+            <ul>
+                <li>Over <span class="tension">1,000 people had paid</span> but only 861 still active</li>
+                <li>Focused on keeping subscribers month-to-month</li>
+                <li>Mentors suggested: analyze behavior data, optimize pricing</li>
+            </ul>
+        </div>
+        <div class="page-number">2/5</div>
+    </div>
+    
+    <div class="slide">
+        <div class="card">
+            <p class="label">What I Discovered</p>
+            <h2>"Then I launched the Tone Database..."</h2>
+            <div class="stat-row">
+                <div class="stat">
+                    <div class="stat-value">2M+</div>
+                    <div class="stat-label">views on TikTok/Reels</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">44K</div>
+                    <div class="stat-label">site visitors this week</div>
+                </div>
+            </div>
+            <ul>
+                <li>35K visitors in 3 days from viral video</li>
+                <li>Only <span class="tension">0.68% started free trials</span></li>
+                <li>Expecting 20-25% trial→paid conversion</li>
+            </ul>
+            <div class="quote">
+                Wait... is this a value gap problem?
+            </div>
+        </div>
+        <div class="page-number">3/5</div>
+    </div>
+    
+    <div class="slide">
+        <div class="card">
+            <p class="label">The Real Opportunity</p>
+            <h2>"The use case is episodic."</h2>
+            <ul>
+                <li>ToneAdapt is a <span class="highlight">lookup tool</span>, not a session tool</li>
+                <li>People subscribe → learn 5 songs → cancel</li>
+                <li>Not a retention problem = <span class="decision">honest usage pattern</span></li>
+                <li>Free database = massive SEO asset or value leak?</li>
+            </ul>
+            <div class="stat-row">
+                <div class="stat">
+                    <div class="stat-value">90%</div>
+                    <div class="stat-label">researched tone accuracy</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">92%</div>
+                    <div class="stat-label">adapted tone accuracy</div>
+                </div>
+            </div>
+            <div class="quote">
+                If researched is 90% and adapted is 92%... is the gap worth paying for?
+            </div>
+        </div>
+        <div class="page-number">4/5</div>
+    </div>
+    
+    <div class="slide">
+        <div class="card">
+            <p class="label">Where I'm At</p>
+            <h2>Testing the hypothesis</h2>
+            <ul>
+                <li>Tracking <span class="highlight">240 trial cohort</span> (Tone Database users)</li>
+                <li>Watching conversion rate + churn behavior</li>
+                <li>Deciding: monetize database or keep free for SEO?</li>
+                <li>Mentor guidance: analyze user data, test $19.99 unlimited tier</li>
+            </ul>
+            <div class="quote">
+                "I thought I had a retention problem. I actually have a use-case clarity problem."
+            </div>
+        </div>
+        <div class="page-number">5/5</div>
+    </div>
+    
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
