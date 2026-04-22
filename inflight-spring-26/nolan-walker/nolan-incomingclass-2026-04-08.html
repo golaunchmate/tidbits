@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="tidbit-type" content="founder">
+    <meta name="tidbit-subject" content="Nolan Walker">
+    <meta name="tidbit-company" content="Incoming Class">
+    <meta name="tidbit-date" content="2026-04-08">
+    <meta name="tidbit-period" content="2026-W15">
+    <title>Nolan Walker - Incoming Class - April 8, 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #0f0f0f; color: #e5e5e5; line-height: 1.6; }
+        
+        .slide {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+        }
+        
+        .card {
+            max-width: 600px;
+            width: 100%;
+            padding: 3rem;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+        }
+        
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+        
+        h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+        h2 { font-size: 1.75rem; font-weight: 600; margin-bottom: 1rem; }
+        h3 { font-size: 1.5rem; font-weight: 600; margin-bottom: 0.75rem; }
+        
+        .highlight { color: #60a5fa; }
+        .decision { color: #34d399; }
+        .tension { color: #f97316; }
+        
+        .subtitle { color: #9ca3af; font-size: 1rem; margin-bottom: 2rem; }
+        
+        .stat-row {
+            display: flex;
+            gap: 2rem;
+            margin: 1.5rem 0;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #60a5fa;
+        }
+        
+        .stat-label {
+            font-size: 0.75rem;
+            color: #9ca3af;
+            margin-top: 0.25rem;
+        }
+        
+        ul { list-style: none; }
+        li { padding: 0.5rem 0; padding-left: 1.5rem; position: relative; }
+        li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #6b7280;
+        }
+        
+        .quote {
+            font-size: 1.125rem;
+            font-style: italic;
+            color: #9ca3af;
+            border-left: 3px solid #34d399;
+            padding-left: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .page-number {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            color: #4b5563;
+        }
+        
+        .scroll-hint {
+            color: #6b7280;
+            font-size: 0.875rem;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- SLIDE 1: COVER -->
+    <div class="slide">
+        <div class="card">
+            <p class="label">FOUNDER TIDBIT</p>
+            <h1>Nolan Walker</h1>
+            <h2 class="highlight">Incoming Class</h2>
+            <p class="subtitle">April 8, 2026</p>
+            <p class="scroll-hint">scroll ↓</p>
+        </div>
+        <div class="page-number">1 / 5</div>
+    </div>
+    
+    <!-- SLIDE 2: WHERE I STARTED -->
+    <div class="slide">
+        <div class="card">
+            <p class="label">WHERE I STARTED</p>
+            <h2>"I need to fix my churn problem"</h2>
+            <p style="margin-bottom: 1.5rem;">Heading into peak season (Feb-May), I thought my priority was reducing churn. My mentors kept asking: <span class="tension">"What's your secret sauce?"</span></p>
+            
+            <h3>The Plan:</h3>
+            <ul>
+                <li>Add post-purchase surveys</li>
+                <li>Track "roommate found" success</li>
+                <li>Analyze oldest cohort retention</li>
+                <li>Build more features to increase value</li>
+            </ul>
+        </div>
+        <div class="page-number">2 / 5</div>
+    </div>
+    
+    <!-- SLIDE 3: WHAT I DISCOVERED -->
+    <div class="slide">
+        <div class="card">
+            <p class="label">WHAT I DISCOVERED</p>
+            <h2>The Instagram post <span class="highlight">IS</span> the product</h2>
+            <p style="margin-bottom: 1rem;">Watching user behavior, I realized something: people don't really use the filtering features. They pay $5.99 to get posted to the school Instagram, get likes/comments, and then...</p>
+            
+            <p class="tension" style="font-weight: 500; margin: 1rem 0;">They're done. Mission accomplished.</p>
+            
+            <div class="stat-row">
+                <div class="stat">
+                    <div class="stat-value">699</div>
+                    <div class="stat-label">active subscribers</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">16.9%</div>
+                    <div class="stat-label">churn YTD</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">239</div>
+                    <div class="stat-label">churned users</div>
+                </div>
+            </div>
+        </div>
+        <div class="page-number">3 / 5</div>
+    </div>
+    
+    <!-- SLIDE 4: THE REAL OPPORTUNITY -->
+    <div class="slide">
+        <div class="card">
+            <p class="label">THE REAL OPPORTUNITY</p>
+            <h2>What if <span class="decision">churn = success?</span></h2>
+            <p style="margin-bottom: 1.5rem;">I was thinking about this wrong. Users might be getting exactly what they need in 1-2 months:</p>
+            
+            <ul>
+                <li>Pay $6 → Get Instagram post</li>
+                <li>Get validation from future classmates</li>
+                <li>Maybe find roommate/friends</li>
+                <li>Cancel because <span class="highlight">problem solved</span></li>
+            </ul>
+            
+            <p style="margin-top: 1.5rem;">This isn't a social network. It's a <span class="highlight">curated Instagram placement service</span> for anxious incoming students.</p>
+            
+            <p class="tension" style="margin-top: 1rem; font-weight: 500;">The pricing model doesn't match the behavior.</p>
+        </div>
+        <div class="page-number">4 / 5</div>
+    </div>
+    
+    <!-- SLIDE 5: WHERE I'M AT -->
+    <div class="slide">
+        <div class="card">
+            <p class="label">WHERE I'M AT</p>
+            <h2>Validate before I pivot</h2>
+            <p style="margin-bottom: 1rem;">Before changing pricing or adding features, I'm sending a 2-minute survey to my 239 churned users:</p>
+            
+            <ul>
+                <li><span class="decision">"Did you get what you needed?"</span></li>
+                <li>If yes → What was it? (validates hypothesis)</li>
+                <li>If no → What were you hoping for? (real problem)</li>
+            </ul>
+            
+            <p style="margin-top: 1.5rem;">Goal: 30-50 responses to see patterns. Then I'll know if I'm solving the problem <span class="tension">too well</span> or not well enough.</p>
+            
+            <div class="quote">
+                "I thought I needed to reduce churn. I actually needed to understand if churn means success."
+            </div>
+        </div>
+        <div class="page-number">5 / 5</div>
+    </div>
+    
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
