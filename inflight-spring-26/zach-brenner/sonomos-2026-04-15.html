@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="tidbit-type" content="founder">
+  <meta name="tidbit-subject" content="Zach Brenner">
+  <meta name="tidbit-company" content="Sonomos">
+  <meta name="tidbit-date" content="2026-04-15">
+  <meta name="tidbit-period" content="2026-W16">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <title>Zach Brenner · Sonomos · April 2026</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, sans-serif; background: #0f0f0f; color: #e5e5e5; line-height: 1.6; }
+    
+    .slide {
+      min-height: 100vh;
+      scroll-snap-align: start;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      position: relative;
+    }
+    
+    .card {
+      max-width: 600px;
+      width: 100%;
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    
+    .label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: #6b7280;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+    }
+    
+    h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+    h2 { font-size: 1.75rem; font-weight: 600; margin-bottom: 1.5rem; }
+    h3 { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.75rem; }
+    
+    .subtitle { color: #6b7280; font-size: 1.125rem; }
+    .date { color: #6b7280; font-size: 0.875rem; margin-top: 0.25rem; }
+    
+    .highlight { color: #60a5fa; }
+    .decision { color: #34d399; }
+    .tension { color: #f97316; }
+    
+    .stat-row {
+      display: flex;
+      gap: 2rem;
+      margin: 1.5rem 0;
+    }
+    
+    .stat {
+      text-align: center;
+    }
+    
+    .stat-value {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #60a5fa;
+    }
+    
+    .stat-label {
+      font-size: 0.75rem;
+      color: #6b7280;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    ul { list-style: none; margin: 1rem 0; }
+    li { padding: 0.5rem 0; padding-left: 1.5rem; position: relative; }
+    li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: #60a5fa;
+    }
+    
+    .quote {
+      font-style: italic;
+      color: #9ca3af;
+      border-left: 3px solid #3b82f6;
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+    }
+    
+    .page-num {
+      position: absolute;
+      bottom: 1.5rem;
+      right: 2rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: #4b5563;
+    }
+    
+    .scroll-hint {
+      text-align: center;
+      color: #4b5563;
+      font-size: 0.875rem;
+      margin-top: 2rem;
+    }
+    
+    .check { color: #34d399; }
+    .x { color: #ef4444; }
+    
+    .callout {
+      background: #252525;
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      margin: 1rem 0;
+    }
+    
+    .callout-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: #f97316;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.5rem;
+    }
+    
+    .progress-bar {
+      background: #2a2a2a;
+      border-radius: 4px;
+      height: 8px;
+      margin: 0.5rem 0 1.5rem 0;
+      overflow: hidden;
+    }
+    
+    .progress-fill {
+      background: #60a5fa;
+      height: 100%;
+      width: 70%;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Slide 1: Cover -->
+  <div class="slide">
+    <div class="card" style="text-align: center; border: none; background: transparent;">
+      <p class="label">Founder Update</p>
+      <h1>Zach Brenner</h1>
+      <p class="subtitle" style="margin-top: 0.5rem;">Sonomos</p>
+      <p class="date">April 15, 2026</p>
+      <p class="scroll-hint">↓ scroll</p>
+    </div>
+    <span class="page-num">1/5</span>
+  </div>
+
+  <!-- Slide 2: Where I Started -->
+  <div class="slide">
+    <div class="card">
+      <p class="label">Where I Started</p>
+      <h2>Desktop-first, network interception</h2>
+      
+      <p style="color: #9ca3af; margin-bottom: 1.5rem;">
+        The plan was clear: build a desktop app that intercepts network traffic to AI providers, modify the content locally, and send it on its way.
+      </p>
+      
+      <ul>
+        <li>Desktop as primary product</li>
+        <li>Network interception as the mechanism</li>
+        <li>Extension as fallback or secondary</li>
+        <li>Focus on IT/enterprise credibility</li>
+      </ul>
+      
+      <div class="callout" style="margin-top: 1.5rem;">
+        <p class="callout-label">The Assumption</p>
+        <p style="color: #9ca3af;">If we could read the traffic, we could modify it. Desktop would give us that control.</p>
+      </div>
+    </div>
+    <span class="page-num">2/5</span>
+  </div>
+
+  <!-- Slide 3: What I Discovered -->
+  <div class="slide">
+    <div class="card">
+      <p class="label">What I Discovered</p>
+      <h2>Interception works. Manipulation doesn't.</h2>
+      
+      <div class="callout" style="border-left: 3px solid #ef4444; background: rgba(239, 68, 68, 0.05);">
+        <p class="callout-label" style="color: #ef4444;">The Problem</p>
+        <p><strong>Reading traffic:</strong> Not the issue.</p>
+        <p><strong>Manipulating it reliably:</strong> <span class="tension">Not feasible.</span></p>
+        <p style="color: #9ca3af; margin-top: 0.5rem; font-size: 0.875rem;">This is an industry-wide problem, not unique to us.</p>
+      </div>
+      
+      <p style="margin: 1.5rem 0; color: #9ca3af;">
+        Speed and accuracy matter, but they matter less than the fact that the core interception path is just too fragile.
+      </p>
+      
+      <div class="callout" style="border-left: 3px solid #34d399; background: rgba(52, 211, 153, 0.05);">
+        <p class="callout-label" style="color: #34d399;">The Pivot</p>
+        <p>Extension is the <strong>only reliable way</strong> to modify webpage content on AI sites. Desktop engine still matters — just differently.</p>
+      </div>
+    </div>
+    <span class="page-num">3/5</span>
+  </div>
+
+  <!-- Slide 4: The Real Opportunity -->
+  <div class="slide">
+    <div class="card">
+      <p class="label">The Real Opportunity</p>
+      <h2>Hybrid architecture + enterprise pull</h2>
+      
+      <table style="width: 100%; margin: 1.5rem 0; font-size: 0.875rem;">
+        <tr style="color: #6b7280;">
+          <td style="padding: 0.5rem 0;">Mechanism</td>
+          <td style="padding: 0.5rem 0;">Network interception → <span class="highlight">Extension + native messaging</span></td>
+        </tr>
+        <tr style="color: #6b7280;">
+          <td style="padding: 0.5rem 0;">Desktop role</td>
+          <td style="padding: 0.5rem 0;">Interception → <span class="highlight">Local engine + model</span></td>
+        </tr>
+        <tr style="color: #6b7280;">
+          <td style="padding: 0.5rem 0;">Framework</td>
+          <td style="padding: 0.5rem 0;">Tauri → <span class="highlight">Electron (reliability)</span></td>
+        </tr>
+      </table>
+      
+      <div class="callout" style="border-left: 3px solid #34d399; background: rgba(52, 211, 153, 0.05);">
+        <p class="callout-label" style="color: #34d399;">Vistage Enterprise Signal</p>
+        <p>Internal champion recommended Sonomos. They have shadow AI concerns, no incident yet. <strong>Large company, warm intro, active problem.</strong></p>
+      </div>
+      
+      <p style="margin-top: 1rem; color: #9ca3af; font-size: 0.875rem;">
+        Chrome native messaging: <span class="check">✓ Working</span> — extension talks to desktop engine.
+      </p>
+    </div>
+    <span class="page-num">4/5</span>
+  </div>
+
+  <!-- Slide 5: Where I'm At -->
+  <div class="slide">
+    <div class="card">
+      <p class="label">Where I'm At</p>
+      <h2>Execution mode</h2>
+      
+      <p style="color: #6b7280; font-size: 0.875rem; margin-bottom: 0.5rem;">UIA Agent Progress</p>
+      <div class="progress-bar">
+        <div class="progress-fill"></div>
+      </div>
+      
+      <ul>
+        <li><span class="highlight">Electron conversion:</span> In progress</li>
+        <li><span class="highlight">Proprietary model:</span> Placement identified, ready to implement</li>
+        <li><span class="highlight">UIA agent:</span> 70% done, phase 8 of 12</li>
+        <li><span class="highlight">SSL.com cert:</span> Nate handling — Windows trust</li>
+      </ul>
+      
+      <div class="callout" style="margin-top: 1.5rem; background: rgba(249, 115, 22, 0.05);">
+        <p class="callout-label">Tension</p>
+        <p style="color: #9ca3af;">Everyone heads-down on dev. Customer outreach stalled. Vistage window might not stay open forever.</p>
+      </div>
+      
+      <div class="quote" style="margin-top: 1.5rem;">
+        "I thought desktop meant network interception. I actually needed the extension all along — just connected to a real engine."
+      </div>
+    </div>
+    <span class="page-num">5/5</span>
+  </div>
+
+  <script>
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+        window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+      } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+        window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+      }
+    });
+  </script>
+</body>
+</html>
