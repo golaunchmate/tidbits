@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Auth Wall</title>
+    <meta name="tidbit-type" content="team">
+    <meta name="tidbit-subject" content="Michael Hayes">
+    <meta name="tidbit-company" content="LaunchMate">
+    <meta name="tidbit-date" content="2026-04-23">
+    <meta name="tidbit-agent-id" content="agent-a72dbb02-e690-4c7b-be19-b00c6758d817">
+    <meta name="tidbit-period" content="2026-W17">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body {
+            background: #0f0f0f;
+            color: #e5e5e5;
+            font-family: 'Inter', sans-serif;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+        }
+        .page {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 3rem 2rem;
+            position: relative;
+        }
+        .page-inner {
+            max-width: 680px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        .page-number {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+        }
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #6b7280;
+            margin-bottom: 1rem;
+        }
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+            color: #f5f5f5;
+        }
+        h2 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 1.25rem;
+            color: #f5f5f5;
+        }
+        p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #d4d4d4;
+            margin-bottom: 1rem;
+        }
+        .highlight { color: #60a5fa; font-weight: 500; }
+        .tension { color: #f97316; font-weight: 500; }
+        .decision { color: #34d399; font-weight: 500; }
+        .card {
+            background: #1a1a1a;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .card-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #6b7280;
+            margin-bottom: 0.75rem;
+        }
+        .scroll-hint {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            color: #6b7280;
+            font-size: 0.75rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(8px); }
+        }
+        .timeline {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #2a2a2a;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 1rem;
+            padding-left: 0.5rem;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 0.45rem;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            transform: translateX(-3px);
+        }
+        .timeline-item.failed::before { background: #ef4444; }
+        .timeline-item.pivot::before { background: #f97316; }
+        .timeline-item.progress::before { background: #60a5fa; }
+        .timeline-item.success::before { background: #34d399; }
+        .timeline-text {
+            font-size: 0.92rem;
+            color: #d4d4d4;
+            line-height: 1.5;
+        }
+        .timeline-sub {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.15rem;
+        }
+        .quote {
+            border-left: 3px solid #f97316;
+            padding-left: 1rem;
+            margin: 1.5rem 0;
+            color: #d4d4d4;
+        }
+        .split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .split-card {
+            background: #1a1a1a;
+            border-radius: 12px;
+            padding: 1.25rem;
+        }
+        .split-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.75rem;
+        }
+        ul { list-style: none; padding: 0; margin: 1rem 0; }
+        li {
+            padding: 0.5rem 0;
+            padding-left: 1.25rem;
+            position: relative;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #d4d4d4;
+        }
+        li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #60a5fa;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        th {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #6b7280;
+            text-align: left;
+            padding: 0.5rem 0.75rem;
+            border-bottom: 1px solid #2a2a2a;
+        }
+        td {
+            font-size: 0.88rem;
+            padding: 0.6rem 0.75rem;
+            border-bottom: 1px solid #1f1f1f;
+            color: #d4d4d4;
+            vertical-align: top;
+        }
+        code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            background: #1a1a1a;
+            padding: 0.15rem 0.4rem;
+            border-radius: 4px;
+            color: #60a5fa;
+        }
+    </style>
+</head>
+<body>
+    <!-- Page 1: Cover -->
+    <div class="page">
+        <div class="page-inner">
+            <div class="label">Week 17 — April 23, 2026</div>
+            <h1>The Auth Wall</h1>
+            <p>How not to build an MCP server — and the simplification that finally worked.</p>
+            <p style="margin-top: 2rem; color: #6b7280; font-size: 0.9rem;">Six auth pivots. Three weeks. One realization: we already had everything we needed.</p>
+        </div>
+        <div class="page-number">1/5</div>
+        <div class="scroll-hint">scroll ↓</div>
+    </div>
+
+    <!-- Page 2: The OAuth Odyssey -->
+    <div class="page">
+        <div class="page-inner">
+            <div class="label">The journey</div>
+            <h2>Six pivots before clarity</h2>
+            <p>The goal was simple: let external tools talk to LaunchMate agents. The implementation was anything but.</p>
+            <div class="card">
+                <div class="timeline">
+                    <div class="timeline-item failed">
+                        <div class="timeline-text">Google OAuth passthrough</div>
+                        <div class="timeline-sub">"Just forward to Google login" — no MCP token model</div>
+                    </div>
+                    <div class="timeline-item failed">
+                        <div class="timeline-text">Clerk integration</div>
+                        <div class="timeline-sub">Browser sessions ≠ bearer tokens. Fundamental mismatch.</div>
+                    </div>
+                    <div class="timeline-item pivot">
+                        <div class="timeline-text">OAuth bridge routes</div>
+                        <div class="timeline-sub">Tried bridging Clerk to MCP auth. Never quite connected.</div>
+                    </div>
+                    <div class="timeline-item progress">
+                        <div class="timeline-text">DCR for Cursor</div>
+                        <div class="timeline-sub">Dynamic Client Registration — technically correct, incredibly complex</div>
+                    </div>
+                    <div class="timeline-item pivot">
+                        <div class="timeline-text">Static bearer / API key</div>
+                        <div class="timeline-sub">Frustration escape hatch. "Just use a key." Not multi-tenant safe.</div>
+                    </div>
+                    <div class="timeline-item pivot">
+                        <div class="timeline-text">Outbound MCP only</div>
+                        <div class="timeline-sub">"What if we skip inbound entirely?" — giving up on the connector thesis</div>
+                    </div>
+                    <div class="timeline-item success">
+                        <div class="timeline-text">Google OAuth via Clerk (v1.1)</div>
+                        <div class="timeline-sub">Validate Bearer token → resolve by email → done. We had it all along.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page-number">2/5</div>
+    </div>
+
+    <!-- Page 3: What Went Wrong -->
+    <div class="page">
+        <div class="page-inner">
+            <div class="label">The pattern</div>
+            <h2>Implement first, think later</h2>
+            <p>Each auth pivot cost hours of implementation and debugging. The pattern: <span class="tension">hit a wall → try a new approach in code → discover a new wall → repeat.</span></p>
+            <p>The core mistake wasn't any individual decision. It was <span class="tension">implementing before the auth model was settled.</span> Three different auth approaches were built and abandoned before anyone asked: "What's the simplest thing that actually works?"</p>
+            <div class="quote">The answer was sitting in the codebase the whole time. Clerk already handles Google OAuth. MCP clients already have Google tokens. Just validate the token and resolve the user by email. No DCR. No PKCE. No custom OAuth tables. No pepper.</div>
+            <p>The Clerk detour was the most expensive dead end. Clerk manages browser sessions via cookies. MCP clients need bearer tokens. These are fundamentally different auth models. A 10-minute architecture conversation would have caught this. Instead: bridge routes, custom middleware, and days of debugging before the mismatch became obvious.</p>
+        </div>
+        <div class="page-number">3/5</div>
+    </div>
+
+    <!-- Page 4: What Landed -->
+    <div class="page">
+        <div class="page-inner">
+            <div class="label">The v1.1 spec</div>
+            <h2>Simple, scoped, server-to-server</h2>
+            <p>The final architecture isn't just simpler. It's a different product than what we started building.</p>
+            <div class="split">
+                <div class="split-card">
+                    <div class="split-label" style="color: #f97316;">What we started with</div>
+                    <p style="font-size: 0.88rem; margin-bottom: 0;">Founders connect Cursor directly to LaunchMate. Generic message passing. Custom OAuth stack. Founder-facing.</p>
+                </div>
+                <div class="split-card">
+                    <div class="split-label" style="color: #34d399;">What v1.1 actually is</div>
+                    <p style="font-size: 0.88rem; margin-bottom: 0;">Poke orchestrates between Granola and LaunchMate. Transcript ingestion. Google passthrough auth. Server-to-server.</p>
+                </div>
+            </div>
+            <p><span class="decision">Five tools, one auth path, one orchestrator.</span></p>
+            <div class="card">
+                <table>
+                    <thead>
+                        <tr><th>Tool</th><th>What it does</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><code>get_primary_agent</code></td><td>User's default agent</td></tr>
+                        <tr><td><code>list_inflight_founders</code></td><td>All in-flight cohort founders</td></tr>
+                        <tr><td><code>get_founder</code></td><td>Specific founder details</td></tr>
+                        <tr><td><code>push_transcript</code></td><td>Push Granola transcript into agent</td></tr>
+                        <tr><td><code>match_founder_by_email</code></td><td>Email → founder resolution</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p>The tool surface tells the story: <span class="highlight">this is orchestration infrastructure, not a chat interface.</span> Poke resolves who to talk to. Poke pushes the transcript. The founder never opens MCP directly — their tools do it for them.</p>
+        </div>
+        <div class="page-number">4/5</div>
+    </div>
+
+    <!-- Page 5: What I Learned -->
+    <div class="page">
+        <div class="page-inner">
+            <div class="label">The takeaway</div>
+            <h2>The auth was never the problem</h2>
+            <p>The problem was <span class="tension">building before deciding.</span> I kept implementing my way out of uncertainty instead of stopping to think. Each pivot felt like progress because I was writing code. But code without a settled design is just expensive exploration.</p>
+            <p>The three rules I'm taking away:</p>
+            <div class="card">
+                <ul>
+                    <li><span class="decision">Decide auth before writing auth code.</span> "How does the client authenticate?" is a design question, not an implementation question. Answer it with a conversation, not a PR.</li>
+                    <li><span class="decision">Check what you already have.</span> The solution (Google OAuth via Clerk) was in the codebase the whole time. I built three new systems before looking at the one that already worked.</li>
+                    <li><span class="decision">Narrow the scope, name the client.</span> "External tools can connect" is too vague. "Poke orchestrates transcript ingestion" is buildable. Specificity isn't a constraint — it's a gift.</li>
+                </ul>
+            </div>
+            <p>The MCP server works now. But the three weeks it took could have been one. <span class="highlight">The delta wasn't technical skill — it was the discipline to stop coding and start thinking.</span></p>
+            <p style="margin-top: 1rem; color: #6b7280; font-size: 0.9rem;"><em>Next: deploy, validate end-to-end, and document everything for whoever comes next.</em></p>
+        </div>
+        <div class="page-number">5/5</div>
+    </div>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            const pages = document.querySelectorAll('.page');
+            const currentPage = Math.round(window.scrollY / window.innerHeight);
+            if (e.key === 'ArrowDown' && currentPage < pages.length - 1) {
+                pages[currentPage + 1].scrollIntoView({ behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' && currentPage > 0) {
+                pages[currentPage - 1].scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
