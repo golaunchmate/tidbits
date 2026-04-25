@@ -7,7 +7,7 @@
     <meta name="tidbit-type" content="team">
     <meta name="tidbit-subject" content="Michael Hayes">
     <meta name="tidbit-company" content="LaunchMate">
-    <meta name="tidbit-date" content="2026-04-23">
+    <meta name="tidbit-date" content="2026-04-24">
     <meta name="tidbit-agent-id" content="agent-a72dbb02-e690-4c7b-be19-b00c6758d817">
     <meta name="tidbit-period" content="2026-W17">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -119,7 +119,7 @@
         }
         .timeline-item {
             position: relative;
-            margin-bottom: 1rem;
+            margin-bottom: 0.9rem;
             padding-left: 0.5rem;
         }
         .timeline-item::before {
@@ -137,17 +137,23 @@
         .timeline-item.progress::before { background: #60a5fa; }
         .timeline-item.success::before { background: #34d399; }
         .timeline-text {
-            font-size: 0.92rem;
+            font-size: 0.9rem;
             color: #d4d4d4;
             line-height: 1.5;
         }
         .timeline-sub {
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             color: #6b7280;
-            margin-top: 0.15rem;
+            margin-top: 0.1rem;
         }
         .quote {
             border-left: 3px solid #f97316;
+            padding-left: 1rem;
+            margin: 1.5rem 0;
+            color: #d4d4d4;
+        }
+        .quote-blue {
+            border-left: 3px solid #60a5fa;
             padding-left: 1rem;
             margin: 1.5rem 0;
             color: #d4d4d4;
@@ -172,11 +178,11 @@
         }
         ul { list-style: none; padding: 0; margin: 1rem 0; }
         li {
-            padding: 0.5rem 0;
+            padding: 0.4rem 0;
             padding-left: 1.25rem;
             position: relative;
-            font-size: 0.95rem;
-            line-height: 1.6;
+            font-size: 0.92rem;
+            line-height: 1.55;
             color: #d4d4d4;
         }
         li::before {
@@ -192,7 +198,7 @@
         }
         th {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.7rem;
+            font-size: 0.68rem;
             text-transform: uppercase;
             letter-spacing: 0.08em;
             color: #6b7280;
@@ -201,15 +207,15 @@
             border-bottom: 1px solid #2a2a2a;
         }
         td {
-            font-size: 0.88rem;
-            padding: 0.6rem 0.75rem;
+            font-size: 0.85rem;
+            padding: 0.55rem 0.75rem;
             border-bottom: 1px solid #1f1f1f;
             color: #d4d4d4;
             vertical-align: top;
         }
         code {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             background: #1a1a1a;
             padding: 0.15rem 0.4rem;
             border-radius: 4px;
@@ -221,50 +227,54 @@
     <!-- Page 1: Cover -->
     <div class="page">
         <div class="page-inner">
-            <div class="label">Week 17 — April 23, 2026</div>
+            <div class="label">Week 17 — April 24, 2026</div>
             <h1>The Auth Wall</h1>
-            <p>How not to build an MCP server — and the simplification that finally worked.</p>
-            <p style="margin-top: 2rem; color: #6b7280; font-size: 0.9rem;">Six auth pivots. Three weeks. One realization: we already had everything we needed.</p>
+            <p>Three weeks, six pivots, two false simplifications, and the OAuth server LaunchMate actually needed.</p>
+            <p style="margin-top: 2rem; color: #6b7280; font-size: 0.9rem;">How not to build an MCP server — and the design that finally addresses what Cursor, Claude, and Poke each require.</p>
         </div>
         <div class="page-number">1/5</div>
         <div class="scroll-hint">scroll ↓</div>
     </div>
 
-    <!-- Page 2: The OAuth Odyssey -->
+    <!-- Page 2: The Journey -->
     <div class="page">
         <div class="page-inner">
-            <div class="label">The journey</div>
-            <h2>Six pivots before clarity</h2>
-            <p>The goal was simple: let external tools talk to LaunchMate agents. The implementation was anything but.</p>
+            <div class="label">The full arc</div>
+            <h2>Six pivots, two simplifications, one answer</h2>
+            <p>The MCP server's auth went through more design iterations than the rest of the product combined. Here's the full path — including the detours I'd rather forget.</p>
             <div class="card">
                 <div class="timeline">
                     <div class="timeline-item failed">
                         <div class="timeline-text">Google OAuth passthrough</div>
-                        <div class="timeline-sub">"Just forward to Google login" — no MCP token model</div>
+                        <div class="timeline-sub">"Forward to Google login" — no token model for MCP clients</div>
                     </div>
                     <div class="timeline-item failed">
-                        <div class="timeline-text">Clerk integration</div>
-                        <div class="timeline-sub">Browser sessions ≠ bearer tokens. Fundamental mismatch.</div>
+                        <div class="timeline-text">Clerk session integration</div>
+                        <div class="timeline-sub">Browser cookies ≠ bearer tokens. Fundamental auth model mismatch.</div>
                     </div>
                     <div class="timeline-item pivot">
                         <div class="timeline-text">OAuth bridge routes</div>
-                        <div class="timeline-sub">Tried bridging Clerk to MCP auth. Never quite connected.</div>
+                        <div class="timeline-sub">Tried bridging Clerk to MCP auth. Never connected cleanly.</div>
                     </div>
                     <div class="timeline-item progress">
-                        <div class="timeline-text">DCR for Cursor</div>
-                        <div class="timeline-sub">Dynamic Client Registration — technically correct, incredibly complex</div>
+                        <div class="timeline-text">DCR for Cursor (first pass)</div>
+                        <div class="timeline-sub">Technically correct, incredibly complex. Got it working, then questioned if it was worth it.</div>
                     </div>
                     <div class="timeline-item pivot">
                         <div class="timeline-text">Static bearer / API key</div>
-                        <div class="timeline-sub">Frustration escape hatch. "Just use a key." Not multi-tenant safe.</div>
+                        <div class="timeline-sub">Frustration escape hatch. Not multi-tenant safe.</div>
                     </div>
                     <div class="timeline-item pivot">
                         <div class="timeline-text">Outbound MCP only</div>
-                        <div class="timeline-sub">"What if we skip inbound entirely?" — giving up on the connector thesis</div>
+                        <div class="timeline-sub">"Skip inbound entirely." Would have abandoned the connector thesis.</div>
+                    </div>
+                    <div class="timeline-item pivot">
+                        <div class="timeline-text">v1.1: Google passthrough via Clerk</div>
+                        <div class="timeline-sub">"Just validate Google tokens, resolve by email." Simple — but only works for server-to-server.</div>
                     </div>
                     <div class="timeline-item success">
-                        <div class="timeline-text">Google OAuth via Clerk (v1.1)</div>
-                        <div class="timeline-sub">Validate Bearer token → resolve by email → done. We had it all along.</div>
+                        <div class="timeline-text">Final: Custom OAuth 2.0 Authorization Server with DCR</div>
+                        <div class="timeline-sub">Full auth stack that works for Cursor, Claude, AND Poke. The thing I kept trying to avoid building.</div>
                     </div>
                 </div>
             </div>
@@ -272,71 +282,84 @@
         <div class="page-number">2/5</div>
     </div>
 
-    <!-- Page 3: What Went Wrong -->
+    <!-- Page 3: The False Simplifications -->
     <div class="page">
         <div class="page-inner">
-            <div class="label">The pattern</div>
-            <h2>Implement first, think later</h2>
-            <p>Each auth pivot cost hours of implementation and debugging. The pattern: <span class="tension">hit a wall → try a new approach in code → discover a new wall → repeat.</span></p>
-            <p>The core mistake wasn't any individual decision. It was <span class="tension">implementing before the auth model was settled.</span> Three different auth approaches were built and abandoned before anyone asked: "What's the simplest thing that actually works?"</p>
-            <div class="quote">The answer was sitting in the codebase the whole time. Clerk already handles Google OAuth. MCP clients already have Google tokens. Just validate the token and resolve the user by email. No DCR. No PKCE. No custom OAuth tables. No pepper.</div>
-            <p>The Clerk detour was the most expensive dead end. Clerk manages browser sessions via cookies. MCP clients need bearer tokens. These are fundamentally different auth models. A 10-minute architecture conversation would have caught this. Instead: bridge routes, custom middleware, and days of debugging before the mismatch became obvious.</p>
+            <div class="label">What I got wrong</div>
+            <h2>Two times I tried to skip the hard thing</h2>
+            <p>The v1.1 Google passthrough was seductive. "We already use Clerk. Just validate Google tokens and resolve by email. No custom OAuth, no DCR, no token tables."</p>
+            <p>It works — if the only MCP client is <span class="highlight">Poke</span>. Poke is a backend service. It already has a Google token. It just needs to prove who it is.</p>
+            <p>But then Cursor shows up. Cursor is a <span class="tension">public client running on a founder's laptop.</span> It can't store client secrets. It needs to dynamically register itself. It needs PKCE. It needs an authorization flow that redirects through a browser. Google passthrough doesn't give you any of that.</p>
+            <div class="quote">The simplification wasn't wrong — it was incomplete. It solved for one client and assumed the others didn't matter.</div>
+            <p>The deeper mistake was <span class="tension">confusing "simpler" with "sufficient."</span> Google passthrough is simpler. But it only handles the server-to-server case. If Cursor is a real MCP client — and the connector thesis depends on it being one — then DCR and custom OAuth aren't over-engineering. They're the minimum viable auth.</p>
         </div>
         <div class="page-number">3/5</div>
     </div>
 
-    <!-- Page 4: What Landed -->
+    <!-- Page 4: The Final Design -->
     <div class="page">
         <div class="page-inner">
-            <div class="label">The v1.1 spec</div>
-            <h2>Simple, scoped, server-to-server</h2>
-            <p>The final architecture isn't just simpler. It's a different product than what we started building.</p>
+            <div class="label">What actually shipped</div>
+            <h2>OAuth 2.0 Authorization Server with DCR</h2>
+            <p>The final design addresses every gap that came before:</p>
             <div class="split">
                 <div class="split-card">
-                    <div class="split-label" style="color: #f97316;">What we started with</div>
-                    <p style="font-size: 0.88rem; margin-bottom: 0;">Founders connect Cursor directly to LaunchMate. Generic message passing. Custom OAuth stack. Founder-facing.</p>
+                    <div class="split-label" style="color: #ef4444;">Previous gaps</div>
+                    <ul style="font-size: 0.85rem;">
+                        <li>No scope enforcement</li>
+                        <li>No agent ownership checks</li>
+                        <li>No token revocation</li>
+                        <li>No PKCE for public clients</li>
+                        <li>Tokens stored raw in DB</li>
+                        <li>No redirect URI validation</li>
+                    </ul>
                 </div>
                 <div class="split-card">
-                    <div class="split-label" style="color: #34d399;">What v1.1 actually is</div>
-                    <p style="font-size: 0.88rem; margin-bottom: 0;">Poke orchestrates between Granola and LaunchMate. Transcript ingestion. Google passthrough auth. Server-to-server.</p>
+                    <div class="split-label" style="color: #34d399;">Final design</div>
+                    <ul style="font-size: 0.85rem;">
+                        <li><code>read</code> / <code>write</code> scope per tool</li>
+                        <li>User-owned agent checks on every call</li>
+                        <li><code>/revoke</code> endpoint</li>
+                        <li>PKCE S256 required for public clients</li>
+                        <li>Peppered SHA-256 hashing</li>
+                        <li>Registration + allowlist rules</li>
+                    </ul>
                 </div>
             </div>
-            <p><span class="decision">Five tools, one auth path, one orchestrator.</span></p>
-            <div class="card">
-                <table>
-                    <thead>
-                        <tr><th>Tool</th><th>What it does</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td><code>get_primary_agent</code></td><td>User's default agent</td></tr>
-                        <tr><td><code>list_inflight_founders</code></td><td>All in-flight cohort founders</td></tr>
-                        <tr><td><code>get_founder</code></td><td>Specific founder details</td></tr>
-                        <tr><td><code>push_transcript</code></td><td>Push Granola transcript into agent</td></tr>
-                        <tr><td><code>match_founder_by_email</code></td><td>Email → founder resolution</td></tr>
-                    </tbody>
-                </table>
-            </div>
-            <p>The tool surface tells the story: <span class="highlight">this is orchestration infrastructure, not a chat interface.</span> Poke resolves who to talk to. Poke pushes the transcript. The founder never opens MCP directly — their tools do it for them.</p>
+            <p><span class="decision">The auth flow:</span> MCP client discovers via <code>.well-known</code> → registers at <code>/register</code> (DCR) → user authorizes at <code>/authorize</code> (Clerk backs the human login) → client exchanges code at <code>/token</code> → bearer tokens validated on every MCP request → scope + ownership enforced per tool.</p>
+            <p>Clerk still handles identity. LaunchMate OAuth handles <span class="highlight">authorization.</span> That separation is clean — Clerk proves who you are, the OAuth server proves what you're allowed to do.</p>
         </div>
         <div class="page-number">4/5</div>
     </div>
 
-    <!-- Page 5: What I Learned -->
+    <!-- Page 5: The Tool Surface + What I Learned -->
     <div class="page">
         <div class="page-inner">
-            <div class="label">The takeaway</div>
-            <h2>The auth was never the problem</h2>
-            <p>The problem was <span class="tension">building before deciding.</span> I kept implementing my way out of uncertainty instead of stopping to think. Each pivot felt like progress because I was writing code. But code without a settled design is just expensive exploration.</p>
-            <p>The three rules I'm taking away:</p>
+            <div class="label">What this enables</div>
+            <h2>Two client types, one auth server</h2>
+            <p>The final design serves both MCP client patterns without compromising either:</p>
+            <div class="card">
+                <table>
+                    <thead>
+                        <tr><th>Client</th><th>Type</th><th>Auth</th><th>What it does</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><span class="highlight">Cursor</span></td><td>Public client</td><td>DCR + PKCE + browser redirect</td><td>Founder asks agent from editor</td></tr>
+                        <tr><td><span class="highlight">Claude</span></td><td>Public client</td><td>DCR + PKCE + browser redirect</td><td>Same — query LaunchMate from Claude</td></tr>
+                        <tr><td><span class="highlight">Poke</span></td><td>Confidential client</td><td>DCR + client secret</td><td>Orchestrates Granola → LaunchMate</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p>What I actually learned from three weeks of auth pivots:</p>
             <div class="card">
                 <ul>
-                    <li><span class="decision">Decide auth before writing auth code.</span> "How does the client authenticate?" is a design question, not an implementation question. Answer it with a conversation, not a PR.</li>
-                    <li><span class="decision">Check what you already have.</span> The solution (Google OAuth via Clerk) was in the codebase the whole time. I built three new systems before looking at the one that already worked.</li>
-                    <li><span class="decision">Narrow the scope, name the client.</span> "External tools can connect" is too vague. "Poke orchestrates transcript ingestion" is buildable. Specificity isn't a constraint — it's a gift.</li>
+                    <li><span class="decision">Name every client before writing auth code.</span> "External tools" is too vague. "Cursor, Claude, and Poke" is buildable. Each has different auth requirements.</li>
+                    <li><span class="decision">"Simpler" ≠ "sufficient."</span> Google passthrough was simpler but only handled one of three clients. The right architecture handles all of them.</li>
+                    <li><span class="decision">Don't escape hard problems — scope them.</span> I kept trying to avoid DCR instead of asking: "Which clients actually need DCR, and what do they need from it?"</li>
+                    <li><span class="decision">The solution was the hard thing all along.</span> I built three shortcuts before building the thing that actually works. The delta wasn't technical skill — it was the discipline to sit with complexity long enough to understand it.</li>
                 </ul>
             </div>
-            <p>The MCP server works now. But the three weeks it took could have been one. <span class="highlight">The delta wasn't technical skill — it was the discipline to stop coding and start thinking.</span></p>
-            <p style="margin-top: 1rem; color: #6b7280; font-size: 0.9rem;"><em>Next: deploy, validate end-to-end, and document everything for whoever comes next.</em></p>
+            <p style="margin-top: 1rem; color: #6b7280; font-size: 0.9rem;"><em>Next: deploy, validate Cursor end-to-end, document everything for whoever comes next.</em></p>
         </div>
         <div class="page-number">5/5</div>
     </div>
