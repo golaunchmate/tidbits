@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What Building Auth Taught Me About Product</title>
+    <meta name="tidbit-type" content="founder">
+    <meta name="tidbit-subject" content="Michael Hayes">
+    <meta name="tidbit-company" content="LaunchMate">
+    <meta name="tidbit-date" content="2026-04-24">
+    <meta name="tidbit-agent-id" content="agent-a72dbb02-e690-4c7b-be19-b00c6758d817">
+    <meta name="tidbit-period" content="2026-W17">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body {
+            background: #0f0f0f;
+            color: #e5e5e5;
+            font-family: 'Inter', sans-serif;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+        }
+        .page {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 3rem 2rem;
+            position: relative;
+        }
+        .page-inner {
+            max-width: 680px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        .page-number {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+        }
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #6b7280;
+            margin-bottom: 1rem;
+        }
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+            color: #f5f5f5;
+        }
+        h2 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 1.25rem;
+            color: #f5f5f5;
+        }
+        p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #d4d4d4;
+            margin-bottom: 1rem;
+        }
+        .highlight { color: #60a5fa; font-weight: 500; }
+        .tension { color: #f97316; font-weight: 500; }
+        .decision { color: #34d399; font-weight: 500; }
+        .card {
+            background: #1a1a1a;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .card-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #6b7280;
+            margin-bottom: 0.75rem;
+        }
+        .scroll-hint {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            color: #6b7280;
+            font-size: 0.75rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(8px); }
+        }
+        .quote {
+            border-left: 3px solid #f97316;
+            padding-left: 1rem;
+            margin: 1.5rem 0;
+            color: #d4d4d4;
+        }
+        .quote-green {
+            border-left: 3px solid #34d399;
+            padding-left: 1rem;
+            margin: 1.5rem 0;
+            color: #d4d4d4;
+        }
+        .split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .split-card {
+            background: #1a1a1a;
+            border-radius: 12px;
+            padding: 1.25rem;
+        }
+        .split-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.75rem;
+        }
+        ul { list-style: none; padding: 0; margin: 1rem 0; }
+        li {
+            padding: 0.4rem 0;
+            padding-left: 1.25rem;
+            position: relative;
+            font-size: 0.92rem;
+            line-height: 1.55;
+            color: #d4d4d4;
+        }
+        li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #60a5fa;
+        }
+    </style>
+</head>
+<body>
+    <!-- Page 1: Cover -->
+    <div class="page">
+        <div class="page-inner">
+            <div class="label">Founder Reflection — Week 17</div>
+            <h1>What Building Auth Taught Me About Product</h1>
+            <p>I spent three weeks on something I kept trying to make simpler. The lesson wasn't about auth at all.</p>
+            <p style="margin-top: 2rem; color: #6b7280; font-size: 0.9rem;">For Craig — the product story behind the MCP server, not the implementation.</p>
+        </div>
+        <div class="page-number">1/4</div>
+        <div class="scroll-hint">scroll ↓</div>
+    </div>
+
+    <!-- Page 2: The Problem -->
+    <div class="page">
+        <div class="page-inner">
+            <div class="label">What I was trying to do</div>
+            <h2>Let the tools talk to each other</h2>
+            <p>The connector pivot means founders don't type updates into LaunchMate — their tools push context automatically. But for tools to push context, they need to prove who they are. That's auth.</p>
+            <p>Seemed straightforward. I already had a login system (Clerk handles Google OAuth for the web app). Just... let MCP clients use the same thing, right?</p>
+            <p>Not right. <span class="tension">The login system I built for humans doesn't work for machines.</span> The web app uses browser cookies and sessions. But an MCP client like Cursor — running on a founder's laptop — needs something different. It can't store cookies. It can't keep a browser session. It needs a token it can hand over on every request.</p>
+            <p>That mismatch is where the three weeks started.</p>
+            <div class="quote">I kept building code to bridge the gap between "how my app logs people in" and "how external tools prove who they are" — without ever stopping to ask if those two things should be solved the same way.</div>
+        </div>
+        <div class="page-number">2/4</div>
+    </div>
+
+    <!-- Page 3: The Pattern -->
+    <div class="page">
+        <div class="page-inner">
+            <div class="label">The pattern I kept repeating</div>
+            <h2>Build, hit a wall, rebuild</h2>
+            <p>I went through six different approaches to auth. Each one felt right until I tested it against a real client and discovered something it couldn't handle.</p>
+            <div class="card">
+                <div class="card-label">The cycle</div>
+                <ul>
+                    <li><span class="tension">Build an auth approach</span> → "This feels clean"</li>
+                    <li><span class="tension">Test against a real client</span> → "Oh, Cursor can't do that"</li>
+                    <li><span class="tension">Scrap it, try something else</span> → "Maybe if I simplify..."</li>
+                    <li>Repeat</li>
+                </ul>
+            </div>
+            <p>The worst part: at one point I tried to skip inbound MCP entirely — just make LaunchMate call other tools, never receive calls. That would have abandoned the connector thesis. I was literally proposing to kill the product strategy because auth was hard.</p>
+            <p>Then I found what felt like the escape hatch: <span class="highlight">just validate Google tokens.</span> We already use Google OAuth. MCP clients already have Google tokens. Just check the token, look up the user, done. No custom auth system needed.</p>
+            <p>And it worked. For one specific client. <span class="tension">The one that runs on our servers.</span></p>
+            <div class="quote">The simplification wasn't wrong. It was incomplete. I'd solved for one client and assumed the others didn't matter.</div>
+        </div>
+        <div class="page-number">3/4</div>
+    </div>
+
+    <!-- Page 4: The Lesson -->
+    <div class="page">
+        <div class="page-inner">
+            <div class="label">What I actually learned</div>
+            <h2>Name your clients before you build</h2>
+            <p>LaunchMate's MCP has three real clients. They look similar but they're not the same:</p>
+            <div class="split">
+                <div class="split-card">
+                    <div class="split-label" style="color: #60a5fa;">Cursor & Claude</div>
+                    <p style="font-size: 0.88rem; margin-bottom: 0;">Running on a founder's laptop. Can't store secrets safely. Needs to redirect through a browser to log the human in. Needs a way to register itself automatically.</p>
+                </div>
+                <div class="split-card">
+                    <div class="split-label" style="color: #34d399;">Poke</div>
+                    <p style="font-size: 0.88rem; margin-bottom: 0;">Running on our servers. CAN store secrets safely. Just needs to prove "I'm Poke, I'm allowed to push transcripts." Much simpler.</p>
+                </div>
+            </div>
+            <p>Once I named the actual clients and their actual constraints, the auth design was obvious. Cursor and Claude need the full OAuth flow — dynamic registration, browser redirects, the works. Poke just needs a client ID and secret. Both paths hit the same server. <span class="decision">Two client types, one auth system.</span></p>
+            <p>Three rules I'm taking away:</p>
+            <div class="card">
+                <ul>
+                    <li><span class="decision">Name every client before writing auth code.</span> "External tools" is too vague. "Cursor, Claude, and Poke" is buildable. Each has different constraints that change the design.</li>
+                    <li><span class="decision">"Simpler" isn't the same as "sufficient."</span> The Google-only approach was simpler but only worked for one of three clients. The right architecture handles all of them — and it's only more complex in the places it needs to be.</li>
+                    <li><span class="decision">Don't escape hard problems — scope them.</span> I kept trying to avoid the full OAuth flow instead of asking: which clients actually need it, and what exactly do they need from it? The answer was smaller than I feared.</li>
+                </ul>
+            </div>
+            <div class="quote-green">The auth was never the problem. The problem was building before I understood what I was building for. Once I could name the clients and their constraints, the design emerged. Three weeks of pivoting compressed into the question I should have asked on day one: "Who are the clients, and what does each one need?"</div>
+        </div>
+        <div class="page-number">4/4</div>
+    </div>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            const pages = document.querySelectorAll('.page');
+            const currentPage = Math.round(window.scrollY / window.innerHeight);
+            if (e.key === 'ArrowDown' && currentPage < pages.length - 1) {
+                pages[currentPage + 1].scrollIntoView({ behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' && currentPage > 0) {
+                pages[currentPage - 1].scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
