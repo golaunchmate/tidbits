@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="tidbit-type" content="founder">
+  <meta name="tidbit-subject" content="Zach Brenner">
+  <meta name="tidbit-company" content="Sonomos">
+  <meta name="tidbit-date" content="2026-04-29">
+  <meta name="tidbit-period" content="2026-W18">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <title>Zach Brenner · Sonomos · April 2026</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, sans-serif; background: #0f0f0f; color: #e5e5e5; line-height: 1.6; }
+    
+    .slide {
+      min-height: 100vh;
+      scroll-snap-align: start;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      position: relative;
+    }
+    
+    .card {
+      max-width: 600px;
+      width: 100%;
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    
+    .label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: #6b7280;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+    }
+    
+    h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+    h2 { font-size: 1.75rem; font-weight: 600; margin-bottom: 1.5rem; }
+    
+    .subtitle { color: #6b7280; font-size: 1.125rem; }
+    .date { color: #6b7280; font-size: 0.875rem; margin-top: 0.25rem; }
+    
+    .highlight { color: #60a5fa; }
+    .decision { color: #34d399; }
+    .tension { color: #f97316; }
+    
+    .progress-bar {
+      background: #2a2a2a;
+      border-radius: 4px;
+      height: 8px;
+      margin: 0.5rem 0 1rem 0;
+      overflow: hidden;
+    }
+    
+    .progress-fill {
+      background: #60a5fa;
+      height: 100%;
+    }
+    
+    ul { list-style: none; margin: 1rem 0; }
+    li { padding: 0.5rem 0; padding-left: 1.5rem; position: relative; }
+    li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: #60a5fa;
+    }
+    
+    .quote {
+      font-style: italic;
+      color: #9ca3af;
+      border-left: 3px solid #3b82f6;
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+    }
+    
+    .page-num {
+      position: absolute;
+      bottom: 1.5rem;
+      right: 2rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: #4b5563;
+    }
+    
+    .scroll-hint {
+      text-align: center;
+      color: #4b5563;
+      font-size: 0.875rem;
+      margin-top: 2rem;
+    }
+    
+    .check { color: #34d399; }
+    .in-progress { color: #60a5fa; }
+    
+    .callout {
+      background: #252525;
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      margin: 1rem 0;
+    }
+    
+    .callout-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: #f97316;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.5rem;
+    }
+    
+    .status-grid {
+      display: grid;
+      gap: 0.75rem;
+      margin: 1rem 0;
+    }
+    
+    .status-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid #2a2a2a;
+    }
+    
+    .status-item:last-child {
+      border-bottom: none;
+    }
+    
+    .status-label {
+      color: #9ca3af;
+    }
+    
+    .status-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Slide 1: Cover -->
+  <div class="slide">
+    <div class="card" style="text-align: center; border: none; background: transparent;">
+      <p class="label">Founder Update</p>
+      <h1>Zach Brenner</h1>
+      <p class="subtitle" style="margin-top: 0.5rem;">Sonomos</p>
+      <p class="date">April 29, 2026</p>
+      <p class="scroll-hint">↓ scroll</p>
+    </div>
+    <span class="page-num">1/5</span>
+  </div>
+
+  <!-- Slide 2: The Current Phase -->
+  <div class="slide">
+    <div class="card">
+      <p class="label">The Current Phase</p>
+      <h2>Heads-down building</h2>
+      
+      <p style="color: #9ca3af; margin-bottom: 1.5rem;">
+        After weeks of pivots and discoveries, the path is clear. Now it's just execution.
+      </p>
+      
+      <div class="callout">
+        <p class="callout-label">This Week</p>
+        <p style="color: #9ca3af;">No new signals. No new pivots. Just grinding through the implementation stack.</p>
+      </div>
+      
+      <p style="margin-top: 1.5rem; color: #9ca3af;">
+        The architecture is decided. The model placement is identified. The native messaging bridge is working. Now: build it.
+      </p>
+    </div>
+    <span class="page-num">2/5</span>
+  </div>
+
+  <!-- Slide 3: Progress Tracker -->
+  <div class="slide">
+    <div class="card">
+      <p class="label">Progress Tracker</p>
+      <h2>What's in flight</h2>
+      
+      <div class="status-grid">
+        <div class="status-item">
+          <span class="status-label">Electron conversion</span>
+          <span class="status-value in-progress">IN PROGRESS</span>
+        </div>
+        <div class="status-item">
+          <span class="status-label">Proprietary model</span>
+          <span class="status-value in-progress">IMPLEMENTING</span>
+        </div>
+        <div class="status-item">
+          <span class="status-label">UIA agent</span>
+          <span class="status-value in-progress">70%+ · Phase 8/12</span>
+        </div>
+        <div class="status-item">
+          <span class="status-label">SSL.com cert</span>
+          <span class="status-value in-progress">NATE HANDLING</span>
+        </div>
+        <div class="status-item">
+          <span class="status-label">Customer outreach</span>
+          <span class="status-value" style="color: #f97316;">STALLED</span>
+        </div>
+        <div class="status-item">
+          <span class="status-label">Marketing intern</span>
+          <span class="status-value" style="color: #f97316;">PENDING</span>
+        </div>
+      </div>
+      
+      <p style="color: #6b7280; font-size: 0.875rem; margin-top: 1rem;">
+        UIA agent progress
+      </p>
+      <div class="progress-bar">
+        <div class="progress-fill" style="width: 70%;"></div>
+      </div>
+    </div>
+    <span class="page-num">3/5</span>
+  </div>
+
+  <!-- Slide 4: The Trade-off -->
+  <div class="slide">
+    <div class="card">
+      <p class="label">The Trade-off</p>
+      <h2>Building vs. selling</h2>
+      
+      <table style="width: 100%; margin: 1.5rem 0; font-size: 0.875rem;">
+        <tr style="color: #6b7280;">
+          <td style="padding: 0.5rem 0; width: 40%;">Dev focus</td>
+          <td style="padding: 0.5rem 0;"><span class="check">✓</span> Ship stable product</td>
+        </tr>
+        <tr style="color: #6b7280;">
+          <td style="padding: 0.5rem 0;"></td>
+          <td style="padding: 0.5rem 0;"><span class="check">✓</span> Better conversion later</td>
+        </tr>
+        <tr style="color: #6b7280;">
+          <td style="padding: 0.5rem 0; padding-top: 1rem;">Distribution focus</td>
+          <td style="padding: 0.5rem 0; padding-top: 1rem;"><span class="tension">!</span> Vistage window narrowing</td>
+        </tr>
+        <tr style="color: #6b7280;">
+          <td style="padding: 0.5rem 0;"></td>
+          <td style="padding: 0.5rem 0;"><span class="tension">!</span> Champion momentum fading</td>
+        </tr>
+      </table>
+      
+      <div class="callout" style="background: rgba(249, 115, 22, 0.05);">
+        <p class="callout-label">Risk</p>
+        <p style="color: #9ca3af;">Vistage is a warm enterprise lead with an active problem. That window might not stay open forever.</p>
+      </div>
+    </div>
+    <span class="page-num">4/5</span>
+  </div>
+
+  <!-- Slide 5: Where I'm At -->
+  <div class="slide">
+    <div class="card">
+      <p class="label">Where I'm At</p>
+      <h2>Execution mode</h2>
+      
+      <ul>
+        <li>Architecture: <span class="check">Decided</span> — hybrid extension + desktop</li>
+        <li>Technical path: <span class="check">Clear</span> — just needs time</li>
+        <li>Enterprise signal: <span class="highlight">Vistage</span> — warm, waiting</li>
+        <li>Blockers: <span class="tension">None</span> — just execution</li>
+      </ul>
+      
+      <div class="callout" style="margin-top: 1.5rem;">
+        <p class="callout-label">Next Milestone</p>
+        <p style="color: #9ca3af;">Ship stable desktop build. Then re-engage Vistage and waitlist.</p>
+      </div>
+      
+      <div class="quote" style="margin-top: 1.5rem;">
+        "I thought we'd pivot our way to clarity. I actually needed to just put our heads down and build."
+      </div>
+    </div>
+    <span class="page-num">5/5</span>
+  </div>
+
+  <script>
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+        window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+      } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+        window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+      }
+    });
+  </script>
+</body>
+</html>
