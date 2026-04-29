@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="tidbit-type" content="founder">
+  <meta name="tidbit-subject" content="Juan Alcala">
+  <meta name="tidbit-company" content="FiberMend">
+  <meta name="tidbit-date" content="2026-04-22">
+  <meta name="tidbit-period" content="2026-W17">
+  <title>Juan Alcala - FiberMend - April 22, 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, sans-serif; background: #0f0f0f; color: #e5e5e5; line-height: 1.6; }
+    
+    .slide {
+      min-height: 100vh;
+      scroll-snap-align: start;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      position: relative;
+    }
+    
+    .card {
+      max-width: 600px;
+      width: 100%;
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    
+    .cover-card {
+      text-align: center;
+      border: 2px solid #3b82f6;
+    }
+    
+    h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; color: #fff; }
+    h2 { font-size: 1.75rem; font-weight: 600; margin-bottom: 1.5rem; color: #fff; }
+    
+    .subtitle { font-size: 1.25rem; color: #6b7280; margin-bottom: 0.5rem; }
+    .date { font-size: 1rem; color: #6b7280; margin-bottom: 2rem; }
+    .scroll-hint { font-size: 0.875rem; color: #3b82f6; margin-top: 3rem; }
+    
+    .label { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.75rem; }
+    
+    p { margin-bottom: 1rem; color: #d1d5db; }
+    
+    .highlight { color: #60a5fa; }
+    .decision { color: #34d399; }
+    .tension { color: #f97316; }
+    
+    .page-number {
+      position: absolute;
+      bottom: 1.5rem;
+      right: 2rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: #4b5563;
+    }
+    
+    ul {
+      list-style: none;
+      margin: 1rem 0;
+    }
+    
+    ul li {
+      padding: 0.5rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+      color: #d1d5db;
+    }
+    
+    ul li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: #3b82f6;
+    }
+    
+    .status-box {
+      background: #1e1e1e;
+      border: 1px solid #3b82f6;
+      border-radius: 8px;
+      padding: 1.25rem;
+      margin: 1.5rem 0;
+    }
+    
+    .status-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #2a2a2a;
+    }
+    
+    .status-row:last-child {
+      border-bottom: none;
+    }
+    
+    .status-label {
+      color: #9ca3af;
+    }
+    
+    .status-value {
+      font-weight: 600;
+    }
+    
+    .gap-box {
+      background: #2d1f1f;
+      border: 1px solid #f97316;
+      border-radius: 8px;
+      padding: 1.25rem;
+      margin: 1.5rem 0;
+    }
+    
+    .gap-box h3 {
+      color: #f97316;
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.75rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SLIDE 1: COVER -->
+  <div class="slide">
+    <div class="card cover-card">
+      <p class="subtitle">FiberMend</p>
+      <h1>Juan Alcala</h1>
+      <p class="date">April 22, 2026</p>
+      <p class="scroll-hint">scroll ↓</p>
+    </div>
+    <div class="page-number">1/4</div>
+  </div>
+
+  <!-- SLIDE 2: THE GAP -->
+  <div class="slide">
+    <div class="card">
+      <p class="label">The Gap</p>
+      <h2>Ready vs. Sold</h2>
+      
+      <div class="status-box">
+        <div class="status-row">
+          <span class="status-label">Product</span>
+          <span class="status-value" style="color: #34d399;">✓ Complete</span>
+        </div>
+        <div class="status-row">
+          <span class="status-label">Brand</span>
+          <span class="status-value" style="color: #34d399;">✓ FiberMend</span>
+        </div>
+        <div class="status-row">
+          <span class="status-label">Pitch</span>
+          <span class="status-value" style="color: #34d399;">✓ Locked</span>
+        </div>
+        <div class="status-row">
+          <span class="status-label">Instructions</span>
+          <span class="status-value" style="color: #34d399;">✓ Printed</span>
+        </div>
+        <div class="status-row">
+          <span class="status-label">Customers</span>
+          <span class="status-value" style="color: #f97316;">0</span>
+        </div>
+      </div>
+      
+      <p>Everything is ready. Nothing is sold.</p>
+      <p>This is the <span class="tension">execution gap</span> — the hardest part.</p>
+    </div>
+    <div class="page-number">2/4</div>
+  </div>
+
+  <!-- SLIDE 3: THE OPPORTUNITY -->
+  <div class="slide">
+    <div class="card">
+      <p class="label">The Opportunity</p>
+      <h2>Three Warm Leads Waiting</h2>
+      
+      <p>The targets from last week are still open:</p>
+      
+      <ul>
+        <li><strong>Coronado Beer Can Racing</strong> — friend's connection, racers need emergency repairs</li>
+        <li><strong>Freedom Boat Club</strong> — members who rent boats, don't want to get stranded</li>
+        <li><strong>Boatyard guy</strong> — waiting for updated kit with QR code</li>
+      </ul>
+      
+      <p>These aren't cold calls. They're <span class="highlight">people who already know the problem</span>.</p>
+      <p>The question is: <span class="tension">Have you reached out?</span></p>
+    </div>
+    <div class="page-number">3/4</div>
+  </div>
+
+  <!-- SLIDE 4: THE MOVE -->
+  <div class="slide">
+    <div class="card">
+      <p class="label">The Move</p>
+      <h2>Stop Preparing. Start Asking.</h2>
+      
+      <div class="gap-box">
+        <h3>This Week's Commitment</h3>
+        <p style="margin: 0; color: #fff;">Talk to 3 boat owners. Not "research." Not "prepare." Actual conversations.</p>
+      </div>
+      
+      <p><strong>The pitch:</strong></p>
+      <p style="color: #fff; font-size: 1rem; margin: 1rem 0;">"We help boat owners get home when something breaks offshore. A carbon-fiber repair kit that bonds to metal in 15 minutes — no welding, no power, no skills required."</p>
+      
+      <p>Say it. Hand them the kit. Ask: <span class="highlight">"Would you keep this on your boat?"</span></p>
+      
+      <p style="margin-top: 1.5rem; color: #9ca3af; font-style: italic;">The product is ready. The only thing missing is you asking.</p>
+    </div>
+    <div class="page-number">4/4</div>
+  </div>
+
+  <script>
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+        window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+      } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+        window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+      }
+    });
+  </script>
+
+</body>
+</html>
