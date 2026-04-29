@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Three Weeks to Connect</title>
+    <meta name="tidbit-type" content="founder">
+    <meta name="tidbit-subject" content="Michael Hayes">
+    <meta name="tidbit-company" content="LaunchMate">
+    <meta name="tidbit-date" content="2026-04-27">
+    <meta name="tidbit-agent-id" content="agent-a72dbb02-e690-4c7b-be19-b00c6758d817">
+    <meta name="tidbit-period" content="2026-W17">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body {
+            background: #0f0f0f;
+            color: #e5e5e5;
+            font-family: 'Inter', sans-serif;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+        }
+        .page {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 3rem 2rem;
+            position: relative;
+        }
+        .page-inner {
+            max-width: 680px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        .page-number {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+        }
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #6b7280;
+            margin-bottom: 1rem;
+        }
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+            color: #f5f5f5;
+        }
+        h2 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 1.25rem;
+            color: #f5f5f5;
+        }
+        p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #d4d4d4;
+            margin-bottom: 1rem;
+        }
+        .highlight { color: #60a5fa; font-weight: 500; }
+        .tension { color: #f97316; font-weight: 500; }
+        .decision { color: #34d399; font-weight: 500; }
+        .card {
+            background: #1a1a1a;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .card-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #6b7280;
+            margin-bottom: 0.75rem;
+        }
+        .scroll-hint {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            color: #6b7280;
+            font-size: 0.75rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(8px); }
+        }
+        .quote {
+            border-left: 3px solid #f97316;
+            padding-left: 1rem;
+            margin: 1.5rem 0;
+            color: #d4d4d4;
+        }
+        .quote-green {
+            border-left: 3px solid #34d399;
+            padding-left: 1rem;
+            margin: 1.5rem 0;
+            color: #d4d4d4;
+        }
+        ul { list-style: none; padding: 0; margin: 1rem 0; }
+        li {
+            padding: 0.4rem 0;
+            padding-left: 1.25rem;
+            position: relative;
+            font-size: 0.92rem;
+            line-height: 1.55;
+            color: #d4d4d4;
+        }
+        li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #60a5fa;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        th {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #6b7280;
+            text-align: left;
+            padding: 0.5rem 0.75rem;
+            border-bottom: 1px solid #2a2a2a;
+        }
+        td {
+            font-size: 0.85rem;
+            padding: 0.55rem 0.75rem;
+            border-bottom: 1px solid #1f1f1f;
+            color: #d4d4d4;
+            vertical-align: top;
+        }
+    </style>
+</head>
+<body>
+    <!-- Page 1: Cover -->
+    <div class="page">
+        <div class="page-inner">
+            <div class="label">Week 17 — April 27, 2026</div>
+            <h1>Three Weeks to Connect</h1>
+            <p>From "what if founders never had to type an update?" to a full stack. The architecture is real. The validation isn't.</p>
+            <p style="margin-top: 2rem; color: #6b7280; font-size: 0.9rem;">A snapshot of where LaunchMate stands after the connector sprint — and the gap that matters most right now.</p>
+        </div>
+        <div class="page-number">1/4</div>
+        <div class="scroll-hint">scroll ↓</div>
+    </div>
+
+    <!-- Page 2: The Stack -->
+    <div class="page">
+        <div class="page-inner">
+            <div class="label">What got built</div>
+            <h2>The connector thesis has a real architecture now</h2>
+            <p>Three weeks ago, the team asked: what if LaunchMate wasn't a chat app at all? What if it was the memory layer that all the founder's tools connect to?</p>
+            <p>Here's what that idea looks like as infrastructure:</p>
+            <div class="card">
+                <table>
+                    <thead>
+                        <tr><th>Layer</th><th>What it is</th><th>Status</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td style="color: #60a5fa;">Auth</td><td>OAuth 2.0 server with dynamic client registration. Google passthrough for Poke, full OAuth for Cursor/Claude.</td><td style="color: #34d399;">Spec'd & implemented</td></tr>
+                        <tr><td style="color: #60a5fa;">Tools</td><td>MCP tools: list agents, push messages, create drops with batching, push transcripts.</td><td style="color: #34d399;">Spec'd & implemented</td></tr>
+                        <tr><td style="color: #60a5fa;">Tracking</td><td>Cursor hooks that notice activity, a skill that processes it. Maintenance pings, not cron jobs.</td><td style="color: #f97316;">Designed, not yet tested</td></tr>
+                        <tr><td style="color: #60a5fa;">Delivery</td><td>Discord Remote for notifications + two-way chat. Web app for full interface.</td><td style="color: #34d399;">Shipped & deployed</td></tr>
+                        <tr><td style="color: #60a5fa;">Output</td><td>Drops — artifacts, not notifications. "I researched X — here's what I found."</td><td style="color: #f97316;">Spec'd, UI rebranded</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p>Three weeks ago this was a whiteboard question. Now it has OAuth routes, Supabase migrations, Cursor skill files, and a rebranded UI. <span class="highlight">The architecture is real.</span></p>
+        </div>
+        <div class="page-number">2/4</div>
+    </div>
+
+    <!-- Page 3: The Gap -->
+    <div class="page">
+        <div class="page-inner">
+            <div class="label">What hasn't happened</div>
+            <h2>Zero end-to-end validations</h2>
+            <p>Here's the uncomfortable part. The MCP server has auth, tools, and scope enforcement — but <span class="tension">no human has ever listed tools, pushed a message, or created a drop from a real client.</span> The whole stack exists in spec and code, but not in a single confirmed user interaction.</p>
+            <div class="quote">The connector thesis is three weeks old. The Discord Remote is two weeks past launch. We have one substantive founder interaction on record, and it ended in an error that may or may not be fixed.</div>
+            <p>This isn't a failure of building. It's a pattern: <span class="tension">the team designs for founders, builds for founders, but doesn't validate with founders.</span> The connector pivot was proposed in a room with zero founders. The auth design was driven by Cursor as a client — a tool founders may or may not want connecting to LaunchMate. Nobody has asked.</p>
+            <p>The risk isn't that the architecture is wrong. The risk is that it's elegant and irrelevant — a perfectly designed bridge to a destination nobody confirmed they want to reach.</p>
+        </div>
+        <div class="page-number">3/4</div>
+    </div>
+
+    <!-- Page 4: What Matters Now -->
+    <div class="page">
+        <div class="page-inner">
+            <div class="label">The next move</div>
+            <h2>One test beats ten specs</h2>
+            <p>The architecture phase is done. The next phase is binary: <span class="decision">does a single end-to-end flow work from a real client?</span> If yes, the connector thesis has legs. If no, we learn where it breaks before the handoff.</p>
+            <div class="card">
+                <div class="card-label">The one test that matters</div>
+                <ul>
+                    <li>Open Cursor with LaunchMate MCP connected</li>
+                    <li>Authenticate through the OAuth flow</li>
+                    <li>Call <code>list_user_agents</code> — see your agent</li>
+                    <li>Call <code>push_agent_message</code> — send a test message</li>
+                    <li>Open the web app — confirm the message landed</li>
+                </ul>
+            </div>
+            <p>Five steps. If they all pass, the whole three-week sprint is validated. If any step breaks, that's the most important bug in the system.</p>
+            <p>And then: ask a founder. Not "do you like LaunchMate?" but <span class="highlight">"if Cursor could automatically update your LaunchMate agent about what you're working on — would you want that?"</span> If the answer is no, the connector architecture solves a problem that doesn't exist. If the answer is yes, we have the stack to deliver it.</p>
+            <div class="quote-green">Three weeks to build the bridge. One test to see if anyone wants to cross it. That's the week ahead.</div>
+        </div>
+        <div class="page-number">4/4</div>
+    </div>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            const pages = document.querySelectorAll('.page');
+            const currentPage = Math.round(window.scrollY / window.innerHeight);
+            if (e.key === 'ArrowDown' && currentPage < pages.length - 1) {
+                pages[currentPage + 1].scrollIntoView({ behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' && currentPage > 0) {
+                pages[currentPage - 1].scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
