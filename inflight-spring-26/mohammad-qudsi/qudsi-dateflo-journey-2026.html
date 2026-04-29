@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="tidbit-type" content="founder">
+    <meta name="tidbit-subject" content="Mohammad Qudsi">
+    <meta name="tidbit-company" content="DateFlo">
+    <meta name="tidbit-date" content="2026-03-31">
+    <meta name="tidbit-period" content="2026-Q1">
+    <title>Qudsi / DateFlo - The Journey So Far</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body { 
+            font-family: 'Inter', -apple-system, sans-serif; 
+            background: #0f0f0f; 
+            color: #e5e5e5; 
+            line-height: 1.6; 
+        }
+        
+        .page {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+        }
+        
+        .card {
+            max-width: 600px;
+            width: 100%;
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            padding: 3rem;
+        }
+        
+        .page-number {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            color: #4a4a4a;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+        
+        h2 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #fff;
+        }
+        
+        h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+            color: #d1d1d1;
+            font-size: 1rem;
+        }
+        
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        .highlight { color: #60a5fa; }
+        .decision { color: #34d399; }
+        .tension { color: #f97316; }
+        
+        .subtitle {
+            font-size: 1.125rem;
+            color: #9ca3af;
+            margin-bottom: 0.5rem;
+        }
+        
+        .scroll-hint {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-top: 2rem;
+            text-align: center;
+        }
+        
+        .stat-row {
+            display: flex;
+            gap: 2rem;
+            margin: 1.5rem 0;
+        }
+        
+        .stat {
+            flex: 1;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #60a5fa;
+            margin-bottom: 0.25rem;
+        }
+        
+        .stat-label {
+            font-size: 0.875rem;
+            color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        ul {
+            list-style: none;
+            margin: 1rem 0;
+        }
+        
+        li {
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #60a5fa;
+        }
+        
+        .quote {
+            font-size: 1.25rem;
+            font-style: italic;
+            color: #34d399;
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: rgba(52, 211, 153, 0.1);
+            border-left: 3px solid #34d399;
+            border-radius: 4px;
+        }
+        
+        .callout {
+            background: rgba(249, 115, 22, 0.1);
+            border-left: 3px solid #f97316;
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+        
+        .killed {
+            color: #ef4444;
+            text-decoration: line-through;
+        }
+        
+        .timeline-item {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #2a2a2a;
+        }
+        
+        .timeline-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        
+        .timeline-date {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #f97316;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- SLIDE 1: COVER -->
+    <div class="page">
+        <div class="card">
+            <span class="label">Q1 2026 Journey</span>
+            <h1>Qudsi</h1>
+            <div class="subtitle">DateFlo</div>
+            <h2 style="margin-top: 2rem;">From Platform to Concierge</h2>
+            <p style="color: #6b7280; margin-top: 1rem;">The story of finding the real product</p>
+            <div class="scroll-hint">scroll ↓</div>
+        </div>
+        <div class="page-number">1/6</div>
+    </div>
+
+    <!-- SLIDE 2: WHERE IT STARTED -->
+    <div class="page">
+        <div class="card">
+            <h2>Where It Started</h2>
+            
+            <p><strong>LazyDate</strong> — a Pinterest-style platform for date ideas.</p>
+            
+            <p>I thought the problem was discovery. People can't find good date ideas, so I'd build a platform to help them search and save.</p>
+            
+            <div class="callout">
+                <p><strong>First validation:</strong> Sold "$5 plan my date" service to friends. <span class="highlight">20-30 prepaid orders in one week.</span></p>
+            </div>
+            
+            <p>But here's the thing — I validated a <strong>service</strong>, not a <strong>platform</strong>. People paid me to plan dates FOR them, not to use a tool themselves.</p>
+            
+            <p class="label" style="margin-top: 1.5rem;">The tension that defined the next 2 months</p>
+            <p>I was building a self-serve app. People were paying for done-for-you service.</p>
+        </div>
+        <div class="page-number">2/6</div>
+    </div>
+
+    <!-- SLIDE 3: WHAT I KILLED -->
+    <div class="page">
+        <div class="card">
+            <h2>What I Killed</h2>
+            
+            <div class="timeline-item">
+                <div class="timeline-date">Feb 6, 2026</div>
+                <h3>Ghost Mode Hypothesis</h3>
+                <p>I thought people wanted to hide that they used an app. "Partner can't know I planned this."</p>
+                <p><strong>Data point:</strong> Customer showed partner the PDF. Magic didn't die.</p>
+                <p><span class="decision">Killed.</span> The problem wasn't shame — it was something else.</p>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-date">Feb 20, 2026</div>
+                <h3>App Automation Strategy</h3>
+                <p>I thought the value was AI-generated date plans. Scale the app, not me.</p>
+                <p><strong>Craig's insight:</strong> "The problem is not planning dates. The problem is getting people to open up about what is meaningful."</p>
+                <p><span class="decision">Killed.</span> The app can't do what I do in that 10-minute conversation.</p>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-date">Feb 20, 2026</div>
+                <h3>"Tidbits" Feature</h3>
+                <p>Menu pictures, extra details, more content per date.</p>
+                <p><strong>Craig:</strong> "Your baby's ugly."</p>
+                <p><span class="decision">Killed.</span> Focus on intake, not content.</p>
+            </div>
+        </div>
+        <div class="page-number">3/6</div>
+    </div>
+
+    <!-- SLIDE 4: WHAT I DISCOVERED -->
+    <div class="page">
+        <div class="card">
+            <h2>What I Discovered</h2>
+            
+            <h3>The Sean Interview (Feb 15)</h3>
+            <p>Active dater. Plans dates regularly. Not the "couch-sitter" I thought was the customer.</p>
+            
+            <div class="stat-row">
+                <div class="stat">
+                    <div class="stat-value">1 hour</div>
+                    <div class="stat-label">spent planning</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">Still unsure</div>
+                    <div class="stat-label">about choices</div>
+                </div>
+            </div>
+            
+            <p>His problem: <span class="highlight">Decision confidence</span>. He lands on something and thinks "we could have done something better."</p>
+            
+            <p><strong>Quote:</strong> "I'd be willing to spend MORE money if I know what to expect."</p>
+            
+            <h3 style="margin-top: 2rem;">The Cathy Demo (Feb 13)</h3>
+            <p>Craig watched me do a live 10-minute planning session. When problems came up (closed restaurant, no parking), Cathy gave me a pass because we were in <strong>conversation</strong>.</p>
+            
+            <p><strong>Craig:</strong> "The magic was the conversation. If it was just a sheet of paper, she'd never use this again."</p>
+        </div>
+        <div class="page-number">4/6</div>
+    </div>
+
+    <!-- SLIDE 5: THE REAL PRODUCT -->
+    <div class="page">
+        <div class="card">
+            <h2>The Real Product</h2>
+            
+            <p class="label">Feb 20, 2026 — Craig + Neal Session</p>
+            
+            <div class="callout">
+                <p><strong>My superpower:</strong> The human intake process. I pull out of people what they don't even know they have. ChatGPT can plan dates. It can't do that.</p>
+            </div>
+            
+            <h3>The Pivot</h3>
+            <ul>
+                <li class="killed">Build app to automate planning</li>
+                <li class="killed">Self-serve platform</li>
+                <li class="killed">$5 per date (transactional)</li>
+                <li><span class="decision">Date Concierge Service</span></li>
+            </ul>
+            
+            <h3>The Model</h3>
+            <ul>
+                <li><span class="highlight">$50/month</span> for 2 custom dates</li>
+                <li>Free first date (credibility builder)</li>
+                <li>10-minute intake conversation</li>
+                <li>Stay involved through date night (text check-ins)</li>
+                <li>Ongoing relationship (not transactional)</li>
+            </ul>
+            
+            <p><strong>Craig:</strong> <span class="decision">"I would sign up for that right now."</span></p>
+        </div>
+        <div class="page-number">5/6</div>
+    </div>
+
+    <!-- SLIDE 6: WHERE I'M AT -->
+    <div class="page">
+        <div class="card">
+            <h2>Where I'm At</h2>
+            
+            <h3>What's Clear</h3>
+            <ul>
+                <li><span class="decision">Product:</span> Date Concierge — "Talk to me for 10 minutes, I'll have a date for you by the end"</li>
+                <li><span class="decision">Customer:</span> Active daters with pressure (Valentine's, birthdays, anniversaries)</li>
+                <li><span class="decision">Model:</span> $50/month subscription</li>
+                <li><span class="decision">Superpower:</span> Human intake process (not AI automation)</li>
+            </ul>
+            
+            <h3>What's Next</h3>
+            <ul>
+                <li>Convert Craig to first paying customer</li>
+                <li>Perfect the intake process</li>
+                <li>Build evidence through delivered dates</li>
+                <li>Scale me, not the app</li>
+            </ul>
+            
+            <div class="quote">
+                "I thought I was building a platform to help people find dates. I'm actually building a concierge service that scales human conversation."
+            </div>
+        </div>
+        <div class="page-number">6/6</div>
+    </div>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
