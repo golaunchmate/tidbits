@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The CC Moment</title>
+    <meta name="tidbit-type" content="founder">
+    <meta name="tidbit-subject" content="Michael Hayes">
+    <meta name="tidbit-company" content="LaunchMate">
+    <meta name="tidbit-date" content="2026-04-29">
+    <meta name="tidbit-agent-id" content="agent-a72dbb02-e690-4c7b-be19-b00c6758d817">
+    <meta name="tidbit-period" content="2026-W18">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body {
+            background: #0f0f0f;
+            color: #e5e5e5;
+            font-family: 'Inter', sans-serif;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+        }
+        .page {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 3rem 2rem;
+            position: relative;
+        }
+        .page-inner {
+            max-width: 680px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        .page-number {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+        }
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #6b7280;
+            margin-bottom: 1rem;
+        }
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+            color: #f5f5f5;
+        }
+        h2 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 1.25rem;
+            color: #f5f5f5;
+        }
+        p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #d4d4d4;
+            margin-bottom: 1rem;
+        }
+        .highlight { color: #60a5fa; font-weight: 500; }
+        .tension { color: #f97316; font-weight: 500; }
+        .decision { color: #34d399; font-weight: 500; }
+        .card {
+            background: #1a1a1a;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .card-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #6b7280;
+            margin-bottom: 0.75rem;
+        }
+        .scroll-hint {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            color: #6b7280;
+            font-size: 0.75rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(8px); }
+        }
+        .quote {
+            border-left: 3px solid #f97316;
+            padding-left: 1rem;
+            margin: 1.5rem 0;
+            color: #d4d4d4;
+            font-style: italic;
+        }
+        .quote-green {
+            border-left: 3px solid #34d399;
+            padding-left: 1rem;
+            margin: 1.5rem 0;
+            color: #d4d4d4;
+        }
+        ul { list-style: none; padding: 0; margin: 1rem 0; }
+        li {
+            padding: 0.4rem 0;
+            padding-left: 1.25rem;
+            position: relative;
+            font-size: 0.92rem;
+            line-height: 1.55;
+            color: #d4d4d4;
+        }
+        li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #60a5fa;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        th {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #6b7280;
+            text-align: left;
+            padding: 0.5rem 0.75rem;
+            border-bottom: 1px solid #2a2a2a;
+        }
+        td {
+            font-size: 0.85rem;
+            padding: 0.55rem 0.75rem;
+            border-bottom: 1px solid #1f1f1f;
+            color: #d4d4d4;
+            vertical-align: top;
+        }
+        .flow {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin: 1rem 0;
+        }
+        .flow-item {
+            background: #1a1a1a;
+            border-radius: 8px;
+            padding: 0.5rem 0.85rem;
+            font-size: 0.85rem;
+            color: #d4d4d4;
+            white-space: nowrap;
+        }
+        .flow-arrow {
+            color: #6b7280;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Page 1: Cover -->
+    <div class="page">
+        <div class="page-inner">
+            <div class="label">Week 18 — April 29, 2026</div>
+            <h1>The CC Moment</h1>
+            <p>Craig's Gmail agent found a summer program for his girlfriend's kids inside a newsletter he never would have read. That's not a chat interface. That's what LaunchMate needs to become.</p>
+            <p style="margin-top: 2rem; color: #6b7280; font-size: 0.9rem;">The scrum where the product vision finally caught up with the architecture.</p>
+        </div>
+        <div class="page-number">1/5</div>
+        <div class="scroll-hint">scroll ↓</div>
+    </div>
+
+    <!-- Page 2: The Story -->
+    <div class="page">
+        <div class="page-inner">
+            <div class="label">What happened</div>
+            <h2>A newsletter item changed everything</h2>
+            <p>Craig subscribes to a Google Labs service called CC — an AI that reads his email and gives him a morning briefing. One morning, it said: "You might want to sign up Delilah and Brody for this new after-school program from San Diego Unified School District."</p>
+            <p>Delilah and Brody are his girlfriend's kids. He doesn't get emails from the school district. He's never told CC about them.</p>
+            <p>What CC did: it read a San Diego news newsletter, found one item buried inside it about an after-school program, and connected it to something it knew about Craig's personal life. <span class="highlight">One item in a newsletter of seventeen. Relevant because of memory, not because of keywords.</span></p>
+            <div class="quote">"It took one entry in a newsletter and said, would this be useful for Craig? Oh, he's got kids. That's amazing."</div>
+            <p>Craig's response: "If LaunchMate could do that — surface something I didn't know I needed because it knows me — I'm all in."</p>
+            <p><span class="tension">That's the product. Not the pipeline. Not the chat interface. The moment where context becomes magic.</span></p>
+        </div>
+        <div class="page-number">2/5</div>
+    </div>
+
+    <!-- Page 3: The Pipeline -->
+    <div class="page">
+        <div class="page-inner">
+            <div class="label">What we're building</div>
+            <h2>Transcript in, drops out</h2>
+            <p>Craig and Michael whiteboarded the full pipeline. The architecture finally has a concrete use case:</p>
+            <div class="flow">
+                <div class="flow-item" style="color: #60a5fa;">Conference call</div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-item" style="color: #60a5fa;">Granola transcript</div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-item" style="color: #60a5fa;">Transcript agent</div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-item" style="color: #f97316;">Drop agent</div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-item" style="color: #34d399;">Scheduled drops</div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-item" style="color: #34d399;">Asset delivered</div>
+            </div>
+            <p>The key architecture decisions:</p>
+            <div class="card">
+                <ul>
+                    <li><span class="decision">Drop agent is separate from transcript agent.</span> Transcript agent analyzes. Drop agent routes and schedules. Separation makes both more generalizable.</li>
+                    <li><span class="decision">Drops go to the best candidate agent</span> — not always the founder's primary. A specialized agent might be better for certain tasks.</li>
+                    <li><span class="decision">System messages replace agent-to-agent chat.</span> One-way, reliable, no recursion risk. The transcript agent sends its analysis to the drop agent via system prompt.</li>
+                    <li><span class="decision">Poke is the notification channel.</span> Don't build LaunchMate's own notification system. Lean on Poke for iMessage delivery.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="page-number">3/5</div>
+    </div>
+
+    <!-- Page 4: The Reframe -->
+    <div class="page">
+        <div class="page-inner">
+            <div class="label">The shift</div>
+            <h2>LaunchMate becomes a backend</h2>
+            <p>The scrum crystallized something that's been emerging for weeks: <span class="highlight">LaunchMate's chat interface isn't the product. It's the admin panel.</span></p>
+            <p>Craig: "I haven't logged into Poke in a month. But I'm reading all the emails of all the things it's doing."</p>
+            <p>The reframe:</p>
+            <div class="card">
+                <table>
+                    <thead>
+                        <tr><th>Old Model</th><th>New Model</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td style="color: #f97316;">Founder logs into LaunchMate</td><td style="color: #34d399;">Founder gets a Poke message</td></tr>
+                        <tr><td style="color: #f97316;">Chat is the primary interface</td><td style="color: #34d399;">Chat is the power-user interface</td></tr>
+                        <tr><td style="color: #f97316;">Agent waits to be asked</td><td style="color: #34d399;">Agent proactively does work</td></tr>
+                        <tr><td style="color: #f97316;">Drops are notifications</td><td style="color: #34d399;">Drops are artifacts with context</td></tr>
+                        <tr><td style="color: #f97316;">Founder must check the app</td><td style="color: #34d399;">Deliverables come to the founder</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p>The implication: the most important feature isn't what founders see in LaunchMate. It's what shows up in their Poke messages with enough context to act on immediately.</p>
+        </div>
+        <div class="page-number">4/5</div>
+    </div>
+
+    <!-- Page 5: What Matters Now -->
+    <div class="page">
+        <div class="page-inner">
+            <div class="label">The exit criterion</div>
+            <h2>One pipeline before I leave</h2>
+            <p>Craig named the goal: "Before you leave, we successfully transition LaunchMate to this new model of context ingestion and proactive worker on your behalf."</p>
+            <p>That means one concrete thing: <span class="decision">a transcript goes in, a drop comes out, and a founder gets notified.</span> Once. End-to-end. That's the proof.</p>
+            <p>What's still open:</p>
+            <div class="card">
+                <ul>
+                    <li><span class="tension">Asset storage.</span> GitHub repo like tidbits, but generalized. Plus a viewing UI so founders can see their drop history.</li>
+                    <li><span class="tension">Agent routing.</span> Who does the drop go to? The primary agent? A specialized agent? The drop agent needs a directory.</li>
+                    <li><span class="tension">Agent mail.</span> Every founder gets an email address their agent can use. Baseline capability for outbound drops.</li>
+                    <li><span class="tension">Drop context.</span> The notification needs to explain why the drop exists — "last Friday you talked about this, so I..."</li>
+                </ul>
+            </div>
+            <div class="quote-green">The CC moment isn't about reading email. It's about connecting something the person wouldn't have connected themselves. That's the bar. If a drop can do that even once, the whole architecture is validated.</div>
+        </div>
+        <div class="page-number">5/5</div>
+    </div>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            const pages = document.querySelectorAll('.page');
+            const currentPage = Math.round(window.scrollY / window.innerHeight);
+            if (e.key === 'ArrowDown' && currentPage < pages.length - 1) {
+                pages[currentPage + 1].scrollIntoView({ behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' && currentPage > 0) {
+                pages[currentPage - 1].scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
