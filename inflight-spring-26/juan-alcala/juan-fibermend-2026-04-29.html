@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="tidbit-type" content="founder">
+  <meta name="tidbit-subject" content="Juan Alcala">
+  <meta name="tidbit-company" content="FiberMend">
+  <meta name="tidbit-date" content="2026-04-29">
+  <meta name="tidbit-period" content="2026-W18">
+  <title>Juan Alcala - FiberMend - April 29, 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, sans-serif; background: #0f0f0f; color: #e5e5e5; line-height: 1.6; }
+    
+    .slide {
+      min-height: 100vh;
+      scroll-snap-align: start;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      position: relative;
+    }
+    
+    .card {
+      max-width: 600px;
+      width: 100%;
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    
+    .cover-card {
+      text-align: center;
+      border: 2px solid #3b82f6;
+    }
+    
+    h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; color: #fff; }
+    h2 { font-size: 1.75rem; font-weight: 600; margin-bottom: 1.5rem; color: #fff; }
+    
+    .subtitle { font-size: 1.25rem; color: #6b7280; margin-bottom: 0.5rem; }
+    .date { font-size: 1rem; color: #6b7280; margin-bottom: 2rem; }
+    .scroll-hint { font-size: 0.875rem; color: #3b82f6; margin-top: 3rem; }
+    
+    .label { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.75rem; }
+    
+    p { margin-bottom: 1rem; color: #d1d5db; }
+    
+    .highlight { color: #60a5fa; }
+    .decision { color: #34d399; }
+    .tension { color: #f97316; }
+    
+    .page-number {
+      position: absolute;
+      bottom: 1.5rem;
+      right: 2rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: #4b5563;
+    }
+    
+    ul {
+      list-style: none;
+      margin: 1rem 0;
+    }
+    
+    ul li {
+      padding: 0.5rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+      color: #d1d5db;
+    }
+    
+    ul li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: #3b82f6;
+    }
+    
+    .week-counter {
+      display: flex;
+      gap: 0.5rem;
+      margin: 1.5rem 0;
+    }
+    
+    .week-box {
+      flex: 1;
+      background: #1e1e1e;
+      border: 1px solid #2a2a2a;
+      border-radius: 6px;
+      padding: 1rem;
+      text-align: center;
+    }
+    
+    .week-box.active {
+      border-color: #f97316;
+      background: #2d1f1f;
+    }
+    
+    .week-label {
+      font-size: 0.75rem;
+      color: #6b7280;
+      margin-bottom: 0.25rem;
+    }
+    
+    .week-status {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #f97316;
+    }
+    
+    .action-box {
+      background: #1e3a2f;
+      border: 1px solid #34d399;
+      border-radius: 8px;
+      padding: 1.25rem;
+      margin: 1.5rem 0;
+    }
+    
+    .action-box h3 {
+      color: #34d399;
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.75rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SLIDE 1: COVER -->
+  <div class="slide">
+    <div class="card cover-card">
+      <p class="subtitle">FiberMend</p>
+      <h1>Juan Alcala</h1>
+      <p class="date">April 29, 2026</p>
+      <p class="scroll-hint">scroll ↓</p>
+    </div>
+    <div class="page-number">1/4</div>
+  </div>
+
+  <!-- SLIDE 2: THE PATTERN -->
+  <div class="slide">
+    <div class="card">
+      <p class="label">The Pattern</p>
+      <h2>Three Weeks at Zero</h2>
+      
+      <div class="week-counter">
+        <div class="week-box">
+          <div class="week-label">Week 1</div>
+          <div class="week-status">0</div>
+        </div>
+        <div class="week-box">
+          <div class="week-label">Week 2</div>
+          <div class="week-status">0</div>
+        </div>
+        <div class="week-box active">
+          <div class="week-label">Week 3</div>
+          <div class="week-status">?</div>
+        </div>
+      </div>
+      
+      <p>The product has been ready since April 10. That's <span class="tension">19 days</span>.</p>
+      
+      <p>In that time: brand locked, pitch locked, instructions printed, QR code live.</p>
+      
+      <p>Still waiting: <span class="tension">first customer</span>.</p>
+    </div>
+    <div class="page-number">2/4</div>
+  </div>
+
+  <!-- SLIDE 3: THE REALITY -->
+  <div class="slide">
+    <div class="card">
+      <p class="label">The Reality</p>
+      <h2>Preparation Isn't Progress</h2>
+      
+      <p>Here's what I know:</p>
+      
+      <ul>
+        <li>Coronado Beer Can racing — still haven't reached out</li>
+        <li>Freedom Boat Club — still haven't visited</li>
+        <li>Boatyard guy — still waiting for updated kit</li>
+      </ul>
+      
+      <p>These aren't blockers. They're <span class="tension">unopened doors</span>.</p>
+      
+      <p>The kit works. The pitch works. The instructions work.</p>
+      
+      <p>The only thing not working yet: <span class="highlight">asking people to buy it</span>.</p>
+    </div>
+    <div class="page-number">3/4</div>
+  </div>
+
+  <!-- SLIDE 4: THE COMMITMENT -->
+  <div class="slide">
+    <div class="card">
+      <p class="label">The Commitment</p>
+      <h2>One Conversation Changes Everything</h2>
+      
+      <div class="action-box">
+        <h3>This Week's Non-Negotiable</h3>
+        <p style="margin: 0; color: #fff; font-size: 1.1rem;">One conversation. With someone who owns a boat. About keeping this kit on board.</p>
+      </div>
+      
+      <p>Not "research." Not "planning." A real conversation with a real boat owner.</p>
+      
+      <p>Ask: <span class="highlight">"Would you keep this on your boat for $149?"</span></p>
+      
+      <p>The answer — yes or no — is progress. Silence is the only failure.</p>
+      
+      <p style="margin-top: 1.5rem; color: #9ca3af; font-style: italic;">Three weeks at zero is enough. Time to change the number.</p>
+    </div>
+    <div class="page-number">4/4</div>
+  </div>
+
+  <script>
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+        window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+      } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+        window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+      }
+    });
+  </script>
+
+</body>
+</html>
