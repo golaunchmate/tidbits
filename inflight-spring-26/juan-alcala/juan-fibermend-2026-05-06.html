@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="tidbit-type" content="founder">
+  <meta name="tidbit-subject" content="Juan Alcala">
+  <meta name="tidbit-company" content="FiberMend">
+  <meta name="tidbit-date" content="2026-05-06">
+  <meta name="tidbit-period" content="2026-W19">
+  <title>Juan Alcala - FiberMend - May 6, 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, sans-serif; background: #0f0f0f; color: #e5e5e5; line-height: 1.6; }
+    
+    .slide {
+      min-height: 100vh;
+      scroll-snap-align: start;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      position: relative;
+    }
+    
+    .card {
+      max-width: 600px;
+      width: 100%;
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    
+    .cover-card {
+      text-align: center;
+      border: 2px solid #3b82f6;
+    }
+    
+    h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; color: #fff; }
+    h2 { font-size: 1.75rem; font-weight: 600; margin-bottom: 1.5rem; color: #fff; }
+    
+    .subtitle { font-size: 1.25rem; color: #6b7280; margin-bottom: 0.5rem; }
+    .date { font-size: 1rem; color: #6b7280; margin-bottom: 2rem; }
+    .scroll-hint { font-size: 0.875rem; color: #3b82f6; margin-top: 3rem; }
+    
+    .label { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.75rem; }
+    
+    p { margin-bottom: 1rem; color: #d1d5db; }
+    
+    .highlight { color: #60a5fa; }
+    .decision { color: #34d399; }
+    .tension { color: #f97316; }
+    
+    .page-number {
+      position: absolute;
+      bottom: 1.5rem;
+      right: 2rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: #4b5563;
+    }
+    
+    .big-number {
+      font-size: 6rem;
+      font-weight: 800;
+      color: #f97316;
+      text-align: center;
+      margin: 1rem 0;
+    }
+    
+    .big-label {
+      text-align: center;
+      font-size: 1rem;
+      color: #9ca3af;
+      margin-bottom: 1.5rem;
+    }
+    
+    ul {
+      list-style: none;
+      margin: 1rem 0;
+    }
+    
+    ul li {
+      padding: 0.5rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+      color: #d1d5db;
+    }
+    
+    ul li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: #3b82f6;
+    }
+    
+    .streak-box {
+      background: #2d1f1f;
+      border: 1px solid #f97316;
+      border-radius: 8px;
+      padding: 1.25rem;
+      margin: 1.5rem 0;
+      text-align: center;
+    }
+    
+    .streak-number {
+      font-size: 3rem;
+      font-weight: 800;
+      color: #f97316;
+    }
+    
+    .streak-label {
+      color: #9ca3af;
+      font-size: 0.875rem;
+    }
+    
+    .choice-box {
+      background: #1e3a2f;
+      border: 1px solid #34d399;
+      border-radius: 8px;
+      padding: 1.25rem;
+      margin: 1.5rem 0;
+    }
+    
+    .choice-box h3 {
+      color: #34d399;
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.75rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SLIDE 1: COVER -->
+  <div class="slide">
+    <div class="card cover-card">
+      <p class="subtitle">FiberMend</p>
+      <h1>Juan Alcala</h1>
+      <p class="date">May 6, 2026</p>
+      <p class="scroll-hint">scroll ↓</p>
+    </div>
+    <div class="page-number">1/4</div>
+  </div>
+
+  <!-- SLIDE 2: THE NUMBER -->
+  <div class="slide">
+    <div class="card">
+      <p class="label">The Number</p>
+      
+      <div class="big-number">0</div>
+      <div class="big-label">customers in 26 days</div>
+      
+      <p style="text-align: center; margin-top: 1rem;">Product ready: <span class="highlight">April 10</span></p>
+      <p style="text-align: center;">Today: <span class="tension">May 6</span></p>
+      
+      <p style="text-align: center; margin-top: 1.5rem; color: #6b7280;">Almost a month. Same result.</p>
+    </div>
+    <div class="page-number">2/4</div>
+  </div>
+
+  <!-- SLIDE 3: THE PATTERN -->
+  <div class="slide">
+    <div class="card">
+      <p class="label">The Pattern</p>
+      <h2>Same Three Doors, Still Closed</h2>
+      
+      <ul>
+        <li><strong>Coronado Beer Can Racing</strong> — friend's connection, still not reached out</li>
+        <li><strong>Freedom Boat Club</strong> — members who rent boats, still not visited</li>
+        <li><strong>Boatyard guy</strong> — waiting for kit, still not delivered</li>
+      </ul>
+      
+      <p>These aren't blockers. They're <span class="tension">choices</span>.</p>
+      
+      <p>Every week the list is the same. Every week the number is the same.</p>
+      
+      <p style="margin-top: 1rem; color: #9ca3af;">The definition of a pattern: same inputs, same outputs.</p>
+    </div>
+    <div class="page-number">3/4</div>
+  </div>
+
+  <!-- SLIDE 4: THE CHOICE -->
+  <div class="slide">
+    <div class="card">
+      <p class="label">The Choice</p>
+      <h2>Break the Pattern or Extend It</h2>
+      
+      <div class="choice-box">
+        <h3>Two Paths</h3>
+        <p style="margin: 0; color: #fff;"><strong>Path A:</strong> Another week of "getting ready." Same result.</p>
+        <p style="margin: 0.75rem 0 0; color: #fff;"><strong>Path B:</strong> One conversation. Different result.</p>
+      </div>
+      
+      <p>The kit is built. The pitch is memorized. The instructions are printed.</p>
+      
+      <p>Nothing left to prepare. Only <span class="highlight">people left to ask</span>.</p>
+      
+      <p style="margin-top: 1.5rem; color: #9ca3af; font-style: italic;">Four weeks at zero isn't a problem with the product. It's a pattern with the founder.</p>
+      
+      <p style="margin-top: 1rem; color: #fff;">Time to break it.</p>
+    </div>
+    <div class="page-number">4/4</div>
+  </div>
+
+  <script>
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+        window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+      } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+        window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+      }
+    });
+  </script>
+
+</body>
+</html>
