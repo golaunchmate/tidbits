@@ -46,9 +46,11 @@
     .col{flex:1}
     .footer{display:flex;justify-content:space-between;align-items:center;margin-top:18px}
     .page-number{font-family:var(--mono);color:var(--muted)}
-    .kbd{background:#0b1220;border:1px solid rgba(255,255,255,0.03);padding:6px 8px;border-radius:6px;font-family:var(--mono);font-size:13px;color:var(--muted)}
-    /* keyboard hint */
-    .hint{position:fixed;right:20px;bottom:20px;background:rgba(255,255,255,0.02);padding:10px 12px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);font-size:13px;color:var(--muted)}
+    .speaker{font-family:var(--mono);font-size:11px;letter-spacing:0.05em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+    .speaker.craig{color:#a78bfa}
+    .speaker.michael{color:var(--blue)}
+    .speaker.laura{color:#f472b6}
+    .section{margin-top:24px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.04)}
     @media(max-width:720px){.cols{flex-direction:column}.card{padding:28px}}
   </style>
 </head>
@@ -63,7 +65,7 @@
             <h1 id="title1">Transcript → Drop → Notify</h1>
             <h2>LaunchMate status & handoff (2026-05-15)</h2>
             <div class="meta">Michael Hayes — LaunchMate | Founder's tidbit</div>
-            <p class="small">Snapshot: feature freeze in effect. Primary objective: prove the connector thesis by demonstrating an end-to-end flow — a transcript ingested from a connector, a Drop created, and a founder notified. Handoff to Laura is the immediate priority before my departure (2026-05-31).</p>
+            <p class="small">Snapshot: feature freeze in effect. Primary objective: prove the connector thesis end-to-end — a transcript goes in, a Drop comes out, a founder gets notified. Handoff to Laura before I depart (2026-05-31).</p>
             <div style="margin-top:18px">
               <span class="pill">Connector-first</span>
               <span class="pill">Drops (Pokes → Drops)</span>
@@ -81,7 +83,7 @@
       <section class="page">
         <div class="card" aria-labelledby="title2">
           <h1 id="title2">What we started with</h1>
-          <h2>Problem + immediate test</h2>
+          <h2>Problem + the connector thesis</h2>
           <p>I built LaunchMate to be a memory-first assistant for ZIP founders. The current pivot is explicit: not another chat interface, but a connector-backed memory hub that owns context and creates artifacts founders can act on.</p>
           <p class="small">Starting assumptions that led here:</p>
           <ul class="list">
@@ -100,13 +102,15 @@
       <section class="page">
         <div class="card" aria-labelledby="title3">
           <h1 id="title3">What landed (and why)</h1>
-          <h2 class="trade">Pivots, trade-offs, and a simple thesis</h2>
+          <h2 class="trade">Pivots, trade-offs, and provider constraints</h2>
           <p>We iterated the MCP auth model (multiple pivots → final OAuth 2.0 DCR with PKCE and peppered tokens), connected Granola/Notion/Google Drive, and rebranded Pokes → Drops to make work visible.</p>
           <p class="small"><strong>Trade-offs:</strong> Ship reliable connectors now (manual sync, dedupe, demo) vs fully automated pipelines later (rate limits, provider plans, backoff).</p>
           <ul class="list">
-            <li class="trade">Granola rate limits forced manual sync → cron disabled to avoid noisy imports.</li>
+            <li class="trade">Granola rate limits forced manual sync → cron disabled to avoid noisy imports. Free plan only gives summaries, not transcripts. <span class="speaker michael">Michael</span></li>
             <li class="trade">Discord Remote showed pre-training works, but inbound flows broke on a critical Tanner request — reliability matters more than novelty.</li>
+            <li class="trade">MCP integrations need push/webhook standards — the current pull model is frustrating. <span class="speaker craig">Craig</span></li>
             <li class="decision">Drops replace raw summaries: context only matters when converted into artifacts + visible effort.</li>
+            <li>If providers limit us, we can build it ourselves — the barrier to self-host transcription (Parakeet/Quinn) is low. <span class="speaker michael">Michael</span></li>
           </ul>
           <div class="footer">
             <div class="small">Design signal: make the value visible (effort logs / checkmarks).</div>
@@ -119,32 +123,45 @@
       <section class="page">
         <div class="card" aria-labelledby="title4">
           <h1 id="title4">Decisions & team commitments</h1>
-          <h2>Who will do what</h2>
+          <h2>Who said what, who will do what</h2>
 
-          <div class="cols" style="margin-top:12px">
-            <div class="col">
-              <h3 style="margin:0 0 8px 0">Michael (me)</h3>
-              <ul class="list">
-                <li>Finish Granola manual-sync demo & document steps (account → set primary agent → manual Sync → confirm transcript → create_drop)</li>
-                <li>Fix Tanner/Discord Remote agent error; add tests for inbound Discord flows</li>
-                <li>Rotate/confirm OAUTH_TOKEN_PEPPER + emergency revoke/runbook</li>
-                <li>Finalize drop routing logic and validate create_drop end-to-end</li>
-                <li>Pick demo storage (Vercel object storage) and plan S3/Blob migration post-handoff</li>
-              </ul>
-            </div>
-
-            <div class="col">
-              <h3 style="margin:0 0 8px 0">Laura & Craig</h3>
-              <ul class="list">
-                <li><strong>Laura:</strong> Own the handoff — run the Granola demo, validate dedupe, debug default-agent issues, verify Discord once fixes land</li>
-                <li><strong>Craig:</strong> Enforce feature freeze and the handoff timeline; prioritize the single measurable demo</li>
-              </ul>
-            </div>
+          <div class="section">
+            <div class="speaker michael">Michael (me)</div>
+            <ul class="list">
+              <li>Finish Granola manual-sync demo & document steps (account → set primary agent → manual Sync → confirm transcript → create_drop)</li>
+              <li>Fix Tanner/Discord Remote agent error; add tests for inbound Discord flows</li>
+              <li>Rotate/confirm OAUTH_TOKEN_PEPPER + emergency revoke/runbook</li>
+              <li>Finalize drop routing logic and validate create_drop end-to-end</li>
+              <li>Pick demo storage (Vercel object storage) and plan S3/Blob migration post-handoff</li>
+              <li>Proposed building native transcription (Parakeet/Quinn) instead of relying on limited third-party connectors — "the barrier to build these things ourselves is so much lower"</li>
+            </ul>
           </div>
 
-          <div style="margin-top:14px">
-            <h4 style="margin:0 0 6px 0">Gary (product lens)</h4>
-            <p class="small">No code tasks — provided the product insight that pure summaries are low-value unless converted into artifacts and visible execution. That idea shaped the Drops rebrand and the "effort visibility" requirement.</p>
+          <div class="section">
+            <div class="speaker laura">Laura</div>
+            <ul class="list">
+              <li>Own the handoff — run the Granola demo, validate dedupe, debug default-agent issues, verify Discord once fixes land</li>
+              <li>Build a Letta Code drop agent demo — "fully automated" walkthrough where a transcript goes in and a drop comes out</li>
+              <li>Continue Letta Code exploration; investigate asset/drop visualization</li>
+              <li>Flagged Letta removing file support (memFS constraint) — "everything feels like it has constraints"</li>
+              <li>Investigated Notion student plan live — AI features (transcription) not included. "It's not the rosy picture that I thought."</li>
+            </ul>
+          </div>
+
+          <div class="section">
+            <div class="speaker craig">Craig</div>
+            <ul class="list">
+              <li>Enforce feature freeze and the handoff timeline; prioritize the single measurable demo</li>
+              <li>Pushed for push/webhook model — "I want drops firing automatically after meetings"</li>
+              <li>Excited about Notion as intermediary — CLI + student Pro + re-architecting. "I think Notion is our good intermediary solution."</li>
+              <li>Investigate Notion student plan AI features (spike); ping file system company about waitlist</li>
+              <li>Showed Claude artifacts live as the model for interactive HTML assets</li>
+            </ul>
+          </div>
+
+          <div class="section">
+            <div class="speaker">Gary (product lens)</div>
+            <p class="small">No code tasks — provided the product insight that pure summaries are low-value unless converted into artifacts and visible execution. <strong>"The goal is behavior change, not summary."</strong> That idea shaped the Drops rebrand and the "effort visibility" requirement. <span class="speaker craig">Introduced by Craig</span></p>
           </div>
 
           <div class="footer">
@@ -163,13 +180,13 @@
           <p class="small"><strong>Current:</strong> Feature freeze; Granola manual sync working but intermittent; create_drop exists but routing/error handling needs validation; Tanner Discord error blocks full E2E proof.</p>
 
           <h3 style="margin-top:12px">Single validation to chase</h3>
-          <p>I want a simple measurable demo: ingest a transcript from Granola → auto-create a Drop with visible execution steps → notify the founder (Discord or web). When that runs reliably, the connector-first hypothesis is materially validated.</p>
+          <p>A simple measurable demo: ingest a transcript from Granola → auto-create a Drop with visible execution steps → notify the founder (Discord or web). When that runs reliably, the connector-first hypothesis is materially validated.</p>
 
           <h3 style="margin-top:12px">Call to action</h3>
           <ul class="list">
-            <li>Michael: finish the demo and docs for Laura (today/this week)</li>
-            <li>Laura: run the documented demo, file any gaps, confirm handoff readiness</li>
-            <li>Craig: confirm go/no-go on handoff once demo is verified</li>
+            <li><span class="speaker michael">Michael:</span> finish the demo and docs for Laura (today/this week)</li>
+            <li><span class="speaker laura">Laura:</span> run the documented demo, file any gaps, confirm handoff readiness; build drop agent demo</li>
+            <li><span class="speaker craig">Craig:</span> confirm go/no-go on handoff once demo is verified; spike Notion + file system company</li>
           </ul>
 
           <div style="margin-top:18px;display:flex;justify-content:space-between;align-items:center">
@@ -181,11 +198,10 @@
 
     </div>
 
-    <div class="hint">Use ↑ ↓ or PageUp / PageDown to navigate</div>
+    <div style="position:fixed;right:20px;bottom:20px;background:rgba(255,255,255,0.02);padding:10px 12px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);font-size:13px;color:var(--muted)">Use ↑ ↓ or PageUp / PageDown to navigate</div>
   </div>
 
   <script>
-    // basic keyboard navigation for pages
     (function(){
       const pages = Array.from(document.querySelectorAll('.page'));
       let idx = 0;
@@ -197,7 +213,6 @@
         if(['ArrowDown','PageDown',' '].includes(e.key)){ e.preventDefault(); scrollToIndex(idx+1) }
         if(['ArrowUp','PageUp'].includes(e.key)){ e.preventDefault(); scrollToIndex(idx-1) }
       });
-      // update idx on scroll
       let ticking=false;
       const container = document.getElementById('pages');
       container.addEventListener('scroll', ()=>{
