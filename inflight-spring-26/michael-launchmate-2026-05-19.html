@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>What Laura Needs to Know — OAuth, Tokens & the Poke Decision</title>
+
+  <meta name="tidbit-type" content="founder">
+  <meta name="tidbit-subject" content="Michael Hayes">
+  <meta name="tidbit-company" content="LaunchMate">
+  <meta name="tidbit-date" content="2026-05-19">
+  <meta name="tidbit-author" content="agent-a72dbb02-e690-4c7b-be19-b00c6758d817">
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0f0f0f;
+      --card:#1a1a1a;
+      --text:#e5e7eb;
+      --muted:#6b7280;
+      --blue:#60a5fa;
+      --green:#34d399;
+      --orange:#f97316;
+      --mono:'JetBrains Mono', monospace;
+      --sans:'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    html,body{height:100%;margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font-smoothing:antialiased;}
+    .wrap{height:100vh;overflow:hidden;display:flex;flex-direction:column}
+    .pages{height:100%;overflow-y:auto;scroll-snap-type:y mandatory;}
+    .page{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:48px;box-sizing:border-box;scroll-snap-align:start}
+    .card{width:100%;max-width:920px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);border-radius:12px;padding:40px;box-sizing:border-box;box-shadow:0 10px 30px rgba(0,0,0,0.6);border:1px solid rgba(255,255,255,0.03)}
+    h1{font-size:28px;margin:0 0 8px 0;font-weight:600}
+    h2{font-size:20px;margin:0 0 12px 0;color:var(--muted)}
+    p{margin:10px 0;line-height:1.5;color:var(--text)}
+    .meta{font-family:var(--mono);color:var(--muted);font-size:13px;margin-top:6px}
+    .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.02);color:var(--muted);font-size:13px;margin-right:8px}
+    .list{margin:14px 0 0 0;padding-left:18px}
+    .list li{margin:8px 0}
+    .tag{color:var(--blue);font-weight:600}
+    .trade{color:var(--orange);font-weight:600}
+    .decision{color:var(--green);font-weight:700}
+    .small{font-size:13px;color:var(--muted)}
+    .footer{display:flex;justify-content:space-between;align-items:center;margin-top:18px}
+    .page-number{font-family:var(--mono);color:var(--muted)}
+    .diagram{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);border-radius:8px;padding:20px;margin:16px 0;font-family:var(--mono);font-size:13px;line-height:1.8;color:var(--muted);white-space:pre-wrap;overflow-x:auto}
+    .diagram .highlight{color:var(--blue)}
+    .diagram .warn{color:var(--orange)}
+    .diagram .safe{color:var(--green)}
+    .arrow{color:var(--muted);opacity:0.5}
+    @media(max-width:720px){.card{padding:28px}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="pages" id="pages">
+
+      <!-- Page 1: Cover -->
+      <section class="page">
+        <div class="card" role="article" aria-labelledby="title1">
+          <div>
+            <h1 id="title1">What Laura Needs to Know</h1>
+            <h2>OAuth, tokens, and the Poke decision</h2>
+            <div class="meta">Michael Hayes — LaunchMate | 2026-05-19</div>
+            <p class="small">I sat down with Laura to walk through the connector internals she'll own after I leave. This was her first deep exposure to how tokens are stored, how the different connector architectures work, and why we made the decisions we did. Turns out, explaining your own system is a good way to realize what you actually remember — and what you don't.</p>
+            <div style="margin-top:18px">
+              <span class="pill">Handoff</span>
+              <span class="pill">OAuth / Encryption</span>
+              <span class="pill">Connector Architecture</span>
+            </div>
+            <div class="footer">
+              <div class="small">1:1 session with Laura</div>
+              <div class="page-number">1/5</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Page 2: The encryption model -->
+      <section class="page">
+        <div class="card" aria-labelledby="title2">
+          <h1 id="title2">How we store tokens</h1>
+          <h2>And the single point of failure I don't love</h2>
+
+          <p>This is the first time LaunchMate handles logging in on behalf of multiple users. Every connector token — Granola, Notion, Google Drive — gets stored per-user in Supabase.</p>
+
+          <p class="small">But not in plain text. Here's the model:</p>
+
+          <div class="diagram">Supabase DB
+  └── integrations table
+      └── <span class="highlight">ciphertext</span> (AES-256 encrypted token)
+          │
+          │  encrypted with key from ↓
+          │
+Vercel (environment variable)
+  └── <span class="highlight">ENCRYPTION_KEY</span></div>
+
+          <p><span class="safe">Safe scenario:</span> Someone gets the database but not Vercel → tokens are mathematically irreversible. They're safe.</p>
+          <p><span class="warn">Risk scenario:</span> Someone gets Vercel → they also have database access (it's our infra). Everything's compromised. That's the single point of failure.</p>
+          <p class="small"><strong>Upgrade path:</strong> Amazon KMS — keys aren't in your code at all, you fetch them at runtime. Not implemented yet, but Laura should know it's the next step.</p>
+
+          <div class="footer">
+            <div class="small">Also: dev/prod Clerk instances share one Supabase DB. Deduplication handles coexistence.</div>
+            <div class="page-number">2/5</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Page 3: Two connector types -->
+      <section class="page">
+        <div class="card" aria-labelledby="title3">
+          <h1 id="title3">Two ways to connect</h1>
+          <h2>Not all connectors are built the same</h2>
+
+          <div class="diagram"><span class="highlight">Granola (direct MCP)</span>
+  Give it an MCP link → user signs in via OAuth
+  → token stored in encrypted table
+  → auth happens at web app level
+  <span class="safe">Simple. Just works.</span>
+
+<span class="warn">Notion / Google Drive (OAuth client)</span>
+  You manage an OAuth client in Google Console
+  → custom consent screens ("Launchmate wants to access your Notion")
+  → API-wrapped implementation
+  → same encrypted token storage
+  <span class="warn">More complex. More moving parts.</span></div>
+
+          <p>I walked Laura through scopes using Discord as the example: your account has name, email, friends list, message data, servers, credit card, 2FA. A scope defines the green zone — what the application is allowed to see. Everything else is invisible.</p>
+
+          <p class="small">Same pattern as the Discord bot: create a client, set what you want to access, consent screen shows the green zone.</p>
+
+          <div class="footer">
+            <div class="small">Laura needs a non-school email to get added to Google Console.</div>
+            <div class="page-number">3/5</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Page 4: The Poke decision -->
+      <section class="page">
+        <div class="card" aria-labelledby="title4">
+          <h1 id="title4">Why we didn't use Poke</h1>
+          <h2 class="trade">The intermediary that became a liability</h2>
+
+          <p>My original assumption was simple: <span class="trade">Granola → Poke → LaunchMate</span>. Poke would sit in the middle, pull transcripts from Granola, and push them into the LaunchMate agent.</p>
+
+          <p>What I realized: this required building a LaunchMate MCP server into Poke, loading tools into Poke's context window, and threading messages from Poke into the LaunchMate agent. Poke became a true middleman — you can't just pass data through for free.</p>
+
+          <p class="small">And then there was the <span class="trade">threading issue:</span></p>
+          <p>"I'd be having a conversation and out of nowhere it'd stop responding. Then I'd say 'any update?' and it'd reply 'Hey there, can I help you?' — felt like messages were going into different context windows."</p>
+
+          <p><span class="decision">The principle I landed on:</span></p>
+          <ul class="list">
+            <li class="decision">Poke = notifier → if it fails, a notification doesn't arrive. Acceptable.</li>
+            <li class="trade">Poke = data manager → if it fails, meeting syncing breaks. Unacceptable.</li>
+          </ul>
+
+          <p class="small">Direct connector reduces failure points. If the team wants Poke to handle some of this later, it's possible — just a design choice, not a technical limitation.</p>
+
+          <div class="footer">
+            <div class="small">Maps to the reliability-first pattern from February: ship what you can depend on.</div>
+            <div class="page-number">4/5</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Page 5: The thing I don't like about AI -->
+      <section class="page">
+        <div class="card" aria-labelledby="title5">
+          <h1 id="title5">What I couldn't remember</h1>
+          <h2>The cognitive debt I keep running into</h2>
+
+          <p>Halfway through explaining the encryption model to Laura, I realized I couldn't recall the exact implementation. I knew I'd used AES-256. I knew it was safe. I'd verified it with Claude. But the details — the exact format, the edge cases — were gone from my head.</p>
+
+          <p>I had to pull up my Claude chat history to verify what I'd built.</p>
+
+          <p class="small"><strong>What I said to Laura:</strong> "This is something I don't like about using AI — a lot of the stuff I do just goes away and you can't remember it."</p>
+
+          <p>This is the same <span class="trade">cognitive debt</span> concern I've been tracking. AI helps you ship, but the knowledge doesn't always stick. I built encryption I can't fully explain from memory. That's a real risk for handoff — Laura needs docs, not just demos.</p>
+
+          <p class="small"><strong>Also discussed:</strong> Agent tool bloat (recommendation: max 8 tools). Explored a <span class="tag">bash sandbox concept</span> — agent writes bash that calls the LaunchMate API instead of loading connector tools into the context window. Keeps the window clean while preserving capability.</p>
+
+          <p class="small"><strong>Action items:</strong> Laura creates non-school email for Google Console access. Finishes PR review later this week. I continue handoff sessions as top priority.</p>
+
+          <div class="footer">
+            <div class="small">2026-05-19</div>
+            <div class="page-number">5/5</div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <div style="position:fixed;right:20px;bottom:20px;background:rgba(255,255,255,0.02);padding:10px 12px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);font-size:13px;color:var(--muted)">Use ↑ ↓ or PageUp / PageDown to navigate</div>
+  </div>
+
+  <script>
+    (function(){
+      const pages = Array.from(document.querySelectorAll('.page'));
+      let idx = 0;
+      function scrollToIndex(i){
+        idx = Math.max(0, Math.min(pages.length-1, i));
+        pages[idx].scrollIntoView({behavior:'smooth'});
+      }
+      window.addEventListener('keydown', (e)=>{
+        if(['ArrowDown','PageDown',' '].includes(e.key)){ e.preventDefault(); scrollToIndex(idx+1) }
+        if(['ArrowUp','PageUp'].includes(e.key)){ e.preventDefault(); scrollToIndex(idx-1) }
+      });
+      let ticking=false;
+      const container = document.getElementById('pages');
+      container.addEventListener('scroll', ()=>{
+        if(ticking) return;
+        requestAnimationFrame(()=>{
+          let closest = 0; let best = Infinity;
+          pages.forEach((p,i)=>{
+            const rect = p.getBoundingClientRect();
+            const d = Math.abs(rect.top);
+            if(d < best){ best = d; closest = i }
+          });
+          idx = closest;
+          ticking = false;
+        });
+        ticking = true;
+      });
+    })();
+  </script>
+</body>
+</html>
