@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="tidbit-type" content="founder">
+    <meta name="tidbit-subject" content="Aditya Ujawane">
+    <meta name="tidbit-company" content="Launchmate">
+    <meta name="tidbit-date" content="2026-05-21">
+    <meta name="tidbit-period" content="2026-W21">
+    <title>Aditya · Launchmate · Week 21</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #0f0f0f; color: #e5e5e5; line-height: 1.6; }
+
+        .slide {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .card {
+            max-width: 600px;
+            width: 100%;
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            padding: 2.5rem;
+            position: relative;
+        }
+
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #f5f5f5;
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #f5f5f5;
+            line-height: 1.3;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: #d1d5db;
+            font-size: 1.05rem;
+        }
+
+        .highlight { color: #60a5fa; }
+        .decision { color: #34d399; }
+        .tension { color: #f97316; }
+
+        .stat-row {
+            display: flex;
+            gap: 2rem;
+            margin: 1.5rem 0;
+        }
+
+        .stat { text-align: left; }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #60a5fa;
+        }
+
+        .stat-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .page-num {
+            position: absolute;
+            bottom: 1rem;
+            right: 1.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: #4b5563;
+        }
+
+        .subtitle {
+            color: #9ca3af;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .scroll-hint {
+            color: #4b5563;
+            font-size: 0.85rem;
+            margin-top: 1.5rem;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #9ca3af;
+            border-left: 2px solid #f97316;
+            padding-left: 1rem;
+            margin: 1.5rem 0 0 0;
+            font-size: 1.05rem;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 1rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+            color: #d1d5db;
+            font-size: 1.05rem;
+        }
+
+        li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #4b5563;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Slide 1: Cover -->
+    <div class="slide">
+        <div class="card">
+            <p class="label">Week 21 · May 2026</p>
+            <h1>Aditya Ujawane</h1>
+            <p class="subtitle">Launchmate · New Intern</p>
+            <p class="scroll-hint">scroll ↓</p>
+            <span class="page-num">1/5</span>
+        </div>
+    </div>
+
+    <!-- Slide 2: Where I Started -->
+    <div class="slide">
+        <div class="card">
+            <p class="label">Where I Started</p>
+            <h2>Walking into a team in transition</h2>
+            <p>First weekly sync. <span class="highlight">5 people</span> on the call — Craig, Laura, Michael (leaving in a week), Jay, and me. The team's been building for <span class="highlight">over a year</span>. I'm trying to make sense of what they've built and where I fit.</p>
+            <p>I came in thinking I'd be building AI features. The reality is more layered — this team isn't just shipping features, they're trying to figure out <span class="tension">what the next generation of AI products should even be</span>.</p>
+            <span class="page-num">2/5</span>
+        </div>
+    </div>
+
+    <!-- Slide 3: What I Discovered -->
+    <div class="slide">
+        <div class="card">
+            <p class="label">What I Discovered</p>
+            <h2>An architecture that works while you sleep</h2>
+            <div class="stat-row">
+                <div class="stat">
+                    <div class="stat-value">8,000</div>
+                    <div class="stat-label">agent swarms on Polsia</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">1 yr+</div>
+                    <div class="stat-label">of product history</div>
+                </div>
+            </div>
+            <p>The pipeline: <span class="highlight">transcript agent</span> ingests mentor meetings → extracts insights & commitments → sends to <span class="highlight">drop agent</span> → schedules assets (emails, research, follow-ups) for founders. The "overnight co-founder" — you sleep, your agent works.</p>
+            <p>Michael built a <span class="decision">"Michael Agent"</span> to externalize his knowledge into Cursor. Not the code — the <span class="tension">feature journeys and architectural decisions</span>. That's what you can't read in a repo.</p>
+            <span class="page-num">3/5</span>
+        </div>
+    </div>
+
+    <!-- Slide 4: The Real Opportunity -->
+    <div class="slide">
+        <div class="card">
+            <p class="label">The Real Opportunity</p>
+            <h2>Not faster — meaningful</h2>
+            <p>Craig's been thinking hard about Launchmate 2.0. His insight: AI will be <span class="highlight">super good at removing friction</span> — coding, automation, optimization. But that's commoditized. Everyone gets that for free.</p>
+            <p>The differentiator is <span class="decision">human-level value</span>:</p>
+            <ul>
+                <li>Delight — things that feel magical, not just efficient</li>
+                <li>Surprise — proactive work you didn't ask for</li>
+                <li>Feeling seen — narrative that makes founders feel understood</li>
+                <li>Empowerment — "I can execute all my ideas at once"</li>
+            </ul>
+            <p>The tidbits feature made the team feel closer. That's not a side effect — <span class="tension">that's the product</span>.</p>
+            <span class="page-num">4/5</span>
+        </div>
+    </div>
+
+    <!-- Slide 5: Where I'm At -->
+    <div class="slide">
+        <div class="card">
+            <p class="label">Where I'm At</p>
+            <h2>Ready before I'm official</h2>
+            <p>HR paperwork is pending. But I'm not waiting — I've already set up <span class="highlight">Poke</span> as a personal agent, asked my first architecture question in the team meeting, and I'm here.</p>
+            <p>Craig & Laura are scoping <span class="decision">starter projects</span> for Jay and me. Michael's knowledge agent is ready to merge — I need to learn from it fast while he's still around.</p>
+            <p class="quote">"I thought I was joining to build AI features. I'm actually here to figure out what makes AI feel human."</p>
+            <span class="page-num">5/5</span>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
