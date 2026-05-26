@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What LaunchMate Is and How It Got Here</title>
+<meta name="tidbit-type" content="team">
+<meta name="tidbit-subject" content="Jay">
+<meta name="tidbit-company" content="LaunchMate">
+<meta name="tidbit-date" content="2026-05-26">
+<meta name="tidbit-author" content="agent-a72dbb02-e690-4c7b-be19-b00c6758d817">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #0f0f0f;
+    color: #e5e5e5;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+  }
+
+  .page {
+    min-height: 100vh;
+    padding: 3rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 720px;
+    margin: 0 auto;
+    scroll-snap-align: start;
+  }
+
+  .page-number {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: #6b7280;
+    margin-bottom: 2rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    color: #ffffff;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #ffffff;
+  }
+
+  p, li {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: #d1d5db;
+    margin-bottom: 1rem;
+  }
+
+  .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #6b7280;
+    margin-bottom: 0.5rem;
+  }
+
+  .highlight { color: #60a5fa; }
+  .tension { color: #f97316; }
+  .decision { color: #34d399; }
+
+  .card {
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .card-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #9ca3af;
+    margin-bottom: 0.75rem;
+  }
+
+  .timeline-item {
+    padding-left: 1.25rem;
+    border-left: 2px solid #2a2a2a;
+    margin-bottom: 1.5rem;
+    position: relative;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -5px;
+    top: 0.4rem;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #60a5fa;
+  }
+
+  .timeline-item.v1::before { background: #6b7280; }
+  .timeline-item.v2::before { background: #f97316; }
+  .timeline-item.v3::before { background: #34d399; }
+
+  .timeline-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.25rem;
+  }
+
+  .timeline-label.v1 { color: #6b7280; }
+  .timeline-label.v2 { color: #f97316; }
+  .timeline-label.v3 { color: #34d399; }
+
+  .scroll-hint {
+    text-align: center;
+    color: #4b5563;
+    font-size: 0.85rem;
+    margin-top: 2rem;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.8; }
+  }
+
+  .quote {
+    font-style: italic;
+    color: #9ca3af;
+    border-left: 2px solid #f97316;
+    padding-left: 1rem;
+    margin: 1.25rem 0;
+  }
+
+  .tool-flow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    color: #9ca3af;
+    background: #141414;
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 1rem 0;
+    line-height: 1.8;
+  }
+
+  .tool-flow .arrow { color: #6b7280; }
+  .tool-flow .blue { color: #60a5fa; }
+  .tool-flow .green { color: #34d399; }
+  .tool-flow .orange { color: #f97316; }
+
+  ul { list-style: none; padding: 0; }
+  ul li { padding-left: 1.25rem; position: relative; }
+  ul li::before { content: '→'; position: absolute; left: 0; color: #60a5fa; }
+
+  .feature-box {
+    background: #141414;
+    border: 1px solid #f97316;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-top: 1rem;
+  }
+
+  .feature-box .card-title { color: #f97316; }
+
+  html {
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+  }
+
+  @media (max-width: 640px) {
+    h1 { font-size: 1.75rem; }
+    .page { padding: 2rem 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1: Cover -->
+<div class="page">
+  <div class="page-number">1/5</div>
+  <div class="label">Onboarding Tidbit</div>
+  <h1>What LaunchMate Is and How It Got Here</h1>
+  <p style="font-size: 1.15rem; color: #9ca3af;">
+    Jay — you're walking into a year-long story. This is the context you need before you build your first feature.
+  </p>
+  <div class="card" style="margin-top: 2rem;">
+    <div class="card-title">Why this matters</div>
+    <p style="margin-bottom: 0;">
+      Your first task is building a "set primary agent" tool call — a way for founders to change their default agent through the chat interface. To build that well, you need to understand <span class="highlight">what agents are</span>, <span class="highlight">how they relate to users</span>, and <span class="highlight">why the current system works the way it does</span>.
+    </p>
+  </div>
+  <div class="scroll-hint">↓ scroll to continue</div>
+</div>
+
+<!-- PAGE 2: The Journey -->
+<div class="page">
+  <div class="page-number">2/5</div>
+  <div class="label">History</div>
+  <h2>Three Versions, One Problem</h2>
+
+  <div class="timeline-item v1">
+    <div class="timeline-label v1">V1 · Summer 2025 · Founder-focused</div>
+    <p>Founders check in: <em>"what did you do, what did you learn, what's next?"</em> They get a progress score, momentum movers, suggestions, video recommendations.</p>
+    <p class="tension" style="font-size: 0.95rem;">Problem: Founders didn't want to go to the platform to report progress. Suggestions weren't helpful. They wanted more mentor interaction.</p>
+  </div>
+
+  <div class="timeline-item v2">
+    <div class="timeline-label v2">V1.5/V2 · Fall 2025 · Mentor-focused</div>
+    <p>Agent-to-agent communication. Craig queries founder updates through his own agent. Saved review panel 45 minutes. <span class="highlight">Robert/Erica mismatch</span> — Robert submitted a form and waited; Erica saw it via LaunchMate and contacted him directly. First big win.</p>
+    <p class="tension" style="font-size: 0.95rem;">Problem: Mentees still didn't like giving updates. Some felt LaunchMate was "gatekeeping" mentor access.</p>
+  </div>
+
+  <div class="timeline-item v3">
+    <div class="timeline-label v3">V3 · Spring 2026 · Connector pivot</div>
+    <p>Phase out the web app as primary interface. Make LaunchMate a <span class="highlight">"brain"</span> that connectors feed into. Pre-training so agents know founders from day one. Founders don't type updates — connectors auto-populate from their existing tools.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title">The through-line</div>
+    <p style="margin-bottom: 0;">Every version grappled with the same tension: <span class="tension">getting founders to use a new communication platform.</span> The technology changed. The adoption problem didn't.</p>
+  </div>
+</div>
+
+<!-- PAGE 3: How Agents Work -->
+<div class="page">
+  <div class="page-number">3/5</div>
+  <div class="label">Technical Foundation</div>
+  <h2>How Agents Actually Work</h2>
+
+  <p>You need to understand this because your feature is literally a tool call — the mechanism described below.</p>
+
+  <div class="tool-flow">
+    <span class="blue">User</span> sends message <span class="arrow">→</span><br>
+    Model: <span class="orange">"Can I answer this myself?"</span> <span class="arrow">→</span> No<br>
+    Model: <span class="orange">"Any tools available?"</span> <span class="arrow">→</span> Yes<br>
+    Model selects tool + parameters <span class="arrow">→</span><br>
+    Emits <span class="highlight">tool call message</span> (JSON) <span class="arrow">→</span><br>
+    Python intercepts, parses, <span class="green">executes real code</span> <span class="arrow">→</span><br>
+    Composes <span class="highlight">tool call result message</span> <span class="arrow">→</span><br>
+    Sends back to model <span class="arrow">→</span><br>
+    Model continues or stops
+  </div>
+
+  <div class="card">
+    <div class="card-title">The key insight</div>
+    <p>The bridge between <span class="highlight">LLM land</span> and <span class="green">code land</span> is a <strong>message</strong>.</p>
+    <ul>
+      <li>LLM → code: inspect <code>tool_calls</code> on the response object</li>
+      <li>Code → LLM: compose a tool call result message</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Agent vs. Chatbot</div>
+    <p style="margin-bottom: 0;">An <span class="decision">agent</span> decides what it does AND when it stops. A chatbot is single-turn. LaunchMate uses agents. Your "set primary agent" tool will be one of the tools the agent can call to do real work.</p>
+  </div>
+</div>
+
+<!-- PAGE 4: What You're Building -->
+<div class="page">
+  <div class="page-number">4/5</div>
+  <div class="label">Your First Task</div>
+  <h2>Set Primary Agent via Chat</h2>
+
+  <div class="feature-box">
+    <div class="card-title">🎯 The Feature</div>
+    <p style="margin-bottom: 0.5rem;">Right now, founders can change their primary agent through the <span class="highlight">profile page on the web app</span>. But there's no way to do it from the chat interface — meaning founders have to leave the conversation to make the switch.</p>
+    <p style="margin-bottom: 0;">You're building a <span class="highlight">tool call</span> that lets founders say <em>"make my transcript agent the primary one"</em> right in the chat, and have it update the database without leaving the conversation.</p>
+  </div>
+
+  <p>Here's what you need to know:</p>
+
+  <div class="card">
+    <div class="card-title">Current architecture</div>
+    <ul>
+      <li>Each user can have <span class="highlight">multiple agents</span> (founder agent, transcript agent, etc.)</li>
+      <li>Agents are linked to users in <span class="highlight">Supabase</span> via the <code>agents</code> table</li>
+      <li>The "primary" agent is determined by a field in the database (likely <code>is_primary</code> or ordering)</li>
+      <li>The profile page already has UI to switch which agent is primary</li>
+      <li>Agent IDs are UUIDs; the web app matches users by school email</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title">What your tool call needs to do</div>
+    <ul>
+      <li>Accept an <span class="highlight">agent_id</span> parameter</li>
+      <li>Verify the agent belongs to the requesting user (ownership check)</li>
+      <li>Update the primary flag in Supabase — same logic the profile page uses</li>
+      <li>Return confirmation to the agent so it can tell the founder it worked</li>
+    </ul>
+  </div>
+
+  <p class="tension" style="font-size: 0.9rem;">⚠ Watch the agent-to-agent looping problem: model updates (4.5→4.6) once caused agents to talk back and forth endlessly, draining $100-200 overnight. Your tool should be a simple write, not a conversation trigger.</p>
+</div>
+
+<!-- PAGE 5: What Matters -->
+<div class="page">
+  <div class="page-number">5/5</div>
+  <div class="label">Principles</div>
+  <h2>What Matters at LaunchMate</h2>
+
+  <div class="card">
+    <div class="card-title">Reliability > Features</div>
+    <p style="margin-bottom: 0;">First cohort rejected the app because it was buggy. Second cohort adopted it because it felt solid. <span class="decision">Trust through reliability</span> is the foundation for everything. Ship it working, not fast.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Dogfood everything</div>
+    <p style="margin-bottom: 0;">The team uses what it builds. Your feature should work for you too — if you can't see yourself using it, rethink it.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Craig's expectations</div>
+    <ul>
+      <li>Self-starting — bring ideas, not just code</li>
+      <li>Demos every week — show progress</li>
+      <li>Ship features weekly at minimum</li>
+      <li>Document after you build</li>
+      <li>80/20 product thinking to coding</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Known bugs to be aware of</div>
+    <ul>
+      <li><span class="tension">Streaming bug</span> — messages appear garbled during streaming in the chat interface. Still present. Aditya may be tackling this.</li>
+      <li><span class="tension">GLM model quality</span> — cheaper but slower than Claude; tidbit generation sometimes hallucinates</li>
+    </ul>
+  </div>
+
+  <p style="margin-top: 1.5rem; font-size: 0.95rem; color: #6b7280;">
+    Source: Michael's onboarding session with Aditya (May 21, 2026). Your first task: build the set-primary-agent tool call. Ask Michael or Laura for the Supabase schema and current agent routing logic.
+  </p>
+</div>
+
+</body>
+</html>
