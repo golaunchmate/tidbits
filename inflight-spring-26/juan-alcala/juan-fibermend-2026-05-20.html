@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="tidbit-type" content="founder">
+  <meta name="tidbit-subject" content="Juan Alcala">
+  <meta name="tidbit-company" content="FiberMend">
+  <meta name="tidbit-date" content="2026-05-20">
+  <meta name="tidbit-period" content="2026-W21">
+  <title>Juan Alcala - FiberMend - May 20, 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, sans-serif; background: #0f0f0f; color: #e5e5e5; line-height: 1.6; }
+    
+    .slide {
+      min-height: 100vh;
+      scroll-snap-align: start;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      position: relative;
+    }
+    
+    .card {
+      max-width: 600px;
+      width: 100%;
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    
+    .cover-card {
+      text-align: center;
+      border: 2px solid #3b82f6;
+    }
+    
+    h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; color: #fff; }
+    h2 { font-size: 1.75rem; font-weight: 600; margin-bottom: 1.5rem; color: #fff; }
+    
+    .subtitle { font-size: 1.25rem; color: #6b7280; margin-bottom: 0.5rem; }
+    .date { font-size: 1rem; color: #6b7280; margin-bottom: 2rem; }
+    .scroll-hint { font-size: 0.875rem; color: #3b82f6; margin-top: 3rem; }
+    
+    .label { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.75rem; }
+    
+    p { margin-bottom: 1rem; color: #d1d5db; }
+    
+    .highlight { color: #60a5fa; }
+    .decision { color: #34d399; }
+    .tension { color: #f97316; }
+    
+    .page-number {
+      position: absolute;
+      bottom: 1.5rem;
+      right: 2rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: #4b5563;
+    }
+    
+    .action-card {
+      background: #1e3a2f;
+      border: 2px solid #34d399;
+      border-radius: 12px;
+      padding: 2rem;
+      margin: 1.5rem 0;
+      text-align: center;
+    }
+    
+    .action-number {
+      font-size: 4rem;
+      font-weight: 800;
+      color: #34d399;
+      line-height: 1;
+    }
+    
+    .action-label {
+      font-size: 1.25rem;
+      color: #fff;
+      margin-top: 0.5rem;
+    }
+    
+    .action-detail {
+      font-size: 0.875rem;
+      color: #9ca3af;
+      margin-top: 1rem;
+    }
+    
+    .week-counter {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin: 1.5rem 0;
+    }
+    
+    .week-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #f97316;
+    }
+    
+    .script-box {
+      background: #0f0f0f;
+      border: 1px solid #3b82f6;
+      border-radius: 8px;
+      padding: 1.25rem;
+      margin: 1.5rem 0;
+    }
+    
+    .script-box h3 {
+      color: #60a5fa;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.75rem;
+    }
+    
+    .script-text {
+      color: #fff;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SLIDE 1: COVER -->
+  <div class="slide">
+    <div class="card cover-card">
+      <p class="subtitle">FiberMend</p>
+      <h1>Juan Alcala</h1>
+      <p class="date">May 20, 2026</p>
+      <p class="scroll-hint">scroll ↓</p>
+    </div>
+    <div class="page-number">1/4</div>
+  </div>
+
+  <!-- SLIDE 2: THE NUMBER -->
+  <div class="slide">
+    <div class="card">
+      <p class="label">The Count</p>
+      <h2>Six Weeks. 40 Days.</h2>
+      
+      <div class="week-counter">
+        <div class="week-dot"></div>
+        <div class="week-dot"></div>
+        <div class="week-dot"></div>
+        <div class="week-dot"></div>
+        <div class="week-dot"></div>
+        <div class="week-dot"></div>
+      </div>
+      
+      <p style="text-align: center;">Six dots. Six weeks. Six tidbits saying the same thing.</p>
+      
+      <p style="text-align: center; margin-top: 1rem;">The message isn't changing because <span class="tension">the number isn't changing</span>.</p>
+      
+      <p style="text-align: center; margin-top: 1rem; color: #6b7280;">0 customers since April 10.</p>
+    </div>
+    <div class="page-number">2/4</div>
+  </div>
+
+  <!-- SLIDE 3: THE ASK -->
+  <div class="slide">
+    <div class="card">
+      <p class="label">The Ask</p>
+      <h2>One Conversation. That's It.</h2>
+      
+      <div class="action-card">
+        <div class="action-number">1</div>
+        <div class="action-label">conversation this week</div>
+        <div class="action-detail">Not a plan. Not a list. One actual talk with a boat owner.</div>
+      </div>
+      
+      <p>Here's the script. Use it or change it. Just say it to someone:</p>
+      
+      <div class="script-box">
+        <h3>The Script</h3>
+        <p class="script-text">"I made this emergency repair kit for boats. Carbon fiber, bonds to metal in 15 minutes. No welding needed. Would you keep something like this on your boat?"</p>
+      </div>
+      
+      <p>That's it. One question. Their answer — yes, no, or "tell me more" — is progress.</p>
+    </div>
+    <div class="page-number">3/4</div>
+  </div>
+
+  <!-- SLIDE 4: THE TRUTH -->
+  <div class="slide">
+    <div class="card">
+      <p class="label">The Truth</p>
+      <h2>Next Week Tells the Story</h2>
+      
+      <p>When the next tidbit gets written, there will be one of two stories:</p>
+      
+      <p><span class="tension">Story A:</span> "Six weeks at zero. Still waiting."</p>
+      
+      <p><span class="decision">Story B:</span> "Talked to someone. Here's what happened."</p>
+      
+      <p>The difference between them is <span class="highlight">one conversation</span>. Not a breakthrough. Not a sale. Just one person hearing the pitch and responding.</p>
+      
+      <p style="margin-top: 1.5rem;">You have the kit. You have the words. You know who to call.</p>
+      
+      <p style="color: #fff;">What happens this week is up to you.</p>
+    </div>
+    <div class="page-number">4/4</div>
+  </div>
+
+  <script>
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+        window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+      } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+        window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+      }
+    });
+  </script>
+
+</body>
+</html>
