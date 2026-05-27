@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="tidbit-type" content="founder">
+    <meta name="tidbit-subject" content="Kyan Santiago-Calling">
+    <meta name="tidbit-company" content="ToneAdapt">
+    <meta name="tidbit-date" content="2026-03-06">
+    <meta name="tidbit-period" content="2026-W10">
+    <title>Kyan | ToneAdapt - Week 10</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #0f0f0f; color: #e5e5e5; line-height: 1.6; }
+        
+        .slide { min-height: 100vh; scroll-snap-align: start; display: flex; align-items: center; justify-content: center; padding: 2rem; position: relative; }
+        .card { max-width: 600px; width: 100%; background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%); border: 1px solid #2a2a2a; border-radius: 12px; padding: 3rem; }
+        
+        h2 { font-size: 1.75rem; font-weight: 600; margin-bottom: 1.5rem; }
+        .label { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.75rem; }
+        
+        .highlight { color: #60a5fa; }
+        .decision { color: #34d399; }
+        .tension { color: #f97316; }
+        
+        .big-number { font-size: 4rem; font-weight: 700; color: #60a5fa; line-height: 1; margin: 1rem 0; }
+        .big-label { font-size: 1rem; color: #6b7280; margin-bottom: 1.5rem; }
+        
+        ul { list-style: none; margin: 1rem 0; }
+        li { padding: 0.5rem 0; padding-left: 1.5rem; position: relative; }
+        li::before { content: "→"; position: absolute; left: 0; color: #60a5fa; }
+        
+        .metric-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
+        .metric { background: #1a1a1a; padding: 1rem; border-radius: 8px; }
+        .metric-value { font-size: 1.5rem; font-weight: 700; color: #60a5fa; }
+        .metric-label { font-size: 0.75rem; color: #6b7280; }
+        
+        .quote { font-style: italic; border-left: 3px solid #f97316; padding-left: 1.5rem; margin-top: 2rem; font-size: 1.125rem; color: #d1d5db; }
+        
+        .page-number { position: absolute; bottom: 2rem; right: 2rem; font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: #4b5563; }
+        
+        .cover-content { text-align: center; }
+        .cover-name { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .cover-company { font-size: 1.5rem; color: #60a5fa; margin-bottom: 1rem; }
+        .cover-date { color: #6b7280; margin-bottom: 3rem; }
+        .scroll-indicator { color: #4b5563; font-size: 0.875rem; }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="card">
+            <div class="cover-content">
+                <div class="cover-name">Kyan Santiago-Calling</div>
+                <div class="cover-company">ToneAdapt</div>
+                <div class="cover-date">Week 10 · March 6, 2026</div>
+                <div class="scroll-indicator">scroll ↓</div>
+            </div>
+        </div>
+        <div class="page-number">1/5</div>
+    </div>
+    
+    <div class="slide">
+        <div class="card">
+            <p class="label">By The Numbers</p>
+            <div class="big-number">64,000</div>
+            <div class="big-label">registered users in 3 months</div>
+            <div class="metric-grid">
+                <div class="metric">
+                    <div class="metric-value">861</div>
+                    <div class="metric-label">active subscribers</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">>1,000</div>
+                    <div class="metric-label">total paid</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">100%</div>
+                    <div class="metric-label">organic growth</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">1</div>
+                    <div class="metric-label">founder (solo)</div>
+                </div>
+            </div>
+        </div>
+        <div class="page-number">2/5</div>
+    </div>
+    
+    <div class="slide">
+        <div class="card">
+            <p class="label">This Week's Experiment</p>
+            <h2>Tone Database Launch</h2>
+            <div class="big-number">2,000,000+</div>
+            <div class="big-label">views on TikTok/Reels</div>
+            <ul>
+                <li><span class="highlight">44,000 site visitors</span> in one week</li>
+                <li>35K came in first 3 days (viral video)</li>
+                <li><span class="tension">240 free trials started</span></li>
+                <li>That's <span class="tension">0.68%</span> visitor-to-trial rate</li>
+            </ul>
+        </div>
+        <div class="page-number">3/5</div>
+    </div>
+    
+    <div class="slide">
+        <div class="card">
+            <p class="label">The Problem</p>
+            <h2>More people paid than are still subscribed</h2>
+            <div class="metric-grid">
+                <div class="metric">
+                    <div class="metric-value">1,000+</div>
+                    <div class="metric-label">have paid</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">861</div>
+                    <div class="metric-label">still active</div>
+                </div>
+            </div>
+            <ul>
+                <li>Users subscribe → learn their songs → cancel</li>
+                <li>Not a broken product, just <span class="highlight">episodic use</span></li>
+                <li>ToneAdapt is a <span class="decision">lookup tool</span>, not a daily habit</li>
+            </ul>
+        </div>
+        <div class="page-number">4/5</div>
+    </div>
+    
+    <div class="slide">
+        <div class="card">
+            <p class="label">The Question</p>
+            <h2>Free database: growth engine or value leak?</h2>
+            <ul>
+                <li>✓ Massive traffic (44K visitors)</li>
+                <li>✓ SEO/GEO potential long-term</li>
+                <li style="color: #ef4444;">✗ Low trial conversion (0.68%)</li>
+                <li style="color: #ef4444;">✗ Might be giving away 90% of value for free</li>
+            </ul>
+            <div class="quote">
+                "I built a rocket ship. Now I'm wondering if I gave away the fuel for free."
+            </div>
+        </div>
+        <div class="page-number">5/5</div>
+    </div>
+    
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
