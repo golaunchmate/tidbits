@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="tidbit-type" content="founder">
+    <meta name="tidbit-subject" content="Mohammad Qudsi">
+    <meta name="tidbit-company" content="DateFlo">
+    <meta name="tidbit-date" content="2026-03-31">
+    <meta name="tidbit-period" content="2026-Q1">
+    <title>Qudsi / DateFlo - Who Is This For?</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body { 
+            font-family: 'Inter', -apple-system, sans-serif; 
+            background: #0f0f0f; 
+            color: #e5e5e5; 
+            line-height: 1.6; 
+        }
+        
+        .page {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+        }
+        
+        .card {
+            max-width: 600px;
+            width: 100%;
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            padding: 3rem;
+        }
+        
+        .page-number {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            color: #4a4a4a;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+        
+        h2 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #fff;
+        }
+        
+        h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+            color: #d1d1d1;
+            font-size: 1rem;
+        }
+        
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        .highlight { color: #60a5fa; }
+        .decision { color: #34d399; }
+        .tension { color: #f97316; }
+        
+        .subtitle {
+            font-size: 1.125rem;
+            color: #9ca3af;
+            margin-bottom: 0.5rem;
+        }
+        
+        .scroll-hint {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-top: 2rem;
+            text-align: center;
+        }
+        
+        ul {
+            list-style: none;
+            margin: 1rem 0;
+        }
+        
+        li {
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #60a5fa;
+        }
+        
+        .quote {
+            font-size: 1.25rem;
+            font-style: italic;
+            color: #34d399;
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: rgba(52, 211, 153, 0.1);
+            border-left: 3px solid #34d399;
+            border-radius: 4px;
+        }
+        
+        .callout {
+            background: rgba(249, 115, 22, 0.1);
+            border-left: 3px solid #f97316;
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+        
+        .profile-card {
+            background: #1f1f1f;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .profile-name {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #60a5fa;
+            margin-bottom: 0.5rem;
+        }
+        
+        .profile-type {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #34d399;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+        
+        .check { color: #34d399; }
+        .x { color: #ef4444; }
+    </style>
+</head>
+<body>
+    <!-- SLIDE 1: COVER -->
+    <div class="page">
+        <div class="card">
+            <span class="label">Customer Discovery</span>
+            <h1>Qudsi</h1>
+            <div class="subtitle">DateFlo</div>
+            <h2 style="margin-top: 2rem;">Who Is This For?</h2>
+            <p style="color: #6b7280; margin-top: 1rem;">What I learned about my real customer</p>
+            <div class="scroll-hint">scroll ↓</div>
+        </div>
+        <div class="page-number">1/5</div>
+    </div>
+
+    <!-- SLIDE 2: WHO I THOUGHT IT WAS -->
+    <div class="page">
+        <div class="card">
+            <h2>Who I Thought It Was</h2>
+            
+            <p>When I started, I thought my customer was the <span class="tension">"couch-sitter"</span>:</p>
+            
+            <ul>
+                <li>Couples who never get around to planning dates</li>
+                <li>People stuck in routine, need a push to act</li>
+                <li>The problem is <strong>inertia</strong> — starting is too hard</li>
+            </ul>
+            
+            <p>This was <span class="tension">Hypothesis B</span> from my mentors: "Help people go from couch to action."</p>
+            
+            <div class="callout">
+                <p><strong>Turns out:</strong> This wasn't the customer at all.</p>
+            </div>
+        </div>
+        <div class="page-number">2/5</div>
+    </div>
+
+    <!-- SLIDE 3: WHO IT ACTUALLY IS -->
+    <div class="page">
+        <div class="card">
+            <h2>Who It Actually Is</h2>
+            
+            <p>My real customer is the <span class="decision">"active planner with doubt"</span>:</p>
+            
+            <ul>
+                <li>Already plans dates — not lazy, not stuck</li>
+                <li>Spends time researching options</li>
+                <li>Lands on something... but isn't confident it's right</li>
+                <li>Experiences FOMO <em>during</em> the date</li>
+            </ul>
+            
+            <p>The problem isn't <strong>starting</strong>. It's <span class="highlight">decision confidence</span>.</p>
+            
+            <div class="callout">
+                <p><strong>The insight:</strong> They don't need me to find them a date. They need me to tell them it's the <em>right</em> date.</p>
+            </div>
+        </div>
+        <div class="page-number">3/5</div>
+    </div>
+
+    <!-- SLIDE 4: THE PROFILES -->
+    <div class="page">
+        <div class="card">
+            <h2>Two Real Customers</h2>
+            
+            <div class="profile-card">
+                <div class="profile-name">Sean Flanagan</div>
+                <div class="profile-type">Target Customer ✓</div>
+                <ul>
+                    <li>Active dater, plans regularly</li>
+                    <li>Spends <strong>1 hour</strong> planning</li>
+                    <li>Still lands on something "not ultimately satisfied with"</li>
+                    <li>Thinks "we could have done better" <em>during</em> the date</li>
+                    <li>Quote: <span class="highlight">"I'd pay more if I know what to expect"</span></li>
+                </ul>
+            </div>
+            
+            <div class="profile-card">
+                <div class="profile-name">Craig Lauer</div>
+                <div class="profile-type">Target Customer ✓</div>
+                <ul>
+                    <li>Mentor, but also has the problem</li>
+                    <li>Valentine's coming up — no plan</li>
+                    <li>Girlfriend's birthday (21st) — no plan</li>
+                    <li>Concert (28th) — no plan</li>
+                    <li>Quote: <span class="decision">"I would sign up right now"</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="page-number">4/5</div>
+    </div>
+
+    <!-- SLIDE 5: THE PATTERN -->
+    <div class="page">
+        <div class="card">
+            <h2>The Pattern</h2>
+            
+            <h3>What they have in common:</h3>
+            <ul>
+                <li><span class="check">✓</span> Already in relationships (not single)</li>
+                <li><span class="check">✓</span> Care about making it special</li>
+                <li><span class="check">✓</span> Have <strong>pressure</strong> — upcoming event, birthday, anniversary</li>
+                <li><span class="check">✓</span> Willing to pay for confidence</li>
+            </ul>
+            
+            <h3>What they don't have:</h3>
+            <ul>
+                <li><span class="x">✗</span> Time to research thoroughly</li>
+                <li><span class="x">✗</span> Confidence in their own choices</li>
+                <li><span class="x">✗</span> Someone who knows what they actually want</li>
+            </ul>
+            
+            <h3>What I provide:</h3>
+            <ul>
+                <li>A 10-minute conversation that extracts what matters</li>
+                <li>A complete date plan they can trust</li>
+                <li>Confidence that "this is the right choice"</li>
+            </ul>
+            
+            <div class="quote">
+                "I'm not selling date ideas. I'm selling decision confidence."
+            </div>
+        </div>
+        <div class="page-number">5/5</div>
+    </div>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
