@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tanner Kocher - Ix Infrastructure - June 2026</title>
+    <meta name="tidbit-type" content="founder">
+    <meta name="tidbit-subject" content="Tanner Kocher">
+    <meta name="tidbit-company" content="Ix Infrastructure">
+    <meta name="tidbit-date" content="2026-06-01">
+    <meta name="tidbit-period" content="2026-W22">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #0f0f0f; color: #e5e5e5; line-height: 1.6; }
+        
+        .slide { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 60px 20px; scroll-snap-align: start; position: relative; }
+        .card { max-width: 600px; width: 100%; padding: 48px; background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 16px; }
+        
+        h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 8px; }
+        h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 24px; color: #60a5fa; }
+        h3 { font-size: 1.25rem; font-weight: 600; margin-bottom: 16px; }
+        
+        .label { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; }
+        .company { font-size: 1.25rem; color: #60a5fa; margin-bottom: 4px; }
+        .date { font-size: 0.875rem; color: #6b7280; margin-bottom: 32px; }
+        
+        .highlight { color: #60a5fa; }
+        .decision { color: #34d399; }
+        .tension { color: #f97316; }
+        
+        .stat-row { display: flex; gap: 24px; margin: 24px 0; flex-wrap: wrap; }
+        .stat { text-align: center; }
+        .stat-value { font-size: 2rem; font-weight: 700; color: #60a5fa; }
+        .stat-label { font-size: 0.75rem; color: #6b7280; text-transform: uppercase; }
+        
+        ul { list-style: none; padding-left: 0; }
+        li { padding: 8px 0; padding-left: 24px; position: relative; }
+        li::before { content: '→'; position: absolute; left: 0; color: #f97316; }
+        
+        .quote { font-style: italic; color: #6b7280; border-left: 3px solid #f97316; padding-left: 16px; margin-top: 24px; }
+        
+        .page-num { position: absolute; bottom: 20px; right: 24px; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #4a4a4a; }
+        
+        .scroll-hint { text-align: center; color: #4a4a4a; font-size: 0.875rem; margin-top: 32px; animation: bounce 2s infinite; }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(8px); } }
+        
+        .check { color: #34d399; }
+        .x { color: #ef4444; }
+        
+        .pipeline-item { padding: 12px 0; border-bottom: 1px solid #2a2a2a; }
+        .pipeline-item:last-child { border-bottom: none; }
+        .pipeline-name { font-weight: 600; }
+        .pipeline-status { font-size: 0.875rem; color: #6b7280; }
+    </style>
+</head>
+<body>
+
+<!-- SLIDE 1: COVER -->
+<div class="slide">
+    <div class="card">
+        <p class="label">Founder</p>
+        <h1>Tanner Kocher</h1>
+        <p class="company">Ix Infrastructure</p>
+        <p class="date">June 1, 2026</p>
+        <h2>Knowledge Operating System</h2>
+        <p>A knowledge graph platform where AI agents and humans share a single source of truth.</p>
+        <p class="scroll-hint">↓ scroll</p>
+    </div>
+    <span class="page-num">1/5</span>
+</div>
+
+<!-- SLIDE 2: WHERE I STARTED -->
+<div class="slide">
+    <div class="card">
+        <p class="label">Where I Started</p>
+        <h2>LLM Memory Infrastructure</h2>
+        <p>I thought I was building developer tools — memory for LLMs.</p>
+        
+        <div class="stat-row">
+            <div class="stat">
+                <div class="stat-value">89%</div>
+                <div class="stat-label">token reduction</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">233</div>
+                <div class="stat-label">GitHub stars</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">19</div>
+                <div class="stat-label">releases</div>
+            </div>
+        </div>
+        
+        <p class="tension" style="margin-top: 24px;">The tension:</p>
+        <ul>
+            <li>Mem0 raised <span class="highlight">$24M Series A</span></li>
+            <li>MemPalace: <span class="highlight">52K stars</span></li>
+            <li>Claude-mem: <span class="highlight">64K stars</span></li>
+            <li>Ix: <span class="tension">250x smaller community</span></li>
+        </ul>
+        
+        <p style="margin-top: 24px;">Crowded space. Capital-rich competitors. No clear moat.</p>
+    </div>
+    <span class="page-num">2/5</span>
+</div>
+
+<!-- SLIDE 3: WHAT I DISCOVERED -->
+<div class="slide">
+    <div class="card">
+        <p class="label">What I Discovered</p>
+        <h2>Wrong Market, Right Tech</h2>
+        
+        <p>Lane (senior CRA at Amadex) explained the real pain:</p>
+        
+        <div class="stat-row">
+            <div class="stat">
+                <div class="stat-value">18%</div>
+                <div class="stat-label">CRA time wasted</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">71%</div>
+                <div class="stat-label">systems disconnected</div>
+            </div>
+        </div>
+        
+        <p style="margin-top: 16px;"><span class="highlight">Knowledge lives in:</span> handwritten notes, scattered docs, email threads, people's heads.</p>
+        
+        <p style="margin-top: 24px;"><span class="tension">Regulatory hammer coming:</span></p>
+        <ul>
+            <li>FDA 21 CFR Part 11 — audit trails required</li>
+            <li>ICH E6(R3) — decision traceability</li>
+            <li>EU AI Act — compliance burden</li>
+        </ul>
+        
+        <p style="margin-top: 24px;"><span class="decision">No competitor built for FDA compliance.</span></p>
+        
+        <p style="margin-top: 16px;">ACE Clinical Trials Summit: <span class="highlight">4 companies interested</span> in pilot discussions.</p>
+    </div>
+    <span class="page-num">3/5</span>
+</div>
+
+<!-- SLIDE 4: THE REAL OPPORTUNITY -->
+<div class="slide">
+    <div class="card">
+        <p class="label">The Real Opportunity</p>
+        <h2>Decision Traceability for Clinical Trials</h2>
+        
+        <p style="margin-bottom: 24px;">Not "memory for chatbots." <span class="highlight">Infrastructure for agents</span> in regulated industries.</p>
+        
+        <div class="pipeline-item">
+            <p class="pipeline-name">Kay's Companies <span class="tension">— TOP</span></p>
+            <p class="pipeline-status">Largest Eli Lilly site during COVID • 80 sites potential • Partners: Moderna, Pfizer</p>
+        </div>
+        <div class="pipeline-item">
+            <p class="pipeline-name">Kite Pharma/Gilead</p>
+            <p class="pipeline-status">NDA requested • Technical evaluation</p>
+        </div>
+        <div class="pipeline-item">
+            <p class="pipeline-name">LPL Financial</p>
+            <p class="pipeline-status">NEW • Legacy migration use case</p>
+        </div>
+        
+        <div class="stat-row" style="margin-top: 24px;">
+            <div class="stat">
+                <div class="stat-value">~$1M</div>
+                <div class="stat-label">STTR Phase I potential</div>
+            </div>
+        </div>
+        
+        <p style="margin-top: 16px;">Partnership with <span class="highlight">SDSU CSI Lab</span> for STTR grants.</p>
+    </div>
+    <span class="page-num">4/5</span>
+</div>
+
+<!-- SLIDE 5: WHERE I'M AT -->
+<div class="slide">
+    <div class="card">
+        <p class="label">Where I'm At</p>
+        <h2>Execution Phase</h2>
+        
+        <p><span class="tension">Enterprise readiness: 3/10</span> — auth and multi-tenancy gaps</p>
+        
+        <div class="stat-row">
+            <div class="stat">
+                <div class="stat-value">8</div>
+                <div class="stat-label">prospects</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">0</div>
+                <div class="stat-label">converted</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">10-12</div>
+                <div class="stat-label">team</div>
+            </div>
+        </div>
+        
+        <p style="margin-top: 24px;"><span class="highlight">Sprint goals (May-June):</span></p>
+        <ul>
+            <li>Convert first client by <span class="decision">June 30</span></li>
+            <li>GitHub <span class="highlight">400 stars</span> (from 233)</li>
+            <li>Submit <span class="highlight">3 grant applications</span></li>
+            <li>Complete audit system</li>
+        </ul>
+        
+        <p class="quote">"I thought I needed more developer users. I actually needed a market where compliance creates a moat."</p>
+    </div>
+    <span class="page-num">5/5</span>
+</div>
+
+<script>
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+        window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+    } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+        window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+    }
+});
+</script>
+
+</body>
+</html>
