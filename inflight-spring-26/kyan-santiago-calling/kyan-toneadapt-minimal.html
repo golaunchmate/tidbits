@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="tidbit-type" content="founder">
+    <meta name="tidbit-subject" content="Kyan Santiago-Calling">
+    <meta name="tidbit-company" content="ToneAdapt">
+    <meta name="tidbit-date" content="2026-03-06">
+    <title>Kyan | ToneAdapt</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #0f0f0f; color: #e5e5e5; line-height: 1.6; }
+        
+        .slide { min-height: 100vh; scroll-snap-align: start; display: flex; align-items: center; justify-content: center; padding: 3rem; position: relative; }
+        .card { max-width: 550px; width: 100%; }
+        
+        h2 { font-size: 2rem; font-weight: 600; margin-bottom: 1rem; line-height: 1.2; }
+        .subtitle { font-size: 1rem; color: #6b7280; margin-bottom: 2rem; }
+        
+        .highlight { color: #60a5fa; }
+        .tension { color: #f97316; }
+        
+        .stat { font-size: 3.5rem; font-weight: 700; color: #60a5fa; line-height: 1; }
+        .stat-label { font-size: 0.875rem; color: #6b7280; margin-top: 0.5rem; }
+        
+        .insight { border-left: 2px solid #f97316; padding-left: 1.25rem; margin: 1.5rem 0; font-size: 1.125rem; }
+        
+        .page-number { position: absolute; bottom: 2rem; right: 2rem; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #4b5563; }
+        
+        .cover-name { font-size: 2.25rem; font-weight: 700; margin-bottom: 0.25rem; }
+        .cover-company { font-size: 1.25rem; color: #60a5fa; margin-bottom: 0.5rem; }
+        .cover-date { color: #6b7280; font-size: 0.875rem; }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="card">
+            <div class="cover-name">Kyan Santiago-Calling</div>
+            <div class="cover-company">ToneAdapt</div>
+            <div class="cover-date">March 6, 2026</div>
+        </div>
+        <div class="page-number">1/4</div>
+    </div>
+    
+    <div class="slide">
+        <div class="card">
+            <h2>64,000 users in 3 months</h2>
+            <div class="subtitle">All organic. One founder. Viral from day 1.</div>
+            <div class="stat">861</div>
+            <div class="stat-label">active subscribers (but >1,000 have paid)</div>
+            <div class="insight">
+                <span class="tension">Problem:</span> People subscribe, get what they need, cancel.
+            </div>
+        </div>
+        <div class="page-number">2/4</div>
+    </div>
+    
+    <div class="slide">
+        <div class="card">
+            <h2>Launched Tone Database</h2>
+            <div class="stat">2M+ views</div>
+            <div class="stat-label">on TikTok/Reels announcing free researched tones</div>
+            <div class="stat" style="font-size: 2.5rem; margin-top: 1.5rem;">44K visitors</div>
+            <div class="stat-label">in one week</div>
+            <div class="insight">
+                But only <span class="tension">0.68%</span> started trials. Free database might be cannibalizing paid value.
+            </div>
+        </div>
+        <div class="page-number">3/4</div>
+    </div>
+    
+    <div class="slide">
+        <div class="card">
+            <h2>The real insight</h2>
+            <div class="insight">
+                ToneAdapt is a <span class="highlight">lookup tool</span>, not a session tool.
+            </div>
+            <p style="margin-top: 1.5rem;">Users don't churn because something's broken. They churn because they got what they came for.</p>
+            <div class="insight" style="border-color: #60a5fa; margin-top: 2rem;">
+                "I thought I had a retention problem. I actually have a use-case clarity problem."
+            </div>
+        </div>
+        <div class="page-number">4/4</div>
+    </div>
+    
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
