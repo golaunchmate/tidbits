@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="tidbit-type" content="founder">
+    <meta name="tidbit-subject" content="Tanner Kocher">
+    <meta name="tidbit-company" content="Ix Infrastructure LLC">
+    <meta name="tidbit-date" content="2026-07-01">
+    <meta name="tidbit-period" content="2026-W27">
+    <title>Tanner Kocher — Ix Infrastructure — July 1, 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #0f0f0f; color: #e5e5e5; line-height: 1.6; }
+        .slide { min-height: 100vh; scroll-snap-align: start; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 3rem 2rem; position: relative; }
+        .slide-content { max-width: 600px; width: 100%; }
+        .card { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 12px; padding: 2rem; margin-bottom: 1.5rem; }
+        h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; color: #ffffff; }
+        .subtitle { font-size: 1.25rem; color: #a3a3a3; margin-bottom: 1.5rem; }
+        h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1.5rem; color: #f97316; }
+        p { margin-bottom: 1rem; }
+        .highlight { color: #60a5fa; }
+        .decision { color: #34d399; }
+        .tension { color: #f97316; }
+        .danger { color: #ef4444; }
+        .label { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+        .stat-row { display: flex; gap: 2rem; margin: 1.5rem 0; }
+        .stat { text-align: center; }
+        .stat-value { font-size: 2rem; font-weight: 700; }
+        .stat-label { font-size: 0.875rem; color: #6b7280; }
+        ul { list-style: none; padding-left: 0; }
+        li { padding-left: 1.5rem; position: relative; margin-bottom: 0.75rem; }
+        li::before { content: "→"; position: absolute; left: 0; color: #f97316; }
+        .quote { font-style: italic; color: #a3a3a3; border-left: 3px solid #f97316; padding-left: 1.5rem; margin-top: 2rem; }
+        .page-number { position: absolute; bottom: 2rem; right: 2rem; font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: #4a4a4a; }
+        .scroll-hint { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); color: #4a4a4a; font-size: 0.875rem; animation: bounce 2s infinite; }
+        @keyframes bounce { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(-10px); } }
+        .competitor-list { background: #0f0f0f; border-radius: 8px; padding: 1rem; margin: 1rem 0; }
+        .competitor-list li { font-size: 0.875rem; margin-bottom: 0.5rem; }
+        .competitor-list li::before { content: "●"; color: #60a5fa; font-size: 0.6rem; }
+        .countdown { display: flex; gap: 1rem; margin: 1.5rem 0; }
+        .countdown-item { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 8px; padding: 1rem; text-align: center; flex: 1; }
+        .countdown-value { font-size: 1.75rem; font-weight: 700; }
+        .countdown-label { font-size: 0.75rem; color: #6b7280; }
+    </style>
+</head>
+<body>
+    <!-- SLIDE 1: Cover -->
+    <section class="slide">
+        <div class="slide-content">
+            <p class="label">Founder Tidbit</p>
+            <h1>Tanner Kocher</h1>
+            <p class="subtitle">Ix Infrastructure — July 1, 2026</p>
+            <div class="card">
+                <p class="label">Knowledge Operating System</p>
+                <p>Infrastructure for the Agent Economy</p>
+            </div>
+        </div>
+        <p class="scroll-hint">scroll ↓</p>
+        <span class="page-number">1/5</span>
+    </section>
+
+    <!-- SLIDE 2: Where I Started -->
+    <section class="slide">
+        <div class="slide-content">
+            <h2>Where I Started</h2>
+            <div class="card">
+                <p class="label">One Week Ago</p>
+                <p>The market validated the thesis overnight. Five major launches in one week. The FDA asking for <span class="decision">"decision traceability"</span> — Ix's exact word.</p>
+            </div>
+            <ul>
+                <li>Reframed advantage: <span class="highlight">vertical focus + deterministic linking + HIPAA</span></li>
+                <li>Five competitors launched: Perplexity Brain, AWS Context, Databricks Genie, Cloudflare Flue, Yahoo/Google</li>
+                <li>June 30 client conversion deadline: <span class="tension">8 prospects, 0 converted</span></li>
+            </ul>
+            <p class="quote" style="margin-top: 1.5rem;">"The advantage isn't being first to see it — it's being first to ship it where it counts."</p>
+        </div>
+        <span class="page-number">2/5</span>
+    </section>
+
+    <!-- SLIDE 3: What Happened Next -->
+    <section class="slide">
+        <div class="slide-content">
+            <h2>What Happened Next</h2>
+            <p class="label">June 30 — Two more major launches</p>
+            <div class="competitor-list">
+                <ul>
+                    <li><strong>Couchbase AI Data Plane</strong> — unified agent memory + context retrieval + MCP server + Agent Catalog. Framework-agnostic.</li>
+                    <li><strong>Weaviate Engram</strong> — production-grade agent memory with async fact extraction, deduplication, multi-tenancy, hybrid search</li>
+                </ul>
+            </div>
+            <div class="card" style="border-color: #60a5fa; background: #0f1a2a;">
+                <p class="label">Couchbase Exec Quote</p>
+                <p class="highlight">"When companies with almost nothing in common independently ask for the same capability in the same language, that's not a feature request — it's a category forming."</p>
+            </div>
+            <div class="countdown">
+                <div class="countdown-item">
+                    <div class="countdown-value danger" style="color: #ef4444;">0/8</div>
+                    <div class="countdown-label">clients converted (deadline passed)</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value tension" style="color: #f97316;">21</div>
+                    <div class="countdown-label">days to AF STTR close</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value danger" style="color: #ef4444;">0</div>
+                    <div class="countdown-label">grants submitted</div>
+                </div>
+            </div>
+            <p style="font-size: 0.875rem; color: #6b7280;">One bright spot: a June 11 commit (LaTeX parser fix by Joey) shows engineering continues — just not visible in releases.</p>
+        </div>
+        <span class="page-number">3/5</span>
+    </section>
+
+    <!-- SLIDE 4: The Real Tension -->
+    <section class="slide">
+        <div class="slide-content">
+            <h2>The Real Tension</h2>
+            <div class="card" style="border-color: #f97316;">
+                <p class="label">The Gap</p>
+                <p class="tension">Validation is outpacing execution. Every week without shipping is a week competitors fill the space.</p>
+            </div>
+            <p class="label">What's Still Unique</p>
+            <ul>
+                <li><span class="decision">Deterministic linking</span> — no competitor has this</li>
+                <li><span class="decision">Clinical trials vertical</span> — no competitor is doing this</li>
+                <li><span class="decision">HIPAA architecture</span> — no competitor has this</li>
+                <li><span class="decision">"Decision traceability"</span> — the exact regulatory language</li>
+            </ul>
+            <div class="card" style="background: #1a2a1a; border-color: #34d399; margin-top: 1.5rem;">
+                <p class="label">The Question</p>
+                <p class="decision">Can Ix ship Sprint 1 + submit NSF Pitch + convert one client before horizontal players pivot down?</p>
+            </div>
+        </div>
+        <span class="page-number">4/5</span>
+    </section>
+
+    <!-- SLIDE 5: Where I'm At -->
+    <section class="slide">
+        <div class="slide-content">
+            <h2>Where I'm At</h2>
+            <ul>
+                <li><strong>Air Force STTR</strong> — <span class="tension">21 days</span> to close (July 22). SAM.gov still blocking.</li>
+                <li><strong>NSF Project Pitch</strong> — Overdue <span class="danger">4+ weeks</span></li>
+                <li><strong>GitHub</strong> — 269 stars, 30 forks, 1 issue. Code moving (June 11 commit) but no new release.</li>
+                <li><strong>Clients</strong> — 8 prospects, 0 converted. June 30 deadline passed.</li>
+                <li><strong>Engineering</strong> — June 11 commit shows progress. Sprint 1 (auth, RBAC, tenant isolation) continues.</li>
+            </ul>
+            <div class="card" style="background: #1a1a1a; border-color: #2a2a2a; margin-top: 1.5rem;">
+                <p class="label">Next 21 Days</p>
+                <ul style="margin-top: 0.5rem;">
+                    <li>Resolve SAM.gov (single blocker for all grants)</li>
+                    <li>Submit Air Force STTR proposal</li>
+                    <li>Ship Sprint 1 (security: auth + RBAC + tenant isolation)</li>
+                    <li>Follow up with top 3 prospects (Kay, Kite, Lane)</li>
+                </ul>
+            </div>
+            <p class="quote">"The market spent June telling me I was right. July is when I find out if I can be fast."</p>
+        </div>
+        <span class="page-number">5/5</span>
+    </section>
+
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
