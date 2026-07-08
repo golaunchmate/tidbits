@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="tidbit-type" content="founder">
+<meta name="tidbit-subject" content="Tanner Kocher">
+<meta name="tidbit-company" content="Ix Infrastructure LLC">
+<meta name="tidbit-date" content="2026-07-07">
+<meta name="tidbit-period" content="2026-W27">
+<title>Tanner Kocher · Ix Infrastructure · July 7, 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: #0f0f0f; color: #e5e5e5; line-height: 1.6; }
+
+.slide {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  scroll-snap-align: start;
+}
+
+.card {
+  max-width: 600px;
+  width: 100%;
+  border: 1px solid #2a2a2a;
+  border-radius: 12px;
+  padding: 2.5rem;
+  background: #161616;
+}
+
+.cover-card {
+  text-align: center;
+  border: none;
+  background: transparent;
+}
+
+.cover-card h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #e5e5e5;
+}
+
+.cover-card .company {
+  font-size: 1.1rem;
+  color: #60a5fa;
+  margin-bottom: 0.25rem;
+}
+
+.cover-card .date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin-bottom: 2rem;
+}
+
+.cover-card .scroll-hint {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: #4b5563;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+.label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+  color: #e5e5e5;
+}
+
+p { margin-bottom: 1rem; font-size: 0.95rem; }
+
+.highlight { color: #60a5fa; }
+.decision { color: #34d399; }
+.tension { color: #f97316; }
+.red { color: #ef4444; }
+
+.stat-row {
+  display: flex;
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+  flex-wrap: wrap;
+}
+
+.stat {
+  flex: 1;
+  min-width: 120px;
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #f97316;
+}
+
+.stat-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 0.25rem;
+}
+
+.callout {
+  border-left: 3px solid #f97316;
+  padding: 0.75rem 1rem;
+  margin: 1rem 0;
+  background: rgba(249, 115, 22, 0.05);
+  border-radius: 0 6px 6px 0;
+}
+
+.callout p { margin-bottom: 0; font-size: 0.9rem; }
+
+.arrow-list { list-style: none; padding: 0; }
+.arrow-list li {
+  padding: 0.35rem 0;
+  font-size: 0.9rem;
+  padding-left: 1.25rem;
+  position: relative;
+}
+.arrow-list li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: #60a5fa;
+}
+
+.quote {
+  font-size: 1.05rem;
+  font-style: italic;
+  color: #e5e5e5;
+  border-left: 3px solid #34d399;
+  padding: 0.75rem 0 0.75rem 1rem;
+  margin-top: 1.5rem;
+  line-height: 1.5;
+}
+
+.page-num {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 2rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: #4b5563;
+}
+
+.slide { position: relative; }
+
+.divider {
+  border: none;
+  border-top: 1px solid #2a2a2a;
+  margin: 1.5rem 0;
+}
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1: COVER -->
+<div class="slide">
+  <div class="card cover-card">
+    <h1>Tanner Kocher</h1>
+    <p class="company">Ix Infrastructure LLC</p>
+    <p class="date">July 7, 2026</p>
+    <p class="scroll-hint">scroll ↓</p>
+  </div>
+  <div class="page-num">1 / 5</div>
+</div>
+
+<!-- SLIDE 2: WHERE I STARTED -->
+<div class="slide">
+  <div class="card">
+    <p class="label">Where I Started</p>
+    <h2>I thought I needed to explain why traceability matters</h2>
+    <p>For months, I'd been building compliance infrastructure for AI-generated decisions in clinical trials. The pitch was always the same: <span class="highlight">"AI is generating decisions in regulated environments, and nobody can trace where they came from."</span></p>
+    <p>Most people nodded politely. Some got it. But the market wasn't moving fast enough.</p>
+    <p>Meanwhile, 17+ companies launched agent memory infrastructure in June-July. Couchbase. Microsoft Memora. AWS AgentCore. Databricks. Mandol. Elastic Atlas. All horizontal. None targeting clinical trials.</p>
+    <div class="callout">
+      <p>I was watching the infrastructure layer <span class="tension">commoditize in real time</span> — and wondering if I'd picked the wrong fight.</p>
+    </div>
+  </div>
+  <div class="page-num">2 / 5</div>
+</div>
+
+<!-- SLIDE 3: WHAT I DISCOVERED -->
+<div class="slide">
+  <div class="card">
+    <p class="label">What I Discovered</p>
+    <h2>In one week, the FDA did my sales pitch for me</h2>
+    <div class="stat-row">
+      <div class="stat">
+        <div class="stat-value">1st</div>
+        <div class="stat-label">AI-related CGMP warning letter</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">89%</div>
+        <div class="stat-label">pharma without AI in trials</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">0</div>
+        <div class="stat-label">competitors in clinical trials</div>
+      </div>
+    </div>
+    <p>On July 6, the FDA issued its <span class="highlight">first AI-related CGMP warning letter</span> — Purolea Cosmetics used AI to draft drug specs without review. The FDA's message: <span class="tension">"AI can assist but cannot replace the firm's responsibility to perform required GMP activities."</span></p>
+    <p>Same day: FDA adopted <span class="highlight">ICH E6(R3)</span> — data governance elevated to a standalone section. Sponsors AND investigators now responsible for data integrity, audit trails, and computerized systems validation. 66% of sites expect increased burden.</p>
+    <div class="callout">
+      <p>Earlier that week: WCG report showed only <span class="highlight">11% of pharma firms</span> have fully implemented AI in clinical trials. 89% haven't. "Enthusiasm without governance infrastructure is now a liability."</p>
+    </div>
+    <p>The FDA didn't just validate my thesis. It <span class="decision">codified it into regulation</span>.</p>
+  </div>
+  <div class="page-num">3 / 5</div>
+</div>
+
+<!-- SLIDE 4: THE REAL OPPORTUNITY -->
+<div class="slide">
+  <div class="card">
+    <p class="label">The Real Opportunity</p>
+    <h2>The infrastructure is commoditizing. The moat is the regulation.</h2>
+    <p>Everyone is building agent memory. Microsoft Memora gets 98% token reduction. Mandol does 5.4x faster recall. Couchbase has enterprise distribution. The infrastructure layer is becoming a crowded, horizontal market.</p>
+    <p>But here's what none of them have:</p>
+    <ul class="arrow-list">
+      <li><span class="highlight">Deterministic linking</span> — zero LLM inference for edge creation</li>
+      <li><span class="highlight">Spectral structural calibration</span> — graph topology, not just vector similarity</li>
+      <li><span class="highlight">MVCC versioning</span> — immutable audit trail, time-travel foundations</li>
+      <li><span class="highlight">HIPAA-aligned architecture</span> — designed for clinical trials from day one</li>
+      <li><span class="highlight">FDA-compliant traceability</span> — now validated by a warning letter</li>
+    </ul>
+    <hr class="divider">
+    <p>The FDA isn't asking for "agent memory." It's asking for <span class="decision">decision traceability</span> — who made this decision, when, based on what evidence, reviewed by whom, stored how, retrievable for how long.</p>
+    <p>That's not a feature. That's the entire product. And Ix is the only company building it for clinical trials.</p>
+  </div>
+  <div class="page-num">4 / 5</div>
+</div>
+
+<!-- SLIDE 5: WHERE I'M AT -->
+<div class="slide">
+  <div class="card">
+    <p class="label">Where I'm At</p>
+    <h2>The FDA made my thesis the law. I just need to ship.</h2>
+    <div class="stat-row">
+      <div class="stat">
+        <div class="stat-value">77</div>
+        <div class="stat-label">days since last release</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">0</div>
+        <div class="stat-label">clients converted</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">15</div>
+        <div class="stat-label">days to AF STTR deadline</div>
+      </div>
+    </div>
+    <p>The engineering is happening — 4 PRs merged in June (security hardening, single-flight locks, parser fixes). But it's invisible. No release in 77 days. No clients. SAM.gov blocking grants for 5+ weeks.</p>
+    <p>Meanwhile, the FDA is <span class="decision">creating my market in real time</span>:</p>
+    <ul class="arrow-list">
+      <li>Warning letter → sites need audit trail architecture</li>
+      <li>ICH E6(R3) → sites need data governance infrastructure</li>
+      <li>WCG report → 89% of pharma hasn't started yet</li>
+    </ul>
+    <div class="callout">
+      <p>The market is being handed to me by regulation. The infrastructure exists. The engineering is active. The only thing missing is <span class="tension">shipping it</span>.</p>
+    </div>
+    <p class="quote">"I thought I needed to explain why traceability matters. The FDA just made it the law — and I just need to ship."</p>
+  </div>
+  <div class="page-num">5 / 5</div>
+</div>
+
+<script>
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+    window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+  } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+    window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+  }
+});
+</script>
+
+</body>
+</html>
