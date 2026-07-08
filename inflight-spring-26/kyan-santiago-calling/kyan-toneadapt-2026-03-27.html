@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="tidbit-type" content="founder">
+    <meta name="tidbit-subject" content="Kyan Santiago-Calling">
+    <meta name="tidbit-company" content="ToneAdapt">
+    <meta name="tidbit-date" content="2026-03-27">
+    <meta name="tidbit-period" content="2026-W13">
+    <title>Kyan | ToneAdapt - Week 13</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #0f0f0f; color: #e5e5e5; line-height: 1.6; }
+        
+        .slide { min-height: 100vh; scroll-snap-align: start; display: flex; align-items: center; justify-content: center; padding: 2rem; position: relative; }
+        .card { max-width: 600px; width: 100%; background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%); border: 1px solid #2a2a2a; border-radius: 12px; padding: 3rem; }
+        
+        h2 { font-size: 1.75rem; font-weight: 600; margin-bottom: 1.5rem; }
+        .label { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.75rem; }
+        
+        .highlight { color: #60a5fa; }
+        .decision { color: #34d399; }
+        .tension { color: #f97316; }
+        
+        ul { list-style: none; margin: 1rem 0; }
+        li { padding: 0.5rem 0; padding-left: 1.5rem; position: relative; }
+        li::before { content: "→"; position: absolute; left: 0; color: #60a5fa; }
+        
+        .finding { background: #1a1a1a; border-left: 3px solid #60a5fa; padding: 1.25rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0; }
+        .finding-label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: #60a5fa; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
+        
+        .quote { font-style: italic; border-left: 3px solid #34d399; padding-left: 1.5rem; margin-top: 2rem; font-size: 1.125rem; color: #d1d5db; }
+        
+        .page-number { position: absolute; bottom: 2rem; right: 2rem; font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: #4b5563; }
+        
+        .cover-content { text-align: center; }
+        .cover-name { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .cover-company { font-size: 1.5rem; color: #60a5fa; margin-bottom: 1rem; }
+        .cover-date { color: #6b7280; margin-bottom: 3rem; }
+        .scroll-indicator { color: #4b5563; font-size: 0.875rem; }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="card">
+            <div class="cover-content">
+                <div class="cover-name">Kyan Santiago-Calling</div>
+                <div class="cover-company">ToneAdapt</div>
+                <div class="cover-date">Week 13 · March 27, 2026</div>
+                <div class="scroll-indicator">scroll ↓</div>
+            </div>
+        </div>
+        <div class="page-number">1/4</div>
+    </div>
+    
+    <div class="slide">
+        <div class="card">
+            <p class="label">Data Is In</p>
+            <h2>What 64K users actually do</h2>
+            <div class="finding">
+                <p class="finding-label">Finding #1</p>
+                <p>Average user looks up <span class="highlight">3-7 songs</span> before churning</p>
+            </div>
+            <div class="finding">
+                <p class="finding-label">Finding #2</p>
+                <p>$5.99 tier has <span class="tension">62% of subscribers</span> but <span class="decision">lower retention</span></p>
+            </div>
+            <div class="finding">
+                <p class="finding-label">Finding #3</p>
+                <p>Most churn happens in <span class="tension">month 2</span> (after they learn their songs)</p>
+            </div>
+        </div>
+        <div class="page-number">2/4</div>
+    </div>
+    
+    <div class="slide">
+        <div class="card">
+            <p class="label">What This Means</p>
+            <h2>The episodic hypothesis is confirmed</h2>
+            <ul>
+                <li>Users don't churn because something's <span class="tension">broken</span></li>
+                <li>They churn because they're <span class="decision">done</span></li>
+                <li>Subscription model might be <span class="tension">wrong fit</span> for this use case</li>
+            </ul>
+            <div class="quote">
+                "I'm selling a reference library on a subscription model. Maybe that's the mismatch."
+            </div>
+        </div>
+        <div class="page-number">3/4</div>
+    </div>
+    
+    <div class="slide">
+        <div class="card">
+            <p class="label">Pivots to Consider</p>
+            <h2>New questions this week</h2>
+            <ul>
+                <li><span class="highlight">Pricing:</span> Push yearly plans harder? (Already have $30/$45 annual)</li>
+                <li><span class="highlight">Model:</span> Pay-per-song credits instead of subscription?</li>
+                <li><span class="highlight">Product:</span> Build features that require ongoing subscription (DAW integration)</li>
+                <li><span class="highlight">Messaging:</span> Market as "tone library membership" not "tool subscription"</li>
+            </ul>
+        </div>
+        <div class="page-number">4/4</div>
+    </div>
+    
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
