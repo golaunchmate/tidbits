@@ -9,6 +9,9 @@ on:
   schedule:
     - cron: '0 0 * * *'  # Daily at midnight UTC
 
+permissions:
+  contents: write
+
 jobs:
   update-dashboard:
     runs-on: windows-latest
