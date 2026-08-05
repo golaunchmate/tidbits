@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="tidbit-type" content="founder">
+<meta name="tidbit-subject" content="Tanner Kocher">
+<meta name="tidbit-company" content="Ix Infrastructure">
+<meta name="tidbit-date" content="2026-08-05">
+<meta name="tidbit-period" content="2026-W32">
+<title>Tanner Kocher · Ix Infrastructure · Aug 5, 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: #0f0f0f; color: #e5e5e5; line-height: 1.6; }
+
+.slide {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  scroll-snap-align: start;
+  padding: 2rem;
+}
+
+.card {
+  max-width: 600px;
+  width: 100%;
+  border: 1px solid #2a2a2a;
+  border-radius: 12px;
+  padding: 2.5rem;
+  background: #161616;
+}
+
+.page-num {
+  position: fixed;
+  bottom: 1rem;
+  right: 1.5rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+.label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+
+h1 { font-size: 1.75rem; font-weight: 700; margin-bottom: 0.5rem; }
+h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; }
+h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.75rem; }
+p { margin-bottom: 1rem; color: #d1d5db; }
+
+.highlight { color: #60a5fa; }
+.decision { color: #34d399; }
+.tension { color: #f97316; }
+.danger { color: #ef4444; }
+
+.stat-row {
+  display: flex;
+  gap: 2rem;
+  margin: 1.5rem 0;
+  flex-wrap: wrap;
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #60a5fa;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: #6b7280;
+  font-family: 'JetBrains Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+ul { list-style: none; padding: 0; }
+li { margin-bottom: 0.5rem; color: #d1d5db; }
+li::before { content: "→ "; color: #6b7280; }
+
+.split-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.split-col {
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+  padding: 1.25rem;
+  background: #1a1a1a;
+}
+
+.split-col h3 { font-size: 0.9rem; margin-bottom: 0.75rem; }
+.split-col ul { padding: 0; }
+.split-col li { font-size: 0.85rem; margin-bottom: 0.4rem; }
+
+.divider {
+  text-align: center;
+  margin: 1.5rem 0;
+  color: #6b7280;
+  font-size: 0.85rem;
+}
+
+.quote {
+  border-left: 3px solid #f97316;
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: #f97316;
+  font-size: 1.05rem;
+}
+
+.scroll-hint {
+  text-align: center;
+  color: #6b7280;
+  font-size: 0.85rem;
+  margin-top: 1rem;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
+}
+
+a { color: #60a5ba; text-decoration: none; }
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1: COVER -->
+<div class="slide">
+  <div class="card">
+    <p class="label">Founder Tidbit · Week 32</p>
+    <h1>Tanner Kocher</h1>
+    <p style="color: #6b7280; font-size: 1rem;">Ix Infrastructure LLC</p>
+    <p style="margin-top: 0.5rem; color: #6b7280; font-size: 0.85rem;">August 5, 2026</p>
+    <p style="margin-top: 1.5rem; font-size: 1.15rem; color: #d1d5db;">The Split</p>
+    <p style="color: #6b7280; font-size: 0.9rem;">The market divided into two camps. Nobody is connecting them.</p>
+    <div class="scroll-hint">scroll ↓</div>
+  </div>
+  <div class="page-num">1 / 5</div>
+</div>
+
+<!-- SLIDE 2: WHERE I STARTED -->
+<div class="slide">
+  <div class="card">
+    <p class="label">Where I Started</p>
+    <h2>The thesis was vindicated. So was the urgency.</h2>
+    <p>Last week's tidbit ended with a realization: <span class="highlight">ICON plc + Anthropic deployed agentic AI across 55 countries without a governance layer</span>. The FDA called it "checkboxes with audit trails attached." Ix wasn't competing with Claude — Ix was what Claude needed.</p>
+    <p>I thought that partnership would be the signal. It was. But what happened next was bigger than one deal.</p>
+    <div class="stat-row">
+      <div class="stat">
+        <div class="stat-value">70+</div>
+        <div class="stat-label">competitors</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">11</div>
+        <div class="stat-label">vertical (clinical)</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">99</div>
+        <div class="stat-label">days no release</div>
+      </div>
+    </div>
+    <p style="font-size: 0.85rem; color: #6b7280;">Up from 38+ competitors on July 28. 32 new entries in 8 days.</p>
+  </div>
+  <div class="page-num">2 / 5</div>
+</div>
+
+<!-- SLIDE 3: WHAT I DISCOVERED -->
+<div class="slide">
+  <div class="card">
+    <p class="label">What I Discovered</p>
+    <h2>The market split into two camps — and nobody built the bridge</h2>
+
+    <div class="split-grid">
+      <div class="split-col">
+        <h3 style="color: #60a5fa;">CAMP 1: AI Deployers</h3>
+        <ul>
+          <li>Norstella Atlas — agentic AI on 30 years of pharma data</li>
+          <li>H1 + Novo Nordisk — Doctor Graph for trial design</li>
+          <li>Pathos AI + AstraZeneca — thousands of AI agents for oncology</li>
+          <li>Medidata Plus — AI-native layer across 1M+ users</li>
+          <li>Recursion — Clinical Strategy Orchestration Agent</li>
+        </ul>
+        <p style="font-size: 0.8rem; color: #6b7280; margin-top: 0.5rem;">All deploying fast. None building governance.</p>
+      </div>
+      <div class="split-col">
+        <h3 style="color: #34d399;">CAMP 2: Governance Builders</h3>
+        <ul>
+          <li>Drata — tamper-evident evidence feed, MCP proxy</li>
+          <li>Docker — SIEM audit logs, 90-day retention</li>
+          <li>Varonis — intent-based access control</li>
+          <li>Snowflake — 100+ MCP servers, agent identity</li>
+          <li>AegisLayer — open reference architecture</li>
+        </ul>
+        <p style="font-size: 0.8rem; color: #6b7280; margin-top: 0.5rem;">All building governance. None in clinical trials.</p>
+      </div>
+    </div>
+
+    <p class="tension">The gap between the camps is exactly where Ix lives.</p>
+  </div>
+  <div class="page-num">3 / 5</div>
+</div>
+
+<!-- SLIDE 4: THE REAL OPPORTUNITY -->
+<div class="slide">
+  <div class="card">
+    <p class="label">The Real Opportunity</p>
+    <h2>Two discoveries that proved the architecture</h2>
+
+    <p><span class="danger">⚠️ Memory Provenance Laundering (EMNLP 2026)</span></p>
+    <p>New attack class: untrusted data gets its provenance erased during LLM memory consolidation. <span class="highlight">1.000 attack success rate</span> on ChatGPT Memory, Claude, Mem0, Letta.</p>
+    <p class="decision">Ix is immune by design — deterministic linking means provenance is structurally bound, not LLM-mediated.</p>
+
+    <div class="divider">— — —</div>
+
+    <p><span class="danger">⚠️ US Patent 12700486 (Aug 2026)</span></p>
+    <p>Medical data governance system with compliance tokens, provenance, append-only ledger, arbitration engine. Someone patented Ix's architecture. The pattern is real enough to file a patent on.</p>
+
+    <div class="stat-row">
+      <div class="stat">
+        <div class="stat-value">1.000</div>
+        <div class="stat-label">attack success on others</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">0%</div>
+        <div class="stat-label">attack success on Ix</div>
+      </div>
+    </div>
+  </div>
+  <div class="page-num">4 / 5</div>
+</div>
+
+<!-- SLIDE 5: WHERE I'M AT -->
+<div class="slide">
+  <div class="card">
+    <p class="label">Where I'm At</p>
+    <h2>The FDA is requiring what Ix builds. The market is deploying what Ix governs.</h2>
+
+    <ul>
+      <li>FDA SaMD Cybersecurity Guidance — <span class="highlight">effective Aug 3</span> (immediate)</li>
+      <li>FDA RTCT pilot selections — <span class="highlight">expected this month</span></li>
+      <li>EU AI Act high-risk obligations — <span class="highlight">enforceable Aug 2</span></li>
+      <li>RAPS CSA validation webcast — Sept 24 (industry asking for what Ix provides)</li>
+      <li>Clinical Trial Vanguard: "request written audit trail architecture for AI-generated actions" — <span class="tension">exactly what Ix ships</span></li>
+    </ul>
+
+    <p style="margin-top: 1rem;">The deployers need governance. The governance builders need a vertical. The FDA needs both. Ix is the only company building both in clinical trials.</p>
+
+    <div class="stat-row">
+      <div class="stat">
+        <div class="stat-value">$0</div>
+        <div class="stat-label">revenue</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">0</div>
+        <div class="stat-label">clients</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">6+ wks</div>
+        <div class="stat-label">SAM.gov blocking</div>
+      </div>
+    </div>
+
+    <div class="quote">
+      "I thought my competition was other startups. It's actually the gap between two camps moving in parallel — and I'm the bridge neither has built."
+    </div>
+  </div>
+  <div class="page-num">5 / 5</div>
+</div>
+
+<script>
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+    window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+  } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+    window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
+  }
+});
+</script>
+</body>
+</html>
