@@ -513,61 +513,16 @@
   },
   {
     "name": "DateFlo",
-    "founder": "Qudsi Dateflo Next Steps 2026.Html",
+    "founder": "Qudsi Dateflo Story Pauses 2026.Html",
     "program": "inflight-spring-26",
     "startup": "mohammad-qudsi",
     "status": "active",
     "lastUpdate": "2026-03-31",
     "count": 1,
     "files": {
-      "path": "inflight-spring-26/mohammad-qudsi/qudsi-dateflo-next-steps-2026.html",
+      "path": "inflight-spring-26/mohammad-qudsi/qudsi-dateflo-story-pauses-2026.html",
       "summary": "Agent-generated tidbit",
-      "name": "Qudsi / DateFlo - What's Next",
-      "date": "2026-03-31"
-    }
-  },
-  {
-    "name": "DateFlo",
-    "founder": "Qudsi Dateflo Mentor Wisdom 2026.Html",
-    "program": "inflight-spring-26",
-    "startup": "mohammad-qudsi",
-    "status": "active",
-    "lastUpdate": "2026-03-31",
-    "count": 1,
-    "files": {
-      "path": "inflight-spring-26/mohammad-qudsi/qudsi-dateflo-mentor-wisdom-2026.html",
-      "summary": "Agent-generated tidbit",
-      "name": "Qudsi / DateFlo - What My Mentors Taught Me",
-      "date": "2026-03-31"
-    }
-  },
-  {
-    "name": "DateFlo",
-    "founder": "Qudsi Dateflo Target Customer 2026.Html",
-    "program": "inflight-spring-26",
-    "startup": "mohammad-qudsi",
-    "status": "active",
-    "lastUpdate": "2026-03-31",
-    "count": 1,
-    "files": {
-      "path": "inflight-spring-26/mohammad-qudsi/qudsi-dateflo-target-customer-2026.html",
-      "summary": "Agent-generated tidbit",
-      "name": "Qudsi / DateFlo - Who Is This For?",
-      "date": "2026-03-31"
-    }
-  },
-  {
-    "name": "DateFlo",
-    "founder": "Qudsi Dateflo Journey 2026.Html",
-    "program": "inflight-spring-26",
-    "startup": "mohammad-qudsi",
-    "status": "active",
-    "lastUpdate": "2026-03-31",
-    "count": 1,
-    "files": {
-      "path": "inflight-spring-26/mohammad-qudsi/qudsi-dateflo-journey-2026.html",
-      "summary": "Agent-generated tidbit",
-      "name": "Qudsi / DateFlo - The Journey So Far",
+      "name": "Qudsi / DateFlo - The Story Pauses Here",
       "date": "2026-03-31"
     }
   },
@@ -588,16 +543,31 @@
   },
   {
     "name": "DateFlo",
-    "founder": "Qudsi Dateflo Story Pauses 2026.Html",
+    "founder": "Qudsi Dateflo Mentor Wisdom 2026.Html",
     "program": "inflight-spring-26",
     "startup": "mohammad-qudsi",
     "status": "active",
     "lastUpdate": "2026-03-31",
     "count": 1,
     "files": {
-      "path": "inflight-spring-26/mohammad-qudsi/qudsi-dateflo-story-pauses-2026.html",
+      "path": "inflight-spring-26/mohammad-qudsi/qudsi-dateflo-mentor-wisdom-2026.html",
       "summary": "Agent-generated tidbit",
-      "name": "Qudsi / DateFlo - The Story Pauses Here",
+      "name": "Qudsi / DateFlo - What My Mentors Taught Me",
+      "date": "2026-03-31"
+    }
+  },
+  {
+    "name": "DateFlo",
+    "founder": "Qudsi Dateflo Next Steps 2026.Html",
+    "program": "inflight-spring-26",
+    "startup": "mohammad-qudsi",
+    "status": "active",
+    "lastUpdate": "2026-03-31",
+    "count": 1,
+    "files": {
+      "path": "inflight-spring-26/mohammad-qudsi/qudsi-dateflo-next-steps-2026.html",
+      "summary": "Agent-generated tidbit",
+      "name": "Qudsi / DateFlo - What's Next",
       "date": "2026-03-31"
     }
   },
@@ -614,6 +584,21 @@
       "summary": "Agent-generated tidbit",
       "name": "✨ Loading Your Spark... ✨",
       "date": "2026-01-30"
+    }
+  },
+  {
+    "name": "DateFlo",
+    "founder": "Qudsi Dateflo Target Customer 2026.Html",
+    "program": "inflight-spring-26",
+    "startup": "mohammad-qudsi",
+    "status": "active",
+    "lastUpdate": "2026-03-31",
+    "count": 1,
+    "files": {
+      "path": "inflight-spring-26/mohammad-qudsi/qudsi-dateflo-target-customer-2026.html",
+      "summary": "Agent-generated tidbit",
+      "name": "Qudsi / DateFlo - Who Is This For?",
+      "date": "2026-03-31"
     }
   },
   {
@@ -676,33 +661,78 @@
     ]
   },
   {
-    "name": "FiberMend",
-    "founder": "Juan Fibermend 2026 07 08.Html",
+    "name": "DateFlo",
+    "founder": "Qudsi Dateflo Journey 2026.Html",
     "program": "inflight-spring-26",
-    "startup": "juan-alcala",
+    "startup": "mohammad-qudsi",
     "status": "active",
-    "lastUpdate": "2026-07-08",
+    "lastUpdate": "2026-03-31",
     "count": 1,
     "files": {
-      "path": "inflight-spring-26/juan-alcala/juan-fibermend-2026-07-08.html",
+      "path": "inflight-spring-26/mohammad-qudsi/qudsi-dateflo-journey-2026.html",
       "summary": "Agent-generated tidbit",
-      "name": "Juan Alcala - FiberMend - July 8, 2026",
-      "date": "2026-07-08"
+      "name": "Qudsi / DateFlo - The Journey So Far",
+      "date": "2026-03-31"
     }
   },
   {
     "name": "FiberMend",
-    "founder": "Juan Fibermend 2026 05 20.Html",
+    "founder": "Juan Fibermend 2026 04 10.Html",
     "program": "inflight-spring-26",
     "startup": "juan-alcala",
     "status": "active",
-    "lastUpdate": "2026-05-20",
+    "lastUpdate": "2026-04-10",
     "count": 1,
     "files": {
-      "path": "inflight-spring-26/juan-alcala/juan-fibermend-2026-05-20.html",
+      "path": "inflight-spring-26/juan-alcala/juan-fibermend-2026-04-10.html",
       "summary": "Agent-generated tidbit",
-      "name": "Juan Alcala - FiberMend - May 20, 2026",
-      "date": "2026-05-20"
+      "name": "Juan Alcala - FiberMend - April 10, 2026",
+      "date": "2026-04-10"
+    }
+  },
+  {
+    "name": "FiberMend",
+    "founder": "Juan Fibermend 2026 05 27.Html",
+    "program": "inflight-spring-26",
+    "startup": "juan-alcala",
+    "status": "active",
+    "lastUpdate": "2026-05-27",
+    "count": 1,
+    "files": {
+      "path": "inflight-spring-26/juan-alcala/juan-fibermend-2026-05-27.html",
+      "summary": "Agent-generated tidbit",
+      "name": "Juan Alcala - FiberMend - May 27, 2026",
+      "date": "2026-05-27"
+    }
+  },
+  {
+    "name": "FiberMend",
+    "founder": "Juan Fibermend 2026 04 15.Html",
+    "program": "inflight-spring-26",
+    "startup": "juan-alcala",
+    "status": "active",
+    "lastUpdate": "2026-04-15",
+    "count": 1,
+    "files": {
+      "path": "inflight-spring-26/juan-alcala/juan-fibermend-2026-04-15.html",
+      "summary": "Agent-generated tidbit",
+      "name": "Juan Alcala - FiberMend - April 15, 2026",
+      "date": "2026-04-15"
+    }
+  },
+  {
+    "name": "FiberMend",
+    "founder": "Juan Fibermend 2026 06 03.Html",
+    "program": "inflight-spring-26",
+    "startup": "juan-alcala",
+    "status": "active",
+    "lastUpdate": "2026-06-03",
+    "count": 1,
+    "files": {
+      "path": "inflight-spring-26/juan-alcala/juan-fibermend-2026-06-03.html",
+      "summary": "Agent-generated tidbit",
+      "name": "Juan Alcala - FiberMend - June 3, 2026",
+      "date": "2026-06-03"
     }
   },
   {
@@ -722,32 +752,62 @@
   },
   {
     "name": "FiberMend",
-    "founder": "Juan Fibermend 2026 05 06.Html",
+    "founder": "Juan Fibermend 2026 04 22.Html",
     "program": "inflight-spring-26",
     "startup": "juan-alcala",
     "status": "active",
-    "lastUpdate": "2026-05-06",
+    "lastUpdate": "2026-04-22",
     "count": 1,
     "files": {
-      "path": "inflight-spring-26/juan-alcala/juan-fibermend-2026-05-06.html",
+      "path": "inflight-spring-26/juan-alcala/juan-fibermend-2026-04-22.html",
       "summary": "Agent-generated tidbit",
-      "name": "Juan Alcala - FiberMend - May 6, 2026",
-      "date": "2026-05-06"
+      "name": "Juan Alcala - FiberMend - April 22, 2026",
+      "date": "2026-04-22"
     }
   },
   {
     "name": "FiberMend",
-    "founder": "Juan Fibermend 2026 05 27.Html",
+    "founder": "Juan Fibermend 2026 04 29.Html",
     "program": "inflight-spring-26",
     "startup": "juan-alcala",
     "status": "active",
-    "lastUpdate": "2026-05-27",
+    "lastUpdate": "2026-04-29",
     "count": 1,
     "files": {
-      "path": "inflight-spring-26/juan-alcala/juan-fibermend-2026-05-27.html",
+      "path": "inflight-spring-26/juan-alcala/juan-fibermend-2026-04-29.html",
       "summary": "Agent-generated tidbit",
-      "name": "Juan Alcala - FiberMend - May 27, 2026",
-      "date": "2026-05-27"
+      "name": "Juan Alcala - FiberMend - April 29, 2026",
+      "date": "2026-04-29"
+    }
+  },
+  {
+    "name": "FiberMend",
+    "founder": "Juan Fibermend 2026 07 15.Html",
+    "program": "inflight-spring-26",
+    "startup": "juan-alcala",
+    "status": "active",
+    "lastUpdate": "2026-07-15",
+    "count": 1,
+    "files": {
+      "path": "inflight-spring-26/juan-alcala/juan-fibermend-2026-07-15.html",
+      "summary": "Agent-generated tidbit",
+      "name": "Juan Alcala - FiberMend - July 15, 2026",
+      "date": "2026-07-15"
+    }
+  },
+  {
+    "name": "FiberMend",
+    "founder": "Juan Fibermend 2026 05 20.Html",
+    "program": "inflight-spring-26",
+    "startup": "juan-alcala",
+    "status": "active",
+    "lastUpdate": "2026-05-20",
+    "count": 1,
+    "files": {
+      "path": "inflight-spring-26/juan-alcala/juan-fibermend-2026-05-20.html",
+      "summary": "Agent-generated tidbit",
+      "name": "Juan Alcala - FiberMend - May 20, 2026",
+      "date": "2026-05-20"
     }
   },
   {
@@ -782,92 +842,17 @@
   },
   {
     "name": "FiberMend",
-    "founder": "Juan Fibermend 2026 07 01.Html",
+    "founder": "Juan Fibermend 2026 05 13.Html",
     "program": "inflight-spring-26",
     "startup": "juan-alcala",
     "status": "active",
-    "lastUpdate": "2026-07-01",
+    "lastUpdate": "2026-05-13",
     "count": 1,
     "files": {
-      "path": "inflight-spring-26/juan-alcala/juan-fibermend-2026-07-01.html",
+      "path": "inflight-spring-26/juan-alcala/juan-fibermend-2026-05-13.html",
       "summary": "Agent-generated tidbit",
-      "name": "Juan Alcala - FiberMend - July 1, 2026",
-      "date": "2026-07-01"
-    }
-  },
-  {
-    "name": "FiberMend",
-    "founder": "Juan Fibermend 2026 06 03.Html",
-    "program": "inflight-spring-26",
-    "startup": "juan-alcala",
-    "status": "active",
-    "lastUpdate": "2026-06-03",
-    "count": 1,
-    "files": {
-      "path": "inflight-spring-26/juan-alcala/juan-fibermend-2026-06-03.html",
-      "summary": "Agent-generated tidbit",
-      "name": "Juan Alcala - FiberMend - June 3, 2026",
-      "date": "2026-06-03"
-    }
-  },
-  {
-    "name": "FiberMend",
-    "founder": "Juan Fibermend 2026 04 22.Html",
-    "program": "inflight-spring-26",
-    "startup": "juan-alcala",
-    "status": "active",
-    "lastUpdate": "2026-04-22",
-    "count": 1,
-    "files": {
-      "path": "inflight-spring-26/juan-alcala/juan-fibermend-2026-04-22.html",
-      "summary": "Agent-generated tidbit",
-      "name": "Juan Alcala - FiberMend - April 22, 2026",
-      "date": "2026-04-22"
-    }
-  },
-  {
-    "name": "FiberMend",
-    "founder": "Juan Fibermend 2026 07 15.Html",
-    "program": "inflight-spring-26",
-    "startup": "juan-alcala",
-    "status": "active",
-    "lastUpdate": "2026-07-15",
-    "count": 1,
-    "files": {
-      "path": "inflight-spring-26/juan-alcala/juan-fibermend-2026-07-15.html",
-      "summary": "Agent-generated tidbit",
-      "name": "Juan Alcala - FiberMend - July 15, 2026",
-      "date": "2026-07-15"
-    }
-  },
-  {
-    "name": "FiberMend",
-    "founder": "Juan Fibermend 2026 04 10.Html",
-    "program": "inflight-spring-26",
-    "startup": "juan-alcala",
-    "status": "active",
-    "lastUpdate": "2026-04-10",
-    "count": 1,
-    "files": {
-      "path": "inflight-spring-26/juan-alcala/juan-fibermend-2026-04-10.html",
-      "summary": "Agent-generated tidbit",
-      "name": "Juan Alcala - FiberMend - April 10, 2026",
-      "date": "2026-04-10"
-    }
-  },
-  {
-    "name": "FiberMend",
-    "founder": "Juan Fibermend 2026 04 15.Html",
-    "program": "inflight-spring-26",
-    "startup": "juan-alcala",
-    "status": "active",
-    "lastUpdate": "2026-04-15",
-    "count": 1,
-    "files": {
-      "path": "inflight-spring-26/juan-alcala/juan-fibermend-2026-04-15.html",
-      "summary": "Agent-generated tidbit",
-      "name": "Juan Alcala - FiberMend - April 15, 2026",
-      "date": "2026-04-15"
+      "name": "Juan Alcala - FiberMend - May 13, 2026",
+      "date": "2026-05-13"
     }
   },
   {
@@ -887,17 +872,32 @@
   },
   {
     "name": "FiberMend",
-    "founder": "Juan Fibermend 2026 04 29.Html",
+    "founder": "Juan Fibermend 2026 07 08.Html",
     "program": "inflight-spring-26",
     "startup": "juan-alcala",
     "status": "active",
-    "lastUpdate": "2026-04-29",
+    "lastUpdate": "2026-07-08",
     "count": 1,
     "files": {
-      "path": "inflight-spring-26/juan-alcala/juan-fibermend-2026-04-29.html",
+      "path": "inflight-spring-26/juan-alcala/juan-fibermend-2026-07-08.html",
       "summary": "Agent-generated tidbit",
-      "name": "Juan Alcala - FiberMend - April 29, 2026",
-      "date": "2026-04-29"
+      "name": "Juan Alcala - FiberMend - July 8, 2026",
+      "date": "2026-07-08"
+    }
+  },
+  {
+    "name": "FiberMend",
+    "founder": "Juan Fibermend 2026 07 01.Html",
+    "program": "inflight-spring-26",
+    "startup": "juan-alcala",
+    "status": "active",
+    "lastUpdate": "2026-07-01",
+    "count": 1,
+    "files": {
+      "path": "inflight-spring-26/juan-alcala/juan-fibermend-2026-07-01.html",
+      "summary": "Agent-generated tidbit",
+      "name": "Juan Alcala - FiberMend - July 1, 2026",
+      "date": "2026-07-01"
     }
   },
   {
@@ -917,17 +917,17 @@
   },
   {
     "name": "FiberMend",
-    "founder": "Juan Fibermend 2026 05 13.Html",
+    "founder": "Juan Fibermend 2026 05 06.Html",
     "program": "inflight-spring-26",
     "startup": "juan-alcala",
     "status": "active",
-    "lastUpdate": "2026-05-13",
+    "lastUpdate": "2026-05-06",
     "count": 1,
     "files": {
-      "path": "inflight-spring-26/juan-alcala/juan-fibermend-2026-05-13.html",
+      "path": "inflight-spring-26/juan-alcala/juan-fibermend-2026-05-06.html",
       "summary": "Agent-generated tidbit",
-      "name": "Juan Alcala - FiberMend - May 13, 2026",
-      "date": "2026-05-13"
+      "name": "Juan Alcala - FiberMend - May 6, 2026",
+      "date": "2026-05-06"
     }
   },
   {
@@ -1024,36 +1024,6 @@
   },
   {
     "name": "Incoming Class",
-    "founder": "Nolan Incomingclass 2026 05 27.Html",
-    "program": "inflight-spring-26",
-    "startup": "nolan-walker",
-    "status": "active",
-    "lastUpdate": "2026-05-27",
-    "count": 1,
-    "files": {
-      "path": "inflight-spring-26/nolan-walker/nolan-incomingclass-2026-05-27.html",
-      "summary": "Agent-generated tidbit",
-      "name": "Nolan Walker - Incoming Class - May 27, 2026",
-      "date": "2026-05-27"
-    }
-  },
-  {
-    "name": "Incoming Class",
-    "founder": "Nolan Incomingclass 2026 07 22.Html",
-    "program": "inflight-spring-26",
-    "startup": "nolan-walker",
-    "status": "active",
-    "lastUpdate": "2026-07-22",
-    "count": 1,
-    "files": {
-      "path": "inflight-spring-26/nolan-walker/nolan-incomingclass-2026-07-22.html",
-      "summary": "Agent-generated tidbit",
-      "name": "Nolan Walker - Incoming Class - July 22, 2026",
-      "date": "2026-07-22"
-    }
-  },
-  {
-    "name": "Incoming Class",
     "founder": "Nolan Incomingclass 2026 05 13.Html",
     "program": "inflight-spring-26",
     "startup": "nolan-walker",
@@ -1084,47 +1054,17 @@
   },
   {
     "name": "Incoming Class",
-    "founder": "Nolan Incomingclass 2026 07 01.Html",
+    "founder": "Nolan Incomingclass 2026 04 22.Html",
     "program": "inflight-spring-26",
     "startup": "nolan-walker",
     "status": "active",
-    "lastUpdate": "2026-07-01",
+    "lastUpdate": "2026-04-22",
     "count": 1,
     "files": {
-      "path": "inflight-spring-26/nolan-walker/nolan-incomingclass-2026-07-01.html",
+      "path": "inflight-spring-26/nolan-walker/nolan-incomingclass-2026-04-22.html",
       "summary": "Agent-generated tidbit",
-      "name": "Nolan Walker - Incoming Class - July 1, 2026",
-      "date": "2026-07-01"
-    }
-  },
-  {
-    "name": "Incoming Class",
-    "founder": "Nolan Incomingclass 2026 06 03.Html",
-    "program": "inflight-spring-26",
-    "startup": "nolan-walker",
-    "status": "active",
-    "lastUpdate": "2026-06-03",
-    "count": 1,
-    "files": {
-      "path": "inflight-spring-26/nolan-walker/nolan-incomingclass-2026-06-03.html",
-      "summary": "Agent-generated tidbit",
-      "name": "Nolan Walker - Incoming Class - June 3, 2026",
-      "date": "2026-06-03"
-    }
-  },
-  {
-    "name": "Incoming Class",
-    "founder": "Nolan Incomingclass 2026 07 08.Html",
-    "program": "inflight-spring-26",
-    "startup": "nolan-walker",
-    "status": "active",
-    "lastUpdate": "2026-07-08",
-    "count": 1,
-    "files": {
-      "path": "inflight-spring-26/nolan-walker/nolan-incomingclass-2026-07-08.html",
-      "summary": "Agent-generated tidbit",
-      "name": "Nolan Walker - Incoming Class - July 8, 2026",
-      "date": "2026-07-08"
+      "name": "Nolan Walker - Incoming Class - April 22, 2026",
+      "date": "2026-04-22"
     }
   },
   {
@@ -1144,17 +1084,62 @@
   },
   {
     "name": "Incoming Class",
-    "founder": "Nolan Incomingclass 2026 04 22.Html",
+    "founder": "Nolan Incomingclass 2026 07 08.Html",
     "program": "inflight-spring-26",
     "startup": "nolan-walker",
     "status": "active",
-    "lastUpdate": "2026-04-22",
+    "lastUpdate": "2026-07-08",
     "count": 1,
     "files": {
-      "path": "inflight-spring-26/nolan-walker/nolan-incomingclass-2026-04-22.html",
+      "path": "inflight-spring-26/nolan-walker/nolan-incomingclass-2026-07-08.html",
       "summary": "Agent-generated tidbit",
-      "name": "Nolan Walker - Incoming Class - April 22, 2026",
-      "date": "2026-04-22"
+      "name": "Nolan Walker - Incoming Class - July 8, 2026",
+      "date": "2026-07-08"
+    }
+  },
+  {
+    "name": "Incoming Class",
+    "founder": "Nolan Incomingclass 2026 07 01.Html",
+    "program": "inflight-spring-26",
+    "startup": "nolan-walker",
+    "status": "active",
+    "lastUpdate": "2026-07-01",
+    "count": 1,
+    "files": {
+      "path": "inflight-spring-26/nolan-walker/nolan-incomingclass-2026-07-01.html",
+      "summary": "Agent-generated tidbit",
+      "name": "Nolan Walker - Incoming Class - July 1, 2026",
+      "date": "2026-07-01"
+    }
+  },
+  {
+    "name": "Incoming Class",
+    "founder": "Nolan Incomingclass 2026 07 22.Html",
+    "program": "inflight-spring-26",
+    "startup": "nolan-walker",
+    "status": "active",
+    "lastUpdate": "2026-07-22",
+    "count": 1,
+    "files": {
+      "path": "inflight-spring-26/nolan-walker/nolan-incomingclass-2026-07-22.html",
+      "summary": "Agent-generated tidbit",
+      "name": "Nolan Walker - Incoming Class - July 22, 2026",
+      "date": "2026-07-22"
+    }
+  },
+  {
+    "name": "Incoming Class",
+    "founder": "Nolan Incomingclass 2026 05 27.Html",
+    "program": "inflight-spring-26",
+    "startup": "nolan-walker",
+    "status": "active",
+    "lastUpdate": "2026-05-27",
+    "count": 1,
+    "files": {
+      "path": "inflight-spring-26/nolan-walker/nolan-incomingclass-2026-05-27.html",
+      "summary": "Agent-generated tidbit",
+      "name": "Nolan Walker - Incoming Class - May 27, 2026",
+      "date": "2026-05-27"
     }
   },
   {
@@ -1200,6 +1185,21 @@
       "summary": "Agent-generated tidbit",
       "name": "Nolan Walker - Incoming Class - June 17, 2026",
       "date": "2026-06-17"
+    }
+  },
+  {
+    "name": "Incoming Class",
+    "founder": "Nolan Incomingclass 2026 06 03.Html",
+    "program": "inflight-spring-26",
+    "startup": "nolan-walker",
+    "status": "active",
+    "lastUpdate": "2026-06-03",
+    "count": 1,
+    "files": {
+      "path": "inflight-spring-26/nolan-walker/nolan-incomingclass-2026-06-03.html",
+      "summary": "Agent-generated tidbit",
+      "name": "Nolan Walker - Incoming Class - June 3, 2026",
+      "date": "2026-06-03"
     }
   },
   {
@@ -1264,6 +1264,21 @@
   },
   {
     "name": "Ix Infrastructure LLC",
+    "founder": "Tanner Ix 2026 07 28.Html",
+    "program": "inflight-spring-26",
+    "startup": "tanner-kocher",
+    "status": "active",
+    "lastUpdate": "2026-07-28",
+    "count": 1,
+    "files": {
+      "path": "inflight-spring-26/tanner-kocher/tanner-ix-2026-07-28.html",
+      "summary": "Agent-generated tidbit",
+      "name": "Tanner Kocher — Ix Infrastructure — July 28, 2026",
+      "date": "2026-07-28"
+    }
+  },
+  {
+    "name": "Ix Infrastructure LLC",
     "founder": "Tanner Ix 2026 07 07.Html",
     "program": "inflight-spring-26",
     "startup": "tanner-kocher",
@@ -1293,21 +1308,6 @@
     }
   },
   {
-    "name": "Ix Infrastructure LLC",
-    "founder": "Tanner Ix 2026 07 28.Html",
-    "program": "inflight-spring-26",
-    "startup": "tanner-kocher",
-    "status": "active",
-    "lastUpdate": "2026-07-28",
-    "count": 1,
-    "files": {
-      "path": "inflight-spring-26/tanner-kocher/tanner-ix-2026-07-28.html",
-      "summary": "Agent-generated tidbit",
-      "name": "Tanner Kocher — Ix Infrastructure — July 28, 2026",
-      "date": "2026-07-28"
-    }
-  },
-  {
     "name": "juan alcala",
     "founder": "Rafrs Instructions.Html",
     "program": "inflight-spring-26",
@@ -1323,66 +1323,6 @@
     }
   },
   {
-    "name": "LaunchMate",
-    "founder": "Michael Launchmate 2026 04 27.Html",
-    "program": "inflight-spring-26",
-    "startup": "michael-hayes",
-    "status": "active",
-    "lastUpdate": "2026-04-27",
-    "count": 1,
-    "files": {
-      "path": "inflight-spring-26/michael-hayes/michael-launchmate-2026-04-27.html",
-      "summary": "Agent-generated tidbit",
-      "name": "The Maintenance Ping",
-      "date": "2026-04-27"
-    }
-  },
-  {
-    "name": "LaunchMate",
-    "founder": "Michael Launchmate 2026 03 25.Html",
-    "program": "inflight-spring-26",
-    "startup": "michael-hayes",
-    "status": "active",
-    "lastUpdate": "2026-03-25",
-    "count": 1,
-    "files": {
-      "path": "inflight-spring-26/michael-hayes/michael-launchmate-2026-03-25.html",
-      "summary": "Agent-generated tidbit",
-      "name": "Effort Visibility in Autonomous Agents | Michael Hayes",
-      "date": "2026-03-25"
-    }
-  },
-  {
-    "name": "LaunchMate",
-    "founder": "Michael Launchmate 2026 04 22.Html",
-    "program": "inflight-spring-26",
-    "startup": "michael-hayes",
-    "status": "active",
-    "lastUpdate": "2026-04-22",
-    "count": 1,
-    "files": {
-      "path": "inflight-spring-26/michael-hayes/michael-launchmate-2026-04-22.html",
-      "summary": "Agent-generated tidbit",
-      "name": "Who Is LaunchMate For?",
-      "date": "2026-04-22"
-    }
-  },
-  {
-    "name": "LaunchMate",
-    "founder": "Michael Launchmate 2026 04 27B.Html",
-    "program": "inflight-spring-26",
-    "startup": "michael-hayes",
-    "status": "active",
-    "lastUpdate": "2026-04-27",
-    "count": 1,
-    "files": {
-      "path": "inflight-spring-26/michael-hayes/michael-launchmate-2026-04-27b.html",
-      "summary": "Agent-generated tidbit",
-      "name": "Three Weeks to Connect",
-      "date": "2026-04-27"
-    }
-  },
-  {
     "name": "Launchmate",
     "founder": "Laura",
     "program": "inflight-spring-26",
@@ -1395,51 +1335,6 @@
       "summary": "Agent-generated tidbit",
       "name": "Launchmate Dev Workflow | Laura",
       "date": "2026-02-04"
-    }
-  },
-  {
-    "name": "LaunchMate",
-    "founder": "Michael Launchmate 2026 04 07.Html",
-    "program": "inflight-spring-26",
-    "startup": "michael-hayes",
-    "status": "active",
-    "lastUpdate": "2026-04-07",
-    "count": 1,
-    "files": {
-      "path": "inflight-spring-26/michael-hayes/michael-launchmate-2026-04-07.html",
-      "summary": "Agent-generated tidbit",
-      "name": "The Connector Pivot",
-      "date": "2026-04-07"
-    }
-  },
-  {
-    "name": "LaunchMate",
-    "founder": "Michael Launchmate 2026 04 24.Html",
-    "program": "inflight-spring-26",
-    "startup": "michael-hayes",
-    "status": "active",
-    "lastUpdate": "2026-04-24",
-    "count": 1,
-    "files": {
-      "path": "inflight-spring-26/michael-hayes/michael-launchmate-2026-04-24.html",
-      "summary": "Agent-generated tidbit",
-      "name": "What Building Auth Taught Me About Product",
-      "date": "2026-04-24"
-    }
-  },
-  {
-    "name": "LaunchMate",
-    "founder": "Michael Launchmate 2026 04 23.Html",
-    "program": "inflight-spring-26",
-    "startup": "michael-hayes",
-    "status": "active",
-    "lastUpdate": "2026-04-24",
-    "count": 1,
-    "files": {
-      "path": "inflight-spring-26/michael-hayes/michael-launchmate-2026-04-23.html",
-      "summary": "Agent-generated tidbit",
-      "name": "The Auth Wall",
-      "date": "2026-04-24"
     }
   },
   {
@@ -1474,6 +1369,51 @@
   },
   {
     "name": "LaunchMate",
+    "founder": "Michael Launchmate 2026 04 22.Html",
+    "program": "inflight-spring-26",
+    "startup": "michael-hayes",
+    "status": "active",
+    "lastUpdate": "2026-04-22",
+    "count": 1,
+    "files": {
+      "path": "inflight-spring-26/michael-hayes/michael-launchmate-2026-04-22.html",
+      "summary": "Agent-generated tidbit",
+      "name": "Who Is LaunchMate For?",
+      "date": "2026-04-22"
+    }
+  },
+  {
+    "name": "LaunchMate",
+    "founder": "Michael Launchmate 2026 04 23.Html",
+    "program": "inflight-spring-26",
+    "startup": "michael-hayes",
+    "status": "active",
+    "lastUpdate": "2026-04-24",
+    "count": 1,
+    "files": {
+      "path": "inflight-spring-26/michael-hayes/michael-launchmate-2026-04-23.html",
+      "summary": "Agent-generated tidbit",
+      "name": "The Auth Wall",
+      "date": "2026-04-24"
+    }
+  },
+  {
+    "name": "LaunchMate",
+    "founder": "Michael Launchmate 2026 04 24.Html",
+    "program": "inflight-spring-26",
+    "startup": "michael-hayes",
+    "status": "active",
+    "lastUpdate": "2026-04-24",
+    "count": 1,
+    "files": {
+      "path": "inflight-spring-26/michael-hayes/michael-launchmate-2026-04-24.html",
+      "summary": "Agent-generated tidbit",
+      "name": "What Building Auth Taught Me About Product",
+      "date": "2026-04-24"
+    }
+  },
+  {
+    "name": "LaunchMate",
     "founder": "Michael Launchmate 2026 04 01.Html",
     "program": "inflight-spring-26",
     "startup": "michael-hayes",
@@ -1504,6 +1444,21 @@
   },
   {
     "name": "LaunchMate",
+    "founder": "Michael Launchmate 2026 04 27.Html",
+    "program": "inflight-spring-26",
+    "startup": "michael-hayes",
+    "status": "active",
+    "lastUpdate": "2026-04-27",
+    "count": 1,
+    "files": {
+      "path": "inflight-spring-26/michael-hayes/michael-launchmate-2026-04-27.html",
+      "summary": "Agent-generated tidbit",
+      "name": "The Maintenance Ping",
+      "date": "2026-04-27"
+    }
+  },
+  {
+    "name": "LaunchMate",
     "founder": "Jay Launchmate 2026 05 26 V2.Html",
     "program": "inflight-spring-26",
     "startup": "jay",
@@ -1519,6 +1474,21 @@
   },
   {
     "name": "LaunchMate",
+    "founder": "Michael Launchmate 2026 03 25.Html",
+    "program": "inflight-spring-26",
+    "startup": "michael-hayes",
+    "status": "active",
+    "lastUpdate": "2026-03-25",
+    "count": 1,
+    "files": {
+      "path": "inflight-spring-26/michael-hayes/michael-launchmate-2026-03-25.html",
+      "summary": "Agent-generated tidbit",
+      "name": "Effort Visibility in Autonomous Agents | Michael Hayes",
+      "date": "2026-03-25"
+    }
+  },
+  {
+    "name": "LaunchMate",
     "founder": "Michael Launchmate 2026 04 14.Html",
     "program": "inflight-spring-26",
     "startup": "michael-hayes",
@@ -1530,6 +1500,36 @@
       "summary": "Agent-generated tidbit",
       "name": "Discord Remote: Two-Way Chat Interface",
       "date": "2026-04-14"
+    }
+  },
+  {
+    "name": "LaunchMate",
+    "founder": "Michael Launchmate 2026 04 07.Html",
+    "program": "inflight-spring-26",
+    "startup": "michael-hayes",
+    "status": "active",
+    "lastUpdate": "2026-04-07",
+    "count": 1,
+    "files": {
+      "path": "inflight-spring-26/michael-hayes/michael-launchmate-2026-04-07.html",
+      "summary": "Agent-generated tidbit",
+      "name": "The Connector Pivot",
+      "date": "2026-04-07"
+    }
+  },
+  {
+    "name": "LaunchMate",
+    "founder": "Michael Launchmate 2026 04 27B.Html",
+    "program": "inflight-spring-26",
+    "startup": "michael-hayes",
+    "status": "active",
+    "lastUpdate": "2026-04-27",
+    "count": 1,
+    "files": {
+      "path": "inflight-spring-26/michael-hayes/michael-launchmate-2026-04-27b.html",
+      "summary": "Agent-generated tidbit",
+      "name": "Three Weeks to Connect",
+      "date": "2026-04-27"
     }
   },
   {
@@ -1564,6 +1564,36 @@
   },
   {
     "name": "RAFRS",
+    "founder": "Juan Rafrs 2026 04 01.Html",
+    "program": "inflight-spring-26",
+    "startup": "juan-alcala",
+    "status": "active",
+    "lastUpdate": "2026-04-01",
+    "count": 1,
+    "files": {
+      "path": "inflight-spring-26/juan-alcala/juan-rafrs-2026-04-01.html",
+      "summary": "Agent-generated tidbit",
+      "name": "Juan Alcala - RAFRS - April 1, 2026",
+      "date": "2026-04-01"
+    }
+  },
+  {
+    "name": "RAFRS",
+    "founder": "Juan Rafrs 2026 03 25.Html",
+    "program": "inflight-spring-26",
+    "startup": "juan-alcala",
+    "status": "active",
+    "lastUpdate": "2026-03-25",
+    "count": 1,
+    "files": {
+      "path": "inflight-spring-26/juan-alcala/juan-rafrs-2026-03-25.html",
+      "summary": "Agent-generated tidbit",
+      "name": "Juan Alcala - RAFRS - March 25, 2026",
+      "date": "2026-03-25"
+    }
+  },
+  {
+    "name": "RAFRS",
     "founder": "Juan Alcala",
     "program": "inflight-spring-26",
     "startup": "rafrs",
@@ -1586,96 +1616,6 @@
     ]
   },
   {
-    "name": "RAFRS",
-    "founder": "Juan Rafrs 2026 03 25.Html",
-    "program": "inflight-spring-26",
-    "startup": "juan-alcala",
-    "status": "active",
-    "lastUpdate": "2026-03-25",
-    "count": 1,
-    "files": {
-      "path": "inflight-spring-26/juan-alcala/juan-rafrs-2026-03-25.html",
-      "summary": "Agent-generated tidbit",
-      "name": "Juan Alcala - RAFRS - March 25, 2026",
-      "date": "2026-03-25"
-    }
-  },
-  {
-    "name": "RAFRS",
-    "founder": "Juan Rafrs 2026 04 01.Html",
-    "program": "inflight-spring-26",
-    "startup": "juan-alcala",
-    "status": "active",
-    "lastUpdate": "2026-04-01",
-    "count": 1,
-    "files": {
-      "path": "inflight-spring-26/juan-alcala/juan-rafrs-2026-04-01.html",
-      "summary": "Agent-generated tidbit",
-      "name": "Juan Alcala - RAFRS - April 1, 2026",
-      "date": "2026-04-01"
-    }
-  },
-  {
-    "name": "Sonomos",
-    "founder": "Sonomos 2026 04 29.Html",
-    "program": "inflight-spring-26",
-    "startup": "zach-brenner",
-    "status": "active",
-    "lastUpdate": "2026-04-29",
-    "count": 1,
-    "files": {
-      "path": "inflight-spring-26/zach-brenner/sonomos-2026-04-29.html",
-      "summary": "Agent-generated tidbit",
-      "name": "Zach Brenner · Sonomos · April 2026",
-      "date": "2026-04-29"
-    }
-  },
-  {
-    "name": "Sonomos",
-    "founder": "Sonomos 2026 07 01.Html",
-    "program": "inflight-spring-26",
-    "startup": "zach-brenner",
-    "status": "active",
-    "lastUpdate": "2026-07-01",
-    "count": 1,
-    "files": {
-      "path": "inflight-spring-26/zach-brenner/sonomos-2026-07-01.html",
-      "summary": "Agent-generated tidbit",
-      "name": "Zach Brenner · Sonomos · July 2026",
-      "date": "2026-07-01"
-    }
-  },
-  {
-    "name": "Sonomos",
-    "founder": "Sonomos 2026 07 22.Html",
-    "program": "inflight-spring-26",
-    "startup": "zach-brenner",
-    "status": "active",
-    "lastUpdate": "2026-07-22",
-    "count": 1,
-    "files": {
-      "path": "inflight-spring-26/zach-brenner/sonomos-2026-07-22.html",
-      "summary": "Agent-generated tidbit",
-      "name": "Zach Brenner · Sonomos · July 2026",
-      "date": "2026-07-22"
-    }
-  },
-  {
-    "name": "Sonomos",
-    "founder": "Sonomos 2026 03 25.Html",
-    "program": "inflight-spring-26",
-    "startup": "zach-brenner",
-    "status": "active",
-    "lastUpdate": "2026-03-25",
-    "count": 1,
-    "files": {
-      "path": "inflight-spring-26/zach-brenner/sonomos-2026-03-25.html",
-      "summary": "Agent-generated tidbit",
-      "name": "Zach Brenner | Sonomos | March 25, 2026",
-      "date": "2026-03-25"
-    }
-  },
-  {
     "name": "Sonomos",
     "founder": "Sonomos 2026 05 13.Html",
     "program": "inflight-spring-26",
@@ -1692,137 +1632,17 @@
   },
   {
     "name": "Sonomos",
-    "founder": "Sonomos 2026 06 24.Html",
+    "founder": "Sonomos 2026 04 15.Html",
     "program": "inflight-spring-26",
     "startup": "zach-brenner",
     "status": "active",
-    "lastUpdate": "2026-06-24",
+    "lastUpdate": "2026-04-15",
     "count": 1,
     "files": {
-      "path": "inflight-spring-26/zach-brenner/sonomos-2026-06-24.html",
-      "summary": "Agent-generated tidbit",
-      "name": "Zach Brenner · Sonomos · June 2026",
-      "date": "2026-06-24"
-    }
-  },
-  {
-    "name": "Sonomos",
-    "founder": "Sonomos 2026 05 27.Html",
-    "program": "inflight-spring-26",
-    "startup": "zach-brenner",
-    "status": "active",
-    "lastUpdate": "2026-05-27",
-    "count": 1,
-    "files": {
-      "path": "inflight-spring-26/zach-brenner/sonomos-2026-05-27.html",
-      "summary": "Agent-generated tidbit",
-      "name": "Zach Brenner · Sonomos · May 2026",
-      "date": "2026-05-27"
-    }
-  },
-  {
-    "name": "Sonomos",
-    "founder": "Sonomos 2026 06 17.Html",
-    "program": "inflight-spring-26",
-    "startup": "zach-brenner",
-    "status": "active",
-    "lastUpdate": "2026-06-17",
-    "count": 1,
-    "files": {
-      "path": "inflight-spring-26/zach-brenner/sonomos-2026-06-17.html",
-      "summary": "Agent-generated tidbit",
-      "name": "Zach Brenner · Sonomos · June 2026",
-      "date": "2026-06-17"
-    }
-  },
-  {
-    "name": "Sonomos",
-    "founder": "Sonomos 2026 04 08.Html",
-    "program": "inflight-spring-26",
-    "startup": "zach-brenner",
-    "status": "active",
-    "lastUpdate": "2026-04-08",
-    "count": 1,
-    "files": {
-      "path": "inflight-spring-26/zach-brenner/sonomos-2026-04-08.html",
+      "path": "inflight-spring-26/zach-brenner/sonomos-2026-04-15.html",
       "summary": "Agent-generated tidbit",
       "name": "Zach Brenner · Sonomos · April 2026",
-      "date": "2026-04-08"
-    }
-  },
-  {
-    "name": "Sonomos",
-    "founder": "Sonomos 2026 04 01.Html",
-    "program": "inflight-spring-26",
-    "startup": "zach-brenner",
-    "status": "active",
-    "lastUpdate": "2026-04-01",
-    "count": 1,
-    "files": {
-      "path": "inflight-spring-26/zach-brenner/sonomos-2026-04-01.html",
-      "summary": "Agent-generated tidbit",
-      "name": "Zach Brenner · Sonomos · April 2026",
-      "date": "2026-04-01"
-    }
-  },
-  {
-    "name": "Sonomos",
-    "founder": "Sonomos 2026 08 05.Html",
-    "program": "inflight-spring-26",
-    "startup": "zach-brenner",
-    "status": "active",
-    "lastUpdate": "2026-08-05",
-    "count": 1,
-    "files": {
-      "path": "inflight-spring-26/zach-brenner/sonomos-2026-08-05.html",
-      "summary": "Agent-generated tidbit",
-      "name": "Zach Brenner · Sonomos · August 2026",
-      "date": "2026-08-05"
-    }
-  },
-  {
-    "name": "Sonomos",
-    "founder": "Sonomos 2026 06 03.Html",
-    "program": "inflight-spring-26",
-    "startup": "zach-brenner",
-    "status": "active",
-    "lastUpdate": "2026-06-03",
-    "count": 1,
-    "files": {
-      "path": "inflight-spring-26/zach-brenner/sonomos-2026-06-03.html",
-      "summary": "Agent-generated tidbit",
-      "name": "Zach Brenner · Sonomos · June 2026",
-      "date": "2026-06-03"
-    }
-  },
-  {
-    "name": "Sonomos",
-    "founder": "Sonomos 2026 05 06.Html",
-    "program": "inflight-spring-26",
-    "startup": "zach-brenner",
-    "status": "active",
-    "lastUpdate": "2026-05-06",
-    "count": 1,
-    "files": {
-      "path": "inflight-spring-26/zach-brenner/sonomos-2026-05-06.html",
-      "summary": "Agent-generated tidbit",
-      "name": "Zach Brenner · Sonomos · May 2026",
-      "date": "2026-05-06"
-    }
-  },
-  {
-    "name": "Sonomos",
-    "founder": "Sonomos 2026 07 08.Html",
-    "program": "inflight-spring-26",
-    "startup": "zach-brenner",
-    "status": "active",
-    "lastUpdate": "2026-07-08",
-    "count": 1,
-    "files": {
-      "path": "inflight-spring-26/zach-brenner/sonomos-2026-07-08.html",
-      "summary": "Agent-generated tidbit",
-      "name": "Zach Brenner · Sonomos · July 2026",
-      "date": "2026-07-08"
+      "date": "2026-04-15"
     }
   },
   {
@@ -1889,32 +1709,107 @@
   },
   {
     "name": "Sonomos",
-    "founder": "Sonomos 2026 07 29.Html",
+    "founder": "Sonomos 2026 06 24.Html",
     "program": "inflight-spring-26",
     "startup": "zach-brenner",
     "status": "active",
-    "lastUpdate": "2026-07-29",
+    "lastUpdate": "2026-06-24",
     "count": 1,
     "files": {
-      "path": "inflight-spring-26/zach-brenner/sonomos-2026-07-29.html",
+      "path": "inflight-spring-26/zach-brenner/sonomos-2026-06-24.html",
       "summary": "Agent-generated tidbit",
-      "name": "Zach Brenner · Sonomos · July 2026",
-      "date": "2026-07-29"
+      "name": "Zach Brenner · Sonomos · June 2026",
+      "date": "2026-06-24"
     }
   },
   {
     "name": "Sonomos",
-    "founder": "Sonomos 2026 04 15.Html",
+    "founder": "Sonomos 2026 03 25.Html",
     "program": "inflight-spring-26",
     "startup": "zach-brenner",
     "status": "active",
-    "lastUpdate": "2026-04-15",
+    "lastUpdate": "2026-03-25",
     "count": 1,
     "files": {
-      "path": "inflight-spring-26/zach-brenner/sonomos-2026-04-15.html",
+      "path": "inflight-spring-26/zach-brenner/sonomos-2026-03-25.html",
+      "summary": "Agent-generated tidbit",
+      "name": "Zach Brenner | Sonomos | March 25, 2026",
+      "date": "2026-03-25"
+    }
+  },
+  {
+    "name": "Sonomos",
+    "founder": "Sonomos 2026 06 17.Html",
+    "program": "inflight-spring-26",
+    "startup": "zach-brenner",
+    "status": "active",
+    "lastUpdate": "2026-06-17",
+    "count": 1,
+    "files": {
+      "path": "inflight-spring-26/zach-brenner/sonomos-2026-06-17.html",
+      "summary": "Agent-generated tidbit",
+      "name": "Zach Brenner · Sonomos · June 2026",
+      "date": "2026-06-17"
+    }
+  },
+  {
+    "name": "Sonomos",
+    "founder": "Sonomos 2026 05 06.Html",
+    "program": "inflight-spring-26",
+    "startup": "zach-brenner",
+    "status": "active",
+    "lastUpdate": "2026-05-06",
+    "count": 1,
+    "files": {
+      "path": "inflight-spring-26/zach-brenner/sonomos-2026-05-06.html",
+      "summary": "Agent-generated tidbit",
+      "name": "Zach Brenner · Sonomos · May 2026",
+      "date": "2026-05-06"
+    }
+  },
+  {
+    "name": "Sonomos",
+    "founder": "Sonomos 2026 07 22.Html",
+    "program": "inflight-spring-26",
+    "startup": "zach-brenner",
+    "status": "active",
+    "lastUpdate": "2026-07-22",
+    "count": 1,
+    "files": {
+      "path": "inflight-spring-26/zach-brenner/sonomos-2026-07-22.html",
+      "summary": "Agent-generated tidbit",
+      "name": "Zach Brenner · Sonomos · July 2026",
+      "date": "2026-07-22"
+    }
+  },
+  {
+    "name": "Sonomos",
+    "founder": "Sonomos 2026 04 01.Html",
+    "program": "inflight-spring-26",
+    "startup": "zach-brenner",
+    "status": "active",
+    "lastUpdate": "2026-04-01",
+    "count": 1,
+    "files": {
+      "path": "inflight-spring-26/zach-brenner/sonomos-2026-04-01.html",
       "summary": "Agent-generated tidbit",
       "name": "Zach Brenner · Sonomos · April 2026",
-      "date": "2026-04-15"
+      "date": "2026-04-01"
+    }
+  },
+  {
+    "name": "Sonomos",
+    "founder": "Sonomos 2026 04 29.Html",
+    "program": "inflight-spring-26",
+    "startup": "zach-brenner",
+    "status": "active",
+    "lastUpdate": "2026-04-29",
+    "count": 1,
+    "files": {
+      "path": "inflight-spring-26/zach-brenner/sonomos-2026-04-29.html",
+      "summary": "Agent-generated tidbit",
+      "name": "Zach Brenner · Sonomos · April 2026",
+      "date": "2026-04-29"
     }
   },
   {
@@ -1933,47 +1828,137 @@
     }
   },
   {
+    "name": "Sonomos",
+    "founder": "Sonomos 2026 08 05.Html",
+    "program": "inflight-spring-26",
+    "startup": "zach-brenner",
+    "status": "active",
+    "lastUpdate": "2026-08-05",
+    "count": 1,
+    "files": {
+      "path": "inflight-spring-26/zach-brenner/sonomos-2026-08-05.html",
+      "summary": "Agent-generated tidbit",
+      "name": "Zach Brenner · Sonomos · August 2026",
+      "date": "2026-08-05"
+    }
+  },
+  {
+    "name": "Sonomos",
+    "founder": "Sonomos 2026 07 08.Html",
+    "program": "inflight-spring-26",
+    "startup": "zach-brenner",
+    "status": "active",
+    "lastUpdate": "2026-07-08",
+    "count": 1,
+    "files": {
+      "path": "inflight-spring-26/zach-brenner/sonomos-2026-07-08.html",
+      "summary": "Agent-generated tidbit",
+      "name": "Zach Brenner · Sonomos · July 2026",
+      "date": "2026-07-08"
+    }
+  },
+  {
+    "name": "Sonomos",
+    "founder": "Sonomos 2026 07 29.Html",
+    "program": "inflight-spring-26",
+    "startup": "zach-brenner",
+    "status": "active",
+    "lastUpdate": "2026-07-29",
+    "count": 1,
+    "files": {
+      "path": "inflight-spring-26/zach-brenner/sonomos-2026-07-29.html",
+      "summary": "Agent-generated tidbit",
+      "name": "Zach Brenner · Sonomos · July 2026",
+      "date": "2026-07-29"
+    }
+  },
+  {
+    "name": "Sonomos",
+    "founder": "Sonomos 2026 04 08.Html",
+    "program": "inflight-spring-26",
+    "startup": "zach-brenner",
+    "status": "active",
+    "lastUpdate": "2026-04-08",
+    "count": 1,
+    "files": {
+      "path": "inflight-spring-26/zach-brenner/sonomos-2026-04-08.html",
+      "summary": "Agent-generated tidbit",
+      "name": "Zach Brenner · Sonomos · April 2026",
+      "date": "2026-04-08"
+    }
+  },
+  {
+    "name": "Sonomos",
+    "founder": "Sonomos 2026 07 01.Html",
+    "program": "inflight-spring-26",
+    "startup": "zach-brenner",
+    "status": "active",
+    "lastUpdate": "2026-07-01",
+    "count": 1,
+    "files": {
+      "path": "inflight-spring-26/zach-brenner/sonomos-2026-07-01.html",
+      "summary": "Agent-generated tidbit",
+      "name": "Zach Brenner · Sonomos · July 2026",
+      "date": "2026-07-01"
+    }
+  },
+  {
+    "name": "Sonomos",
+    "founder": "Sonomos 2026 06 03.Html",
+    "program": "inflight-spring-26",
+    "startup": "zach-brenner",
+    "status": "active",
+    "lastUpdate": "2026-06-03",
+    "count": 1,
+    "files": {
+      "path": "inflight-spring-26/zach-brenner/sonomos-2026-06-03.html",
+      "summary": "Agent-generated tidbit",
+      "name": "Zach Brenner · Sonomos · June 2026",
+      "date": "2026-06-03"
+    }
+  },
+  {
+    "name": "Sonomos",
+    "founder": "Sonomos 2026 05 27.Html",
+    "program": "inflight-spring-26",
+    "startup": "zach-brenner",
+    "status": "active",
+    "lastUpdate": "2026-05-27",
+    "count": 1,
+    "files": {
+      "path": "inflight-spring-26/zach-brenner/sonomos-2026-05-27.html",
+      "summary": "Agent-generated tidbit",
+      "name": "Zach Brenner · Sonomos · May 2026",
+      "date": "2026-05-27"
+    }
+  },
+  {
     "name": "ToneAdapt",
-    "founder": "Kyan Toneadapt 2026 03 06.Html",
+    "founder": "Kyan Toneadapt Minimal.Html",
     "program": "inflight-spring-26",
     "startup": "kyan-santiago-calling",
     "status": "active",
     "lastUpdate": "2026-03-06",
     "count": 1,
     "files": {
-      "path": "inflight-spring-26/kyan-santiago-calling/kyan-toneadapt-2026-03-06.html",
+      "path": "inflight-spring-26/kyan-santiago-calling/kyan-toneadapt-minimal.html",
       "summary": "Agent-generated tidbit",
-      "name": "Kyan Santiago-Calling | ToneAdapt",
+      "name": "Kyan | ToneAdapt",
       "date": "2026-03-06"
     }
   },
   {
     "name": "ToneAdapt",
-    "founder": "Kyan Toneadapt Week10 Summary.Html",
+    "founder": "Kyan Toneadapt Decision Log.Html",
     "program": "inflight-spring-26",
     "startup": "kyan-santiago-calling",
     "status": "active",
     "lastUpdate": "2026-03-06",
     "count": 1,
     "files": {
-      "path": "inflight-spring-26/kyan-santiago-calling/kyan-toneadapt-week10-summary.html",
+      "path": "inflight-spring-26/kyan-santiago-calling/kyan-toneadapt-decision-log.html",
       "summary": "Agent-generated tidbit",
-      "name": "Kyan | ToneAdapt - Week 10",
-      "date": "2026-03-06"
-    }
-  },
-  {
-    "name": "ToneAdapt",
-    "founder": "Kyan Toneadapt 2026 03 06 V2.Html",
-    "program": "inflight-spring-26",
-    "startup": "kyan-santiago-calling",
-    "status": "active",
-    "lastUpdate": "2026-03-06",
-    "count": 1,
-    "files": {
-      "path": "inflight-spring-26/kyan-santiago-calling/kyan-toneadapt-2026-03-06-v2.html",
-      "summary": "Agent-generated tidbit",
-      "name": "Kyan Santiago-Calling | ToneAdapt - Viral Growth vs Retention",
+      "name": "Kyan | ToneAdapt - Decision Log",
       "date": "2026-03-06"
     }
   },
@@ -1994,21 +1979,6 @@
   },
   {
     "name": "ToneAdapt",
-    "founder": "Kyan Toneadapt 2026 03 27.Html",
-    "program": "inflight-spring-26",
-    "startup": "kyan-santiago-calling",
-    "status": "active",
-    "lastUpdate": "2026-03-27",
-    "count": 1,
-    "files": {
-      "path": "inflight-spring-26/kyan-santiago-calling/kyan-toneadapt-2026-03-27.html",
-      "summary": "Agent-generated tidbit",
-      "name": "Kyan | ToneAdapt - Week 13",
-      "date": "2026-03-27"
-    }
-  },
-  {
-    "name": "ToneAdapt",
     "founder": "Kyan Toneadapt Launch Story.Html",
     "program": "inflight-spring-26",
     "startup": "kyan-santiago-calling",
@@ -2024,16 +1994,16 @@
   },
   {
     "name": "ToneAdapt",
-    "founder": "Kyan Toneadapt Minimal.Html",
+    "founder": "Kyan Toneadapt 2026 03 06 V2.Html",
     "program": "inflight-spring-26",
     "startup": "kyan-santiago-calling",
     "status": "active",
     "lastUpdate": "2026-03-06",
     "count": 1,
     "files": {
-      "path": "inflight-spring-26/kyan-santiago-calling/kyan-toneadapt-minimal.html",
+      "path": "inflight-spring-26/kyan-santiago-calling/kyan-toneadapt-2026-03-06-v2.html",
       "summary": "Agent-generated tidbit",
-      "name": "Kyan | ToneAdapt",
+      "name": "Kyan Santiago-Calling | ToneAdapt - Viral Growth vs Retention",
       "date": "2026-03-06"
     }
   },
@@ -2054,16 +2024,46 @@
   },
   {
     "name": "ToneAdapt",
-    "founder": "Kyan Toneadapt Decision Log.Html",
+    "founder": "Kyan Toneadapt Week10 Summary.Html",
     "program": "inflight-spring-26",
     "startup": "kyan-santiago-calling",
     "status": "active",
     "lastUpdate": "2026-03-06",
     "count": 1,
     "files": {
-      "path": "inflight-spring-26/kyan-santiago-calling/kyan-toneadapt-decision-log.html",
+      "path": "inflight-spring-26/kyan-santiago-calling/kyan-toneadapt-week10-summary.html",
       "summary": "Agent-generated tidbit",
-      "name": "Kyan | ToneAdapt - Decision Log",
+      "name": "Kyan | ToneAdapt - Week 10",
+      "date": "2026-03-06"
+    }
+  },
+  {
+    "name": "ToneAdapt",
+    "founder": "Kyan Toneadapt 2026 03 27.Html",
+    "program": "inflight-spring-26",
+    "startup": "kyan-santiago-calling",
+    "status": "active",
+    "lastUpdate": "2026-03-27",
+    "count": 1,
+    "files": {
+      "path": "inflight-spring-26/kyan-santiago-calling/kyan-toneadapt-2026-03-27.html",
+      "summary": "Agent-generated tidbit",
+      "name": "Kyan | ToneAdapt - Week 13",
+      "date": "2026-03-27"
+    }
+  },
+  {
+    "name": "ToneAdapt",
+    "founder": "Kyan Toneadapt 2026 03 06.Html",
+    "program": "inflight-spring-26",
+    "startup": "kyan-santiago-calling",
+    "status": "active",
+    "lastUpdate": "2026-03-06",
+    "count": 1,
+    "files": {
+      "path": "inflight-spring-26/kyan-santiago-calling/kyan-toneadapt-2026-03-06.html",
+      "summary": "Agent-generated tidbit",
+      "name": "Kyan Santiago-Calling | ToneAdapt",
       "date": "2026-03-06"
     }
   },
